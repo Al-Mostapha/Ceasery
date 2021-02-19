@@ -1,0 +1,22 @@
+Array
+(
+    [0] => Array
+        (
+            [file] => D:\Web\Web\Ser.php
+            [line] => 51
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [idPlayer] => 1
+)

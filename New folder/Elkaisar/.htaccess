@@ -1,0 +1,17 @@
+RewriteEngine on
+<FilesMatch "\.(eot|ttf|otf|woff|js|json)$">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 148.251.79.181
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit

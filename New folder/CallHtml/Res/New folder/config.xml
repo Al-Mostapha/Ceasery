@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<debugMode>true</debugMode>
+	<port>8143</port>
+	<specialIps>elex1.heroicera.com,174.36.200.163</specialIps>
+	<specialPort>444</specialPort>
+	<version>1.1</version>
+	<clientVer>1.003</clientVer> 
+ 	<!--
+ 
+	  中文版
+	 <loading>
+		<loginBg>fla/loginBg.swf</loginBg>
+		<resManager>../../ClientResourceManager/bin-debug/ResManager.swf</resManager>
+		<styleFile>../../ClientResourceManager/bin-debug/Style.swf</styleFile>
+		<lang>../../ClientLang/bin-debug/LangCn.swf?s=1</lang>
+	</loading>
+	
+	 英文版
+	  <loading>
+		<loginBg>fla/loginBg.swf</loginBg>
+		<resManager>../../ClientResourceManager/bin-debug/ResManager.swf</resManager>
+		<styleFile>../../ClientResourceManager/bin-debug/StyleEn.swf</styleFile>
+		<lang>../../ClientLang/bin-debug/LangEn.swf?s=1</lang>
+	</loading>
+	西班牙语
+	  <loading>
+		<loginBg>fla/loginBg.swf</loginBg>
+		<resManager>../../ClientResourceManager/bin-debug/ResManager.swf</resManager>
+		<styleFile>../../ClientResourceManager/bin-debug/StyleEn.swf</styleFile>
+		<lang>../../ClientLang/bin-debug/LangSp.swf?s=1</lang>
+	</loading>
+	 
+	 
+	  韩文版
+	 <loading>
+		<loginBg>fla/loginBg.swf</loginBg>
+		<resManager>../../ClientResourceManager/bin-debug/ResManager.swf</resManager>
+		<styleFile>../../ClientResourceManager/bin-debug/StyleKo.swf</styleFile>
+		<lang>../../ClientLang/bin-debug/LangKo.swf?s=1</lang>
+	</loading>
+	
+	 日文版
+	 <loading>
+		<loginBg>fla/loginBg.swf</loginBg>
+		<resManager>../../ClientResourceManager/bin-debug/ResManager.swf</resManager>
+		<styleFile>../../ClientResourceManager/bin-debug/StyleEn.swf</styleFile>
+		<lang>../../ClientLang/bin-debug/LangJp.swf?s=1</lang>
+	</loading>
+	
+	 日文版yahoo
+	 <loading>
+		<loginBg>fla/loginBg.swf</loginBg>
+		<resManager>../../ClientResourceManager/bin-debug/ResManager.swf</resManager>
+		<styleFile>../../ClientResourceManager/bin-debug/StyleYahooJp.swf</styleFile>
+		<lang>../../ClientLang/bin-debug/LangYahooJp.swf?s=1</lang>
+	</loading>
+
+	
+	风云版
+	   <loading>
+		<loginBg>fla/loginBg.swf</loginBg>
+		<resManager>../../SWIIClientResourceManager/bin-debug/SWIIResManager.swf</resManager>
+		<styleFile>../../SWIIClientResourceManager/bin-debug/SWIIStyle.swf</styleFile>
+		<lang>../../SWIIClientLang/bin-debug/LangSWII.swf?s=1</lang>
+	</loading>
+	
+	<loading>
+		<loginBg>fla/loginBg.swf</loginBg>
+		<resManager>../../ClientResourceManager/bin-debug/ResManager.swf</resManager>
+		<styleFile>../../ClientResourceManager/bin-debug/Style.swf</styleFile>
+		<lang>../../ClientLang/bin-debug/LangCn.swf?s=1</lang>
+	</loading>
+-->
+ 	
+   <loading>
+		<loginBg>fla/loginBg.swf</loginBg>
+		<resManager>../../ClientResourceManager/bin-debug/ResManager.swf</resManager>
+		<styleFile>../../ClientResourceManager/bin-debug/Style.swf</styleFile>
+		<lang>../../ClientLang/bin-debug/LangCn.swf?s=1</lang>
+	</loading>
+	
+	<url>
+		<reChargeUrl>http://www.123456.com/s?wd={0}</reChargeUrl>
+		<registerUrl>http://www.google.com</registerUrl>
+		<noteUrl>newBulletin.txt</noteUrl>
+		<forumUrl>http://www.google.com</forumUrl>
+		<bugReportUrl>http://localhost:8080/reportBugs/bugs.do</bugReportUrl>
+		<!--  
+		     如果设置了这个参数，界面左上角的最大化按钮会变成弹出这个网址
+		  <homePageUrl>http://www.callofroma.com</homePageUrl> 
+		 -->
+	</url>
+	
+	<!-- 
+	http://fy01.heroicera.com/SWII/replay/wareplay.html?&amp;u={0} 
+	http://t2.caesary.com/replay/wareplay.html?u={0}&amp;l=en
+	
+	<battleUrl>http://t2.caesary.com/replay/wareplay.html?u={0}&amp;</battleUrl>
+	-->
+	<battleReplay>
+		<battleUrl>{1}/replay/kaisa_replay_player/index.html?&amp;u={0}</battleUrl>
+		<battleDataUrl>{0}/report{1}</battleDataUrl>
+	</battleReplay>
+	
+	<autoLogin>
+		<showLogin>false</showLogin>
+		<loginUrl>http://test.callofroma.com</loginUrl>
+	</autoLogin>
+
+	<specificSet>
+	    <userJsFuncRecharge>true</userJsFuncRecharge>
+		<isGuide>true</isGuide>
+		<isRoll>true</isRoll>
+		<levelBtnShow>false</levelBtnShow>
+		
+		<!-- 显示report bug 按钮-->
+		<bugBtnShow>true</bugBtnShow>
+		
+		<!-- 是否是英文版本-->
+		<isEnVersion>false</isEnVersion>
+		
+		<!-- 能聊天 -->
+		<canChat>true</canChat>
+		
+		<!-- 能发私聊 -->
+		<canPrivateChat>true</canPrivateChat>
+		
+		<!-- 能发私邮 -->
+		<canPrivateEmail>true</canPrivateEmail>
+		
+		<!-- 显示充值按钮 -->
+		<showPayButton>true</showPayButton>
+		
+		<!-- 显示论坛按钮 -->
+		<showForumButton>true</showForumButton>
+		
+		<!-- 显示战斗回放按钮 -->
+		<showBattlePlayButton>true</showBattlePlayButton>
+		
+		<!-- 右键菜单显示 加入搜藏 -->
+		<canBookMark>true</canBookMark>
+		
+		<!-- 屏蔽最大化 -->
+		<canResize>true</canResize>
+		
+		<!-- 显示英雄洗点按钮 -->
+		<canWashPoint>true</canWashPoint>
+		
+		<!-- 显示放弃城市按钮 -->
+		<canGiveUpCityBtn>true</canGiveUpCityBtn>
+		
+		<!-- 输入限制 yahoo jp 的特殊要求，某些输入文职的地方要限制只能输入 12byte 
+		     默认值为true 不限制， false为限制
+		 -->
+		<inputWordLength>true</inputWordLength>
+		
+		<!-- 屏蔽yahoo jp领主的资料明细 -->
+		<changePlayerDetail>true</changePlayerDetail>
+		
+		<!-- 屏蔽yahoo jp联盟的情报变更 -->
+		<showIntelligenceChange>true</showIntelligenceChange>
+		
+		<!-- 屏蔽yahoo jp收藏夹中坐标名字的修改 -->
+		<showCollectionUpdate>true</showCollectionUpdate>
+		
+		<!-- fy颜色控制 排行榜 征服城堡数 
+		<conquestCastleCountColor>0xffff00</conquestCastleCountColor>  
+		-->
+	</specificSet>
+	
+	<!-- gameone 乐古 与巴哈姆特 论坛-->
+	<forum>
+		<showLeGuForum>false</showLeGuForum>
+		<showBaHaForum>false</showBaHaForum>
+		<leGuForumUrl>http://www1.nakuz.com/bbs/forumdisplay.php?fid=1752</leGuForumUrl>
+		<baHaForumUrl>http://forum.gamer.com.tw/B.php?bsn=18415</baHaForumUrl>
+		<failForumUrl>http://www.failforum.net/forum/forumdisplay.php?fid=506</failForumUrl>
+	</forum>
+	<!-- 自定义npc-->
+	<ncpCastle>
+		<ncpAdd>0,1</ncpAdd>
+	</ncpCastle>
+</config>
