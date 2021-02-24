@@ -1,0 +1,2414 @@
+{
+    "loy": {
+        "sword": {
+            "image": "images/equip/equip0.jpg",
+            "orid": 4,
+            "name": "Espada Leal",
+            "desc": "Aumenta Ofensiva y daño de las tropas. Los Sagitarios pueden aprender Dispersión.\nDispersión: Habilita ataques contra todas las unidades enemigas simultáneamente, pero sólo causa 15% del daño normal al usarse contra unidades individuales, una por una.(Dispersión se usa únicamente contra divisiones, cuando el daño contra el HP es mayor que el daño regular de Sagitarios.)",
+            "long_desc": "Una gran espada, un noble tesoro del Senado, con poder de aterrorizar al enemigo."
+        },
+        "helmet": {
+            "image": "images/equip/equip1.jpg",
+            "orid": 1,
+            "name": "خوذة الولاء",
+            "desc": "معدات الولاء او الاخلاص كانت حجر الاساس عند القادة الرومان لانشاء الامبراطورية الخاصة بيهم",
+            "long_desc": "بعد انهزام الملوك القياصرة فى المعارك المخاضة يتم الاعتماد على بشكل كبير عى المعدات لمضاعفة قوة الجيوش وبث روح الحماس فى قلوبهم وبداية لذالك كانت اهم المعدات هى معدات الولاء "
+        },
+        "shield": {
+            "image": "images/equip/equip2.jpg",
+            "orid": 2,
+            "name": "Armadura Leal",
+            "desc": "Aumenta Defensa y HP de la tropa.",
+            "long_desc": "Una gran armadura, un noble tesoro del Senado que puede aumentar la Protección."
+        },
+        "armor": {
+            "image": "images/equip/equip3.jpg",
+            "orid": 5,
+            "name": "Escudo Leal",
+            "desc": "Aumenta Defensa y HP de la tropa.",
+            "long_desc": "Un gran escudo, un noble tesoro del Senado, hecho de madera, pieles y metales para darle mayor resistencia."
+        },
+        "boot": {
+            "image": "images/equip/equip4.jpg",
+            "orid": 3,
+            "name": "Zapato Leal",
+            "desc": "Aumenta Ofensiva y HP de la tropa.",
+            "long_desc": "Sensacionales zapatos. Noble tesoro del Senado, hechos de pieles. Buenos para Ofensiva y defensa."
+        },
+        "sec": {
+            "belt": [
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 55,
+                    "name": "Cinturón Fiel（1）",
+                    "desc": "El Senado te recompensa con Cinturón Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Defensa +20",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 56,
+                    "name": "Cinturón Fiel（2）",
+                    "desc": "El Senado te recompensa con Cinturón Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Defensa +20",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 57,
+                    "name": "Cinturón Fiel（3）",
+                    "desc": "El Senado te recompensa con Cinturón Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Defensa +20",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 70,
+                    "name": "Cinturón Fiel（4）",
+                    "desc": "El Senado te recompensa con Cinturón Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Defensa +20",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 71,
+                    "name": "Cinturón Fiel（5）",
+                    "desc": "El Senado te recompensa con Cinturón Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Defensa +20",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 72,
+                    "name": "Cinturón Fiel（6）",
+                    "desc": "El Senado te recompensa con Cinturón Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Defensa +20",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 73,
+                    "name": "Cinturón Fiel（7）",
+                    "desc": "El Senado te recompensa con Cinturón Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Defensa +20",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 74,
+                    "name": "Cinturón Fiel（8）",
+                    "desc": "El Senado te recompensa con Cinturón Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Defensa +20",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 75,
+                    "name": "Cinturón Fiel（9）",
+                    "desc": "El Senado te recompensa con Cinturón Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Defensa +20",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                }
+            ],
+            "necklace": [
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 58,
+                    "name": "Collar Fiel（1）",
+                    "desc": "El Senado te recompensa con Collar Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP +50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 59,
+                    "name": "Collar Fiel（2）",
+                    "desc": "El Senado te recompensa con Collar Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP +50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 60,
+                    "name": "Collar Fiel（3）",
+                    "desc": "El Senado te recompensa con Collar Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP +50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 76,
+                    "name": "Collar Fiel（4）",
+                    "desc": "El Senado te recompensa con Collar Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP +50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 77,
+                    "name": "Collar Fiel（5）",
+                    "desc": "El Senado te recompensa con Collar Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP +50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 78,
+                    "name": "Collar Fiel（6）",
+                    "desc": "El Senado te recompensa con Collar Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP +50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 79,
+                    "name": "Collar Fiel（7）",
+                    "desc": "El Senado te recompensa con Collar Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP +50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 80,
+                    "name": "Collar Fiel（8）",
+                    "desc": "El Senado te recompensa con Collar Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP +50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 81,
+                    "name": "Collar Fiel（9）",
+                    "desc": "El Senado te recompensa con Collar Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP +50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                }
+            ],
+            "pendant": [
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 61,
+                    "name": "Ornamento Fiel（1）",
+                    "desc": "El Senado te recompensa con Ornamento Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP+50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 62,
+                    "name": "Ornamento Fiel（2）",
+                    "desc": "El Senado te recompensa con Ornamento Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP+50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 63,
+                    "name": "Ornamento Fiel（3）",
+                    "desc": "El Senado te recompensa con Ornamento Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP+50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 82,
+                    "name": "Ornamento Fiel（4）",
+                    "desc": "El Senado te recompensa con Ornamento Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP+50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 83,
+                    "name": "Ornamento Fiel（5）",
+                    "desc": "El Senado te recompensa con Ornamento Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP+50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 84,
+                    "name": "Ornamento Fiel（6）",
+                    "desc": "El Senado te recompensa con Ornamento Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP+50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 85,
+                    "name": "Ornamento Fiel（7）",
+                    "desc": "El Senado te recompensa con Ornamento Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP+50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 86,
+                    "name": "Ornamento Fiel（8）",
+                    "desc": "El Senado te recompensa con Ornamento Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP+50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 87,
+                    "name": "Ornamento Fiel（9）",
+                    "desc": "El Senado te recompensa con Ornamento Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, HP+50",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                }
+            ],
+            "ring": [
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 64,
+                    "name": "Anillo Fiel（1）",
+                    "desc": "El Senado te recompensa con Anillo Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Ofensiva +30",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 65,
+                    "name": "Anillo Fiel（2）",
+                    "desc": "El Senado te recompensa con Anillo Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Ofensiva +30",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 66,
+                    "name": "Anillo Fiel（3）",
+                    "desc": "El Senado te recompensa con Anillo Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Ofensiva +30",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 88,
+                    "name": "Anillo Fiel（4）",
+                    "desc": "El Senado te recompensa con Anillo Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Ofensiva +30",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 89,
+                    "name": "Anillo Fiel（5）",
+                    "desc": "El Senado te recompensa con Anillo Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Ofensiva +30",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 90,
+                    "name": "Anillo Fiel（6）",
+                    "desc": "El Senado te recompensa con Anillo Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Ofensiva +30",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 91,
+                    "name": "Anillo Fiel（7）",
+                    "desc": "El Senado te recompensa con Anillo Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Ofensiva +30",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 92,
+                    "name": "Anillo Fiel（8）",
+                    "desc": "El Senado te recompensa con Anillo Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Ofensiva +30",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 93,
+                    "name": "Anillo Fiel（9）",
+                    "desc": "El Senado te recompensa con Anillo Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Ofensiva +30",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                }
+            ],
+            "steed": [
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 67,
+                    "name": "Caballo de Guerra Fiel（1）",
+                    "desc": "El Senado te recompensa con Caballo de Guerra Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Velocidad de Tropas +27%",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 68,
+                    "name": "Caballo de Guerra Fiel（2）",
+                    "desc": "El Senado te recompensa con Caballo de Guerra Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Velocidad de Tropas +27%",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 69,
+                    "name": "Caballo de Guerra fiel（3）",
+                    "desc": "El Senado te recompensa con Caballo de Guerra Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Velocidad de Tropas +27%",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 94,
+                    "name": "Caballo de Guerra Fiel（4）",
+                    "desc": "El Senado te recompensa con Caballo de Guerra Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Velocidad de Tropas +27%",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 95,
+                    "name": "Caballo de Guerra Fiel（5）",
+                    "desc": "El Senado te recompensa con Caballo de Guerra Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Velocidad de Tropas +27%",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 96,
+                    "name": "Caballo de Guerra Fiel（6）",
+                    "desc": "El Senado te recompensa con Caballo de Guerra Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Velocidad de Tropas +27%",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 97,
+                    "name": "Caballo de Guerra Fiel（7）",
+                    "desc": "El Senado te recompensa con Caballo de Guerra Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Velocidad de Tropas +27%",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 98,
+                    "name": "Caballo de Guerra Fiel（8）",
+                    "desc": "El Senado te recompensa con Caballo de Guerra Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Velocidad de Tropas +27%",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 99,
+                    "name": "Caballo de Guerra Fiel（9）",
+                    "desc": "El Senado te recompensa con Caballo de Guerra Fiel. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo hasta Nivel 9, Velocidad de Tropas +27%",
+                    "long_desc": "El Senado te recompensa con Equipo. Esta Recompensa solo se da a los más fieles líderes de Roma. Cuando acabe la ceremonia en el Templo podrás mejorarlo"
+                }
+            ]
+        }
+    },
+    "lion": {
+        "sword": {
+            "image": "images/equip/equip15.jpg",
+            "orid": 13,
+            "name": "Espada León",
+            "desc": "Ligero incrementa ataque y daño de las tropas lideradas por el héroe.",
+            "long_desc": "Espada hecha con garras y colmillos de león. Puede cortar cualquier objeto con facilidad."
+        },
+        "helmet": {
+            "image": "images/equip/equip16.jpg",
+            "orid": 12,
+            "name": "Casco León",
+            "desc": "Ligero incremento de ataque, daño y vida de las tropas lideradas por el héroe.",
+            "long_desc": "Un casco delicado, con forma de cabeza de león. Brilla a la luz del sol."
+        },
+        "shield": {
+            "image": "images/equip/equip17.jpg",
+            "orid": 10,
+            "name": "Escudo León",
+            "desc": "Ligero incremento de la vida y la defensa de las tropas lideradas por el héroe.",
+            "long_desc": "Un escudo que lleva pintado un león en el centro. Símbolo de coraje y poder. Brinda gran defensa contra ataques pesados."
+        },
+        "armor": {
+            "image": "images/equip/equip18.jpg",
+            "orid": 11,
+            "name": "Armadura León",
+            "desc": "Incrementa vida y defensa de las tropas lideradas por el héroe. Arma a los Príncipes con la habilidad Testudo.",
+            "long_desc": "Pieza de armadura, recubierta con pieles. Brinda mucha defensa."
+        },
+        "boot": {
+            "image": "images/equip/equip19.jpg",
+            "orid": 14,
+            "name": "Botas León",
+            "desc": "Ligero incremento de ataque, defensa y daño de las tropas lideradas por el héroe.",
+            "long_desc": "Un par de botas legendarias, hechas con la piel de León tras su muerte."
+        }
+    },
+    "dark": {
+        "sword": {
+            "image": "images/equip/equip30.jpg",
+            "orid": 8,
+            "name": "Filo Oscuro",
+            "desc": "Aumenta levemente el daño y ataque de las tropas lideradas por el héroe.",
+            "long_desc": "Espada legendaria del Señor de los Muertos adornada con diamantes."
+        },
+        "helmet": {
+            "image": "images/equip/equip31.jpg",
+            "orid": 7,
+            "name": "Casco Tenebroso",
+            "desc": "Aumenta levemente el daño de ataque de las tropas lideradas por el héroe.",
+            "long_desc": "Un casco de acero, forrado con cabello del Señor de los Muertos."
+        },
+        "shield": {
+            "image": "images/equip/equip32.jpg",
+            "orid": 1,
+            "name": "درع الظلام",
+            "desc": "يزيد مستوى الدفاع للقوات التي يقودها\n البطل تدريجيا",
+            "long_desc": "الدرع العظيم يزن 50 باوند مليء بالحقد والكرة\n من الجنود الموتى, يستطيع وبسهولة الحماية \nمن الهجمات الثقيلة"
+        },
+        "armor": {
+            "image": "images/equip/equip33.jpg",
+            "orid": 6,
+            "name": "Armadura Oscura",
+            "desc": "Aumenta levemente la defensa de las tropas lideradas por el héroe, cuando la habilidad especial Bloquear Barrido Aniquilador es activado. Optima defensa contra ataques, a muy bajo costo.",
+            "long_desc": "Armadura que contiene 999 espíritus rabiosos."
+        },
+        "boot": {
+            "image": "images/equip/equip34.jpg",
+            "orid": 9,
+            "name": "Zapatos Oscuros",
+            "desc": "Aumenta levemente el daño y ataque de las tropas lideradas por el héroe.",
+            "long_desc": "Elaborados con Piel de un malvado dragón que mató Señor de los Muertos."
+        },
+        "sec": {
+            "belt": [
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                }
+            ],
+            "necklace": [
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                }
+            ],
+            "pendant": [
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                }
+            ],
+            "ring": [
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                }
+            ],
+            "steed": [
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                }
+            ]
+        }
+    },
+    "fearless": {
+        "sword": {
+            "image": "images/equip/equip45.jpg",
+            "orid": 18,
+            "name": "Espada Sin Miedo",
+            "desc": "Incrementa ataque y daño de las tropas lideradas por el héroe.",
+            "long_desc": "Una espada usada perteneciente a Marte, que una vez mato un demonio."
+        },
+        "helmet": {
+            "image": "images/equip/equip46.jpg",
+            "orid": 17,
+            "name": "Casco Sin Miedo",
+            "desc": "Incrementa vida, ataque y daño de las tropas lideradas por el héroe.",
+            "long_desc": "Un casco usado perteneciente a Marte. Posee una gran solidez."
+        },
+        "shield": {
+            "image": "images/equip/equip47.jpg",
+            "orid": 15,
+            "name": "Escudo Sin Miedo",
+            "desc": "Incrementa vida y defensa de las tropas lideradas por el héroe.",
+            "long_desc": "Un escudo forjado por Vulcano. Otorga una defensa excepcional."
+        },
+        "armor": {
+            "image": "images/equip/equip48.jpg",
+            "orid": 16,
+            "name": "Armadura Sin Miedo",
+            "desc": "Incrementa vida y defensa de las tropas lideradas por el héroe. Arma a los Príncipes con la habilidad Testudo.",
+            "long_desc": "Una pieza de armadura que contiene los pensamientos de Marte."
+        },
+        "boot": {
+            "image": "images/equip/equip49.jpg",
+            "orid": 19,
+            "name": "Botas Sin Miedo",
+            "desc": "Incrementa ataque, defensa y daño de las tropas lideradas por el héroe.",
+            "long_desc": "Botas usadas pertenecientes a Marte. Pueden hacer temblar al mundo."
+        }
+    },
+    "saton": {
+        "sword": {
+            "image": "images/equip/equip60.jpg",
+            "orid": 27,
+            "name": "Azada de Saturno",
+            "desc": "Incrementa la vida, el daño y el ataque de las tropas lideradas por el héroe.",
+            "long_desc": "Un regalo de Saturno. Filoso y pesado para batallas complicadas en tierras agrícolas. Gran poder de ataque."
+        },
+        "helmet": {
+            "image": "images/equip/equip61.jpg",
+            "orid": 26,
+            "name": "Sombrero de Lluvia de Saturno",
+            "desc": "Incrementa la vida y el ataque de las tropas lideradas por el héroe.",
+            "long_desc": "Un regalo de Saturno. Versátil, excelente tanto para defensa como para ataque. Puede incrementar la Vida."
+        },
+        "shield": {
+            "image": "images/equip/equip62.jpg",
+            "orid": 28,
+            "name": "Abanico de Saturno",
+            "desc": "Incrementa la vida y el daño de las tropas lideradas por el héroe.",
+            "long_desc": "Regalo de Saturno. Ligero y fácil de usar. Aumenta la Vida."
+        },
+        "armor": {
+            "image": "images/equip/equip63.jpg",
+            "orid": 25,
+            "name": "Impermeable de Paja de Saturno",
+            "desc": "Aumenta vida y defensa de las tropas lideradas por el héroe.",
+            "long_desc": "Un regalo de Saturno. De peso ligero, con gran duración y poder de defensa."
+        },
+        "boot": {
+            "image": "images/equip/equip64.jpg",
+            "orid": 29,
+            "name": "Zapatos de Saturno",
+            "desc": "Incrementa la vida de las tropas lideradas por el héroe.",
+            "long_desc": "Regalo de Saturno. Elaborado con recursos raros. Aumenta Vida."
+        }
+    },
+    "holy": {
+        "sword": {
+            "image": "images/equip/equip75.jpg",
+            "orid": 21,
+            "name": "Lanza Sagrada",
+            "desc": "Incrementa ataque y daño de las tropas lideradas por el héroe.",
+            "long_desc": "La Lanza Sagrada está hecha de Hierro-Madera y Acero-Plata y emite un leve pero radiante brillo"
+        },
+        "helmet": {
+            "image": "images/equip/equip76.jpg",
+            "orid": 24,
+            "name": "Casco Sagrado",
+            "desc": "Incrementa vida, defensa y daño de las tropas lideradas por el héroe.",
+            "long_desc": "Es una obra maestra producida por el herrero más astuto de la República Romana. El Casco Sagrado está hecho de bronce con la técnica más exquisita. Remata en una pluma de pavo real que enfatiza su elegancia."
+        },
+        "shield": {
+            "image": "images/equip/equip77.jpg",
+            "orid": 20,
+            "name": "Escudo Sagrado",
+            "desc": "Incrementa vida y defensa de las tropas lideradas por el héroe.",
+            "long_desc": "Este enorme escudo está grabado con el símbolo de marte y no tiene igual en artesanía y calidad."
+        },
+        "armor": {
+            "image": "images/equip/equip78.jpg",
+            "orid": 22,
+            "name": "Armadura Sagrada",
+            "desc": "Incrementa vida, defensa y daño de las tropas lideradas por el héroe.",
+            "long_desc": "Esta armadura de Acero-Plata fue diseñada por el legendario herrero Catarin, cuya hija murió a manos del Temerario Rompecráneos."
+        },
+        "boot": {
+            "image": "images/equip/equip79.jpg",
+            "orid": 23,
+            "name": "Botas Sagradas",
+            "desc": "Incrementa la defensa de las tropas lideradas por el héroe.",
+            "long_desc": "Estas botas se hicieron con Hierro-Madera bendecido y la piel de un gigante"
+        },
+        "sec": {
+            "belt": [
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 119,
+                    "name": "Cinturón Sagrado（Nvl.1）",
+                    "desc": "Cinturón Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Cinturón Sagrado（Nvl.9），HP +15 Defensa +30。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 120,
+                    "name": "Cinturón Sagrado（Nvl.2）",
+                    "desc": "Cinturón Sagrado como recompensa del Senado por ser fiel a Roma,en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Cinturón Sagrado（Nvl.9），HP +15 Defensa +30。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 121,
+                    "name": "Cinturón Sagrado（Nvl.3）",
+                    "desc": "Cinturón Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Cinturón Sagrado（Nlv.9），HP +15 Defensa +30。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 122,
+                    "name": "Cinturón Sagrado（Nvl.4）",
+                    "desc": "Cinturón Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Cinturón Sagrado（Nvl.9），HP +15 Defensa +30。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 123,
+                    "name": "Cinturón Sagrado（Nvl.5）",
+                    "desc": "Cinturón Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Cinturón Sagrado（Nvl.9），HP +15 Defensa +30。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 124,
+                    "name": "Cinturón Sagrado（Nvl.6）",
+                    "desc": "Cinturón Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Cinturón Sagrado（Nvl.9），HP +15 Defensa +30。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 125,
+                    "name": "Cinturón Sagrado（Nvl.7）",
+                    "desc": "Cinturón Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Cinturón Sagrado（Nlv.9），HP +15 Defensa +30。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 126,
+                    "name": "Cinturón Sagrado（Nvl.8）",
+                    "desc": "Cinturón Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Cinturón Sagrado（Nvl.9），HP +15 Defensa +30。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 127,
+                    "name": "Cinturón Sagrado（Nvl.9）",
+                    "desc": "Cinturón Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Cinturón Sagrado（Nvl.9），HP +15 Defensa +30。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                }
+            ],
+            "necklace": [
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 100,
+                    "name": "Collar Sagrado（Nvl1）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir HP +50",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 101,
+                    "name": "Collar Sagrado（Nvl2）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir HP +50",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 102,
+                    "name": "Collar Sagrado（Nvl3）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir HP +50",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 103,
+                    "name": "Collar Sagrado（Nvl4）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir HP +50",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 104,
+                    "name": "Collar Sagrado（Nvl5）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir HP +50",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 105,
+                    "name": "Collar Sagrado（Nvl6）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir HP +50",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 106,
+                    "name": "Collar Sagrado（Nvl7）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir HP +50",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 107,
+                    "name": "Collar Sagrado（Nvl8）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir HP +50",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 108,
+                    "name": "Collar Sagrado（Nvl9）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir HP +50",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                }
+            ],
+            "pendant": [
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 128,
+                    "name": "Ornamento Sagrado（Nvl.1）",
+                    "desc": "Ornamento Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Ornamento Sagrado（Nvl.9），HP +50 ，Ataque +9。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 129,
+                    "name": "Ornamento Sagrado（Nvl.2）",
+                    "desc": "Ornamento Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Ornamento Sagrado（Nvl.9），HP +50 ，Ataque +9。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 130,
+                    "name": "Ornamento Sagrado（Nvl.3）",
+                    "desc": "Ornamento Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Ornamento Sagrado（Nvl.9），HP +50 ，Ataque +9。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 131,
+                    "name": "Ornamento Sagrado（Nvl.4）",
+                    "desc": "Ornamento Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Ornamento Sagrado（Nvl.9），HP +50 ，Ataque +9。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 132,
+                    "name": "Ornamento Sagrado（Nvl.5）",
+                    "desc": "Ornamento Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Ornamento Sagrado（Nvl.9），HP +50 ，Ataque +9。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 133,
+                    "name": "Ornamento Sagrado（Nvl.6）",
+                    "desc": "Ornamento Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Ornamento Sagrado（Nvl.9），HP +50 ，Ataque +9。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 134,
+                    "name": "Ornamento Sagrado（Nvl.7）",
+                    "desc": "Ornamento Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Ornamento Sagrado（Nvl.9），HP +50 ，Ataque +9。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 135,
+                    "name": "Ornamento Sagrado（Nvl.8）",
+                    "desc": "Ornamento Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Ornamento Sagrado（Nvl.9），HP +50 ，Ataque +9。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 136,
+                    "name": "Ornamento Sagrado（Nvl.9）",
+                    "desc": "Ornamento Sagrado como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Ornamento Sagrado（Nvl.9），HP +50 ，Ataque +9。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                }
+            ],
+            "ring": [
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 109,
+                    "name": "Anillo Sagrado（Nvl1）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir Ofensiva +30",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 110,
+                    "name": "Anillo Sagrado（Nvl2）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir Ofensiva +30",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 111,
+                    "name": "Anillo Sagrado（Nvl3）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir Ofensiva +30",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 112,
+                    "name": "Anillo Sagrado（Nvl4）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir Ofensiva +30",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 113,
+                    "name": "Anillo Sagrado（Nvl5）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir Ofensiva +30",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 114,
+                    "name": "Anillo Sagrado（Nvl6）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir Ofensiva +30",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 115,
+                    "name": "Anillo Sagrado（Nvl7）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir Ofensiva +30",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 116,
+                    "name": "Anillo Sagrado（Nvl8）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir Ofensiva +30",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 117,
+                    "name": "Anillo Sagrado（Nvl9）",
+                    "desc": "Recompensa del Senado, solo para aquellos Señores fieles a Roma. Objeto que se puede mejorar hasta Nivel 9 y conseguir Ofensiva +30",
+                    "long_desc": "Equipo del Senado, solo para aquellos Señores fieles a Roma. Se puede Mejorar para aumentar sus propiedades"
+                }
+            ],
+            "steed": [
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 137,
+                    "name": "Montura Sagrada（Nvl.1）",
+                    "desc": "Montura Sagrada como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Montura Sagrada（Nvl.9），Velocidad de Marcha Aumenta 36%。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 138,
+                    "name": "Montura Sagrada（Nvl.2）",
+                    "desc": "Montura Sagrada como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Montura Sagrada（Nvl.9），Velocidad de Marcha Aumenta 36%。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 139,
+                    "name": "Montura Sagrada（Nvl.3）",
+                    "desc": "Montura Sagrada como recompensa del Senado por ser fiel a Roma,en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Montura Sagrada（Nvl.9），Velocidad de Marcha Aumenta 36%。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 140,
+                    "name": "Montura Sagrada（Nvl.4）",
+                    "desc": "Montura Sagrada como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Montura Sagrada（Nvl.9），Velocidad de Marcha Aumenta 36%。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 141,
+                    "name": "Montura Sagrada（Nvl.5）",
+                    "desc": "Montura Sagrada como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Montura Sagrada（Nvl.9），Velocidad de Marcha Aumenta 36%。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 142,
+                    "name": "Montura Sagrada（Nvl.6）",
+                    "desc": "Montura Sagrada como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Montura Sagrada（Nvl.9），Velocidad de Marcha Aumenta 36%。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 143,
+                    "name": "Montura Sagrada（Nvl.7）",
+                    "desc": "Montura Sagrada como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Montura Sagrada（Nvl.9），Velocidad de Marcha Aumenta 36%。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 144,
+                    "name": "Montura Sagrada（Nvl.8）",
+                    "desc": "Montura Sagrada como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Montura Sagrada（Nvl.9），Velocidad de Marcha Aumenta 36%。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 145,
+                    "name": "Montura Sagrada（Nvl.9）",
+                    "desc": "Montura Sagrada como recompensa del Senado por ser fiel a Roma，en el templo puedes Contribuir para conseguirlo y luego mejorarlo.El nivel más alto es:Montura Sagrada（Nvl.9），Velocidad de Marcha Aumenta 36%。",
+                    "long_desc": "Equipo como recompensa del Senado por ser fiel a Roma，solo aquellos fieles a Roma los consiguen. En el templo podrás mejorarlos y aumentar sus propiedades."
+                }
+            ]
+        }
+    },
+    "sparta": {
+        "sword": {
+            "image": "images/equip/equip90.jpg",
+            "orid": 34,
+            "name": "Lanza Espartana",
+            "desc": "Mejora la Ofensiva de la tropa en particular.",
+            "long_desc": "Capaz de penetrar cualquier fuerza oponente."
+        },
+        "helmet": {
+            "image": "images/equip/equip91.jpg",
+            "orid": 31,
+            "name": "Casco Espartano",
+            "desc": "Mejora Defensa de las tropas en particular.",
+            "long_desc": "Forjado en la antigua Roma con un toque moderno."
+        },
+        "shield": {
+            "image": "images/equip/equip92.jpg",
+            "orid": 30,
+            "name": "Escudo Espartano",
+            "desc": "Mejora el HP de las tropas en particular.",
+            "long_desc": "Con un diseño único para la mejora de la protección."
+        },
+        "armor": {
+            "image": "images/equip/equip93.jpg",
+            "orid": 32,
+            "name": "Capa Espartana",
+            "desc": "Mejora ligeramente la Defensa de la tropa en particular.",
+            "long_desc": "Porta tu nueva Capa: Te dará protección de por vida."
+        },
+        "boot": {
+            "image": "images/equip/equip94.jpg",
+            "orid": 33,
+            "name": "Espinilleras Espartanas",
+            "desc": "Mejora ligeramente el HP de la tropa en particular.",
+            "long_desc": "Aseguran una mejor comodidad y movilidad."
+        }
+    },
+    "volcan": {
+        "sword": {
+            "image": "images/equip/equip105.jpg",
+            "orid": 43,
+            "name": "Espada de Vulcano",
+            "desc": "Incrementa ofensiva de la tropa.",
+            "long_desc": "Espada hecha para honrar a Vulcano, y bendecida por él."
+        },
+        "helmet": {
+            "image": "images/equip/equip106.jpg",
+            "orid": 40,
+            "name": "Casco de Vulcano",
+            "desc": "Incrementa la ofensiva y el HP de las tropas.",
+            "long_desc": "Casco hecho para honrar a Vulcano, y bendecido por el él."
+        },
+        "shield": {
+            "image": "images/equip/equip107.jpg",
+            "orid": 44,
+            "name": "Escudo de Vulcano",
+            "desc": "Incrementa ofensiva y defensa de las tropas.",
+            "long_desc": "Escudo hecho para honrar a Vulcano, y bendecido por él."
+        },
+        "armor": {
+            "image": "images/equip/equip108.jpg",
+            "orid": 41,
+            "name": "Armadura de Vulcano",
+            "desc": "Incrementa ofensiva y defensa de la tropa.",
+            "long_desc": "Armadura hecha para honrar a Vulcano, y bendecida por él."
+        },
+        "boot": {
+            "image": "images/equip/equip109.jpg",
+            "orid": 42,
+            "name": "Botas de Vulcano",
+            "desc": "Incrementa ofensiva y HP de la tropa.",
+            "long_desc": "Botas hechas para honrar a Vulcano, y bendecidas por él."
+        }
+    },
+    "mili": {
+        "sword": {
+            "image": "images/equip/equip120.jpg",
+            "orid": 35,
+            "name": "Espada Implacable",
+            "desc": "Mejora el daño causado al enemigo de las tropas en particular. Puedes obtener Mineral Negro de la Revuelta de Cartago y Mineral de Plata de la Fuerza Principal de la Revuelta de Cartago gracias a ella.",
+            "long_desc": "Una espada forjada por Vulcano, con alta densidad, que es ligera y con menos probabilidad de oxidarse, ya que se forjó con mineral negro y mineral de plata."
+        },
+        "helmet": {
+            "image": "images/equip/equip121.jpg",
+            "orid": 37,
+            "name": "Casco Implacable",
+            "desc": "Mejora ligeramente la Ofensiva y la Defensa de la tropa en particular. Puedes obtener Mineral Negro de la Revuelta de Cartago y Mineral de Plata de la Fuerza Principal de la Revuelta de Cartago gracias a él.",
+            "long_desc": "Un casco forjados por Vulcano, provisto de una excelente defensa debido a que se forjó con mineral negro y mineral de plata."
+        },
+        "shield": {
+            "image": "images/equip/equip122.jpg",
+            "orid": 36,
+            "name": "Escudo Implacable",
+            "desc": "Mejora ligeramente el HP y la Defensa de la tropa en particular. Puedes obtener Mineral Negro de la Revuelta de Cartago y Mineral de Plata de la Fuerza Principal de la Revuelta de Cartago gracias a él.",
+            "long_desc": "Un escudo forjado por Vulcano, puede defender de la fuerte perforación del enemigo. Debido a que se forjó con mineral negro y mineral de plata."
+        },
+        "armor": {
+            "image": "images/equip/equip123.jpg",
+            "orid": 39,
+            "name": "Armadura Implacable",
+            "desc": "Aumenta el HP y la Defensa de la tropa en particular. Puedes obtener Mineral Negro de la Revuelta de Cartago y Mineral de Plata de la Fuerza Principal de la Revuelta de Cartago gracias a ella.",
+            "long_desc": "Forjada por Vulcano, provista de una excelente defensa, sin afectar a la flexibilidad del héroe, ya que se forjó con mineral negro."
+        },
+        "boot": {
+            "image": "images/equip/equip124.jpg",
+            "orid": 38,
+            "name": "Botas Implacables",
+            "desc": "Aumenta la Ofensiva y el Daño al enemigo de la tropa en particular. Puedes obtener Mineral Negro de la Revuelta de Cartago y Mineral de Plata de la Fuerza Principal de la Revuelta de Cartago gracias a él.",
+            "long_desc": "Un par de botas realizadas por Vulcano, poseen una excelente defensa, sin afectar a la acción de su héroe por la ligereza del mineral negro y el mineral de plata."
+        }
+    },
+    "fart": {
+        "sword": {
+            "image": "images/equip/equip135.jpg",
+            "orid": 45,
+            "name": "Bastón de Vertumnus",
+            "desc": "Aumenta ligeramente la defensa de una tropa en particular.",
+            "long_desc": "El Bastón que usaba Vertunmus. Fue un presente de su amada Punama, el arma resplandece con añoro."
+        },
+        "helmet": {
+            "image": "images/equip/equip136.jpg",
+            "orid": 48,
+            "name": "Girlanda de Vertumnus",
+            "desc": "Aumenta el HP y el Ataque de una tropa en particular.",
+            "long_desc": "Girlanda de Otoño que llvó el própio Vertumnus. Hecha de ramas y pétalos,atrae la victoria hacia aquel que la lleva."
+        },
+        "shield": {
+            "image": "images/equip/equip137.jpg",
+            "orid": 49,
+            "name": "Escudo de Vertumnus",
+            "desc": "Aumenta el HP y la Defensa de una tropa en particular.",
+            "long_desc": "Enorme escudo creado por Vertumnus. Hecho del tronco de un arbol enorme, mide 1,7 metros de alto y 0.8 de ancho."
+        },
+        "armor": {
+            "image": "images/equip/equip138.jpg",
+            "orid": 47,
+            "name": "Toga de Vertumnus",
+            "desc": "Aumenta el HP y la Defensa de de una tropa en particular.",
+            "long_desc": "La toga de verano de Vertumnus. Hecha de seda tan fina como el papel y materiales místicos."
+        },
+        "boot": {
+            "image": "images/equip/equip139.jpg",
+            "orid": 46,
+            "name": "Zapatos de Vertumnus",
+            "desc": "Aumenta todas las habilidades de una tropa en particular.",
+            "long_desc": "Zapatos de Primavera fabricadas por Vertumnus. Son unas sandalias hechas de yerba y hojas, muy cómodas."
+        }
+    },
+    "peace": {
+        "sword": {
+            "image": "images/equip/equip150.jpg",
+            "orid": 52,
+            "name": "Jabalina",
+            "desc": "Aumenta el Ataque de las tropas lideradas por el Héroe",
+            "long_desc": "El prototipo de Jabalina usado en las Olimpiadas  es una excelente Recompensa para el héroe."
+        },
+        "helmet": {
+            "image": "images/equip/equip151.jpg",
+            "orid": 50,
+            "name": "Corona de Olivo",
+            "desc": "Aumenta el HP y la Defensa de las tropas que lidere el héroe.",
+            "long_desc": "Aumenta el HP y la Defensa de las tropas que lidere el héroe."
+        },
+        "shield": {
+            "image": "images/equip/equip152.jpg",
+            "orid": 54,
+            "name": "Escudo de Carrera Armada",
+            "desc": "Aumenta el HP y la Defensa de las tropas que lidere el héroe.",
+            "long_desc": "El prototipo de Escudo de Carrera Armada usado en las Olimpiadas  es una excelente Recompensa para el héroe."
+        },
+        "armor": {
+            "image": "images/equip/equip153.jpg",
+            "orid": 51,
+            "name": "Chaleco de piel",
+            "desc": "Aumenta el HP y la Defensa de las tropas que lidere el héroe.",
+            "long_desc": "Al principio, los participantes en las Olimpiadas llevaban este Chaleco de piel"
+        },
+        "boot": {
+            "image": "images/equip/equip154.jpg",
+            "orid": 53,
+            "name": "Disco",
+            "desc": "Aumenta el Ataque de las tropas lideradas por el Héroe.",
+            "long_desc": "El prototipo de Disco usado en las Olimpiadas  es una excelente Recompensa para el héroe."
+        }
+    },
+    "victory": {
+        "sword": {
+            "image": "images/equip/equip165.jpg",
+            "orid": 146,
+            "name": "Espada gloriosa",
+            "desc": "Aumenta la Ofensiva de la tropa.",
+            "long_desc": "Las armas de acero están muy afiladas, aumentan el ataque y son el símbolo de la gloria de un guerrero."
+        },
+        "helmet": {
+            "image": "images/equip/equip166.jpg",
+            "orid": 147,
+            "name": "Casco Glorioso",
+            "desc": "Incrementa el HP y la Ofensiva de la tropa.",
+            "long_desc": "Un Casco de acero muy fuerte, símbolo del honor del guerrero."
+        },
+        "shield": {
+            "image": "images/equip/equip167.jpg",
+            "orid": 148,
+            "name": "Escudo Glorioso",
+            "desc": "Aumenta el HP y la Defensa de las tropas.",
+            "long_desc": "Un Escudo de acero muy fuerte, símbolo del honor del guerrero."
+        },
+        "armor": {
+            "image": "images/equip/equip168.jpg",
+            "orid": 149,
+            "name": "Armadura Gloriosa",
+            "desc": "Aumenta el HP y la Defensa de las tropas.",
+            "long_desc": "Una Armadura de acero muy fuerte, símbolo del honor del guerrero."
+        },
+        "boot": {
+            "image": "images/equip/equip169.jpg",
+            "orid": 150,
+            "name": "Botas Gloriosas",
+            "desc": "Aumenta el HP de las tropas.",
+            "long_desc": "Unas Botas de acero muy fuertes, símbolo del honor del guerrero."
+        },
+        "sec": {
+            "belt": [
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 151,
+                    "name": "Cinturón Glorioso (Nvl.1)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Cinturón Glorioso (Nvl.9) Defensa +30, Ofensiva +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 152,
+                    "name": "Cinturón Glorioso (Nvl.2)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Cinturón Glorioso (Nvl.9) Defensa +30, Ofensiva +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 153,
+                    "name": "Cinturón Glorioso (Nvl.3)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Cinturón Glorioso (Nvl.9) Defensa +30, Ofensiva +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 154,
+                    "name": "Cinturón Glorioso (Nvl.4)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Cinturón Glorioso (Nvl.9) Defensa +30, Ofensiva +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 155,
+                    "name": "Cinturón Glorioso (Nvl.5)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Cinturón Glorioso (Nvl.9) Defensa +30, Ofensiva +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 156,
+                    "name": "Cinturón Glorioso (Nvl.6)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Cinturón Glorioso (Nvl.9) Defensa +30, Ofensiva +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 157,
+                    "name": "Cinturón Glorioso (Nvl.7)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Cinturón Glorioso (Nvl.9) Defensa +30, Ofensiva +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 158,
+                    "name": "Cinturón Glorioso (Nvl.8)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Cinturón Glorioso (Nvl.9) Defensa +30, Ofensiva +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 159,
+                    "name": "Cinturón Glorioso (Nvl.9)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Cinturón Glorioso (Nvl.9) Defensa +30, Ofensiva +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                }
+            ],
+            "necklace": [
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 160,
+                    "name": "Collar glorioso (Nvl.1)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Collar glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 161,
+                    "name": "Collar glorioso (Nvl.2)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Collar glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 162,
+                    "name": "Collar glorioso (Nvl.3)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Collar glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 163,
+                    "name": "Collar glorioso (Nvl.4)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Collar glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 164,
+                    "name": "Collar glorioso (Nvl.5)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Collar glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 165,
+                    "name": "Collar glorioso (Nvl.6)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Collar glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 166,
+                    "name": "Collar glorioso (Nvl.7)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Collar glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 167,
+                    "name": "Collar glorioso (Nvl.8)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Collar glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 168,
+                    "name": "Collar glorioso (Nvl.9)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Collar glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                }
+            ],
+            "pendant": [
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 169,
+                    "name": "Colgante Glorioso (Nvl.1)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Colgante Glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 170,
+                    "name": "Colgante Glorioso (Nvl.2)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Colgante Glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 171,
+                    "name": "Colgante Glorioso (Nvl.3)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Colgante Glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 172,
+                    "name": "Colgante Glorioso (Nvl.4)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Colgante Glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 173,
+                    "name": "Colgante Glorioso (Nvl.5)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Colgante Glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 174,
+                    "name": "Colgante Glorioso (Nvl.6)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Colgante Glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 175,
+                    "name": "Colgante Glorioso (Nvl.7)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Colgante Glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 176,
+                    "name": "Colgante Glorioso (Nvl.8)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Colgante Glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 177,
+                    "name": "Colgante Glorioso (Nvl.9)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Colgante Glorioso (Nvl.9) HP+60 Defensa +9 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                }
+            ],
+            "ring": [
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 178,
+                    "name": "Anillo Glorioso (Nvl.1)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Anillo Glorioso (Nvl.9) Ofensiva +40 HP+15 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 179,
+                    "name": "Anillo Glorioso (Nvl.2)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Anillo Glorioso (Nvl.9) Ofensiva +40 HP+15 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 180,
+                    "name": "Anillo Glorioso (Nvl.3)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Anillo Glorioso (Nvl.9) Ofensiva +40 HP+15 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 181,
+                    "name": "Anillo Glorioso (Nvl.4)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Anillo Glorioso (Nvl.9) Ofensiva +40 HP+15 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 182,
+                    "name": "Anillo Glorioso (Nvl.5)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Anillo Glorioso (Nvl.9) Ofensiva +40 HP+15 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 183,
+                    "name": "Anillo Glorioso (Nvl.6)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Anillo Glorioso (Nvl.9) Ofensiva +40 HP+15 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 184,
+                    "name": "Anillo Glorioso (Nvl.7)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Anillo Glorioso (Nvl.9) Ofensiva +40 HP+15 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 185,
+                    "name": "Anillo Glorioso (Nvl.8)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Anillo Glorioso (Nvl.9) Ofensiva +40 HP+15 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 186,
+                    "name": "Anillo Glorioso (Nvl.9)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Anillo Glorioso (Nvl.9) Ofensiva +40 HP+15 .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                }
+            ],
+            "steed": [
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 187,
+                    "name": "Caballo Glorioso (Nvl.1)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Caballo Glorioso (Nvl.9) Disminute la llegada de tropas en un 45% .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 188,
+                    "name": "Caballo Glorioso (Nvl.2)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Caballo Glorioso (Nvl.9) Disminute la llegada de tropas en un 45% .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 189,
+                    "name": "Caballo Glorioso (Nvl.3)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Caballo Glorioso (Nvl.9) Disminute la llegada de tropas en un 45% .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 190,
+                    "name": "Caballo Glorioso (Nvl.4)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Caballo Glorioso (Nvl.9) Disminute la llegada de tropas en un 45% .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 191,
+                    "name": "Caballo Glorioso (Nvl.5)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Caballo Glorioso (Nvl.9) Disminute la llegada de tropas en un 45% .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 192,
+                    "name": "Caballo Glorioso (Nvl.6)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Caballo Glorioso (Nvl.9) Disminute la llegada de tropas en un 45% .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 193,
+                    "name": "Caballo Glorioso (Nvl.7)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Caballo Glorioso (Nvl.9) Disminute la llegada de tropas en un 45% .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 194,
+                    "name": "Caballo Glorioso (Nvl.8)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Caballo Glorioso (Nvl.9) Disminute la llegada de tropas en un 45% .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 195,
+                    "name": "Caballo Glorioso (Nvl.9)",
+                    "desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características. \nEL nivel más alto es: Caballo Glorioso (Nvl.9) Disminute la llegada de tropas en un 45% .",
+                    "long_desc": "El símbolo de la gloria de los guerreros romanos, solo los mejores lo consiguen. Mejóralo en el Templo y aumenta sus características."
+                }
+            ]
+        }
+    },
+    "mars": {
+        "sword": {
+            "image": "images/equip/equip180.jpg",
+            "orid": 204,
+            "name": "Espada de Marte",
+            "desc": "Marte regala a los “Hijos de Marte” Equipo Especial. Tras vestirlo, los héroes reciben poderes directamente del Dios Marte.",
+            "long_desc": "Marte regala a los “Hijos de Marte” Equipo Especial. Tras vestirlo, aumentarás el Ataque y el Daño"
+        },
+        "helmet": {
+            "image": "images/equip/equip181.jpg",
+            "orid": 201,
+            "name": "Casco de Marte",
+            "desc": "Marte regala a los “Hijos de Marte” Equipo Especial. Tras vestirlo, los héroes reciben poderes directamente del Dios Marte.",
+            "long_desc": "Marte regala a los “Hijos de Marte” Equipo Especial. Tras vestirlo, tus arqueros serán más poderosos."
+        },
+        "shield": {
+            "image": "images/equip/equip182.jpg",
+            "orid": 205,
+            "name": "Escudo de Marte",
+            "desc": "Marte regala a los “Hijos de Marte” Equipo Especial. Tras vestirlo, los héroes reciben poderes directamente del Dios Marte.",
+            "long_desc": "Marte regala a los “Hijos de Marte” Equipo Especial. Tras vestirlo, aumentarás el HP y la Defensa"
+        },
+        "armor": {
+            "image": "images/equip/equip183.jpg",
+            "orid": 202,
+            "name": "Armadura de Marte",
+            "desc": "Marte regala a los “Hijos de Marte” Equipo Especial. Tras vestirlo, los héroes reciben poderes directamente del Dios Marte.",
+            "long_desc": "Marte regala a los “Hijos de Marte” Equipo Especial. Tras vestirlo, aumentarás el HP y la defensa."
+        },
+        "boot": {
+            "image": "images/equip/equip184.jpg",
+            "orid": 203,
+            "name": "Botas de Marte",
+            "desc": "Marte regala a los “Hijos de Marte” Equipo Especial. Tras vestirlo, los héroes reciben poderes directamente del Dios Marte.",
+            "long_desc": "Marte regala a los “Hijos de Marte” Equipo Especial. Tras vestirlo, aumentarás la defensa y el ataque."
+        }
+    },
+    "bright": {
+        "sword": {
+            "image": "images/equip/equip195.jpg",
+            "orid": 259,
+            "name": "Lanza Brillante",
+            "desc": "Aumenta Ofensiva y Daño de Tropa",
+            "long_desc": "El Senado le da el Equipo a los mejores Señores como símbolo de su estatus"
+        },
+        "helmet": {
+            "image": "images/equip/equip196.jpg",
+            "orid": 256,
+            "name": "Casco Brillante",
+            "desc": "Aumenta HP y Ofensiva de Tropa",
+            "long_desc": "El Senado le da el Equipo a los mejores Señores como símbolo de su estatus"
+        },
+        "shield": {
+            "image": "images/equip/equip197.jpg",
+            "orid": 260,
+            "name": "Escudo Brillante",
+            "desc": "Aumenta HP y Defensa de Tropa",
+            "long_desc": "El Senado le da el Equipo a los mejores Señores como símbolo de su estatus"
+        },
+        "armor": {
+            "image": "images/equip/equip198.jpg",
+            "orid": 257,
+            "name": "Armadura Brillante",
+            "desc": "Aumenta HP y Defensa de Tropa",
+            "long_desc": "El Senado le da el Equipo a los mejores Señores como símbolo de su estatus"
+        },
+        "boot": {
+            "image": "images/equip/equip199.jpg",
+            "orid": 258,
+            "name": "Botas Brillantes",
+            "desc": "Aumenta Ofensiva y Daño de Tropa",
+            "long_desc": "El Senado le da el Equipo a los mejores Señores como símbolo de su estatus"
+        }
+    },
+    "khaled": {
+        "sword": {
+            "image": "images/equip/equip210.jpg",
+            "orid": 206,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "helmet": {
+            "image": "images/equip/equip211.jpg",
+            "orid": 207,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "shield": {
+            "image": "images/equip/equip212.jpg",
+            "orid": 208,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "armor": {
+            "image": "images/equip/equip213.jpg",
+            "orid": 209,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "boot": {
+            "image": "images/equip/equip214.jpg",
+            "orid": 210,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "sec": {
+            "belt": [
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 211,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 212,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 213,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 214,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 215,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 216,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 217,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 218,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 219,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                }
+            ],
+            "necklace": [
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 220,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 221,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 222,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 223,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 224,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 225,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 226,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 227,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 228,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                }
+            ],
+            "pendant": [
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 229,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 230,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 231,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 232,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 233,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 234,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 235,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 236,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 237,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                }
+            ],
+            "ring": [
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 238,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 239,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 240,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 241,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 242,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 243,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 244,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 245,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 246,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                }
+            ],
+            "steed": [
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 247,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 248,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 249,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 250,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 251,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 252,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 253,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 254,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 255,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                }
+            ]
+        }
+    },
+    "blue": {
+        "sword": {
+            "image": "images/equip/equip225.jpg",
+            "orid": 199,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "helmet": {
+            "image": "images/equip/equip226.jpg",
+            "orid": 196,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "shield": {
+            "image": "images/equip/equip227.jpg",
+            "orid": 200,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "armor": {
+            "image": "images/equip/equip228.jpg",
+            "orid": 197,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "boot": {
+            "image": "images/equip/equip229.jpg",
+            "orid": 198,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        }
+    },
+    "worrior": {
+        "sword": {
+            "image": "images/equip/equip240.jpg",
+            "orid": 1,
+            "name": "سيف المحارب",
+            "desc": "",
+            "long_desc": ""
+        },
+        "helmet": {
+            "image": "images/equip/equip241.jpg",
+            "orid": 1,
+            "name": "خوذة المحارب",
+            "desc": "",
+            "long_desc": ""
+        },
+        "shield": {
+            "image": "images/equip/equip242.jpg",
+            "orid": 1,
+            "name": "درع المحارب",
+            "desc": "",
+            "long_desc": ""
+        },
+        "armor": {
+            "image": "images/equip/equip243.jpg",
+            "orid": 1,
+            "name": "مصفح المحارب",
+            "desc": "",
+            "long_desc": ""
+        },
+        "boot": {
+            "image": "images/equip/equip244.jpg",
+            "orid": 1,
+            "name": "حذاء المحارب",
+            "desc": "",
+            "long_desc": ""
+        }
+    },
+    "thunder": {
+        "sword": {
+            "image": "images/equip/equip255.jpg",
+            "orid": 1,
+            "name": "سيف الرعد",
+            "desc": "",
+            "long_desc": ""
+        },
+        "helmet": {
+            "image": "images/equip/equip256.jpg",
+            "orid": 1,
+            "name": "خوذة الرعد",
+            "desc": "",
+            "long_desc": ""
+        },
+        "shield": {
+            "image": "images/equip/equip257.jpg",
+            "orid": 1,
+            "name": "درع الرعد",
+            "desc": "",
+            "long_desc": ""
+        },
+        "armor": {
+            "image": "images/equip/equip258.jpg",
+            "orid": 1,
+            "name": "مصفح الرعد",
+            "desc": "",
+            "long_desc": ""
+        },
+        "boot": {
+            "image": "images/equip/equip259.jpg",
+            "orid": 1,
+            "name": "حذاء الرعد",
+            "desc": "",
+            "long_desc": ""
+        }
+    },
+    "neptune": {
+        "sword": {
+            "image": "images/equip/equip270.jpg",
+            "orid": 1,
+            "name": "سيف نيبتون",
+            "desc": "",
+            "long_desc": ""
+        },
+        "helmet": {
+            "image": "images/equip/equip271.jpg",
+            "orid": 1,
+            "name": "خوذة نيبتون",
+            "desc": "",
+            "long_desc": ""
+        },
+        "shield": {
+            "image": "images/equip/equip272.jpg",
+            "orid": 1,
+            "name": "درع نيبتون",
+            "desc": "",
+            "long_desc": ""
+        },
+        "armor": {
+            "image": "images/equip/equip273.jpg",
+            "orid": 1,
+            "name": "مصفح نيبتون",
+            "desc": "",
+            "long_desc": ""
+        },
+        "boot": {
+            "image": "images/equip/equip274.jpg",
+            "orid": 1,
+            "name": "حذاء نيبتون",
+            "desc": "",
+            "long_desc": ""
+        }
+    },
+    "thor": {
+        "sword": {
+            "image": "images/equip/equip285.jpg",
+            "orid": 1,
+            "name": "سيف ثور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "helmet": {
+            "image": "images/equip/equip286.jpg",
+            "orid": 1,
+            "name": "خوذة ثور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "shield": {
+            "image": "images/equip/equip287.jpg",
+            "orid": 1,
+            "name": "درع ثور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "armor": {
+            "image": "images/equip/equip288.jpg",
+            "orid": 1,
+            "name": "مصفح ثور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "boot": {
+            "image": "images/equip/equip289.jpg",
+            "orid": 1,
+            "name": "حذاء ثور",
+            "desc": "",
+            "long_desc": ""
+        }
+    },
+    "light": {
+        "sword": {
+            "image": "images/equip/equip300.jpg",
+            "orid": 1,
+            "name": "سيف النور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "helmet": {
+            "image": "images/equip/equip301.jpg",
+            "orid": 1,
+            "name": "خوذة النور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "shield": {
+            "image": "images/equip/equip302.jpg",
+            "orid": 1,
+            "name": "درع النور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "armor": {
+            "image": "images/equip/equip303.jpg",
+            "orid": 1,
+            "name": "مصفح النور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "boot": {
+            "image": "images/equip/equip304.jpg",
+            "orid": 1,
+            "name": "حذاء النور",
+            "desc": "",
+            "long_desc": ""
+        }
+    }
+}
