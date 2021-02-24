@@ -130,7 +130,7 @@ function  addMapUnite(el){
                                 //Crafty("UnitToolTip").each(function (){this.destroy();});
 
                             })
-                            .areaMap(Elkaisar.World.UnitData[unit.t].hitArea)
+                            .areaMap(Elkaisar.World.UnitTypeData[unit.ut].hitArea)
                             .attr({
                                 x: Elkaisar.World.Map.posX(el.x, el.y),
                                 y: Elkaisar.World.Map.posY(el.x, el.y),

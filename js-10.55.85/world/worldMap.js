@@ -46,7 +46,9 @@ Elkaisar.World.Map.getEntity = function (xCoord, yCoord) {
         return Crafty.e("2D, Canvas , Mouse , WorldUnit, worldEnt").attr({_w: 128, _h: 128});
     }
 
-    return Crafty.e(`2D, Canvas, ${Elkaisar.World.UnitData[Unit.t].tileName[Unit.l] || Elkaisar.World.UnitData[Unit.t].tileName[0]}, Mouse , WorldUnit, worldEnt`);
+    if(!Elkaisar.World.UnitTypeData[Unit.ut])
+        console.log(Unit)
+    return Crafty.e(`2D, Canvas, ${Elkaisar.World.UnitTypeData[Unit.ut].tileName}, Mouse , WorldUnit, worldEnt`);
 
 };
 Elkaisar.World.UnitData = {

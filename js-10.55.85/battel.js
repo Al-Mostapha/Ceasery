@@ -709,7 +709,7 @@ Battel.isAttackable = function (idHero, type) {
 
 
     if (WorldUnit.isArmyCapital(type)) {
-        return Battel.heroArmiesAre(idHero, Elkaisar.World.UnitData[type].hero_army_req);
+        return Battel.heroArmiesAre(idHero, Elkaisar.World.UnitTypeData[type].ArmyReq);
     }
 
 

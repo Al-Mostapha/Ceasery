@@ -45,9 +45,9 @@ WsBattel.effectedPlayer = function (battel){
     
     var unit = WorldUnit.getWorldUnit(battel.x_to, battel.y_to);
     
-    if(WorldUnit.isArmyCapital(unit.t)){
+    if(WorldUnit.isArmyCapital(unit.ut)){
         
-        alert_box.systemChatMessage(`<p class="round-announce">بداء <span class="red">${battel.attackerName} </span>بالهجوم على  <span class="red">${Elkaisar.World.UnitData[unit.t].ar_title}</span> 
+        alert_box.systemChatMessage(`<p class="round-announce">بداء <span class="red">${battel.attackerName} </span>بالهجوم على  <span class="red">${Elkaisar.World.UnitTypeData[unit.ut].Title}</span> 
                                             <label class="clickable-coords font-2" 
                                             data-x-coord="${battel.x_to}" data-y-coord="${battel.y_to}">
                                                 <i>[${battel.x_to},${battel.y_to}]</i>

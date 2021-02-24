@@ -2,7 +2,9 @@ Elkaisar.WsLib.ServerAnnounce = {};
 
 Elkaisar.WsLib.ServerAnnounce.capitalUnLock = function (data){
     
-    var msg = `<div class="msg-unit ann-red announce">تم فتح ${Elkaisar.World.UnitData[data.capital.t].getTitle(data.capital.x, data.capital.y)} ${Extract.coords(`[${data.capital.x},${data.capital.y}]`)} وسيتم اغلاقها بعد ساعتين من الان للمساعدة اضغط <a class="safe-url" href="commingsoon.php" target="_blank">هنا </a></div>`;
+    var WorldUnit = WorldUnit.getWorldUnit(data.WorldUnit.x, data.WorldUnit.y);
+    
+    var msg = `<div class="msg-unit ann-red announce">تم فتح ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} وسيتم اغلاقها بعد ساعتين من الان للمساعدة اضغط <a class="safe-url" href="commingsoon.php" target="_blank">هنا </a></div>`;
     Chat.append(msg);
 };
 
@@ -14,8 +16,9 @@ Elkaisar.WsLib.ServerAnnounce.capitalLock = function (data){
     if($.isArray(data.players) && data.players.length > 0)
         playerName = data.players[0].name;
     
+    var WorldUnit = WorldUnit.getWorldUnit(data.WorldUnit.x, data.WorldUnit.y);
     
-    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitData[data.capital.t].getTitle(data.capital.x, data.capital.y)} ${Extract.coords(`[${data.capital.x},${data.capital.y}]`)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
+    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
     Chat.append(msg);
 };
 

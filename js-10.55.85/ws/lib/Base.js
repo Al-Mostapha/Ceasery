@@ -28,18 +28,19 @@ Elkaisar.WsLib.Base.MakeCrossReq = function (url, Parm, ResFun)
 
 Elkaisar.WsLib.Base.worldCity = function (data){
     var Unit ;
+    
     for(var iii in data.City)
     {
         
         Unit           = WorldUnit.getWorldUnit(data.City[iii].x, data.City[iii].y);
-        Unit.idGuild   = data.City[iii].id_guild;
-        Unit.CityLvl   = data.City[iii].lvl;
-        Unit.idCity    = data.City[iii].id_city;
-        Unit.idPlayer  = data.City[iii].id_player;
-        Unit.CityFlag  = data.City[iii].city_flag;
-        Unit.ut        = Number(data.City[iii].lvl) + WUT_CITY_LVL_0;
-        Unit.l         = data.City[iii].lvl;
-        Unit.t         = Number(data.City[iii].lvl) + 17;
+        Unit.idGuild   = data.City[iii].ig;
+        Unit.CityLvl   = data.City[iii].l;
+        Unit.idCity    = data.City[iii].ic;
+        Unit.idPlayer  = data.City[iii].ip;
+        Unit.CityFlag  = data.City[iii].f;
+        Unit.ut        = Number(data.City[iii].l) + WUT_CITY_LVL_0;
+        Unit.l         = data.City[iii].l;
+        Unit.t         = Number(data.City[iii].l) + 17;
     }
     
 };
