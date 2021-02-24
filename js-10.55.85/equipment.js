@@ -1,6 +1,3 @@
-
-
-
 Elkaisar.Equip.getPlayerEquip  = function ()
 {
   

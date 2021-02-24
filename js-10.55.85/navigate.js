@@ -1,5 +1,3 @@
-
-
 $("#WorldCity").click(function (){
     
     afterChangeView();

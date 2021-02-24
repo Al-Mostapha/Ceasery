@@ -1,8 +1,3 @@
-
-
-
-
-
 function isUpgradingNow(place)
 {
     for(var obj in Elkaisar.TimedTask.TaskList.Building){

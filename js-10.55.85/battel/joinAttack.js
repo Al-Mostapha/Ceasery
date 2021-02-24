@@ -1,4 +1,3 @@
-
 $(document).on("click", "#JOIN_ATTACK", function () {
 
     var x_coord = Number($(this).attr("data-x-coord"));
@@ -175,4 +174,9 @@ $(document).on("click", "#JOIN_ATTACK_SIDE , #JOIN_DEFENCE_SIDE", function () {
         $("#city-hero-list").niceScroll(SCROLL_BAR_PROP);
 
     });
+
+
+
+
+
 });

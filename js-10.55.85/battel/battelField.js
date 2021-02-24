@@ -1,6 +1,3 @@
-
-
-
 const BattelFieldNavBar =[
     {
         "txt": "أرض المعركة",

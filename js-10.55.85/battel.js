@@ -1,30 +1,3 @@
-
-
-
-
-
-/*+___________________________________________________________________________*/
-/*___________________________________CHAT BOX_________________________________*/
-
-/*$(document).on("keydown", "#input-chat input", function (e){
-    if(e.keyCode ===13 && !e.shiftKey){
-        var msg = `<div class="msg-unit">
-                        <div class="msg-from">
-                            [Mustapha]:
-                        </div>
-                        <div class="msg-body">
-                            <P>
-                               ${$("#input-chat input").val()}
-                            </P>
-                        </div>
-                    </div>`;
-        $("#msg-area").append(msg);
-        $("#input-chat input").val("");
-        setTimeout(function (){$("#msg-area").getNiceScroll(0).doScrollTop($("#msg-area").getNiceScroll(0).getContentSize().h , 0);} , 100);
-    }
-});
-*/
-
 var army_icon = {
     "0": "",
     "1": '<img src="images/tech/soldier_1.jpg"/>',
@@ -766,5 +739,3 @@ Battel.heroArmiesAre = function (idHero, armyType) {
 
     return true;
 };
-
-

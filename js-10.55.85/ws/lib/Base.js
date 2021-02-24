@@ -1,0 +1,79 @@
+Elkaisar.WsLib.Base = {};
+
+Elkaisar.WsLib.Base.CrossReq = function (data)
+{
+
+    if($.isFunction(Elkaisar.WsLib.Base.CrossReqFun[data.url]))
+        Elkaisar.WsLib.Base.CrossReqFun[data.url](data.Res);
+    else 
+        console.log(data);
+
+}
+
+Elkaisar.WsLib.Base.CrossReqFun = {};
+
+Elkaisar.WsLib.Base.MakeCrossReq = function (url, Parm, ResFun)
+{
+
+    Elkaisar.WsLib.Base.CrossReqFun[url] = ResFun;
+    ws.send(
+            JSON.stringify({
+                url: url,
+                data: Parm
+            })
+            );
+
+};
+
+
+Elkaisar.WsLib.Base.worldCity = function (data){
+    var Unit ;
+    for(var iii in data.City)
+    {
+        
+        Unit           = WorldUnit.getWorldUnit(data.City[iii].x, data.City[iii].y);
+        Unit.idGuild   = data.City[iii].id_guild;
+        Unit.CityLvl   = data.City[iii].lvl;
+        Unit.idCity    = data.City[iii].id_city;
+        Unit.idPlayer  = data.City[iii].id_player;
+        Unit.CityFlag  = data.City[iii].city_flag;
+        Unit.ut        = Number(data.City[iii].lvl) + WUT_CITY_LVL_0;
+        Unit.l         = data.City[iii].lvl;
+        Unit.t         = Number(data.City[iii].lvl) + 17;
+    }
+    
+};
+
+Elkaisar.WsLib.Base.worldCityColonized = function (data){
+    var Unit ;
+    for(var iii in data.City)
+    {
+        
+        Unit           = WorldUnit.getWorldUnit(data.City[iii].x, data.City[iii].y);
+        Unit.CityColonizerFlag  = data.City[iii].city_flag;
+        Unit.CityColonized      = true;
+        Unit.ColonizerIdGuild   = data.City[iii].id_guild;
+        Unit.ColonizerIdPlayer   = data.City[iii].id_player;
+    }
+    
+};
+
+
+Elkaisar.WsLib.Base.refreshWorldCitiesForPlayers = function (data){
+    var Unit ;
+
+    Unit           = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
+    Unit.idGuild   = data.idGuild;
+    Unit.CityLvl   = data.CityLvl;
+    Unit.idCity    = data.idCity;
+    Unit.idPlayer  = data.idPlayer;
+    Unit.CityFlag  = data.CityFlag;
+    Unit.ut        = 0 + WUT_CITY_LVL_0;
+    Unit.l         = 0;
+    Unit.t         = 0 + 17;
+    if(Unit.entite)
+        Unit.entite.destroy();
+    Elkaisar.World.Map.Scroll(true);
+    Elkaisar.World.Map.RefreshWorld();
+    
+};
