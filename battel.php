@@ -1,9 +1,16 @@
 <?php
-$report_json = base64_decode(urldecode($_GET["report"]));
-$report = json_decode($report_json);
-$_GET["id_server"] = $report->s;
-require_once './config.php';
-require_once './base.php';
+    $report_json = base64_decode(urldecode($_GET["report"]));
+    $report = json_decode($report_json);
+    $_GET["id_server"] = $report->s;
+    require_once './config.php';
+    require_once './BRConfig.php';
+    require_once './base.php';
+    $BattelReport      = selectFromTable("*", "report_battel", "id_report = :idr", ["idr" => validateId($report->id)]);
+    $BattelReplay = BRselectFromTable("*", "battel_replay", "id_battel_char =  :idb", ["idb" => $BattelReport[0]["id_battel_replay"]]);
+    if(count($BattelReplay) > 0){
+        header("Location: ".API_URL."/BattelReplay/".$BattelReplay[0]["id_battel_char"]);
+        exit();
+    }
  ?>
 <!DOCTYPE html>
 
