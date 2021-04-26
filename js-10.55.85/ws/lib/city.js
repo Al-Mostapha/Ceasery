@@ -19,4 +19,4 @@ Elkaisar.WsLib.City.WorldCity = function (data){
     
     
     
-}
+};

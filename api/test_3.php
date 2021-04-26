@@ -23,6 +23,7 @@ city/cityBuilding.js,
 city/PlayerHero.js,
 army.js,
 hero.js,
+heroArmy.js,
 matrial.js,
 LItemUse.js,
 education.js,
@@ -73,9 +74,10 @@ ui/ui.js';
 $files = explode(",", $test);
 $file = "";
 foreach ($files as $one) {
-    //$file .= file_get_contents("../js-0.0.1/" . trim($one));
+    $file .= file_get_contents("../js-10.55.85/" . trim($one));
     
-    echo '<script type="text/javascript" src="js<?=JS_VERSION?>/'.trim($one).'"></script>'."\n";
+    
 }
 
-//file_put_contents("totalFile.js", $file);
+file_put_contents("totalFile.js", $file);
+echo 'Obs';

@@ -315,63 +315,7 @@ function getReqHeroXp(lvl) {
     return Math.floor(baseXp * (1 - studyEffect) * 125);
 
 }
-/*
- * 
- * @param {Moues Event} ev
- * @param {DOM obj} el
- * @returns {undefined}
- * هنا الصورة هى الى بيحصل لها  دراج
- * واليست الى الى بيتعمل عليها دروب
- */
-function drag(e, el) {
-    var ev = e.originalEvent;
 
-    if (Number($(el).next(".amount").attr("amount")) <= 0) {
-        ev.preventDefault();
-        return;
-    }
-
-    $(el).parents(".sol").removeAttr("ondragover");
-    // هنا بجيب الاى دى عشا يتبعت مع  الصورة للخانة الى هتتبعت
-    ev.dataTransfer.setData("text", ev.target.id);
-    /*
-     * @type jQuery
-     * ev.target  this is the dom object of image being drag
-     */
-    var hold_type = $(ev.target).attr("army-type");
-    /*
-     * هنا  بلف على كل الوحدات الى فيها جيش
-     * لو نوع الجيش واحد بقفى الطبقة الشفافة 
-     * ولو النوع مختلف بفضل سايب الطبقة الشفافة
-     */
-    $(".sol").each(function () {
-        if ($(this).attr("army-type") === hold_type || $(this).attr("army-type") === "sol-0") {
-            $(this).children(".permit-layer").hide();
-
-
-        } else {
-            $(this).children(".permit-layer").show();
-            $(this).removeAttr("ondragover");
-        }
-    });
-
-}
-
-/*
- * 
- * @returns {undefined}
- * بناديها لما الدراج يخلص وكل الى انا بعمله بشيل الطبقة الشفافة
- */
-function dragend() {
-
-    $(".sol").each(function () {
-        /*   remve layer */
-        $(this).children(".permit-layer").hide();
-        /*   add allwow drope function*/
-        $(this).attr("ondragover", "allowDrop(event)");
-    });
-
-}
 
 
 /*
@@ -384,413 +328,6 @@ function dragend() {
  * دى بقى بتشتغل لما بسيب الماوس على  الصورة بتاعة الجيش
  * هوة بقى بينقل الجيش من المدينة للبطل
  */
-function drop(e, el_to) {
-    var ev = e.originalEvent;
-
-    ev.preventDefault();
-    /*
-     * @type text
-     * دة الايدى الى اتبعت معا الدراج فوق
-     * باخد الايدى دة عشان امسك العنصر الى مبعوت منة الدراج
-     */
-    var id = ev.dataTransfer.getData("text", ev.target.id);
-
-    /**
-     * @type Element DOM
-     * دة العنصر الى اتنقل وبيكون صورة
-     */
-    var el_from = document.getElementById(id);
-
-
-    /*
-     * 
-     * @type jQuery
-     * هنا بقى انا بحدد الجيش جاى منين ورايح فين 
-     * يعنىى ممكن جاى من المدينة ورايح البطل 
-     * او من البطل ورايح المدينة  او  ن بطل للتانى
-     */
-    var army_from = $(el_from).parents(".army_container").attr("army"); // 
-    var army_to = $(el_to).parents(".army_container").attr("army"); // li 
-
-    /* هحدد العدد المسموح للنقل لو الجيش بيتنقل للبطل*/
-
-    var max_num = Number($(el_from).next(".amount").attr("amount"));
-    /* بحدد نوع الجيش */
-    var army_type = $.trim($(el_from).attr("army-type"));
-
-    /* تانى حاجة هجيب العدد  بتاع الفرد من الجيش كام*/
-
-    var sol_cap = soldier_cap[army_type.split("-")[1]];
-
-    var available_place = 0;
-
-    if (sol_cap <= 0) {
-        alert_box.failMessage("خطاء نوع الجيش");
-        $("#dialg_box .left-nav .selected").click();
-        return;
-    }
-    /*
-     * 
-     * @type String
-     *  هشوف  لو انا ببعت اجيش دة للبطل
-     *  
-     */
-    if (army_to === "hero") {
-
-        /*  هشوف دة انهى بطل البطل الاول ولا التانى*/
-        var hero_place = $(el_to).parent('ol').attr("id");
-
-        var max = 0;
-
-        if (hero_place === "hero-right-ol") { // sec hero
-
-            available_place = getAvailPlaces(Elkaisar.NextHero.Hero.id_hero, Elkaisar.NextHero.Army);
-
-            if (!heroAvailableForTask(Elkaisar.NextHero.Hero.id_hero)) {
-
-                alert_box.confirmMessage("لا يمكن نقل القوات </br> البطل فى مهمة");
-                return false;
-
-            }
-
-
-            //var diff =  parseInt($(".hero-2  ol li:nth-child(2) .header-2:nth-child(2)").html().split("/")[1])- parseInt($(".hero-2  ol li:nth-child(2) .header-2:nth-child(2)").html().split("/")[0]);
-
-
-
-
-        } else if (hero_place === "hero-left-ol") {  // current hero
-
-            available_place = getAvailPlaces(Elkaisar.CurrentHero.Hero.id_hero, Elkaisar.CurrentHero.Army);
-
-            if (!heroAvailableForTask(Elkaisar.CurrentHero.Hero.id_hero)) {
-                alert_box.confirmMessage("لا يمكن نقل القوات </br> البطل فى مهمة");
-                return false;
-
-            }
-
-            // var diff =  parseInt($(".hero-1  ol li:nth-child(2) .header-2:nth-child(2)").html().split("/")[1])- parseInt($(".hero-1  ol li:nth-child(2) .header-2:nth-child(2)").html().split("/")[0]);
-
-            max = Math.min(max_num, Math.floor(available_place / sol_cap));
-        }
-
-
-
-        max_num = Math.floor(Math.min(available_place / sol_cap, max_num));
-        if (max_num < 1) {
-            alert_box.failMessage("لا توجد امكان خالية للقوات");
-            return;
-        }
-    }
-
-    // كدة انا معايا  اقصر رقم يتبعت من البطل للبطل التانى
-
-
-
-
-
-    /*
-     * @type String
-     * دة بيبقى المحتوى بتاع البوكس الصغير الى بنقل بية
-     */
-
-    var conetnt = alert_box.alert_content_army(el_from, el_to, max_num);
-    // alert box complete
-    var alert_ = alert_box.alert("نقل القوات", conetnt);
-
-    $("body").append((alert_));// add to body
-
-    //$(el_to).children(".unit-wrapper").attr("ondragstart" ,"drag(event , this)");
-
-
-    // when confirm button is clicked
-
-    $(document).on("click", ".trans-con", function () {
-
-
-
-        /* 
-         * هنا بقى لما زرار التاكيد يضغط علية*/
-        var amount = Math.floor($("#input-army-move").val()) || 0; // amount in  input
-        var curent_amount = Math.floor($(el_to).children(".amount").attr("amount")) || 0; // amount on hero or city whichever
-
-        /* لو ان الانبوت فية صفر مش محتاج اروح للدات بيز*/
-        if (amount < 1) {
-            $("#over_lay_alert").remove();
-            return;
-        }
-
-        /* بحدد نوع الجيش */
-        var army_type = $.trim($(el_from).attr("army-type"));
-        var id_hero = Number($(el_to).parents(".army_container").attr("id_hero"));
-        /*  بحدد المكان الى البطل رايح لية  هنا اكيد مكان فى البطل عشان  احنا اخترنا  من المدينة للبطل*/
-        var army_place = $.trim($(el_to).attr("army_place"));
-
-        /* هغير العدد الى اتنقل هزود عدد جنود الفيلق*/
-        if (army_to === "hero") {
-
-            var filak = $(el_to).parents(".army_container").prev(".part-2").children("ol").children("li").next().children().next().html();
-            var new_amount = Number(getHeroCapById(id_hero)) + sol_cap * amount;
-
-            $(el_to).parents(".army_container").prev(".part-2").children().children("li:nth-child(2)").children().next().html(new_amount + "/" + getHeroMaxCap(Elkaisar.Hero.getHero(id_hero)));
-            //$(el_to).parents(".army_container").prev(".part-2").children().children("li:nth-child(2)").children().next().html(new_amount+"/"+filak.split("/")[1]);
-
-            if (Number(new_amount) > getHeroMaxCap(Elkaisar.Hero.getHero(id_hero))) {
-
-                alert_box.confirmMessage("لا يمكنك نقل هذة الكمية");
-                return;
-
-            }
-
-        }
-
-
-
-        /* هغير العدد الى اتنقل هزود عدد جنود الفيلق*/
-        if (army_from === "hero") {
-
-            var id_hero_from = Number($(el_from).parents(".army_container").attr("id_hero"));
-            var filak = $(el_from).parents(".army_container").prev(".part-2").children("ol").children("li").next().children().next().html();
-
-            var new_amount = Number(getHeroCapById(id_hero_from)) + soldier_cap[army_type.split("-")[1]] * amount;
-            $(el_from).parents(".army_container").prev(".part-2").children().children("li:nth-child(2)").children().next().html(new_amount + "/" + getHeroMaxCap(Elkaisar.Hero.getHero(id_hero_from)));
-        }
-
-
-
-
-        // case the army transformed from  city to hero
-        if (army_from === "city" && army_to === "hero") {
-
-            $(document).off("click", ".trans-con");/*  بوقف الايفنت عشان  كان بيشتغل على النتيجة الى قبلها */
-
-
-
-            $.ajax({
-                url: `${API_URL}/api/AHeroArmy/transArmyFromCityToHero`,
-                data: {
-                    idHero: id_hero,
-                    amount: amount,
-                    idCity: Elkaisar.CurrentCity.City.id_city,
-                    ArmyPlace: army_place,
-                    ArmyType: ARMY_CONVERT[army_type].city,
-                    server: Elkaisar.Config.idServer,
-                    token: Elkaisar.Config.OuthToken
-
-                },
-                type: 'POST',
-                beforeSend: function (xhr) {
-                    console.log(this.data)
-                    replaceImage(el_to, el_from, amount);
-                },
-                success: function (data, textStatus, jqXHR) {
-                    $("#over_lay_alert").remove();
-
-                    if (isJson(data)) {
-                        var json_data = JSON.parse(data);
-                    } else {
-                        alert(data);
-                        return;
-                    }
-
-                    if (json_data.state === "ok") {
-
-                        Elkaisar.CurrentCity.City = json_data.City;
-                        Elkaisar.Hero.getHero(id_hero).Army = json_data.HeroArmy;
-
-
-                        army.refreshArmy_rightTrade();
-                        army.refreshArmy_leftTrade();
-
-                        city_profile.refresh_army_view();
-
-                        $("#down-trade-army").html(army.downTradeArmy());
-
-                    } else if (json_data.state === "error_3") {
-                        alert_box.failMessage("لا يمكن نقل هذه الكمية");
-                    } else if (json_data.state === "error_4") {
-                        alert_box.failMessage("سعة البطل لا تكفى");
-                        console.log(json_data);
-                        console.log(getHeroCapById(Number(id_hero)) - getHeroMaxCap(Elkaisar.Hero.getHero(id_hero)));
-                    } else if (json_data.state === "error_5") {
-                        alert_box.failMessage("البطل ليس فى المدينة");
-                    } else if (json_data.state === "error_6") {
-                        alert_box.failMessage("لا يوجد جيش يكفى فى المدينة");
-
-                        Elkaisar.City.getCityBase().done(function (data) {
-                            $("#down-trade-army").html(army.downTradeArmy());
-                        });
-
-                    } else {
-
-                        alert(data);
-
-                    }
-
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                }
-            });
-        }
-
-
-
-        // case army transported from hero to another hero
-        else if (army_from === "hero" && army_to === "hero") {
-
-            var id_hero_from = Number($(el_from).parents(".army_container").attr("id_hero"));
-            var id_hero_to = Number($(el_to).parents(".army_container").attr("id_hero"));
-            var place_from = $.trim($(el_from).parents(".sol").attr("army_place"));
-            var place_to = $.trim($(el_to).attr("army_place"));
-            var army_type = $.trim($(el_from).attr("army-type"));
-
-
-
-
-
-            $.ajax({
-                url: `${API_URL}/api/AHeroArmy/transArmyFromHeroToHero`,
-                data: {
-                    amount: amount,
-                    idCity: Elkaisar.CurrentCity.City.id_city,
-                    idHeroFrom: id_hero_from,
-                    idHeroTo: id_hero_to,
-                    ArmyPlaceFrom: place_from,
-                    ArmyPlaceTo: place_to,
-                    token: Elkaisar.Config.OuthToken
-                },
-                type: 'POST',
-                beforeSend: function (xhr) {
-                    replaceImage(el_to, el_from, amount);
-                },
-                success: function (data, textStatus, jqXHR) {
-
-                    $("#over_lay_alert").remove();
-                    if (isJson(data)) {
-                        var json_data = JSON.parse(data);
-                    } else {
-                        alert(data);
-                        return;
-                    }
-
-
-                    if (json_data.state === "ok") {
-
-                        Elkaisar.Hero.getHero(id_hero_from).Army = json_data.HeroArmyFrom;
-                        Elkaisar.Hero.getHero(id_hero_to).Army = json_data.HeroArmyTo;
-
-                        army.refreshArmy_leftTrade();
-                        army.refreshArmy_rightTrade();
-
-
-                    } else if (json_data.state === "error_0") {
-                        alert_box.failMessage("لا تمتلك هذا البطل");
-                    } else if (json_data.state === "error_3") {
-                        alert_box.failMessage("لا توجد قوات كافية");
-                    } else if (json_data.state === "error_4") {
-                        alert_box.failMessage("سعة البطل غير كافية");
-                    } else if (json_data.state === "error_5") {
-                        alert_box.failMessage("الابطال ليست بالمدينة");
-                    } else {
-                        alert(data);
-                    }
-
-
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                }
-
-            });
-
-        }
-
-        // casse hero transported from hero and add in city
-        else if (army_from === "hero" && army_to === "city") {
-
-            var army_type = $(el_from).attr("army-type");
-            var id_hero = Number($(el_from).parents(".army_container").attr("id_hero"));
-            var army_place = $(el_from).parents(".sol").attr("army_place");
-
-            $(document).off("click", ".trans-con");
-            var idCity = Elkaisar.CurrentCity.City.id_city;
-            $.ajax({
-                url: `${API_URL}/api/AHeroArmy/transArmyFromHeroToCity`,
-                data: {
-                    amount: amount,
-                    idHero: id_hero,
-                    idCity: Elkaisar.CurrentCity.City.id_city,
-                    ArmyPlace: army_place,
-                    token: Elkaisar.Config.OuthToken,
-                    server: Elkaisar.Config.idServer
-
-                },
-                type: 'POST',
-                beforeSend: function (xhr) {
-                    replaceImage(el_to, el_from, amount);
-                },
-                success: function (data, textStatus, jqXHR) {
-                    $("#over_lay_alert").remove();
-
-                    if (isJson(data)) {
-                        var json_data = JSON.parse(data);
-                    } else {
-                        alert(data);
-                        return;
-                    }
-
-
-                    if (json_data.state === "ok") {
-
-                        Elkaisar.City.getCity(idCity).City = json_data.City;
-                        Elkaisar.Hero.getHero(id_hero).Army = json_data.HeroArmy;
-
-                        if (Number(id_hero) === Number(Elkaisar.CurrentHero.Army.id_hero)) {
-                            Elkaisar.CurrentHero.Army = json_data.HeroArmy;
-                            army.refreshArmy_leftTrade();
-                        } else if (Number(id_hero) === Number(Elkaisar.NextHero.Army.id_hero)) {
-                            Elkaisar.NextHero.Army = json_data.HeroArmy;
-                            army.refreshArmy_rightTrade();
-                        }
-
-
-
-                        $("#down-trade-army").html(army.downTradeArmy());
-
-                    } else if (json_data.state === "error_0") {
-                        alert_box.failMessage("لا تمتلك هذا البطل");
-                    } else if (json_data.state === "error_1") {
-                        alert_box.failMessage("البطل لا يمتلك هذه الخانة");
-                    } else if (json_data.state === "error_2") {
-                        alert_box.failMessage("نوع القوات غير صحيح");
-                    } else if (json_data.state === "error_3") {
-                        alert_box.failMessage("القيمة اقل من صفر");
-                    } else if (json_data.state === "error_4") {
-                        alert_box.failMessage("لا توجد قوات كافية بالبطل");
-                    } else if (json_data.state === "error_5") {
-                        alert_box.failMessage("البطل ليس بالمدينة");
-                    } else {
-
-                        alert(data);
-
-                    }
-
-                    city_profile.refresh_army_view();
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                }
-            });
-        }
-        $(document).off("click", ".trans-con");/*  بوقف الايفنت عشان  كان بيشتغل على النتيجة الى قبلها */
-
-    });
-
-
-
-
-}
 
 
 
@@ -1352,45 +889,45 @@ var army = {
         if (!army)
             army = Elkaisar.CurrentHero.Army;
         var army_list = `
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_1_1" army_place="f_1"  army-type="sol-${army.f_1_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_1_1" army_place="f_1"  army-type="sol-${army.f_1_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="f_1">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-1" army-type="sol-${army.f_1_type}" src="images/tech/${army_typs[army.f_1_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-1" army-type="sol-${army.f_1_type}" draggable="true" data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="f_1">
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.f_1_type]})"></div>
                             </button>
                              
                             <div class="amount ${Fixed.getArmyAmountColor(army.f_1_num)}" amount="${army.f_1_num}">${getArabicNumbers(army.f_1_num)}</div>
                         </li>
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_2_1" army_place="f_2"  army-type="sol-${army.f_2_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_2_1" army_place="f_2"  army-type="sol-${army.f_2_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="f_2">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-2" army-type="sol-${army.f_2_type}" src="images/tech/${army_typs[army.f_2_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-2" army-type="sol-${army.f_2_type}" draggable="true" data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="f_2" >
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.f_2_type]})"></div>
                             </button>
                             <div class="amount ${Fixed.getArmyAmountColor(army.f_2_num)}" amount="${army.f_2_num}">${getArabicNumbers(army.f_2_num)}</div>
                         </li>
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_3_1" army_place="f_3"  army-type="sol-${army.f_3_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_3_1" army_place="f_3"  army-type="sol-${army.f_3_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="f_3">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-3" army-type="sol-${army.f_3_type}" src="images/tech/${army_typs[army.f_3_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-3" army-type="sol-${army.f_3_type}" draggable="true" data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="f_3">
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.f_3_type]})"></div>
                             </button>
                             <div class="amount ${Fixed.getArmyAmountColor(army.f_3_num)}" amount="${army.f_3_num}">${getArabicNumbers(army.f_3_num)}</div>
                         </li>
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_1_1" army_place="b_1"  army-type="sol-${army.b_1_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_1_1" army_place="b_1"  army-type="sol-${army.b_1_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="b_1">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-4" army-type="sol-${army.b_1_type}" src="images/tech/${army_typs[army.b_1_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-4" army-type="sol-${army.b_1_type}" draggable="true"  data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="b_1">
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.b_1_type]})"></div>
                             </button>
                             <div class="amount ${Fixed.getArmyAmountColor(army.b_1_num)}" amount="${army.b_1_num}">${getArabicNumbers(army.b_1_num)}</div>
                          </li>
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_2_1" army_place="b_2"  army-type="sol-${army.b_2_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_2_1" army_place="b_2"  army-type="sol-${army.b_2_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="b_2">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-5" army-type="sol-${army.b_2_type}" src="images/tech/${army_typs[army.b_2_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-5" army-type="sol-${army.b_2_type}" draggable="true"  data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="b_2">
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.b_2_type]})"></div>
                             </button>
                             <div class="amount ${Fixed.getArmyAmountColor(army.b_2_num)}" amount="${army.b_2_num}">${getArabicNumbers(army.b_2_num)}</div>
                          </li>
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_3_1" army_place="b_3"  army-type="sol-${army.b_3_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_3_1" army_place="b_3"  army-type="sol-${army.b_3_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="b_3">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-6" army-type="sol-${army.b_3_type}" src="images/tech/${army_typs[army.b_3_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-6" army-type="sol-${army.b_3_type}" draggable="true" data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="b_3">
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.b_3_type]})"></div>
                             </button>
                             <div class="amount ${Fixed.getArmyAmountColor(army.b_3_num)}" amount="${army.b_3_num}">${getArabicNumbers(army.b_3_num)}</div>
@@ -1410,45 +947,45 @@ var army = {
             return ;
 
         var army_list = `
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_1_2" army_place="f_1"  army-type="sol-${army.f_1_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_1_2" army_place="f_1"  army-type="sol-${army.f_1_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="f_1">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-1-2" army-type="sol-${army.f_1_type}" src="images/tech/${army_typs[army.f_1_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-1-2" army-type="sol-${army.f_1_type}" draggable="true" data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="f_1">
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.f_1_type]})"></div>
                             </button>
                             <div class="amount ${Fixed.getArmyAmountColor(army.f_1_num)}" amount="${army.f_1_num}">${getArabicNumbers(army.f_1_num)}</div>
                         </li>
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_2_2" army_place="f_2"  army-type="sol-${army.f_2_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_2_2" army_place="f_2"  army-type="sol-${army.f_2_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="f_2">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-2-2" army-type="sol-${army.f_2_type}" src="images/tech/${army_typs[army.f_2_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-2-2" army-type="sol-${army.f_2_type}" draggable="true" data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="f_2">
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.f_2_type]})"></div>
                             </button>
                             <div class="amount stroke ${Fixed.getArmyAmountColor(army.f_2_num)}" amount="${army.f_2_num}">${getArabicNumbers(army.f_2_num)}</div>
                          </li>
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_3_2" army_place="f_3"  army-type="sol-${army.f_3_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_3_2" army_place="f_3"  army-type="sol-${army.f_3_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="f_3">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-3-2" army-type="sol-${army.f_3_type}" src="images/tech/${army_typs[army.f_3_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-3-2" army-type="sol-${army.f_3_type}" draggable="true" data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="f_3">
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.f_3_type]})"></div>
                             </button>
                             <div class="amount stroke ${Fixed.getArmyAmountColor(army.f_3_num)}" amount="${army.f_3_num}">${getArabicNumbers(army.f_3_num)}</div>
                         </li>
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_1_2" army_place="b_1"  army-type="sol-${army.b_1_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_1_2" army_place="b_1"  army-type="sol-${army.b_1_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="b_1">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-4-2" army-type="sol-${army.b_1_type}" src="images/tech/${army_typs[army.b_1_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-4-2" army-type="sol-${army.b_1_type}" draggable="true" data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="b_1">
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.b_1_type]})"></div>
                             </button>
                             <div class="amount stroke ${Fixed.getArmyAmountColor(army.b_1_num)}" amount="${army.b_1_num}">${getArabicNumbers(army.b_1_num)}</div>
                         </li>
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_2_2" army_place="b_2"  army-type="sol-${army.b_2_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_2_2" army_place="b_2"  army-type="sol-${army.b_2_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="b_2">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-5-2" army-type="sol-${army.b_2_type}" src="images/tech/${army_typs[army.b_2_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-5-2" army-type="sol-${army.b_2_type}" draggable="true" data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="b_2">
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.b_2_type]})"></div>
                             </button>
 
                              <div class="amount stroke ${Fixed.getArmyAmountColor(army.b_2_num)}" amount="${army.b_2_num}">${getArabicNumbers(army.b_2_num)}</div>
                          </li>
-                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_3_2" army_place="b_3"  army-type="sol-${army.b_3_type}">
+                        <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="b_3_2" army_place="b_3"  army-type="sol-${army.b_3_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="b_3">
                             <div class="permit-layer"></div>
-                            <button class="unit-wrapper armyImageDragToChange" id="cell-6-2" army-type="sol-${army.b_3_type}" src="images/tech/${army_typs[army.b_3_type]}" draggable="true"  >
+                            <button class="unit-wrapper armyImageDragToChange" id="cell-6-2" army-type="sol-${army.b_3_type}" draggable="true" data-id-hero="${army.id_hero}" data-drag-place="hero" data-army-place="b_3">
                                <div class="img-bg" style="background-image: url(images/tech/${army_typs[army.b_3_type]})"></div>
                             </button>
                             <div class="amount stroke ${Fixed.getArmyAmountColor(army.b_3_num)}" amount="${army.b_3_num}">${getArabicNumbers(army.b_3_num)}</div>
@@ -1804,44 +1341,44 @@ var army = {
     },
     downTradeArmy() {
         return `<ul>
-                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_1"  army-type="sol-1">
+                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_1" army-type="sol-1" data-drop-place="city" data-army-place="army_a">
                         <div class="permit-layer"></div>
-                        <button class="sol-down img armyImageDragToChange" id="sol-1" army-type="sol-1" src="images/tech/soldier01.jpg" draggable="true"  >
+                        <button class="sol-down img armyImageDragToChange" id="sol-1" army-type="sol-1" draggable="true" data-drag-place="city" data-army-place="army_a">
                             <div class="img-bg" style="background-image: url(images/tech/soldier01.jpg)"></div>
                         </button>
                         <div class="amount stroke ${Fixed.getArmyAmountColor(Elkaisar.CurrentCity.City.army_a)}" amount="${Elkaisar.CurrentCity.City.army_a}">${Elkaisar.CurrentCity.City.army_a}</div>
                     </li>
-                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_2"  army-type="sol-2">
+                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_2"  army-type="sol-2" data-drop-place="city" data-army-place="army_b">
                         <div class="permit-layer"></div>
-                        <button class="sol-down img armyImageDragToChange" id="sol-2" army-type="sol-2" src="images/tech/soldier02.jpg" draggable="true"  >
+                        <button class="sol-down img armyImageDragToChange" id="sol-2" army-type="sol-2" draggable="true" data-drag-place="city" data-army-place="army_b">
                              <div class="img-bg" style="background-image: url(images/tech/soldier02.jpg)"></div>
                         </button>
                         <div class="amount stroke ${Fixed.getArmyAmountColor(Elkaisar.CurrentCity.City.army_b)}" amount="${Elkaisar.CurrentCity.City.army_b}">${Elkaisar.CurrentCity.City.army_b}</div>
                     </li>
-                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_3"  army-type="sol-3">
+                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_3"  army-type="sol-3"  data-drop-place="city" data-army-place="army_c">
                         <div class="permit-layer"></div>
-                        <button class="sol-down img armyImageDragToChange" id="sol-3" army-type="sol-3" src="images/tech/soldier03.jpg" draggable="true"  >
+                        <button class="sol-down img armyImageDragToChange" id="sol-3" army-type="sol-3" draggable="true" data-drag-place="city" data-army-place="army_c">
                              <div class="img-bg" style="background-image: url(images/tech/soldier03.jpg)"></div>
                         </button>
                         <div class="amount stroke ${Fixed.getArmyAmountColor(Elkaisar.CurrentCity.City.army_c)}" amount="${Elkaisar.CurrentCity.City.army_c}">${Elkaisar.CurrentCity.City.army_c}</div>
                     </li>
-                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_4"  army-type="sol-4">
+                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_4"  army-type="sol-4"  data-drop-place="city" data-army-place="army_d">
                         <div class="permit-layer"></div>
-                        <button class="sol-down img armyImageDragToChange" id="sol-4" army-type="sol-4" src="images/tech/soldier04.jpg" draggable="true"  >
+                        <button class="sol-down img armyImageDragToChange" id="sol-4" army-type="sol-4" draggable="true" data-drag-place="city" data-army-place="army_d">
                              <div class="img-bg" style="background-image: url(images/tech/soldier04.jpg)"></div>
                         </button>
                         <div class="amount stroke ${Fixed.getArmyAmountColor(Elkaisar.CurrentCity.City.army_d)}" amount="${Elkaisar.CurrentCity.City.army_d}">${Elkaisar.CurrentCity.City.army_d}</div>
                     </li>
-                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_5"  army-type="sol-5">
+                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_5"  army-type="sol-5"  data-drop-place="city" data-army-place="army_e">
                         <div class="permit-layer"></div>
-                        <button  class="sol-down img armyImageDragToChange" id="sol-5" army-type="sol-5" src="images/tech/soldier05.jpg" draggable="true"  >
+                        <button  class="sol-down img armyImageDragToChange" id="sol-5" army-type="sol-5" draggable="true" data-drag-place="city" data-army-place="army_e">
                              <div class="img-bg" style="background-image: url(images/tech/soldier05.jpg)"></div>
                         </button>
                         <div class="amount stroke ${Fixed.getArmyAmountColor(Elkaisar.CurrentCity.City.army_e)}" amount="${Elkaisar.CurrentCity.City.army_e}">${Elkaisar.CurrentCity.City.army_e}</div>
                     </li>
-                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_6"  army-type="sol-6">
+                    <li class="sol dropArmyImage dargOverArmyImage"  id="d_6"  army-type="sol-6" data-drop-place="city" data-army-place="army_f">
                         <div class="permit-layer"></div>
-                        <button class="sol-down img armyImageDragToChange"  id="sol-6" army-type="sol-6" src="images/tech/soldier06.jpg" draggable="true"  >
+                        <button class="sol-down img armyImageDragToChange"  id="sol-6" army-type="sol-6" draggable="true" data-drag-place="city" data-army-place="army_f">
                             <div class="img-bg" style="background-image: url(images/tech/soldier06.jpg)"></div>
                         </button>
                         <div class="amount stroke ${Fixed.getArmyAmountColor(Elkaisar.CurrentCity.City.army_f)}" amount="${Elkaisar.CurrentCity.City.army_f}">${Elkaisar.CurrentCity.City.army_f}</div>
@@ -2174,19 +1711,18 @@ var army = {
 $(document).on("drop", ".dropArmyImage", function (e) {
     e.preventDefault();
     e.stopPropagation();
-    drop(e, this);
+    Elkaisar.HeroArmy.dropArmy(e, this);
 });
-$(document).on("dragover", ".dargOverArmyImage", function (e) {
 
+$(document).on("dragover", ".dargOverArmyImage", function (e) {
     allowDrop(e);
 });
 $(document).on("dragstart", ".armyImageDragToChange", function (e) {
 
-    drag(e, this);
+    Elkaisar.HeroArmy.dragArmy(e, this);
 });
 $(document).on("dragend", ".armyImageDragToChange", function (e) {
-
-    dragend();
+    Elkaisar.HeroArmy.dragArmyEnd(e, this);
 });
 /*___________________________clickable nav bar________________________________*/
 

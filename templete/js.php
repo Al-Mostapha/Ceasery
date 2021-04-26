@@ -30,6 +30,7 @@ if(!defined("DEV_MODE")){
         <script type="text/javascript" src="js<?=JS_VERSION?>/city/PlayerHero.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/army.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/hero.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/heroArmy.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/matrial.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/LItemUse.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/education.js"></script>
