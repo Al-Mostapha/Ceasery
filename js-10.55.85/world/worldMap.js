@@ -1846,11 +1846,17 @@ Elkaisar.World.Map.getWorldCity = function () {
 
 
 };
+
 Elkaisar.World.Map.getWorldCityColonized = function () {
 
     ws.send(JSON.stringify({
         url: "World/getWorldCityColonized"
     }));
+};
 
+Elkaisar.World.Map.getWorldFiredUnit = function () {
 
+    ws.send(JSON.stringify({
+        url: "World/getWorldFireUnit"
+    }));
 };

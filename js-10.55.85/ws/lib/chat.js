@@ -77,3 +77,23 @@ Elkaisar.WsLib.Chat.sendMsgImage = function (data){
     this.scrollChat();
     
 };
+
+Elkaisar.WsLib.Chat.QueenPrizeSent = function (data){
+    
+    var Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord)
+    var msg = ` <div class="msg-unit battel-f-ann">
+                    تم فوز حلفك بـ <span class="ann-red">&nbsp;${Elkaisar.World.UnitTypeData[Unit.ut].Title}&nbsp;</span>  و حصلت على قائمة الهدايا (ستجد رسالة فى بريدك)
+                </div>`;
+    Player_profile.refreshPlayerNotif();
+    Chat.append(msg);
+};
+
+Elkaisar.WsLib.Chat.PrizeSent = function (data){
+    
+    var Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
+    var msg = ` <div class="msg-unit  battel-f-ann">
+                    تم وصول جوائز الى صندوقك على قائمة الهدايا بعد الفوز على<span class="ann-red">&nbsp;${Elkaisar.World.UnitTypeData[Unit.ut].Title}&nbsp;</span> (ستجد رسالة فى بريدك)
+                </div>`;
+    Player_profile.refreshPlayerNotif();
+    Chat.append(msg);
+};

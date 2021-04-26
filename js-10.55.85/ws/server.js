@@ -14,6 +14,7 @@ WS_utile.onopen = function (){
     }));
     Elkaisar.World.Map.getWorldCity();
     Elkaisar.World.Map.getWorldCityColonized();
+    Elkaisar.World.Map.getWorldFiredUnit();
 };
 
 WS_utile.onmessage =  function (e){
