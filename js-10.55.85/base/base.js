@@ -64,26 +64,7 @@ $(document).on("mouseenter", "#city-profile .page_content .army_type", function 
 
     var army = $(this).attr("data-army");
 
-    /*
-     * 
-     * ar_title: "مشاه"
-     ​​
-     coin: 18
-     ​​
-     condetion: Array []
-     ​​
-     food: 150
-     ​​
-     image: "images/tech/soldier01.jpg"
-     ​​
-     metal: 100
-     ​​
-     people: 1
-     ​​
-     stone: 0
-     ​​
-     time: 50
-     */
+
 
     var tooltip = `  <div class="tooltip tooltip-army">
                         <div class="top">
@@ -501,7 +482,9 @@ var Extract = {
 
         });
     },
-
+    'coordDirect': function (xCoord, yCoord) {
+        return ' <label class=\"clickable-coords font-2\"  data-x-coord=\"' + xCoord + '\" data-y-coord=\"' + yCoord + '\"> <i>[' + xCoord + ',' + yCoord + ']</i></label> ';
+    },
     digits: function (txt) {
         if (!txt)
             return;

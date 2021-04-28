@@ -30,7 +30,7 @@ Elkaisar.Building.Palace = {};
 Elkaisar.Building.Theater = {};
 Elkaisar.Animation = {};
 Elkaisar.WsLib = {};
-
+Elkaisar.Contribute = {};
 Elkaisar.Hero = {};
 Elkaisar.CurrentHero = {};
 Elkaisar.NextHero = {};

@@ -432,6 +432,9 @@ var WorldUnit = {
     isArenaChallange: function( unitType) {
             return (Number(unitType) === WUT_ARENA_CHALLANGE);
     },
+    isDominatable : function (_0x40774e) {
+        return WorldUnit['isQueenCity'](_0x40774e) || WorldUnit['isRepelCastle'](_0x40774e) || WorldUnit['isArmyCapital'](_0x40774e);
+    },
 
     isArenaDeath: function( unitType) {
             return (Number(unitType) === WUT_ARENA_DEATH);

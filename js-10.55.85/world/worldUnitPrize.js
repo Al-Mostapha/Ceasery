@@ -2,88 +2,68 @@ WorldUnit.prize = {};
 
 WorldUnit.prize.prizes = {};
 
-WorldUnit.prize.getAllPrize = function (){
-    
-    $.ajax({
-       
-       url:"api/worldUnit.php",
-       data:{
-           GET_ALL_PRIZES: true
-       },
-        type: 'GET',
-        beforeSend: function (xhr) {
-            
+
+WorldUnit.prize.getAllPrize = function () {
+    $['ajax']({
+        'url': API_URL + '/api/AWorld/getWorldUnitPrize',
+        'data': {
+            'token': Elkaisar['Config']['OuthToken'],
+            'server': Elkaisar['Config']['idServer']
         },
-        success: function (data, textStatus, jqXHR) {
-            if(isJson(data)){
-                WorldUnit.prize.prizes = JSON.parse(data);
-                for(var iii in WorldUnit.prize.prizes){
-                    
-                    WorldUnit.prize.prizes[iii].lvl  = Number(WorldUnit.prize.prizes[iii].lvl);
-                    WorldUnit.prize.prizes[iii].type = Number(WorldUnit.prize.prizes[iii].unitType);
-                  
-                }
-            }else{
-                
+        'type': 'GET',
+        'success': function (data, _0x45a054, _0x31b37d) {
+            if (isJson(data))
+                WorldUnit['prize']['prizes'] = JSON['parse'](data);
+            else
                 alert(data);
-                
-            }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            
-        }
-        
+        'error': function (_0x295c85, _0x4fa13c, _0x20447d) {}
     });
-    
+};
+
+WorldUnit.prize.PrizFor = {
+    'Win': 'Win',
+    'Lose': 'Lose',
+    'Sp': 'Sp',
+    'Plunder': 'Plunder'
 };
 
 
 
-
-
-WorldUnit.prize.getUnitPrize = function (type , lvl){
-    
-    type = Number(type);
+WorldUnit['prize']['getUnitPrize'] = function (unitType, lvl, PrizeFor = 'Win') {
+    unitType = Number(unitType);
     lvl = Number(lvl);
-    var result = [];
-    for(var iii in WorldUnit.prize.prizes){
-        
-        if( WorldUnit.prize.prizes[iii].type === type && WorldUnit.prize.prizes[iii].lvl === lvl ){
-            result.push(WorldUnit.prize.prizes[iii]);
-        }
-        
+    var PrizeList = [];
+    for (var iii in WorldUnit['prize']['prizes'][PrizeFor]) {
+        if (WorldUnit['prize']['prizes'][PrizeFor][iii]['unitType'] === unitType
+                && WorldUnit['prize']['prizes'][PrizeFor][iii]['lvl'] === lvl)
+            PrizeList['push'](WorldUnit['prize']['prizes'][PrizeFor][iii]);
     }
-    return result;
-    
+    return PrizeList;
 };
 
-WorldUnit.prize.getUnitAllLvlsPrize = function (type){
-    
-    type = Number(type);
-    var result = [];
-    for(var iii in WorldUnit.prize.prizes){
-        
-        if( WorldUnit.prize.prizes[iii].type === type){
-            result.push(WorldUnit.prize.prizes[iii]);
-        }
-        
+WorldUnit['prize']['getUnitAllLvlsPrize'] = function (unitType, PrizeFor = 'Win') {
+    unitType = Number(unitType);
+    var PrizeList = [];
+    for (var iii in WorldUnit['prize']['prizes'][PrizeFor]) {
+        if (WorldUnit['prize']['prizes'][PrizeFor][iii]['unitType'] === unitType)
+            PrizeList['push'](WorldUnit['prize']['prizes'][PrizeFor][iii]);
     }
-    return result;
-    
+    return PrizeList;
 };
 
 
-WorldUnit.prize.prizeList = function (x_coord , y_coord){
+WorldUnit.prize.prizeList = function (x_coord, y_coord) {
 
-    if(!WorldUnit.getWorldUnit(x_coord , y_coord))
-         return ;
+    if (!WorldUnit.getWorldUnit(x_coord, y_coord))
+        return;
 
-    var lvl  = Number(WorldUnit.getWorldUnit(x_coord , y_coord).l);
-    var type = Number(WorldUnit.getWorldUnit(x_coord , y_coord).ut);
-    
-    var prize = this.getUnitPrize(type , lvl);
-    var list  = "";
-    for(var iii in prize){
+    var lvl = Number(WorldUnit.getWorldUnit(x_coord, y_coord).l);
+    var type = Number(WorldUnit.getWorldUnit(x_coord, y_coord).ut);
+
+    var prize = this.getUnitPrize(type, lvl);
+    var list = "";
+    for (var iii in prize) {
         list += `   <li>
                         <div class="golden-border">
                             <div class="unit-image" style="background-image: url(${Matrial.image(prize[iii].prize)})">
@@ -93,49 +73,35 @@ WorldUnit.prize.prizeList = function (x_coord , y_coord){
                     </li>
                     `;
     }
-   
+
     return list;
 };
 
-
-WorldUnit.prize.prizeAllLvlsList = function (x_coord , y_coord){
-   
-   if(!WorldUnit.getWorldUnit(x_coord , y_coord))
-         return ;
-
-    var lvl  = Number(WorldUnit.getWorldUnit(x_coord , y_coord).l);
-    var type = Number(WorldUnit.getWorldUnit(x_coord , y_coord).ut);
-   
-    var prize = WorldUnit.prize.getUnitAllLvlsPrize (type);
-   
-    
-    var prizeList = [];
-    
-    var list  = "";
-    for(var iii in prize){
-        
-        if(prizeList.indexOf(prize[iii].prize) === -1){
-            prizeList.push(prize[iii].prize);
-        }else {
+WorldUnit['prize']['prizeAllLvlsList'] = function (xCoord, yCoord, prizeFor = 'Win') {
+    if (!WorldUnit['getWorldUnit'](xCoord, yCoord))
+        return;
+    var lvl = Number(WorldUnit['getWorldUnit'](xCoord, yCoord)['l']),
+            unitType = Number(WorldUnit['getWorldUnit'](xCoord, yCoord)['ut']),
+            PrizeList = WorldUnit['prize']['getUnitAllLvlsPrize'](unitType, prizeFor),
+            PList = [],
+            List = '';
+    for (var iii in PrizeList) {
+        if (PList['indexOf'](PrizeList[iii]['prize']) === -0x1)
+            PList['push'](PrizeList[iii]['prize']);
+        else
             continue;
-        }
-        if(prizeList.length > 16){
+        if (PList['length'] > 0x10)
             break;
-        }
-        
-        list += `   <li>
+        List += `   <li>
                         <div class="golden-border">
-                            <div class="unit-image ${prize[iii].lvl !== lvl ? "gray-filter" : ""}" style="background-image: url(${Matrial.image(prize[iii].prize)})">
-                                <div class="amount stroke">(${prize[iii].amount_min}-${prize[iii].amount_max})X</div>
+                            <div class="unit-image ${PrizeList[iii].lvl !== lvl ? "gray-filter" : ""}" style="background-image: url(${Matrial.image(PrizeList[iii].prize)})">
+                                <div class="amount stroke">(${PrizeList[iii].amount_min}-${PrizeList[iii].amount_max})X</div>
                             </div>
                         </div>
                     </li>
                     `;
-        
-        
     }
-   
-    return list;
+    return List;
 };
 
 
@@ -143,4 +109,6 @@ WorldUnit.prize.prizeAllLvlsList = function (x_coord , y_coord){
 
 
 
-WorldUnit.prize.getAllPrize ();
+
+
+WorldUnit.prize.getAllPrize();

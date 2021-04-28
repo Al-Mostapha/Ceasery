@@ -1,10 +1,6 @@
 var PLAYER_ALL_HEROS;
 $(document).ready(function () {
 
-
-
-
-
     $("#msg-area").niceScroll({
         autohidemode: false,
         cursorwidth: "10px",
@@ -13,16 +9,6 @@ $(document).ready(function () {
         cursorborderradius: "0px",
         cursorborder: "none"
     });
-
-
-    /*
-     *   get current hero army to prevent errors
-     */
-
-    /*var welcome_msg = `اهلا بك فى قيصر الشرق هذا السيرفر سيرفر تجريبى  ( قد يحتوى على بعض الاخطاء) </br>
-     بعض الترتيبات قد تكون مبسطة للتجريب فقط ستتم اضافة التحسينات فى السيرفر الاصلى بعد اغلاق هذا السيرفر التجريبى 
-     للمزيد اضغط <a href="#" target="_blank">هنا</a> `;
-     alert_box.confirmMessage(welcome_msg);*/
 
 });
 // get city from data base
@@ -127,26 +113,6 @@ function getServerData()
 $(document).on("PlayerReady", "html", function () {
 
     Player_profile.refreshMatrialBox();
-
-    // get json file of matrial
-    $.ajax({
-        url: `js${JS_VERSION}/json/matrial/${UserLag.language}.json`,
-        data: {get_matrial: true, id_player: ID_PLAYER,
-            token: TOKEN},
-        type: 'POST',
-        dataType: 'JSON',
-        cache: false,
-        beforeSend: function (xhr) {
-
-        },
-        success: function (data, textStatus, jqXHR) {
-            Elkaisar.BaseData.Items = data;
-            //console.log(Object.keys(Elkaisar.BaseData.Items))
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    });
     $.ajax({
         url: "js" + JS_VERSION + "/json/education.json",
         data: {get_matrial: true},
@@ -163,7 +129,6 @@ $(document).on("PlayerReady", "html", function () {
         }
     });
 
-    // get json file of daily trade
     $.ajax({
         url: "js" + JS_VERSION + "/json/matrial_trade.json",
         data: {get_matrial: true},
@@ -181,15 +146,6 @@ $(document).on("PlayerReady", "html", function () {
         }
     });
 
-
-
-
-
-
-
-
-
-    /* get player state  attack defence etc**/
 
     getServerData();
     Elkaisar.Equip.getPlayerEquip();
@@ -409,30 +365,6 @@ function change_content_player_box(content, offset_mat) {
     $("#dialg_box .nav_icon h1").html((Math.floor(offset / 12) + 1) + "/" + page_num);
 
     return all_content_unite;
-}
-
-function getPlayerEquip() {
-    $.ajax({
-        url: "api/city.php",
-        type: 'GET',
-        data: {get_available_equip: true, id_player: ID_PLAYER,
-            token: TOKEN},
-        dataType: 'JSON',
-        success: function (data, textStatus, jqXHR) {
-            available_Equip = data;
-
-            if ($("#equip-list-heroDia").length) {
-
-                $("#equip-list-heroDia").html(army.getEquipList());
-
-            }
-
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-
-    });
 }
 
 
@@ -1912,3 +1844,35 @@ window.addEventListener("orientationchange", function () {
     Crafty.viewport.centerOn(BuildingOnFloor.palace, 1);
     Crafty.trigger("MouseWheelScroll", {direction: -1});
 }, false);
+
+$(document)['on']('click', '#openPlayerItemBox', function () {
+    var idItem = $(this)['attr']('data-item-name');
+    $['ajax']({
+        'url': API_URL + '/api/AItem/openItemBox',
+        'data': {
+            'server': Elkaisar['Config']['idServer'],
+            'token': Elkaisar['Config']['OuthToken'],
+            'idItem': idItem
+        },
+        'type': 'POST',
+        'success': function (data, _0x106300, _0x509fc4) {
+            if (!Elkaisar['LBase']['isJson'](data)) 
+                Elkaisar['LBase']['Error'](data);
+            
+            var JsonData = JSON['parse'](_0x2667b5);
+            if (JsonData['state'] === 'ok') {
+                showMatrialGiftList(JsonData['Item']);
+                for (var ii in JsonData['Item']) {
+                    if(JsonData['Item']['prizeType'] == 'E') 
+                        Elkaisar['Equip']['getPlayerEquip']();
+                    else 
+                        Matrial['givePlayer'](JsonData['Item'][ii]['Item'], JsonData['Item'][ii]['amount']);
+                }
+                Elkaisar['Item']['ItemBox']('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
+                Player_profile['refreshMatrialBox']()['done'](function () {
+                    Elkaisar['Item']['ItemBox']('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
+                });
+            } else JsonData['state'] === 'error_1' && alert_box['failMessage']('ليس لديك مواد كافية');
+        }
+    });
+});

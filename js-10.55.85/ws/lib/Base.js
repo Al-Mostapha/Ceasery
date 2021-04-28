@@ -78,3 +78,19 @@ Elkaisar.WsLib.Base.refreshWorldCitiesForPlayers = function (data){
     Elkaisar.World.Map.RefreshWorld();
     
 };
+
+
+ Elkaisar['WsLib']['Base']['WorldFireUnit'] = function (data) {
+    var _0x96c110;
+    for (var ii in data['Units']) {
+        var xCoord = Math['floor'](ii / 500);
+        var yCoord = ii % 500;
+        WorldUnit['getWorldUnit'](xCoord, yCoord)['s'] = 1;
+    }
+    Elkaisar['World']['Map']['Scroll'](false);
+    Elkaisar['World']['Map']['RefreshWorld']();
+};
+
+Elkaisar['WsLib']['Base']['DailyRest'] = function () {
+    alert_box['systemChatMessage']('تمت اعادة التعيين اليومية.');
+};

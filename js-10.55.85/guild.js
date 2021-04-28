@@ -1840,78 +1840,42 @@ $(document).on("click" , "#g-search_result li" , function (){
 });
 
 
-$(document).on("click" , "#submit-guild-relation" , function (){
-    
-    var relation   = $('.F_E-list input[name=guild_relation]:checked').val();
-    var id_guild   = parseInt($(".F_E-list .row-1 input").attr("data-id-guild"));
-    var guild_name = ($(".F_E-list .row-1 input").attr("data-g-name"));
-    
-    if(!id_guild){
-        
-        alert_box.confirmMessage("عليك اختيار الحلف اولا");
-        return ;
-    }else if(!relation.length){
-        
-        alert_box.confirmMessage("اختار العلاقة بين الحلفين");
-        return ;
-        
+$(document)['on']('click', '#submit-guild-relation', function () {
+    var _0x3e3f99 = $('.F_E-list input[name=guild_relation]:checked')['val'](),
+        _0x1b5257 = parseInt($('.F_E-list .row-1 input')['attr']('data-id-guild')),
+        _0x3f0b1a = $('.F_E-list .row-1 input')['attr']('data-g-name');
+    if (!_0x1b5257) {
+        alert_box['confirmMessage']('عليك اختيار الحلف اولا');
+        return;
+    } else if (!_0x3e3f99['length']) {
+        alert_box['confirmMessage']('اختار العلاقة بين الحلفين');
+        return;
     }
-    
-    
-    
-    $.ajax({
-        
-        url: "api/guild.php",
-        data:{
-            
-            CHANGE_GUILD_RELATION:true,
-            id_guild: id_guild,
-            relation: relation,
-            id_player:ID_PLAYER,
-            token:TOKEN
-            
+    $['ajax']({
+        'url': API_URL + '/api/AGuild/changeGuildRelation',
+        'data': {
+            'idGuild': _0x1b5257,
+            'relation': _0x3e3f99,
+            'token': Elkaisar['Config']['OuthToken'],
+            'server': Elkaisar['Config']['idServer']
         },
-        type: 'POST',
-        beforeSend: function (xhr) {
-            
-        },
-        success: function (data, textStatus, jqXHR) {
-            
-            if(data === "added"){
-                
-                $(".close-alert").click();
-                alert_box.succesMessage("تم اضافة العلاقة بين الحلفين بنجاح");
-                Guild.getGuildData().done(function (){
-                    if($(".left-nav .selected").attr("head_title") === "guild_data"){
-                        $(".left-nav .selected").click();
-                    }
-                });
-                ws.send(JSON.stringify({
-                    url:"WS_GuildReq/announceRelation",
-                    data:{
-                        idPlayer:ID_PLAYER,
-                        player_name:Elkaisar.DPlayer.Player.name,
-                        guild_one:Elkaisar.DPlayer.GuildData.name,
-                        guild_two:guild_name,
-                        id_guild_one:Elkaisar.DPlayer.Player.id_guild,
-                        id_guild_two:id_guild,
-                        relation:relation,
-                        token:TOKEN
-                    }
-                    
-                }));
-                
-            }else{
-                alert(data) ;
+        'type': 'POST',
+        'success': function (_0x1ba7ed, _0x5b5eee, _0x5af2f1) {
+            if (!Elkaisar['LBase']['isJson'](_0x1ba7ed)) return Elkaisar['LBase']['Error'](_0x1ba7ed);
+            var _0x5d4425 = JSON['parse'](_0x1ba7ed);
+            if (_0x5d4425['state'] == 'ok') $('.close-alert')['click'](), alert_box['succesMessage']('تم اضافة العلاقة بين الحلفين بنجاح'), Guild['getGuildData']()['done'](function () {
+                $('.left-nav .selected')['attr']('head_title') === 'guild_data' && $('.left-nav .selected')['click'](), Elkaisar['World']['Map']['RefreshWorld']();
+            });
+            else {
+                if (_0x5d4425['state'] == 'error_0') alert_box['failMessage']('لست عضو فى الحلف');
+                else {
+                    if (_0x5d4425['state'] == 'error_1') alert_box['failMessage']('رتيتك فى الحلف لا تسمح');
+                    else _0x5d4425['state'] == 'error_2' ? alert_box['failMessage']('نوع العلاقة غير صالحة') : alert(_0x1ba7ed);
+                }
             }
-            
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            
-        }
-        
+        'error': function (_0xf6addd, _0x324ef9, _0x45d39a) {}
     });
-    
 });
 
 

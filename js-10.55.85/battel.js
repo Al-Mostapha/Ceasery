@@ -184,198 +184,113 @@ $(document).on("click", "#start_battel", function () {
 
 });
 
+function isMyBarr(_0x22de03, _0x4dcc19) {
+    var _0x46bfff, _0x179d13;
+    for (var _0x4d186f in Elkaisar['DPlayer']['City']) {
+        _0x46bfff = Elkaisar['DPlayer']['City'][_0x4d186f];
+        for (var _0x215ce1 in _0x46bfff['Barray']) {
+            if (_0x46bfff['Barray'][_0x215ce1]['x_coord'] == _0x22de03 && _0x46bfff['Barray'][_0x215ce1]['y_coord'] == _0x4dcc19) return !![];
+        }
+    }
+    return ![];
+}
 
 
 function battelStart() {
-
-    if (Number(Elkaisar.CurrentHero.Hero.in_city) !== Elkaisar.Hero.HeroState.HERO_IN_CITY) {
-        $(".close-alert").click();
-        alert_box.failMessage("لا يمكنك ارسال بطل الى بعثة و هو فى ليس داخل المدينة");
+    if (Number(Elkaisar['CurrentHero']['Hero']['in_city']) !== Elkaisar['Hero']['HeroState']['HERO_IN_CITY']) {
+        $('.close-alert')['click'](), alert_box['failMessage']('لا يمكنك ارسال بطل الى بعثة و هو فى ليس داخل المدينة');
         return;
     }
-    if (Number(Elkaisar.CurrentHero.Hero.id_hero) === Number(Elkaisar.CurrentCity.City.console)) {
-        $(".close-alert").click();
-        alert_box.failMessage("لا يمكنك ارسال بطل الى بعثة و هو قنصل");
+    if (Number(Elkaisar['CurrentHero']['Hero']['id_hero']) === Number(Elkaisar['CurrentCity']['City']['console'])) {
+        $('.close-alert')['click'](), alert_box['failMessage']('لا يمكنك ارسال بطل الى بعثة و هو قنصل');
         return;
     }
-
-    var _wu = WorldUnit.getWorldUnit(battel_data.x_coord, battel_data.y_coord);
-
-    if (!Elkaisar.World.UnitData.isPromLvlOk(_wu.ut)) {
-        alert_box.failMessage("لا يمكنك الهجو..م تحقق من توافق الشروط");
+    var _0x2d501c = WorldUnit['getWorldUnit'](battel_data['x_coord'], battel_data['y_coord']);
+    if (!Elkaisar['World']['UnitData']['isPromLvlOk'](_0x2d501c['ut'])) {
+        alert_box['failMessage']('لا يمكنك الهجو..م تحقق من توافق الشروط');
         return;
     }
-
-    var out_hero = 0;
-
-
-    var idCity = Number(Elkaisar.CurrentHero.Hero.id_city);
-
-    for (var ii in Elkaisar.DPlayer.Heros) {
-
-        if (Number(Elkaisar.DPlayer.Heros[ii].Hero.id_city) !== idCity)
-            continue;
-        if (Number(Elkaisar.DPlayer.Heros[ii].Hero.in_city) !== Elkaisar.Hero.HeroState.HERO_IN_CITY) {
-            out_hero++;
-        }
-
+    var _0x2a0e73 = 0x0,
+        _0x542482 = Number(Elkaisar['CurrentHero']['Hero']['id_city']);
+    for (var _0x2c5cbf in Elkaisar['DPlayer']['Heros']) {
+        if (Number(Elkaisar['DPlayer']['Heros'][_0x2c5cbf]['Hero']['id_city']) !== _0x542482) continue;
+        Number(Elkaisar['DPlayer']['Heros'][_0x2c5cbf]['Hero']['in_city']) !== Elkaisar['Hero']['HeroState']['HERO_IN_CITY'] && _0x2a0e73++;
     }
-
-
-    var blaza_place = cityHasType(BUILDING_TYPS.HOSPITAL);
-
-    if (!blaza_place) {
-        $(".close-alert").click();
-        alert_box.failMessage("لا يمكنك ارسال بعثات خارج المدينة حيث لا يوجد بلازا داخل المدينة");
+    var _0x24c850 = cityHasType(BUILDING_TYPS['HOSPITAL']);
+    if (!_0x24c850) {
+        $('.close-alert')['click'](), alert_box['failMessage']('لا يمكنك ارسال بعثات خارج المدينة حيث لا يوجد بلازا داخل المدينة');
         return;
     }
-
-    var blaza_lvl = Math.min(Number(Elkaisar.City.getCity().BuildingLvl[blaza_place]), 20);
-
-    if (out_hero >= blaza_lvl) {
-        $(".close-alert").click();
-        alert_box.failMessage("وصل عدد الابطال بالخارج الى الحد الاقصى لا يمكنك ارسال قوات اخرى</br> (يمكنك الانتظار حتى عودة الابطال من الخارج)");
+    var _0x63b21d = Math['min'](Number(Elkaisar['City']['getCity']()['BuildingLvl'][_0x24c850]), 0x14);
+    if (_0x2a0e73 >= _0x63b21d) {
+        $('.close-alert')['click'](), alert_box['failMessage']('وصل عدد الابطال بالخارج الى الحد الاقصى لا يمكنك ارسال قوات اخرى</br> (يمكنك الانتظار حتى عودة الابطال من الخارج)');
         return;
     }
-
-
-    if (!Battel.isAttackable(Elkaisar.CurrentHero.Hero.id_hero, _wu.ut)) {
-
-        alert_box.failMessage("لا يمكنك الهجوم بالبطل الحالى! ");
+    if (!Battel['isAttackable'](Elkaisar['CurrentHero']['Hero']['id_hero'], _0x2d501c['ut'])) {
+        alert_box['failMessage']('لا يمكنك الهجوم بالبطل الحالى! ');
         return;
-
     }
-
-    if (Number(battel_data.task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY) {
-
-        Battel.millertySupply(battel_data.x_coord, battel_data.y_coord);
-        Elkaisar.CurrentHero.Hero.in_city = 1;
-        city_profile.refresh_hero_view();
+    if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPLY']) {
+        Battel['millertySupply'](battel_data['x_coord'], battel_data['y_coord']), Elkaisar['CurrentHero']['Hero']['in_city'] = 0x1, city_profile['refresh_hero_view']();
         return;
-
     }
-
-    if (Number(battel_data.task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_JOIN_ATT
-            || Number(battel_data.task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_JOIN_DEF) {
-
-
-        if (!Battel.checkJoinReq(battel_data.x_coord, battel_data.y_coord)) {
-
-            alert_box.failMessage(`لا يوجد لديك مواد كافية للانضمام`);
+    if (isMyBarr(_0x2d501c['x'], _0x2d501c['y'])) {
+        alert_box['failMessage']('لا يمكنك الهجوم على البرارى الخاصة بك');
+        return;
+    }
+    if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_JOIN_ATT'] || Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_JOIN_DEF']) {
+        if (!Battel['checkJoinReq'](battel_data['x_coord'], battel_data['y_coord'])) {
+            alert_box['failMessage']('لا يوجد لديك مواد كافية للانضمام');
             return;
         }
-
-        $.ajax({
-
-            url: `${API_URL}/api/ABattelRunning/joinBattel`,
-            data: {
-                idBattel: battel_data.id_battel,
-                idHero: Elkaisar.CurrentHero.Hero.id_hero,
-                side: battel_data.side,
-                token: Elkaisar.Config.OuthToken,
-                server: Elkaisar.Config.idServer
-
+        $['ajax']({
+            'url': API_URL + '/api/ABattelRunning/joinBattel',
+            'data': {
+                'idBattel': battel_data['id_battel'],
+                'idHero': Elkaisar['CurrentHero']['Hero']['id_hero'],
+                'side': battel_data['side'],
+                'token': Elkaisar['Config']['OuthToken'],
+                'server': Elkaisar['Config']['idServer']
             },
-            type: 'POST',
-            success: function (data, textStatus, jqXHR) {
-
-                if (isJson(data)) {
-                    var jsonData = JSON.parse(data);
+            'type': 'POST',
+            'success': function (_0x311475, _0x4f103d, _0x3e9120) {
+                if (isJson(_0x311475)) var _0x12bab5 = JSON['parse'](_0x311475);
+                else alert(_0x311475);
+                if (_0x12bab5['state'] === 'ok') {
+                    $('.close_dialog')['trigger']('click'), Elkaisar['CurrentHero']['Hero']['in_city'] = 0x0, $('.close-alert')['trigger']('click'), battel_data['type'] = _0x12bab5['unit_type'], battel_data['lvl'] = _0x12bab5['unit_lvl'], Hero['heroAttackProc'](), PLAYER_NOTIF['hero_in_battel'] = Number(PLAYER_NOTIF['hero_in_battel']) + 0x1, city_profile['refresh_hero_view']();
+                    var _0x4cad5b = _0x12bab5['Battel'],
+                        _0xf08408 = ![];
+                    for (var _0x5f08e9 in Elkaisar['Battel']['Battels']) {
+                        Number(Elkaisar['Battel']['Battels'][_0x5f08e9]['id_battel']) === Number(battel_data['id_battel']) && (_0xf08408 = !![], Elkaisar['Battel']['Battels'][_0x5f08e9] = _0x4cad5b);
+                    }!_0xf08408 && (PLAYER_NOTIF['battel_number'] = Number(PLAYER_NOTIF['battel_number']) + 0x1, !Elkaisar['Battel']['Battels'] ? Elkaisar['Battel']['Battels'] = [_0x4cad5b] : Elkaisar['Battel']['Battels']['push'](_0x4cad5b)), Fixed['refreshPlayerNotif'](), Battel['afterJoin'](battel_data['x_coord'], battel_data['y_coord']);
                 } else {
-                    alert(data);
-                }
-
-
-                if (jsonData.state === "ok") {
-
-                    $(".close_dialog").trigger("click");
-                    Elkaisar.CurrentHero.Hero.in_city = 0;
-                    $(".close-alert").trigger("click");
-
-                    battel_data.type = jsonData.unit_type;
-                    battel_data.lvl = jsonData.unit_lvl;
-                    Hero.heroAttackProc();
-
-                    PLAYER_NOTIF.hero_in_battel = Number(PLAYER_NOTIF.hero_in_battel) + 1;
-                    city_profile.refresh_hero_view();
-
-
-                    var battel = jsonData.Battel;
-
-                    var found = false;
-                    for (var iii in Elkaisar.Battel.Battels) {
-
-                        if (Number(Elkaisar.Battel.Battels[iii].id_battel) === Number(battel_data.id_battel)) {
-                            found = true;
-                            Elkaisar.Battel.Battels[iii] = battel;
-                        }
-
-                    }
-
-                    if (!found) {
-                        PLAYER_NOTIF.battel_number = Number(PLAYER_NOTIF.battel_number) + 1;
-
-
-                        if (!Elkaisar.Battel.Battels) {
-                            Elkaisar.Battel.Battels = [battel];
-                        } else {
-                            Elkaisar.Battel.Battels.push(battel);
+                    if (_0x12bab5['state'] === 'error_1') alert_box['confirmMessage']('البطل ليس فى المدينة');
+                    else {
+                        if (_0x12bab5['state'] === 'error_2') alert_box['confirmMessage']('انتهت المعركة لا يمكنك الانضمام');
+                        else {
+                            if (_0x12bab5['state'] === 'error_3') alert_box['confirmMessage']('لا يمكنك الانضمام للدفاع </br> (وصل عدد المنضمين الى الحد الاقصى)');
+                            else {
+                                if (_0x12bab5['state'] === 'error_5') alert_box['confirmMessage']('لا يمكنك الدفاع ضد هذا الحلف');
+                                else _0x12bab5['state'] === 'error_6' ? alert_box['confirmMessage']('المواد غير كافية') : alert_box['confirmMessage']('لا يمكنك الانضمام');
+                            }
                         }
                     }
-                    Fixed.refreshPlayerNotif();
-                    Battel.afterJoin(battel_data.x_coord, battel_data.y_coord);
-
-                } else if (jsonData.state === "error_1") {
-                    alert_box.confirmMessage("البطل ليس فى المدينة");
-
-                } else if (jsonData.state === "error_2") {
-                    alert_box.confirmMessage("انتهت المعركة لا يمكنك الانضمام");
-
-                } else if (jsonData.state === "error_3") {
-
-                    alert_box.confirmMessage("لا يمكنك الانضمام للدفاع </br> (وصل عدد المنضمين الى الحد الاقصى)");
-
-                } else if (jsonData.state === "error_5") {
-
-                    alert_box.confirmMessage("لا يمكنك الدفاع ضد هذا الحلف");
-
-                } else if (jsonData.state === "error_6") {
-
-                    alert_box.confirmMessage("المواد غير كافية");
-
-                } else {
-                    alert_box.confirmMessage("لا يمكنك الانضمام");
-
                 }
             },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-
+            'error': function (_0x9c1e15, _0x370e1e, _0x58f5ad) {}
         });
-
-
-    } else if (Number(battel_data.task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPORT) {
-        Elkaisar.Battel.supportByHero();
-    } else if (Number(battel_data.task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_HERO_TRANS) {
-        Elkaisar.Battel.TransHero();
     } else {
-
-        ws.send(
-                JSON.stringify({
-                    url: "Battel/start",
-                    data: {
-                        xCoord: battel_data.x_coord,
-                        yCoord: battel_data.y_coord,
-                        idHero: Elkaisar.CurrentHero.Hero.id_hero,
-                        attackTask: battel_data.task
-                    }
-                })
-                );
-
-
+        if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPORT']) Elkaisar['Battel']['supportByHero']();
+        else Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_HERO_TRANS'] ? Elkaisar['Battel']['TransHero']() : ws['send'](JSON['stringify']({
+            'url': 'Battel/start',
+            'data': {
+                'xCoord': battel_data['x_coord'],
+                'yCoord': battel_data['y_coord'],
+                'idHero': Elkaisar['CurrentHero']['Hero']['id_hero'],
+                'attackTask': battel_data['task']
+            }
+        }));
     }
-
 }
 
 

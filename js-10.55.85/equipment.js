@@ -80,6 +80,18 @@ Elkaisar.Equip.getEquipUnit = function(idEquip)
     return {};
 };
 
+
+ Elkaisar['Equip']['getPlayerAmount'] = function (_0x3cb83a, _0x1d2713, _0x418150) {
+    var _0x325661 = 0x0;
+    for (var _0x33d3f4 in Elkaisar['DPlayer']['Equip']) {
+        if (Elkaisar['DPlayer']['Equip'][_0x33d3f4]['type'] == _0x3cb83a && Elkaisar['DPlayer']['Equip'][_0x33d3f4]['part'] == _0x1d2713 && Elkaisar['DPlayer']['Equip'][_0x33d3f4]['lvl'] == _0x418150) _0x325661++;
+    }
+    return _0x325661;
+};
+$(document)['on']('PlayerReady', 'html', function () {
+    Elkaisar['Equip']['getEquipData']();
+});
+
 var Equipment = {
     
     secoundryList:["belt","necklace","pendant","ring","steed"],
@@ -184,6 +196,10 @@ var Equipment = {
         
         return count;
         
+    },
+    
+    'getData': function (Equip, Part, Lvl) {
+        return Elkaisar['Equip']['EquipList'][Equip + '_' + Part + '_' + (Lvl || 0x1)];
     }
     
 };

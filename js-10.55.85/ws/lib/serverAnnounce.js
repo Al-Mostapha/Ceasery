@@ -13,8 +13,8 @@ Elkaisar.WsLib.ServerAnnounce.capitalUnLock = function (data) {
 Elkaisar.WsLib.ServerAnnounce.capitalLock = function (data) {
 
     var playerName = "---";
-    
-    if(data.Player)
+
+    if (data.Player)
         playerName = data.Player.name || "----";
 
     var WorldUnit = data.WorldUnit;
@@ -153,4 +153,65 @@ Elkaisar.WsLib.ServerAnnounce.CityColonized = function (data)
     var msg = `<div class="battel-f-ann">نجح الملك <span class="red">${data.ColonizerName}</span> فى استعمار المدينة <span class="red">${data.CityColonizedName}</span> [${data.yCoord},${data.xCoord}] التابعة للملك <span class="red">${data.ColonizedName}</span> </div>`;
     Chat.append(Extract.coords(msg));
 
+};
+
+
+Elkaisar.WsLib.ServerAnnounce.newMailSent = function (data) {
+    var Msg = `<div class="msg-unit ann-red announce">تم وصول رسالة بريد من النظام</div>`;
+    Chat['append'](Msg);
+    PLAYER_NOTIF['msg_in']++;
+    Fixed['refreshPlayerNotif']();
+}
+
+Elkaisar.WsLib.ServerAnnounce.NewServerAnnounce = function (data) {
+    var Msg = `<div class="msg-unit announce server-announce-${data['AnnounceRank']}">[النظام]:  ${data['Announce']} </div>`;
+    Chat['append'](Msg);
+};
+
+
+Elkaisar.WsLib.ServerAnnounce.ArenachallangeLvlUp = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! تم ترقية ميدان الملك  
+                (<span class="red"> ${data['Player']['PlayerName']}</span>)
+              الى مستوى   (<span class="red">  ${(Number(data['ArenaData']['lvl']) + 0x1)}  </span>)  
+                </div>'`;
+    Chat['append'](Msg);
+    if (Elkaisar['DPlayer']['Player']['id_player'] == data['Player']['id_player'])
+        Elkaisar.ArenaChallange.getArenaData().done(function () {
+            $('#SArenaField')['click']();
+        });
+};
+
+Elkaisar.WsLib.ServerAnnounce.KingOfArenaChallange = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! اصبح الملك   (<span class="red">  ${data['Player']['PlayerName']}  </span>)   ملك ميدان التحدى الاول!}</div>`;
+    Chat['append'](Msg);
+    if (Elkaisar['DPlayer']['Player']['id_player'] == _0x363f73['Player']['id_player']) {
+        Elkaisar['ArenaChallange']['getArenaData']()['done'](function () {
+            $('#SArenaField')['click']();
+        });
+    }
+};
+
+ Elkaisar.WsLib.ServerAnnounce.ArenaChallangeRoundEnd = function (data) {
+    var Msg = `<div class="battel-f-ann">تم انهاء جولة ميدان التحدى و فاز الملك   (<span class="red">  ${data['PlayerName']}  </span>)   !</div>`;
+    Chat['append'](Msg);
+};
+
+Elkaisar.WsLib.ServerAnnounce.SeaCityOppend = function (_0xa042dd) {
+    var Msg = `<div class="battel-f-ann"> تم فتح قلاع   <span class="red">الغذاء </span> و <span class="red">الاخشاب </span>و  <span class="red"> الحديد</span> و <span class="red">الصخور</span>  وسيتم اغلاقها بعد <span class="red">ساعة</span> !</div>`;
+    Chat['append'](Msg);
+};
+
+Elkaisar.WsLib.ServerAnnounce.SeaCityClosed = function (data) {
+    var Msg = `<div class="battel-f-ann"> تم غلق قلاع <span class="red">الغذاء </span> و <span class="red">الاخشاب</span> و <span class="red">الحديد</span> و <span class="red">الصخور</span> !</div>`;
+    Chat['append'](Msg);
+};
+
+Elkaisar.WsLib.ServerAnnounce.SeaCityCoinOppend = function (data) {
+    var Msg = '<div class="battel-f-ann"> تم فتح قلاع <span class="red">عملات السسترسس </span>  وسيتم اغلاقها بعد <span class="red">ساعة</span> !</div>';
+    Chat['append'](Msg);
+};
+
+Elkaisar.WsLib.ServerAnnounce.SeaCityCoinClosed = function (data) {
+    var Msg = '<div class="battel-f-ann"> تم غلق قلاع <span class="red">عملات السسترسس </span>!</div>';
+    Chat['append'](Msg);
 };

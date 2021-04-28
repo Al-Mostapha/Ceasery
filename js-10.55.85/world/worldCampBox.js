@@ -448,47 +448,31 @@ var campDB = {
         }
         return total;
     },
-    
-    getArmyAmountForUnit(type  , lvl ,  army_type){
-        
-        if(WorldUnit.isMonawrat(type) || WorldUnit.isCamp(type)){
-             if(lvl > 50){
-                 return 0;
-             }
-            var factor = 1;
-            if(parseInt(type) === 30){
-                factor = 3;
-            }
-
-            if(army_mo3_and_mon[lvl].type_1 === army_type){
-
-                return army_mo3_and_mon[lvl].amount_1*factor;
-
-            }else if(army_mo3_and_mon[lvl].type_2 === army_type){
-
-                return army_mo3_and_mon[lvl].amount_2*factor;
-
-            }
-        }else if(WorldUnit.isAsianSquads(type)){
-            
-            return ARMY_ASIAN_SQUAD[type][army_type];
-
-        }else if(WorldUnit.isGangStar(type)){
-            
-           return ARMY_GANGSTAR[type][army_type]*(Number(lvl));
-           
-        }else if(WorldUnit.isCarthagianArmies(type)){
-            if(lvl > 100){
-                return 0;
-            }
-            return ARMY_CARTHIAN[type][Math.max(lvl , 1)][army_type];
-            
-        }
-             
-             
-             
-        return 0;
-        
+    'getArmyAmountForUnit'(_0x4e6ff3, _0x1d5b26, _0x51800a) {
+        if (!Elkaisar['World']['UnitArmy'][_0x4e6ff3]) return 0x0;
+        if (!Elkaisar['World']['UnitArmy'][_0x4e6ff3][_0x1d5b26]) return 0x0;
+        if (!Elkaisar['World']['UnitArmy'][_0x4e6ff3][_0x1d5b26][_0x51800a]) return 0x0;
+        return Elkaisar['World']['UnitArmy'][_0x4e6ff3][_0x1d5b26][_0x51800a];
+    },
+    'getDominaterName'(_0x55fe70, _0x2ed502) {
+        var _0x2fc550 = WorldUnit['getWorldUnit'](_0x55fe70, _0x2ed502);
+        $['ajax']({
+            'url': API_URL + '/api/AWorldUnit/getWorldUnitDominator',
+            'type': 'GET',
+            'data': {
+                'xCoord': _0x55fe70,
+                'yCoord': _0x2ed502,
+                'unitType': _0x2fc550['ut'],
+                'server': Elkaisar['Config']['idServer'],
+                'token': Elkaisar['Config']['OuthToken']
+            },
+            'success': function (_0x3a86ff, _0x2bf316, _0x1a4707) {
+                if (!Elkaisar['LBase']['isJson'](_0x3a86ff)) return Elkaisar['LBase']['Error'](_0x3a86ff);
+                var _0x46e8fa = JSON['parse'](_0x3a86ff);
+                if (_0x46e8fa['Name'] != '') $('#reviewUnitBox')['html'](_0x46e8fa['Name']);
+            },
+            'error': function (_0x1ed427, _0xebf258, _0x2fd59e) {}
+        });
     }
 };
 

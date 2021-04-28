@@ -346,6 +346,6 @@ $(document).on("click" , "#change-city-pro-rate" , function (){
             
         }
         
-    })
+    });
     
 });

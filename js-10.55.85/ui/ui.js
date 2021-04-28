@@ -44,3 +44,16 @@ $(document).on("click", ".select-list .unit-option", function (){
     
     
 });
+
+$(document)['on']('click', '.uiCheckedBox', function () {
+    $(this)['removeClass']('uiCheckedBox'), $(this)['addClass']('uiUnCheckBox');
+});
+$(document)['on']('click', '.uiUnCheckBox', function () {
+    $(this)['addClass']('uiCheckedBox'), $(this)['removeClass']('uiUnCheckBox');
+});
+$(document)['on']('click', '.uiCheckedRadio', function () {
+    $(this)['removeClass']('uiCheckedRadio'), $(this)['addClass']('uiUnCheckedRadio');
+});
+$(document)['on']('click', '.uiUnCheckedRadio', function () {
+    $(this)['addClass']('uiCheckedRadio'), $(this)['removeClass']('uiUnCheckedRadio');
+});

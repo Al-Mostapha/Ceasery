@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/heroArmy.js</file>
-            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/hero.js</file>
-            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/army.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/feature/emjoi.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/battel/joinAttack.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/feature/contribute.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/equipment.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/battel/battelField.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/ui/ui.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/templete/js.php</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/base/LPreLoad.js</file>
         </group>
     </open-files>
 </project-private>

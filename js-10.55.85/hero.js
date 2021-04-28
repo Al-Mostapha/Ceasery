@@ -32,6 +32,12 @@ Elkaisar.Hero.orderHeors = function (){
             //.map(el=>el[0]);
 };
 
+Elkaisar.Hero.isConsole = function (idHero) {
+    for (var idCity in Elkaisar['DPlayer']['City'])
+        if (Elkaisar['DPlayer']['City'][idCity]['City']['console'] == idHero) return true;
+    return false;
+};
+
 
 $(document).on("click" , ".show-hero-theater" , function (){
     
@@ -149,9 +155,7 @@ function showHero(hero , recruit)
     $("body").append(over_lay);
     
     $("#recurit-new-hero").click(function (){
-        
         Hero.addHeroFromTheatr(Number(hero.id_in_theater , hero.lvl));
-        
     });
 }
 
@@ -983,7 +987,8 @@ $(document).on("click" , "#navigate-btn .go-one-page-eq-left" , function (){
     var offset = $(".equip-unit:first").attr("data-offset");
     var equi_part = $("#eq-part-select .selected button").attr("data-equi-part");
     
-    if(offset - 24  < 0) return ;
+    if(offset - 24  < 0)
+        offset = 24;
     $("#equip-list-heroDia").html(army.getEquipList(offset - 24 , equi_part));
 });
 
@@ -1004,15 +1009,13 @@ $(document).on("click" , "#navigate-btn .go-one-page-eq-right" , function (){
 $(document).on("dblclick" , ".putable-equi" , function (){
     
     var id_equip   = $(this).attr("id_equip");
-    var equip_part = $(this).attr("equip_part");
-    var equip_type = $(this).attr("equip_type");
     var id_hero    = Elkaisar.CurrentHero.Hero.id_hero;
     
     if($(this).attr("disabled") === "disabled")return ;
     
     $(".putable-equi").attr("disabled" , "disabled" ) ;
     
-    var now_ =  Date.now();
+  
     
     if(!heroAvailableForTask(id_hero)){
         alert_box.confirmMessage("لا يمكن نقل المعدات </br> البطل فى مهمة");
@@ -1020,9 +1023,7 @@ $(document).on("dblclick" , ".putable-equi" , function (){
         
     }
     
-    var old_image =  $(this).css("background-image");
-    var self = $(this);
-    var now_ = Date.now();
+  
     
     
     
@@ -1067,11 +1068,9 @@ $(document).on("dblclick" , ".putable-equi" , function (){
 
             }else if(json_data.state === "error_3"){
                   alert_box.confirmMessage("البطل ليس فى المدينة");
-            }else{
+            }else if(json_data.state == "ok"){
                 
-                var el =  document.getElementById(equip_part);
-                var replace_ment = `<button style='background-image: ${old_image}' id="${equip_part}" equip_part="${equip_part}" id_equip="${id_equip}" class="on_equip" equip_type="${equip_type}"></button>`;
-
+              
                 for(var iii in json_data.PlayerEquip)
                 {
                     Elkaisar.Equip.getEquipUnit(json_data.PlayerEquip[iii].id_equip).id_hero = json_data.PlayerEquip[iii].id_hero;
@@ -1079,12 +1078,14 @@ $(document).on("dblclick" , ".putable-equi" , function (){
                 }
                 
                 Elkaisar.Equip.distributeEquip();
-
-                $("#"+equip_part).replaceWith(replace_ment);
+                army.HeroEquip();
+                
                 var offset = Number($(".equip-unit:first").attr("data-offset"));
                 var equi_part = $("#eq-part-select .selected button").attr("data-equi-part");
                 $("#equip-list-heroDia").html(army.getEquipList(offset , equi_part));
                 
+            }else{
+                Elkaisar.LBase.Error(data);
             }
             
            
@@ -1098,10 +1099,43 @@ $(document).on("dblclick" , ".putable-equi" , function (){
 });
 
 
+Elkaisar.Hero.getEquipOffHero = function (idEquip) {
+    return $['ajax']({
+        'url': API_URL + '/api/AHeroEquip/putEquipOffHero',
+        'data': {
+            'idEquip': idEquip,
+            'token': Elkaisar['Config']['OuthToken'],
+            'server': Elkaisar['Config']['idServer']
+        },
+        'type': 'POST',
+        'beforeSend': function (_0x357aa2) {
+            waitCursor();
+        },
+        'success': function (_0x1b8d26, _0x56a04b, _0x499453) {
+            unwaitCursor();
+            if (!Elkaisar['LBase']['isJson'](_0x1b8d26)) return Elkaisar['Error'](_0x1b8d26);
+            var _0x29c7b2 = JSON['parse'](_0x1b8d26);
+            if (_0x29c7b2['state'] === 'error_0') alert_box['confirmMessage']('لا تمتلك هذه المعدة'), Elkaisar['Equip']['getPlayerEquip']();
+            else {
+                if (_0x29c7b2['state'] === 'error_1') alert_box['confirmMessage']('لا تمتلك هذا البطل'), Elkaisar['City']['getCityHero']();
+                else {
+                    if (_0x29c7b2['state'] === 'error_2') alert_box['confirmMessage']('لا يمكن لقطعة المعدة الواحدة ان تكون لاكثر من بطل'), Elkaisar['Equip']['getPlayerEquip']();
+                    else {
+                        if (_0x29c7b2['state'] === 'error_3') alert_box['confirmMessage']('البطل ليس فى المدينة');
+                        else if (_0x29c7b2['state'] === 'ok') {
+                            for (var _0xeee9ee in _0x29c7b2['PlayerEquip']) {
+                                Elkaisar['Equip']['getEquipUnit'](_0x29c7b2['PlayerEquip'][_0xeee9ee]['id_equip'])['id_hero'] = _0x29c7b2['PlayerEquip'][_0xeee9ee]['id_hero'], Elkaisar['Equip']['getEquipUnit'](_0x29c7b2['PlayerEquip'][_0xeee9ee]['id_equip'])['on_hero'] = _0x29c7b2['PlayerEquip'][_0xeee9ee]['on_hero'];
+                            }
+                            Elkaisar['Equip']['distributeEquip']();
+                        }
+                    }
+                }
+            }
+        },
+        'error': function (_0x146c8b, _0x252f13, _0x4b01cf) {}
+    });
+}
 
-// put equipmet off hero
-
-// to get off equipment 
 $(document).on("dblclick" , ".on_equip" , function (){
     
     
@@ -1116,96 +1150,23 @@ $(document).on("dblclick" , ".on_equip" , function (){
     }
     if($(this).attr("disabled") === "disabled")return ;
     $(".on_equip").attr("disabled" , "disabled" ) ;
-    
-    var equip_part = $(this).attr("equip_part");
-    var equip_type = $(this).attr("equip_type");
-    var old_image  =  $(this).css("background-image");
-    var equip_type = $(this).attr("equip_type");
-    var equip_lvl  = Number($(this).attr("data-lvl"));
-    var equip_cat  = Number($(this).attr("data-cat"));
     var self = $(this);
-    
-    if(id_equip === "-1"){
-        return ;
-    }
-    
-    var now_ = Date.now();
-    
-    
-     $.ajax({
-        url: `${API_URL}/api/AHeroEquip/putEquipOffHero`,
-        data: {
-            idEquip : id_equip,
-            token   : Elkaisar.Config.OuthToken,
-            server  : Elkaisar.Config.idServer
-        },
-        type: 'POST',
-        beforeSend: function (xhr) {
-            waitCursor();
-        },
-        success: function (data, textStatus, jqXHR) {
-            
-            unwaitCursor();
-            $(".on_equip").removeAttr("disabled" , "disabled" );
-            
-           
-            
-            if(!Elkaisar.LBase.isJson(data))
-                return Elkaisar.Error(data);
-            
-            var json_data = JSON.parse(data);
-            
-          
-          
-            if(json_data.state === "error_0"){
-                
-                  alert_box.confirmMessage("لا تمتلك هذه المعدة");
-                  Elkaisar.Equip.getPlayerEquip();
-                  
-            }else if(json_data.state === "error_1"){
-                
-                  alert_box.confirmMessage("لا تمتلك هذا البطل");
-                  Elkaisar.City.getCityHero();
-                  
-            }else if(json_data.state === "error_2"){
-
-                  alert_box.confirmMessage("لا يمكن لقطعة المعدة الواحدة ان تكون لاكثر من بطل");
-                  Elkaisar.Equip.getPlayerEquip();
-
-            }else if(json_data.state === "error_3"){
-                  alert_box.confirmMessage("البطل ليس فى المدينة");
-            }else{
-                
-                 $(this).removeClass("on_equip");
-            
-                self.css("background-image" ,"url(images/tech/no_army.png)" );
-                self.removeAttr("id_equip" , -1);
-                self.removeAttr("equip_part");
-                self.removeAttr("equip_type");
-                
-                
-                var replace_ment = `<button style='background-image: ${old_image}' id="${equip_part}" equip_part="${equip_part}" id_equip="${id_equip}" class="on_equip" equip_type="${equip_type}"></button>`;
-
-                for(var iii in json_data.PlayerEquip)
-                {
-                    Elkaisar.Equip.getEquipUnit(json_data.PlayerEquip[iii].id_equip).id_hero = json_data.PlayerEquip[iii].id_hero;
-                    Elkaisar.Equip.getEquipUnit(json_data.PlayerEquip[iii].id_equip).on_hero = json_data.PlayerEquip[iii].on_hero;
-                }
-                
-                Elkaisar.Equip.distributeEquip();
-
-                $("#"+equip_part).replaceWith(replace_ment);
-                var offset = Number($(".equip-unit:first").attr("data-offset"));
-                var equi_part = $("#eq-part-select .selected button").attr("data-equi-part");
-                $("#equip-list-heroDia").html(army.getEquipList(offset , equi_part));
-                
+    Elkaisar.Hero.getEquipOffHero(id_equip).done(function (data){
+        
+        unwaitCursor();
+        $('.on_equip')['removeAttr']('disabled', 'disabled');
+        var JsonData = JSON.parse(data);
+        if(JsonData.state == "ok"){
+            self['removeClass']('on_equip');
+            for (var iii in JsonData['PlayerEquip']) {
+                Elkaisar['Equip']['getEquipUnit'](JsonData['PlayerEquip'][iii]['id_equip'])['id_hero'] = JsonData['PlayerEquip'][iii]['id_hero'];
+                Elkaisar['Equip']['getEquipUnit'](JsonData['PlayerEquip'][iii]['id_equip'])['on_hero'] = JsonData['PlayerEquip'][iii]['on_hero'];
             }
-            
-           
-            
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            
+            Elkaisar['Equip']['distributeEquip']();
+            army['HeroEquip']();
+            var offset = Number($('.equip-unit:first')['attr']('data-offset'));
+            var part = $('#eq-part-select .selected button')['attr']('data-equi-part');
+            $('#equip-list-heroDia')['html'](army['getEquipList'](offset, part));
         }
     });
 });
@@ -1312,3 +1273,19 @@ $(document).on("click" , ".show-hero-detailed-review" , function (e){
     })
     
 });
+
+Elkaisar['Hero']['showHeroDetail'] = function (_0x1dde0d) {
+    if (!_0x1dde0d) _0x1dde0d = Elkaisar['CurrentHero'];
+    var _0x244de8 = getEquipData(_0x1dde0d['Equip']['sword']),
+        _0x5b7119 = getEquipData(_0x1dde0d['Equip']['helmet']),
+        _0x40e185 = getEquipData(_0x1dde0d['Equip']['boot']),
+        _0x6d6d6d = getEquipData(_0x1dde0d['Equip']['armor']),
+        _0x41d2d3 = getEquipData(_0x1dde0d['Equip']['shield']),
+        _0x53be79 = getEquipData(_0x1dde0d['Equip']['belt']),
+        _0x4ec34c = getEquipData(_0x1dde0d['Equip']['necklace']),
+        _0x2c58ba = getEquipData(_0x1dde0d['Equip']['pendant']),
+        _0x44f6e0 = getEquipData(_0x1dde0d['Equip']['ring']),
+        _0x146cdd = getEquipData(_0x1dde0d['Equip']['steed']),
+        _0x162501 = '<div id=\"hero-over-view\">\x0a                        <div class=\"right\">\x0a                            <div class=\"equip-review\">\x0a                                <ul>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(' + _0x5b7119['image'] + ')\"></div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(' + _0x4ec34c['image'] + ')\"></div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(' + _0x6d6d6d['image'] + ')\"></div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(' + _0x40e185['image'] + ')\"></div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(' + _0x244de8['image'] + ')\"></div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(' + _0x41d2d3['image'] + ')\"></div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(' + _0x2c58ba['image'] + ')\"></div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(' + _0x53be79['image'] + ')\"></div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li style=\"margin-left: 25%;\">\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(' + _0x44f6e0['image'] + ')\"></div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(' + _0x146cdd['image'] + ')\"></div>\x0a                                        </div>\x0a                                    </li>\x0a                                </ul>\x0a                                    \x0a                            </div>\x0a                            <div class=\"row row-3\">\x0a                                <div class=\"pull-L col-1\">الجنود- الفيلق</div>                       \x0a                                <div class=\"pull-L col-2\">\x0a                                    <div class=\"over-text\">' + (getHeroCap(_0x1dde0d['Army']) + '/' + getHeroMaxCap(_0x1dde0d)) + '</div>\x0a                                    <div class=\"colored-bar filak\" style=\"width: ' + getHeroCap(_0x1dde0d['Army']) * 0x64 / getHeroMaxCap(_0x1dde0d) + '%\"></div>\x0a                                </div>\x0a                                <div class=\"pull-L col-3\">\x0a                                </div>\x0a                            </div>\x0a                            <div class=\"dicor\"></div>\x0a                            \x0a                            <div class=\"army-review\">\x0a                                \x0a                                <ul>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(images/tech/' + army_typs[_0x1dde0d['Army']['f_1_type']] + ')\">\x0a                                                <div class=\"amount ' + Fixed['getArmyAmountColor'](_0x1dde0d['Army']['f_1_num']) + '\"> ' + _0x1dde0d['Army']['f_1_num'] + '</div>\x0a                                            </div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(images/tech/' + army_typs[_0x1dde0d['Army']['f_2_type']] + ')\">\x0a                                                <div class=\"amount ' + Fixed['getArmyAmountColor'](_0x1dde0d['Army']['f_2_num']) + '\"> ' + _0x1dde0d['Army']['f_2_num'] + '</div>\x0a                                            </div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(images/tech/' + army_typs[_0x1dde0d['Army']['f_3_type']] + ')\">\x0a                                                <div class=\"amount ' + Fixed['getArmyAmountColor'](_0x1dde0d['Army']['f_3_num']) + '\"> ' + _0x1dde0d['Army']['f_3_num'] + '</div>\x0a                                            </div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(images/tech/' + army_typs[_0x1dde0d['Army']['b_1_type']] + ')\">\x0a                                                <div class=\"amount ' + Fixed['getArmyAmountColor'](_0x1dde0d['Army']['b_1_num']) + '\"> ' + _0x1dde0d['Army']['b_1_num'] + '</div>\x0a                                            </div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(images/tech/' + army_typs[_0x1dde0d['Army']['b_2_type']] + ')\">\x0a                                                <div class=\"amount ' + Fixed['getArmyAmountColor'](_0x1dde0d['Army']['b_2_num']) + '\"> ' + _0x1dde0d['Army']['b_2_num'] + '</div>\x0a                                            </div>\x0a                                        </div>\x0a                                    </li>\x0a                                    <li>\x0a                                        <div class=\"wrapper\">\x0a                                            <div class=\"img\" style=\"background-image: url(images/tech/' + army_typs[_0x1dde0d['Army']['b_3_type']] + ')\">\x0a                                                <div class=\"amount ' + Fixed['getArmyAmountColor'](_0x1dde0d['Army']['b_3_num']) + '\"> ' + _0x1dde0d['Army']['b_3_num'] + '</div>\x0a                                            </div>\x0a                                        </div>\x0a                                    </li>\x0a                                </ul>\x0a                            </div>\x0a                        </div>\x0a                        <div class=\"middel\">\x0a                            \x0a                        </div>\x0a                        <div class=\"left\">\x0a                            <div class=\"hero-data\">\x0a                                <div class=\"name\">\x0a                                    <div class=\"wrapper\">\x0a                                        ' + _0x1dde0d['Hero']['name'] + '\x0a                                    </div>\x0a                                </div>\x0a                                <div class=\"image\">\x0a                                    <div class=\"wrapper\">\x0a                                        <div class=\"avatar-hero\" style=\"background-image: url(' + Elkaisar['BaseData']['HeroAvatar'][_0x1dde0d['Hero']['avatar']] + ')\">\x0a                                            <div class=\"lvl\">' + _0x1dde0d['Hero']['lvl'] + '</div>\x0a                                        </div>\x0a                                    </div>\x0a                                </div>\x0a                            </div>\x0a                            <div class=\"hero-points\">\x0a                                <table border=\"1\">\x0a                                    <tr>\x0a                                        <td>قوة السيطرة</td>\x0a                                        <td> <span style=\" color: #008c10;\"> ' + _0x1dde0d['Hero']['point_a'] + ' + ' + _0x1dde0d['Hero']['point_a_plus'] + '</span></td>\x0a                                    </tr>\x0a                                    <tr>\x0a                                        <td>الشجاعة</td>\x0a                                        <td> <span style=\"color: #b43d02;\"> ' + _0x1dde0d['Hero']['point_b'] + ' + ' + _0x1dde0d['Hero']['point_b_plus'] + '</span></td>\x0a                                    </tr>\x0a                                    <tr>\x0a                                        <td>الدفاع</td>\x0a                                        <td> <span style=\"color: #0065ac;\"> ' + _0x1dde0d['Hero']['point_c'] + ' + ' + _0x1dde0d['Hero']['point_c_plus'] + '</span></td>\x0a                                    </tr>\x0a                                </table>\x0a                            </div>\x0a                        </div>\x0a                    </div>';
+    alert_box['alert3X2'](Translate['Title']['Alert']['ShowHero'][UserLag['language']], _0x162501);
+};

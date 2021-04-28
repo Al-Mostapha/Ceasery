@@ -303,7 +303,7 @@ var Reports = {
 
 
 /*  retreat from battel */
-$(document).on("click", ".battel_hero_back", function () {
+$(document).on("click", ".battel_hero_back, #getHeroFromBattel", function () {
 
     var id_hero = $(this).parents(".tr").attr("id_hero");
     var id_battel = $(this).parents(".tr").attr("id_battel");

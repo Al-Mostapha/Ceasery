@@ -3,13 +3,17 @@ Elkaisar.WsLib.Battel = {};
 Elkaisar.WsLib.World = {};
 Elkaisar.WsLib.World.Fire = {};
 
-Elkaisar.WsLib.World.Fire.On = function (data)
-{
-    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord).entite;
-    world_unit.__state = 1;
-    Animation.fireWorldUnit({x_coord: data.xCoord, y_coord: data.yCoord});
-    
+Elkaisar.WsLib.World.ResetLvl = function (data){
+    for (var ii in Elkaisar['worldAllUnits']) {
+        if (Elkaisar['worldAllUnits'][ii]['ut'] === 0x0) continue;
+        if (Elkaisar['worldAllUnits'][ii]['ut'] < WUT_MONAWRAT) continue;
+        if (!_0x3c5af6['UnitList']['includes'](Elkaisar['worldAllUnits'][ii]['ut'])) continue;
+        Elkaisar['worldAllUnits'][ii]['l'] = 0x1;
+    }
+    alert_box['systemChatMessage']('تم اعادة التعين');
 }
+
+
 
 Elkaisar.WsLib.World.Fire.On = function (data)
 {
@@ -21,9 +25,23 @@ Elkaisar.WsLib.World.Fire.On = function (data)
 
 Elkaisar.WsLib.World.Fire.Off = function (data)
 {
+    var Unit = WorldUnit['getWorldUnit'](data['xCoord'], data['yCoord']);
+    Unit['s'] = 0;
     WorldUnit.refreshUnitView(data.xCoord , data.yCoord);
 }
 
+Elkaisar.WsLib.World.RefereshWorldUnit = function (data){
+    var WorldUnits = data['WorldUnits'];
+    for (var ii in WorldUnits) {
+        var Unit   = Elkaisar['worldAllUnits'][WorldUnits[ii]['x'] * 500 + WorldUnits[ii]['y']];
+        Unit['t']  = WorldUnits[ii]['t'];
+        Unit['ut'] = WorldUnits[ii]['ut'];
+        Unit['l']  = WorldUnits[ii]['l'];
+        WorldUnit.refreshUnitView(WorldUnits[ii]['x'], WorldUnits[ii]['y']);
+    }
+    Elkaisar.World.Map.getWorldCityColonized();
+    Elkaisar.World.Map.getWorldCity();
+}
 Elkaisar.WsLib.Battel.battel = function (data) {
     
     if (data.task === "finish") {

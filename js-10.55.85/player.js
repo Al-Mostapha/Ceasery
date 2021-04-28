@@ -196,5 +196,6 @@ var Player_profile = {
 $(document).on("PlayerReady", "html", function (){
    Player_profile.getPlayerEdu(); 
    Player_profile.getPlayerGuildData(); 
-   Player_profile.getPlayerStateData(); 
+   Player_profile.getPlayerStateData();
+   Elkaisar.ArenaChallange.getArenaData();
 });

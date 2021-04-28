@@ -943,8 +943,8 @@ var army = {
 
         if (!army)
             army = Elkaisar.NextHero.Army;
-        if(!army)
-            return ;
+        if (!army)
+            return;
 
         var army_list = `
                         <li class="sol hero_sol dropArmyImage dargOverArmyImage" id="f_1_2" army_place="f_1"  army-type="sol-${army.f_1_type}" data-id-hero="${army.id_hero}" data-drop-place="hero" data-army-place="f_1">
@@ -1236,7 +1236,7 @@ var army = {
 
         $("#after-call-rightTrade").html(right);
         this.getCurrentArmy(Elkaisar.NextHero);
-        
+
 
 
 
@@ -1385,228 +1385,51 @@ var army = {
                     </li>
                 </ul>`;
     },
-    getEquipList: function (offset, part) {
-
-        if (isNaN(offset)) {
-            offset = 0;
+    'getEquipList': function (_0x54ba51, _0x3318e8) {
+        isNaN(_0x54ba51) && (_0x54ba51 = 0x0);
+        typeof _0x3318e8 != 'string' && (_0x3318e8 = 'all');
+        var _0x31720f = 0x0,
+                _0x2b41e5 = '';
+        for (var _0x487090 in Elkaisar['DPlayer']['Equip'])
+            if ((_0x3318e8 === Elkaisar['DPlayer']['Equip'][_0x487090]['part'] || _0x3318e8 === 'all') && !Elkaisar['DPlayer']['Equip'][_0x487090]['id_hero'])
+                _0x31720f++;
+        for (var _0x4b0a19 = 0x0, _0x26b7cb = 0x0; _0x26b7cb < 0x18; _0x4b0a19++) {
+            var _0x22417d = _0x4b0a19 + _0x54ba51;
+            if (Elkaisar['DPlayer']['Equip'][_0x22417d]) {
+                var _0x57ee24 = Elkaisar['DPlayer']['Equip'][_0x22417d]['type'],
+                        _0x50aa77 = Elkaisar['DPlayer']['Equip'][_0x22417d]['part'],
+                        _0x3ff925 = Elkaisar['DPlayer']['Equip'][_0x22417d]['lvl'];
+                if (Elkaisar['DPlayer']['Equip'][_0x22417d]['id_hero'] > 0x0)
+                    continue;
+                if (_0x50aa77 != _0x3318e8 && _0x3318e8 != 'all')
+                    continue;
+                _0x2b41e5 += '<div class=\"unite-eq\">\x0a                                    <button style=\"background-image: url(' + Equipment['getImage'](_0x57ee24, _0x50aa77, _0x3ff925) + ')\" \x0a                                 id_equip =\"' + Elkaisar['DPlayer']['Equip'][_0x22417d]['id_equip'] + '\" equip_part=\"' + _0x50aa77 + '\"\x0a                                         equip_type=\"' + _0x57ee24 + '\" data-list-part=\"' + _0x3318e8 + '\"\x0a                                         data-offset=\"' + (_0x26b7cb + Number(_0x54ba51)) + '\"\x0a                                         class=\"avail_equip putable-equi equip-unit\" data-equi-part=\"' + _0x50aa77 + '\" data-equi-lvl=\"' + _0x3ff925 + '\" data-equi-type=\"' + _0x57ee24 + '\"\x0a                                        ></button>\x0a                             </div> ';
+            } else
+                _0x2b41e5 += ' <div class=\"unite-eq\">\x0a                                    <button disabled=\"disabled\" class=\"avail_equip\" style=\"background-image: url(images/icons/hero/eq-bg.png)\"></button>\x0a                                </div>  ';
+            _0x26b7cb++;
         }
-
-        if (typeof part !== "string") {
-            part = "all";
-        }
-
-
-        var all_equip = "";
-        var conter = 0;
-        var total = 0;
-
-
-
-
-
-        var end = Math.min(Elkaisar.DPlayer.Equip.length - offset, 24);
-
-        for (var iii = 0 + offset; iii < Elkaisar.DPlayer.Equip.length; iii++) {
-
-            if ((part === Elkaisar.DPlayer.Equip[iii]["part"] || part === "all") && Elkaisar.DPlayer.Equip[iii].id_hero <= 0) {
-
-                if (conter < end) {
-
-                    var unit_type = Elkaisar.DPlayer.Equip[iii]["type"];
-                    var unit_part = Elkaisar.DPlayer.Equip[iii]["part"];
-                    var unit_lvl = Elkaisar.DPlayer.Equip[iii]["lvl"];
-
-                    all_equip += `                 <div class="unite-eq">
-                                                           <button style="background-image: url(${Equipment.getImage(unit_type, unit_part, unit_lvl - 1)})" 
-                                                        id_equip ="${Elkaisar.DPlayer.Equip[iii]["id_equip"]}"
-                                                                equip_part="${Elkaisar.DPlayer.Equip[iii]["part"]}"
-                                                                equip_type="${Elkaisar.DPlayer.Equip[iii]["type"]}"
-                                                                data-offset="${iii}"
-                                                                class="avail_equip putable-equi equip-unit" data-equi-part="${unit_part}" data-equi-lvl="${unit_lvl}" data-equi-type="${unit_type}"
-                                                               ></button>
-                                                    </div>  `;
-                    conter++;
-                }
-
-                total++;
-
-            }
-
-
-        }
-
-        for (var jjj = 0; jjj < 24 - conter; jjj++) {
-            all_equip += `                 <div class="unite-eq">
-                                                       <button disabled="disabled" class="avail_equip" style="background-image: url(images/icons/hero/eq-bg.png)"></button>
-                                                </div>  `;
-        }
-
-
-        var i = Math.ceil(offset / 24) + 1;
-        var t = Math.floor(total / 24) + 1;
-        $("#navigate-btn .lable").html(i + "/" + t);
-        return all_equip;
+        var _0x3aabc3 = Math['max'](Math['ceil'](_0x54ba51 / 0x18), 0x1),
+                _0x40d73d = Math['floor'](_0x31720f / 0x18);
+        $('#navigate-btn .lable')['html'](_0x3aabc3 + '/' + _0x40d73d);
+        $('#navigate-btn')['attr']('data-offset', _0x54ba51)
+        return  _0x2b41e5;
     },
-    dialogBoxContent_forEquiRight: function () {
-        var all_equip = this.getEquipList();
-
-        var sword = getEquipData(Elkaisar.CurrentHero.Equip.sword);
-        var helmet = getEquipData(Elkaisar.CurrentHero.Equip.helmet);
-        var boot = getEquipData(Elkaisar.CurrentHero.Equip.boot);
-        var armor = getEquipData(Elkaisar.CurrentHero.Equip.armor);
-        var shield = getEquipData(Elkaisar.CurrentHero.Equip.shield);
-
-        var belt = getEquipData(Elkaisar.CurrentHero.Equip.belt);
-        var necklace = getEquipData(Elkaisar.CurrentHero.Equip.necklace);
-        var pendant = getEquipData(Elkaisar.CurrentHero.Equip.pendant);
-        var ring = getEquipData(Elkaisar.CurrentHero.Equip.ring);
-        var steed = getEquipData(Elkaisar.CurrentHero.Equip.steed);
-
-        return `<div id="hero-wrapper">
-                    <div class="middle-content">
-                        <div class="part-1 hero-name">
-                            <h1 class="header-2 banner-red">${Elkaisar.CurrentHero.Hero.name}</h1>
-                        </div>
-                        <div class="equip">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td class="eq-helmet">
-                                            <div class="wrapper">
-                                                <button data-cat="main" style="background-image: url(${helmet.image})" id="helmet" equip_part="helmet" id_equip="${helmet.id_equip}" class="on_equip" equip_type="${helmet.type}" data-lvl="${helmet.lvl}"></button>
-                                            </div>
-                                        </td>
-                                        <td colspan="2"></td>
-                                        <td class="eq-beads">
-                                            <div class="wrapper">
-                                                <button data-cat="sec" style="background-image: url(${pendant.image})"  id="pendant" equip_part="pendant" id_equip="${pendant.id_equip}" class="on_equip" equip_type="${pendant.type}" data-lvl="${pendant.lvl}"></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="eq-neck">
-                                            <div class="wrapper">
-                                                <button data-cat="sec" style="background-image: url(${necklace.image})"  id="necklace" equip_part="necklace" id_equip="${necklace.id_equip}" class="on_equip" equip_type="${necklace.type}" data-lvl="${necklace.lvl}"></button>
-                                            </div>
-                                        </td>
-                                        <td colspan="2"></td>
-                                        <td class="eq-belt">
-                                            <div class="wrapper">
-                                                <button data-cat="sec" style="background-image: url(${belt.image})"  id="belt" equip_part="belt" id_equip="${belt.id_equip}" class="on_equip" equip_type="${belt.type}" data-lvl="${belt.lvl}"></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="wrapper">
-                                                <button data-cat="main"  style="background-image: url(${armor.image})" id="armor" equip_part="armor" id_equip="${armor.id_equip}" class="on_equip" equip_type="${armor.type}" data-lvl="${armor.lvl}"></button>
-                                            </div>
-                                        </td>
-                                        <td colspan="2"></td>
-                                        <td class="eq-ring">
-                                            <div class="wrapper">
-                                                <button data-cat="sec" style="background-image: url(${ring.image})"  id="ring" equip_part="ring" id_equip="${ring.id_equip}" class="on_equip" equip_type="${ring.type}" data-lvl="${ring.lvl}"></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="eq-boot">
-                                            <div class="wrapper">
-                                                <button data-cat="main" style="background-image: url(${boot.image})" id="boot" equip_part="boot" id_equip="${boot.id_equip}" class="on_equip" equip_type="${boot.type}" data-lvl="${boot.lvl}"></button>
-                                            </div>
-                                        </td>
-                                        <td class="eq-sword">
-                                            <div class="wrapper">
-                                                <button data-cat="main" style="background-image: url(${sword.image})" id="sword" equip_part="sword" id_equip="${sword.id_equip}" class="on_equip" equip_type="${sword.type}" data-lvl="${sword.lvl}"></button>
-                                            </div>
-                                        </td>
-                                        <td class="eq-shield">
-                                            <div class="wrapper">
-                                                <button data-cat="main" style="background-image: url(${shield.image})" id="shield" equip_part="shield" id_equip="${shield.id_equip}" class="on_equip" equip_type="${shield.type}" data-lvl="${shield.lvl}"></button>
-                                            </div>
-                                        </td>
-                                        <td class="eq-horse">
-                                            <div class="wrapper">
-                                                <button data-cat="sec" style="background-image: url(${steed.image})"  id="steed" equip_part="steed" id_equip="${steed.id_equip}" class="on_equip" equip_type="${steed.type}" data-lvl="${steed.lvl}"></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="row row-4">
-                            <div class="col-1 full" id="after-ajax-hero-army">
-                               ${Hero.armyReview()}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="right-content blue-ribbon"> 
-                        <div  id="eq-part-select"  class="eq-select-bar">
-                            <ul>
-                                <li class="selected">
-                                    <button data-equi-part="all" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-all.png)"></button>
-                                </li>
-                                <li>
-                                    <button data-equi-part="sword" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-sword.png)"></button>
-                                </li>
-                                <li>
-                                    <button data-equi-part="shield" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-shield.png)"></button>
-                                </li>
-                                <li>
-                                    <button data-equi-part="helmet" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-helmet.png)"></button>
-                                </li>
-                                <li>
-                                    <button data-equi-part="armor" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-armor.png)"></button>
-                                </li>
-                                <li>
-                                    <button data-equi-part="belt" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-belt.png)"></button>
-                                </li>
-                                <li>
-                                    <button data-equi-part="ring" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-ring.png)"></button>
-                                </li>
-                                <li>
-                                    <button data-equi-part="necklace" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-necklase.png)"></button>
-                                </li>
-                                <li>
-                                    <button data-equi-part="boot" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-boot.png)"></button>
-                                </li>
-                                <li>
-                                    <button data-equi-part="pendant" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-meskah.png)"></button>
-                                </li>
-                                <li>
-                                    <button data-equi-part="steed" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-horse.png)"></button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="equip-list-heroDia" class="all-eq-table">
-                            ${all_equip}
-                        </div>
-                        <div id="navigate-btn">
-                            <div class="wrapper">
-                                <div class="left">
-                                    <button  class="GO_L_1 go-one-page-eq-left"></button>
-                                </div>
-                                <div class="lable">
-                                    1/${Math.floor(Elkaisar.DPlayer.Equip.length / 24) + 1}
-                                </div>
-                                <div class="right">
-                                    <button class="GO_R_1 go-one-page-eq-right"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-
+    'HeroEquipUnit': function (_0x59166d) {
+        return '<div class=\"EquiUnitWrapper wrapper\">\x0a                    <button style=\"background-image: url(' + getEquipData(Elkaisar['CurrentHero']['Equip'][_0x59166d])['image'] + ')\" \x0a                        id=\"' + _0x59166d + '\" equip_part=\"helmet\" id_equip=\"' + getEquipData(Elkaisar['CurrentHero']['Equip'][_0x59166d])['id_equip'] + '\"\x0a                        class=\"on_equip equip-unit\" data-equi-type=\"' + getEquipData(Elkaisar['CurrentHero']['Equip'][_0x59166d])['type'] + '\" \x0a                        data-equi-lvl=\"' + getEquipData(Elkaisar['CurrentHero']['Equip'][_0x59166d])['lvl'] + '\" data-equi-part=\"' + _0x59166d + '\"></button>\x0a                </div>';
     },
-    dialogBoxContent_forEqui: function () {
-
-
-
-        var equi = ` <div  id="hero-dial-equip" class="box_content hero_dial hero-equip">
-                       ${this.left_content() }  
-                       ${this.dialogBoxContent_forEquiRight()}
-                    </div>`;
-        return equi;
+    'HeroEquip': function () {
+        var _0x836f47 = '<div id=\"HeroEquipBox\" class=\"equip\">\x0a                    <table>\x0a                        <tbody>\x0a                            <tr>\x0a                                <td class=\"eq-helmet\">\x0a                                    ' + this['HeroEquipUnit']('helmet') + '\x0a                                </td>\x0a                                <td colspan=\"2\"></td>\x0a                                <td class=\"eq-beads\">\x0a                                    ' + this['HeroEquipUnit']('pendant') + '\x0a                                </td>\x0a                            </tr>\x0a                            <tr>\x0a                                <td class=\"eq-neck\">\x0a                                    ' + this['HeroEquipUnit']('necklace') + '\x0a                                </td>\x0a                                <td colspan=\"2\"></td>\x0a                                <td class=\"eq-belt\">\x0a                                    ' + this['HeroEquipUnit']('belt') + '\x0a                                </td>\x0a                            </tr>\x0a                            <tr>\x0a                                <td>\x0a                                    ' + this['HeroEquipUnit']('armor') + '\x0a                                </td>\x0a                                <td colspan=\"2\"></td>\x0a                                <td class=\"eq-ring\">\x0a                                    ' + this['HeroEquipUnit']('ring') + '\x0a                                </td>\x0a                            </tr>\x0a                            <tr>\x0a                                <td class=\"eq-boot\">\x0a                                    ' + this['HeroEquipUnit']('boot') + '\x0a                                </td>\x0a                                <td class=\"eq-sword\">\x0a                                    ' + this['HeroEquipUnit']('sword') + '\x0a                                </td>\x0a                                <td class=\"eq-shield\">\x0a                                    ' + this['HeroEquipUnit']('shield') + '\x0a                                </td>\x0a                                <td class=\"eq-horse\">\x0a                                    ' + this['HeroEquipUnit']('steed') + '\x0a                                </td>\x0a                            </tr>\x0a                        </tbody>\x0a                    </table>\x0a                </div>';
+        return $('#HeroEquipBox')['replaceWith'](_0x836f47), _0x836f47;
+    },
+    'dialogBoxContent_forEquiRight': function () {
+        var _0x366bbe = this['getEquipList']();
+        return '<div id=\"hero-wrapper\">\x0a                    <div class=\"middle-content\">\x0a                        <div class=\"part-1 hero-name\">\x0a                            <h1 class=\"header-2 banner-red\">' + Elkaisar['CurrentHero']['Hero']['name'] + '</h1>\x0a                        </div>\x0a                        ' + this['HeroEquip']() + '\x0a                        <div class=\"row row-4\">\x0a                            <div class=\"col-1 full\" id=\"after-ajax-hero-army\">\x0a                               ' + Hero['armyReview']() + '\x0a                            </div>\x0a                        </div>\x0a                    </div>\x0a                    <div class=\"right-content blue-ribbon\"> \x0a                        <div  id=\"eq-part-select\"  class=\"eq-select-bar\">\x0a                            <ul>\x0a                                <li class=\"selected\">\x0a                                    <button data-equi-part=\"all\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-all.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"sword\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-sword.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"shield\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-shield.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"helmet\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-helmet.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"armor\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-armor.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"belt\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-belt.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"ring\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-ring.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"necklace\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-necklase.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"boot\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-boot.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"pendant\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-meskah.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"steed\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-horse.png)\"></button>\x0a                                </li>\x0a                            </ul>\x0a                        </div>\x0a                        <div id=\"equip-list-heroDia\" class=\"all-eq-table\">\x0a                            ' + _0x366bbe + '\x0a                        </div>\x0a                        <div id=\"navigate-btn\">\x0a                            <div class=\"wrapper\">\x0a                                <div class=\"left\">\x0a                                    <button  class=\"GO_L_1 go-one-page-eq-left\"></button>\x0a                                </div>\x0a                                <div class=\"lable\">\x0a                                    1/' + Math['floor'](Elkaisar['DPlayer']['Equip']['filter'](function (_0x4b22ae) {
+            return !_0x4b22ae['id_hero'];
+        })['length'] / 0x18) + '\x0a                                </div>\x0a                                <div class=\"right\">\x0a                                    <button class=\"GO_R_1 go-one-page-eq-right\"></button>\x0a                                </div>\x0a                            </div>\x0a                        </div>\x0a                    </div>\x0a                </div>';
+    },
+    'dialogBoxContent_forEqui': function () {
+        var _0x3a40d9 = ' <div  id=\"hero-dial-equip\" class=\"box_content hero_dial hero-equip\">\x0a                       ' + this['left_content']() + '  \x0a                       ' + this['dialogBoxContent_forEquiRight']() + '\x0a                    </div>';
+        return _0x3a40d9;
     },
     dialogBoxContent_forHeroLearnRight: function (hero) {
 
@@ -1891,10 +1714,10 @@ $(document).on("click", "#swap_army", function () {
     $.ajax({
         url: `${API_URL}/api/AHeroArmy/swapHeroArmy`,
         data: {
-            idHeroRight : right_hero_id,
-            idHeroLeft  : left_hero_id,
-            token       : Elkaisar.Config.OuthToken,
-            server      : Elkaisar.Config.idServer
+            idHeroRight: right_hero_id,
+            idHeroLeft: left_hero_id,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
         type: 'POST',
         beforeSend: function (xhr) {
@@ -1903,14 +1726,14 @@ $(document).on("click", "#swap_army", function () {
         },
         success: function (data, textStatus, jqXHR) {
             unwaitCursor();
-            
-            if(!Elkaisar.LBase.isJson(data))
+
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
-            
+
             var JsonObject = JSON.parse(data);
-            
-            if(JsonObject.state === 'ok'){
-                
+
+            if (JsonObject.state === 'ok') {
+
                 Elkaisar.NextHero.Army = JsonObject.HeroArmyRight;
                 Elkaisar.CurrentHero.Army = JsonObject.HeroArmyLeft;
                 $("#swap_army").removeAttr("disabled");
@@ -1918,11 +1741,11 @@ $(document).on("click", "#swap_army", function () {
                 $("#hero-right-ol").html(temp_o_l);
                 $(".hero-1  ol li:nth-child(2) .header-2:nth-child(2)").html(sec_cap + "/" + first_max);
                 $(".hero-2  ol li:nth-child(2) .header-2:nth-child(2)").html(first_cap + "/" + sec_max);
-            } else if(JsonObject.state === "error_1")
+            } else if (JsonObject.state === "error_1")
                 alert_box.failMessage("البطل لايستوعب العدد الحالى");
-            else if(JsonObject.state === "error_2")
+            else if (JsonObject.state === "error_2")
                 alert_box.failMessage("البطل ليس فى المدينة");
-            
+
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -1993,338 +1816,355 @@ $(document).on("dragover dragenter drop paste", "input, .only_num", function (e)
 
 
 });
-$(document).on("click" , ".build_army" , function(){
-    
-    
-    var self_          = $(this);
-    var army_type      = null;
+
+$(document)['on']('mouseenter', '.equip-unit', function () {
+    var _0x111277 = $(this)['attr']('data-equi-part'),
+            _0x2fb5e7 = $(this)['attr']('data-equi-type'),
+            _0x3f1d87 = $(this)['attr']('data-equi-lvl'),
+            _0x2f10a9 = Equipment['getEquipData'](_0x2fb5e7, _0x111277, _0x3f1d87),
+            _0x491bfa = '<div class=\"tooltip tooltip-equip\">\x0a                    <div class=\"top\">\x0a                        <div class=\"title\">\x0a                            ' + _0x2f10a9['name'] + '\x0a                        </div>\x0a                        <div class=\"points\">\x0a                            <ul>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/vitilty.png\"> ) حيوية</label>&nbsp;&nbsp;&nbsp;&nbsp; <label>+' + _0x2f10a9['vitality'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/attack.png\"> ) هجوم</label>&nbsp;&nbsp;&nbsp;&nbsp; <label>+' + _0x2f10a9['attack'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/defence.png\"> ) دفاع</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>+' + _0x2f10a9['defence'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/damage.png\"> ) انجراح</label>&nbsp;&nbsp; <label>+' + _0x2f10a9['damage'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/break.png\" style=\"width: 20px\"> ) اجتياح</label>&nbsp;&nbsp; <label>+' + _0x2f10a9['break'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/anti-break.png\" style=\"width: 20px\"> ) تصدى</label>&nbsp;&nbsp; <label>+' + _0x2f10a9['anti_break'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div class=\"wrapper-\">\x0a                                        <label>( <img src=\"images/icons/army/strike.png\" style=\"width: 20px\"> ) تدمير</label>&nbsp;&nbsp;&nbsp; <label>+' + _0x2f10a9['strike'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/immunity.png\" style=\"width: 20px\"> ) حصانة</label>&nbsp;&nbsp; <label>+' + _0x2f10a9['immunity'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                            </ul>\x0a                        </div>\x0a\x0a\x0a                    </div>\x0a                    <div class=\"bottom\">\x0a                        <div class=\"desc\">\x0a                            ' + _0x2f10a9['desc'] + '\x0a                        </div>\x0a                        <div class=\"long-desc\">\x0a                            ' + _0x2f10a9['long_desc'] + '\x0a                        </div>\x0a                        <div class=\"requir\">\x0a                            البطل مستوى ' + (_0x2f10a9['lvl_req'] || 0x0) + '\x0a                        </div>\x0a                    </div>\x0a                </div>';
+    $(this)['after'](_0x491bfa);
+});
+$(document)['on']('mouseleave', '.equip-unit', function () {
+    $('.tooltip-equip')['remove']();
+});
+
+$(document).on("click", ".build_army", function () {
+
+
+    var self_ = $(this);
+    var army_type = null;
     var building_place = $("#dialg_box .mili_building").attr("data-building-place");
-    var image          = $(".selected_sol").children("img").attr("src");
-    var ar_title       = $(".selected_sol").children(".title").html();
-    var lvl            = $("#dialg_box .mili_building").attr("data-building-lvl");
-    var amount         = Number($(".sol-2-build-amount").val());
-    var dividBy        = $("#select-production select").val();
-    
-    if(isNaN(amount) || amount < 1){
+    var image = $(".selected_sol").children("img").attr("src");
+    var ar_title = $(".selected_sol").children(".title").html();
+    var lvl = $("#dialg_box .mili_building").attr("data-building-lvl");
+    var amount = Number($(".sol-2-build-amount").val());
+    var dividBy = $("#select-production select").val();
+
+    if (isNaN(amount) || amount < 1) {
         alert_box.confirmMessage("لا يمكنك تجنيد هذة الكمية ");
-        return ;
+        return;
     }
-   
-   
+
+
     var working_count = 0;
     /*  first get the working count */
-    for(var uuu in Elkaisar.TimedTask.TaskList.Army){
-        
-        if(Number(Elkaisar.CurrentCity.City.id_city) !== Number(Elkaisar.TimedTask.TaskList.Army[uuu].id_city))
+    for (var uuu in Elkaisar.TimedTask.TaskList.Army) {
+
+        if (Number(Elkaisar.CurrentCity.City.id_city) !== Number(Elkaisar.TimedTask.TaskList.Army[uuu].id_city))
             continue;
-        if(Elkaisar.TimedTask.TaskList.Army[uuu].place !== building_place)
+        if (Elkaisar.TimedTask.TaskList.Army[uuu].place !== building_place)
             continue;
-         working_count++;
+        working_count++;
     }
-    
-    
-    if(working_count >= 10 || Number(Elkaisar.City.getCity().BuildingLvl[building_place]) <= working_count){
+
+
+    if (working_count >= 10 || Number(Elkaisar.City.getCity().BuildingLvl[building_place]) <= working_count) {
         alert_box.confirmMessage("وصل عدد المتدربين الى اقصى مستوى لا يمكنك تدريب قوات اخرى");
-        return ;
+        return;
     }
-    
-    
-    $(".sol-2-build").each(function(){
-        if($(this).hasClass("selected_sol")){
+
+
+    $(".sol-2-build").each(function () {
+        if ($(this).hasClass("selected_sol")) {
             army_type = $(this).attr("army_type");
         }
     });
-    
-    if(army_type === "wall_a" ||army_type === "wall_b" ||army_type === "wall_c"){
-        if(amount >  findMaxNumForArmyBuild(army_type)){
+
+    if (army_type === "wall_a" || army_type === "wall_b" || army_type === "wall_c") {
+        if (amount > findMaxNumForArmyBuild(army_type)) {
             alert_box.confirmMessage("مساحة الدفاعات داخل السور لا  تكفى للعدد الحالى ");
-            return ;
+            return;
         }
     }
-    
-   
-    
-    
-     if(Elkaisar.BaseData.Army[army_type].condetion.place_lvl > Elkaisar.City.getCity().BuildingLvl[building_place] ||
-           Elkaisar.BaseData.Army[army_type].condetion.lvl > Elkaisar.DPlayer.PlayerEdu[Elkaisar.BaseData.Army[army_type].condetion.study] ){
-                        alert_box.confirmMessage("لا يستوفى هذا المبنى الشروط اللازمة لبناء الجيش");
-                        return ;
-           }
-    
-    
-    if(army_type === null){
-        
+
+
+
+
+    if (Elkaisar.BaseData.Army[army_type].condetion.place_lvl > Elkaisar.City.getCity().BuildingLvl[building_place] ||
+            Elkaisar.BaseData.Army[army_type].condetion.lvl > Elkaisar.DPlayer.PlayerEdu[Elkaisar.BaseData.Army[army_type].condetion.study]) {
+        alert_box.confirmMessage("لا يستوفى هذا المبنى الشروط اللازمة لبناء الجيش");
+        return;
+    }
+
+
+    if (army_type === null) {
+
         alert_box.confirmMessage("عليك اختيار نوع جيش حتى يتم انتاجة");
-        
-    }else if(amount >  findMaxNumForArmyBuild(army_type)){
-        
+
+    } else if (amount > findMaxNumForArmyBuild(army_type)) {
+
         alert_box.confirmMessage("لا يمكنك انتاج هذا العدد من الجنود");
-        
-    }else if(!amount){
-        
+
+    } else if (!amount) {
+
         alert_box.confirmMessage("عليك اختيار عدد  لانتاجة");
-        
-    }else{
+
+    } else {
         var idCity = Elkaisar.CurrentCity.City.id_city;
-       $.ajax({
-           url: `${API_URL}/api/AArmyBuild/buildArmy`,
-            data:{
-                amount        : amount,
-                armyType      : army_type,
-                idCity        : Elkaisar.CurrentCity.City.id_city,
-                buildingPlace : building_place,
-                templePlace   : (cityHasType(BUILDING_TYPS.WORSHIP) && Number(Elkaisar.CurrentCity.City.helper) === 3)? cityHasType(BUILDING_TYPS.WORSHIP) : false,
-                divideBy      : dividBy,
-                token         : Elkaisar.Config.OuthToken,
-                server        : Elkaisar.Config.idServer
+        $.ajax({
+            url: `${API_URL}/api/AArmyBuild/buildArmy`,
+            data: {
+                amount: amount,
+                armyType: army_type,
+                idCity: Elkaisar.CurrentCity.City.id_city,
+                buildingPlace: building_place,
+                templePlace: (cityHasType(BUILDING_TYPS.WORSHIP) && Number(Elkaisar.CurrentCity.City.helper) === 3) ? cityHasType(BUILDING_TYPS.WORSHIP) : false,
+                divideBy: dividBy,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             beforeSend: function (xhr) {
-                self_.attr("disabled","disabled");
+                self_.attr("disabled", "disabled");
                 waitCursor();
             },
             success: function (data, textStatus, jqXHR) {
-                
+
                 self_.removeAttr("disabled");
-                                unwaitCursor();
-                
-                if(isJson(data)){
+                unwaitCursor();
+
+                if (isJson(data)) {
                     var json_data = JSON.parse(data);
-                }else{
+                } else {
                     alert(data);
-                    return ;
+                    return;
                 }
-                
-                
-                if(json_data.state === "ok"){
-                   
+
+
+                if (json_data.state === "ok") {
+
                     /* calculate the decrease in city resources*/
-                    Elkaisar.City.getCity(idCity).City  = json_data.City;
+                    Elkaisar.City.getCity(idCity).City = json_data.City;
                     city_profile.refresh_resource_view();
-                    
-                    
-                    for(var ii in json_data.armyBatches)
+
+
+                    for (var ii in json_data.armyBatches)
                     {
                         Elkaisar.TimedTask.TaskList.Army[json_data.armyBatches[ii].id] = json_data.armyBatches[ii];
                     }
                     Elkaisar.TimedTask.refreshListView();
                     Building.militrayProduction.left(building_place);
                     $(".sol-2-build-amount").val(0);
-                    
-                }else if(json_data.state === "error_3"){
+
+                } else if (json_data.state === "error_3") {
                     alert_box.failMessage("نوع التقسيم غير معروف");
-                }else if(json_data.state === "error_4"){
+                } else if (json_data.state === "error_4") {
                     alert_box.failMessage("الكمية غير صحيحة");
-                }else if(json_data.state === "error_5"){
+                } else if (json_data.state === "error_5") {
                     alert_box.failMessage("الموارد غير كافية");
-                }else if(json_data.state === "error_7_1"){
+                } else if (json_data.state === "error_7_1") {
                     alert_box.failMessage("مستوى المبنى غير كافى");
-                }else if(json_data.state === "error_7"){
+                } else if (json_data.state === "error_7") {
                     alert_box.failMessage("وصل عدد الدفعات الى الحد الاقصى فى المبنى");
-                }else if(json_data.state === "error_6_2"){
+                } else if (json_data.state === "error_6_2") {
                     alert_box.failMessage("مستوى الدراسة غير كافى");
-                }else{
-                    
+                } else {
+
                     alert_box.confirmMessage("حدث خطأ");
-                    
+
                 }
-                
-                
-                
-            }, 
+
+
+
+            },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(errorThrown);
             }
-       });
-       
+        });
+
     }
-    
-    
+
+
 });
 
 
-$(document).on("keyup change", ".sol-2-build-amount" , function (){
+$(document).on("keyup change", ".sol-2-build-amount", function () {
     var army_type = $("#dialg_box .middle-content .selected_sol").attr("army_type");
-   
-   if(!army_type){return false;}
-    $("#dialg_box .leftOfRight .army_req_table .sol-food")  .html(Math.max(Elkaisar.BaseData.Army[army_type].food*$(this).val() ,   Elkaisar.BaseData.Army[army_type].food));
-    $("#dialg_box .leftOfRight .army_req_table .sol-wood")  .html(Math.max(Elkaisar.BaseData.Army[army_type].wood*$(this).val() ,   Elkaisar.BaseData.Army[army_type].wood));
-    $("#dialg_box .leftOfRight .army_req_table .sol-metal") .html(Math.max(Elkaisar.BaseData.Army[army_type].metal*$(this).val() ,  Elkaisar.BaseData.Army[army_type].metal));
-    $("#dialg_box .leftOfRight .army_req_table .sol-coin")  .html(Math.max(Elkaisar.BaseData.Army[army_type].coin*$(this).val() ,   Elkaisar.BaseData.Army[army_type].coin));
-    $("#dialg_box .leftOfRight .army_req_table .sol-stone") .html(Math.max(Elkaisar.BaseData.Army[army_type].stone*$(this).val() ,  Elkaisar.BaseData.Army[army_type].stone));
-    $("#dialg_box .leftOfRight .army_req_table .sol-people").html(Math.max(Elkaisar.BaseData.Army[army_type].people*$(this).val() , Elkaisar.BaseData.Army[army_type].people));
-    $("#dialg_box .leftOfRight .army_req_table .sol-time")  .html(changeTimeFormat(Math.max(Elkaisar.BaseData.Army[army_type].time*$(this).val() , Elkaisar.BaseData.Army[army_type].time)));
+
+    if (!army_type) {
+        return false;
+    }
+    $("#dialg_box .leftOfRight .army_req_table .sol-food").html(Math.max(Elkaisar.BaseData.Army[army_type].food * $(this).val(), Elkaisar.BaseData.Army[army_type].food));
+    $("#dialg_box .leftOfRight .army_req_table .sol-wood").html(Math.max(Elkaisar.BaseData.Army[army_type].wood * $(this).val(), Elkaisar.BaseData.Army[army_type].wood));
+    $("#dialg_box .leftOfRight .army_req_table .sol-metal").html(Math.max(Elkaisar.BaseData.Army[army_type].metal * $(this).val(), Elkaisar.BaseData.Army[army_type].metal));
+    $("#dialg_box .leftOfRight .army_req_table .sol-coin").html(Math.max(Elkaisar.BaseData.Army[army_type].coin * $(this).val(), Elkaisar.BaseData.Army[army_type].coin));
+    $("#dialg_box .leftOfRight .army_req_table .sol-stone").html(Math.max(Elkaisar.BaseData.Army[army_type].stone * $(this).val(), Elkaisar.BaseData.Army[army_type].stone));
+    $("#dialg_box .leftOfRight .army_req_table .sol-people").html(Math.max(Elkaisar.BaseData.Army[army_type].people * $(this).val(), Elkaisar.BaseData.Army[army_type].people));
+    $("#dialg_box .leftOfRight .army_req_table .sol-time").html(changeTimeFormat(Math.max(Elkaisar.BaseData.Army[army_type].time * $(this).val(), Elkaisar.BaseData.Army[army_type].time)));
 });
 
-$(document).on("click" , ".acce-army-build" , function (){
+$(document).on("click", ".acce-army-build", function () {
     var matrial_to_use = [
-            "train_acce_30",
-            "train_acce_50"
-        ];
-    if($(".mili_building").attr("data-building-place") === "wall"){
+        "train_acce_30",
+        "train_acce_50"
+    ];
+    if ($(".mili_building").attr("data-building-place") === "wall") {
         matrial_to_use = [
             "wall_acce"
         ];
     }
-    
+
     var idTask = $(this).attr("data-id-task");
-    BoxOfMatrialToUse(matrial_to_use , "army_build_acce", 1, idTask);
-    
+    BoxOfMatrialToUse(matrial_to_use, "army_build_acce", 1, idTask);
+
 });
 
-$(document).on("click" , '.cancel-army-build' , function (){
-    
+$(document).on("click", '.cancel-army-build', function () {
+
     var building_blace = $("#dialg_box .box_header").attr("place");
     var id_work = $(this).parents(".current-working").attr('id_work');
-    var self_   = $(this);
-    alert_box.confirmDialog("تأكيد الغاء دفعة الانتاج الحالية"  , function (){
+    var self_ = $(this);
+    alert_box.confirmDialog("تأكيد الغاء دفعة الانتاج الحالية", function () {
         var idCity = Number(Elkaisar.CurrentCity.City.id_city);
         $.ajax({
             url: `${API_URL}/api/AArmyBatch/cancelBatch`,
-            data:{
-                idBatch : id_work,
-                token   : Elkaisar.Config.OuthToken,
-                server  : Elkaisar.Config.idServer
+            data: {
+                idBatch: id_work,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             beforeSend: function (xhr) {
 
             },
             success: function (data, textStatus, jqXHR) {
-                
-                if(isJson(data)){
+
+                if (isJson(data)) {
                     var jsonData = JSON.parse(data);
-                }else{
-                    
+                } else {
+
                     alert(data);
-                    
+
                 }
-                
-                
-                if(jsonData.state === "ok"){
-                    
-                    for(var iii in Elkaisar.TimedTask.TaskList.Army)
+
+
+                if (jsonData.state === "ok") {
+
+                    for (var iii in Elkaisar.TimedTask.TaskList.Army)
                     {
                         var Task = Elkaisar.TimedTask.TaskList.Army[iii];
-                        if(Number(Task.id_city) !== idCity)
+                        if (Number(Task.id_city) !== idCity)
                             continue;
-                        if(Task.place !== building_blace)
+                        if (Task.place !== building_blace)
                             continue;
                         delete(Elkaisar.TimedTask.TaskList.Army[iii])
-                        
+
                     }
-                    for(var iii in jsonData.armyBatches)
+                    for (var iii in jsonData.armyBatches)
                     {
                         Elkaisar.TimedTask.TaskList.Army[jsonData.armyBatches[iii].id] = jsonData.armyBatches[iii];
                     }
-                    
+
                     Building.militrayProduction.left(building_blace);
                     Elkaisar.City.getCity(idCity).City = jsonData.cityRes;
                     city_profile.refresh_resource_view();
-                    
-                }else{
-                    
+
+                } else {
+
                     alert_box.failMessage("حدث خطاء");
-                    
+
                 }
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
 
             }
         });
-        
+
     });
-    
+
 });
 
 
 
 // intraction in hero list
-$(document).on("click" , ".hero-list .tr" , function (){
-     /*
-      * هنا بقى بخلى البطل هو الى البوكس يتغير عشانة
-      */              
-    
-    if($(this).attr("id_hero")){
-       $("#city-hero-list .selected").removeClass("selected"); 
-       $(this).addClass("selected");
-        
+$(document).on("click", ".hero-list .tr", function () {
+    /*
+     * هنا بقى بخلى البطل هو الى البوكس يتغير عشانة
+     */
+
+    if ($(this).attr("id_hero")) {
+        $("#city-hero-list .selected").removeClass("selected");
+        $(this).addClass("selected");
+
         var id_hero = parseInt($(this).attr("id_hero"));
         Elkaisar.CurrentHero = Elkaisar.Hero.getHero(id_hero);
-        
-    }else{
-        return ;
+
+    } else {
+        return;
     }
-    
+
     /*
      * looping  through nav bar to get the current box content
      */
     var title_head = "hero";
-   $(".nav_bar .left-nav li").each(function (){
-       if($(this).hasClass("selected")){
-           title_head = $(this).attr("head_title");
-       }
-   });
-    var scroll =  $("#city-hero-list").getNiceScroll(0);
-    switch (title_head){
+    $(".nav_bar .left-nav li").each(function () {
+        if ($(this).hasClass("selected")) {
+            title_head = $(this).attr("head_title");
+        }
+    });
+    var scroll = $("#city-hero-list").getNiceScroll(0);
+    switch (title_head) {
         case "hero":
-            
+
             var content = army.dialogBoxContent_forHeroRight(Elkaisar.CurrentHero);
             $("#hero-wrapper").replaceWith(content);
             army.getCurrentArmy(Elkaisar.CurrentHero);
-            
+
             break;
-            
+
         case "trade":
-            
-          
+
+
             var content = army.dialogBoxContent_forHeroTradeRight();
             $("#hero-wrapper").replaceWith(content);
             var idCity = Number(Elkaisar.CurrentCity.City.id_city);
-            for(var iii in Elkaisar.DPlayer.Heros)
+            for (var iii in Elkaisar.DPlayer.Heros)
             {
                 var CHero = Elkaisar.DPlayer.Heros[iii];
-                if(Number(CHero.Hero.id_city) !== idCity)
+                if (Number(CHero.Hero.id_city) !== idCity)
                     continue;
-                if(Elkaisar.CurrentHero.Hero.id_hero !== CHero.Hero.id_hero){
+                if (Elkaisar.CurrentHero.Hero.id_hero !== CHero.Hero.id_hero) {
                     Elkaisar.NextHero = Elkaisar.DPlayer.Heros[iii];
                     break;
                 }
-                
+
             }
             army.getCurrentArmy(Elkaisar.CurrentHero);
             army.rightTrade(Elkaisar.NextHero);
-            
+
             break;
-            
+
         case "equi":
-            
+
             var content = army.dialogBoxContent_forEquiRight();
             $("#hero-wrapper").replaceWith(content);
             army.getCurrentArmy(Elkaisar.CurrentHero);
+            $('.box_content')['attr']('class', 'box_content hero_dial hero-equip'),
+                    $('.box_content')['attr']('id', 'hero-dial-equip');
             break;
-            
+
         case "camp":
-            
+
             var content = army.dialogBoxContent_forCampRight(Elkaisar.CurrentHero);
             $("#hero-wrapper").replaceWith(content);
             army.getCurrentArmy(Elkaisar.CurrentHero);
             getHeroEquip(Elkaisar.CurrentHero.Hero.id_hero);
             break;
-            
+
         case "hero_learning":
-            
-            
+
+
             $("#hero-wrapper").replaceWith(army.dialogBoxContent_forHeroLearnRight(Elkaisar.CurrentHero));
             break;
     }
-    
-    
+
+
     var sc = scroll.getScrollTop();
-   // scroll.remove();
+    // scroll.remove();
     //$("#city-hero-list").niceScroll(SCROLL_BAR_PROP).setScrollTop(sc);
-    
+
 });
 
 
@@ -2333,22 +2173,22 @@ $(document).on("click" , ".hero-list .tr" , function (){
 /*_________________________________________hero_up_lvl_____________________*/
 /*______________________________عشان اعلى اليفل بتاع البطل_________________*/
 
-$(document).on("click" , ".hero_up_lvl" , function (){
+$(document).on("click", ".hero_up_lvl", function () {
     var id_hero = Elkaisar.CurrentHero.Hero.id_hero;
     var lvl = parseInt(Elkaisar.CurrentHero.Hero.lvl);
     var idCity = Elkaisar.CurrentCity.City.id_city;
-    
-    if(!heroAvailableForTask(id_hero)){
-        
-        return ;
+
+    if (!heroAvailableForTask(id_hero)) {
+
+        return;
     }
-    
-    
-    if(getReqHeroXp(Elkaisar.CurrentHero.Hero.lvl) > Elkaisar.CurrentHero.Hero.exp){
+
+
+    if (getReqHeroXp(Elkaisar.CurrentHero.Hero.lvl) > Elkaisar.CurrentHero.Hero.exp) {
         alert_box.confirmMessage("لا توجد خبرة كافية مع البطل");
-        return ;
+        return;
     }
-    
+
     /**
      * هنا انا  بعمل تطوير للبطل ببعت اليفل والاى دى
      * وهو بيجيب من الداتا بيز البطل المطابق للمواصفات دى لو  حد فكر يلعب فى الليفل او البطل 
@@ -2357,40 +2197,40 @@ $(document).on("click" , ".hero_up_lvl" , function (){
     $.ajax({
         url: `${API_URL}/api/AHero/upgradeHeroLvl`,
         data: {
-            idHero : id_hero,
-            token  : Elkaisar.Config.OuthToken,
-            server : Elkaisar.Config.idServer
+            idHero: id_hero,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
         type: 'POST',
         beforeSend: function (xhr) {
 
         },
         success: function (data, textStatus, jqXHR) {
-            
-            if(isJson(data)){
+
+            if (isJson(data)) {
                 var json_data = JSON.parse(data);
-            }else{
+            } else {
                 alert(data);
-                return ;
+                return;
             }
-            
-            if(json_data.state === "ok"){
+
+            if (json_data.state === "ok") {
                 Elkaisar.Hero.getHero(id_hero).Hero = json_data.Hero;
                 Elkaisar.City.getCity(idCity).City = json_data.City;
-                
+
                 $('.hero-profile').replaceWith(army.middle_content(Elkaisar.CurrentHero));
                 $("#city-hero-list").html(army.hero_list());
                 $("#city-hero-list").niceScroll(SCROLL_BAR_PROP);
                 alert_box.succesMessage("نم تطوير البطل بنجاح");
-                
+
                 city_profile.refresh_hero_view();
                 city_profile.refresh_resource_view();
-            
-            }else{
+
+            } else {
                 alert(data);
             }
-            
-            
+
+
         }, error: function (jqXHR, textStatus, errorThrown) {
 
         }
@@ -2402,13 +2242,13 @@ $(document).on("click" , ".hero_up_lvl" , function (){
 /*
  *هزو الخبرة  بتاعة البطل  
  */
-$(document).on("click" , ".add_xp" , function (){
-    
-                    
-    
-    var matrial = ["exp_hero_8","exp_hero_30","exp_hero_100"];
-    BoxOfMatrialToUse(matrial , "add_xp");
-    
+$(document).on("click", ".add_xp", function () {
+
+
+
+    var matrial = ["exp_hero_8", "exp_hero_30", "exp_hero_100"];
+    BoxOfMatrialToUse(matrial, "add_xp");
+
 });
 
 
@@ -2417,11 +2257,11 @@ $(document).on("click" , ".add_xp" , function (){
 /*
  *هزو طاقة البطل  
  */
-$(document).on("click" , ".add_power" , function (){
-    
-    var matrial = ["bread","fruit","milk","meat"];
-    BoxOfMatrialToUse(matrial , "add_power");
- 
+$(document).on("click", ".add_power", function () {
+
+    var matrial = ["bread", "fruit", "milk", "meat"];
+    BoxOfMatrialToUse(matrial, "add_power");
+
 });
 
 
@@ -2430,24 +2270,24 @@ $(document).on("click" , ".add_power" , function (){
 /*
  *هزو ولاء البطل  
  */
-$(document).on("click" , ".add_loy" , function (){
-    
-    var matrial = ["luxury_1","luxury_2","luxury_3","luxury_4",
-        "luxury_5","luxury_6","luxury_7","luxury_8","luxury_9"];
-    BoxOfMatrialToUse(matrial , "add_loy");
-    
+$(document).on("click", ".add_loy", function () {
+
+    var matrial = ["luxury_1", "luxury_2", "luxury_3", "luxury_4",
+        "luxury_5", "luxury_6", "luxury_7", "luxury_8", "luxury_9"];
+    BoxOfMatrialToUse(matrial, "add_loy");
+
 });
 
 /*
  * عشان اقفل البوكس والغى الشاشة السودة
  */
-$(document).on("click" , ".close_use_menu" , function (){
+$(document).on("click", ".close_use_menu", function () {
     $("#over_lay").remove();
 });
 /*
  * عشان اقفل البوكس والغى الشاشة السودة
  */
-$(document).on("click" , ".close_select_menu" , function (){
+$(document).on("click", ".close_select_menu", function () {
     $(".select_over_lay").remove();
 });
 
@@ -2457,16 +2297,16 @@ $(document).on("click" , ".close_select_menu" , function (){
  * وهجيب نوع المتريل 
  */
 
-$(document).on("click" , ".use_matrial_hero" , function(){
-    
+$(document).on("click", ".use_matrial_hero", function () {
+
     var matrial_name = $(this).attr("matrial_name");
     var use_for = $(this).attr("use_for");
-    var amount  = $(this).attr("amount");
-    var other   = $(this).attr("data-other");
-    var title   = `تأكيد استعمال ${getArabicNumbers(amount)} ${Elkaisar.BaseData.Items[matrial_name].name} من  صندوق المواد الخاص`;
-    var content = alert_box.confirmUse_single(use_for , matrial_name , title  , other);
-    var alert  = alert_box.alert(Translate.Button.Building.Confirm[UserLag.language], content);
-    
+    var amount = $(this).attr("amount");
+    var other = $(this).attr("data-other");
+    var title = `تأكيد استعمال ${getArabicNumbers(amount)} ${Elkaisar.BaseData.Items[matrial_name].name} من  صندوق المواد الخاص`;
+    var content = alert_box.confirmUse_single(use_for, matrial_name, title, other);
+    var alert = alert_box.alert(Translate.Button.Building.Confirm[UserLag.language], content);
+
     $("body").append(alert);
 
 });
@@ -2478,47 +2318,47 @@ $(document).on("click" , ".use_matrial_hero" , function(){
 /*
  *  USER wants to add  points to hero
  */
-$(document).on("keydown" , ".add_point" , function (event){
-    if (event.keyCode === 13  || event.keyCode === 32 ) {
-    // Cancel the default action, if needed
+$(document).on("keydown", ".add_point", function (event) {
+    if (event.keyCode === 13 || event.keyCode === 32) {
+        // Cancel the default action, if needed
         event.preventDefault();
         // Trigger the button element with a click
         $(this).click();
     }
-      
+
 });
-$(document).on("click", ".add_point" , function (){
-    var amount    = Number($(this).attr("amount"));
+$(document).on("click", ".add_point", function () {
+    var amount = Number($(this).attr("amount"));
     var point_for = $(this).attr("for");
     var heroPoint = $(this).attr("data-point");
     var old_amount = Elkaisar.CurrentHero.Hero.points;
     Elkaisar.CurrentHero.Hero[point_for] += amount;
-    
-    if(heroPoint === "point_a" && !Hero.traitPointAOk(Elkaisar.CurrentHero)){
+
+    if (heroPoint === "point_a" && !Hero.traitPointAOk(Elkaisar.CurrentHero)) {
         alert_box.confirmMessage("لا يمكن ان تكون نقاط السيطرة طاغية على باقى السمات");
         Elkaisar.CurrentHero.Hero[point_for] -= amount;
-        return ;
-    }else if(heroPoint === "point_b" && !Hero.traitPointBOk(Elkaisar.CurrentHero)){
+        return;
+    } else if (heroPoint === "point_b" && !Hero.traitPointBOk(Elkaisar.CurrentHero)) {
         alert_box.confirmMessage("لا يمكن ان تكون نقاط الشجاعة طاغية على باقى السمات");
         Elkaisar.CurrentHero.Hero[point_for] -= amount;
-        return ;
-    }else if(heroPoint === "point_c" && !Hero.traitPointCOk(Elkaisar.CurrentHero)){
+        return;
+    } else if (heroPoint === "point_c" && !Hero.traitPointCOk(Elkaisar.CurrentHero)) {
         alert_box.confirmMessage("لا يمكن ان تكون نقاط الدفاع  طاغية على باقى السمات");
         Elkaisar.CurrentHero.Hero[point_for] -= amount;
-        return ;
+        return;
     }
-   
-    if((old_amount > 2 && amount === 3) || (old_amount > 0 && amount === 1)){
-        
-        Elkaisar.CurrentHero.Hero.points -=  amount;
-        
+
+    if ((old_amount > 2 && amount === 3) || (old_amount > 0 && amount === 1)) {
+
+        Elkaisar.CurrentHero.Hero.points -= amount;
+
         $(".part-4 tr:first-child td:nth-child(2)").html(getArabicNumbers(Elkaisar.CurrentHero.Hero.points));
-        $(".part-4 tr:first-child td:nth-child(2)").attr( "p-num" , Elkaisar.CurrentHero.Hero.points);
+        $(".part-4 tr:first-child td:nth-child(2)").attr("p-num", Elkaisar.CurrentHero.Hero.points);
 
         /* secound decrement the crorespond value*/
         var old_point = parseInt($(this).parent(".pull-R").prev(".pull-L").children(".pull-L").attr("p-num"));
         $(this).parent(".pull-R").prev(".pull-L").children(".pull-L").html(getArabicNumbers(old_point + amount));
-        $(this).parent(".pull-R").prev(".pull-L").children(".pull-L").attr( "p-num" , (old_point + amount));
+        $(this).parent(".pull-R").prev(".pull-L").children(".pull-L").attr("p-num", (old_point + amount));
 
         /*
          * third change point in object 
@@ -2531,114 +2371,114 @@ $(document).on("click", ".add_point" , function (){
         $(".return_points").removeAttr("disabled");
         $(".save_points").removeAttr("disabled");
     }
-   
-   
-   
-   
-   /* ها عشان   لو دول اخر نقط هو بيضيفها*/
-   
-   if(parseInt($(".part-4 tr:first-child td:nth-child(2)").attr("p-num")) <= 0){
-       $(".add_point").attr("disabled" ,"disabled");
-   }else if (parseInt($(".part-4 tr:first-child td:nth-child(2)").attr("p-num")) <= 2){
-        $(".add_point[amount=3]").attr("disabled" ,"disabled");
-   }
-   
+
+
+
+
+    /* ها عشان   لو دول اخر نقط هو بيضيفها*/
+
+    if (parseInt($(".part-4 tr:first-child td:nth-child(2)").attr("p-num")) <= 0) {
+        $(".add_point").attr("disabled", "disabled");
+    } else if (parseInt($(".part-4 tr:first-child td:nth-child(2)").attr("p-num")) <= 2) {
+        $(".add_point[amount=3]").attr("disabled", "disabled");
+    }
+
 });
 
 /*
  *  هرجع النقط  تانى لو اللاعب ماتكاش على حفظ النقط
  */
 
-$(document).on("click" ,".return_points" , function (){
-    var total_points = Elkaisar.CurrentHero.Hero.add_p_a + Elkaisar.CurrentHero.Hero.add_p_b + Elkaisar.CurrentHero.Hero.add_p_c ;
-   
-    
-    $(".domain-point .point:first").attr("p-num" , Elkaisar.CurrentHero.Hero.point_a);
-    $(".attack-point .point:first").attr("p-num" , Elkaisar.CurrentHero.Hero.point_b);
-    $(".def-point    .point:first").attr("p-num" , Elkaisar.CurrentHero.Hero.point_c);
-    
+$(document).on("click", ".return_points", function () {
+    var total_points = Elkaisar.CurrentHero.Hero.add_p_a + Elkaisar.CurrentHero.Hero.add_p_b + Elkaisar.CurrentHero.Hero.add_p_c;
+
+
+    $(".domain-point .point:first").attr("p-num", Elkaisar.CurrentHero.Hero.point_a);
+    $(".attack-point .point:first").attr("p-num", Elkaisar.CurrentHero.Hero.point_b);
+    $(".def-point    .point:first").attr("p-num", Elkaisar.CurrentHero.Hero.point_c);
+
     /* second we chang point in html*/
     $(".part-4 tr:first-child td:nth-child(2)").html(Elkaisar.CurrentHero.Hero.points);
-    
-    Elkaisar.CurrentHero.Hero.add_p_a=0;
-    Elkaisar.CurrentHero.Hero.add_p_b=0;
-    Elkaisar.CurrentHero.Hero.add_p_c=0;
-    
+
+    Elkaisar.CurrentHero.Hero.add_p_a = 0;
+    Elkaisar.CurrentHero.Hero.add_p_b = 0;
+    Elkaisar.CurrentHero.Hero.add_p_c = 0;
+
     $(".part-4 tr:nth-child(2) .point:first-child").html(Elkaisar.CurrentHero.Hero.point_a);
     $(".part-4 tr:nth-child(3) .point:first-child").html(Elkaisar.CurrentHero.Hero.point_b);
     $(".part-4 tr:nth-child(4) .point:first-child").html(Elkaisar.CurrentHero.Hero.point_c);
-    
+
     /*disable buttons*/
-    $(".save_points").attr("disabled" ,"disabled");
-    $(".return_points").attr("disabled" ,"disabled");
+    $(".save_points").attr("disabled", "disabled");
+    $(".return_points").attr("disabled", "disabled");
 });
 
 /*  when the save point button clicked*/
-$(document).on("click" , ".save_points" , function (){
-    
-    
+$(document).on("click", ".save_points", function () {
+
+
     /* disable button to prevent problems*/
-    $(this).attr("disabled" ,"disabled");
-    $(".return_points").attr("disabled" ,"disabled");
-    
-    var total_points  = Elkaisar.CurrentHero.Hero.add_p_a + Elkaisar.CurrentHero.Hero.add_p_b + Elkaisar.CurrentHero.Hero.add_p_c ;
+    $(this).attr("disabled", "disabled");
+    $(".return_points").attr("disabled", "disabled");
+
+    var total_points = Elkaisar.CurrentHero.Hero.add_p_a + Elkaisar.CurrentHero.Hero.add_p_b + Elkaisar.CurrentHero.Hero.add_p_c;
     var idCity = Elkaisar.CurrentCity.City.id_city;
     var idHero = Elkaisar.CurrentHero.Hero.id_hero;
-    
-    if(total_points > 0){
+
+    if (total_points > 0) {
         $.ajax({
             url: `${API_URL}/api/AHero/setHeroPoints`,
-            data:{
+            data: {
                 pointA: Elkaisar.CurrentHero.Hero.add_p_a,
                 pointB: Elkaisar.CurrentHero.Hero.add_p_b,
                 pointC: Elkaisar.CurrentHero.Hero.add_p_c,
                 idHero: Elkaisar.CurrentHero.Hero.id_hero,
-                token : Elkaisar.Config.OuthToken,
+                token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
             type: 'POST',
             beforeSend: function (xhr) {
 
-            },success: function (data, textStatus, jqXHR) {
-                
-                if(isJson(data)){
+            }, success: function (data, textStatus, jqXHR) {
+
+                if (isJson(data)) {
                     var json_data = JSON.parse(data);
-                }else{
+                } else {
                     alert(data);
-                    return ;
+                    return;
                 }
-                
-                if(json_data.state === "ok"){
+
+                if (json_data.state === "ok") {
                     /* change hero point in global obj*/
                     Elkaisar.City.getCity(idCity).City = json_data.CityRes;
                     Elkaisar.Hero.getHero(idHero).Hero = json_data.Hero;
-                    
+
                     $("#city-hero-list .selected").click();
                     city_profile.refresh_resource_view();
-                    
-                    
+
+
                     /*    هصفر المتغيرات عشان لو اللاعب حب  يحفظ الحاجة تانى*/
-                    Elkaisar.CurrentHero.Hero.add_p_a=0;
-                    Elkaisar.CurrentHero.Hero.add_p_b=0;
-                    Elkaisar.CurrentHero.Hero.add_p_c=0;
-                }else{
+                    Elkaisar.CurrentHero.Hero.add_p_a = 0;
+                    Elkaisar.CurrentHero.Hero.add_p_b = 0;
+                    Elkaisar.CurrentHero.Hero.add_p_c = 0;
+                } else {
                     alert("wrong");
                 }
-                
+
             }, error: function (jqXHR, textStatus, errorThrown) {
 
             }
         });
     }
-    
+
 });
 
 
 /* return all heros points  by trago3
  * هرع النقط  بالتراجع*/
 
-$(document).on("click" , ".return_points_all" , function (){
-     var box = `<div id="over_lay" >
+$(document).on("click", ".return_points_all", function () {
+    var box = `<div id="over_lay" >
                     <div id="select_from">
                         <div class="head_bar">
                             <img src="images/style/head_bar.png" class="banner">
@@ -2659,7 +2499,7 @@ $(document).on("click" , ".return_points_all" , function (){
                                 </div>
                                 <div class="pull-R right">
                                     <div class="header">
-                                        <button class="full-btn use_matrial_hero" use_for="retreat_points"  matrial_name="retreat_point" amount="${Math.floor(Elkaisar.CurrentHero.Hero.lvl/10+1)}"> ${Translate.Button.General.Use[UserLag.language]}</button>
+                                        <button class="full-btn use_matrial_hero" use_for="retreat_points"  matrial_name="retreat_point" amount="${Math.floor(Elkaisar.CurrentHero.Hero.lvl / 10 + 1)}"> ${Translate.Button.General.Use[UserLag.language]}</button>
                                     </div> 
                                     <div class="desc">
                                         يستخدم فى استراجع النقط الخاصة بالبطل لترتيبها وفق ما تحتاج
@@ -2676,156 +2516,156 @@ $(document).on("click" , ".return_points_all" , function (){
 
 /*                           تعين القنصل            _                     */
 
-$(document).on("click" , ".add_console" , function (){
-    
-    
-    if(Number(Elkaisar.CurrentHero.Hero.in_city) !== 1){
-        
+$(document).on("click", ".add_console", function () {
+
+
+    if (Number(Elkaisar.CurrentHero.Hero.in_city) !== 1) {
+
         alert_box.confirmMessage("لا يمكنك تعين البطل قنصل ( البطل ليس بالمدينة)");
-        return ;
+        return;
     }
-    
+
     var self = $(this);
     var idHero = Elkaisar.CurrentHero.Hero.id_hero;
     var idCity = Elkaisar.CurrentCity.City.id_city;
-    
+
     $.ajax({
         url: `${API_URL}/api/AHero/addConsole`,
         data: {
-            idHero : idHero,
-            token  : Elkaisar.Config.OuthToken,
-            server : Elkaisar.Config.idServer
+            idHero: idHero,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
         type: 'POST',
         beforeSend: function (xhr) {
-            self.attr("disabled" ,"disabled");
+            self.attr("disabled", "disabled");
             waitCursor();
         },
         success: function (data, textStatus, jqXHR) {
             self.removeAttr("disabled");
             unwaitCursor();
-            if(!Elkaisar.LBase.isJson(data))
+            if (!Elkaisar.LBase.isJson(data))
                 Elkaisar.LBase.Error(data);
-            
-            
-                
-                var json_data = JSON.parse(data);
-                
-                if(json_data.state === "ok")
+
+
+
+            var json_data = JSON.parse(data);
+
+            if (json_data.state === "ok")
+            {
+                Elkaisar.City.getCity(idCity).City = json_data.City;
+                for (var iii in json_data.HeroList)
                 {
-                    Elkaisar.City.getCity(idCity).City = json_data.City;
-                    for(var iii in json_data.HeroList)
-                    {
-                        if(Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero))
-                            if(Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero).Hero)
-                                Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero).Hero = json_data.HeroList[iii];
-                        
-                    }
-                    city_profile.refresh_resource_view();
-                    city_profile.refresh_hero_view();
-                    
-                    $("#city-hero-list .tr").each(function (el){
-                       
-                       if(Number($(el).attr("id_hero")) === Number(json_data.City.console))
-                       {
-                           
-                       }
-                        
-                    });
-                    
-                    Elkaisar.City.refreshBtnList();
-                    $("#city-hero-list").html(army.hero_list());
-                    $("#city-hero-list .selected").click();
-                    
-                }else if(json_data.state === "error_1"){
-                    alert_box.failMessage("البطل ليس فى المدينة");
+                    if (Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero))
+                        if (Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero).Hero)
+                            Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero).Hero = json_data.HeroList[iii];
+
                 }
-                
-            
-            
+                city_profile.refresh_resource_view();
+                city_profile.refresh_hero_view();
+
+                $("#city-hero-list .tr").each(function (el) {
+
+                    if (Number($(el).attr("id_hero")) === Number(json_data.City.console))
+                    {
+
+                    }
+
+                });
+
+                Elkaisar.City.refreshBtnList();
+                $("#city-hero-list").html(army.hero_list());
+                $("#city-hero-list .selected").click();
+
+            } else if (json_data.state === "error_1") {
+                alert_box.failMessage("البطل ليس فى المدينة");
+            }
+
+
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
 
         }
     });
-    
+
 });
 
 /*                           تعين القنصل            _                     */
 
-$(document).on("click" , ".remove_console" , function (){
-    
+$(document).on("click", ".remove_console", function () {
+
     var self = $(this);
-    
+
     var idHero = Elkaisar.CurrentHero.Hero.id_hero;
     var idCity = Elkaisar.CurrentCity.City.id_city;
-    
+
     $.ajax({
         url: `${API_URL}/api/AHero/removeConsole`,
         data: {
-            idCity : idCity,
-            token  : Elkaisar.Config.OuthToken,
-            server : Elkaisar.Config.idServer
+            idCity: idCity,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
         type: 'POST',
         beforeSend: function (xhr) {
-            self.attr("disabled" ,"disabled");
+            self.attr("disabled", "disabled");
             waitCursor();
         },
         success: function (data, textStatus, jqXHR) {
             self.removeAttr("disabled");
             unwaitCursor();
-            if(!Elkaisar.LBase.isJson(data))
+            if (!Elkaisar.LBase.isJson(data))
                 Elkaisar.LBase.Error(data);
-            
-            
-                
-                var json_data = JSON.parse(data);
-                
-                if(json_data.state === "ok")
+
+
+
+            var json_data = JSON.parse(data);
+
+            if (json_data.state === "ok")
+            {
+                Elkaisar.City.getCity(idCity).City = json_data.City;
+                for (var iii in json_data.HeroList)
                 {
-                    Elkaisar.City.getCity(idCity).City = json_data.City;
-                    for(var iii in json_data.HeroList)
-                    {
-                        if(Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero))
-                            if(Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero).Hero)
-                                Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero).Hero = json_data.HeroList[iii];
-                        
-                    }
-                    city_profile.refresh_resource_view();
-                    city_profile.refresh_hero_view();
-                    
-                    
-                    Elkaisar.City.refreshBtnList();
-                    $("#city-hero-list").html(army.hero_list());
-                    $("#city-hero-list .selected").click();
-                    
-                    
-                }else if(json_data.state === "error_1"){
-                    alert_box.failMessage("البطل ليس فى المدينة");
+                    if (Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero))
+                        if (Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero).Hero)
+                            Elkaisar.Hero.getHero(json_data.HeroList[iii].id_hero).Hero = json_data.HeroList[iii];
+
                 }
-                
-            
-            
+                city_profile.refresh_resource_view();
+                city_profile.refresh_hero_view();
+
+
+                Elkaisar.City.refreshBtnList();
+                $("#city-hero-list").html(army.hero_list());
+                $("#city-hero-list .selected").click();
+
+
+            } else if (json_data.state === "error_1") {
+                alert_box.failMessage("البطل ليس فى المدينة");
+            }
+
+
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
 
         }
     });
-    
+
 });
 
 
 /*                                  تفعيل الماديليات                                   */
 
-$(document).on("click" , ".medal img" , function (){
-    
+$(document).on("click", ".medal img", function () {
+
     var medal_type = $(this).attr("m_type");
-    
+
     var matrial = [medal_type];
-    BoxOfMatrialToUse(matrial , "add_medal");
-    
-    
+    BoxOfMatrialToUse(matrial, "add_medal");
+
+
 });
 
 
@@ -2836,49 +2676,49 @@ $(document).on("click" , ".medal img" , function (){
 
 
 /*      SHOW DORP DOWN LIST OF HEROS      ON trade section*/
-$(document).on("click" , "#selected_hero" ,function (){
-    
-    if($(this).hasClass("active")){
-        
+$(document).on("click", "#selected_hero", function () {
+
+    if ($(this).hasClass("active")) {
+
         $("#select_hero ol").empty();
         $("#select_hero").hide();
         $(this).removeClass("active");
-        
-    }else {
-        
+
+    } else {
+
         $(this).addClass("active");
-         var id_hero = $(this).attr("id_hero");
-    
+        var id_hero = $(this).attr("id_hero");
+
         var all_list = "";
 
-        Elkaisar.DPlayer.Heros.forEach(function (el){
-            
-            if(Number(Elkaisar.CurrentCity.City.id_city) !== Number(el.Hero.id_city))
-                return ;
-            if(Number(el.Hero.id_hero) === Number(Elkaisar.NextHero.Hero.id_hero))
-                return ;
-            if(Number(el.Hero.id_hero) === Number(Elkaisar.CurrentHero.Hero.id_hero))
-                return ;
-            
-            
+        Elkaisar.DPlayer.Heros.forEach(function (el) {
+
+            if (Number(Elkaisar.CurrentCity.City.id_city) !== Number(el.Hero.id_city))
+                return;
+            if (Number(el.Hero.id_hero) === Number(Elkaisar.NextHero.Hero.id_hero))
+                return;
+            if (Number(el.Hero.id_hero) === Number(Elkaisar.CurrentHero.Hero.id_hero))
+                return;
+
+
             var state = '<img src="images/icons/h_s_incity.png" class="img-sml" >';
 
-            if(parseInt(el.console) === 1){
+            if (parseInt(el.console) === 1) {
 
                 state = '<img src="images/icons/h_s_console.png">';
 
 
-            }else if(parseInt(el.in_city) === 0){
+            } else if (parseInt(el.in_city) === 0) {
 
                 state = '<img src="images/icons/h_s_attack_2.png"  class="img-sml">';
 
 
-            }else if(Number(el.in_city) === -1){
+            } else if (Number(el.in_city) === -1) {
 
                 state = '<img src="images/icons/h_s_support.png" class="img-sml">';
             }
 
-             all_list += `  <li id_hero="${el.Hero.id_hero}">
+            all_list += `  <li id_hero="${el.Hero.id_hero}">
                                 <div class="part-1">  
                                     <div class="hero_img pull-L">   
                                         <img class="img-mid" src="${Elkaisar.BaseData.HeroAvatar[el.Hero.avatar]}">    
@@ -2896,7 +2736,7 @@ $(document).on("click" , "#selected_hero" ,function (){
                                 </div>
                             </li>`;
 
-            
+
 
 
         });
@@ -2905,98 +2745,98 @@ $(document).on("click" , "#selected_hero" ,function (){
         $('#select_hero').show();
         $("#select_hero").niceScroll(SCROLL_BAR_PROP);
     }
-    
-   
-               
+
+
+
 });
 
 
 /*                           change sec hero                    */
 
-$(document).on("click" , "#select_hero ol li" , function (){
-                 
+$(document).on("click", "#select_hero ol li", function () {
+
     var id_hero = $(this).attr("id_hero");
-    
-    $("#right-down").attr("id_hero" , id_hero);
+
+    $("#right-down").attr("id_hero", id_hero);
     army.rightTrade(Elkaisar.Hero.getHero(parseInt(id_hero)));
 
 });
 
-$(document).on("change" , ".check-for-medal" , function (){
-    
+$(document).on("change", ".check-for-medal", function () {
+
     var value = $(this).val();
-    
+
     var image;
     var rank_needed;
     var amount;
     var req = false;
-    
-    switch (value){
-        
+
+    switch (value) {
+
         case "medal_bronz":
-            
+
             rank_needed = `<span class="${Number(Elkaisar.DPlayer.Player.porm) >= 3 ? "green" : "red"}">قسطور</span>`;
             req = Number(Elkaisar.DPlayer.Player.porm) >= 3 ? true : false;
             break;
-            
+
         case "medal_silver":
-            
+
             rank_needed = `<span class="${Number(Elkaisar.DPlayer.Player.porm) >= 5 ? "green" : "red"}">نائب</span>`;
-             req = Number(Elkaisar.DPlayer.Player.porm) >= 5 ? true : false;
+            req = Number(Elkaisar.DPlayer.Player.porm) >= 5 ? true : false;
             break;
-            
+
         case "medal_gold":
-            
+
             rank_needed = `<span class="${Number(Elkaisar.DPlayer.Player.porm) >= 8 ? "green" : "red"}">دكتاتور</span>`;
             req = Number(Elkaisar.DPlayer.Player.porm) >= 8 ? true : false;
             break;
-        
+
     }
-    
+
     $("#req_for_medal").html(rank_needed);
-    $("#medal_image").attr("src" ,Elkaisar.BaseData.Items[value].image);
-    $("#medal_amount_player").html( getArabicNumbers(Matrial.getPlayerAmount(value)) );
-    
-    
-    
+    $("#medal_image").attr("src", Elkaisar.BaseData.Items[value].image);
+    $("#medal_amount_player").html(getArabicNumbers(Matrial.getPlayerAmount(value)));
+
+
+
 });
 
-$(document).on("click" ,"#learn-hero-point" , function (){
-    
-    var point_for =  $(".learn_hero .row-1 ul li input[name='point_plus_for']:checked").val();
-    var meddal    =  $(".learn_hero .row-4 ul li input[name='used_meddal']:checked").val();
-    
-    if(Matrial.getPlayerAmount(meddal) < 10 ){
-        
+$(document).on("click", "#learn-hero-point", function () {
+
+    var point_for = $(".learn_hero .row-1 ul li input[name='point_plus_for']:checked").val();
+    var meddal = $(".learn_hero .row-4 ul li input[name='used_meddal']:checked").val();
+
+    if (Matrial.getPlayerAmount(meddal) < 10) {
+
         alert_box.confirmMessage("ليس لديك عدد كافى من الميداليات");
-        return ;
-                        
-    }else if(!point_for){
-        
+        return;
+
+    } else if (!point_for) {
+
         alert_box.confirmMessage("عليك اختيار النقط المراد اضافتها");
-        return ;
-        
-    }else if(parseInt(Elkaisar.CurrentHero.Hero.in_city) !== 1){
-        
+        return;
+
+    } else if (parseInt(Elkaisar.CurrentHero.Hero.in_city) !== 1) {
+
         alert_box.confirmMessage("لا يمكنك تعليم بطل وهو فى مهمة خارج المدينة");
-        return ;
-        
+        return;
+
     }
-    
+
     var points_ar_title = point_for === "point_a_plus" ? "نقاط سيطرة" : (point_for === "point_b_plus" ? "نقاط الشجاعة" : "نقاط دفاع");
-    
+
     var idHero = Elkaisar.CurrentHero.Hero.id_hero;
     var idCity = Elkaisar.CurrentCity.City.id_city;
-    
+
     $.ajax({
-        
+
         url: `${API_URL}/api/AHero/educate`,
-        data:{
-            idHero     : idHero,
-            medalToUse : meddal,
-            pointFor   : point_for,
-            token      : Elkaisar.Config.OuthToken,
-            server     : Elkaisar.Config.idServer
+        data: {
+            idHero: idHero,
+            medalToUse: meddal,
+            pointFor: point_for,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
 
         },
         type: 'POST',
@@ -3004,39 +2844,39 @@ $(document).on("click" ,"#learn-hero-point" , function (){
 
         },
         success: function (data, textStatus, jqXHR) {
-            
-            if(!Elkaisar.LBase.isJson(data))
+
+            if (!Elkaisar.LBase.isJson(data))
                 Elkaisar.LBase.Error(data);
-            
+
             var jsonObject = JSON.parse(data);
-            if(jsonObject.state === "ok")
+            if (jsonObject.state === "ok")
             {
-                
-                if(jsonObject.PointAdded === 0){
-                
+
+                if (jsonObject.PointAdded === 0) {
+
                     var msg = `فشل عملية تعليم البطل, حصلت على  ${getArabicNumbers(jsonObject.PointAdded)} 
                                     من ${points_ar_title} , ولم تخسر نقاط,و قد استهلكت ١٠ ${Elkaisar.BaseData.Items[meddal].name}  خلال هذة العملية`;
-                   alert_box.succesMessage(msg);
-                   Matrial.takeFrom(meddal, 10);
+                    alert_box.succesMessage(msg);
+                    Matrial.takeFrom(meddal, 10);
 
-                }else if(jsonObject.PointAdded > 0){
+                } else if (jsonObject.PointAdded > 0) {
 
                     var msg = `نجحت عملية تعليم البطل, حصلت على  ${getArabicNumbers(jsonObject.PointAdded)} 
                                     من ${points_ar_title} ,و قد استهلكت ١٠  ${Elkaisar.BaseData.Items[meddal].name} خلال هذة العملية`;
-                   alert_box.succesMessage(msg);
-                   Matrial.takeFrom(meddal, 10);
+                    alert_box.succesMessage(msg);
+                    Matrial.takeFrom(meddal, 10);
 
-                }else if(jsonObject.PointAdded < 0){
+                } else if (jsonObject.PointAdded < 0) {
 
-                    var msg = `فشل عملية تعليم البطل, خسرت  ${getArabicNumbers(jsonObject.PointAdded*-1)} 
+                    var msg = `فشل عملية تعليم البطل, خسرت  ${getArabicNumbers(jsonObject.PointAdded * -1)} 
                                     من ${points_ar_title} ,و قد استهلكت ١٠  ${Elkaisar.BaseData.Items[meddal].name} خلال هذة العملية`;
-                   alert_box.failMessage(msg);
-                   Matrial.takeFrom(meddal, 10);
+                    alert_box.failMessage(msg);
+                    Matrial.takeFrom(meddal, 10);
 
                 }
             }
-            
-            
+
+
             Elkaisar.Hero.getHero(idHero).Hero = jsonObject.Hero;
             Elkaisar.City.getCity(idCity).City = jsonObject.City;
             $(".hero_dial .hero-profile").replaceWith(army.middle_content(Elkaisar.CurrentHero));
@@ -3046,21 +2886,21 @@ $(document).on("click" ,"#learn-hero-point" , function (){
         error: function (jqXHR, textStatus, errorThrown) {
 
         }
-        
+
     });
-    
+
 });
 
 
 
-function finishArmyBuild(index){
-    
-    
-   
-    
+function finishArmyBuild(index) {
+
+
+
+
 }
 
 
-$(document).on("click", "#confirm_battel", function (){
+$(document).on("click", "#confirm_battel", function () {
     battelStart();
 });

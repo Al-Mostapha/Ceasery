@@ -56,6 +56,9 @@ Elkaisar.WsLib.Chat.privateMsg = function (data){
     
 };
 
+Elkaisar.WsLib.Chat.NotOnline = function (msg){
+    alert_box['confirmMessage']('هذا اللاعب غير متصل الان');
+}
 
 
 Elkaisar.WsLib.Chat.sendMsgImage = function (data){
