@@ -295,12 +295,16 @@ var Hero = {
         var shield = getEquipData(hero.Equip.shield);
         var armor  = getEquipData(hero.Equip.armor);
         var boot   = getEquipData(hero.Equip.boot);
-        
+        console.log(boot)
         return {
-            vit    :sword.vit     + helmet.vit    + shield.vit     + armor.vit    + boot.vit,
-            attack :sword.attack  + helmet.attack + shield.attack  + armor.attack + boot.attack  + Number( hero.point_b),
-            defence:sword.defence + helmet.defence+ shield.defence + armor.vit    + boot.defence + Number( hero.point_c),
-            damage :sword.damage  + helmet.damage + shield.damage  + armor.damage + boot.damage
+            "vit"        :sword.vit         + helmet.vit        + shield.vit         + armor.vit        + boot.vit,
+            "attack"     :sword.attack      + helmet.attack     + shield.attack      + armor.attack     + boot.attack  + Number( hero.Hero.point_b),
+            "defence"    :sword.defence     + helmet.defence    + shield.defence     + armor.vit        + boot.defence + Number( hero.Hero.point_c),
+            "damage"     :sword.damage      + helmet.damage     + shield.damage      + armor.damage     + boot.damage,
+            "break"      :sword.break       + helmet.break      + shield.break       + armor.break      + boot.break,
+            "anti_break" :sword.anti_break  + helmet.anti_break + shield.anti_break  + armor.anti_break + boot.anti_break,
+            "strike"     :sword.strike      + helmet.strike     + shield.strike      + armor.strike     + boot.strike,
+            "immunity"   :sword.immunity    + helmet.immunity   + shield.immunity    + armor.immunity   + boot.immunity
         };
     },
     foodConsumption: function (hero){
@@ -716,6 +720,32 @@ $(document).on("mouseenter" ,  "#city-profile .page_content ul .hero_profile" , 
                                     </div>
                                 </li>
                             </ul>
+                            <ul>
+                                <li>
+                                    <div class="wrapper">
+                                        <label><img src="images/icons/army/break.png"/></label>
+                                        <label>${hero_effect.break}</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="wrapper">
+                                        <label><img src="images/icons/army/anti-break.png"/></label>
+                                        <label>${hero_effect.anti_break}</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="wrapper">
+                                        <label><img src="images/icons/army/strike.png"/></label>
+                                        <label>${hero_effect.strike}</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="wrapper">
+                                        <label><img src="images/icons/army/immunity.png"/></label>
+                                        <label>${hero_effect.immunity}</label>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                         <div class="bottom">
                             <ol class="army-row">
@@ -820,8 +850,7 @@ $(document).on("mouseenter" , ".equip-unit" , function (){
     var equi_type = $(this).attr("data-equi-type");
     var equi_lvl  = $(this).attr("data-equi-lvl");
     
-    var unitEquipData = Equipment.getEquipData(equi_type , equi_part , equi_lvl - 1);
-    
+    var unitEquipData = Equipment.getEquipData(equi_type , equi_part , equi_lvl);
     var toolip = `<div class="tooltip tooltip-equip">
                     <div class="top">
                         <div class="title">
@@ -831,42 +860,47 @@ $(document).on("mouseenter" , ".equip-unit" , function (){
                             <ul>
                                 <li>
                                     <div class="wrapper">
-                                        <label>( <img src="images/icons/army/vitilty.png"> ) حيوية</label>&nbsp;&nbsp;&nbsp;&nbsp; <label>+${unitEquipData.vitality}</label>
+                                        <label>( <img src="images/icons/army/vitilty.png"> ) حيوية</label>&nbsp;&nbsp;&nbsp;&nbsp; <label>+${unitEquipData.Power.vitality}</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wrapper">
-                                        <label>( <img src="images/icons/army/attack.png"> ) هجوم</label>&nbsp;&nbsp;&nbsp;&nbsp; <label>+${unitEquipData.attack}</label>
+                                        <label>( <img src="images/icons/army/attack.png"> ) هجوم</label>&nbsp;&nbsp;&nbsp;&nbsp; <label>+${unitEquipData.Power.attack}</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wrapper">
-                                        <label>( <img src="images/icons/army/defence.png"> ) دفاع</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>+${unitEquipData.defence}</label>
+                                        <label>( <img src="images/icons/army/defence.png"> ) دفاع</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>+${unitEquipData.Power.defence}</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wrapper">
-                                        <label>( <img src="images/icons/army/damage.png"> ) انجراح</label>&nbsp;&nbsp; <label>+${unitEquipData.damage}</label>
+                                        <label>( <img src="images/icons/army/damage.png"> ) انجراح</label>&nbsp;&nbsp; <label>+${unitEquipData.Power.damage}</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wrapper">
-                                        <label>( <img src="images/icons/army/break.png" style="width: 20px"> ) اجتياح</label>&nbsp;&nbsp; <label>+${unitEquipData.break}</label>
+                                        <label>( <img src="images/icons/army/break.png" style="width: 20px"> ) اجتياح</label>&nbsp;&nbsp; <label>+${unitEquipData.Power.break}</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wrapper">
-                                        <label>( <img src="images/icons/army/anti-break.png" style="width: 20px"> ) تصدى</label>&nbsp;&nbsp; <label>+${unitEquipData.anti_break}</label>
+                                        <label>( <img src="images/icons/army/anti-break.png" style="width: 20px"> ) تصدى</label>&nbsp;&nbsp; <label>+${unitEquipData.Power.anti_break}</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wrapper">
-                                        <label>( <img src="images/icons/army/strike.png" style="width: 20px"> ) تدمير</label>&nbsp;&nbsp;&nbsp; <label>+${unitEquipData.strike}</label>
+                                        <label>( <img src="images/icons/army/strike.png" style="width: 20px"> ) تدمير</label>&nbsp;&nbsp;&nbsp; <label>+${unitEquipData.Power.strike}</label>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="wrapper">
-                                        <label>( <img src="images/icons/army/immunity.png" style="width: 20px"> ) حصانة</label>&nbsp;&nbsp; <label>+${unitEquipData.immunity}</label>
+                                        <label>( <img src="images/icons/army/immunity.png" style="width: 20px"> ) حصانة</label>&nbsp;&nbsp; <label>+${unitEquipData.Power.immunity}</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="wrapper" style="font-size: 16px; font-weight: bold">
+                                        <label>(خواص) </label>&nbsp;&nbsp; <label>${Elkaisar.Equip.EquipFeature[unitEquipData.Power.sp_attr].Title}</label>
                                     </div>
                                 </li>
                             </ul>
@@ -882,7 +916,7 @@ $(document).on("mouseenter" , ".equip-unit" , function (){
                             ${unitEquipData.long_desc}
                         </div>
                         <div class="requir">
-                            البطل مستوى ${unitEquipData.lvl_req}
+                            البطل مستوى ${1}
                         </div>
                     </div>
                 </div>`;

@@ -432,10 +432,12 @@ var WorldUnit = {
     isArenaChallange: function( unitType) {
             return (Number(unitType) === WUT_ARENA_CHALLANGE);
     },
-    isDominatable : function (_0x40774e) {
-        return WorldUnit['isQueenCity'](_0x40774e) || WorldUnit['isRepelCastle'](_0x40774e) || WorldUnit['isArmyCapital'](_0x40774e);
+    isDominatable : function (unitType) {
+        return WorldUnit['isQueenCity'](unitType) || WorldUnit['isRepelCastle'](unitType) || WorldUnit['isArmyCapital'](unitType);
     },
-
+    'isSeaCity': function (unitType) {
+        return Number(unitType) >= WUT_SEA_CITY_1 && unitType <= WUT_SEA_CITY_6;
+    },
     isArenaDeath: function( unitType) {
             return (Number(unitType) === WUT_ARENA_DEATH);
     },

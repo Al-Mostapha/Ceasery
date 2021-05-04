@@ -5,7 +5,11 @@ GodGate.pointTotxt = {
     "attack":"هجوم",
     "def":"دفاع",
     "dam":"انجراح",
-    "vit":"حيوية"
+    "vit":"حيوية",
+    "break": "إجتياح",
+    "anti_break": "تصدى",
+    "strike": "تدمير",
+    "immunity": "حصانة"
     
 };
 
@@ -48,6 +52,22 @@ GodGate.data = {
         damage:{
             ar_title: "انجراح",
             max: 50
+        },
+        "break":{
+            ar_title: "إجتياح",
+            max: 15
+        },
+        anti_break:{
+            ar_title: "تصدى",
+            max: 15
+        },
+        strike:{
+            ar_title: "تدمير",
+            max: 15
+        },
+        immunity:{
+            ar_title: "حصانة",
+            max: 15
         }
     },
     godName: {
@@ -242,38 +262,41 @@ GodGate.BoxContent = function (gate){
     
     var godGate = this.playerGate[("GodGate"+gate)];
     if(!godGate)
-    {
-        console.log(gate)
-        console.log(godGate)
         return ;
-    }
-        
+    
     
     var totalLocks = 0;
     
     var listItem = "";
     
-    for(var iii = 1 ; iii <= 3 ; iii++){
+    for(var iii = 1 ; iii <= 4 ; iii++){
         
         var state = "c_"+iii+"_s";
         var score = "cell_"+iii+"_score";
         var type  = "cell_"+iii+"_type";
-        
-        listItem += `<li data-index="${iii}" data-score="${score}">
+        if(!GodGate.data.point[godGate[type]]){
+             console.log(godGate[type])
+            console.log(type)
+            console.log(godGate)
+        }
+           
+        listItem += `<li class="${Number(godGate[state]) == 2 ? "gray-filter" : ""}" data-index="${iii}" data-score="${score}">
                         <div class="lock">
                             ${Number(godGate[state]) === 0 ? '<label class="chackable"></label>' : ""}
                         </div>
                         <div class="effect score-${GodGate.scoreColor(godGate[type] ,godGate[score] )}">
-                            <div class="effct-type font-2 ">${GodGate.data.point[godGate[type]].ar_title}</div>
+                            <div class="effct-type font-2 ">${godGate[type] == "" ? "---" : (GodGate.data.point[godGate[type]].ar_title)}</div>
                             <div class="effct-renge font-2">(${Math.floor(Math.max(godGate[score] - godGate[score]*0.2 , 1))})</div>
-                            <div class="effct-score font-2">(${Math.floor((godGate[score]/GodGate.data.point[godGate[type]].max)*100)}%)</div>
+                            <div class="effct-score font-2">${Number(godGate[state]) == 2 ? "(0%)" : `(${Math.floor((godGate[score]/GodGate.data.point[godGate[type]].max)*100)}%)`}</div>
                         </div>
                         <div class="checkBox">
                             <input type="checkbox" checked="checked">
                             <button class="checkmark ${Number(godGate[state]) === 0 ? "checked" : ""} chackable"></button>
                         </div>
-                        <div class="closeWord font-2 chackable">
-                            ${Number(godGate[state]) === 0 ? "مغلق" : ""}
+                        <div class="closeWord font-2 ${Number(godGate[state]) != 2 ? "chackable" : ""}">
+                            ${godGate[state] == 2 ? `<div class="open-fourth-cell">
+                                                        <button id="OpenForthCellGG" data-gate="${gate}" class="pluse"></button>
+                                                    </div>` : (Number(godGate[state]) != 1 ? "مغلق" : "") }
                         </div>
                     </li>`;
         
@@ -296,23 +319,7 @@ GodGate.BoxContent = function (gate){
                         </div>
                         <ul>
                             ${listItem}
-                            <li class="gray-filter">
-                                <div class="lock">
-                                    <label></label>
-                                </div>
-                                <div class="effect">
-                                    <div class="effct-type font-2">قريبا</div>
-                                    <div class="effct-renge font-2">(0-0)</div>
-                                    <div class="effct-score font-2">(0)</div>
-                                </div>
-                                <div class="checkBox">
-                                    <input type="checkbox" checked="checked">
-                                    <span class="checkmark"></span>
-                                </div>
-                                <div class="closeWord font-2">
-                                    قريبا
-                                </div>
-                            </li>
+                            
                         </ul>
                     </div>
                     <div class="btn-wrapper">
@@ -429,12 +436,76 @@ GodGate.useBoxPoint = function (box , amount){
 
 
 
+GodGate.OpenFourthCell = function (Gate){
+    
+    var Mat = "skill_book";
+    
+    if(Matrial.getPlayerAmount(Mat) <= Gate*5){
+        
+        $("#over_lay_alert").remove();
+        alert_box.confirmMessage(`لا يوجد لديك عدد (${Gate*10}) من ${Matrial.getMatrialName(Mat)}  فى صندوق الموارد خاصتك`);
+        return ;
+        
+    }
+    if(GodGate.playerGate.GodGateData.points < Gate*5000){
+        $("#over_lay_alert").remove();
+        alert_box.confirmMessage(`يجب ان تمتلك اكثر من ${Gate*5000} نقطة من نقاط التسليح`);
+        return ;
+    }
+    
+    $.ajax({
+        url: `${API_URL}/api/AGodGate/OpenFourthCell`,
+        data:{
+            GateIndex: Gate,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
+        },
+        type: 'POST',
+        beforeSend: function (xhr) {
+            
+        },
+        success: function (data, textStatus, jqXHR) {
+            
+            
+            if(!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            var JsonData = JSON.parse(data);
+            
+            
+            if(JsonData.state == "ok"){
+                GodGate.getPlayerGates().done(function (data){
+                    $("#godGateBox").replaceWith(GodGate.BoxContent(Gate));
+                });
+                $(".close_select_menu").trigger("click");
+                $("#alert_container .close-alert").trigger("click");
+            }else if(JsonData.state == "error_0"){
+                alert_box.failMessage(`خطاء نوع البوبة`);
+            }else if(JsonData.state == "error_1"){
+                alert_box.failMessage(`خطاء نوع البوبة`);
+            }else if(JsonData.state == "error_2"){
+                alert_box.failMessage(`البوابة مغلقة`);
+            }else if(JsonData.state == "error_3"){
+                alert_box.failMessage(`ليس لديك نقاط كافية`);
+            }else if(JsonData.state == "error_4"){
+                alert_box.failMessage(`ليس لديك مواد كافية`);
+            }
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            
+        }
+    });
+    
+};
+
 GodGate.scoreColor = function (pointFor, score){
     
     
     if(GodGate.data.point[pointFor]){
         return Math.floor((score/GodGate.data.point[pointFor].max)*5);
     }
+    
+    
 };
 
 
@@ -708,8 +779,7 @@ $(document).on("click" , "#change-gate-cell" ,function (){
 
 $(document).on("click" , ".add-god-points" , function (){
     
-   var matrial = GodGate.matrialUse;
-    
+    var matrial = GodGate.matrialUse;
     BoxOfMatrialToUse(matrial , "add-god-points");
     
 });
@@ -757,4 +827,17 @@ $(document).on("click" , "#nav-gate-rank div", function (){
     
     
     GodGate.rank(gate , newOffset);
+});
+
+
+
+$(document).on("click", "#OpenForthCellGG", function (){
+    var matrial = ["skill_book"];
+    var Gate = $(this).attr("data-gate");
+    
+    alert_box.confirmDialog(`تأكيد إستعمال عدد(${Gate*10}) من ${Matrial.getMatrialName(matrial[0])} + ${Gate * 5000} نقطة تسليح لفتح المهارة الرابعة للبوابة`, function (){
+        BoxOfMatrialToUse(matrial , "open-fourth-cell", Gate, Gate);
+    });
+    
+    
 });

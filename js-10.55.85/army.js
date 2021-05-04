@@ -391,10 +391,14 @@ function getEquipData(eq_part) {
             image: image,
             id_equip: eq_part.id_equip,
             type: eq_part.type,
-            vit: EquData.vit,
-            attack: EquData.attack,
-            defence: EquData.defence,
-            damage: EquData.damage,
+            vit: EquData.Power.vit,
+            attack: EquData.Power.attack,
+            defence: EquData.Power.defence,
+            damage: EquData.Power.damage,
+            break: EquData.Power.break,
+            anti_break: EquData.Power.anti_break,
+            strike: EquData.Power.strike,
+            immunity: EquData.Power.immunity,
             lvl: eq_part["lvl"]
         };
         return data;
@@ -407,6 +411,10 @@ function getEquipData(eq_part) {
         attack: 0,
         defence: 0,
         damage: 0,
+        break: 0,
+        anti_break: 0,
+        strike: 0,
+        immunity: 0,
         lvl: 0
     };
 }
@@ -1414,22 +1422,144 @@ var army = {
         $('#navigate-btn')['attr']('data-offset', _0x54ba51)
         return  _0x2b41e5;
     },
-    'HeroEquipUnit': function (_0x59166d) {
-        return '<div class=\"EquiUnitWrapper wrapper\">\x0a                    <button style=\"background-image: url(' + getEquipData(Elkaisar['CurrentHero']['Equip'][_0x59166d])['image'] + ')\" \x0a                        id=\"' + _0x59166d + '\" equip_part=\"helmet\" id_equip=\"' + getEquipData(Elkaisar['CurrentHero']['Equip'][_0x59166d])['id_equip'] + '\"\x0a                        class=\"on_equip equip-unit\" data-equi-type=\"' + getEquipData(Elkaisar['CurrentHero']['Equip'][_0x59166d])['type'] + '\" \x0a                        data-equi-lvl=\"' + getEquipData(Elkaisar['CurrentHero']['Equip'][_0x59166d])['lvl'] + '\" data-equi-part=\"' + _0x59166d + '\"></button>\x0a                </div>';
+    'HeroEquipUnit': function (Part) {
+        return `<div class="EquiUnitWrapper wrapper">
+                    <button style="background-image: url(${getEquipData(Elkaisar['CurrentHero']['Equip'][Part])['image']})" 
+                        id="${Part} " equip_part="helmet" id_equip="${getEquipData(Elkaisar['CurrentHero']['Equip'][Part])['id_equip']}"
+                        class="on_equip equip-unit" data-equi-type="${getEquipData(Elkaisar['CurrentHero']['Equip'][Part])['type']}" 
+                        data-equi-lvl="${getEquipData(Elkaisar['CurrentHero']['Equip'][Part])['lvl']}" data-equi-part="${Part }"></button>
+                </div>`;
     },
     'HeroEquip': function () {
-        var _0x836f47 = '<div id=\"HeroEquipBox\" class=\"equip\">\x0a                    <table>\x0a                        <tbody>\x0a                            <tr>\x0a                                <td class=\"eq-helmet\">\x0a                                    ' + this['HeroEquipUnit']('helmet') + '\x0a                                </td>\x0a                                <td colspan=\"2\"></td>\x0a                                <td class=\"eq-beads\">\x0a                                    ' + this['HeroEquipUnit']('pendant') + '\x0a                                </td>\x0a                            </tr>\x0a                            <tr>\x0a                                <td class=\"eq-neck\">\x0a                                    ' + this['HeroEquipUnit']('necklace') + '\x0a                                </td>\x0a                                <td colspan=\"2\"></td>\x0a                                <td class=\"eq-belt\">\x0a                                    ' + this['HeroEquipUnit']('belt') + '\x0a                                </td>\x0a                            </tr>\x0a                            <tr>\x0a                                <td>\x0a                                    ' + this['HeroEquipUnit']('armor') + '\x0a                                </td>\x0a                                <td colspan=\"2\"></td>\x0a                                <td class=\"eq-ring\">\x0a                                    ' + this['HeroEquipUnit']('ring') + '\x0a                                </td>\x0a                            </tr>\x0a                            <tr>\x0a                                <td class=\"eq-boot\">\x0a                                    ' + this['HeroEquipUnit']('boot') + '\x0a                                </td>\x0a                                <td class=\"eq-sword\">\x0a                                    ' + this['HeroEquipUnit']('sword') + '\x0a                                </td>\x0a                                <td class=\"eq-shield\">\x0a                                    ' + this['HeroEquipUnit']('shield') + '\x0a                                </td>\x0a                                <td class=\"eq-horse\">\x0a                                    ' + this['HeroEquipUnit']('steed') + '\x0a                                </td>\x0a                            </tr>\x0a                        </tbody>\x0a                    </table>\x0a                </div>';
-        return $('#HeroEquipBox')['replaceWith'](_0x836f47), _0x836f47;
+        var EquipTab = `<div id="HeroEquipBox" class="equip">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="eq-helmet">
+                                            ${ this['HeroEquipUnit']('helmet') }
+                                        </td>
+                                        <td colspan="2"></td>
+                                        <td class="eq-beads">
+                                            ${this['HeroEquipUnit']('pendant') }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="eq-neck">
+                                            ${this['HeroEquipUnit']('necklace') }
+                                        </td>
+                                        <td colspan="2"></td>
+                                        <td class="eq-belt">
+                                            ${this['HeroEquipUnit']('belt') }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            ${this['HeroEquipUnit']('armor') }
+                                        </td>
+                                        <td colspan="2"></td>
+                                        <td class="eq-ring">
+                                            ${this['HeroEquipUnit']('ring') }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="eq-boot">
+                                            ${this['HeroEquipUnit']('boot') }
+                                        </td>
+                                        <td class="eq-sword">
+                                            ${this['HeroEquipUnit']('sword') }
+                                        </td>
+                                        <td class="eq-shield">
+                                            ${this['HeroEquipUnit']('shield') }
+                                        </td>
+                                        <td class="eq-horse">
+                                            ${this['HeroEquipUnit']('steed') }
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>`;
+        $('#HeroEquipBox')['replaceWith'](EquipTab);
+        return  EquipTab;
     },
     'dialogBoxContent_forEquiRight': function () {
-        var _0x366bbe = this['getEquipList']();
-        return '<div id=\"hero-wrapper\">\x0a                    <div class=\"middle-content\">\x0a                        <div class=\"part-1 hero-name\">\x0a                            <h1 class=\"header-2 banner-red\">' + Elkaisar['CurrentHero']['Hero']['name'] + '</h1>\x0a                        </div>\x0a                        ' + this['HeroEquip']() + '\x0a                        <div class=\"row row-4\">\x0a                            <div class=\"col-1 full\" id=\"after-ajax-hero-army\">\x0a                               ' + Hero['armyReview']() + '\x0a                            </div>\x0a                        </div>\x0a                    </div>\x0a                    <div class=\"right-content blue-ribbon\"> \x0a                        <div  id=\"eq-part-select\"  class=\"eq-select-bar\">\x0a                            <ul>\x0a                                <li class=\"selected\">\x0a                                    <button data-equi-part=\"all\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-all.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"sword\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-sword.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"shield\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-shield.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"helmet\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-helmet.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"armor\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-armor.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"belt\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-belt.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"ring\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-ring.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"necklace\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-necklase.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"boot\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-boot.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"pendant\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-meskah.png)\"></button>\x0a                                </li>\x0a                                <li>\x0a                                    <button data-equi-part=\"steed\" class=\"eq-unit-select\" style=\"background-image: url(images/icons/hero/eq-list-horse.png)\"></button>\x0a                                </li>\x0a                            </ul>\x0a                        </div>\x0a                        <div id=\"equip-list-heroDia\" class=\"all-eq-table\">\x0a                            ' + _0x366bbe + '\x0a                        </div>\x0a                        <div id=\"navigate-btn\">\x0a                            <div class=\"wrapper\">\x0a                                <div class=\"left\">\x0a                                    <button  class=\"GO_L_1 go-one-page-eq-left\"></button>\x0a                                </div>\x0a                                <div class=\"lable\">\x0a                                    1/' + Math['floor'](Elkaisar['DPlayer']['Equip']['filter'](function (_0x4b22ae) {
-            return !_0x4b22ae['id_hero'];
-        })['length'] / 0x18) + '\x0a                                </div>\x0a                                <div class=\"right\">\x0a                                    <button class=\"GO_R_1 go-one-page-eq-right\"></button>\x0a                                </div>\x0a                            </div>\x0a                        </div>\x0a                    </div>\x0a                </div>';
+        var EquipList = this['getEquipList']();
+        return `<div id="hero-wrapper">
+                    <div class="middle-content">
+                        <div class="part-1 hero-name">
+                            <h1 class="header-2 banner-red">${ Elkaisar['CurrentHero']['Hero']['name'] }</h1>
+                        </div>
+                        ${ this['HeroEquip']() }
+                        <div class="row row-4">
+                            <div class="col-1 full" id="after-ajax-hero-army">
+                               ${ Hero['armyReview']() }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-content blue-ribbon"> 
+                        <div  id="eq-part-select"  class="eq-select-bar">
+                            <ul>
+                                <li class="selected">
+                                    <button data-equi-part="all" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-all.png)"></button>
+                                </li>
+                                <li>
+                                    <button data-equi-part="sword" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-sword.png)"></button>
+                                </li>
+                                <li>
+                                    <button data-equi-part="shield" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-shield.png)"></button>
+                                </li>
+                                <li>
+                                    <button data-equi-part="helmet" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-helmet.png)"></button>
+                                </li>
+                                <li>
+                                    <button data-equi-part="armor" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-armor.png)"></button>
+                                </li>
+                                <li>
+                                    <button data-equi-part="belt" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-belt.png)"></button>
+                                </li>
+                                <li>
+                                    <button data-equi-part="ring" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-ring.png)"></button>
+                                </li>
+                                <li>
+                                    <button data-equi-part="necklace" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-necklase.png)"></button>
+                                </li>
+                                <li>
+                                    <button data-equi-part="boot" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-boot.png)"></button>
+                                </li>
+                                <li>
+                                    <button data-equi-part="pendant" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-meskah.png)"></button>
+                                </li>
+                                <li>
+                                    <button data-equi-part="steed" class="eq-unit-select" style="background-image: url(images/icons/hero/eq-list-horse.png)"></button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="equip-list-heroDia" class="all-eq-table">
+                            ${ EquipList }
+                        </div>
+                        <div id="navigate-btn">
+                            <div class="wrapper">
+                                <div class="left">
+                                    <button  class="GO_L_1 go-one-page-eq-left"></button>
+                                </div>
+                                <div class="lable">
+                                    1/${ Math['floor'](Elkaisar['DPlayer']['Equip']['filter'](function (Hero) {
+                                                return !Hero['id_hero'];
+                                            })['length'] / 24) }
+                                </div>
+                                <div class="right">
+                                    <button class="GO_R_1 go-one-page-eq-right"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
     },
     'dialogBoxContent_forEqui': function () {
-        var _0x3a40d9 = ' <div  id=\"hero-dial-equip\" class=\"box_content hero_dial hero-equip\">\x0a                       ' + this['left_content']() + '  \x0a                       ' + this['dialogBoxContent_forEquiRight']() + '\x0a                    </div>';
-        return _0x3a40d9;
+        var Box = `<div  id="hero-dial-equip" class="box_content hero_dial hero-equip">
+                            ${ this['left_content']() }  
+                            ${ this['dialogBoxContent_forEquiRight']() }
+                        </div>`;
+        return Box;
     },
     dialogBoxContent_forHeroLearnRight: function (hero) {
 
@@ -1817,17 +1947,6 @@ $(document).on("dragover dragenter drop paste", "input, .only_num", function (e)
 
 });
 
-$(document)['on']('mouseenter', '.equip-unit', function () {
-    var _0x111277 = $(this)['attr']('data-equi-part'),
-            _0x2fb5e7 = $(this)['attr']('data-equi-type'),
-            _0x3f1d87 = $(this)['attr']('data-equi-lvl'),
-            _0x2f10a9 = Equipment['getEquipData'](_0x2fb5e7, _0x111277, _0x3f1d87),
-            _0x491bfa = '<div class=\"tooltip tooltip-equip\">\x0a                    <div class=\"top\">\x0a                        <div class=\"title\">\x0a                            ' + _0x2f10a9['name'] + '\x0a                        </div>\x0a                        <div class=\"points\">\x0a                            <ul>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/vitilty.png\"> ) حيوية</label>&nbsp;&nbsp;&nbsp;&nbsp; <label>+' + _0x2f10a9['vitality'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/attack.png\"> ) هجوم</label>&nbsp;&nbsp;&nbsp;&nbsp; <label>+' + _0x2f10a9['attack'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/defence.png\"> ) دفاع</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>+' + _0x2f10a9['defence'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/damage.png\"> ) انجراح</label>&nbsp;&nbsp; <label>+' + _0x2f10a9['damage'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/break.png\" style=\"width: 20px\"> ) اجتياح</label>&nbsp;&nbsp; <label>+' + _0x2f10a9['break'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/anti-break.png\" style=\"width: 20px\"> ) تصدى</label>&nbsp;&nbsp; <label>+' + _0x2f10a9['anti_break'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div class=\"wrapper-\">\x0a                                        <label>( <img src=\"images/icons/army/strike.png\" style=\"width: 20px\"> ) تدمير</label>&nbsp;&nbsp;&nbsp; <label>+' + _0x2f10a9['strike'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                                <li>\x0a                                    <div>\x0a                                        <label>( <img src=\"images/icons/army/immunity.png\" style=\"width: 20px\"> ) حصانة</label>&nbsp;&nbsp; <label>+' + _0x2f10a9['immunity'] + '</label>\x0a                                    </div>\x0a                                </li>\x0a                            </ul>\x0a                        </div>\x0a\x0a\x0a                    </div>\x0a                    <div class=\"bottom\">\x0a                        <div class=\"desc\">\x0a                            ' + _0x2f10a9['desc'] + '\x0a                        </div>\x0a                        <div class=\"long-desc\">\x0a                            ' + _0x2f10a9['long_desc'] + '\x0a                        </div>\x0a                        <div class=\"requir\">\x0a                            البطل مستوى ' + (_0x2f10a9['lvl_req'] || 0x0) + '\x0a                        </div>\x0a                    </div>\x0a                </div>';
-    $(this)['after'](_0x491bfa);
-});
-$(document)['on']('mouseleave', '.equip-unit', function () {
-    $('.tooltip-equip')['remove']();
-});
 
 $(document).on("click", ".build_army", function () {
 

@@ -33,6 +33,10 @@ Elkaisar.WsLib.Base.worldCity = function (data){
     {
         
         Unit           = WorldUnit.getWorldUnit(data.City[iii].x, data.City[iii].y);
+        if(!Unit)
+            continue;
+        
+            
         Unit.idGuild   = data.City[iii].ig;
         Unit.CityLvl   = data.City[iii].l;
         Unit.idCity    = data.City[iii].ic;

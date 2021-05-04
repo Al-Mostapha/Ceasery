@@ -80,23 +80,63 @@ Elkaisar.Equip.getEquipUnit = function(idEquip)
     return {};
 };
 
+Elkaisar.Equip.EquipList = {},
+Elkaisar.Equip.getEquipData = function () {
+    $['ajax']({
+        'url': API_URL + '/js' + Elkaisar['Config']['JsVersion'] + '/json/equipment/' + UserLag['language'] + '.json',
+        'success': function (data, _0x18a598, _0x1ed6f5) {
+            Elkaisar['Equip']['EquipList'] = data;
+            $['ajax']({
+                'url': API_URL + '/api/APlayerEquip/getEquipPower',
+                'data': {
+                    'token': Elkaisar['Config']['OuthToken'],
+                    'server': Elkaisar['Config']['idServer']
+                },
+                'success': function (DataI, _0x23bbdc, _0x2945f2) {
+                    if (!Elkaisar['LBase']['isJson'](DataI))
+                        return Elkaisar['LBase']['Error'](DataI);
+                    var JsonData = JSON['parse'](DataI);
+                    for (var ii in JsonData) {
+                        Elkaisar['Equip']['EquipList'][`${JsonData[ii]['equip']}_${JsonData[ii]['part']}_${JsonData[ii]['lvl']}`]['Power'] = JsonData[ii];
+                    }
+                }
+            });
+        }
+    });
+}
 
- Elkaisar['Equip']['getPlayerAmount'] = function (_0x3cb83a, _0x1d2713, _0x418150) {
-    var _0x325661 = 0x0;
-    for (var _0x33d3f4 in Elkaisar['DPlayer']['Equip']) {
-        if (Elkaisar['DPlayer']['Equip'][_0x33d3f4]['type'] == _0x3cb83a && Elkaisar['DPlayer']['Equip'][_0x33d3f4]['part'] == _0x1d2713 && Elkaisar['DPlayer']['Equip'][_0x33d3f4]['lvl'] == _0x418150) _0x325661++;
+ Elkaisar.Equip.getPlayerAmount = function (EquipType, Part, Lvl = 1) {
+     
+    var Count = 0x0;
+    for (var ii in Elkaisar['DPlayer']['Equip']) {
+        if (Elkaisar['DPlayer']['Equip'][ii]['type'] == EquipType 
+                && Elkaisar['DPlayer']['Equip'][ii]['part'] == Part 
+                && Elkaisar['DPlayer']['Equip'][ii]['lvl'] == Lvl)
+            Count++;
     }
-    return _0x325661;
+    return Count;
 };
 $(document)['on']('PlayerReady', 'html', function () {
-    Elkaisar['Equip']['getEquipData']();
+    Elkaisar.Equip.getEquipData();
 });
+
+Elkaisar.Equip.EquipFeature = {
+  0 : {
+      Title: "لا توجد"
+  }  ,
+  1 : {
+      Title : "وابل السهام"
+  },
+  2 : {
+      Title : "الدرع"
+  }
+};
 
 var Equipment = {
     
     secoundryList:["belt","necklace","pendant","ring","steed"],
     
-    getName: function (equip , part, lvl){
+    getName: function (equip , part, lvl = 1){
         
         if(!EQUIP_DATA[equip])
             return ;
@@ -108,29 +148,32 @@ var Equipment = {
     },
     getEquipData: function (equip , part , lvl){
         
-        if(!EQUIP_DATA[equip])
+        if(!Elkaisar.Equip.EquipList[`${equip}_${part}_${lvl}`])
             return {
-                anti_break: "0",
-                attack: "0",
-                break: "0",
-                damage: "0",
-                defence: "0",
-                desc: "",
-                image: "images/tech/no_army.png",
-                immunity: "0",
-                long_desc: "0",
-                lvl_req: 4,
-                name: "-- --",
-                strike: "0",
-                vit: 140,
-                vitality: "140",
-                lvl:0
-            } ;
+                Power :{ 
+                    anti_break: 0,
+                    attack: 0,
+                    break: 0,
+                    damage: 0,
+                    defence: 0,
+                    equip: "",
+                    immunity: 0,
+                    lvl: 1,
+                    part: "",
+                    sp_attr: 0,
+                    strike: 0,
+                    vitality: 140
+                    },
+                  Texture2D: "Texture2D'/Game/images/equip/equip228.equip228'",
+                desc: "تزيد من الحيوية والهجوم لدى القوات.",
+                image: "images/equip/equip228.jpg",
+                long_desc: "من معدّات إحتفالية العامين للقيصر, المخلصين والشجعان فقط من يحصلون عليها. علامةُ فارقة بين المعدّات والأسلحة.",
+                name: "مصفح الـڤيكنج",
+                orid: 197  
+            };
         
-        if(this.secoundryList.indexOf(part) > -1)
-            return EQUIP_DATA[equip]["sec"][part][Math.max(lvl - 1 , 0)];
         
-        return EQUIP_DATA[equip][part];
+        return Elkaisar.Equip.EquipList[`${equip}_${part}_${lvl}`];
     },
     getImage: function (equip , part , lvl){
         if(!EQUIP_DATA[equip])

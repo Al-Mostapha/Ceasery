@@ -87,55 +87,55 @@ $(document).on("mouseenter", "#city-profile .page_content .army_type", function 
                                     <div class="image">
                                         <img src="images/icons/army/vitilty.png"/>
                                     </div>
-                                    <div class="value">${Elkaisar.BaseData.Army[army].vit}</div>
+                                    <div class="value">${Elkaisar.BaseData.ArmyPower[army].vit}</div>
                                 </li>
                                 <li>
                                     <div class="image">
                                         <img src="images/icons/army/attack.png"/>
                                     </div>
-                                    <div class="value">${Elkaisar.BaseData.Army[army].attack}</div>
+                                    <div class="value">${Elkaisar.BaseData.ArmyPower[army].attack}</div>
                                 </li>
                                 <li>
                                     <div class="image">
                                         <img src="images/icons/army/defence.png"/>
                                     </div>
-                                    <div class="value">${Elkaisar.BaseData.Army[army].defence}</div>
+                                    <div class="value">${Elkaisar.BaseData.ArmyPower[army].def}</div>
                                 </li>
                                 <li>
                                     <div class="image">
                                         <img src="images/icons/army/damage.png"/>
                                     </div>
-                                    <div class="value">${Elkaisar.BaseData.Army[army].damage}</div>
+                                    <div class="value">${Elkaisar.BaseData.ArmyPower[army].dam}</div>
                                 </li>
                                 <li>
                                     <div class="image">
                                         <img src="images/icons/army/break.png" style="width:20px; height: 20px"/>
                                     </div>
-                                    <div class="value">${Elkaisar.BaseData.Army[army].break}</div>
+                                    <div class="value">${Elkaisar.BaseData.ArmyPower[army].break}</div>
                                 </li>
                                 <li>
                                     <div class="image">
                                         <img src="images/icons/army/anti-break.png" style="width:20px; height: 20px"/>
                                     </div>
-                                    <div class="value">${Elkaisar.BaseData.Army[army].anti_break}</div>
+                                    <div class="value">${Elkaisar.BaseData.ArmyPower[army].anti_break}</div>
                                 </li>
                                 <li>
                                     <div class="image">
                                         <img src="images/icons/army/strike.png" style="width:20px; height: 20px"/>
                                     </div>
-                                    <div class="value">${Elkaisar.BaseData.Army[army].strike}</div>
+                                    <div class="value">${Elkaisar.BaseData.ArmyPower[army].strike}</div>
                                 </li>
                                 <li>
                                     <div class="image">
                                         <img src="images/icons/army/immunity.png" style="width:20px; height: 20px"/>
                                     </div>
-                                    <div class="value">${Elkaisar.BaseData.Army[army].immunity}</div>
+                                    <div class="value">${Elkaisar.BaseData.ArmyPower[army].immunity}</div>
                                 </li>
                                 <li>
                                     <div class="image">
                                         <img src="images/icons/army/food.png"/>
                                     </div>
-                                    <div class="value">${Elkaisar.BaseData.Army[army].eating}</div>
+                                    <div class="value">${Elkaisar.BaseData.ArmyPower[army].eating}</div>
                                 </li>
                                 <li>
                                     <div class="image">
@@ -180,6 +180,9 @@ WORLD_ALL_UNIT = Elkaisar.worldAllUnits;
 
 $(document).on("PlayerReady", "html", function () {
 
+    $['getJSON'](API_URL + '/js' + Elkaisar['Config']['JsVersion'] + '/json/UnitArmy.json', {}, function (UnitArmy, _0x1d2e97, _0x190ef9) {
+        Elkaisar['World']['UnitArmy'] = UnitArmy;
+    })
     $.getJSON(
             API_URL + "/js" + Elkaisar.Config.JsVersion + "/json/worldUnitData.json", {},
             function (data, textStatus, jqXHR) {

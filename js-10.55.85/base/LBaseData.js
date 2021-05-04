@@ -889,7 +889,7 @@ $(document).on("PlayerReady", "html", function () {
 
 
     $.ajax({
-        url: `${API_URL}/js${Elkaisar.Config.JsVersion}/json/itemLang/${Elkaisar.Config.UserLang}.json`,
+        url: `${API_URL}/js${Elkaisar.Config.JsVersion}/json/ItemLang/${Elkaisar.Config.UserLang}.json`,
         success: function (Items, textStatus, jqXHR) {
             $.ajax({
                 url: API_URL + "/js" + Elkaisar.Config.JsVersion + "/json/itemBase.json",
@@ -920,6 +920,21 @@ Elkaisar.BaseData.HeroToCity = {
     "5": "army_e",
     "6": "army_f"
 };
+
+Elkaisar.BaseData.ArmyPower = {
+    0            : {"attack" : 0,  "def" : 0,  "vit" : 0,   "dam" : 0,  "break" : 0, "anti_break" : 0, "strike" : 0,  "immunity" : 0,  "res_cap" : 0},
+    "army_a"     : {"attack" : 8,  "def" : 8,  "vit" : 60,  "dam" : 3,  "break" : 1, "anti_break" : 1, "strike" : 3,  "immunity" : 1,  "res_cap" : 100},
+    "army_b"     : {"attack" : 30, "def" : 20, "vit" : 250, "dam" : 35, "break" : 5, "anti_break" : 2, "strike" : 2,  "immunity" : 2,  "res_cap" : 200},
+    "army_c"     : {"attack" : 25, "def" : 30, "vit" : 400, "dam" : 40, "break" : 10,"anti_break" : 10,"strike" : 10, "immunity" : 10, "res_cap" : 220},
+    "army_d"     : {"attack" : 9,  "def" : 5,  "vit" : 45,  "dam" : 3,  "break" : 1, "anti_break" : 1, "strike" : 4,  "immunity" : 1,  "res_cap" : 75},
+    "army_e"     : {"attack" : 19, "def" : 25, "vit" : 100, "dam" : 19, "break" : 2, "anti_break" : 2, "strike" : 12, "immunity" : 2,  "res_cap" : 35},
+    "army_f"     : {"attack" : 40, "def" : 20, "vit" : 600, "dam" : 70, "break" : 12,"anti_break" : 10,"strike" : 10, "immunity" : 10, "res_cap" : 75},
+    "spies"      : {"attack" : 0,  "def" : 0,  "vit" : 0,   "dam" : 0,  "break" : 0, "anti_break" : 0, "strike" : 0,  "immunity" : 0,  "res_cap" : 75},
+    "wall_a"     : {"attack" : 20, "def" : 10, "vit" : 300, "dam" : 10, "break" : 5, "anti_break" : 4, "strike" : 15, "immunity" : 5,  "res_cap" : 75},
+    "wall_b"     : {"attack" : 19, "def" : 25, "vit" : 400, "dam" : 35, "break" : 5, "anti_break" : 4, "strike" : 15, "immunity" : 5,  "res_cap" : 75},
+    "wall_c"     : {"attack" : 40, "def" : 20, "vit" : 600, "dam" : 70, "break" : 5, "anti_break" : 4, "strike" : 15, "immunity" : 5,  "res_cap" : 75}
+};
+
 Elkaisar.BaseData.Army = {
     "0": {
         food: 0,
@@ -1012,10 +1027,10 @@ Elkaisar.BaseData.Army = {
         attack: 8,
         defence: 8,
         damage: "3-6",
-        "break": 5,
-        anti_break: 4,
+        "break": 1,
+        anti_break: 1,
         strike: 3,
-        immunity: 1,
+        immunity: 2,
         eating: 4,
         speed: 300,
         capacity: 40,
@@ -1083,10 +1098,10 @@ Elkaisar.BaseData.Army = {
         attack: 25,
         defence: 30,
         damage: "40-60",
-        "break": 1,
+        "break": 10,
         anti_break: 5,
         strike: 10,
-        immunity: 10,
+        immunity: 5,
         eating: 36,
         speed: 600,
         capacity: 120,
@@ -1120,9 +1135,9 @@ Elkaisar.BaseData.Army = {
         attack: 9,
         defence: 5,
         damage: "3-5",
-        "break": 6,
+        "break": 2,
         anti_break: 2,
-        strike: 2,
+        strike: 3,
         immunity: 2,
         eating: 5,
         speed: 250,
@@ -1160,7 +1175,7 @@ Elkaisar.BaseData.Army = {
         "break": 5,
         anti_break: 2,
         strike: 15,
-        immunity: 2,
+        immunity: 8,
         eating: 20,
         speed: 150,
         capacity: 35,
@@ -1194,10 +1209,10 @@ Elkaisar.BaseData.Army = {
         attack: 40,
         defence: 20,
         damage: "70-70",
-        "break": 2,
+        "break": 15,
         anti_break: 4,
-        strike: 15,
-        immunity: 5,
+        strike: 5,
+        immunity: 15,
         eating: 150,
         speed: 100,
         capacity: 75,

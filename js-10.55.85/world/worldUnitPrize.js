@@ -106,9 +106,6 @@ WorldUnit['prize']['prizeAllLvlsList'] = function (xCoord, yCoord, prizeFor = 'W
 
 
 
-
-
-
-
-
-WorldUnit.prize.getAllPrize();
+$(document).on("PlayerReady", "html", function () {
+    WorldUnit.prize.getAllPrize();
+});

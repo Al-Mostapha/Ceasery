@@ -47,6 +47,8 @@ $(document).on("click", "#footer_bar li", function () {
     var battel_task = $(this).attr("data-type");
     var world_unit = WorldUnit.getWorldUnit(x_coord, y_coord).entite;
 
+
+
     if (Number(battel_task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY) {
 
         buildingClick("market");
@@ -90,15 +92,15 @@ $(document).on("click", "#footer_bar li", function () {
     {
         if (Elkaisar.DPlayer.Heros[iii].Hero.id_city != Elkaisar.CurrentCity.City.id_city)
             continue;
-        if (Elkaisar.DPlayer.Heros[iii].Hero.in_city != 1)
+        if (Elkaisar.DPlayer.Heros[iii].Hero.in_city != Elkaisar.Hero.HeroState.HERO_IN_CITY)
             continue;
-        if (Elkaisar.DPlayer.Heros[iii].Hero.console != 0)
+        if (Elkaisar.Hero.isConsole(Elkaisar.DPlayer.Heros[iii].Hero.id_hero))
             continue;
         Elkaisar.CurrentHero = Elkaisar.DPlayer.Heros[iii];
         break;
     }
 
-    if (typeof Elkaisar.CurrentHero !== "object") {
+    if (typeof Elkaisar.CurrentHero !== "object" || !Elkaisar.CurrentHero.Hero) {
 
         if (!cityHasType(BUILDING_TYPS.THEATER)) {
             alert_box.confirmMessage("لا يوجد ابطال او مسارح لتجنيد ابطال داخل المدينة");
@@ -189,7 +191,8 @@ function isMyBarr(_0x22de03, _0x4dcc19) {
     for (var _0x4d186f in Elkaisar['DPlayer']['City']) {
         _0x46bfff = Elkaisar['DPlayer']['City'][_0x4d186f];
         for (var _0x215ce1 in _0x46bfff['Barray']) {
-            if (_0x46bfff['Barray'][_0x215ce1]['x_coord'] == _0x22de03 && _0x46bfff['Barray'][_0x215ce1]['y_coord'] == _0x4dcc19) return !![];
+            if (_0x46bfff['Barray'][_0x215ce1]['x_coord'] == _0x22de03 && _0x46bfff['Barray'][_0x215ce1]['y_coord'] == _0x4dcc19)
+                return !![];
         }
     }
     return ![];
@@ -211,9 +214,10 @@ function battelStart() {
         return;
     }
     var _0x2a0e73 = 0x0,
-        _0x542482 = Number(Elkaisar['CurrentHero']['Hero']['id_city']);
+            _0x542482 = Number(Elkaisar['CurrentHero']['Hero']['id_city']);
     for (var _0x2c5cbf in Elkaisar['DPlayer']['Heros']) {
-        if (Number(Elkaisar['DPlayer']['Heros'][_0x2c5cbf]['Hero']['id_city']) !== _0x542482) continue;
+        if (Number(Elkaisar['DPlayer']['Heros'][_0x2c5cbf]['Hero']['id_city']) !== _0x542482)
+            continue;
         Number(Elkaisar['DPlayer']['Heros'][_0x2c5cbf]['Hero']['in_city']) !== Elkaisar['Hero']['HeroState']['HERO_IN_CITY'] && _0x2a0e73++;
     }
     var _0x24c850 = cityHasType(BUILDING_TYPS['HOSPITAL']);
@@ -254,24 +258,32 @@ function battelStart() {
             },
             'type': 'POST',
             'success': function (_0x311475, _0x4f103d, _0x3e9120) {
-                if (isJson(_0x311475)) var _0x12bab5 = JSON['parse'](_0x311475);
-                else alert(_0x311475);
+                if (isJson(_0x311475))
+                    var _0x12bab5 = JSON['parse'](_0x311475);
+                else
+                    alert(_0x311475);
                 if (_0x12bab5['state'] === 'ok') {
                     $('.close_dialog')['trigger']('click'), Elkaisar['CurrentHero']['Hero']['in_city'] = 0x0, $('.close-alert')['trigger']('click'), battel_data['type'] = _0x12bab5['unit_type'], battel_data['lvl'] = _0x12bab5['unit_lvl'], Hero['heroAttackProc'](), PLAYER_NOTIF['hero_in_battel'] = Number(PLAYER_NOTIF['hero_in_battel']) + 0x1, city_profile['refresh_hero_view']();
                     var _0x4cad5b = _0x12bab5['Battel'],
-                        _0xf08408 = ![];
+                            _0xf08408 = ![];
                     for (var _0x5f08e9 in Elkaisar['Battel']['Battels']) {
                         Number(Elkaisar['Battel']['Battels'][_0x5f08e9]['id_battel']) === Number(battel_data['id_battel']) && (_0xf08408 = !![], Elkaisar['Battel']['Battels'][_0x5f08e9] = _0x4cad5b);
-                    }!_0xf08408 && (PLAYER_NOTIF['battel_number'] = Number(PLAYER_NOTIF['battel_number']) + 0x1, !Elkaisar['Battel']['Battels'] ? Elkaisar['Battel']['Battels'] = [_0x4cad5b] : Elkaisar['Battel']['Battels']['push'](_0x4cad5b)), Fixed['refreshPlayerNotif'](), Battel['afterJoin'](battel_data['x_coord'], battel_data['y_coord']);
+                    }
+                    !_0xf08408 && (PLAYER_NOTIF['battel_number'] = Number(PLAYER_NOTIF['battel_number']) + 0x1, !Elkaisar['Battel']['Battels'] ? Elkaisar['Battel']['Battels'] = [_0x4cad5b] : Elkaisar['Battel']['Battels']['push'](_0x4cad5b)), Fixed['refreshPlayerNotif'](), Battel['afterJoin'](battel_data['x_coord'], battel_data['y_coord']);
                 } else {
-                    if (_0x12bab5['state'] === 'error_1') alert_box['confirmMessage']('البطل ليس فى المدينة');
+                    if (_0x12bab5['state'] === 'error_1')
+                        alert_box['confirmMessage']('البطل ليس فى المدينة');
                     else {
-                        if (_0x12bab5['state'] === 'error_2') alert_box['confirmMessage']('انتهت المعركة لا يمكنك الانضمام');
+                        if (_0x12bab5['state'] === 'error_2')
+                            alert_box['confirmMessage']('انتهت المعركة لا يمكنك الانضمام');
                         else {
-                            if (_0x12bab5['state'] === 'error_3') alert_box['confirmMessage']('لا يمكنك الانضمام للدفاع </br> (وصل عدد المنضمين الى الحد الاقصى)');
+                            if (_0x12bab5['state'] === 'error_3')
+                                alert_box['confirmMessage']('لا يمكنك الانضمام للدفاع </br> (وصل عدد المنضمين الى الحد الاقصى)');
                             else {
-                                if (_0x12bab5['state'] === 'error_5') alert_box['confirmMessage']('لا يمكنك الدفاع ضد هذا الحلف');
-                                else _0x12bab5['state'] === 'error_6' ? alert_box['confirmMessage']('المواد غير كافية') : alert_box['confirmMessage']('لا يمكنك الانضمام');
+                                if (_0x12bab5['state'] === 'error_5')
+                                    alert_box['confirmMessage']('لا يمكنك الدفاع ضد هذا الحلف');
+                                else
+                                    _0x12bab5['state'] === 'error_6' ? alert_box['confirmMessage']('المواد غير كافية') : alert_box['confirmMessage']('لا يمكنك الانضمام');
                             }
                         }
                     }
@@ -280,16 +292,18 @@ function battelStart() {
             'error': function (_0x9c1e15, _0x370e1e, _0x58f5ad) {}
         });
     } else {
-        if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPORT']) Elkaisar['Battel']['supportByHero']();
-        else Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_HERO_TRANS'] ? Elkaisar['Battel']['TransHero']() : ws['send'](JSON['stringify']({
-            'url': 'Battel/start',
-            'data': {
-                'xCoord': battel_data['x_coord'],
-                'yCoord': battel_data['y_coord'],
-                'idHero': Elkaisar['CurrentHero']['Hero']['id_hero'],
-                'attackTask': battel_data['task']
-            }
-        }));
+        if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPORT'])
+            Elkaisar['Battel']['supportByHero']();
+        else
+            Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_HERO_TRANS'] ? Elkaisar['Battel']['TransHero']() : ws['send'](JSON['stringify']({
+                'url': 'Battel/start',
+                'data': {
+                    'xCoord': battel_data['x_coord'],
+                    'yCoord': battel_data['y_coord'],
+                    'idHero': Elkaisar['CurrentHero']['Hero']['id_hero'],
+                    'attackTask': battel_data['task']
+                }
+            }));
     }
 }
 
@@ -580,6 +594,17 @@ Battel = {
         {
             Elkaisar.City.getCityBarray();
         }
+
+        if (Number(Battel['Battel']['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_CHALLANGE']) {
+            if (Battel['Battel']['id_player'] == Elkaisar['DPlayer']['Player']['id_player']) {
+                alert_box['systemChatMessage']('النتيجة ' + (Battel['sideWin'] == Elkaisar['BaseData']['BattelSides']['SideAttack'] ? 'فوز' : 'خسارة'));
+                Elkaisar['ArenaChallange']['Arena']['Arena']['lastAttackTime'] = Math['floor'](Date['now']() / 0x3e8);
+            }
+            Elkaisar['ArenaChallange']['getFightList']()['done'](function () {
+                Elkaisar['ArenaChallange']['ArenaField']();
+            });
+        }
+
 
     }
 };

@@ -361,11 +361,22 @@
     background-size: 100% 100%;
     background-color: transparent;
 }
+
 #godGateBox .content-wrapper ul li .checkBox .chackable:hover{
     background-image: url(../images/godGate/checkedMark.png);
 }
 #godGateBox .content-wrapper ul li .checkBox .checked {
   background-image: url(../images/godGate/checkedMark.png);
+}
+#godGateBox .content-wrapper ul li .open-fourth-cell .pluse{
+   width: 22px;
+   height: 32px;
+   background-size: 100% auto;
+   background-repeat: no-repeat;
+   background-position: center;
+   display: block;
+   margin: auto;
+   
 }
 #godGateBox .content-wrapper ul li .closeWord {
     color: #ac340f;

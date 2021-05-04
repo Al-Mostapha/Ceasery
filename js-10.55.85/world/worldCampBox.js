@@ -448,11 +448,11 @@ var campDB = {
         }
         return total;
     },
-    'getArmyAmountForUnit'(_0x4e6ff3, _0x1d5b26, _0x51800a) {
-        if (!Elkaisar['World']['UnitArmy'][_0x4e6ff3]) return 0x0;
-        if (!Elkaisar['World']['UnitArmy'][_0x4e6ff3][_0x1d5b26]) return 0x0;
-        if (!Elkaisar['World']['UnitArmy'][_0x4e6ff3][_0x1d5b26][_0x51800a]) return 0x0;
-        return Elkaisar['World']['UnitArmy'][_0x4e6ff3][_0x1d5b26][_0x51800a];
+    'getArmyAmountForUnit'(unitType, Lvl, ArmyType) {
+        if (!Elkaisar['World']['UnitArmy'][unitType]) return 0x0;
+        if (!Elkaisar['World']['UnitArmy'][unitType][Lvl]) return 0x0;
+        if (!Elkaisar['World']['UnitArmy'][unitType][Lvl][ArmyType]) return 0x0;
+        return Elkaisar['World']['UnitArmy'][unitType][Lvl][ArmyType];
     },
     'getDominaterName'(_0x55fe70, _0x2ed502) {
         var _0x2fc550 = WorldUnit['getWorldUnit'](_0x55fe70, _0x2ed502);

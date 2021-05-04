@@ -1,4 +1,4 @@
-Elkaisar.Contribute.for = {
+Elkaisar.Contribute.For = {
     'Contribute': 'contribute',
     'EquipUpgrade': 'upgrade'
 };
@@ -74,13 +74,13 @@ Elkaisar.Contribute.PrizeBox = function (idCont) {
     var Desc = '';
     if (Reword) {
         if (Reword['type'] == 'equip') {
-            var _0xb767cb = Equipment['getData'](Reword['equip'], Reword['part'], Reword['lvl']);
-            Image = _0xb767cb['image'];
-            Name = _0xb767cb['name'];
-            Desc = `' <li>هجوم  + _0xb767cb['Power']['attack'] </li>
-                            <li>دفاع  + _0xb767cb['Power']['defence'] </li>
-                            <li>انجراح  + _0xb767cb['Power']['damage'] </li>
-                            <li>حيوية  + _0xb767cb['Power']['vitality'] </li>`;
+            var EquipData = Equipment['getData'](Reword['equip'], Reword['part'], Reword['lvl']);
+            Image = EquipData['image'];
+            Name = EquipData['name'];
+            Desc = `' <li>هجوم  + ${EquipData['Power']['attack']} </li>
+                            <li>دفاع  + ${EquipData['Power']['defence']} </li>
+                            <li>انجراح  + ${EquipData['Power']['damage']} </li>
+                            <li>حيوية  + ${EquipData['Power']['vitality']} </li>`;
         } else if (Reword['type'] == 'item') {
             Image = Elkaisar['BaseData']['Items'][Reword['item']]['image'];
             Name = Elkaisar['BaseData']['Items'][Reword['item']]['name'];
@@ -139,8 +139,8 @@ Elkaisar.Contribute.RequireList = function (idCont) {
         if (Cont['ListOfNeed'][ii]) {
             if (Cont['ListOfNeed'][ii]['type'] == 'equip') {
                 amount = Cont['ListOfNeed'][ii]['SelectedList']['length'];
-                var _0x5a12d8 = Equipment['getData'](Cont['ListOfNeed'][ii]['equip'], Cont['ListOfNeed'][ii]['part'], Cont['ListOfNeed'][ii]['lvl']);
-                Image = _0x5a12d8['image'];
+                var Equip = Equipment['getData'](Cont['ListOfNeed'][ii]['equip'], Cont['ListOfNeed'][ii]['part'], Cont['ListOfNeed'][ii]['lvl']);
+                Image = Equip['image'];
                 Btn = `<div class="full-btn-3x SelectContReq" data-id-cont="${idCont}" data-cont-req-index="${ii}">اختيار</div>`;
                 amountNeeded = Cont['ListOfNeed'][ii]['amount'];
             } else if (Cont['ListOfNeed'][ii]['type'] == 'item') {
@@ -276,9 +276,9 @@ Elkaisar.Contribute.ReqSelectListContent = function (idCont, ReqIndex) {
             continue;
         if (Elkaisar['DPlayer']['Equip'][UEqui]['lvl'] != ReqList['lvl'])
             continue;
-        var _0x199859 = `<button class="rightMark" style="background-size: auto 70%; height: 100%; width: 100%; margin: 0px; vertical-align: top"></button>`;
+        var Btn = `<button class="rightMark" style="background-size: auto 70%; height: 100%; width: 100%; margin: 0px; vertical-align: top"></button>`;
         if (Elkaisar['DPlayer']['Equip'][UEqui]['id_hero'] > 0x0)
-            var _0x199859 = `<button class="uiBtnCloseDown downEquipFromHero"
+            var Btn = `<button class="uiBtnCloseDown downEquipFromHero"
                                     style="background-size: 85%; height: 100%; width: 100%; margin: 0px; vertical-align: top"
                                     data-id-cont="${idCont}" data-cont-req-index="${ReqIndex}" data-id-equip="${Elkaisar['DPlayer']['Equip'][UEqui]['id_equip']}" 
                                     data-id-hero="${Elkaisar['DPlayer']['Equip'][UEqui]['id_hero']}"></button>`;
@@ -289,7 +289,7 @@ Elkaisar.Contribute.ReqSelectListContent = function (idCont, ReqIndex) {
                                 </div>
                             </div>
                             <div class="td_1" style="width: 40%">${ Equipment['getData'](ReqList['equip'], ReqList['part'], ReqList['lvl'])['name']}</div>
-                            <div class="td_3" style="width: 20%">${_0x199859}</div>
+                            <div class="td_3" style="width: 20%">${Btn}</div>
                             <div class="td_4" style="width: 20%">
                                 <button style="margin:0px; height: 100%; width: 100%; vertical-align: top;"
                                 class="${Cont['ListOfNeed'][ReqIndex]['SelectedList']['indexOf'](Elkaisar['DPlayer']['Equip'][UEqui]['id_equip']) >= 0x0 ? 'uiCheckedBox' : 'uiUnCheckBox'}  full ConSelectReqItem"

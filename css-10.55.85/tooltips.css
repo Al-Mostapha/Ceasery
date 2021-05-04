@@ -190,10 +190,10 @@
     padding: 15px 10px;
     direction: rtl;
     background-image:url(../images/back-shape/left-content.png) ,url(../images/back-shape/left-content.png);
- 
     background-size:  100% 100%;
     position: absolute;
-   z-index: 1500;
+    z-index: 1500;
+    opacity: 1 !important;
 }
 
 .tooltip-equip .top .title{

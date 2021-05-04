@@ -68,6 +68,8 @@ battel/joinAttack.js,
 battel/battelField.js,
 feature/godGate.js,
 feature/setting.js,
+feature/contribute.js,
+feature/arenaChallange.js,
 feature/emjoi.js,
 ui/ui.js';
 

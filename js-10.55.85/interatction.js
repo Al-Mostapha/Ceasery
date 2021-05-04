@@ -1284,62 +1284,55 @@ $(document).on("mouseleave", ".tooltip_mat", function () {
 
 /*                   intract matrial on click                   */
 
-
-$(document).on("click", "#matrial-player .matrial_unit", function () {
-
-    var matrial_name = $(this).attr("matrial_type");
-
-    var mat_obj = Elkaisar.BaseData.Items[matrial_name];
-    var amount = Matrial.getPlayerAmount(matrial_name);
-
-    $("#alert_container").remove();
-
-    var extra_html = "";
-
-    switch (matrial_name) {
-
-        case "certain_move":
-            extra_html = `  <div class="extra_html">
-                                ادخل الاحداثيات 
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspX <input id="new-city-y-coord" type="text" class="only_num input" min="0" max="499">
+$(document)['on']('click', '#matrial-player .matrial_unit', function () {
+    var idItem = $(this)['attr']('matrial_type');
+    var Item = Elkaisar['BaseData']['Items'][idItem];
+    var PlayerAmount = Matrial['getPlayerAmount'](idItem);
+    
+    $('#alert_container')['remove']();
+    var ExtraString = '';
+    switch (idItem) {
+    case 'certain_move':
+        ExtraString = `  <div class="extra_html">
+                            ادخل الاحداثيات 
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+                                X <input id="new-city-y-coord" type="text" class="only_num input" min="0" max="499">
                                 Y <input id="new-city-x-coord" type="text" class="only_num input" min="0" max="499">
                             </div>`;
-            break;
-
-
-
+        break;
+    case 'random_move':
+        break;
     }
-
-    var confirm_box = ` <div id="matral-box-use" class="bg-general"> 
+    var Box = ` <div id="matral-box-use" class="bg-general"> 
                             <div id="alert_head">    
                                 <div>        
                                     <img src="images/panner/king_name.png">    
                                 </div>       
-                                <div id="alert-title">${Translate.Title.Box.pleaseSelect[UserLag.language]}</div>            
+                                <div id="alert-title">${Translate['Title']['Box']['pleaseSelect'][UserLag['language']]}</div>            
                                 <img src="images/btns/close_b.png" class="img-sml close-alert_container">       
                             </div>
                             <div id="alert_box" class="matrial-show">        
                                 <div class="row-2">
                                     <div class="pull-L left">
-                                        <img src="${mat_obj.image}"/>
+                                        <img src="${Item['image']}"/>
                                     </div>
                                     <div class="pull-R right">
                                         <div class="name ellipsis">
-                                            ${mat_obj.name} 
+                                            ${Item['name']} 
                                         </div>
                                         <div class="amount">
-                                            ${Translate.Title.TH.YouHave[UserLag.language]} ${amount}
+                                            ${Translate['Title']['TH']['YouHave'][UserLag['language']] } ${ PlayerAmount }
                                         </div>
                                     </div>
                                 </div>  
                                 <div class="mat_desc">
-                                    ${mat_obj.desc}
+                                    ${ Item['desc'] }
                                 </div>
-                                ${extra_html}
-                                <div class="row-3">        
+                                ${ExtraString}
+                                <div class="row-3">       
                                     <div class="confim-btn">            
-                                        ${mat_obj.use === "none" ? "" : `<button class="full-btn full-btn-3x  pull-R enter" data-item-name="${matrial_name}" id="usePlayerItemBox">تاكيد</button>  `}  
-                                        ${mat_obj.use === "many" ? `<input type="text" max="${amount}" min="0" step="1" class="pull-L only_num input" id="amount_to_use">
+                                        ${ Item['use'] === 'none' ? '' : `<button class="full-btn full-btn-3x  pull-R enter" data-item-name="${idItem}" id="${Item['use'] == 'Box' ? 'openPlayerItemBox' : 'usePlayerItemBox'}">${(Item['use'] == 'Box' ? 'فتح' : 'تأكيد') }</button>  ` }  
+                                        ${ Item['use'] === 'many' ? `<input type="text" max="${PlayerAmount}" min="0" step="1" class="pull-L only_num input" id="amount_to_use">
                                                                         <div class="number-arrow-wrapper pull-L">
                                                                             <label class="number-arrow up"></label>
                                                                             <label class="number-arrow down"></label>
@@ -1349,7 +1342,8 @@ $(document).on("click", "#matrial-player .matrial_unit", function () {
                                 </div>
                             </div>    
                         </div>`;
-    $("body").append(confirm_box);
+            
+    $('body')['append'](Box);
 });
 
 
@@ -1856,23 +1850,26 @@ $(document)['on']('click', '#openPlayerItemBox', function () {
         },
         'type': 'POST',
         'success': function (data, _0x106300, _0x509fc4) {
-            if (!Elkaisar['LBase']['isJson'](data)) 
+            if (!Elkaisar['LBase']['isJson'](data))
                 Elkaisar['LBase']['Error'](data);
-            
-            var JsonData = JSON['parse'](_0x2667b5);
-            if (JsonData['state'] === 'ok') {
-                showMatrialGiftList(JsonData['Item']);
-                for (var ii in JsonData['Item']) {
-                    if(JsonData['Item']['prizeType'] == 'E') 
+            var JsonObject = JSON['parse'](data);
+            if (JsonObject['state'] === 'ok') {
+                showMatrialGiftList(JsonObject['Item']);
+                for (var ii in JsonObject['Item']) {
+                    if (JsonObject['Item']['prizeType'] == 'E') {
                         Elkaisar['Equip']['getPlayerEquip']();
-                    else 
-                        Matrial['givePlayer'](JsonData['Item'][ii]['Item'], JsonData['Item'][ii]['amount']);
+                    } else {
+                        Matrial['givePlayer'](JsonObject['Item'][ii]['Item'], JsonObject['Item'][ii]['amount']);
+                    }
+
                 }
                 Elkaisar['Item']['ItemBox']('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
                 Player_profile['refreshMatrialBox']()['done'](function () {
                     Elkaisar['Item']['ItemBox']('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
                 });
-            } else JsonData['state'] === 'error_1' && alert_box['failMessage']('ليس لديك مواد كافية');
+            } else if(JsonObject['state'] === 'error_1'){
+                alert_box['failMessage']('ليس لديك مواد كافية');
+            }
         }
     });
-});
+})

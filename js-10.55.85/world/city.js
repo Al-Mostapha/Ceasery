@@ -284,7 +284,7 @@ Elkaisar.City.getCityHero = function (idCity)
             }
 
             Elkaisar.Hero.orderHeors();
-            if (!Elkaisar.CurrentHero.Hero)
+            if (!Elkaisar.CurrentHero.Hero && Elkaisar.DPlayer.Heros[0])
                 Elkaisar.CurrentHero = Elkaisar.Hero.getHero(Elkaisar.DPlayer.Heros[0].idHero);
 
             Elkaisar.City.getCityHeroEquip(idCity);

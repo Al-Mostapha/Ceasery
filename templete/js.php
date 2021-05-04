@@ -75,6 +75,8 @@ if(!defined("DEV_MODE")){
         <script type="text/javascript" src="js<?=JS_VERSION?>/feature/godGate.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/feature/setting.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/feature/emjoi.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/feature/contribute.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/feature/arenaChallange.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/ui/ui.js"></script>
 
 <?php
@@ -86,4 +88,8 @@ if(!defined("DEV_MODE")){
             <script type="text/javascript" src="js'.JS_VERSION.'/world/crafty.js"></script>
             <script type="text/javascript" src="js'.JS_VERSION.'/obfuscated.js"></script>';
 }
+
 ?>
+
+        
+      

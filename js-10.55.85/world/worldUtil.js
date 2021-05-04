@@ -2400,7 +2400,7 @@ function addRemainBarryData(x_coord, y_coord)
 
             }
 
-            if (json_data === false) {
+            if (!json_data) {
                 return;
             }
 

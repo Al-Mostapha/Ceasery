@@ -187,6 +187,10 @@ get_ip_address($playerId);
             <button title="بوبات الالهة"></button>
             <div class="fire-tail"></div>
         </div>
+	<div id="ArenaChallangeBtnWrapper">
+            <button></button>
+            <div class="fire-tail"></div>
+        </div>
         <div class="profile" id="player-profile">
             <div id="p-provile-slider">
                 <img src="images/btns/show_hide.png">
@@ -405,6 +409,9 @@ get_ip_address($playerId);
             
         </script>
         <?php require_once "templete/js.php";?>
+        
+       
+        
     </body>
 
 </html>
