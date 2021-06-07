@@ -53,7 +53,7 @@ UserLag.Translte = function (text){
                 data:{
                     q:text,
                     target: UserLag.language,
-                    key:"AIzaSyCRPBGsjoQdct40iHq9XQ9jgLDOKsDIPwk"
+                    key:"AIzaSyD8OF2mZYMNT2o4ASG6eRUFZGX_ecQLIZA"
                 },
                 beforeSend: function (xhr) {
 
@@ -103,3 +103,4 @@ $(document).on("click", "#msg-area .msg-body .antiTrans", function (){
     var orgMsg = $(this).parent(".msg-text").attr("data-msg-translated");
     $(this).parent(".msg-text").html(orgMsg+`<i class="translated trans">مترجم</i>`);
 });
+

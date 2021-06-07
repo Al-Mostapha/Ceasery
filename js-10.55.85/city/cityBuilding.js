@@ -939,8 +939,8 @@ $(document).on("click", "#cansel-building-upgrade", function () {
         data: {
             idCity: Elkaisar.CurrentCity.City.id_city,
             idWorking: idWorking,
-            token: Elkaisar.Config.idServer,
-            server: Elkaisar.Config.OuthToken
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
 
         type: 'POST',

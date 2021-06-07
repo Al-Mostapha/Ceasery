@@ -375,7 +375,7 @@ $(document).on("click", ".show-guild-prev", function () {
                                                 <p>
                                                     ${json_data.word || "لا توجد مقدمة"}
                                                 </p>
-                                                ${Elkaisar.DPlayer.GuildData.id_guild ? `<div id="send-guild-req" >
+                                                ${!Elkaisar.DPlayer.GuildData || !Elkaisar.DPlayer.GuildData.id_guild ? `<div id="send-guild-req" >
                                                                                     <button class="full-btn full-btn-2x" data-id-guild="${json_data.id_guild}">ارسال دعوة انضمام</button>
                                                                                 </div>` : ""}
                                             </div>
@@ -2077,7 +2077,7 @@ $(document).on("click", "#send-guild-req button", function () {
         success: function (data, textStatus, jqXHR) {
 
 
-            if (Elkaisar.LBase.isJson(data))
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
             var JsonObject = JSON.parse(data);
@@ -2120,7 +2120,7 @@ function canselGuildInvetation(id_player, id_guild)
 
         },
         success: function (data, textStatus, jqXHR) {
-            if (Elkaisar.LBase.isJson(data))
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
             var JsonObject = JSON.parse(data);
@@ -2163,7 +2163,7 @@ function canselGuildJoinRequest(id_player, id_guild)
 
         },
         success: function (data, textStatus, jqXHR) {
-            if (Elkaisar.LBase.isJson(data))
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
             var JsonObject = JSON.parse(data);
@@ -2230,7 +2230,7 @@ $(document).on("click", "#accept-guild-inv", function () {
         },
         success: function (data, textStatus, jqXHR) {
 
-            if (Elkaisar.LBase.isJson(data))
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
             var JsonObject = JSON.parse(data);
@@ -2279,7 +2279,7 @@ $(document).on("click", "#isolate-guild-member", function () {
             },
             success: function (data, textStatus, jqXHR) {
 
-                if (Elkaisar.LBase.isJson(data))
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
 
                 var JsonObject = JSON.parse(data);
@@ -2638,7 +2638,7 @@ $(document).on("click", '#get-out-guild , #leave-g', function () {
             url: `${API_URL}/api/AGuild/quitFromGuild`,
             data: {
                 token: Elkaisar.Config.OuthToken,
-                server: Elkaisar.Config.idServer``
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             beforeSend: function (xhr) {

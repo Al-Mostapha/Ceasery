@@ -7,6 +7,7 @@ if(!defined("DEV_MODE")){
         <script type="text/javascript" src="js<?=JS_VERSION?>/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/lib/jquery.nicescroll.min.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/lib/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/lib/phaser.min.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/crafty.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/base/translate.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/base/userLan.js"></script>

@@ -1431,54 +1431,57 @@ var army = {
                 </div>`;
     },
     'HeroEquip': function () {
+        
         var EquipTab = `<div id="HeroEquipBox" class="equip">
                             <table>
                                 <tbody>
                                     <tr>
                                         <td class="eq-helmet">
-                                            ${ this['HeroEquipUnit']('helmet') }
+                                            ${ this.HeroEquipUnit('helmet') }
                                         </td>
                                         <td colspan="2"></td>
                                         <td class="eq-beads">
-                                            ${this['HeroEquipUnit']('pendant') }
+                                            ${this.HeroEquipUnit('pendant') }
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="eq-neck">
-                                            ${this['HeroEquipUnit']('necklace') }
+                                            ${this.HeroEquipUnit('necklace') }
                                         </td>
                                         <td colspan="2"></td>
                                         <td class="eq-belt">
-                                            ${this['HeroEquipUnit']('belt') }
+                                            ${this.HeroEquipUnit('belt') }
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            ${this['HeroEquipUnit']('armor') }
+                                            ${this.HeroEquipUnit('armor') }
                                         </td>
                                         <td colspan="2"></td>
                                         <td class="eq-ring">
-                                            ${this['HeroEquipUnit']('ring') }
+                                            ${this.HeroEquipUnit('ring') }
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="eq-boot">
-                                            ${this['HeroEquipUnit']('boot') }
+                                            ${this.HeroEquipUnit('boot') }
                                         </td>
                                         <td class="eq-sword">
-                                            ${this['HeroEquipUnit']('sword') }
+                                            ${this.HeroEquipUnit('sword') }
                                         </td>
                                         <td class="eq-shield">
-                                            ${this['HeroEquipUnit']('shield') }
+                                            ${this.HeroEquipUnit('shield') }
                                         </td>
                                         <td class="eq-horse">
-                                            ${this['HeroEquipUnit']('steed') }
+                                            ${this.HeroEquipUnit('steed') }
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>`;
-        $('#HeroEquipBox')['replaceWith'](EquipTab);
+        
+        $('#HeroEquipBox').replaceWith(EquipTab);
+        
         return  EquipTab;
     },
     'dialogBoxContent_forEquiRight': function () {
@@ -1488,7 +1491,7 @@ var army = {
                         <div class="part-1 hero-name">
                             <h1 class="header-2 banner-red">${ Elkaisar['CurrentHero']['Hero']['name'] }</h1>
                         </div>
-                        ${ this['HeroEquip']() }
+                        ${ this.HeroEquip() }
                         <div class="row row-4">
                             <div class="col-1 full" id="after-ajax-hero-army">
                                ${ Hero['armyReview']() }
@@ -1718,7 +1721,6 @@ $(document).on("click", ".left-nav ul  li", function () {
             $("#hero-wrapper").replaceWith(content);
             $(".box_content").attr("class", "box_content hero_dial hero-equip");
             $(".box_content").attr("id", "hero-dial-equip");
-            getPlayerEquip();
             break;
 
         case "camp":

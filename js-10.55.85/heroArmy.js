@@ -233,6 +233,8 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
                 alert_box.failMessage("سعة البطل غير كافية");
             } else if (json_data.state === "error_5") {
                 alert_box.failMessage("الابطال ليست بالمدينة");
+            } else if (json_data.state === "error_6") {
+                alert_box.failMessage("الابطال ليست بمدينة واحدة");
             } else {
                 alert(data);
             }

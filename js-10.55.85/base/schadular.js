@@ -414,7 +414,7 @@ Elkaisar.WsLib.TimedTask.Study = function (data){
             
     Crafty.audio.play("upgrade_done");
     Elkaisar.DPlayer.Player.prestige = Number(Elkaisar.DPlayer.Player.prestige) + data.prestige;
-    Elkaisar.DPlayer.PlayerEdu = data.Edu;
+    Player_profile.getPlayerEdu();
     
     var id_console = Elkaisar.CurrentCity.City.console;
 

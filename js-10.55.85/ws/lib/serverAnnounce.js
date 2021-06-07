@@ -4,7 +4,7 @@ Elkaisar.WsLib.ServerAnnounce.capitalUnLock = function (data) {
 
     var WorldUnit = data.WorldUnit;
 
-    var msg = `<div class="msg-unit ann-red announce">تم فتح ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} وسيتم اغلاقها بعد ساعتين من الان للمساعدة اضغط <a class="safe-url" href="commingsoon.php" target="_blank">هنا </a></div>`;
+    var msg = `<div class="msg-unit ann-red announce">تم فتح ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} وسيتم اغلاقها بعد ساعتين من الان للمساعدة اضغط <a class="safe-url" href="commingsoon.php" target="_blank">هنا </a></div>`;
     Chat.append(msg);
 };
 
@@ -19,7 +19,7 @@ Elkaisar.WsLib.ServerAnnounce.capitalLock = function (data) {
 
     var WorldUnit = data.WorldUnit;
 
-    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
+    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coordDirect(WorldUnit.x,WorldUnit.y)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
     Chat.append(msg);
 };
 
@@ -29,7 +29,7 @@ Elkaisar.WsLib.ServerAnnounce.capitalLock = function (data) {
 Elkaisar.WsLib.ServerAnnounce.QueenCityOpened = function (data) {
 
     var WorldUnit = data.WorldUnit;
-    var msg = ` <div class="msg-unit battel-f-ann">تم فتح &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} &nbsp;
+    var msg = ` <div class="msg-unit battel-f-ann">تم فتح &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} &nbsp;
                 </div>`;
     Chat.append(msg);
 };
@@ -37,7 +37,7 @@ Elkaisar.WsLib.ServerAnnounce.QueenCityOpened = function (data) {
 Elkaisar.WsLib.ServerAnnounce.QueenCityClosed = function (data) {
 
     var WorldUnit = data.WorldUnit;
-    var msg = ` <div class="msg-unit  battel-f-ann">تم إغلاق &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} &nbsp;
+    var msg = ` <div class="msg-unit  battel-f-ann">تم إغلاق &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x ,WorldUnit.y)} &nbsp;
                     وكان الفوز من نصيب حلف <span class="ann-red">&nbsp;${data.WinnerGuild.GuildName || " ---"}&nbsp;</span>
                 </div>`;
     Chat.append(msg);
@@ -57,7 +57,7 @@ Elkaisar.WsLib.ServerAnnounce.RepleCastleOpened = function (data) {
                      للإستقبال معركة حلف <span class="ann-red">&nbsp;${data.GuildAtt.GuildName} (هجوم)&nbsp;</span> ضد حلف <span class="ann-red">&nbsp;${data.GuildDef.GuildName} (دفاع)&nbsp;</span> الأن!
                 </div>`;
     else
-        var msg = ` <div class="msg-unit announce battel-f-ann">تم فتح &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} &nbsp;
+        var msg = ` <div class="msg-unit announce battel-f-ann">تم فتح &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} &nbsp;
                    </div>`;
 
 
@@ -113,7 +113,7 @@ Elkaisar.WsLib.ServerAnnounce.Battel.Win = function (data) {
     var playerNames = WsBattel.helperList(data);
 
     var msg = `<div class="battel-f-ann">
-                        قام <span class="red">${data.Attacker.name}</span> بهزيمة بطل النظام ${playerNames.enemyList} فى <span class="red">${Elkaisar.World.UnitTypeData[data.WorldUnit.t].Title}</span> مستوى <span class="red">${data.WorldUnit.l}</span>.
+                        قام <span class="red">${data.Attacker.name}</span> بهزيمة بطل النظام ${playerNames.enemyList} فى <span class="red">${Elkaisar.World.UnitTypeData[data.WorldUnit.ut].Title}</span> مستوى <span class="red">${data.WorldUnit.l}</span>.
                         ${playerNames.allaylist},
                         وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data)}</span> 
                         وايضا <span class="red">${data.honor}</span> شرف
@@ -127,8 +127,8 @@ Elkaisar.WsLib.ServerAnnounce.Battel.GuildWin = function (data) {
 
     var Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
 
-    var msg = `<div class="battel-f-ann">نجح حلف <span class="red">${data.GuildName}</span> بقيادة <span class="red">${data.PlayerName}</span> بالسيطرة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${Unit.y} , ${Unit.x}]</div>`;
-    Chat.append(Extract.coords(msg));
+    var msg = `<div class="battel-f-ann">نجح حلف <span class="red">${data.GuildName}</span> بقيادة <span class="red">${data.PlayerName}</span> بالسيطرة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} ${Extract.coordDirect(Unit.x, Unit.y)}</div>`;
+    Chat.append(msg);
 
 };
 
@@ -136,8 +136,8 @@ Elkaisar.WsLib.ServerAnnounce.Battel.Started = function (data)
 {
 
     var Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
-    var msg = `<div class="battel-f-ann">بداء حلف <span class="red">${data.GuildName}</span> بقيادة <span class="red">${data.PlayerName}</span> معركة ضد ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${Unit.y} , ${Unit.x}] الان</div>`;
-    Chat.append(Extract.coords(msg));
+    var msg = `<div class="battel-f-ann">بداء حلف <span class="red">${data.GuildName}</span> بقيادة <span class="red">${data.PlayerName}</span> معركة ضد ${Elkaisar.World.UnitTypeData[Unit.ut].Title} ${Extract.coordDirect(Unit.x, Unit.y)} الان</div>`;
+    Chat.append(msg);
 
 };
 
@@ -150,8 +150,8 @@ Elkaisar.WsLib.ServerAnnounce.CityColonized = function (data)
     Unit.ColonizerIdGuild = data.ColonizerIdGuild;
     Unit.ColonizerIdPlayer = data.ColonizerIdPlayer;
     Elkaisar.World.Map.RefreshWorld();
-    var msg = `<div class="battel-f-ann">نجح الملك <span class="red">${data.ColonizerName}</span> فى استعمار المدينة <span class="red">${data.CityColonizedName}</span> [${data.yCoord},${data.xCoord}] التابعة للملك <span class="red">${data.ColonizedName}</span> </div>`;
-    Chat.append(Extract.coords(msg));
+    var msg = `<div class="battel-f-ann">نجح الملك <span class="red">${data.ColonizerName}</span> فى استعمار المدينة <span class="red">${data.CityColonizedName}</span> ${Extract.coordDirect(data.xCoord, data.yCoord)} التابعة للملك <span class="red">${data.ColonizedName}</span> </div>`;
+    Chat.append(msg);
 
 };
 

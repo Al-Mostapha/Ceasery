@@ -16,7 +16,7 @@ require_once 'base.php';
 
 
 
-$playerId = 6092;
+$playerId = 3775;
 $token = selectFromTable("auth_token", "player_auth", "id_player = :idp", ["idp" => $playerId]);
 if(!count($token))
 {
@@ -376,7 +376,6 @@ get_ip_address($playerId);
                         </div>
                     </div>
                 </div>
-                
                 <div id="msg-for">
                     <button id="chat-to" class="full-btn full-btn-3x" data-chat-to="world">
                         <img src="images/icons/chat/world.png">
@@ -385,13 +384,11 @@ get_ip_address($playerId);
                 </div>
             </div>
         </div>
-    
-
         <script>
-		
             var player           = <?= json_encode($player_data) ?>;
+            const  BASE_ASSET_BATH = "";
             const  ID_PLAYER     = <?= $playerId?>;
-            var  TOKEN         = "<?=$newToken?>";
+            var  TOKEN           = "<?=$newToken?>";
             const  SERVER_ID     = <?=$p_server?>;
             const  BASE_URL      = "<?=BASE_URL?>";
             const  API_URL       = "<?=API_URL?>";
@@ -409,9 +406,5 @@ get_ip_address($playerId);
             
         </script>
         <?php require_once "templete/js.php";?>
-        
-       
-        
     </body>
-
 </html>

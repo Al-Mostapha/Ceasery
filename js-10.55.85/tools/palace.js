@@ -455,7 +455,6 @@ $(document).on("click" , "#expan-city button" , function (){
         
             url: `${API_URL}/api/ACityPalace/expandCity`,
             data:{
-                NewName : new_name,
                 idCity  : Elkaisar.CurrentCity.City.id_city,
                 token   : Elkaisar.Config.OuthToken,
                 server  : Elkaisar.Config.idServer

@@ -1872,4 +1872,5 @@ $(document)['on']('click', '#openPlayerItemBox', function () {
             }
         }
     });
-})
+});
+

@@ -7,7 +7,7 @@ Elkaisar.WsLib.World.ResetLvl = function (data){
     for (var ii in Elkaisar['worldAllUnits']) {
         if (Elkaisar['worldAllUnits'][ii]['ut'] === 0x0) continue;
         if (Elkaisar['worldAllUnits'][ii]['ut'] < WUT_MONAWRAT) continue;
-        if (!_0x3c5af6['UnitList']['includes'](Elkaisar['worldAllUnits'][ii]['ut'])) continue;
+        if (!data['UnitList']['includes'](Elkaisar['worldAllUnits'][ii]['ut'])) continue;
         Elkaisar['worldAllUnits'][ii]['l'] = 0x1;
     }
     alert_box['systemChatMessage']('تم اعادة التعين');

@@ -1953,7 +1953,7 @@ $(document).on("click", ".close_RB img", function () {
 
 
 
-$(document).on("click", "#smallMap-icon img", function () {
+/*$(document).on("click", "#smallMap-icon img", function () {
 
     var myCityIcons = "";
 
@@ -2182,7 +2182,233 @@ $(document).on("click", "#smallMap-icon img", function () {
     CURRENT_CURSOR_COORDS = $("#CURRENT_CURSOR_COORDS");
 
 });
+*/
 
+
+$(document)['on']('click', '#smallMap-icon img', function () {
+    var CityIcons = '';
+    for (var idCity in Elkaisar['DPlayer']['City']) {
+        CityIcons += `<lable type="18" style="background-image: url(images/world/map-icon/myCity.png); width:20px; height:20px; left: ${Elkaisar.DPlayer.City[idCity].City.x}px; top: ${Elkaisar.DPlayer.City[idCity].City.y}px"></lable>'`;
+    }
+    var Map = `'<div id="smallMap">
+                        <img src="images/world/smallMap.jpg"/>
+                        <div id="smallMap_close">
+                            <img src="images/btns/close_b.png"/>
+                        </div>
+                        <div class="overMap">
+                            <div id="CURRENT_CURSOR_COORDS"></div>
+                            <lable type="${ WUT_CAMP_ASIANA }" style="background-image: url(images/world/ratterCastle.png); left: 78px; top: 300px"></lable>
+                            <lable type="${ WUT_CAMP_BRITONS }" style="background-image: url(images/world/ratterCastle.png); left: 88px; top: 444px"></lable>
+                            <lable type="${ WUT_CAMP_CARTHAGE }" style="background-image: url(images/world/ratterCastle.png); left: 106px;top: 19px"></lable>
+                            <lable type="${ WUT_CAMP_EGYPT }" style="background-image: url(images/world/ratterCastle.png); left: 136px;top: 160px"></lable>
+                            <lable type="${ WUT_CAMP_GAULS }" style="background-image: url(images/world/ratterCastle.png); left: 246px;top: 111px"></lable>
+                            <lable type="${ WUT_CAMP_HISPANIA }" style="background-image: url(images/world/ratterCastle.png); left: 266px;top: 245px"></lable>
+                            <lable type="${ WUT_CAMP_ITALIA }" style="background-image: url(images/world/ratterCastle.png); left: 316px;top: 450px"></lable>
+                            <lable type="${ WUT_CAMP_MACEDON }" style="background-image: url(images/world/ratterCastle.png); left: 392px;top: 213px"></lable>
+                            <lable type="${ WUT_CAMP_PARTHIA }" style="background-image: url(images/world/ratterCastle.png); left: 407px;top: 66px"></lable>
+                            <lable type="${ WUT_CAMP_REICH }" style="background-image: url(images/world/ratterCastle.png); left: 427px;top: 337px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 60px;top: 100px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 60px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 60px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 140px;top: 100px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 140px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 140px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 220px;top: 100px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 220px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 220px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 300px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 300px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 380px;top: 100px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 380px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 380px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 460px;top: 100px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 460px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 460px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 470px"></lable>
+   
+    
+    
+    
+    
+
+    
+    
+                            <lable type="${ WUT_FRONT_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 464px;top:  93px"></lable>
+                            <lable type="${ WUT_FRONT_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 463px;top:  86px"></lable>
+                            <lable type="${ WUT_FRONT_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 447px;top:  72px"></lable>
+                            <lable type="${ WUT_FRONT_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 450px;top:  69px"></lable>
+                            <lable type="${ WUT_FRONT_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 432px;top:  52px"></lable>
+                            <lable type="${ WUT_FRONT_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 434px;top:  56px"></lable>
+                            <lable type="${ WUT_FRONT_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 417px;top:  39px"></lable>
+                            <lable type="${ WUT_FRONT_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 412px;top:  37px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 470px;top:  76px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 473px;top:  72px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 458px;top:  62px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 456px;top:  58px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 445px;top:  48px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 442px;top:  47px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 427px;top:  33px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 431px;top:  30px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 475px;top:  57px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 479px;top:  60px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 467px;top:  47px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 465px;top:  49px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 453px;top:  37px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 457px;top:  36px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 446px;top:  28px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 441px;top:  23px"></lable>
+                            <lable type="${ WUT_GUARD_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 480px;top:  42px"></lable>
+                            <lable type="${ WUT_GUARD_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 475px;top:  35px"></lable>
+                            <lable type="${ WUT_GUARD_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 464px;top:  26px"></lable>
+                            <lable type="${ WUT_GUARD_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 458px;top:  20px"></lable>
+                            <lable type="${ WUT_BRAVE_THUNDER }" style="background-image: url(images/world/map-icon/dr.png); left: 478px;top:  21px"></lable>
+ 
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 44px;top:  465px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 353px;top:  233px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 284px;top:  141px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 281px;top:  299px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 264px;top:  458px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 367px;top:  87px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 122px;top:  154px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 74px; top:  33px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 74px; top:  326px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 472px;top:  379px"></lable>
+    
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 363px;top: 76px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 354px;top: 233px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 59px;top:  456px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 467px;top: 370px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 282px;top: 297px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 77px;top:  33px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 262px;top: 459px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 261px;top: 137px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 136px;top: 158px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 75px;top:  325px"></lable>
+    
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 474px;top:  378px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 135px;top:  157px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 352px;top:  237px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 286px;top:  296px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 259px;top:  136px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 286px;top:  296px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 135px;top:  157px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 259px;top:  136px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 260px;top:  458px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 474px;top:  378px"></lable>
+    
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 66px; top:  470px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 220px;top:  463px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 187px;top:  493px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 133px;top:  410px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 58px; top:  452px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 136px;top:  450px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 50px; top:  433px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 150px;top:  433px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 44px; top:  472px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 159px;top:  408px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 32px; top:  495px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 28px; top:  489px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 24px; top:  429px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 11px; top:  400px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 79px; top:  490px"></lable>
+    
+    
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 1px;   top:  380px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 16px;  top:  380px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 47px;  top:  486px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 57px;  top:  410px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 64px;  top:  470px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 73px;  top:  483px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 81px;  top:  425px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 86px;  top:  429px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 104px; top:  469px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 109px; top:  440px"></lable>
+    
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 40px;  top:  412px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 67px;  top:  395px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 80px;  top:  469px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 83px;  top:  418px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 85px;  top:  428px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 85px;  top:  461px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 95px;  top:  418px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 99px;  top:  392px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 120px; top:  450px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 132px; top:  448px"></lable>
+    
+                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 80px;  top:  460px"></lable>
+                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 88px;  top:  448px"></lable>
+                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 90px;  top:  476px"></lable>
+                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 94px;  top:  463px"></lable>
+                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 104px; top:  483px"></lable>
+    
+                            <lable type="56" style="background-image: url(images/world/map-icon/p33.png); left: 103px; top:  447px"></lable>
+                            
+                            <lable type="100" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 235px; top:  125px"></lable>
+                            <lable type="101" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 140px; top:  170px"></lable>
+                            <lable type="102" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 400px; top:  230px"></lable>
+                            <lable type="103" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 255px; top:  266px"></lable>
+                            <lable type="104" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 80px;  top:  280px"></lable>
+                            <lable type="105" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 400px; top:  340px"></lable>
+    
+                            <lable type="${ WUT_SEA_CITY_1 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 36px; top:  77px"></lable>
+                            <lable type="${ WUT_SEA_CITY_2 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 53px; top:  147px"></lable>
+                            <lable type="${ WUT_SEA_CITY_3 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 20px; top:  357px"></lable>
+                            <lable type="${ WUT_SEA_CITY_4 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 146px; top:  396px"></lable>
+                            <lable type="${ WUT_SEA_CITY_5 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 336px;  top:  356px"></lable>
+                            <lable type="${ WUT_SEA_CITY_6 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 493px; top:  287px"></lable>
+                            
+                            
+                            <lable type="125" style="background-image: url(images/world/map-icon/arena.png); width:15px; height:15px; left: 249px; top:  247px"></lable>
+    
+                            <lable type="130" style="background-image: url(images/world/map-icon/matchNpc.png); left: 300px; top:  100px"></lable>
+                            <lable type="131" style="background-image: url(images/world/map-icon/matchNpc.png); left: 300px; top:   90px"></lable>
+                            <lable type="132" style="background-image: url(images/world/map-icon/matchNpc.png); left: 300px; top:   80px"></lable>
+                            <lable type="134" style="background-image: url(images/world/map-icon/occupy.png); left: 280px; top:  100px"></lable>
+                            <lable type="135" style="background-image: url(images/world/map-icon/occupy.png); left: 280px; top:   90px"></lable>
+                            <lable type="136" style="background-image: url(images/world/map-icon/occupy.png); left: 280px; top:   80px"></lable>
+    
+                            <lable type="150" style="background-image: url(images/world/map-icon/npcBlue.png); left: 320px; top:  410px"></lable>
+                            <lable type="151" style="background-image: url(images/world/map-icon/npcBlue.png); left: 330px; top:   410px"></lable>
+                            <lable type="152" style="background-image: url(images/world/map-icon/npcBlue.png); left: 340px; top:   410px"></lable>
+                            <lable type="153" style="background-image: url(images/world/map-icon/ratterCastle1.png); left: 320px; top:  420px"></lable>
+                            <lable type="154" style="background-image: url(images/world/map-icon/ratterCastle1.png); left: 330px; top:   420px"></lable>
+                            <lable type="155" style="background-image: url(images/world/map-icon/ratterCastle1.png); left: 340px; top:   420px"></lable>
+    
+                            
+                            ${ CityIcons }
+                            
+                        </div>
+                    </div>`;
+    if ($('#smallMap')['length'] > 0x0) {} else $('body')['append'](Map);
+    CURRENT_CURSOR_COORDS = $('#CURRENT_CURSOR_COORDS');
+});
 
 
 

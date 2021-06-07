@@ -1196,8 +1196,9 @@ $(document).on("dblclick" , ".on_equip" , function (){
                 Elkaisar['Equip']['getEquipUnit'](JsonData['PlayerEquip'][iii]['id_equip'])['id_hero'] = JsonData['PlayerEquip'][iii]['id_hero'];
                 Elkaisar['Equip']['getEquipUnit'](JsonData['PlayerEquip'][iii]['id_equip'])['on_hero'] = JsonData['PlayerEquip'][iii]['on_hero'];
             }
-            Elkaisar['Equip']['distributeEquip']();
-            army['HeroEquip']();
+            Elkaisar.Equip.distributeEquip();
+            army.HeroEquip();
+            
             var offset = Number($('.equip-unit:first')['attr']('data-offset'));
             var part = $('#eq-part-select .selected button')['attr']('data-equi-part');
             $('#equip-list-heroDia')['html'](army['getEquipList'](offset, part));
@@ -1225,7 +1226,7 @@ $(document).on("click" , ".FIRE_HERO" , function (){
     if(Number(CHero.Hero.in_city) !== 1)
         return alert_box.confirmMessage("لا يمكنك طرد البطل وهو فى مهمة");
         
-    if(Number(CHero.City.console) === Number(CHero.Hero.id_hero))
+    if(Number(Elkaisar.CurrentCity.City.console) === Number(CHero.Hero.id_hero))
         return alert_box.confirmMessage("لا يمكنك طرد  قنصل المدينة");
     
         

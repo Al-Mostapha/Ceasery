@@ -673,6 +673,14 @@ const  THINGS_TO_LOAD = {
 
 };
 
+
+
+for(var Link in THINGS_TO_LOAD.sprites){
+    
+    // "images/world/city_0.png": {"tile": 128, "tileh": 128, "map": {"city_0": [0, 0, 1, 1]}},
+    console.log(`Elkaisar.CityScene.load.image('${Object.keys(THINGS_TO_LOAD.sprites[Link].map)[0]}', BASE_ASSET_BATH + '${Link}');\n`)
+}
+
 $(document).ready(function () {
 
     Crafty.load(THINGS_TO_LOAD, function () {
@@ -893,14 +901,33 @@ $(document).on("PlayerReady", "html", function () {
         success: function (Items, textStatus, jqXHR) {
             $.ajax({
                 url: API_URL + "/js" + Elkaisar.Config.JsVersion + "/json/itemBase.json",
-                success: function (data, textStatus, jqXHR) {
+                success: function (ItemBase, textStatus, jqXHR) {
+                    $.ajax({
+                        url: `${API_URL}/api/AItem/getAllItemPrice`,
+                        data:{
+                          token: Elkaisar.Config.OuthToken,
+                          server: Elkaisar.Config.idServer
+                        },
+                        success: function (ItemPrize, textStatus, jqXHR) {
+                            if (!Elkaisar.LBase.isJson(ItemPrize))
+                                return Elkaisar.LBase.Error(ItemPrize);
+                            var ItemArr = JSON.parse(ItemPrize);
 
-                    Elkaisar.BaseData.Items = Items;
-                    Player_profile.refreshMatrialBox();
+                            for (var iii in ItemArr) {
+                                if (Items[ItemArr[iii].id_item])
+                                    Items[ItemArr[iii].id_item].gold = ItemArr[iii].gold;
 
-                    Elkaisar.Item.useItemFunc();
-                    Elkaisar.Item.useItemBoxFunc();
-                    Elkaisar.Item.useArmyBackFunc();
+                            }
+                            
+                            Elkaisar.BaseData.Items = Items;
+                            Player_profile.refreshMatrialBox();
+
+                            Elkaisar.Item.useItemFunc();
+                            Elkaisar.Item.useItemBoxFunc();
+                            Elkaisar.Item.useArmyBackFunc();
+                        }
+                    });
+
 
                 }
             });
@@ -922,17 +949,17 @@ Elkaisar.BaseData.HeroToCity = {
 };
 
 Elkaisar.BaseData.ArmyPower = {
-    0            : {"attack" : 0,  "def" : 0,  "vit" : 0,   "dam" : 0,  "break" : 0, "anti_break" : 0, "strike" : 0,  "immunity" : 0,  "res_cap" : 0},
-    "army_a"     : {"attack" : 8,  "def" : 8,  "vit" : 60,  "dam" : 3,  "break" : 1, "anti_break" : 1, "strike" : 3,  "immunity" : 1,  "res_cap" : 100},
-    "army_b"     : {"attack" : 30, "def" : 20, "vit" : 250, "dam" : 35, "break" : 5, "anti_break" : 2, "strike" : 2,  "immunity" : 2,  "res_cap" : 200},
-    "army_c"     : {"attack" : 25, "def" : 30, "vit" : 400, "dam" : 40, "break" : 10,"anti_break" : 10,"strike" : 10, "immunity" : 10, "res_cap" : 220},
-    "army_d"     : {"attack" : 9,  "def" : 5,  "vit" : 45,  "dam" : 3,  "break" : 1, "anti_break" : 1, "strike" : 4,  "immunity" : 1,  "res_cap" : 75},
-    "army_e"     : {"attack" : 19, "def" : 25, "vit" : 100, "dam" : 19, "break" : 2, "anti_break" : 2, "strike" : 12, "immunity" : 2,  "res_cap" : 35},
-    "army_f"     : {"attack" : 40, "def" : 20, "vit" : 600, "dam" : 70, "break" : 12,"anti_break" : 10,"strike" : 10, "immunity" : 10, "res_cap" : 75},
-    "spies"      : {"attack" : 0,  "def" : 0,  "vit" : 0,   "dam" : 0,  "break" : 0, "anti_break" : 0, "strike" : 0,  "immunity" : 0,  "res_cap" : 75},
-    "wall_a"     : {"attack" : 20, "def" : 10, "vit" : 300, "dam" : 10, "break" : 5, "anti_break" : 4, "strike" : 15, "immunity" : 5,  "res_cap" : 75},
-    "wall_b"     : {"attack" : 19, "def" : 25, "vit" : 400, "dam" : 35, "break" : 5, "anti_break" : 4, "strike" : 15, "immunity" : 5,  "res_cap" : 75},
-    "wall_c"     : {"attack" : 40, "def" : 20, "vit" : 600, "dam" : 70, "break" : 5, "anti_break" : 4, "strike" : 15, "immunity" : 5,  "res_cap" : 75}
+    0: {"attack": 0, "def": 0, "vit": 0, "dam": 0, "break": 0, "anti_break": 0, "strike": 0, "immunity": 0, "res_cap": 0},
+    "army_a": {"attack": 8, "def": 8, "vit": 60, "dam": 3, "break": 1, "anti_break": 1, "strike": 3, "immunity": 1, "res_cap": 100},
+    "army_b": {"attack": 30, "def": 20, "vit": 250, "dam": 35, "break": 5, "anti_break": 2, "strike": 2, "immunity": 2, "res_cap": 200},
+    "army_c": {"attack": 25, "def": 30, "vit": 400, "dam": 40, "break": 10, "anti_break": 10, "strike": 10, "immunity": 10, "res_cap": 220},
+    "army_d": {"attack": 9, "def": 5, "vit": 45, "dam": 3, "break": 1, "anti_break": 1, "strike": 4, "immunity": 1, "res_cap": 75},
+    "army_e": {"attack": 19, "def": 25, "vit": 100, "dam": 19, "break": 2, "anti_break": 2, "strike": 12, "immunity": 2, "res_cap": 35},
+    "army_f": {"attack": 40, "def": 20, "vit": 600, "dam": 70, "break": 12, "anti_break": 10, "strike": 10, "immunity": 10, "res_cap": 75},
+    "spies": {"attack": 0, "def": 0, "vit": 0, "dam": 0, "break": 0, "anti_break": 0, "strike": 0, "immunity": 0, "res_cap": 75},
+    "wall_a": {"attack": 20, "def": 10, "vit": 300, "dam": 10, "break": 5, "anti_break": 4, "strike": 15, "immunity": 5, "res_cap": 75},
+    "wall_b": {"attack": 19, "def": 25, "vit": 400, "dam": 35, "break": 5, "anti_break": 4, "strike": 15, "immunity": 5, "res_cap": 75},
+    "wall_c": {"attack": 40, "def": 20, "vit": 600, "dam": 70, "break": 5, "anti_break": 4, "strike": 15, "immunity": 5, "res_cap": 75}
 };
 
 Elkaisar.BaseData.Army = {

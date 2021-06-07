@@ -223,7 +223,7 @@ UserLag.Translte = function (text){
                 data:{
                     q:text,
                     target: UserLag.language,
-                    key:"AIzaSyCRPBGsjoQdct40iHq9XQ9jgLDOKsDIPwk"
+                    key:"AIzaSyD8OF2mZYMNT2o4ASG6eRUFZGX_ecQLIZA"
                 },
                 beforeSend: function (xhr) {
 
@@ -272,7 +272,9 @@ $(document).on("click", "#msg-area .msg-body .antiTrans", function (){
     
     var orgMsg = $(this).parent(".msg-text").attr("data-msg-translated");
     $(this).parent(".msg-text").html(orgMsg+`<i class="translated trans">مترجم</i>`);
-});var NavBar = {};
+});
+
+var NavBar = {};
 
 NavBar.Exchange = [
     {
@@ -2218,14 +2220,33 @@ $(document).on("PlayerReady", "html", function () {
         success: function (Items, textStatus, jqXHR) {
             $.ajax({
                 url: API_URL + "/js" + Elkaisar.Config.JsVersion + "/json/itemBase.json",
-                success: function (data, textStatus, jqXHR) {
+                success: function (ItemBase, textStatus, jqXHR) {
+                    $.ajax({
+                        url: `${API_URL}/api/AItem/getAllItemPrice`,
+                        data:{
+                          token: Elkaisar.Config.OuthToken,
+                          server: Elkaisar.Config.idServer
+                        },
+                        success: function (ItemPrize, textStatus, jqXHR) {
+                            if (!Elkaisar.LBase.isJson(ItemPrize))
+                                return Elkaisar.LBase.Error(ItemPrize);
+                            var ItemArr = JSON.parse(ItemPrize);
 
-                    Elkaisar.BaseData.Items = Items;
-                    Player_profile.refreshMatrialBox();
+                            for (var iii in ItemArr) {
+                                if (Items[ItemArr[iii].id_item])
+                                    Items[ItemArr[iii].id_item].gold = ItemArr[iii].gold;
 
-                    Elkaisar.Item.useItemFunc();
-                    Elkaisar.Item.useItemBoxFunc();
-                    Elkaisar.Item.useArmyBackFunc();
+                            }
+                            
+                            Elkaisar.BaseData.Items = Items;
+                            Player_profile.refreshMatrialBox();
+
+                            Elkaisar.Item.useItemFunc();
+                            Elkaisar.Item.useItemBoxFunc();
+                            Elkaisar.Item.useArmyBackFunc();
+                        }
+                    });
+
 
                 }
             });
@@ -2247,17 +2268,17 @@ Elkaisar.BaseData.HeroToCity = {
 };
 
 Elkaisar.BaseData.ArmyPower = {
-    0            : {"attack" : 0,  "def" : 0,  "vit" : 0,   "dam" : 0,  "break" : 0, "anti_break" : 0, "strike" : 0,  "immunity" : 0,  "res_cap" : 0},
-    "army_a"     : {"attack" : 8,  "def" : 8,  "vit" : 60,  "dam" : 3,  "break" : 1, "anti_break" : 1, "strike" : 3,  "immunity" : 1,  "res_cap" : 100},
-    "army_b"     : {"attack" : 30, "def" : 20, "vit" : 250, "dam" : 35, "break" : 5, "anti_break" : 2, "strike" : 2,  "immunity" : 2,  "res_cap" : 200},
-    "army_c"     : {"attack" : 25, "def" : 30, "vit" : 400, "dam" : 40, "break" : 10,"anti_break" : 10,"strike" : 10, "immunity" : 10, "res_cap" : 220},
-    "army_d"     : {"attack" : 9,  "def" : 5,  "vit" : 45,  "dam" : 3,  "break" : 1, "anti_break" : 1, "strike" : 4,  "immunity" : 1,  "res_cap" : 75},
-    "army_e"     : {"attack" : 19, "def" : 25, "vit" : 100, "dam" : 19, "break" : 2, "anti_break" : 2, "strike" : 12, "immunity" : 2,  "res_cap" : 35},
-    "army_f"     : {"attack" : 40, "def" : 20, "vit" : 600, "dam" : 70, "break" : 12,"anti_break" : 10,"strike" : 10, "immunity" : 10, "res_cap" : 75},
-    "spies"      : {"attack" : 0,  "def" : 0,  "vit" : 0,   "dam" : 0,  "break" : 0, "anti_break" : 0, "strike" : 0,  "immunity" : 0,  "res_cap" : 75},
-    "wall_a"     : {"attack" : 20, "def" : 10, "vit" : 300, "dam" : 10, "break" : 5, "anti_break" : 4, "strike" : 15, "immunity" : 5,  "res_cap" : 75},
-    "wall_b"     : {"attack" : 19, "def" : 25, "vit" : 400, "dam" : 35, "break" : 5, "anti_break" : 4, "strike" : 15, "immunity" : 5,  "res_cap" : 75},
-    "wall_c"     : {"attack" : 40, "def" : 20, "vit" : 600, "dam" : 70, "break" : 5, "anti_break" : 4, "strike" : 15, "immunity" : 5,  "res_cap" : 75}
+    0: {"attack": 0, "def": 0, "vit": 0, "dam": 0, "break": 0, "anti_break": 0, "strike": 0, "immunity": 0, "res_cap": 0},
+    "army_a": {"attack": 8, "def": 8, "vit": 60, "dam": 3, "break": 1, "anti_break": 1, "strike": 3, "immunity": 1, "res_cap": 100},
+    "army_b": {"attack": 30, "def": 20, "vit": 250, "dam": 35, "break": 5, "anti_break": 2, "strike": 2, "immunity": 2, "res_cap": 200},
+    "army_c": {"attack": 25, "def": 30, "vit": 400, "dam": 40, "break": 10, "anti_break": 10, "strike": 10, "immunity": 10, "res_cap": 220},
+    "army_d": {"attack": 9, "def": 5, "vit": 45, "dam": 3, "break": 1, "anti_break": 1, "strike": 4, "immunity": 1, "res_cap": 75},
+    "army_e": {"attack": 19, "def": 25, "vit": 100, "dam": 19, "break": 2, "anti_break": 2, "strike": 12, "immunity": 2, "res_cap": 35},
+    "army_f": {"attack": 40, "def": 20, "vit": 600, "dam": 70, "break": 12, "anti_break": 10, "strike": 10, "immunity": 10, "res_cap": 75},
+    "spies": {"attack": 0, "def": 0, "vit": 0, "dam": 0, "break": 0, "anti_break": 0, "strike": 0, "immunity": 0, "res_cap": 75},
+    "wall_a": {"attack": 20, "def": 10, "vit": 300, "dam": 10, "break": 5, "anti_break": 4, "strike": 15, "immunity": 5, "res_cap": 75},
+    "wall_b": {"attack": 19, "def": 25, "vit": 400, "dam": 35, "break": 5, "anti_break": 4, "strike": 15, "immunity": 5, "res_cap": 75},
+    "wall_c": {"attack": 40, "def": 20, "vit": 600, "dam": 70, "break": 5, "anti_break": 4, "strike": 15, "immunity": 5, "res_cap": 75}
 };
 
 Elkaisar.BaseData.Army = {
@@ -4220,12 +4241,12 @@ var Extract = {
             return;
         return txt.replace(/\[\s*\d{1,3}\s*\,\s*\d{1,3}\s*\]/g, function (match) {
             var coords = Extract.digits(match);
-            return `<label class="clickable-coords font-2" data-x-coord="${coords[0]}" data-y-coord="${coords[1]}"><i>${match}</i></label>`;
+            return `<label class="clickable-coords font-2" data-x-coord="${coords[1]}" data-y-coord="${coords[0]}"><i>${match}</i></label>`;
 
         });
     },
     'coordDirect': function (xCoord, yCoord) {
-        return ' <label class=\"clickable-coords font-2\"  data-x-coord=\"' + xCoord + '\" data-y-coord=\"' + yCoord + '\"> <i>[' + xCoord + ',' + yCoord + ']</i></label> ';
+        return ` <label class="clickable-coords font-2"  data-x-coord="${xCoord}" data-y-coord="${yCoord}"> <i>[${xCoord},${yCoord}]</i></label> `;
     },
     digits: function (txt) {
         if (!txt)
@@ -4623,11 +4644,12 @@ Rank.playerRow = function (offset, json_data) {
     },
     
     refreshPlayerNotif: function (){
+        
         return $.ajax({
-            url:"api/message.php",
+            url:`${API_URL}/api/APlayer/getAllNotif`,
             data:{
-                GET_PLAYER_NOTIF:true,
-                token:TOKEN
+                server : Elkaisar.Config.idServer,
+                token  : Elkaisar.Config.OuthToken
             },
             type: 'GET',
             success: function (data, textStatus, jqXHR) {
@@ -5205,7 +5227,7 @@ Elkaisar.City.prepareCity = function (idCity)
                 resourcesRefresh();
                 refreshTime();
 
-            }, 3500);
+            }, 1000);
             Elkaisar.City.getCityBuilding(idCity).done(function () {
                 Elkaisar.City.getCityGarrison(idCity);
                 Elkaisar.Building.getJsonData().done(function () {
@@ -10256,62 +10278,55 @@ $(document).on("mouseleave", ".tooltip_mat", function () {
 
 /*                   intract matrial on click                   */
 
-
-$(document).on("click", "#matrial-player .matrial_unit", function () {
-
-    var matrial_name = $(this).attr("matrial_type");
-
-    var mat_obj = Elkaisar.BaseData.Items[matrial_name];
-    var amount = Matrial.getPlayerAmount(matrial_name);
-
-    $("#alert_container").remove();
-
-    var extra_html = "";
-
-    switch (matrial_name) {
-
-        case "certain_move":
-            extra_html = `  <div class="extra_html">
-                                ادخل الاحداثيات 
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspX <input id="new-city-y-coord" type="text" class="only_num input" min="0" max="499">
+$(document)['on']('click', '#matrial-player .matrial_unit', function () {
+    var idItem = $(this)['attr']('matrial_type');
+    var Item = Elkaisar['BaseData']['Items'][idItem];
+    var PlayerAmount = Matrial['getPlayerAmount'](idItem);
+    
+    $('#alert_container')['remove']();
+    var ExtraString = '';
+    switch (idItem) {
+    case 'certain_move':
+        ExtraString = `  <div class="extra_html">
+                            ادخل الاحداثيات 
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+                                X <input id="new-city-y-coord" type="text" class="only_num input" min="0" max="499">
                                 Y <input id="new-city-x-coord" type="text" class="only_num input" min="0" max="499">
                             </div>`;
-            break;
-
-
-
+        break;
+    case 'random_move':
+        break;
     }
-
-    var confirm_box = ` <div id="matral-box-use" class="bg-general"> 
+    var Box = ` <div id="matral-box-use" class="bg-general"> 
                             <div id="alert_head">    
                                 <div>        
                                     <img src="images/panner/king_name.png">    
                                 </div>       
-                                <div id="alert-title">${Translate.Title.Box.pleaseSelect[UserLag.language]}</div>            
+                                <div id="alert-title">${Translate['Title']['Box']['pleaseSelect'][UserLag['language']]}</div>            
                                 <img src="images/btns/close_b.png" class="img-sml close-alert_container">       
                             </div>
                             <div id="alert_box" class="matrial-show">        
                                 <div class="row-2">
                                     <div class="pull-L left">
-                                        <img src="${mat_obj.image}"/>
+                                        <img src="${Item['image']}"/>
                                     </div>
                                     <div class="pull-R right">
                                         <div class="name ellipsis">
-                                            ${mat_obj.name} 
+                                            ${Item['name']} 
                                         </div>
                                         <div class="amount">
-                                            ${Translate.Title.TH.YouHave[UserLag.language]} ${amount}
+                                            ${Translate['Title']['TH']['YouHave'][UserLag['language']] } ${ PlayerAmount }
                                         </div>
                                     </div>
                                 </div>  
                                 <div class="mat_desc">
-                                    ${mat_obj.desc}
+                                    ${ Item['desc'] }
                                 </div>
-                                ${extra_html}
-                                <div class="row-3">        
+                                ${ExtraString}
+                                <div class="row-3">       
                                     <div class="confim-btn">            
-                                        ${mat_obj.use === "none" ? "" : `<button class="full-btn full-btn-3x  pull-R enter" data-item-name="${matrial_name}" id="usePlayerItemBox">تاكيد</button>  `}  
-                                        ${mat_obj.use === "many" ? `<input type="text" max="${amount}" min="0" step="1" class="pull-L only_num input" id="amount_to_use">
+                                        ${ Item['use'] === 'none' ? '' : `<button class="full-btn full-btn-3x  pull-R enter" data-item-name="${idItem}" id="${Item['use'] == 'Box' ? 'openPlayerItemBox' : 'usePlayerItemBox'}">${(Item['use'] == 'Box' ? 'فتح' : 'تأكيد') }</button>  ` }  
+                                        ${ Item['use'] === 'many' ? `<input type="text" max="${PlayerAmount}" min="0" step="1" class="pull-L only_num input" id="amount_to_use">
                                                                         <div class="number-arrow-wrapper pull-L">
                                                                             <label class="number-arrow up"></label>
                                                                             <label class="number-arrow down"></label>
@@ -10321,7 +10336,8 @@ $(document).on("click", "#matrial-player .matrial_unit", function () {
                                 </div>
                             </div>    
                         </div>`;
-    $("body").append(confirm_box);
+            
+    $('body')['append'](Box);
 });
 
 
@@ -10828,26 +10844,30 @@ $(document)['on']('click', '#openPlayerItemBox', function () {
         },
         'type': 'POST',
         'success': function (data, _0x106300, _0x509fc4) {
-            if (!Elkaisar['LBase']['isJson'](data)) 
+            if (!Elkaisar['LBase']['isJson'](data))
                 Elkaisar['LBase']['Error'](data);
-            
-            var JsonData = JSON['parse'](_0x2667b5);
-            if (JsonData['state'] === 'ok') {
-                showMatrialGiftList(JsonData['Item']);
-                for (var ii in JsonData['Item']) {
-                    if(JsonData['Item']['prizeType'] == 'E') 
+            var JsonObject = JSON['parse'](data);
+            if (JsonObject['state'] === 'ok') {
+                showMatrialGiftList(JsonObject['Item']);
+                for (var ii in JsonObject['Item']) {
+                    if (JsonObject['Item']['prizeType'] == 'E') {
                         Elkaisar['Equip']['getPlayerEquip']();
-                    else 
-                        Matrial['givePlayer'](JsonData['Item'][ii]['Item'], JsonData['Item'][ii]['amount']);
+                    } else {
+                        Matrial['givePlayer'](JsonObject['Item'][ii]['Item'], JsonObject['Item'][ii]['amount']);
+                    }
+
                 }
                 Elkaisar['Item']['ItemBox']('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
                 Player_profile['refreshMatrialBox']()['done'](function () {
                     Elkaisar['Item']['ItemBox']('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
                 });
-            } else JsonData['state'] === 'error_1' && alert_box['failMessage']('ليس لديك مواد كافية');
+            } else if(JsonObject['state'] === 'error_1'){
+                alert_box['failMessage']('ليس لديك مواد كافية');
+            }
         }
     });
 });
+
 Elkaisar.WsLib.TimedTask = {};
 
 
@@ -11264,7 +11284,7 @@ Elkaisar.WsLib.TimedTask.Study = function (data){
             
     Crafty.audio.play("upgrade_done");
     Elkaisar.DPlayer.Player.prestige = Number(Elkaisar.DPlayer.Player.prestige) + data.prestige;
-    Elkaisar.DPlayer.PlayerEdu = data.Edu;
+    Player_profile.getPlayerEdu();
     
     var id_console = Elkaisar.CurrentCity.City.console;
 
@@ -12432,11 +12452,16 @@ var Building = {
             this.RefreshLeft(place);
         },
         RefreshLeft: function (place) {
+            
+         
+                        
+                        
+                        
 
             if(!place)
                 place = $(".box_content").attr("data-building-place");
             
-            
+           
 
             var content = "";
             var total_time = 0;
@@ -12446,9 +12471,9 @@ var Building = {
             for( var OneTask in Elkaisar.TimedTask.TaskList.Army)
             {
                 var Task = Elkaisar.TimedTask.TaskList.Army[OneTask];
-                if(Task.place !== place)
+                if(Task.place != place)
                     continue;
-                if(Number(Task.id_city) !== Number(Elkaisar.CurrentCity.City.id_city))
+                if(Number(Task.id_city) != Number(Elkaisar.CurrentCity.City.id_city))
                     continue;
                 
                 
@@ -12477,13 +12502,13 @@ var Building = {
                                            </div>
                                         </div>`;
 
-                if (c === Object.keys(Elkaisar.TimedTask.TaskList.Army).length - 1) {
-                    total_time = parseInt(Task.time_end) - Date.now() / 1000;
-                    end = parseInt(Task.time_end);
-                }
+              
+                end = Math.max(Task.time_end, end);
+                
                 c++;
             };
-
+            
+            total_time = Math.floor( end - Date.now()/1000);
             
             $(".total-work").html(content);
             $("#total-time-pro").html(changeTimeFormat(total_time));
@@ -14997,8 +15022,8 @@ $(document).on("click", "#cansel-building-upgrade", function () {
         data: {
             idCity: Elkaisar.CurrentCity.City.id_city,
             idWorking: idWorking,
-            token: Elkaisar.Config.idServer,
-            server: Elkaisar.Config.OuthToken
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
 
         type: 'POST',
@@ -16535,54 +16560,57 @@ var army = {
                 </div>`;
     },
     'HeroEquip': function () {
+        
         var EquipTab = `<div id="HeroEquipBox" class="equip">
                             <table>
                                 <tbody>
                                     <tr>
                                         <td class="eq-helmet">
-                                            ${ this['HeroEquipUnit']('helmet') }
+                                            ${ this.HeroEquipUnit('helmet') }
                                         </td>
                                         <td colspan="2"></td>
                                         <td class="eq-beads">
-                                            ${this['HeroEquipUnit']('pendant') }
+                                            ${this.HeroEquipUnit('pendant') }
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="eq-neck">
-                                            ${this['HeroEquipUnit']('necklace') }
+                                            ${this.HeroEquipUnit('necklace') }
                                         </td>
                                         <td colspan="2"></td>
                                         <td class="eq-belt">
-                                            ${this['HeroEquipUnit']('belt') }
+                                            ${this.HeroEquipUnit('belt') }
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            ${this['HeroEquipUnit']('armor') }
+                                            ${this.HeroEquipUnit('armor') }
                                         </td>
                                         <td colspan="2"></td>
                                         <td class="eq-ring">
-                                            ${this['HeroEquipUnit']('ring') }
+                                            ${this.HeroEquipUnit('ring') }
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="eq-boot">
-                                            ${this['HeroEquipUnit']('boot') }
+                                            ${this.HeroEquipUnit('boot') }
                                         </td>
                                         <td class="eq-sword">
-                                            ${this['HeroEquipUnit']('sword') }
+                                            ${this.HeroEquipUnit('sword') }
                                         </td>
                                         <td class="eq-shield">
-                                            ${this['HeroEquipUnit']('shield') }
+                                            ${this.HeroEquipUnit('shield') }
                                         </td>
                                         <td class="eq-horse">
-                                            ${this['HeroEquipUnit']('steed') }
+                                            ${this.HeroEquipUnit('steed') }
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>`;
-        $('#HeroEquipBox')['replaceWith'](EquipTab);
+        
+        $('#HeroEquipBox').replaceWith(EquipTab);
+        
         return  EquipTab;
     },
     'dialogBoxContent_forEquiRight': function () {
@@ -16592,7 +16620,7 @@ var army = {
                         <div class="part-1 hero-name">
                             <h1 class="header-2 banner-red">${ Elkaisar['CurrentHero']['Hero']['name'] }</h1>
                         </div>
-                        ${ this['HeroEquip']() }
+                        ${ this.HeroEquip() }
                         <div class="row row-4">
                             <div class="col-1 full" id="after-ajax-hero-army">
                                ${ Hero['armyReview']() }
@@ -16822,7 +16850,6 @@ $(document).on("click", ".left-nav ul  li", function () {
             $("#hero-wrapper").replaceWith(content);
             $(".box_content").attr("class", "box_content hero_dial hero-equip");
             $(".box_content").attr("id", "hero-dial-equip");
-            getPlayerEquip();
             break;
 
         case "camp":
@@ -19324,8 +19351,9 @@ $(document).on("dblclick" , ".on_equip" , function (){
                 Elkaisar['Equip']['getEquipUnit'](JsonData['PlayerEquip'][iii]['id_equip'])['id_hero'] = JsonData['PlayerEquip'][iii]['id_hero'];
                 Elkaisar['Equip']['getEquipUnit'](JsonData['PlayerEquip'][iii]['id_equip'])['on_hero'] = JsonData['PlayerEquip'][iii]['on_hero'];
             }
-            Elkaisar['Equip']['distributeEquip']();
-            army['HeroEquip']();
+            Elkaisar.Equip.distributeEquip();
+            army.HeroEquip();
+            
             var offset = Number($('.equip-unit:first')['attr']('data-offset'));
             var part = $('#eq-part-select .selected button')['attr']('data-equi-part');
             $('#equip-list-heroDia')['html'](army['getEquipList'](offset, part));
@@ -19353,7 +19381,7 @@ $(document).on("click" , ".FIRE_HERO" , function (){
     if(Number(CHero.Hero.in_city) !== 1)
         return alert_box.confirmMessage("لا يمكنك طرد البطل وهو فى مهمة");
         
-    if(Number(CHero.City.console) === Number(CHero.Hero.id_hero))
+    if(Number(Elkaisar.CurrentCity.City.console) === Number(CHero.Hero.id_hero))
         return alert_box.confirmMessage("لا يمكنك طرد  قنصل المدينة");
     
         
@@ -19685,6 +19713,8 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
                 alert_box.failMessage("سعة البطل غير كافية");
             } else if (json_data.state === "error_5") {
                 alert_box.failMessage("الابطال ليست بالمدينة");
+            } else if (json_data.state === "error_6") {
+                alert_box.failMessage("الابطال ليست بمدينة واحدة");
             } else {
                 alert(data);
             }
@@ -19892,7 +19922,7 @@ $(document).on("click", "#confirmTransArmy", function () {
 /*special material*/
 /* global matrial_player, Elkaisar.CurrentCity.City, city_profile */
 
-const SPECIAL_MATRIAL = ["certain_move","random_move","tagned_3p","tagned_4p","tagned_5p","tagned_6p","tagned_7p","tagned_8p"];
+const SPECIAL_MATRIAL = ["certain_move", "random_move", "tagned_3p", "tagned_4p", "tagned_5p", "tagned_6p", "tagned_7p", "tagned_8p"];
 /**
  * 
  * @param {type} user_for
@@ -19900,50 +19930,45 @@ const SPECIAL_MATRIAL = ["certain_move","random_move","tagned_3p","tagned_4p","t
  * @param {object} other  optional
  * @returns {undefined}
  */
-function useMatrial(user_for , matrial , other)
+function useMatrial(user_for, matrial, other)
 {
-    
+
     var idCity = Number(Elkaisar.CurrentCity.City.id_city);
-    
-    if(Matrial.getPlayerAmount(matrial) <= 0){
-        
+    if (Matrial.getPlayerAmount(matrial) <= 0) {
+
         $("#over_lay_alert").remove();
-        alert_box.confirmMessage("لا يوجد لديك "+Matrial.getMatrial(matrial).name+"  فى صندوق الموارد خاصتك");
-        return ;
-        
+        alert_box.confirmMessage("لا يوجد لديك " + Matrial.getMatrial(matrial).name + "  فى صندوق الموارد خاصتك");
+        return;
     }
-    
+
     /*
      *  user wants to add xp to hero
      */
-    if(user_for === "add_xp"){
-        
-        if(!heroAvailableForTask(Elkaisar.CurrentHero.Hero.id_hero)){
+    if (user_for === "add_xp") {
+
+        if (!heroAvailableForTask(Elkaisar.CurrentHero.Hero.id_hero)) {
             $("#over_lay_alert").remove();
             $("#over_lay").remove();
             alert_box.confirmMessage("لا يمكن اضافة خبرة للبطل حيث ان البطل بالخارج");
-            return ;
+            return;
         }
-        
+
         var idHero = Elkaisar.CurrentHero.Hero.id_hero;
-        
         $.ajax({
             url: `${API_URL}/api/AHero/addExp`,
-            data:{
+            data: {
                 itemToUse: matrial,
-                idHero   : idHero,
-                token    : Elkaisar.Config.OuthToken,
-                server   : Elkaisar.Config.idServer
+                idHero: idHero,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-                
-                if(!Elkaisar.LBase.isJson(data))
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-                
                 var JsonObject = JSON.parse(data);
-                
-                if(JsonObject.state === "ok"){
+                if (JsonObject.state === "ok") {
                     Elkaisar.Hero.getHero(idHero).Hero = JsonObject.Hero;
                     $("#over_lay_alert").remove();
                     $("#over_lay").remove();
@@ -19956,52 +19981,45 @@ function useMatrial(user_for , matrial , other)
 
             }
         });
-        
-        
         /*
-     *  user wants to add power to hero
-     */
-    }
-    else if(user_for === "add_power"){
-        
-        if(!heroAvailableForTask(Elkaisar.CurrentHero.Hero.id_hero)){
+         *  user wants to add power to hero
+         */
+    } else if (user_for === "add_power") {
+
+        if (!heroAvailableForTask(Elkaisar.CurrentHero.Hero.id_hero)) {
             $("#over_lay_alert").remove();
             $("#over_lay").remove();
-            
             alert_box.confirmMessage("لا يمكن اضافة قوة بدنية للبطل حيث ان البطل بالخارج");
-            return ;
+            return;
         }
         var idHero = Elkaisar.CurrentHero.Hero.id_hero;
         $.ajax({
             url: `${API_URL}/api/AHero/addPower`,
-            data:{
+            data: {
                 itemToUse: matrial,
-                idHero   : idHero,
-                token    : Elkaisar.Config.OuthToken,
-                server   : Elkaisar.Config.idServer
+                idHero: idHero,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-                
-                if(!Elkaisar.LBase.isJson(data))
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-                
                 var JsonObject = JSON.parse(data);
-                
-                if(JsonObject.state === "ok"){
-                    
+                if (JsonObject.state === "ok") {
+
                     Elkaisar.Hero.getHero(idHero).Hero = JsonObject.Hero;
                     $("#over_lay_alert").remove();
                     $("#over_lay").remove();
                     Matrial.takeFrom(matrial, 1);
                     $(".middle-content").replaceWith(army.middle_content(Elkaisar.CurrentHero));
                     alert_box.succesMessage(` +${JsonObject.power} قوة بدنية`);
-                    
-                }else if(JsonObject.state === "error_0"){
+                } else if (JsonObject.state === "error_0") {
                     alert_box.failMessage("البطل ليس ملك لك");
-                }else if(JsonObject.state === "error_1"){
+                } else if (JsonObject.state === "error_1") {
                     alert_box.failMessage("البطل فى اعلى قدرة بدنية ممكنة");
-                }else if(JsonObject.state === "error_2"){
+                } else if (JsonObject.state === "error_2") {
                     alert_box.failMessage("لا تمتلك مواد كافية");
                 }
             },
@@ -20009,50 +20027,44 @@ function useMatrial(user_for , matrial , other)
 
             }
         });
-        
         /*
-        *  user wants to add loyality to hero
-        */
-    }
-    else if(user_for === "add_loy"){
-        
-        if(!heroAvailableForTask(Elkaisar.CurrentHero.Hero.id_hero)){
+         *  user wants to add loyality to hero
+         */
+    } else if (user_for === "add_loy") {
+
+        if (!heroAvailableForTask(Elkaisar.CurrentHero.Hero.id_hero)) {
             $("#over_lay_alert").remove();
             $("#over_lay").remove();
-            
             alert_box.confirmMessage("لا يمكن اضافة  ولاء للبطل حيث ان البطل بالخارج");
-            return ;
+            return;
         }
         var idHero = Elkaisar.CurrentHero.Hero.id_hero;
-        
         $.ajax({
             url: `${API_URL}/api/AHero/addLoy`,
-            data:{
+            data: {
                 itemToUse: matrial,
-                idHero   : idHero,
-                token    : Elkaisar.Config.OuthToken,
-                server   : Elkaisar.Config.idServer
+                idHero: idHero,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-                
-                if(!Elkaisar.LBase.isJson(data))
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-                
                 var JsonObject = JSON.parse(data);
-                
-                if(JsonObject.state === "ok"){
+                if (JsonObject.state === "ok") {
                     Elkaisar.Hero.getHero(idHero).Hero = JsonObject.Hero;
                     $("#over_lay_alert").remove();
                     $("#over_lay").remove();
                     Matrial.takeFrom(matrial, 1);
                     $(".middle-content").replaceWith(army.middle_content(Elkaisar.CurrentHero));
                     alert_box.succesMessage(` +${JsonObject.loy}  ولاء`);
-                }else if(JsonObject.state === "error_0"){
+                } else if (JsonObject.state === "error_0") {
                     alert_box.failMessage("البطل ليس ملك لك");
-                }else if(JsonObject.state === "error_1"){
+                } else if (JsonObject.state === "error_1") {
                     alert_box.failMessage("البطل فى اعلى قدرة ولاء ممكنة");
-                }else if(JsonObject.state === "error_2"){
+                } else if (JsonObject.state === "error_2") {
                     alert_box.failMessage("لا تمتلك مواد كافية");
                 }
             },
@@ -20060,53 +20072,47 @@ function useMatrial(user_for , matrial , other)
 
             }
         });
-        
     }/* end add loyality*/
-    else if(user_for === "retreat_points"){
-        
-        
-        if(Matrial.getPlayerAmount(matrial) < Math.floor(Elkaisar.CurrentHero.Hero.lvl/10) + 1){
+    else if (user_for === "retreat_points") {
+
+
+        if (Matrial.getPlayerAmount(matrial) < Math.floor(Elkaisar.CurrentHero.Hero.lvl / 10) + 1) {
             $("#over_lay_alert").remove();
             $("#over_lay").remove();
             alert_box.failMessage("لا توجد لديك موارد كافية");
-            return ;
+            return;
         }
-        if(!heroAvailableForTask(Elkaisar.CurrentHero.Hero.id_hero)){
+        if (!heroAvailableForTask(Elkaisar.CurrentHero.Hero.id_hero)) {
             $("#over_lay_alert").remove();
             $("#over_lay").remove();
-            
             alert_box.confirmMessage("البطل خارج المدينة");
-            return ;
+            return;
         }
-        
+
         var idHero = Elkaisar.CurrentHero.Hero.id_hero;
-        
         $.ajax({
             url: `${API_URL}/api/AHero/resetHeroPoints`,
-            data:{
-                idHero   : idHero,
-                token    : Elkaisar.Config.OuthToken,
-                server   : Elkaisar.Config.idServer
+            data: {
+                idHero: idHero,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-                
-                if(!Elkaisar.LBase.isJson(data))
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-                
                 var JsonObject = JSON.parse(data);
-                
-                if(JsonObject.state === "ok"){
+                if (JsonObject.state === "ok") {
                     Elkaisar.Hero.getHero(idHero).Hero = JsonObject.Hero;
                     Elkaisar.City.getCity(idCity).City = JsonObject.CityRes;
                     $("#over_lay_alert").remove();
                     $("#over_lay").remove();
                     $(".middle-content").replaceWith(army.middle_content(Elkaisar.CurrentHero));
-                    Matrial.takeFrom(matrial, Math.floor(Elkaisar.CurrentHero.Hero.lvl/10) - 1);
-                    
-                }else if(JsonObject.state === "error_0"){
+                    Matrial.takeFrom(matrial, Math.floor(Elkaisar.CurrentHero.Hero.lvl / 10) - 1);
+                } else if (JsonObject.state === "error_0") {
                     alert_box.failMessage("البطل ليس ملك لك");
-                }else if(JsonObject.state === "error_1"){
+                } else if (JsonObject.state === "error_1") {
                     alert_box.failMessage("لا تمتلك مواد كافية");
                 }
             },
@@ -20115,65 +20121,58 @@ function useMatrial(user_for , matrial , other)
             }
         });
     } /*  end else if  */
-    
-    else if(user_for === "add_medal")
+
+    else if (user_for === "add_medal")
     {
         var url = "";
-        
-        if(matrial === "medal_ceasro")
+        if (matrial === "medal_ceasro")
             url = `${API_URL}/api/AHeroMedal/activateCiceroMedal`;
-        if(matrial === "medal_den")
+        if (matrial === "medal_den")
             url = `${API_URL}/api/AHeroMedal/activateDentatusMedal`;
-        if(matrial === "medal_leo")
+        if (matrial === "medal_leo")
             url = `${API_URL}/api/AHeroMedal/activateLeonidasMedal`;
-        if(matrial === "ceaser_eagle")
+        if (matrial === "ceaser_eagle")
             url = `${API_URL}/api/AHeroMedal/activateCaeserMedal`;
-        
-        if(Number(Elkaisar.CurrentHero.Hero.in_city) !== Elkaisar.Hero.HeroState.HERO_IN_CITY){
+        if (Number(Elkaisar.CurrentHero.Hero.in_city) !== Elkaisar.Hero.HeroState.HERO_IN_CITY) {
             $("#over_lay_alert").remove();
             $("#over_lay").remove();
-
             alert_box.confirmMessage("البطل خارج المدينة");
-            return ;
+            return;
         }
-       
-        
+
+
         $.ajax({
             url: url,
             type: 'POST',
             data: {
-                idHero  : Elkaisar.CurrentHero.Hero.id_hero,
-                token   : Elkaisar.Config.OuthToken,
-                server  : Elkaisar.Config.idServer
+                idHero: Elkaisar.CurrentHero.Hero.id_hero,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             beforeSend: function (xhr) {
 
             },
             success: function (data, textStatus, jqXHR) {
-              
-                if(!Elkaisar.LBase.isJson(data))
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-                
                 var JsonObject = JSON.parse(data);
-                
                 $("#over_lay_alert").remove();
                 $("#over_lay").remove();
-                
-                if(JsonObject.state === "ok"){
-                    
+                if (JsonObject.state === "ok") {
+
                     Elkaisar.CurrentHero.Medal = JsonObject.HeroMedal;
                     Elkaisar.City.getCity(idCity).City = JsonObject.CityRes;
                     $(".middle-content").replaceWith(army.middle_content(Elkaisar.CurrentHero));
                     city_profile.refresh_resource_view();
-                   
-                }else if(JsonObject.state === "error_0"){
+                } else if (JsonObject.state === "error_0") {
                     alert_box.failMessage("البطل ليس ملك لك");
-                }else if(JsonObject.state === "error_1"){
+                } else if (JsonObject.state === "error_1") {
                     alert_box.failMessage("لا تمتلك مواد كافية");
-                }else if(JsonObject.state === "error_2"){
+                } else if (JsonObject.state === "error_2") {
                     alert_box.failMessage("البطل ليس فى المدينة");
                 }
-              
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
 
@@ -20182,545 +20181,422 @@ function useMatrial(user_for , matrial , other)
     }
     /**************************************************************************/
     /*_________________________   UPGRADE GUILD  _____________________________*/
-    
-    else if(user_for ===  "upgrade_guild"){
-        
+
+    else if (user_for === "upgrade_guild") {
+
         $.ajax({
-             
+
             url: `${API_URL}/api/AGuild/upgradeUsingItem`,
             data: {
-                itemToUse : matrial,
-                token     : Elkaisar.Config.OuthToken,
-                server    : Elkaisar.Config.idServer
+                itemToUse: matrial,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-                 
-               if(!Elkaisar.LBase.isJson(data))
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
                 var jsonObject = JSON.parse(data);
-                
-               
-                if(jsonObject.state === "ok"){
+                if (jsonObject.state === "ok") {
                     Elkaisar.Guild.GuildData = jsonObject.GuildData;
                     $("#over_lay_alert").remove();
                     $("#over_lay").remove();
                     Matrial.takeFrom(matrial, 1);
-                   Guild.content_forUpgrade();
-                    
-                }else if(jsonObject.state === "error_0"){
+                    Guild.content_forUpgrade();
+                } else if (jsonObject.state === "error_0") {
                     alert_box.failMessage("لست عضو باى حلف");
-                }else if(jsonObject.state === "error_1"){
+                } else if (jsonObject.state === "error_1") {
                     alert_box.failMessage("رتبتك اقل من المطلوب");
-                }else if(jsonObject.state === "error_3"){
+                } else if (jsonObject.state === "error_3") {
                     alert_box.failMessage("نوع المادة غير معروف");
-                }else if(jsonObject.state === "error_4"){
+                } else if (jsonObject.state === "error_4") {
                     alert_box.failMessage("لا يوجد مواد كافية");
                 }
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
 
             }
-             
+
         });
-        
     }
-    
-    
-    
+
+
+
     /*___________________________________________________________________*/
     /*                                    buildind acce                 */
-    else if(user_for ===  "building_acce"){
-        
+    else if (user_for === "building_acce") {
+
         var idTask = other;
-        
         $.ajax({
-             
+
             url: `${API_URL}/api/ACityBuilding/speedUp`,
             data: {
-                idCity    : idCity,
-                itemToUse : matrial,
-                idWorking : idTask,
-                token     : Elkaisar.Config.OuthToken,
-                server    : Elkaisar.Config.idServer
+                idCity: idCity,
+                itemToUse: matrial,
+                idWorking: idTask,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-                
-                if(!Elkaisar.LBase.isJson(data))
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-                
                 var JsonObject = JSON.parse(data);
-                                
-                if(JsonObject.state === "ok"){
-                    
+                if (JsonObject.state === "ok") {
+
                     $("#over_lay_alert").remove();
                     $("#over_lay").remove();
                     $(".close_select_menu").click();
                     Matrial.takeFrom(matrial, 1);
-                    
-                    for(var iii in Elkaisar.TimedTask.TaskList.Building)
-                        if(Number(Elkaisar.TimedTask.TaskList.Building[iii].id_city) === Number(idCity))
-                                delete(Elkaisar.TimedTask.TaskList.Building[iii]);
-                        
-                    for(var iii in JsonObject.list)
+                    for (var iii in Elkaisar.TimedTask.TaskList.Building)
+                        if (Number(Elkaisar.TimedTask.TaskList.Building[iii].id_city) === Number(idCity))
+                            delete(Elkaisar.TimedTask.TaskList.Building[iii]);
+                    for (var iii in JsonObject.list)
                         Elkaisar.TimedTask.TaskList.Building[JsonObject.list[iii].id] = JsonObject.list[iii];
-                    
-                    
                     Elkaisar.TimedTask.refreshListView();
-                    
-                    $("#dialg_box .nav_bar .left-nav ul li[head_title=motiv]").hasClass("selected")?
-                    $("#dialg_box .nav_bar .left-nav ul li[head_title=motiv]").trigger("click")
-                    : "";
-                    
-                } else if (JsonObject.state === "error_0"){
+                    $("#dialg_box .nav_bar .left-nav ul li[head_title=motiv]").hasClass("selected") ?
+                            $("#dialg_box .nav_bar .left-nav ul li[head_title=motiv]").trigger("click")
+                            : "";
+                } else if (JsonObject.state === "error_0") {
                     alert_box.failMessage("لا توجد مواد كافية");
-                } else if (JsonObject.state === "error_1"){
+                } else if (JsonObject.state === "error_1") {
                     alert_box.failMessage("نوع المادة غير معروف");
                 }
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
 
             }
-             
+
         });
-        
-    }
-    
-    else if(user_for ===  "jop_acce"){
-        
+    } else if (user_for === "jop_acce") {
+
         var idTask = other;
-        
         $.ajax({
-             
+
             url: `${API_URL}/api/ACityJop/speedUpHiring`,
             data: {
-                idTask    : idTask,
-                itemToUse : matrial,
-                token     : Elkaisar.Config.OuthToken,
-                server    : Elkaisar.Config.idServer
+                idTask: idTask,
+                itemToUse: matrial,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-                
-                if(!Elkaisar.LBase.isJson(data))
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-                        
                 var JsonObject = JSON.parse(data);
-                
-                if(JsonObject.state === "ok"){
-                    
+                if (JsonObject.state === "ok") {
+
                     $("#over_lay_alert").remove();
                     $("#over_lay").remove();
                     $(".close_select_menu").click();
                     Matrial.takeFrom(matrial, 1);
-                    
-                    
-                    for(var iii in Elkaisar.TimedTask.TaskList.Jop)
-                        if(Number(Elkaisar.TimedTask.TaskList.Jop[iii].id_city) === Number(idCity))
-                                delete(Elkaisar.TimedTask.TaskList.Jop[iii]);
-                        
-                    for(var iii in JsonObject.JopTaskList)
+                    for (var iii in Elkaisar.TimedTask.TaskList.Jop)
+                        if (Number(Elkaisar.TimedTask.TaskList.Jop[iii].id_city) === Number(idCity))
+                            delete(Elkaisar.TimedTask.TaskList.Jop[iii]);
+                    for (var iii in JsonObject.JopTaskList)
                         Elkaisar.TimedTask.TaskList.Jop[JsonObject.JopTaskList[iii].id] = JsonObject.JopTaskList[iii];
-                    
                     Elkaisar.TimedTask.refreshListView();
-                    
-                    
-                    $("#dialg_box .nav_bar .left-nav ul li[head_title=motiv]").hasClass("selected")?
-                    $("#dialg_box .nav_bar .left-nav ul li[head_title=motiv]").trigger("click")
-                    : "";
-                } else if (JsonObject.state === "error_0"){
+                    $("#dialg_box .nav_bar .left-nav ul li[head_title=motiv]").hasClass("selected") ?
+                            $("#dialg_box .nav_bar .left-nav ul li[head_title=motiv]").trigger("click")
+                            : "";
+                } else if (JsonObject.state === "error_0") {
                     alert_box.failMessage("دفعة التوظيف غير موجودة");
-                } else if (JsonObject.state === "error_1"){
+                } else if (JsonObject.state === "error_1") {
                     alert_box.failMessage("لا توجد مواد كافية");
-                }else if (JsonObject.state === "error_2"){
+                } else if (JsonObject.state === "error_2") {
                     alert_box.failMessage("نوع المادة غير معروف");
                 }
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
 
             }
-             
+
         });
-        
     }
-    
-    
-    
+
+
+
     /*   _________________________________________________________________    */
     /*                           study acce                                  */
-     else if(user_for ===  "study_acce"){
-         
+    else if (user_for === "study_acce") {
+
         var idTask = other;
-        
         $.ajax({
-             
+
             url: `${API_URL}/api/APlayerEdu/speedUpStudyTask`,
             data: {
-                itemToUse : matrial,
-                idTask : idTask,
-                token  : Elkaisar.Config.OuthToken,
-                server : Elkaisar.Config.idServer
+                itemToUse: matrial,
+                idTask: idTask,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-                
-                if(!Elkaisar.LBase.isJson(data))
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-                
                 var JsonObject = JSON.parse(data);
-                                
-                if(JsonObject.state === "ok"){
-                    
+                if (JsonObject.state === "ok") {
+
                     $("#over_lay_alert").remove();
                     $("#over_lay").remove();
                     Matrial.takeFrom(matrial, 1);
-                    
-                    
-                    for(var iii in Elkaisar.TimedTask.TaskList.Study)
-                        if(Number(Elkaisar.TimedTask.TaskList.Study[iii].id_city) === Number(idCity))
-                                delete(Elkaisar.TimedTask.TaskList.Study[iii]);
-                        
-                    for(var iii in JsonObject.JopTaskList)
+                    for (var iii in Elkaisar.TimedTask.TaskList.Study)
+                        if (Number(Elkaisar.TimedTask.TaskList.Study[iii].id_city) === Number(idCity))
+                            delete(Elkaisar.TimedTask.TaskList.Study[iii]);
+                    for (var iii in JsonObject.JopTaskList)
                         Elkaisar.TimedTask.TaskList.Study[JsonObject.JopTaskList[iii].id] = JsonObject.JopTaskList[iii];
-                    
                     Elkaisar.TimedTask.refreshListView();
                     buildingClick($("#dialg_box .box_header").attr("place"), true);
-                    
-                }else if (JsonObject.state === "error_0"){
+                } else if (JsonObject.state === "error_0") {
                     alert_box.failMessage("دفعة الدراسة غير موجودة");
-                } else if (JsonObject.state === "error_1"){
+                } else if (JsonObject.state === "error_1") {
                     alert_box.failMessage("لا توجد مواد كافية");
-                }else if (JsonObject.state === "error_2"){
+                } else if (JsonObject.state === "error_2") {
                     alert_box.failMessage("نوع المادة غير معروف");
                 }
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
 
             }
-             
+
         });
-        
     }
-    
+
     /*   house   change    */
-    
-    else if(user_for === "reset_helper"){
-      
+
+    else if (user_for === "reset_helper") {
+
         $.ajax({
-        
+
             url: `${API_URL}/api/ACity/resetCityHelper`,
-            data:{
-                itemToUse : matrial,
-                idCity  : Elkaisar.CurrentCity.City.id_city,
-                token   : Elkaisar.Config.OuthToken,
-                server  : Elkaisar.Config.idServer
+            data: {
+                itemToUse: matrial,
+                idCity: Elkaisar.CurrentCity.City.id_city,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             beforeSend: function (xhr) {
 
             },
             success: function (data, textStatus, jqXHR) {
-                if(!Elkaisar.LBase.isJson(data))
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                
-                if(JsonObject.state === "ok"){
-                    
+                if (JsonObject.state === "ok") {
+
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     alert_box.succesMessage("تم تعديل المساعد بنجاح");
                     $(".building_worship").replaceWith(Building.dialogBoxContnet_forworship());
                     city_profile.refresh_resource_view();
-                }else if(JsonObject.state === "error_0"){
+                } else if (JsonObject.state === "error_0") {
                     alert_box.failMessage("خطاء بالمدينة");
-                }else if(JsonObject.state === "error_1"){
+                } else if (JsonObject.state === "error_1") {
                     alert_box.failMessage("لا يوجد مساعد بالمدينة");
-                }else if(JsonObject.state === "error_2"){
+                } else if (JsonObject.state === "error_2") {
                     alert_box.failMessage("لا توجد مواد كافية");
                 }
-                
+
                 $("#over_lay_alert").remove();
                 $("#over_lay").remove();
             },
-             error: function (jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
 
             }
-        
+
         });
-        
     }
-    
-    
+
+
     /*  acce trainning       in  the all building   */
-    else if(user_for === "army_build_acce"){
-        
+    else if (user_for === "army_build_acce") {
+
         var idTask = other;
         $.ajax({
-        
+
             url: `${API_URL}/api/AArmyBatch/speedUpBatches`,
-            data:{
-                idBatch   : idTask,
-                itemToUse : matrial,
-                token     : Elkaisar.Config.OuthToken,
-                server    : Elkaisar.Config.idServer
+            data: {
+                idBatch: idTask,
+                itemToUse: matrial,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-                
-                if(!Elkaisar.LBase.isJson(data))
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-               
-                    
                 var JsonObject = JSON.parse(data);
-                
-                if(JsonObject.state === "ok")
+                if (JsonObject.state === "ok")
                 {
-                    
-                    for(var iii in JsonObject.armyBatches)
+
+                    for (var iii in JsonObject.armyBatches)
                     {
-                        if(Elkaisar.TimedTask.TaskList.Army[JsonObject.armyBatches[iii].id]){
+                        if (Elkaisar.TimedTask.TaskList.Army[JsonObject.armyBatches[iii].id]) {
                             Elkaisar.TimedTask.TaskList.Army[JsonObject.armyBatches[iii].id].time_start = JsonObject.armyBatches[iii].time_start;
-                            Elkaisar.TimedTask.TaskList.Army[JsonObject.armyBatches[iii].id].time_end   = JsonObject.armyBatches[iii].time_end;
-                            Elkaisar.TimedTask.TaskList.Army[JsonObject.armyBatches[iii].id].acce       = JsonObject.armyBatches[iii].acce;
+                            Elkaisar.TimedTask.TaskList.Army[JsonObject.armyBatches[iii].id].time_end = JsonObject.armyBatches[iii].time_end;
+                            Elkaisar.TimedTask.TaskList.Army[JsonObject.armyBatches[iii].id].acce = JsonObject.armyBatches[iii].acce;
                         }
                     }
-                    
+
                 }
-                    
-                    
-                Matrial.takeFrom(matrial , 1);
+
+
+                Matrial.takeFrom(matrial, 1);
                 Building.militrayProduction.left($(".box_header").attr("place"));
-                
                 $("#over_lay_alert").remove();
                 $("#over_lay").remove();
             },
-             error: function (jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
 
             }
-        
+
         });
-        
-    }
-    
-    else  if( user_for === "add_city_builder"){
-        
+    } else if (user_for === "add_city_builder") {
+
         useMatrialBox(matrial);
-        
         $("#over_lay_alert").remove();
-        $("#over_lay").remove(); 
-        
+        $("#over_lay").remove();
     }
-    
-    
-    
+
+
+
     /*_________________________CHANGE GUILD SLOGAN___________________________________*/
-    
-    else if(user_for === "change_g_slog"){
-        
-        var slog_btm =  $(".guild_slogan img:first").attr("data-cur_image");
+
+    else if (user_for === "change_g_slog") {
+
+        var slog_btm = $(".guild_slogan img:first").attr("data-cur_image");
         var slog_top = $(".guild_slogan img:last").attr("data-cur_image");
-        var slog_cnt =  $(".guild_slogan img:nth-child(2)").attr("data-cur_image");
-        
+        var slog_cnt = $(".guild_slogan img:nth-child(2)").attr("data-cur_image");
         $.ajax({
-            
+
             url: "api/guild.php",
             data: {
                 CHANGE_GUILD_SLOGAN: true,
                 id_guild: Elkaisar.DPlayer.Player.id_guild,
-                slog_btm:slog_btm,
+                slog_btm: slog_btm,
                 slog_top: slog_top,
                 slog_cnt: slog_cnt,
-                id_player:ID_PLAYER,
-                token:TOKEN
+                id_player: ID_PLAYER,
+                token: TOKEN
             },
             type: 'POST',
             beforeSend: function (xhr) {
 
             },
             success: function (data, textStatus, jqXHR) {
-                
-                if(data === "done"){
-                    Matrial.takeFrom(matrial, 1);
 
+                if (data === "done") {
+                    Matrial.takeFrom(matrial, 1);
                     Elkaisar.Guild.GuildData.slog_btm = slog_btm;
                     Elkaisar.Guild.GuildData.slog_top = slog_top;
                     Elkaisar.Guild.GuildData.slog_cnt = slog_cnt;
-
-                     $(".close-alert_container").click();
-
-                     $(".guild_dialog_box .nav_bar .left-nav .selected").click();
+                    $(".close-alert_container").click();
+                    $(".guild_dialog_box .nav_bar .left-nav .selected").click();
                     Guild.getGuildData();
                     alert_box.succesMessage("تم تعديل الشعار بنجاح");
                     $("#over_lay_alert").remove();
-                    $("#over_lay").remove(); 
-                    
+                    $("#over_lay").remove();
                 }
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
 
             }
-            
+
         });
-        
-    }
-    
-    else if(user_for === "change_player_name"){
-        
-        
+    } else if (user_for === "change_player_name") {
+
+
         var new_name = $("#playe-new-name").val();
-        
-        if(new_name.length < 3){
-            
+        if (new_name.length < 3) {
+
             alert_box.confirmMessage("اسم الملك صغير ");
             $("#over_lay_alert").remove();
             $(".select_over_lay").remove();
-            return ;
-            
-            
-        }else if(new_name.length > 10){
-            
+            return;
+        } else if (new_name.length > 10) {
+
             alert_box.confirmMessage("اسم الملك كبير ");
             $("#over_lay_alert").remove();
             $(".select_over_lay").remove();
-            return ;
-            
-        }else if(new_name === Elkaisar.DPlayer.Player.name){
-            
+            return;
+        } else if (new_name === Elkaisar.DPlayer.Player.name) {
+
             alert_box.confirmMessage("يجب ان يكون الاسم الجديد مختلف");
             $("#over_lay_alert").remove();
             $(".select_over_lay").remove();
-            return ;
-            
-        }else{
-            
-            
+            return;
+        } else {
+
+
             $.ajax({
-                
+
                 url: "api/player.php",
-                data:{
-                    
-                    NewName   : new_name,
-                    token     : Elkaisar.Config.OuthToken,
-                    server    : Elkaisar.Config.idServer
-                    
+                data: {
+
+                    NewName: new_name,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+
                 },
                 type: 'POST',
                 success: function (data, textStatus, jqXHR) {
-                    
-                    if(!Elkaisar.LBase.isJson(data))
+
+                    if (!Elkaisar.LBase.isJson(data))
                         return Elkaisar.LBase.Error(data);
-                    
                     var JsonObject = JSON.parse(data);
-                    
-                    if(JsonObject.state === "ok"){
-                        
+                    if (JsonObject.state === "ok") {
+
                         $("#A-A-P-name").html(new_name + '<img src="images/btns/edit.png" class="img-sml" style="vertical-align: middle; margin-left: 15px" id="edit-player-name-btn">');
                         $(".avatar-name h1").html(new_name);
                         $("#over_lay_alert").remove();
                         $(".select_over_lay").remove();
                         Elkaisar.DPlayer.Player = JsonObject.Player;
                         Player_profile.refresh_view();
-                    }else if(JsonObject.state === "error_2")
+                    } else if (JsonObject.state === "error_2")
                         alert_box.failMessage("يوجد لاعب يحمل نفس الاسم");
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    
+
                 }
-                
+
             });
-            
-            
-            
         }
-        
-    }
-    else if(user_for === "increase-city-util"){
-        
+
+    } else if (user_for === "increase-city-util") {
+
         useMatrialBox(matrial);
         $("#over_lay_alert").remove();
         $("#over_lay").remove();
-        
     }
-    
-    
+
+
     /* refresh city theater with matrial*/
-    else if(user_for === "refresh_theater_with_mat"){
-        
-        
+    else if (user_for === "refresh_theater_with_mat") {
+
+
         var all_heros = "";
         var left_content = "";
         
+        
         $.ajax({
-                
-            url: "api/hero.php",
-            data:{
 
-                REFRESH_THEATER_WITH_MAT: true,
-                id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player:ID_PLAYER,
-                token:TOKEN
+            url: `${API_URL}/api/ACityHero/refreshHeroTheaterWithLetter`,
+            data: {
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer,
+                idCity: Elkaisar.CurrentCity.City.id_city
 
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-
-            },
-            success: function (data, textStatus, jqXHR) {
-                
-                if(isJson(data)){
-                    
-                  var json_data = JSON.parse(data);
-                    
-                }else{
-                    
-                    alert(data);
-                    console.log(data);
-                    return ;
-                    
-                }
-                $("#over_lay_alert").remove();
-                $("#over_lay").remove(); 
-                Matrial.takeFrom(matrial, 1);
-                alert_box.succesMessage("تم تحديث قائمة الابطال");
-                buildingClick(cityHasType(BUILDING_TYPS.THEATER) , true);
-
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-
-        });
-        
-        
-    }
-    
-    
-    /*  accelerate arriving deals*/
-    else if(user_for === "acce-arriving-deal"){
-        
-        if(isNaN(other)){
-            alert("error here");
-            console.log(other);
-            return ;
-        }
-        
-       
-       var id_deal = Number(other);
-       
-        $.ajax({
-        
-            url: "api/market.php",
-            data:{
-                ACCELERATE_ARRIVING_DEALS:true,
-                id_deal:id_deal,
-                id_city:Elkaisar.CurrentCity.City.id_city,
-                id_player:ID_PLAYER,
-                token:TOKEN
             },
             type: 'POST',
             beforeSend: function (xhr) {
@@ -20728,7 +20604,53 @@ function useMatrial(user_for , matrial , other)
             },
             success: function (data, textStatus, jqXHR) {
 
-                if(isJson(data) ){
+                if(!Elkaisar.LBase.isJson(data))
+                    Elkaisar.LBase.Error(data);
+                
+                var JsonObject = JSON.parse(data);
+                
+                $("#over_lay_alert").remove();
+                $("#over_lay").remove();
+                Matrial.takeFrom(matrial, 1);
+                alert_box.succesMessage("تم تحديث قائمة الابطال");
+                buildingClick(cityHasType(BUILDING_TYPS.THEATER), true);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+
+        });
+    }
+
+
+    /*  accelerate arriving deals*/
+    else if (user_for === "acce-arriving-deal") {
+
+        if (isNaN(other)) {
+            alert("error here");
+            console.log(other);
+            return;
+        }
+
+
+        var id_deal = Number(other);
+        $.ajax({
+
+            url: "api/market.php",
+            data: {
+                ACCELERATE_ARRIVING_DEALS: true,
+                id_deal: id_deal,
+                id_city: Elkaisar.CurrentCity.City.id_city,
+                id_player: ID_PLAYER,
+                token: TOKEN
+            },
+            type: 'POST',
+            beforeSend: function (xhr) {
+
+            },
+            success: function (data, textStatus, jqXHR) {
+
+                if (isJson(data)) {
                     console.log(data);
                     var json_data = JSON.parse(data);
                     Elkaisar.CurrentCity.City.food = json_data.food;
@@ -20736,18 +20658,15 @@ function useMatrial(user_for , matrial , other)
                     Elkaisar.CurrentCity.City.stone = json_data.stone;
                     Elkaisar.CurrentCity.City.coin = json_data.coin;
                     Elkaisar.CurrentCity.City.metal = json_data.metal;
-                    
                     city_profile.refresh_resource_view();
-                    $("#my-comming-offers .tr[data-id-deal='"+id_deal+"']").remove();
+                    $("#my-comming-offers .tr[data-id-deal='" + id_deal + "']").remove();
                     $("#my-comming-offers").append('<div class="tr"></div>');
                     $(".close_select_menu").trigger("click");
                     $("#alert_container .close-alert").trigger("click");
                     Matrial.takeFrom(matrial, 1);
-                    
-                }else{
-                    
+                } else {
+
                     alert(data);
-                    
                 }
 
             },
@@ -20756,38 +20675,34 @@ function useMatrial(user_for , matrial , other)
             }
 
         });
-       
-        
     }
-    
-    
+
+
     /* ازالة المبنى */
-    else if(user_for === "downgrade-building-lvl"){
-        
+    else if (user_for === "downgrade-building-lvl") {
+
         var building_place = other;
-        if(Elkaisar.City.getCity().BuildingType[building_place] > 12){
+        if (Elkaisar.City.getCity().BuildingType[building_place] > 12) {
             alert_box.failMessage(`لا يمكنك هدم ${BuildingConstData[Elkaisar.City.getCity().BuildingType[building_place]].title} `);
-            return ;
+            return;
         }
         $.ajax({
             url: `${API_URL}/api/ACityBuilding/explodeBuilding`,
-            data:{
-                BuildingPlace : building_place,
-                idCity        : idCity,
-                token         : Elkaisar.Config.OuthToken,
-                server        : Elkaisar.Config.idServer
+            data: {
+                BuildingPlace: building_place,
+                idCity: idCity,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-                
-                if(!Elkaisar.LBase.isJson(data))
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-                
                 var JsonObject = JSON.parse(data);
-                
-                if(JsonObject.state === "ok"){
-                    
-                    
+                if (JsonObject.state === "ok") {
+
+
                     Elkaisar.City.getCity().BuildingType[building_place] = 0;
                     Elkaisar.City.getCity().BuildingLvl[building_place] = 0;
                     fillCityWithBuilding();
@@ -20796,51 +20711,45 @@ function useMatrial(user_for , matrial , other)
                     $('.close_dialog').trigger("click");
                     alert_box.succesMessage("تم  ازالة المبنى بنجاح");
                     Matrial.takeFrom(matrial, 1);
-                    
                     if (Number(Elkaisar.City.getCity().BuildingType[building_place]) === BUILDING_TYPS.COTTAGE) {
 
                         Elkaisar.City.getCityBase();
-
                     } else if (Number(Elkaisar.City.getCity().BuildingType[building_place]) === BUILDING_TYPS.STORE) {
 
                         Elkaisar.City.getCityBase();
                         Elkaisar.City.getCityStorage();
-
                     } else if (Number(Elkaisar.City.getCity().BuildingType[building_place]) === BUILDING_TYPS.PALACE) {
                         Elkaisar.City.getCityBase();
                     } else if (Number(Elkaisar.City.getCity().BuildingType[building_place]) === BUILDING_TYPS.WORSHIP) {
                         Elkaisar.City.getCityBase();
                     } else if (Number(Elkaisar.City.getCity().BuildingType[building_place]) === BUILDING_TYPS.WALL) {
                         Elkaisar.City.getCityBase();
-
                     }
-                    
-                    
-                } else if(JsonObject.state === "error_0"){
+
+
+                } else if (JsonObject.state === "error_0") {
                     alert_box.failMessage('لا يوجد لديك براميل بارود كافية');
-                } else if(JsonObject.state === "error_1"){
+                } else if (JsonObject.state === "error_1") {
                     alert_box.failMessage("لا يمكنك هدم هذا المبنى");
                 }
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                
+
             }
         });
-        
     }
-    
+
     /*------------------------------------------------------------------------*/
     /*____________________________GOD_GATE____________________________________*/
-    
-    else if(user_for === "add-god-points"){
-        
+
+    else if (user_for === "add-god-points") {
+
         GodGate.useBoxPoint(matrial);
-        
-    }else if(user_for === "open-fourth-cell"){
+    } else if (user_for === "open-fourth-cell") {
         GodGate.OpenFourthCell(other);
     }
-    
+
 }
 
 
@@ -20850,181 +20759,165 @@ function useMatrial(user_for , matrial , other)
 function useMatrialBox(matrial_name)
 {
     var amount = parseInt($("#amount_to_use").val() || 1);
-    
-    if(amount <= 0){
-        
+    if (amount <= 0) {
+
         $(".close-alert_container").trigger("click");
         alert_box.confirmMessage("عدد الاستخدام غير صالح");
-        return ;
+        return;
     }
-    if(!isInt(Number(amount))){
-        
+    if (!isInt(Number(amount))) {
+
         alert_box.failMessage("لا يمكن ان تكون الارقام عشرية");
-        return ;
+        return;
     }
-    
-    if(Matrial.getPlayerAmount(matrial_name) < amount){
+
+    if (Matrial.getPlayerAmount(matrial_name) < amount) {
         $(".close-alert_container").trigger("click");
         alert_box.confirmMessage("لا يوجد لديك عدد كافى من المواد");
-        return ;
+        return;
     }
-    if(matrial_name === "luck_play"){
+    if (matrial_name === "luck_play") {
         $(".close-alert_container").click();
         $(".close_dialog").click();
         $("#luck-wheel-btn").click();
-        return ;
+        return;
     }
-    
+
     /* some matrial need values before thay send to server*/
-    if(SPECIAL_MATRIAL.indexOf(matrial_name) > -1){
-        
-        switch (matrial_name){
-            
-            
+    if (SPECIAL_MATRIAL.indexOf(matrial_name) > -1) {
+
+        switch (matrial_name) {
+
+
             case "certain_move":
-                
-                if(isNaN($("#new-city-y-coord").val()) || isNaN($("#new-city-x-coord").val())){
+
+                if (isNaN($("#new-city-y-coord").val()) || isNaN($("#new-city-x-coord").val())) {
                     alert_box.confirmMessage("عفوا عليك تحديد امكان المراد الانتقال له");
-                    return ;
+                    return;
                 }
-                
+
                 break;
-            
         }
-        
+
     }
-    
-    if(matrial_name === "beginner_back_1" && Elkaisar.City.getCity().BuildingLvl.palace < 2){
+
+    if (matrial_name === "beginner_back_1" && Elkaisar.City.getCity().BuildingLvl.palace < 2) {
         $(".close-alert_container").click();
         alert_box.failMessage("يجب ان يكون القصر مستوى 2 لتستطيع فتح الصندوق");
-        return ;
-    }else if(matrial_name === "beginner_back_2" && Elkaisar.City.getCity().BuildingLvl.palace < 4){
+        return;
+    } else if (matrial_name === "beginner_back_2" && Elkaisar.City.getCity().BuildingLvl.palace < 4) {
         $(".close-alert_container").click();
         alert_box.failMessage("يجب ان يكون القصر مستوى 4 لتستطيع فتح الصندوق");
-        return ;
-    }else if(matrial_name === "beginner_back_3" && Elkaisar.City.getCity().BuildingLvl.palace < 6){
+        return;
+    } else if (matrial_name === "beginner_back_3" && Elkaisar.City.getCity().BuildingLvl.palace < 6) {
         $(".close-alert_container").click();
         alert_box.failMessage("يجب ان يكون القصر مستوى 6 لتستطيع فتح الصندوق");
-        return ;
-    }else if(matrial_name === "beginner_back_4" && Elkaisar.City.getCity().BuildingLvl.palace < 8){
+        return;
+    } else if (matrial_name === "beginner_back_4" && Elkaisar.City.getCity().BuildingLvl.palace < 8) {
         $(".close-alert_container").click();
         alert_box.failMessage("يجب ان يكون القصر مستوى 8 لتستطيع فتح الصندوق");
-        return ;
-    }else if(matrial_name === "beginner_back_5" && Elkaisar.City.getCity().BuildingLvl.palace < 10){
+        return;
+    } else if (matrial_name === "beginner_back_5" && Elkaisar.City.getCity().BuildingLvl.palace < 10) {
         $(".close-alert_container").click();
         alert_box.failMessage("يجب ان يكون القصر مستوى 10 لتستطيع فتح الصندوق");
-        return ;
-    }else if(GodGate.matrialUse.indexOf(matrial_name) > -1){
-        
-        GodGate.useBoxPoint(matrial_name , amount);
-        return ;
-        
+        return;
+    } else if (GodGate.matrialUse.indexOf(matrial_name) > -1) {
+
+        GodGate.useBoxPoint(matrial_name, amount);
+        return;
     }
-    
-   if(Elkaisar.BaseData.Items[matrial_name])
-       if($.isFunction(Elkaisar.BaseData.Items[matrial_name][`UseFunc`]))
+
+    if (Elkaisar.BaseData.Items[matrial_name])
+        if ($.isFunction(Elkaisar.BaseData.Items[matrial_name][`UseFunc`]))
         {
-            Elkaisar.BaseData.Items[matrial_name][`UseFunc`](amount).done(function (data){
-                if(Elkaisar.LBase.isJson(data))
-                    if(JSON.parse(data).state === "ok")
+            Elkaisar.BaseData.Items[matrial_name][`UseFunc`](amount).done(function (data) {
+                if (Elkaisar.LBase.isJson(data))
+                    if (JSON.parse(data).state === "ok")
                         Matrial.takeFrom(matrial_name, amount);
                 $("#alert_head .close-alert_container").click();
                 alert_box.succesMessage(`تم  استعمال ${amount} ${Elkaisar.BaseData.Items[matrial_name].name} بنجاح`);
-                $(".matrial_unit").each(function (el){
-                    var Mat =  $(this).attr("matrial_type");
+                $(".matrial_unit").each(function (el) {
+                    var Mat = $(this).attr("matrial_type");
                     $(this).children(".img-inside-box").children(".player_amount").children("p").html(Matrial.getPlayerAmount(Mat))
                 });
             });
-        }else{
+        } else {
             alert("Item FunctionNot Found");
             alert(matrial_name);
             alert(JSON.stringify(Elkaisar.BaseData.Items[matrial_name]));
         }
-        else 
-            alert("Item Not Found");
-           
-   
-    
-    
+    else
+        alert("Item Not Found");
 }
 
 
-function buyMatrial(matrial , amount)
+function buyMatrial(matrial, amount)
 {
-    
-    if(amount === undefined){
+
+    if (amount === undefined) {
         amount = Number($("#amount_to_buy").val()) || 1;
     }
-    
-    if(!isInt(Number(amount))){
-        
+
+    if (!isInt(Number(amount))) {
+
         alert_box.failMessage("لا يمكن ان تكون الارقام عشرية");
-        return ;
-        
+        return;
     }
-    
-    if(amount <=0){
+
+    if (amount <= 0) {
         alert_box.failMessage("لا يمكن  شراء هذة الكمية");
-        return ;
+        return;
     }
-    
-    if(Elkaisar.DPlayer.Player.gold < Elkaisar.BaseData.Items[matrial].gold*amount){
-        
+
+    if (Elkaisar.DPlayer.Player.gold < Elkaisar.BaseData.Items[matrial].gold * amount) {
+
         $("body").append(alert_box.confirmMessage(" ليس لديك قطع ذهب كافية<br> <a href='gold_buy.php'> لشراء ذهب اضغط هنا</a>"));
-        return ;
-        
+        return;
     }
-    
-    
+
+
     $.ajax({
-        
+
         url: `${API_URL}/api/AItem/buyItem`,
         data: {
-            item   : matrial,
-            amount : amount,
-            token  : Elkaisar.Config.OuthToken,
-            server : Elkaisar.Config.idServer
-            
+            item: matrial,
+            amount: amount,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
+
         },
         type: 'POST',
         success: function (data, textStatus, jqXHR) {
-       
-            if(!Elkaisar.LBase.isJson(data))
+
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
             var JsonObject = JSON.parse(data);
-            
-            if(JsonObject.state === "ok"){
-                
-                Player_profile.refreshMatrialBox().done(function (data){
-                    $(".matrial_unit").each(function (){
-                    
-                    if($(this).attr("matrial_type") === matrial){
-                        
-                        $(this).children(".img-inside-box").children(".player_amount").children("p").html(getArabicNumbers(Matrial.getPlayerAmount(matrial)));
-                        
-                    }
-                       
-                     
+            if (JsonObject.state === "ok") {
+
+                Player_profile.refreshMatrialBox().done(function (data) {
+                    $(".matrial_unit").each(function () {
+
+                        if ($(this).attr("matrial_type") === matrial) {
+
+                            $(this).children(".img-inside-box").children(".player_amount").children("p").html(getArabicNumbers(Matrial.getPlayerAmount(matrial)));
+                        }
+
+
+                    });
                 });
-                });
-                Player_profile.getPlayerBaseData().done(function (data){
+                Player_profile.getPlayerBaseData().done(function (data) {
                     $(".budget .txt").html("لديك:" + getArabicNumbers(Elkaisar.DPlayer.Player.gold));
                 });
-                
                 $(".close-alert_container").click();
-                
                 alert_box.succesMessage("تمت عملية الشراء بنجاح");
-                
             }
-            
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            
+
         }
-        
+
     });
-    
-    
 }
 
 
@@ -21032,43 +20925,35 @@ function buyMatrial(matrial , amount)
 
 
 
-function successfulUse(matrial , json_obj , amount)
+function successfulUse(matrial, json_obj, amount)
 {
-    
-    $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemBox    ($("#dialg_box .right-content .total").attr("mat_table"), $("#nav-item-box-right").attr("data-current-offset")));
-    
+
+    $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemBox($("#dialg_box .right-content .total").attr("mat_table"), $("#nav-item-box-right").attr("data-current-offset")));
 }
 
 
 
 
-$(document).on("click" , "#goToMall" , function (){
-    
-    $(".menu-list").each(function (){
-        
-        if($(this).data("show") === "matrial"){
-            
+$(document).on("click", "#goToMall", function () {
+
+    $(".menu-list").each(function () {
+
+        if ($(this).data("show") === "matrial") {
+
             $(this).click();
-            
         }
-        
+
     });
-    
 });
+function BoxOfMatrialToUse(matrials, use_for, amount, other) {
 
-
-
-
-
-function BoxOfMatrialToUse(matrials , use_for , amount , other){
-    
-    var  all_list = "";
-    if ( amount === undefined ) {
+    var all_list = "";
+    if (amount === undefined) {
         amount = 1;
-     }
-    
-    for(var index in matrials){
-        
+    }
+
+    for (var index in matrials) {
+
         all_list += `<li>
                         <div  class=" pull-L left">
                             <div class="ar_title">${Elkaisar.BaseData.Items[matrials[index]].name}</div>
@@ -21088,9 +20973,8 @@ function BoxOfMatrialToUse(matrials , use_for , amount , other){
                             </div>
                         </div>
                     </li>`;
-        
     }
-    
+
     var box = `<div id="over_lay" class="select_over_lay" >
                 <div id="select_from">
                     <div class="head_bar">
@@ -21108,21 +20992,17 @@ function BoxOfMatrialToUse(matrials , use_for , amount , other){
                     </ul>
                 </div>
             </div>`;
-    
     $("body").append(box);
 }
 
 
 
 
-function showMatrialGiftList(list){
-    
-    
+function showMatrialGiftList(list) {
+
+
     var list_item = "";
-    
-    
-        
-    for(var iii in list){
+    for (var iii in list) {
         list_item += `<li>
                         <div class="image">
                             <img  src="${Elkaisar.BaseData.Items[list[iii].Item].image}"/>
@@ -21131,11 +21011,10 @@ function showMatrialGiftList(list){
                             ${list[iii].amount} X
                         </div>
                     </li>`;
-
     }
-        
-    
-    
+
+
+
     var mat_list = `<div id="over_lay">
                         <div id="select_from">
                             <div class="head_bar">
@@ -21151,105 +21030,89 @@ function showMatrialGiftList(list){
                             </div>
                         </div>
                     </div>`;
-    
     $("body").append(mat_list);
-    
 }
 
 var Matrial = {
-    
-    getPlayerAmount: function (matrial){
-        if(Elkaisar.BaseData.Items[matrial])
+
+    getPlayerAmount: function (matrial) {
+        if (Elkaisar.BaseData.Items[matrial])
             return Number(Elkaisar.BaseData.Items[matrial].playerAmount);
         return 0;
     },
-    getMatrial: function (matrial){
-        
+    getMatrial: function (matrial) {
+
         return Elkaisar.BaseData.Items[matrial];
-        
     },
-    getMatrialName : function (matrial){
-        
+    getMatrialName: function (matrial) {
+
         return Elkaisar.BaseData.Items[matrial].name;
-        
     },
-    givePlayer: function (matrial , amount){
-        if(!amount ){
+    givePlayer: function (matrial, amount) {
+        if (!amount) {
             amount = 1;
         }
-        if(!Elkaisar.BaseData.Items[matrial]){
-            return ;
+        if (!Elkaisar.BaseData.Items[matrial]) {
+            return;
         }
-        Elkaisar.BaseData.Items[matrial].playerAmount = 
-                Number(Elkaisar.BaseData.Items[matrial].playerAmount) + Number(amount);   
+        Elkaisar.BaseData.Items[matrial].playerAmount =
+                Number(Elkaisar.BaseData.Items[matrial].playerAmount) + Number(amount);
     },
-    takeFrom: function (matrial , amount){
-        if(!amount ){
+    takeFrom: function (matrial, amount) {
+        if (!amount) {
             amount = 1;
         }
-        if(!matrial) return ;
-        
-        Elkaisar.BaseData.Items[matrial].playerAmount -= Number(amount);   
+        if (!matrial)
+            return;
+        Elkaisar.BaseData.Items[matrial].playerAmount -= Number(amount);
     },
-     takeNeedsForAttack: function (type){
-        
-        if(WorldUnit.isAsianSquads(type)){
-            Matrial.takeFrom("truce_pack" , 1);
-        }else if(WorldUnit.isGangStar(type)){
-            Matrial.takeFrom("t_map" , 1);
-        }else if(WorldUnit.isCamp(type) || WorldUnit.isMonawrat(type)){
-           Matrial.takeFrom( "necklace_4" , 1) ;
+    takeNeedsForAttack: function (type) {
+
+        if (WorldUnit.isAsianSquads(type)) {
+            Matrial.takeFrom("truce_pack", 1);
+        } else if (WorldUnit.isGangStar(type)) {
+            Matrial.takeFrom("t_map", 1);
+        } else if (WorldUnit.isCamp(type) || WorldUnit.isMonawrat(type)) {
+            Matrial.takeFrom("necklace_4", 1);
         }
-        
+
     },
-    image: function (mat){
+    image: function (mat) {
         return Elkaisar.BaseData.Items[mat].image;
     },
-    table: function (mat){
+    table: function (mat) {
         return Elkaisar.BaseData.Items[mat].db_tab;
     },
     listOf: function (table)
     {
-        
+
         var List = {};
-        
-        for(var ii in Elkaisar.BaseData.Items)
-            if( Elkaisar.BaseData.Items[ii].table === table)
+        for (var ii in Elkaisar.BaseData.Items)
+            if (Elkaisar.BaseData.Items[ii].table === table)
                 List[ii] = Elkaisar.BaseData.Items[ii];
         return List;
     }
-    
+
 };
+Matrial.prizeToString = function (data) {
 
-
-
-Matrial.prizeToString = function (data){
-    
     var stringArray = [];
-    
-    for(var jjj in data.WinPrize){
-            
+    for (var jjj in data.WinPrize) {
+
         stringArray.push(` x ${data.WinPrize[jjj].amount} ${this.getMatrialName(data.WinPrize[jjj].Item)}`);
-
-        
-        
     }
-    
-    
-    
+
+
+
     return stringArray.join(" , ");
-    
 };
-
-
-
 Matrial.itemUnitWidget = function (Item, isMall = false)
 {
-    var total  = "";
-    if(isMall){
-        
-       
-            total = ` <li class="pull-L">
+    var total = "";
+    if (isMall) {
+
+
+        total = ` <li class="pull-L">
                            <div class="pic">
                                <img src="images/icons/resource/gold.png">
                            </div>
@@ -21261,9 +21124,8 @@ Matrial.itemUnitWidget = function (Item, isMall = false)
                             </div>
                        </li>
 `;
-     
     }
-    
+
     var list = `<li matrial_type="${Item}" class="tooltip_mat matrial_unit">
                    <img src=" images/style/Border-up.png" class="border_up"/>
                    <div class="img-inside-box">
@@ -21278,21 +21140,18 @@ Matrial.itemUnitWidget = function (Item, isMall = false)
                             <ul>
                             ${isMall ? "" : `<button class="full-btn-3x sell-matrial" data-matrial="${Item}"> عرض المادة للبيع</button>`   }
                             `;
-     
-     
-     list +=  total +     "</ul>"
-                    +   "</div>"
-                    + "</div>";
-     var tail = ' <div class="txt-inside-box">'
-              +                 '<h2>'+Elkaisar.BaseData.Items[Item].name+'</h2>'
-              +              '</div>'
-              +             '<div  class="tooltip_desc"></div>'
-              +          '</li>';
-      
-      return list+tail+"";
-    
-    
-};Elkaisar.Item.useItemFunc = function ()
+    list += total + "</ul>"
+            + "</div>"
+            + "</div>";
+    var tail = ' <div class="txt-inside-box">'
+            + '<h2>' + Elkaisar.BaseData.Items[Item].name + '</h2>'
+            + '</div>'
+            + '<div  class="tooltip_desc"></div>'
+            + '</li>';
+    return list + tail + "";
+};
+
+Elkaisar.Item.useItemFunc = function ()
 {
 
     Elkaisar.BaseData.Items[`motiv_60`][`UseFunc`] = function (amount)
@@ -21356,6 +21215,7 @@ Matrial.itemUnitWidget = function (Item, isMall = false)
             data: {
                 Item: "prot_pop",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22508,6 +22368,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
                     alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
@@ -22537,6 +22398,8 @@ Elkaisar.Item.useItemBoxFunc = function () {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
+                    alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
         });
@@ -22565,6 +22428,8 @@ Elkaisar.Item.useItemBoxFunc = function () {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
+                    alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
         });
@@ -22591,7 +22456,10 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (JsonObject.state === "ok")
                 {
                     Elkaisar.City.getCityHero(idCity);
+                    Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
+                    alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
         });
@@ -22620,6 +22488,8 @@ Elkaisar.Item.useItemBoxFunc = function () {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
+                    alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
         });
@@ -22648,6 +22518,8 @@ Elkaisar.Item.useItemBoxFunc = function () {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
+                    alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
         });
@@ -26199,8 +26071,8 @@ Elkaisar.WsLib.Chat.GuildMsg = function (data){
 
 
 Elkaisar.WsLib.Chat.deleteMsg = function (data){
-    $(`#msg-area .msg-unit[data-id-msg=${data.id_msg}]`).animate({opacity:0} , 800,function (){
-        var msg = `قام ${data.p_name_delete_by}  بحذف رسالة اللاعب ${data.p_name_delete_for}`;
+    $(`#msg-area .msg-unit[data-id-msg=${data.idMsg}]`).animate({opacity:0} , 800,function (){
+        var msg = `قام ${data.DeletedBy}  بحذف رسالة اللاعب ${data.DeletedFor}`;
        $(this).html(`<div class='d-msg-replacement font-2'>${msg}</div>`) ;
        $(this).css({opacity: 1});
     });
@@ -26224,8 +26096,10 @@ Elkaisar.WsLib.Chat.banPlayer = function (data){
 
 
 Elkaisar.WsLib.Chat.privateMsg = function (data){
+  
     
-    showPrivateChatNotif(data.idTo ,data.fromName , data.playerToAvatar);
+    
+    showPrivateChatNotif(data.idFrom ,data.fromName , data.playerFromAvatar);
 
     var chatRoom =  $("#SMB-"+data.idFrom);
     var msg_container = `<div class="sender-msg">
@@ -26288,7 +26162,7 @@ Elkaisar.WsLib.World.ResetLvl = function (data){
     for (var ii in Elkaisar['worldAllUnits']) {
         if (Elkaisar['worldAllUnits'][ii]['ut'] === 0x0) continue;
         if (Elkaisar['worldAllUnits'][ii]['ut'] < WUT_MONAWRAT) continue;
-        if (!_0x3c5af6['UnitList']['includes'](Elkaisar['worldAllUnits'][ii]['ut'])) continue;
+        if (!data['UnitList']['includes'](Elkaisar['worldAllUnits'][ii]['ut'])) continue;
         Elkaisar['worldAllUnits'][ii]['l'] = 0x1;
     }
     alert_box['systemChatMessage']('تم اعادة التعين');
@@ -26569,7 +26443,7 @@ Elkaisar.WsLib.ServerAnnounce.capitalUnLock = function (data) {
 
     var WorldUnit = data.WorldUnit;
 
-    var msg = `<div class="msg-unit ann-red announce">تم فتح ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} وسيتم اغلاقها بعد ساعتين من الان للمساعدة اضغط <a class="safe-url" href="commingsoon.php" target="_blank">هنا </a></div>`;
+    var msg = `<div class="msg-unit ann-red announce">تم فتح ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} وسيتم اغلاقها بعد ساعتين من الان للمساعدة اضغط <a class="safe-url" href="commingsoon.php" target="_blank">هنا </a></div>`;
     Chat.append(msg);
 };
 
@@ -26584,7 +26458,7 @@ Elkaisar.WsLib.ServerAnnounce.capitalLock = function (data) {
 
     var WorldUnit = data.WorldUnit;
 
-    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
+    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coordDirect(WorldUnit.x,WorldUnit.y)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
     Chat.append(msg);
 };
 
@@ -26594,7 +26468,7 @@ Elkaisar.WsLib.ServerAnnounce.capitalLock = function (data) {
 Elkaisar.WsLib.ServerAnnounce.QueenCityOpened = function (data) {
 
     var WorldUnit = data.WorldUnit;
-    var msg = ` <div class="msg-unit battel-f-ann">تم فتح &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} &nbsp;
+    var msg = ` <div class="msg-unit battel-f-ann">تم فتح &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} &nbsp;
                 </div>`;
     Chat.append(msg);
 };
@@ -26602,7 +26476,7 @@ Elkaisar.WsLib.ServerAnnounce.QueenCityOpened = function (data) {
 Elkaisar.WsLib.ServerAnnounce.QueenCityClosed = function (data) {
 
     var WorldUnit = data.WorldUnit;
-    var msg = ` <div class="msg-unit  battel-f-ann">تم إغلاق &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} &nbsp;
+    var msg = ` <div class="msg-unit  battel-f-ann">تم إغلاق &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x ,WorldUnit.y)} &nbsp;
                     وكان الفوز من نصيب حلف <span class="ann-red">&nbsp;${data.WinnerGuild.GuildName || " ---"}&nbsp;</span>
                 </div>`;
     Chat.append(msg);
@@ -26622,7 +26496,7 @@ Elkaisar.WsLib.ServerAnnounce.RepleCastleOpened = function (data) {
                      للإستقبال معركة حلف <span class="ann-red">&nbsp;${data.GuildAtt.GuildName} (هجوم)&nbsp;</span> ضد حلف <span class="ann-red">&nbsp;${data.GuildDef.GuildName} (دفاع)&nbsp;</span> الأن!
                 </div>`;
     else
-        var msg = ` <div class="msg-unit announce battel-f-ann">تم فتح &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coords(`[${WorldUnit.x},${WorldUnit.y}]`)} &nbsp;
+        var msg = ` <div class="msg-unit announce battel-f-ann">تم فتح &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} &nbsp;
                    </div>`;
 
 
@@ -26678,7 +26552,7 @@ Elkaisar.WsLib.ServerAnnounce.Battel.Win = function (data) {
     var playerNames = WsBattel.helperList(data);
 
     var msg = `<div class="battel-f-ann">
-                        قام <span class="red">${data.Attacker.name}</span> بهزيمة بطل النظام ${playerNames.enemyList} فى <span class="red">${Elkaisar.World.UnitTypeData[data.WorldUnit.t].Title}</span> مستوى <span class="red">${data.WorldUnit.l}</span>.
+                        قام <span class="red">${data.Attacker.name}</span> بهزيمة بطل النظام ${playerNames.enemyList} فى <span class="red">${Elkaisar.World.UnitTypeData[data.WorldUnit.ut].Title}</span> مستوى <span class="red">${data.WorldUnit.l}</span>.
                         ${playerNames.allaylist},
                         وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data)}</span> 
                         وايضا <span class="red">${data.honor}</span> شرف
@@ -26692,8 +26566,8 @@ Elkaisar.WsLib.ServerAnnounce.Battel.GuildWin = function (data) {
 
     var Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
 
-    var msg = `<div class="battel-f-ann">نجح حلف <span class="red">${data.GuildName}</span> بقيادة <span class="red">${data.PlayerName}</span> بالسيطرة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${Unit.y} , ${Unit.x}]</div>`;
-    Chat.append(Extract.coords(msg));
+    var msg = `<div class="battel-f-ann">نجح حلف <span class="red">${data.GuildName}</span> بقيادة <span class="red">${data.PlayerName}</span> بالسيطرة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} ${Extract.coordDirect(Unit.x, Unit.y)}</div>`;
+    Chat.append(msg);
 
 };
 
@@ -26701,8 +26575,8 @@ Elkaisar.WsLib.ServerAnnounce.Battel.Started = function (data)
 {
 
     var Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
-    var msg = `<div class="battel-f-ann">بداء حلف <span class="red">${data.GuildName}</span> بقيادة <span class="red">${data.PlayerName}</span> معركة ضد ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${Unit.y} , ${Unit.x}] الان</div>`;
-    Chat.append(Extract.coords(msg));
+    var msg = `<div class="battel-f-ann">بداء حلف <span class="red">${data.GuildName}</span> بقيادة <span class="red">${data.PlayerName}</span> معركة ضد ${Elkaisar.World.UnitTypeData[Unit.ut].Title} ${Extract.coordDirect(Unit.x, Unit.y)} الان</div>`;
+    Chat.append(msg);
 
 };
 
@@ -26715,8 +26589,8 @@ Elkaisar.WsLib.ServerAnnounce.CityColonized = function (data)
     Unit.ColonizerIdGuild = data.ColonizerIdGuild;
     Unit.ColonizerIdPlayer = data.ColonizerIdPlayer;
     Elkaisar.World.Map.RefreshWorld();
-    var msg = `<div class="battel-f-ann">نجح الملك <span class="red">${data.ColonizerName}</span> فى استعمار المدينة <span class="red">${data.CityColonizedName}</span> [${data.yCoord},${data.xCoord}] التابعة للملك <span class="red">${data.ColonizedName}</span> </div>`;
-    Chat.append(Extract.coords(msg));
+    var msg = `<div class="battel-f-ann">نجح الملك <span class="red">${data.ColonizerName}</span> فى استعمار المدينة <span class="red">${data.CityColonizedName}</span> ${Extract.coordDirect(data.xCoord, data.yCoord)} التابعة للملك <span class="red">${data.ColonizedName}</span> </div>`;
+    Chat.append(msg);
 
 };
 
@@ -26781,6 +26655,7 @@ Elkaisar.WsLib.ServerAnnounce.SeaCityCoinClosed = function (data) {
     Chat['append'](Msg);
 };
 Elkaisar.WsLib.City = {};
+Elkaisar.WsLib.Market = {};
 
 Elkaisar.WsLib.City.Pop = {}
 
@@ -26802,7 +26677,28 @@ Elkaisar.WsLib.City.WorldCity = function (data){
     
     
 };
-Elkaisar.WsLib.Base = {};
+
+Elkaisar.WsLib.Market.Trans = {};
+Elkaisar.WsLib.Market.Buy = {};
+
+
+Elkaisar.WsLib.Market.Trans.Arrived = function (){
+
+    if($("#transport-res-inner-nav .nav-title").length)
+        Market.transportedResourcesList($("#transport-res-inner-nav .nav-title").attr("data-in-out"));
+    
+    PLAYER_NOTIF.msg_diff = Number(PLAYER_NOTIF.msg_diff) + 1;
+    Fixed.refreshPlayerNotif();
+    alert_box.succesMessage("تم وصول الموارد");
+};
+
+
+Elkaisar.WsLib.Market.Buy.TransmitDone = function (){
+    $("#market-inner-nav .selected").click();
+    PLAYER_NOTIF.msg_diff = Number(PLAYER_NOTIF.msg_diff) + 1;
+    Fixed.refreshPlayerNotif();
+    alert_box.succesMessage("تم وصول الموارد");
+};Elkaisar.WsLib.Base = {};
 
 Elkaisar.WsLib.Base.CrossReq = function (data)
 {
@@ -30262,7 +30158,7 @@ $(document).on("click", ".close_RB img", function () {
 
 
 
-$(document).on("click", "#smallMap-icon img", function () {
+/*$(document).on("click", "#smallMap-icon img", function () {
 
     var myCityIcons = "";
 
@@ -30491,7 +30387,233 @@ $(document).on("click", "#smallMap-icon img", function () {
     CURRENT_CURSOR_COORDS = $("#CURRENT_CURSOR_COORDS");
 
 });
+*/
 
+
+$(document)['on']('click', '#smallMap-icon img', function () {
+    var CityIcons = '';
+    for (var idCity in Elkaisar['DPlayer']['City']) {
+        CityIcons += `<lable type="18" style="background-image: url(images/world/map-icon/myCity.png); width:20px; height:20px; left: ${Elkaisar.DPlayer.City[idCity].City.x}px; top: ${Elkaisar.DPlayer.City[idCity].City.y}px"></lable>'`;
+    }
+    var Map = `'<div id="smallMap">
+                        <img src="images/world/smallMap.jpg"/>
+                        <div id="smallMap_close">
+                            <img src="images/btns/close_b.png"/>
+                        </div>
+                        <div class="overMap">
+                            <div id="CURRENT_CURSOR_COORDS"></div>
+                            <lable type="${ WUT_CAMP_ASIANA }" style="background-image: url(images/world/ratterCastle.png); left: 78px; top: 300px"></lable>
+                            <lable type="${ WUT_CAMP_BRITONS }" style="background-image: url(images/world/ratterCastle.png); left: 88px; top: 444px"></lable>
+                            <lable type="${ WUT_CAMP_CARTHAGE }" style="background-image: url(images/world/ratterCastle.png); left: 106px;top: 19px"></lable>
+                            <lable type="${ WUT_CAMP_EGYPT }" style="background-image: url(images/world/ratterCastle.png); left: 136px;top: 160px"></lable>
+                            <lable type="${ WUT_CAMP_GAULS }" style="background-image: url(images/world/ratterCastle.png); left: 246px;top: 111px"></lable>
+                            <lable type="${ WUT_CAMP_HISPANIA }" style="background-image: url(images/world/ratterCastle.png); left: 266px;top: 245px"></lable>
+                            <lable type="${ WUT_CAMP_ITALIA }" style="background-image: url(images/world/ratterCastle.png); left: 316px;top: 450px"></lable>
+                            <lable type="${ WUT_CAMP_MACEDON }" style="background-image: url(images/world/ratterCastle.png); left: 392px;top: 213px"></lable>
+                            <lable type="${ WUT_CAMP_PARTHIA }" style="background-image: url(images/world/ratterCastle.png); left: 407px;top: 66px"></lable>
+                            <lable type="${ WUT_CAMP_REICH }" style="background-image: url(images/world/ratterCastle.png); left: 427px;top: 337px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 60px;top: 100px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 60px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 60px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 140px;top: 100px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 140px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 140px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 220px;top: 100px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 220px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 220px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 300px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 300px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 380px;top: 100px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 380px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 380px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 470px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 460px;top: 100px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 460px;top: 230px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 460px;top: 390px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 30px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 170px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 310px"></lable>
+                            <lable type="${ WUT_MONAWRAT }" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 470px"></lable>
+   
+    
+    
+    
+    
+
+    
+    
+                            <lable type="${ WUT_FRONT_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 464px;top:  93px"></lable>
+                            <lable type="${ WUT_FRONT_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 463px;top:  86px"></lable>
+                            <lable type="${ WUT_FRONT_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 447px;top:  72px"></lable>
+                            <lable type="${ WUT_FRONT_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 450px;top:  69px"></lable>
+                            <lable type="${ WUT_FRONT_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 432px;top:  52px"></lable>
+                            <lable type="${ WUT_FRONT_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 434px;top:  56px"></lable>
+                            <lable type="${ WUT_FRONT_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 417px;top:  39px"></lable>
+                            <lable type="${ WUT_FRONT_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 412px;top:  37px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 470px;top:  76px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 473px;top:  72px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 458px;top:  62px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 456px;top:  58px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 445px;top:  48px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 442px;top:  47px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 427px;top:  33px"></lable>
+                            <lable type="${ WUT_ARMY_LIGHT_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 431px;top:  30px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 475px;top:  57px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 479px;top:  60px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 467px;top:  47px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 465px;top:  49px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 453px;top:  37px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 457px;top:  36px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 446px;top:  28px"></lable>
+                            <lable type="${ WUT_ARMY_HEAVY_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 441px;top:  23px"></lable>
+                            <lable type="${ WUT_GUARD_SQUAD }" style="background-image: url(images/world/map-icon/dr.png); left: 480px;top:  42px"></lable>
+                            <lable type="${ WUT_GUARD_BAND }" style="background-image: url(images/world/map-icon/dr.png); left: 475px;top:  35px"></lable>
+                            <lable type="${ WUT_GUARD_SQUADRON }" style="background-image: url(images/world/map-icon/dr.png); left: 464px;top:  26px"></lable>
+                            <lable type="${ WUT_GUARD_DIVISION }" style="background-image: url(images/world/map-icon/dr.png); left: 458px;top:  20px"></lable>
+                            <lable type="${ WUT_BRAVE_THUNDER }" style="background-image: url(images/world/map-icon/dr.png); left: 478px;top:  21px"></lable>
+ 
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 44px;top:  465px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 353px;top:  233px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 284px;top:  141px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 281px;top:  299px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 264px;top:  458px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 367px;top:  87px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 122px;top:  154px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 74px; top:  33px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 74px; top:  326px"></lable>
+                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 472px;top:  379px"></lable>
+    
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 363px;top: 76px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 354px;top: 233px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 59px;top:  456px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 467px;top: 370px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 282px;top: 297px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 77px;top:  33px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 262px;top: 459px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 261px;top: 137px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 136px;top: 158px"></lable>
+                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 75px;top:  325px"></lable>
+    
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 474px;top:  378px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 135px;top:  157px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 352px;top:  237px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 286px;top:  296px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 259px;top:  136px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 286px;top:  296px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 135px;top:  157px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 259px;top:  136px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 260px;top:  458px"></lable>
+                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 474px;top:  378px"></lable>
+    
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 66px; top:  470px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 220px;top:  463px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 187px;top:  493px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 133px;top:  410px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 58px; top:  452px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 136px;top:  450px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 50px; top:  433px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 150px;top:  433px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 44px; top:  472px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 159px;top:  408px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 32px; top:  495px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 28px; top:  489px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 24px; top:  429px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 11px; top:  400px"></lable>
+                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 79px; top:  490px"></lable>
+    
+    
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 1px;   top:  380px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 16px;  top:  380px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 47px;  top:  486px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 57px;  top:  410px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 64px;  top:  470px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 73px;  top:  483px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 81px;  top:  425px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 86px;  top:  429px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 104px; top:  469px"></lable>
+                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 109px; top:  440px"></lable>
+    
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 40px;  top:  412px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 67px;  top:  395px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 80px;  top:  469px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 83px;  top:  418px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 85px;  top:  428px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 85px;  top:  461px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 95px;  top:  418px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 99px;  top:  392px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 120px; top:  450px"></lable>
+                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 132px; top:  448px"></lable>
+    
+                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 80px;  top:  460px"></lable>
+                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 88px;  top:  448px"></lable>
+                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 90px;  top:  476px"></lable>
+                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 94px;  top:  463px"></lable>
+                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 104px; top:  483px"></lable>
+    
+                            <lable type="56" style="background-image: url(images/world/map-icon/p33.png); left: 103px; top:  447px"></lable>
+                            
+                            <lable type="100" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 235px; top:  125px"></lable>
+                            <lable type="101" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 140px; top:  170px"></lable>
+                            <lable type="102" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 400px; top:  230px"></lable>
+                            <lable type="103" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 255px; top:  266px"></lable>
+                            <lable type="104" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 80px;  top:  280px"></lable>
+                            <lable type="105" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 400px; top:  340px"></lable>
+    
+                            <lable type="${ WUT_SEA_CITY_1 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 36px; top:  77px"></lable>
+                            <lable type="${ WUT_SEA_CITY_2 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 53px; top:  147px"></lable>
+                            <lable type="${ WUT_SEA_CITY_3 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 20px; top:  357px"></lable>
+                            <lable type="${ WUT_SEA_CITY_4 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 146px; top:  396px"></lable>
+                            <lable type="${ WUT_SEA_CITY_5 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 336px;  top:  356px"></lable>
+                            <lable type="${ WUT_SEA_CITY_6 }" style="background-image: url(images/world/seaCity_1.png); width:15px; height:15px; left: 493px; top:  287px"></lable>
+                            
+                            
+                            <lable type="125" style="background-image: url(images/world/map-icon/arena.png); width:15px; height:15px; left: 249px; top:  247px"></lable>
+    
+                            <lable type="130" style="background-image: url(images/world/map-icon/matchNpc.png); left: 300px; top:  100px"></lable>
+                            <lable type="131" style="background-image: url(images/world/map-icon/matchNpc.png); left: 300px; top:   90px"></lable>
+                            <lable type="132" style="background-image: url(images/world/map-icon/matchNpc.png); left: 300px; top:   80px"></lable>
+                            <lable type="134" style="background-image: url(images/world/map-icon/occupy.png); left: 280px; top:  100px"></lable>
+                            <lable type="135" style="background-image: url(images/world/map-icon/occupy.png); left: 280px; top:   90px"></lable>
+                            <lable type="136" style="background-image: url(images/world/map-icon/occupy.png); left: 280px; top:   80px"></lable>
+    
+                            <lable type="150" style="background-image: url(images/world/map-icon/npcBlue.png); left: 320px; top:  410px"></lable>
+                            <lable type="151" style="background-image: url(images/world/map-icon/npcBlue.png); left: 330px; top:   410px"></lable>
+                            <lable type="152" style="background-image: url(images/world/map-icon/npcBlue.png); left: 340px; top:   410px"></lable>
+                            <lable type="153" style="background-image: url(images/world/map-icon/ratterCastle1.png); left: 320px; top:  420px"></lable>
+                            <lable type="154" style="background-image: url(images/world/map-icon/ratterCastle1.png); left: 330px; top:   420px"></lable>
+                            <lable type="155" style="background-image: url(images/world/map-icon/ratterCastle1.png); left: 340px; top:   420px"></lable>
+    
+                            
+                            ${ CityIcons }
+                            
+                        </div>
+                    </div>`;
+    if ($('#smallMap')['length'] > 0x0) {} else $('body')['append'](Map);
+    CURRENT_CURSOR_COORDS = $('#CURRENT_CURSOR_COORDS');
+});
 
 
 
@@ -33054,7 +33176,7 @@ $(document).on("click", "#footer_bar li", function () {
     var lvl = parseInt($("#unit_review").attr("lvl"));
     var battel_task = $(this).attr("data-type");
     var world_unit = WorldUnit.getWorldUnit(x_coord, y_coord).entite;
-    
+
 
 
     if (Number(battel_task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY) {
@@ -33108,7 +33230,7 @@ $(document).on("click", "#footer_bar li", function () {
         break;
     }
 
-    if (typeof Elkaisar.CurrentHero !== "object"  || !Elkaisar.CurrentHero.Hero ) {
+    if (typeof Elkaisar.CurrentHero !== "object" || !Elkaisar.CurrentHero.Hero) {
 
         if (!cityHasType(BUILDING_TYPS.THEATER)) {
             alert_box.confirmMessage("لا يوجد ابطال او مسارح لتجنيد ابطال داخل المدينة");
@@ -33199,7 +33321,8 @@ function isMyBarr(_0x22de03, _0x4dcc19) {
     for (var _0x4d186f in Elkaisar['DPlayer']['City']) {
         _0x46bfff = Elkaisar['DPlayer']['City'][_0x4d186f];
         for (var _0x215ce1 in _0x46bfff['Barray']) {
-            if (_0x46bfff['Barray'][_0x215ce1]['x_coord'] == _0x22de03 && _0x46bfff['Barray'][_0x215ce1]['y_coord'] == _0x4dcc19) return !![];
+            if (_0x46bfff['Barray'][_0x215ce1]['x_coord'] == _0x22de03 && _0x46bfff['Barray'][_0x215ce1]['y_coord'] == _0x4dcc19)
+                return !![];
         }
     }
     return ![];
@@ -33221,9 +33344,10 @@ function battelStart() {
         return;
     }
     var _0x2a0e73 = 0x0,
-        _0x542482 = Number(Elkaisar['CurrentHero']['Hero']['id_city']);
+            _0x542482 = Number(Elkaisar['CurrentHero']['Hero']['id_city']);
     for (var _0x2c5cbf in Elkaisar['DPlayer']['Heros']) {
-        if (Number(Elkaisar['DPlayer']['Heros'][_0x2c5cbf]['Hero']['id_city']) !== _0x542482) continue;
+        if (Number(Elkaisar['DPlayer']['Heros'][_0x2c5cbf]['Hero']['id_city']) !== _0x542482)
+            continue;
         Number(Elkaisar['DPlayer']['Heros'][_0x2c5cbf]['Hero']['in_city']) !== Elkaisar['Hero']['HeroState']['HERO_IN_CITY'] && _0x2a0e73++;
     }
     var _0x24c850 = cityHasType(BUILDING_TYPS['HOSPITAL']);
@@ -33264,24 +33388,32 @@ function battelStart() {
             },
             'type': 'POST',
             'success': function (_0x311475, _0x4f103d, _0x3e9120) {
-                if (isJson(_0x311475)) var _0x12bab5 = JSON['parse'](_0x311475);
-                else alert(_0x311475);
+                if (isJson(_0x311475))
+                    var _0x12bab5 = JSON['parse'](_0x311475);
+                else
+                    alert(_0x311475);
                 if (_0x12bab5['state'] === 'ok') {
                     $('.close_dialog')['trigger']('click'), Elkaisar['CurrentHero']['Hero']['in_city'] = 0x0, $('.close-alert')['trigger']('click'), battel_data['type'] = _0x12bab5['unit_type'], battel_data['lvl'] = _0x12bab5['unit_lvl'], Hero['heroAttackProc'](), PLAYER_NOTIF['hero_in_battel'] = Number(PLAYER_NOTIF['hero_in_battel']) + 0x1, city_profile['refresh_hero_view']();
                     var _0x4cad5b = _0x12bab5['Battel'],
-                        _0xf08408 = ![];
+                            _0xf08408 = ![];
                     for (var _0x5f08e9 in Elkaisar['Battel']['Battels']) {
                         Number(Elkaisar['Battel']['Battels'][_0x5f08e9]['id_battel']) === Number(battel_data['id_battel']) && (_0xf08408 = !![], Elkaisar['Battel']['Battels'][_0x5f08e9] = _0x4cad5b);
-                    }!_0xf08408 && (PLAYER_NOTIF['battel_number'] = Number(PLAYER_NOTIF['battel_number']) + 0x1, !Elkaisar['Battel']['Battels'] ? Elkaisar['Battel']['Battels'] = [_0x4cad5b] : Elkaisar['Battel']['Battels']['push'](_0x4cad5b)), Fixed['refreshPlayerNotif'](), Battel['afterJoin'](battel_data['x_coord'], battel_data['y_coord']);
+                    }
+                    !_0xf08408 && (PLAYER_NOTIF['battel_number'] = Number(PLAYER_NOTIF['battel_number']) + 0x1, !Elkaisar['Battel']['Battels'] ? Elkaisar['Battel']['Battels'] = [_0x4cad5b] : Elkaisar['Battel']['Battels']['push'](_0x4cad5b)), Fixed['refreshPlayerNotif'](), Battel['afterJoin'](battel_data['x_coord'], battel_data['y_coord']);
                 } else {
-                    if (_0x12bab5['state'] === 'error_1') alert_box['confirmMessage']('البطل ليس فى المدينة');
+                    if (_0x12bab5['state'] === 'error_1')
+                        alert_box['confirmMessage']('البطل ليس فى المدينة');
                     else {
-                        if (_0x12bab5['state'] === 'error_2') alert_box['confirmMessage']('انتهت المعركة لا يمكنك الانضمام');
+                        if (_0x12bab5['state'] === 'error_2')
+                            alert_box['confirmMessage']('انتهت المعركة لا يمكنك الانضمام');
                         else {
-                            if (_0x12bab5['state'] === 'error_3') alert_box['confirmMessage']('لا يمكنك الانضمام للدفاع </br> (وصل عدد المنضمين الى الحد الاقصى)');
+                            if (_0x12bab5['state'] === 'error_3')
+                                alert_box['confirmMessage']('لا يمكنك الانضمام للدفاع </br> (وصل عدد المنضمين الى الحد الاقصى)');
                             else {
-                                if (_0x12bab5['state'] === 'error_5') alert_box['confirmMessage']('لا يمكنك الدفاع ضد هذا الحلف');
-                                else _0x12bab5['state'] === 'error_6' ? alert_box['confirmMessage']('المواد غير كافية') : alert_box['confirmMessage']('لا يمكنك الانضمام');
+                                if (_0x12bab5['state'] === 'error_5')
+                                    alert_box['confirmMessage']('لا يمكنك الدفاع ضد هذا الحلف');
+                                else
+                                    _0x12bab5['state'] === 'error_6' ? alert_box['confirmMessage']('المواد غير كافية') : alert_box['confirmMessage']('لا يمكنك الانضمام');
                             }
                         }
                     }
@@ -33290,16 +33422,18 @@ function battelStart() {
             'error': function (_0x9c1e15, _0x370e1e, _0x58f5ad) {}
         });
     } else {
-        if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPORT']) Elkaisar['Battel']['supportByHero']();
-        else Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_HERO_TRANS'] ? Elkaisar['Battel']['TransHero']() : ws['send'](JSON['stringify']({
-            'url': 'Battel/start',
-            'data': {
-                'xCoord': battel_data['x_coord'],
-                'yCoord': battel_data['y_coord'],
-                'idHero': Elkaisar['CurrentHero']['Hero']['id_hero'],
-                'attackTask': battel_data['task']
-            }
-        }));
+        if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPORT'])
+            Elkaisar['Battel']['supportByHero']();
+        else
+            Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_HERO_TRANS'] ? Elkaisar['Battel']['TransHero']() : ws['send'](JSON['stringify']({
+                'url': 'Battel/start',
+                'data': {
+                    'xCoord': battel_data['x_coord'],
+                    'yCoord': battel_data['y_coord'],
+                    'idHero': Elkaisar['CurrentHero']['Hero']['id_hero'],
+                    'attackTask': battel_data['task']
+                }
+            }));
     }
 }
 
@@ -33590,6 +33724,17 @@ Battel = {
         {
             Elkaisar.City.getCityBarray();
         }
+
+        if (Number(Battel['Battel']['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_CHALLANGE']) {
+            if (Battel['Battel']['id_player'] == Elkaisar['DPlayer']['Player']['id_player']) {
+                alert_box['systemChatMessage']('النتيجة ' + (Battel['sideWin'] == Elkaisar['BaseData']['BattelSides']['SideAttack'] ? 'فوز' : 'خسارة'));
+                Elkaisar['ArenaChallange']['Arena']['Arena']['lastAttackTime'] = Math['floor'](Date['now']() / 0x3e8);
+            }
+            Elkaisar['ArenaChallange']['getFightList']()['done'](function () {
+                Elkaisar['ArenaChallange']['ArenaField']();
+            });
+        }
+
 
     }
 };
@@ -34040,7 +34185,7 @@ $(document).on("click", ".show-guild-prev", function () {
                                                 <p>
                                                     ${json_data.word || "لا توجد مقدمة"}
                                                 </p>
-                                                ${Elkaisar.DPlayer.GuildData.id_guild ? `<div id="send-guild-req" >
+                                                ${!Elkaisar.DPlayer.GuildData || !Elkaisar.DPlayer.GuildData.id_guild ? `<div id="send-guild-req" >
                                                                                     <button class="full-btn full-btn-2x" data-id-guild="${json_data.id_guild}">ارسال دعوة انضمام</button>
                                                                                 </div>` : ""}
                                             </div>
@@ -35742,7 +35887,7 @@ $(document).on("click", "#send-guild-req button", function () {
         success: function (data, textStatus, jqXHR) {
 
 
-            if (Elkaisar.LBase.isJson(data))
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
             var JsonObject = JSON.parse(data);
@@ -35785,7 +35930,7 @@ function canselGuildInvetation(id_player, id_guild)
 
         },
         success: function (data, textStatus, jqXHR) {
-            if (Elkaisar.LBase.isJson(data))
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
             var JsonObject = JSON.parse(data);
@@ -35828,7 +35973,7 @@ function canselGuildJoinRequest(id_player, id_guild)
 
         },
         success: function (data, textStatus, jqXHR) {
-            if (Elkaisar.LBase.isJson(data))
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
             var JsonObject = JSON.parse(data);
@@ -35895,7 +36040,7 @@ $(document).on("click", "#accept-guild-inv", function () {
         },
         success: function (data, textStatus, jqXHR) {
 
-            if (Elkaisar.LBase.isJson(data))
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
             var JsonObject = JSON.parse(data);
@@ -35944,7 +36089,7 @@ $(document).on("click", "#isolate-guild-member", function () {
             },
             success: function (data, textStatus, jqXHR) {
 
-                if (Elkaisar.LBase.isJson(data))
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
 
                 var JsonObject = JSON.parse(data);
@@ -36303,7 +36448,7 @@ $(document).on("click", '#get-out-guild , #leave-g', function () {
             url: `${API_URL}/api/AGuild/quitFromGuild`,
             data: {
                 token: Elkaisar.Config.OuthToken,
-                server: Elkaisar.Config.idServer``
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             beforeSend: function (xhr) {
@@ -39578,14 +39723,14 @@ $(document).on("click", "#accept_quest", function () {
 
 });function isUpgradingNow(place)
 {
-    for(var obj in Elkaisar.TimedTask.TaskList.Building){
-        
-        if(Number(Elkaisar.TimedTask.TaskList.Building[obj].id_city ) === Number(Elkaisar.CurrentCity.City.id_city)){
-            if(Elkaisar.TimedTask.TaskList.Building[obj].place === place){
+    for (var obj in Elkaisar.TimedTask.TaskList.Building) {
+
+        if (Number(Elkaisar.TimedTask.TaskList.Building[obj].id_city) === Number(Elkaisar.CurrentCity.City.id_city)) {
+            if (Elkaisar.TimedTask.TaskList.Building[obj].place === place) {
                 return Elkaisar.TimedTask.TaskList.Building[obj];
             }
         }
-        
+
     }
     return false;
 }
@@ -39594,53 +39739,53 @@ $(document).on("click", "#accept_quest", function () {
 
 
 
-$("#UPDOWN-chat img").click(function (){
-    
-    if($(this).hasClass("smalled")){
-        
-        $(this).css("transform" , "rotateZ(180deg)" );
-        $("#chat-box").css("bottom" , "0px");
+$("#UPDOWN-chat img").click(function () {
+
+    if ($(this).hasClass("smalled")) {
+
+        $(this).css("transform", "rotateZ(180deg)");
+        $("#chat-box").css("bottom", "0px");
         $(this).removeClass("smalled");
-        
-    }else{
-        
-        $(this).css("transform" ,"rotateZ(0deg)" );
-        $("#chat-box").css("bottom" , "-220px");
+
+    } else {
+
+        $(this).css("transform", "rotateZ(0deg)");
+        $("#chat-box").css("bottom", "-220px");
         $(this).addClass("smalled");
     }
     Crafty.audio.play("close_sound");
 });
-$("#p-provile-slider img").click(function (){
-    
-    if($(this).hasClass("smalled")){
-        
-        $(this).css("transform" , "rotateZ(-90deg)" );
-        $("#player-profile").css("left" , "0px");
-        $("#luck-wheel-btn").css("left" , "310px");
+$("#p-provile-slider img").click(function () {
+
+    if ($(this).hasClass("smalled")) {
+
+        $(this).css("transform", "rotateZ(-90deg)");
+        $("#player-profile").css("left", "0px");
+        $("#luck-wheel-btn").css("left", "310px");
         $(this).removeClass("smalled");
-        
-    }else{
-        
-        $(this).css("transform" ,"rotateZ(90deg)" );
-        $("#player-profile").css("left" , "-380px");
-        $("#luck-wheel-btn").css("left" , "-75px");
+
+    } else {
+
+        $(this).css("transform", "rotateZ(90deg)");
+        $("#player-profile").css("left", "-380px");
+        $("#luck-wheel-btn").css("left", "-75px");
         $(this).addClass("smalled");
     }
     Crafty.audio.play("close_sound");
 });
 
-$("#city-profile-slider img").click(function (){
-    
-    if($(this).hasClass("smalled")){
-        
-        $(this).css("transform" , "rotateZ(90deg)" );
-        $("#city-profile").css("right" , "4px");
+$("#city-profile-slider img").click(function () {
+
+    if ($(this).hasClass("smalled")) {
+
+        $(this).css("transform", "rotateZ(90deg)");
+        $("#city-profile").css("right", "4px");
         $(this).removeClass("smalled");
-        
-    }else{
-        
-        $(this).css("transform" ,"rotateZ(-90deg)" );
-        $("#city-profile").css("right" , "-425px");
+
+    } else {
+
+        $(this).css("transform", "rotateZ(-90deg)");
+        $("#city-profile").css("right", "-425px");
         $(this).addClass("smalled");
     }
     Crafty.audio.play("close_sound");
@@ -39653,7 +39798,7 @@ $("#city-profile-slider img").click(function (){
  * @license MIT
  */
 if (!Element.prototype.requestFullscreen) {
-	Element.prototype.requestFullscreen = Element.prototype.mozRequestFullscreen || Element.prototype.webkitRequestFullscreen || Element.prototype.msRequestFullscreen;
+    Element.prototype.requestFullscreen = Element.prototype.mozRequestFullscreen || Element.prototype.webkitRequestFullscreen || Element.prototype.msRequestFullscreen;
 }
 
 /**
@@ -39662,7 +39807,7 @@ if (!Element.prototype.requestFullscreen) {
  * @license MIT
  */
 if (!document.exitFullscreen) {
-	document.exitFullscreen = document.mozExitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
+    document.exitFullscreen = document.mozExitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
 }
 
 /**
@@ -39673,17 +39818,17 @@ if (!document.exitFullscreen) {
  */
 if (!document.fullscreenElement) {
 
-	Object.defineProperty(document, 'fullscreenElement', {
-		get: function() {
-			return document.mozFullScreenElement || document.msFullscreenElement || document.webkitFullscreenElement;
-		}
-	});
+    Object.defineProperty(document, 'fullscreenElement', {
+        get: function () {
+            return document.mozFullScreenElement || document.msFullscreenElement || document.webkitFullscreenElement;
+        }
+    });
 
-	Object.defineProperty(document, 'fullscreenEnabled', {
-		get: function() {
-			return document.mozFullScreenEnabled || document.msFullscreenEnabled || document.webkitFullscreenEnabled;
-		}
-	});
+    Object.defineProperty(document, 'fullscreenEnabled', {
+        get: function () {
+            return document.mozFullScreenEnabled || document.msFullscreenEnabled || document.webkitFullscreenEnabled;
+        }
+    });
 }
 
 
@@ -39691,62 +39836,62 @@ if (!document.fullscreenElement) {
 
 document.getElementById('ToggelFullSrc').addEventListener('click', function () {
     if (document.fullscreenElement) {
-            document.exitFullscreen().then(function (){
-                Crafty.viewport.height = $(document).height();
-                Crafty.viewport.width  = $(document).width();
-                Crafty.viewport.reload();
-            });
-            if(isMobile){
-                $('body').css("zoom" , "0.5");
-                
-            }
+        document.exitFullscreen().then(function () {
+            Crafty.viewport.height = $(document).height();
+            Crafty.viewport.width = $(document).width();
+            Crafty.viewport.reload();
+        });
+        if (isMobile) {
+            $('body').css("zoom", "0.5");
+
+        }
     } else {
-            document.documentElement.requestFullscreen().then(function (){
-                Crafty.viewport.height = $(document).height();
-                Crafty.viewport.width  = $(document).width();
-                Crafty.viewport.reload();
-            });
-            if(isMobile){
-                /*$("body").css("zoom" , "0.5");
-                $("#cr-stage *").css("zoom" , "1");*/
-                //$('#cr-stage').css("zoom" , "1");
-                //alert_box.confirmMessage($('#cr-stage').css("zoom"));
-            }
-            
+        document.documentElement.requestFullscreen().then(function () {
+            Crafty.viewport.height = $(document).height();
+            Crafty.viewport.width = $(document).width();
+            Crafty.viewport.reload();
+        });
+        if (isMobile) {
+            /*$("body").css("zoom" , "0.5");
+             $("#cr-stage *").css("zoom" , "1");*/
+            //$('#cr-stage').css("zoom" , "1");
+            //alert_box.confirmMessage($('#cr-stage').css("zoom"));
+        }
+
     }
-    
-    
+
+
     Crafty.viewport.height = $(document).height();
-    Crafty.viewport.width  = $(document).width();
-    
+    Crafty.viewport.width = $(document).width();
+
     Crafty.viewport.reload();
 });
 
-$(document).on("click" , "#ToggelSound" , function (){
-    if($(this).attr("data-state") === "on"){
-        $(this).attr("data-state" , "off");
+$(document).on("click", "#ToggelSound", function () {
+    if ($(this).attr("data-state") === "on") {
+        $(this).attr("data-state", "off");
         Crafty.audio.mute();
         $(this).css({"background-image": "url(images/btns/withBg/buttonSoundOptions.png)"});
-    }else{
-        $(this).attr("data-state" , "on");
+    } else {
+        $(this).attr("data-state", "on");
         Crafty.audio.unmute();
         $(this).css({"background-image": "url(images/btns/withBg/sound_on_off.png)"});
-        
+
     }
-    
+
 });
 
 
-$(document).on("click" , "#player_rank" , function (){
-    
-  
-    $(".menu-list").each(function() {
-      if ($(this).data("show") === "ranks") {
-        $(this).trigger("click");
-      }
+$(document).on("click", "#player_rank", function () {
+
+
+    $(".menu-list").each(function () {
+        if ($(this).data("show") === "ranks") {
+            $(this).trigger("click");
+        }
     });
 
-    
+
 });
 
 
@@ -39754,10 +39899,10 @@ $(document).on("click" , "#player_rank" , function (){
  * show player editable data
  * 
  */
-$(document).on("click" , ".avatar-name h1 , .avatar-img img" , function (){
-    
+$(document).on("click", ".avatar-name h1 , .avatar-img img", function () {
+
     showEditablePlayerProfile();
-    
+
 });
 
 
@@ -39765,23 +39910,23 @@ $(document).on("click" , ".avatar-name h1 , .avatar-img img" , function (){
 function showEditablePlayerProfile()
 {
     var id_player = parseInt(Elkaisar.DPlayer.Player.id_player);
-    
-    if(!id_player){
-        return ;
+
+    if (!id_player) {
+        return;
     }
-    
+
     $.ajax({
-        
+
         url: "api/player.php",
-        data:{
-            
+        data: {
+
             GET_PLAYER_DETAIL: true,
             id_player: id_player
-            
+
         },
         type: 'GET',
         beforeSend: function (xhr) {
-             var player_review = `<div id="over_lay">
+            var player_review = `<div id="over_lay">
                                     <div id="select_from">
                                         <div class="head_bar">
                                             <img src="images/style/head_bar.png" class="banner">
@@ -39898,44 +40043,44 @@ function showEditablePlayerProfile()
             $("body").append(player_review);
         },
         success: function (data, textStatus, jqXHR) {
-            
+
             var json_data = JSON.parse(data);
-            
-           $("#A-A-P-image").attr("src" , Elkaisar.BaseData.HeroAvatar[json_data.avatar] );
-           $("#A-A-P-image").attr("data-index" , json_data.avatar );
-           $("#A-A-P-guild").html(json_data.guild || "----");
-           $("#A-A-P-promotion").html(Elkaisar.BaseData.Promotion[json_data.porm].Title);
-           $("#A-A-P-rank").html(getArabicNumbers(json_data.rank));
-           $("#A-A-P-name").html(json_data.name + ' <img src="images/btns/edit.png" class="img-sml" style="vertical-align: middle; margin-left: 15px" id="edit-player-name-btn">');
-           $("#A-A-P-prestige").html(getArabicNumbers(json_data.prestige));
-           $("#A-A-P-honor").html(getArabicNumbers(json_data.honor));
+
+            $("#A-A-P-image").attr("src", Elkaisar.BaseData.HeroAvatar[json_data.avatar]);
+            $("#A-A-P-image").attr("data-index", json_data.avatar);
+            $("#A-A-P-guild").html(json_data.guild || "----");
+            $("#A-A-P-promotion").html(Elkaisar.BaseData.Promotion[json_data.porm].Title);
+            $("#A-A-P-rank").html(getArabicNumbers(json_data.rank));
+            $("#A-A-P-name").html(json_data.name + ' <img src="images/btns/edit.png" class="img-sml" style="vertical-align: middle; margin-left: 15px" id="edit-player-name-btn">');
+            $("#A-A-P-prestige").html(getArabicNumbers(json_data.prestige));
+            $("#A-A-P-honor").html(getArabicNumbers(json_data.honor));
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            
+
         }
-        
+
     });
-    
-    
-    
-    
+
+
+
+
 }
 
-$(document).on("click" , "#edit-player-name-btn" , function (){
-    
+$(document).on("click", "#edit-player-name-btn", function () {
+
     $("#A-A-P-name").html(`<input type="text" class="input" id="playe-new-name" style="text-align: center" value="${Elkaisar.DPlayer.Player.name}" data-pastable="true"/>
                             <img src="images/btns/done.png" class="img-sml" style="margin-left: 15px" id="save-player-name-btn">`);
-    
-    
+
+
 });
 
 
-$(document).on("click" , "#save-player-name-btn" , function (){
-    
+$(document).on("click", "#save-player-name-btn", function () {
+
     var matrial = ["change_name"];
-    BoxOfMatrialToUse(matrial , "change_player_name");
-    
+    BoxOfMatrialToUse(matrial, "change_player_name");
+
 });
 
 
@@ -39943,92 +40088,91 @@ $(document).on("click" , "#save-player-name-btn" , function (){
  * change player Avatar
  */
 
-$(document).on("click" , "#change-avatar-left" , function (){
-    
+$(document).on("click", "#change-avatar-left", function () {
+
     var image_index = parseInt($("#A-A-P-image").attr("data-index"));
-    
-    if(Elkaisar.BaseData.HeroAvatar[image_index -1]){
-        
-        $("#A-A-P-image").attr("src" , Elkaisar.BaseData.HeroAvatar[--image_index] );
-        $("#A-A-P-image").attr("data-index" , image_index );
-        
-    }else{
-        
-        $("#A-A-P-image").attr("src" , Elkaisar.BaseData.HeroAvatar[Elkaisar.BaseData.HeroAvatar.length - 1] );
-        $("#A-A-P-image").attr("data-index" , Elkaisar.BaseData.HeroAvatar.length - 1);
-        
+
+    if (Elkaisar.BaseData.HeroAvatar[image_index - 1]) {
+
+        $("#A-A-P-image").attr("src", Elkaisar.BaseData.HeroAvatar[--image_index]);
+        $("#A-A-P-image").attr("data-index", image_index);
+
+    } else {
+
+        $("#A-A-P-image").attr("src", Elkaisar.BaseData.HeroAvatar[Elkaisar.BaseData.HeroAvatar.length - 1]);
+        $("#A-A-P-image").attr("data-index", Elkaisar.BaseData.HeroAvatar.length - 1);
+
     }
-    
+
 });
 
 
-$(document).on("click" , "#change-avatar-right" , function (){
-    
+$(document).on("click", "#change-avatar-right", function () {
+
     var image_index = parseInt($("#A-A-P-image").attr("data-index"));
-    
-    if(Elkaisar.BaseData.HeroAvatar[image_index + 1 ]){
-        
-        $("#A-A-P-image").attr("src" , Elkaisar.BaseData.HeroAvatar[++image_index] );
-        $("#A-A-P-image").attr("data-index" , image_index );
-        
-    }else{
-        
-        $("#A-A-P-image").attr("src" , Elkaisar.BaseData.HeroAvatar[0] );
-        $("#A-A-P-image").attr("data-index" , 0 );
-        
+
+    if (Elkaisar.BaseData.HeroAvatar[image_index + 1 ]) {
+
+        $("#A-A-P-image").attr("src", Elkaisar.BaseData.HeroAvatar[++image_index]);
+        $("#A-A-P-image").attr("data-index", image_index);
+
+    } else {
+
+        $("#A-A-P-image").attr("src", Elkaisar.BaseData.HeroAvatar[0]);
+        $("#A-A-P-image").attr("data-index", 0);
+
     }
-    
+
 });
 
 
 /*   save new avatar  */
 
-$(document).on("click" , "#confirm-player-new-img" , function (){
-    
+$(document).on("click", "#confirm-player-new-img", function () {
+
     var image_index = parseInt($("#A-A-P-image").attr("data-index"));
-    
-    if(image_index === parseInt(Elkaisar.DPlayer.Player.avatar)){
-        
+
+    if (image_index === parseInt(Elkaisar.DPlayer.Player.avatar)) {
+
         alert_box.confirmMessage("لتغير الصورة الشخصية عليك اختيار صورة اخرى");
-        return ;
-        
-    }
-    else {
-        
-        
-         $.ajax({
-                
-                url: "api/player.php",
-                data:{
-                    
-                    CHANGE_PLAYER_AVATAR: true,
-                    image_index:image_index,
-                    id_player:ID_PLAYER,
-                    token:TOKEN
-                    
-                },
-                type: 'POST',
-                beforeSend: function (xhr) {
-                    
-                },
-                success: function (data, textStatus, jqXHR) {
-                    
-                    if(data === "done"){
-                        
-                       $(".avatar-img img").attr("src" , Elkaisar.BaseData.HeroAvatar[image_index]) ;
-                       
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    
+        return;
+
+    } else {
+
+
+        $.ajax({
+
+            url: "api/player.php",
+            data: {
+
+                CHANGE_PLAYER_AVATAR: true,
+                image_index: image_index,
+                id_player: ID_PLAYER,
+                token: TOKEN
+
+            },
+            type: 'POST',
+            beforeSend: function (xhr) {
+
+            },
+            success: function (data, textStatus, jqXHR) {
+
+                if (data === "done") {
+
+                    $(".avatar-img img").attr("src", Elkaisar.BaseData.HeroAvatar[image_index]);
+
                 }
-                
-            });
-        
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+
+        });
+
     }
-    
-    
-    
+
+
+
 });
 
 
@@ -40038,60 +40182,60 @@ $(document).on("click" , "#confirm-player-new-img" , function (){
  * city profile add btns
  * 
  */
-$(document).on("click" , "#increase-city-loy" , function (){
-    
+$(document).on("click", "#increase-city-loy", function () {
+
     var matrial = ["a_play"];
-    BoxOfMatrialToUse(matrial , "increase-city-util");
-    
-    
+    BoxOfMatrialToUse(matrial, "increase-city-util");
+
+
 });
 
 
-$(document).on("click" , "#increase-city-pop" , function (){
-    
+$(document).on("click", "#increase-city-pop", function () {
+
     var matrial = ["prot_pop"];
-    BoxOfMatrialToUse(matrial , "increase-city-util");
-    
+    BoxOfMatrialToUse(matrial, "increase-city-util");
+
 });
 
 
-$(document).on("click" , "#increase-city-coin" , function (){
-    
-    var matrial = ["coin_1" , "coin_7"];
-    BoxOfMatrialToUse(matrial , "increase-city-util");
-    
+$(document).on("click", "#increase-city-coin", function () {
+
+    var matrial = ["coin_1", "coin_7"];
+    BoxOfMatrialToUse(matrial, "increase-city-util");
+
 });
 
 
-$(document).on("click" , "#increase-city-food" , function (){
-    
-    var matrial = ["wheat_1" , "wheat_7"];
-    BoxOfMatrialToUse(matrial , "increase-city-util");
-    
+$(document).on("click", "#increase-city-food", function () {
+
+    var matrial = ["wheat_1", "wheat_7"];
+    BoxOfMatrialToUse(matrial, "increase-city-util");
+
 });
 
 
-$(document).on("click" , "#increase-city-stone" , function (){
-    
-    var matrial = ["stone_1" , "stone_7"];
-    BoxOfMatrialToUse(matrial , "increase-city-util");
-    
+$(document).on("click", "#increase-city-stone", function () {
+
+    var matrial = ["stone_1", "stone_7"];
+    BoxOfMatrialToUse(matrial, "increase-city-util");
+
 });
 
 
-$(document).on("click" , "#increase-city-wood" , function (){
-    
-    var matrial = ["wood_1" , "wood_7"];
-    BoxOfMatrialToUse(matrial , "increase-city-util");
-    
+$(document).on("click", "#increase-city-wood", function () {
+
+    var matrial = ["wood_1", "wood_7"];
+    BoxOfMatrialToUse(matrial, "increase-city-util");
+
 });
 
 
-$(document).on("click" , "#increase-city-metal" , function (){
-    
-    var matrial = ["metal_1" , "metal_7"];
-    BoxOfMatrialToUse(matrial , "increase-city-util");
-    
+$(document).on("click", "#increase-city-metal", function () {
+
+    var matrial = ["metal_1", "metal_7"];
+    BoxOfMatrialToUse(matrial, "increase-city-util");
+
 });
 
 
@@ -40102,44 +40246,44 @@ $(document).on("click" , "#increase-city-metal" , function (){
 
 
 
-$(document).on("click" , "#chat-to" , function (){
-   
-    
+$(document).on("click", "#chat-to", function () {
+
+
     var chat_to = $(this).attr("data-chat-to");
-    
-    if(chat_to === "world"){
-        
-        $(this).attr("data-chat-to" , "guild");
+
+    if (chat_to === "world") {
+
+        $(this).attr("data-chat-to", "guild");
         $(this).html(`<img src="images/icons/chat/guild.png"/>
                         <label>${Translate.Button.Chat.League[UserLag.language]}</label>`);
-    }else{
-        
-        $(this).attr("data-chat-to" , "world");
+    } else {
+
+        $(this).attr("data-chat-to", "world");
         $(this).html(`<img src="images/icons/chat/world.png"/><label>${Translate.Button.Chat.World[UserLag.language]}</label>`);
-        
+
     }
-    
+
 });
 
 
 
-$(document).on("click" , ".msg-from .name" , function (){
-    
+$(document).on("click", ".msg-from .name", function () {
+
     //showPlayerProfile($(this).parents(".msg-unit").attr("data-id-player"));
-    var id_player  = $(this).parent(".msg-from").parent(".msg-unit").attr('data-id-player');
-    var name       = $(this).parent(".msg-from").parent(".msg-unit").attr('data-name');
-    var avatar     = $(this).parent(".msg-from").parent(".msg-unit").attr('data-avatar');
+    var id_player = $(this).parent(".msg-from").parent(".msg-unit").attr('data-id-player');
+    var name = $(this).parent(".msg-from").parent(".msg-unit").attr('data-name');
+    var avatar = $(this).parent(".msg-from").parent(".msg-unit").attr('data-avatar');
     var user_group = $(this).parent(".msg-from").parent(".msg-unit").attr('data-user-group');
-    var id_msg     = $(this).parent(".msg-from").parent(".msg-unit").attr('data-id-msg');
-    
+    var id_msg = $(this).parent(".msg-from").parent(".msg-unit").attr('data-id-msg');
+
     var pann_div = ``;
-    if(Elkaisar.DPlayer.Player.user_group > 0){
-        
+    if (Elkaisar.DPlayer.Player.user_group > 0) {
+
         pann_div = `<div id="clear-world-chat-msg"> ازالة الرسالة</div>
                     <div id="chat-forbide">كتم شات</div>`;
-        
+
     }
-    
+
     var list = `<div class="drop-down-li  "  data-id-player="${id_player}" data-name="${name}" data-avatar="${avatar}" data-id-msg="${id_msg}">
                     <button></button>
                     <lable class="user-group-${user_group}">${name}</lable>
@@ -40148,80 +40292,80 @@ $(document).on("click" , ".msg-from .name" , function (){
                     <div>اضافة صديق</div>
                     ${pann_div}
                 </div>`;
- 
+
     $("#drop-down-list-wrapper").html(list);
 });
 
 
-$(document).on("click" , "#chat-icons ul li" , function (){
-    
+$(document).on("click", "#chat-icons ul li", function () {
+
     $("#chat-icons ul li").removeClass("active");
     $(this).addClass("active");
     var data_show = $(this).attr("data-show");
-    if(data_show === "anounce"){
-        
+    if (data_show === "anounce") {
+
         $("#msg-area .guild_msg").hide();
         $("#msg-area .world_chat").hide();
-        
-    }else if(data_show === "world"){
-        
+
+    } else if (data_show === "world") {
+
         $("#msg-area .guild_msg").show();
         $("#msg-area .world_chat").show();
         $("#msg-area .announce").show();
-        
-        
-    }else if(data_show === "guild"){
-        
-         $("#msg-area .world_chat").hide();
-         $("#msg-area .announce").hide();
-         
-    }else if(data_show === "private"){
-        
-        
-        
+
+
+    } else if (data_show === "guild") {
+
+        $("#msg-area .world_chat").hide();
+        $("#msg-area .announce").hide();
+
+    } else if (data_show === "private") {
+
+
+
     }
-    
+
 });
 
-$(document).on("click" , "#expand-chat .expand" , function (){
-    
+$(document).on("click", "#expand-chat .expand", function () {
+
     var width = $("#chat-area").attr("data-width");
-    
-    if(width === "x"){
-        
+
+    if (width === "x") {
+
         $("#chat-area").css({height: 350});
-        $("#chat-area").attr("data-width" , "xx");
-        
-    }else if(width === "xx"){
-        
+        $("#chat-area").attr("data-width", "xx");
+
+    } else if (width === "xx") {
+
         $("#chat-area").css({height: 580});
-        $("#chat-area").attr("data-width" , "xxx");
-    }else{
-        
-         $("#chat-area").css({height: 160});
-         $("#chat-area").attr("data-width" , "x");
-        
+        $("#chat-area").attr("data-width", "xxx");
+    } else {
+
+        $("#chat-area").css({height: 160});
+        $("#chat-area").attr("data-width", "x");
+
     }
-    
+
     $("#msg-area").getNiceScroll(0).resize();
-    
+
 });
 
 
-$(document).on("click" , ".show-player-from-chat" , function (){
-    
+$(document).on("click", ".show-player-from-chat", function () {
+
     showPlayerProfile($(this).parents(".drop-down-li").attr("data-id-player"));
-    
+
 });
 
 
-$(document).on("click" , ".private-chat" , function (){
-    
+$(document).on("click", ".private-chat", function () {
+
     var id_player = $(this).parents(".drop-down-li").attr("data-id-player");
-    var avatar    = $(this).parents(".drop-down-li").attr("data-avatar");
-    var name    = $(this).parents(".drop-down-li").attr("data-name");
-    creatChatRoom(id_player , name , avatar);
-    
+    var avatar = $(this).parents(".drop-down-li").attr("data-avatar");
+    var name = $(this).parents(".drop-down-li").attr("data-name");
+    creatChatRoom(id_player, name, avatar);
+
 });
 
 
@@ -40229,50 +40373,50 @@ $(document).on("click" , ".private-chat" , function (){
  *    PRIVATE CHATE with player
  */
 
-function creatChatRoom(id_player_with , name , avatar)
+function creatChatRoom(id_player_with, name, avatar)
 {
     var found = false;
-    
-   $(".chat-room").each(function (){
-      
-       if(parseInt($(this).attr("data-id-player") ) === parseInt(id_player_with)){
-           
-           
-           found = true;
-           
-       }
-       
-   });
-   
-    
-    
-    if(found === false){
-        
-        chatRoomTemplate(id_player_with , name , avatar);
-        
+
+    $(".chat-room").each(function () {
+
+        if (parseInt($(this).attr("data-id-player")) === parseInt(id_player_with)) {
+
+
+            found = true;
+
+        }
+
+    });
+
+
+
+    if (found === false) {
+
+        chatRoomTemplate(id_player_with, name, avatar);
+
         $("#active-chat-rooms ul").append(`<li class="unit-chat-icon pull-R" 
                                             data-id-player = "${id_player_with}" 
                                             data-name= "${name}"
                                             data-avatar= "${avatar}"
                                             style="background-image: url(${Elkaisar.BaseData.HeroAvatar[avatar]})"></li>
                                         `);
-        
-        
+
+
     }
-    
+
 }
 
-function chatRoomTemplate(id_player_with , name , avatar , visable){
-    
+function chatRoomTemplate(id_player_with, name, avatar, visable) {
+
     var style = "";
-    if(visable === false){
-        
+    if (visable === false) {
+
         style = "style='display: none'";
-        
+
     }
-    var id = Math.random()*1000000;
-    
-        var chat_room = `<div class="chat-room" ${style} data-id-player="${id_player_with}">
+    var id = Math.random() * 1000000;
+
+    var chat_room = `<div class="chat-room" ${style} data-id-player="${id_player_with}">
                             <div class="head_bar">
                                 <img src="images/panner/king_name.png" class="banner">
                                 <div class="title">${name}</div>
@@ -40318,289 +40462,283 @@ function chatRoomTemplate(id_player_with , name , avatar , visable){
                                 </div>
                             </div>
                         </div>`;
-        
-        $("body").append( chat_room);
-        $("#SMB-"+id_player_with).niceScroll(SCROLL_BAR_PROP);
-        $(".chat-room").each(function (){
-            
-            if(parseInt($(this).attr("data-id-player")) === parseInt(id_player_with)){
-                
-                $(this).draggable();
-                
-                return ;
-                
-            }
-            
-        });
-        
+
+    $("body").append(chat_room);
+    $("#SMB-" + id_player_with).niceScroll(SCROLL_BAR_PROP);
+    $(".chat-room").each(function () {
+
+        if (parseInt($(this).attr("data-id-player")) === parseInt(id_player_with)) {
+
+            $(this).draggable();
+
+            return;
+
+        }
+
+    });
+
 }
 
 /*
  * 
  *  when chat icon is clicked 
  */
-$(document).on("click" , "#active-chat-rooms ul li" , function (){
-    
+$(document).on("click", "#active-chat-rooms ul li", function () {
+
     var id_player = parseInt($(this).attr("data-id-player"));
     var found = false;
-    
-    $(".chat-room").each(function (){
-        
-        if(parseInt($(this).attr("data-id-player")) === id_player){
-            
+
+    $(".chat-room").each(function () {
+
+        if (parseInt($(this).attr("data-id-player")) === id_player) {
+
             found = true;
-            if($(this).css("display") === "none")
+            if ($(this).css("display") === "none")
             {
                 $(this).show();
-                $(this).animate({top: "130px" , left: "50%" , height: "400px" , width:"600px" } , "slow", function (){});
-                
-            }else{
-                
-                $(this).animate({top: "500px" , left: "60%" , height: "0px" , width:"0px" } , "slow", function (){
-       
-                        $(this).hide();
+                $(this).animate({top: "130px", left: "50%", height: "400px", width: "600px"}, "slow", function () {});
+
+            } else {
+
+                $(this).animate({top: "500px", left: "60%", height: "0px", width: "0px"}, "slow", function () {
+
+                    $(this).hide();
 
                 });
-                
+
             }
-            
+
         }
-        
+
     });
-    
-    if(found === false){
-        
-        chatRoomTemplate(id_player , $(this).attr("data-name") , $(this).attr("data-avatar"))
-        
-    }else{
-        
-        $(".chat-room").each(function (){
-            
-            if(parseInt($(this).attr("data-id-player")) === parseInt(id_player)){
-                
-                $(this).css({top: "150px" , left: "50%" , "margin-left" : "-300px"})
-                return ;
-                
+
+    if (found === false) {
+
+        chatRoomTemplate(id_player, $(this).attr("data-name"), $(this).attr("data-avatar"))
+
+    } else {
+
+        $(".chat-room").each(function () {
+
+            if (parseInt($(this).attr("data-id-player")) === parseInt(id_player)) {
+
+                $(this).css({top: "150px", left: "50%", "margin-left": "-300px"})
+                return;
+
             }
-            
+
         });
-        
+
     }
-    
-    
+
+
 });
 
 
 
-$(document).on("click" , ".close-chat-room" , function (){
-    
+$(document).on("click", ".close-chat-room", function () {
+
     var id_player = parseInt($(this).parents(".chat-room").attr("data-id-player"));
-    
-    $("#active-chat-rooms ul li").each(function (){
-       
-        if(parseInt($(this).attr("data-id-player")) === id_player){
-            
+
+    $("#active-chat-rooms ul li").each(function () {
+
+        if (parseInt($(this).attr("data-id-player")) === id_player) {
+
             $(this).remove();
-            
+
         }
-        
+
     });
     $(this).parents(".chat-room").remove();
-    
+
 });
 
-    /* minimize chat*/
-$(document).on("click" , ".minmize-chat-room" , function (){
-    
-    $(this).parents(".chat-room").animate({top: "500px" , left: "60%" , height: "0px" , width:"0px" } , "slow", function (){
-       
+/* minimize chat*/
+$(document).on("click", ".minmize-chat-room", function () {
+
+    $(this).parents(".chat-room").animate({top: "500px", left: "60%", height: "0px", width: "0px"}, "slow", function () {
+
         $(this).hide();
-        
+
     });
-    
+
 });
 
 
 /*
  *   TRIGGER CLICK  WHEN enter is preesed in private chat input 
  */
-$(document).on("keydown" , ".private-chat-input" , function (e){
-   
-    if(e.keyCode === 13){
+$(document).on("keydown", ".private-chat-input", function (e) {
+
+    if (e.keyCode === 13) {
         e.preventDefault();
-        
+
         $(this).parents(".bottom").children(".btns").children(".send-private-msg").click();
-        
-        
+
+
     }
-    
+
 });
 
 /*  SEND message*/
-$(document).on("click" , ".send-private-msg" , function (){
+$(document).on("click", ".send-private-msg", function () {
 
     var id_player = parseInt($(this).attr("data-id-player"));
-    
-    var msg = $(this).parents(".bottom").children(".msg-input").children(".private-chat-input").val();
-    
-    $(this).parents(".bottom").children(".msg-input").children(".private-chat-input").val("");
-    
-    
-    var msg_container = `<div class="sender-msg">
-                                <div class="content"><span>[${Elkaisar.DPlayer.Player.name}]:</span> ${msg}</div>
-                            </div>`;
-    
-    $(this).parents(".container").children(".upper").children(".body").children(".scrollable-msg-body").append(msg_container);
-    
-     var json_obj = {
-            url:"Chat/sendPrivate",
-            data:{
-               idPlayerTo: id_player, 
-               chat_msg :msg
-            }
 
-        };
-        
-        ws.send(JSON.stringify(json_obj));
-    
-    
+    var msg = $(this).parents(".bottom").children(".msg-input").children(".private-chat-input").val();
+
+    $(this).parents(".bottom").children(".msg-input").children(".private-chat-input").val("");
+
+
+    var json_obj = {
+        url: "Chat/sendPrivate",
+        data: {
+            idPlayerTo: id_player,
+            chat_msg: msg
+        }
+
+    };
+
+    ws.send(JSON.stringify(json_obj));
+
+
 });
 
 
 
-function showPrivateChatNotif(id_player_with , name , avatar){
-    
+function showPrivateChatNotif(id_player_with, name, avatar) {
+
     var found = false;
-    
-    $("#active-chat-rooms ul li").each(function (){
-      
-       if(parseInt($(this).attr("data-id-player") ) === parseInt(id_player_with)){
-           
-           
-           found = true;
-           
-       }
-       
-   });
-   
-    if(found === false){
-        
+
+    $("#active-chat-rooms ul li").each(function () {
+
+        if (parseInt($(this).attr("data-id-player")) === parseInt(id_player_with)) {
+
+
+            found = true;
+
+        }
+
+    });
+
+    if (found === false) {
+
         $("#active-chat-rooms ul").append(`<li class="unit-chat-icon pull-R" 
                                             data-id-player = "${id_player_with}" 
                                             data-nam = "${name}" data-avatar="${avatar}"
                                             style="background-image: url(${Elkaisar.BaseData.HeroAvatar[avatar]})"></li>
                                         `);
-        chatRoomTemplate(id_player_with , name  ,  avatar , false);
-        
+        chatRoomTemplate(id_player_with, name, avatar, false);
+
     }
-    
-    
+
+
 }
 
 
-$(document).on("click" , "#clear-world-chat-msg" ,  function (){
-   
+$(document).on("click", "#clear-world-chat-msg", function () {
+
     var id_msg = $(this).parent(".drop-down-li").attr("data-id-msg");
     var id_player = $(this).parent(".drop-down-li").attr("data-id-player");
     var player_name = $(this).parent(".drop-down-li").attr("data-name");
-    
-    var msg =$.trim($(`#msg-area .msg-unit[data-id-msg=${id_msg}]`).children(".msg-body").children("p").html());
-    
-   ws.send(
+
+    var msg = $.trim($(`#msg-area .msg-unit[data-id-msg=${id_msg}]`).children(".msg-body").children("p").html());
+
+    ws.send(
             JSON.stringify({
-                url:"Chat/delete",
-                data:{
-                    msg:msg,
-                    id_msg:id_msg,
-                    p_name_delete_for:player_name
+                url: "Chat/delete",
+                data: {
+                    msg: msg,
+                    id_msg: id_msg,
+                    p_name_delete_for: player_name
                 }
-             })
+            })
             );
-    
+
 });
 
 
 
-$(document).on("click" , "#chat-forbide" ,  function (){
-   
-   
-   
-   
+$(document).on("click", "#chat-forbide", function () {
+
+
+
+
     var id_msg = $(this).parent(".drop-down-li").attr("data-id-msg");
     var id_player = $(this).parent(".drop-down-li").attr("data-id-player");
     var player_name = $(this).parent(".drop-down-li").attr("data-name");
-    
-    var msg =$.trim($(`#msg-area .msg-unit[data-id-msg=${id_msg}]`).children(".msg-body").children("p").html());
-    
+
+    var msg = $.trim($(`#msg-area .msg-unit[data-id-msg=${id_msg}]`).children(".msg-body").children("p").html());
+
     var alert_box_content = `
                             ادخل مدة الحظر 
                             <br/>
                             <br/>
                             <input type="text" placeholder="ادخل مدة الحظر بالثوانى" class="chat-forbid-duration only_num input" min="0"  max="99999999"/>
                         `;
-    
-    alert_box.confirmDialog(alert_box_content , function (){
-        
+
+    alert_box.confirmDialog(alert_box_content, function () {
+
         var duration_val = Number($('#alert_box .chat-forbid-duration').val()) || 3600;
-        
-       
+
+
         $.ajax({
-            
+
             url: `${API_URL}/api/APlayer/chatPann`,
             type: 'POST',
-            data:{
-                token : Elkaisar.Config.OuthToken,
-                server : Elkaisar.Config.idServer,
+            data: {
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer,
                 duration: duration_val,
                 playerToPan: id_player
             },
             success: function (data, textStatus, jqXHR) {
-                if(!Elkaisar.LBase.isJson(data))
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-                
+
                 var JsonObject = JSON.parse(data);
-                
-                if(JsonObject.state === "ok")
+
+                if (JsonObject.state === "ok")
                     alert_box.succesMessage("تم حظر اللاعب بنجاح");
-                else if(JsonObject.state === "error_1")
+                else if (JsonObject.state === "error_1")
                     alert_box.failMessage("لست مشرفا");
-                else if(JsonObject.state === "error_2")
+                else if (JsonObject.state === "error_2")
                     alert_box.failMessage("لا يمكنك حظر مشرف اعلى منك فى الرتبة");
-                else if(JsonObject.state === "error_3")
+                else if (JsonObject.state === "error_3")
                     alert_box.failMessage("لا تمتلك الرتبة المطلوبة");
             }
         });
-        
+
     });
-    
-   
-    
+
+
+
 });
 
 
 
 
 
-$(document).on("click" , "#chat-box .drop-down-li button" , function (){
-    $("#chat-box .drop-down-li").fadeOut(250, function (){
+$(document).on("click", "#chat-box .drop-down-li button", function () {
+    $("#chat-box .drop-down-li").fadeOut(250, function () {
         $(this).remove();
     });
 });
 
 Fixed = {};
 
-Fixed.refresePlayerStateList = function (){
-    if(!Elkaisar.DPlayer.PlayerState)
-        return ;
+Fixed.refresePlayerStateList = function () {
+    if (!Elkaisar.DPlayer.PlayerState)
+        return;
     $("#player_stat_bar ul").html("");
-    for( var key in Elkaisar.DPlayer.PlayerState){
-        if(key !== "id_player"){
+    for (var key in Elkaisar.DPlayer.PlayerState) {
+        if (key !== "id_player") {
 
-            if(parseInt(Elkaisar.DPlayer.PlayerState[key]) > Date.now()/1000){
+            if (parseInt(Elkaisar.DPlayer.PlayerState[key]) > Date.now() / 1000) {
 
                 var list_i = `<li>
                                  <img src="${Elkaisar.BaseData.PlayerStateData[key].image}"/>
-                                 <div class="duration stroke">${changeTimeFormat( Elkaisar.DPlayer.PlayerState[key] -(Date.now()/1000) )}</div>
+                                 <div class="duration stroke">${changeTimeFormat(Elkaisar.DPlayer.PlayerState[key] - (Date.now() / 1000))}</div>
                              </li> `;
                 $("#player_stat_bar ul").append(list_i);
             }
@@ -40608,53 +40746,53 @@ Fixed.refresePlayerStateList = function (){
         }
 
     }
-    
-    if(player.chat_panne > Date.now()/1000){
+
+    if (player.chat_panne > Date.now() / 1000) {
         var list_i = `<li>
                         <img src="${Elkaisar.BaseData.PlayerStateData.silance.image}"/>
-                        <div class="duration stroke">${changeTimeFormat( playerElkaisar.DPlayer.Player.chat_panne  -(Date.now()/1000) )}</div>
+                        <div class="duration stroke">${changeTimeFormat(playerElkaisar.DPlayer.Player.chat_panne - (Date.now() / 1000))}</div>
                     </li> `;
-       $("#player_stat_bar ul").append(list_i);
-        
-        
+        $("#player_stat_bar ul").append(list_i);
+
+
     }
-    
+
 };
 
-Fixed.getArmyAmountColor = function (amount){
-    return  amount >= 1e5 ? "army-over-100k" : (amount >= 1e4 ? "army-over-10k" : (amount>= 1e3 ? "army-over-1k"  : "" ) ) 
+Fixed.getArmyAmountColor = function (amount) {
+    return  amount >= 1e5 ? "army-over-100k" : (amount >= 1e4 ? "army-over-10k" : (amount >= 1e3 ? "army-over-1k" : ""))
 };
 
 
 
 
 
-Fixed.refeshColorArmyHeroTrans =  function (){
+Fixed.refeshColorArmyHeroTrans = function () {
     army.rightTrade(Elkaisar.NextHero);
-    Hero.refreshCurrentHeroArmy().done(function (){
-       army.refreshArmy_leftTrade(); 
+    Hero.refreshCurrentHeroArmy().done(function () {
+        army.refreshArmy_leftTrade();
     });
-    
+
 };
 
-Fixed.refreshPlayerNotif =  function (){
-    var green_msg = Number(PLAYER_NOTIF.msg_diff)+Number(PLAYER_NOTIF.msg_in);
+Fixed.refreshPlayerNotif = function () {
+    var green_msg = Number(PLAYER_NOTIF.msg_diff) + Number(PLAYER_NOTIF.msg_in);
     $("#green-msg-notif").html(green_msg > 0 ? green_msg : "");
-    var red_msg = Number(PLAYER_NOTIF.msg_report) +  Number(PLAYER_NOTIF.spy_report);
+    var red_msg = Number(PLAYER_NOTIF.msg_report) + Number(PLAYER_NOTIF.spy_report);
     $("#red-msg-notif").html(red_msg > 0 ? red_msg : "");
     var green_report = Number(PLAYER_NOTIF.hero_in_battel) + Number(PLAYER_NOTIF.hero_back) + Number(PLAYER_NOTIF.spy_task);
     $("#hero-not-in-city").html(green_report > 0 ? green_report : "");
     $("#hero-attacking").html(PLAYER_NOTIF.battel_number > 0 ? PLAYER_NOTIF.battel_number : "");
-    
+
     Quest.refrehQuestNotif();
 };
 
-$(document).on("PlayerReady", "html", function (){
-   
-    Player_profile.getPlayerStateData().done(function (data){
+$(document).on("PlayerReady", "html", function () {
+
+    Player_profile.getPlayerStateData().done(function (data) {
         Fixed.refreshPlayerNotif();
     });
-    
+
 });var MATIAL_FOR_LUCK_WHEEL = [];
 
 var LuckWheel = {};
@@ -41065,35 +41203,37 @@ LuckWheel.sequanceTimer = function (index, element, last, element_to, title_to) 
 };/* global Elkaisar.CurrentCity.City, BUILDING_TYPS, city_building */
 var MY_MARKET_OFFERS_LIST = [];
 var MY_MARKET_TRADING_LIST = [];
-var MARKET_DEAL_LIST ;
-var MARKET_TRANSPORTED_RESOURCE={"in":[],"out":[]};
+var MARKET_DEAL_LIST;
+var MARKET_TRANSPORTED_RESOURCE = {"in": [], "out": []};
 const DATA_RESOURCES = {
-    
-    food:{
-        icon:"images/style/food.png",
-        title:"غذاء"
+
+    food: {
+        icon: "images/style/food.png",
+        title: "غذاء"
     },
-    wood:{
-        icon:"images/style/wood.png",
-        title:"اخشاب"
+    wood: {
+        icon: "images/style/wood.png",
+        title: "اخشاب"
     },
-    stone:{
-        icon:"images/style/stone.png",
-        title:"حجارة"
+    stone: {
+        icon: "images/style/stone.png",
+        title: "حجارة"
     },
-    metal:{
-        icon:"images/style/iron.png",
-        title:"حديد"
+    metal: {
+        icon: "images/style/iron.png",
+        title: "حديد"
     }
-    
+
 };
 
 var Market = {
-    
-    dialogBoxContent: function (resource){
-        
-        if(!resource){resource="food";}
-        
+
+    dialogBoxContent: function (resource) {
+
+        if (!resource) {
+            resource = "food";
+        }
+
         var box_content = ` <div class="box_content for_building_box for_market">
                             <div class="left-content ">
                                 <div class="auction-list">
@@ -41159,19 +41299,19 @@ var Market = {
                                 ${this.innerNav_creatOffer(resource)}
                             </div>
                         </div>`;
-                this.dealsList(resource);
+        this.dealsList(resource);
         return box_content;
     },
-    
-    getMarketMaxTransNum:function (){
-        
-        return Elkaisar.City.getCity().BuildingLvl[cityHasType(BUILDING_TYPS.MARKET)]*100000;
-        
+
+    getMarketMaxTransNum: function () {
+
+        return Elkaisar.City.getCity().BuildingLvl[cityHasType(BUILDING_TYPS.MARKET)] * 100000;
+
     },
-    
-    innerNav_creatOffer:function (offer_for){
-      
-        
+
+    innerNav_creatOffer: function (offer_for) {
+
+
         var content = ` <div id="under-inner-nav" data-for="creat-offer">
                             <div class="u-have">
                                 <div class="resource">
@@ -41196,7 +41336,7 @@ var Market = {
 
                             <div class="quantity">
                                 <label>الكمية:</label>
-                                <input type="text"  step="${Math.min(Math.floor(Elkaisar.CurrentCity.City[offer_for]), 2e8)}" class="only_num input" min="0" max="${Math.min(Math.floor(Elkaisar.CurrentCity.City[offer_for]) , 2e8)}"/>
+                                <input type="text"  step="${Math.min(Math.floor(Elkaisar.CurrentCity.City[offer_for]), 2e8)}" class="only_num input" min="0" max="${Math.min(Math.floor(Elkaisar.CurrentCity.City[offer_for]), 2e8)}"/>
                                 <button class="full-btn full-btn-3x" id="maximum-limit-deal">${Translate.Button.Building.Maximize[UserLag.language]}</button>
                             </div>
                             <div class="unite-price">
@@ -41217,11 +41357,11 @@ var Market = {
                             </div>
                         </div>`;
         return content;
-        
+
     },
-    
-    innerNav_myOffers: function (){
-        
+
+    innerNav_myOffers: function () {
+
         var content = `<div id="under-inner-nav">
                             <div class="th">
                                 <div class="td_1 ellipsis">${Translate.Title.TH.Resources[UserLag.language]}</div>
@@ -41244,64 +41384,64 @@ var Market = {
                                 <div class="tr"></div>
                             </div>   
                         </div>`;
-        
+
         $.ajax({
             url: "api/market.php",
-            data:{
-                GET_MY_OFFER_LIST:true,
-                id_city:Elkaisar.CurrentCity.City.id_city,
-                id_player:ID_PLAYER,
-                token:TOKEN
+            data: {
+                GET_MY_OFFER_LIST: true,
+                id_city: Elkaisar.CurrentCity.City.id_city,
+                id_player: ID_PLAYER,
+                token: TOKEN
             },
             type: 'GET',
             beforeSend: function (xhr) {
-                
+
             },
             success: function (data, textStatus, jqXHR) {
-                
-                if(isJson(data)){
-                    
+
+                if (isJson(data)) {
+
                     var json_data = JSON.parse(data);
                     MY_MARKET_OFFERS_LIST = json_data;
-                }else{
-                    
+                } else {
+
                     alert(data);
                     console.log(data);
-                    return ;
-                    
+                    return;
+
                 }
-                
+
                 var list = "";
                 var counter = 0;
-                for(var index = 0; index < 10; index++){
-                    if(json_data[index]){
+                for (var index = 0; index < 10; index++) {
+                    if (json_data[index]) {
                         list += `<div class="tr" data-id-deal="${json_data[index].id_deal}">
                                 <div class="td_1">${DATA_RESOURCES[json_data[index].resource].title}</div>
                                 <div class="td_2">${json_data[index].amount}</div>
                                 <div class="td_3">${parseFloat(json_data[index].unit_price)}</div>
                                 <div class="td_4">${json_data[index].done}</div>
-                                <div class="td_5">${json_data[index].deal === "sell"? "بيع" : Translate.Button.MenuList.Buy[UserLag.language]}</div>
+                                <div class="td_5">${json_data[index].deal === "sell" ? "بيع" : Translate.Button.MenuList.Buy[UserLag.language]}</div>
                                 <div class="td_6">
                                     <button class="full-btn  full-btn-3x cansel-market-deal">الغاء</button>
                                 </div>
                             </div>`;
-                    }else{
+                    } else {
                         list += `<div class="tr"></div>`;
                     }
                 }
-               
+
                 $("#my-offers-full-list").html(list);
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                
+
             }
         });
-        
+
         return content;
     },
-    innerNav_TradingStatus: function (){
-        
+    innerNav_TradingStatus: function () {
+
         var content = `<div id="under-inner-nav">
                             <div class="th">
                                 <div class="td_1 ellipsis">${Translate.Title.TH.Resource[UserLag.language]}</div>
@@ -41324,138 +41464,138 @@ var Market = {
                                 <div class="tr"></div>
                             </div>   
                         </div>`;
-        
+
         $.ajax({
             url: "api/market.php",
-            data:{
-                GET_MY_OFFERS_STATUS:true,
-                id_city:Elkaisar.CurrentCity.City.id_city,
-                id_player:ID_PLAYER,
-                token:TOKEN
+            data: {
+                GET_MY_OFFERS_STATUS: true,
+                id_city: Elkaisar.CurrentCity.City.id_city,
+                id_player: ID_PLAYER,
+                token: TOKEN
             },
             type: 'GET',
             beforeSend: function (xhr) {
-                
+
             },
             success: function (data, textStatus, jqXHR) {
-                
-                if(isJson(data)){
-                    
+
+                if (isJson(data)) {
+
                     var json_data = JSON.parse(data);
                     MY_MARKET_TRADING_LIST = json_data;
-                    
-                }else{
-                    
+
+                } else {
+
                     alert(data);
                     console.log(data);
-                    return ;
-                    
+                    return;
+
                 }
-                
+
                 var list = "";
                 var counter = 0;
-                for(var index = 0; index < 10; index++){
-                    if(json_data[index]){
+                for (var index = 0; index < 10; index++) {
+                    if (json_data[index]) {
                         list += `<div class="tr" data-id-deal="${json_data[index].id_deal}">
                                 <div class="td_1">${DATA_RESOURCES[json_data[index].resource].title}</div>
                                 <div class="td_2">${json_data[index].amount}</div>
                                 <div class="td_3">${parseFloat(json_data[index].unit_price)}</div>
                                 <div class="td_4">${Math.floor(json_data[index].unit_price * json_data[index].amount) }</div>
-                                <div class="td_5 time_counter rtl" time-end="${json_data[index].time_arrive}">${changeTimeFormat(json_data[index].time_arrive - $.now()/1000)}</div>
+                                <div class="td_5 time_counter rtl" time-end="${json_data[index].time_arrive}">${changeTimeFormat(json_data[index].time_arrive - $.now() / 1000)}</div>
                                 <div class="td_6">
                                     <button class="acce-arrving-dael acce-small-btn"></button>
                                 </div>
                             </div>`;
                         //                                                <h1 class="time_counter building_counter rtl" time-end="${json_data.time_end}">
 
-                    }else{
+                    } else {
                         list += `<div class="tr"></div>`;
                     }
                 }
-               
+
                 $("#my-comming-offers").html(list);
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                
+
             }
         });
-        
+
         return content;
     },
-    
-    dealsList: function (dealFor){
-        
+
+    dealsList: function (dealFor) {
+
         $.ajax({
-            
-            url: "api/market.php" ,
+
+            url: "api/market.php",
             data: {
-                GET_MARKET_LIST:true,
-                resource:dealFor,
-                id_player:ID_PLAYER,
-                token:TOKEN
+                GET_MARKET_LIST: true,
+                resource: dealFor,
+                id_player: ID_PLAYER,
+                token: TOKEN
             },
             type: 'GET',
             beforeSend: function (xhr) {
-                
+
             },
             success: function (data, textStatus, jqXHR) {
-                
-                if(isJson(data)){
+
+                if (isJson(data)) {
                     var json_data = JSON.parse(data);
                     MARKET_DEAL_LIST = json_data;
-                }else{
+                } else {
                     alert(data);
-                    return ;
+                    return;
                 }
-                
+
                 var buy_list = "";
                 var sell_list = "";
-                
-                for(var iii =0 ; iii < 5 ; iii++){
-                    if(json_data.buy_list[iii]){
-                        
-                         buy_list +=`<div class="tr">
+
+                for (var iii = 0; iii < 5; iii++) {
+                    if (json_data.buy_list[iii]) {
+
+                        buy_list += `<div class="tr">
                                     <div class="td_1">${Translate.Button.MenuList.Buy[UserLag.language]}</div>
                                     <div class="td_2">${json_data.buy_list[iii].amount - json_data.buy_list[iii].done}</div>
                                     <div class="td_3">${parseFloat(json_data.buy_list[iii].unit_price)}</div>
                                 </div>`;
-                    
-                        
-                    }else{
-                         buy_list +=`<div class="tr"></div>`;
+
+
+                    } else {
+                        buy_list += `<div class="tr"></div>`;
                     }
-                   
-                    if(json_data.sell_list[iii]){
-                        
-                        sell_list +=`<div class="tr">
+
+                    if (json_data.sell_list[iii]) {
+
+                        sell_list += `<div class="tr">
                                     <div class="td_1">بيع</div>
                                     <div class="td_2">${json_data.sell_list[iii].amount - json_data.sell_list[iii].done}</div>
                                     <div class="td_3">${parseFloat(json_data.sell_list[iii].unit_price)}</div>
                                 </div>`;
-                        
-                    }else{
-                         sell_list +=`<div class="tr"></div>`;
+
+                    } else {
+                        sell_list += `<div class="tr"></div>`;
                     }
-                    
-                    
+
+
                 }
-                
+
                 $("#buy-list-deals").html(buy_list);
                 $("#sell-list-deals").html(sell_list);
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                
+
             }
-            
+
         });
-        
-        
+
+
     },
-    
-    transportResources: function (){
-        
+
+    transportResources: function () {
+
         var content = `<div class="box_content for_building_box for_market">
                             <div class="left-content ">
                                 <div class="rightOfLeft" id="resource-input-list">
@@ -41468,8 +41608,8 @@ var Market = {
                                             <div class="input-warpper">
                                                 <input data-resource="food" 
                                                     type="text" class="only_num input" min="0"
-                                                    step="${Math.min(Math.floor(Elkaisar.CurrentCity.City.food) , Market.getMarketMaxTransNum())}"   
-                                                    max="${Math.min(Math.floor(Elkaisar.CurrentCity.City.food) , Market.getMarketMaxTransNum())}" value="0"/>
+                                                    step="${Math.min(Math.floor(Elkaisar.CurrentCity.City.food), Market.getMarketMaxTransNum())}"   
+                                                    max="${Math.min(Math.floor(Elkaisar.CurrentCity.City.food), Market.getMarketMaxTransNum())}" value="0"/>
                                                 <div class="number-arrow-wrapper pull-L">
                                                     <label class="number-arrow up"></label>
                                                     <label class="number-arrow down"></label>
@@ -41485,7 +41625,7 @@ var Market = {
                                                 <input data-resource="wood" 
                                                     type="text" class="only_num input" min="0"
                                                     step="${Math.min(Math.floor(Elkaisar.CurrentCity.City.wood), Market.getMarketMaxTransNum())}"   
-                                                    max="${Math.min(Math.floor(Elkaisar.CurrentCity.City.wood) , Market.getMarketMaxTransNum())}" value="0"/>
+                                                    max="${Math.min(Math.floor(Elkaisar.CurrentCity.City.wood), Market.getMarketMaxTransNum())}" value="0"/>
                                                 <div class="number-arrow-wrapper pull-L">
                                                     <label class="number-arrow up"></label>
                                                     <label class="number-arrow down"></label>
@@ -41500,8 +41640,8 @@ var Market = {
                                             <div class="input-warpper">
                                                <input data-resource="stone" 
                                                     type="text" class="only_num input" min="0"
-                                                    step="${Math.min(Math.floor(Elkaisar.CurrentCity.City.stone) , Market.getMarketMaxTransNum())}"   
-                                                    max="${Math.min(Math.floor(Elkaisar.CurrentCity.City.stone) , Market.getMarketMaxTransNum())}" value="0"/>
+                                                    step="${Math.min(Math.floor(Elkaisar.CurrentCity.City.stone), Market.getMarketMaxTransNum())}"   
+                                                    max="${Math.min(Math.floor(Elkaisar.CurrentCity.City.stone), Market.getMarketMaxTransNum())}" value="0"/>
                                                 <div class="number-arrow-wrapper pull-L">
                                                     <label class="number-arrow up"></label>
                                                     <label class="number-arrow down"></label>
@@ -41516,8 +41656,8 @@ var Market = {
                                             <div class="input-warpper">
                                                 <input data-resource="metal" 
                                                     type="text" class="only_num input" min="0"
-                                                    step="${Math.min(Math.floor(Elkaisar.CurrentCity.City.metal) , Market.getMarketMaxTransNum())}"   
-                                                    max="${Math.min(Math.floor(Elkaisar.CurrentCity.City.metal) , Market.getMarketMaxTransNum())}" value="0"/>
+                                                    step="${Math.min(Math.floor(Elkaisar.CurrentCity.City.metal), Market.getMarketMaxTransNum())}"   
+                                                    max="${Math.min(Math.floor(Elkaisar.CurrentCity.City.metal), Market.getMarketMaxTransNum())}" value="0"/>
                                                 <div class="number-arrow-wrapper pull-L">
                                                     <label class="number-arrow up"></label>
                                                     <label class="number-arrow down"></label>
@@ -41532,8 +41672,8 @@ var Market = {
                                             <div class="input-warpper">
                                                 <input data-resource="coin" 
                                                     type="text" class="only_num input" min="0"
-                                                    step="${Math.min(Math.floor(Elkaisar.CurrentCity.City.coin) , Market.getMarketMaxTransNum())}"   
-                                                    max="${Math.min(Math.floor(Elkaisar.CurrentCity.City.coin) , Market.getMarketMaxTransNum())}" value="0"/>
+                                                    step="${Math.min(Math.floor(Elkaisar.CurrentCity.City.coin), Market.getMarketMaxTransNum())}"   
+                                                    max="${Math.min(Math.floor(Elkaisar.CurrentCity.City.coin), Market.getMarketMaxTransNum())}" value="0"/>
                                                 <div class="number-arrow-wrapper pull-L">
                                                     <label class="number-arrow up"></label>
                                                     <label class="number-arrow down"></label>
@@ -41589,373 +41729,345 @@ var Market = {
                                 </div>
                             </div>
                         </div>`;
-                this.transportedResourcesList("out");
+        this.transportedResourcesList("out");
         return content;
     },
     /*
      *   state  the state of transport
      *   in or out
      */
-    transportedResourcesList: function (in_or_out){
-        
-        $.ajax({
+
+    TransList: {
+        "in": [],
+        "out": [],
+        "back": []
+    },
+    TransListHt: function (inOrOut) {
+        var List = '';
+        var Trans = {};
+        for (var ii in this.TransList[inOrOut]) {
             
-            url: "api/market.php",
+            Trans = this.TransList[inOrOut][ii];
+
+            List += `<li class="unit-trans-table" data-id-trans="${Trans.id_trans}">
+                    <div class="row">
+                        <div class="td">
+                            <img src="images/style/food.png"/>
+                            <span>${Trans.food}</span>
+                        </div>
+                        <div class="td">
+                            <img src="images/style/wood.png"/>
+                            <span>${Trans.wood}</span>
+                        </div>
+                        <div class="td">
+                            <img src="images/style/stone.png"/>
+                            <span>${Trans.stone}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                         <div class="td">
+                             <img src="images/style/iron.png"/>
+                            <span>${Trans.metal}</span>
+                        </div>
+                        <div class="td">
+                            <img src="images/style/coin.png"/>
+                            <span>${Trans.coin}</span>
+                        </div>
+                        <div class="td">
+                            <img src="images/style/wait.png"/>
+                            <span class="rtl time_counter inner_market_nav" time-end="${Trans.time_arrive}">${changeTimeFormat(Trans.time_arrive - Date.now() / 1000)}</span>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <label class="name-city">${Trans.CityNameFrom} &nbsp;&nbsp;[ ${Trans.xCoordFrom} ,  ${Trans.yCoordFrom}] </label>
+                        <label class="arrow"><img src="images/arrow/go-right.png"/></label>
+                        <label class="name-city">[ ${Trans.xCoordTo} ,  ${Trans.yCoordTo}] </label>
+                        <button data-id-trans=${Trans.id_trans} 
+                            class="speed-up speed-up-btn acce-transport-deal"
+                            ${Trans.acce != 0 ? 'disabled="disabled"' : ""}><span>تسريع</span></button>
+                    </div>
+                </li>`;
+        }
+        
+        
+        return `<ul>${List}</ul>`;
+
+    },
+    transportedResourcesList: function (in_or_out) {
+
+        $.ajax({
+
+            url: `${API_URL}/api/ACityMarketTrans/getCityTransportResource`,
             data: {
-                GET_TRANSPORTED_RESOURCES: true,
-                id_city: Number(Elkaisar.CurrentCity.City.id_city),
-                in_or_out:in_or_out,
-                id_player:ID_PLAYER,
-                token:TOKEN
+                idCity : Elkaisar.CurrentCity.City.id_city,
+                token   : Elkaisar.Config.OuthToken,
+                server  : Elkaisar.Config.idServer
             },
             type: 'GET',
             beforeSend: function (xhr) {
-                
-                
+
+
             },
             success: function (data, textStatus, jqXHR) {
+                if(!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
                 
-                if(isJson(data)){
-                    
-                    var json_data = JSON.parse(data);
-                    
-                }else{
-                    alert(data);
-                    console.log(data);
-                }
-                var list = ' <ul>';
                 
-                for (var index in json_data[in_or_out]){
-                    
-                    list += `<li class="unit-trans-table" data-id-trans="${json_data[in_or_out][index].id_trans}">
-                                <div class="row">
-                                    <div class="td">
-                                        <img src="images/style/food.png"/>
-                                        <span>${json_data[in_or_out][index].food}</span>
-                                    </div>
-                                    <div class="td">
-                                        <img src="images/style/wood.png"/>
-                                        <span>${json_data[in_or_out][index].wood}</span>
-                                    </div>
-                                    <div class="td">
-                                        <img src="images/style/stone.png"/>
-                                        <span>${json_data[in_or_out][index].stone}</span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                     <div class="td">
-                                         <img src="images/style/iron.png"/>
-                                        <span>${json_data[in_or_out][index].metal}</span>
-                                    </div>
-                                    <div class="td">
-                                        <img src="images/style/coin.png"/>
-                                        <span>${json_data[in_or_out][index].coin}</span>
-                                    </div>
-                                    <div class="td">
-                                        <img src="images/style/wait.png"/>
-                                        <span class="rtl time_counter inner_market_nav" time-end="${json_data[in_or_out][index].time_arrive}">${changeTimeFormat(json_data[in_or_out][index].time_arrive - Date.now()/1000)}</span>
-                                    </div>
-                                </div>
-                                <div class="footer">
-                                    <label class="name-city">${Elkaisar.CurrentCity.City.name} &nbsp;&nbsp;[ ${Elkaisar.CurrentCity.City.x} ,  ${Elkaisar.CurrentCity.City.y}] </label>
-                                    <label class="arrow"><img src="images/arrow/go-right.png"/></label>
-                                    <label class="name-city">[ ${json_data[in_or_out][index].x} ,  ${json_data[in_or_out][index].y}] </label>
-                                    <button data-id-trans=${json_data[in_or_out][index].id_trans} 
-                                        class="speed-up speed-up-btn acce-transport-deal"
-                                        ${Number(json_data[in_or_out][index].acce) !== 0 ? 'disabled="disabled"' : ""}><span>تسريع</span></button>
-                                </div>
-                            </li>`;
-                    
+                var JsonData = JSON.parse(data);
+                Market.TransList.in = [];
+                Market.TransList.out = [];
+                for(var iii in JsonData){
+                    if(JsonData[iii].id_city_to == Elkaisar.CurrentCity.City.id_city)
+                        Market.TransList.in.push(JsonData[iii]);
+                    if(JsonData[iii].id_city_from == Elkaisar.CurrentCity.City.id_city)
+                        Market.TransList.out.push(JsonData[iii]);
                 }
-                if(in_or_out === "out"){
-                    for (var index in json_data.back){
-                    
-                        list += `<li class="unit-trans-table" style="opacity:0.5" data-id-trans-back="${json_data.back[index].id_trans}">
-                                    <div class="row">
-                                        <div class="td">
-                                            <img src="images/style/food.png"/>
-                                            <span>0</span>
-                                        </div>
-                                        <div class="td">
-                                            <img src="images/style/wood.png"/>
-                                            <span>0</span>
-                                        </div>
-                                        <div class="td">
-                                            <img src="images/style/stone.png"/>
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                         <div class="td">
-                                             <img src="images/style/iron.png"/>
-                                            <span>0</span>
-                                        </div>
-                                        <div class="td">
-                                            <img src="images/style/coin.png"/>
-                                            <span>0</span>
-                                        </div>
-                                        <div class="td">
-                                            <img src="images/style/wait.png"/>
-                                            <span class="rtl time_counter inner_market_nav" time-end="${json_data.back[index].time_arrive}">${changeTimeFormat(Date.now()/1000 - json_data.back[index].time_arrive)}</span>
-                                        </div>
-                                    </div>
-                                    <div class="footer">
-                                        <label class="name-city">${Elkaisar.CurrentCity.City.name} &nbsp;&nbsp;[ ${Elkaisar.CurrentCity.City.x} ,  ${Elkaisar.CurrentCity.City.y}] </label>
-                                        <label class="arrow"><img src="images/arrow/go-left.png"/></label>
-                                        <label class="name-city">[ ${json_data.back[index].x} ,  ${json_data.back[index].y}] </label>
-                                        <button class="speed-up speed-up-btn" disabled="disabled"><span>تسريع</span></button>
-                                    </div>
-                                </li>`;
+                
 
-                    }
-                }
-                
-                list += "</ul>";
-                
-                $("#under-inner-nav").html(list);
+                $("#under-inner-nav").html(Market.TransListHt(in_or_out));
                 $("#under-inner-nav").niceScroll(SCROLL_BAR_PROP);
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                
+
             }
-            
+
         });
-        
+
     }
-    
-    
-    
-    
+
+
+
+
 };
 
 
 
 /*  When player select a  resource*/
-$(document).on("click" , ".resource-list ul li" , function (){
-    
+$(document).on("click", ".resource-list ul li", function () {
+
     $(".resource-list ul .selected").removeClass("selected");
     $(this).addClass("selected");
-    
+
     var resource_name = $(this).attr("data-resoure-name");
     var resource_title = $(this).children('h2').html();
     Market.dealsList(resource_name);
-    if($("#under-inner-nav").attr("data-for") === 'creat-offer'){
+    if ($("#under-inner-nav").attr("data-for") === 'creat-offer') {
         $("#under-inner-nav").replaceWith(Market.innerNav_creatOffer(resource_name));
     }
-    
-    
+
+
 });
 
-$(document).on("change" , '.sell-or-buy input[name="sell_or_buy"]' , function (){
-    
-    var  resource     = $(".resource-list ul .selected").attr("data-resoure-name");
-    var  sell_or_buy  = $('.sell-or-buy input[name="sell_or_buy"]:checked').val();
-    var  unit_price   = $("#under-inner-nav .unite-price input").val();
-    
-    if(sell_or_buy === 'sell'){
-        
+$(document).on("change", '.sell-or-buy input[name="sell_or_buy"]', function () {
+
+    var resource = $(".resource-list ul .selected").attr("data-resoure-name");
+    var sell_or_buy = $('.sell-or-buy input[name="sell_or_buy"]:checked').val();
+    var unit_price = $("#under-inner-nav .unite-price input").val();
+
+    if (sell_or_buy === 'sell') {
+
         unit_price <= 0 ? MARKET_DEAL_LIST.sell_list[0].unit_price : unit_price;
-        
-        $("#under-inner-nav .quantity input").attr("max" , Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]) , Elkaisar.CurrentCity.City.coin*100/(unit_price*0.75))) , 2e8));
-        $("#under-inner-nav .quantity input").attr("step" , Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]) , Elkaisar.CurrentCity.City.coin*100/(unit_price*0.75))) , 2e8));
-        
-        
-    }else if(sell_or_buy === 'buy'){
-        
+
+        $("#under-inner-nav .quantity input").attr("max", Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]), Elkaisar.CurrentCity.City.coin * 100 / (unit_price * 0.75))), 2e8));
+        $("#under-inner-nav .quantity input").attr("step", Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]), Elkaisar.CurrentCity.City.coin * 100 / (unit_price * 0.75))), 2e8));
+
+
+    } else if (sell_or_buy === 'buy') {
+
         unit_price <= 0 ? MARKET_DEAL_LIST.buy_list[0].unit_price : unit_price;
-        $("#under-inner-nav .quantity input").attr("max" , Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin/unit_price) , 2e8));
-        $("#under-inner-nav .quantity input").attr("step" , Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin/unit_price) , 2e8));
-        
+        $("#under-inner-nav .quantity input").attr("max", Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin / unit_price), 2e8));
+        $("#under-inner-nav .quantity input").attr("step", Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin / unit_price), 2e8));
+
     }
-    
+
     $("#under-inner-nav .unite-price input").val(unit_price);
-    
+
 });
 
 
 /* make adeal*/
-$(document).on('click' , "#confirm-deal button"  , function (){
-    
-    var  sell_or_buy = $('.sell-or-buy input[name="sell_or_buy"]:checked').val();
-    var  quantity    = $("#under-inner-nav .quantity input").val();
-    var  unit_price  = $("#under-inner-nav .unite-price input").val();
-    var  resource    = $(".resource-list ul .selected").attr("data-resoure-name");
-    var  fees = unit_price*quantity*0.75/100;
+$(document).on('click', "#confirm-deal button", function () {
+
+    var sell_or_buy = $('.sell-or-buy input[name="sell_or_buy"]:checked').val();
+    var quantity = $("#under-inner-nav .quantity input").val();
+    var unit_price = $("#under-inner-nav .unite-price input").val();
+    var resource = $(".resource-list ul .selected").attr("data-resoure-name");
+    var fees = unit_price * quantity * 0.75 / 100;
     var self = $(this);
-    
-    if(Number(Elkaisar.City.getCity().BuildingLvl.market) <= MY_MARKET_OFFERS_LIST.length){
+
+    if (Number(Elkaisar.City.getCity().BuildingLvl.market) <= MY_MARKET_OFFERS_LIST.length) {
         alert_box.confirmMessage("مستوى السوق لا يسمح باضافة عروض اخرى يمكنك  الغاء احد عروضك لانشاء  هذا العرض");
-        return ;
+        return;
     }
-    
-    
-    if(Number(quantity)  <= 0 || isNaN(quantity) ){
-        
+
+
+    if (Number(quantity) <= 0 || isNaN(quantity)) {
+
         alert_box.confirmMessage("عليك ادخال الكمية المراد ");
-        return ;
-    }else if(Number(unit_price)  <= 0 || isNaN(unit_price)){
-        
+        return;
+    } else if (Number(unit_price) <= 0 || isNaN(unit_price)) {
+
         alert_box.confirmMessage("عليك ادخال السعر المطلوب  ");
-        return ;
-        
-    }else if(!resource ){
-        
+        return;
+
+    } else if (!resource) {
+
         alert_box.confirmMessage("اختر نوع المورد المطلوب");
-        return ;
-        
+        return;
+
     }
-    
-    
-    
-    
-    if(sell_or_buy === "sell"){
-        
-        
-        if(Number(quantity)   > Elkaisar.CurrentCity.City[resource]){
-            
+
+
+
+
+    if (sell_or_buy === "sell") {
+
+
+        if (Number(quantity) > Elkaisar.CurrentCity.City[resource]) {
+
             alert_box.confirmMessage("لا يمكنك بيع  كمية مواد لا تملكها ");
             return;
-            
-        }else if(Number(Elkaisar.CurrentCity.City.coin) < fees){
-        
+
+        } else if (Number(Elkaisar.CurrentCity.City.coin) < fees) {
+
             alert_box.confirmMessage("لا يوجد لديك سسترسس كافى لدفع الرسوم");
-            return ;
+            return;
 
         }
-        
+
         $.ajax({
-            
+
             url: "api/market.php",
-            data:{
-                
-                PROPOSE_SELL_OFFER:true,
-                id_city:Number(Elkaisar.CurrentCity.City.id_city),
-                unit_price:Number(unit_price),
-                resource:resource,
-                quantity:quantity,
-                id_player:ID_PLAYER,
-                    token:TOKEN
-                
+            data: {
+
+                PROPOSE_SELL_OFFER: true,
+                id_city: Number(Elkaisar.CurrentCity.City.id_city),
+                unit_price: Number(unit_price),
+                resource: resource,
+                quantity: quantity,
+                id_player: ID_PLAYER,
+                token: TOKEN
+
             },
             type: 'POST',
             beforeSend: function (xhr) {
-                
+
                 Elkaisar.CurrentCity.City[resource] -= quantity;
                 Elkaisar.CurrentCity.City.coin = fees;
-                
-                
-                
-                self.attr("disabled" , "disabled");
+
+
+
+                self.attr("disabled", "disabled");
                 waitCursor();
             },
             success: function (data, textStatus, jqXHR) {
                 unwaitCursor();
                 self.removeAttr("disabled");
-                
-                if(isJson(data)){
+
+                if (isJson(data)) {
                     var json_data = JSON.parse(data);
-                }else{
+                } else {
                     alert(data);
                 }
-                if(json_data.state === "ok"){
-                    
-                    
+                if (json_data.state === "ok") {
+
+
                     MY_MARKET_OFFERS_LIST = json_data.deal_list;
-                    
-                    Elkaisar.CurrentCity.City.food  = json_data.city_resource.food;
-                    Elkaisar.CurrentCity.City.wood  = json_data.city_resource.wood;
+
+                    Elkaisar.CurrentCity.City.food = json_data.city_resource.food;
+                    Elkaisar.CurrentCity.City.wood = json_data.city_resource.wood;
                     Elkaisar.CurrentCity.City.stone = json_data.city_resource.stone;
                     Elkaisar.CurrentCity.City.metal = json_data.city_resource.metal;
-                    Elkaisar.CurrentCity.City.coin  = json_data.city_resource.coin;
-                    
+                    Elkaisar.CurrentCity.City.coin = json_data.city_resource.coin;
+
                     PLAYER_NOTIF.msg_diff = Number(PLAYER_NOTIF.msg_diff) + Number(json_data.msg_num);
-                    
+
                     city_profile.refresh_resource_view();
                     Fixed.refreshPlayerNotif();
                     /*refresh views */
-                    $("#under-inner-nav .u-have .resource .amount").html(Math.floor(Elkaisar.CurrentCity.City[resource] ));
+                    $("#under-inner-nav .u-have .resource .amount").html(Math.floor(Elkaisar.CurrentCity.City[resource]));
                     $("#under-inner-nav .u-have .coin .amount").html(Math.floor(Elkaisar.CurrentCity.City.coin));
                     $("#under-inner-nav .quantity input").val(0);
                     $('#trans-fees .amount').html(0);
                     $('#trans-total-price .amount').html(0);
                     $("#dialg_box .box_content  .left-content .resource-list ul .selected").click();
                     alert_box.succesMessage("تمت الصفقة بنجاح");
-                    
-                    
-                    if($.isArray(json_data.buyers)  && json_data.buyers.length > 0){
+
+
+                    if ($.isArray(json_data.buyers) && json_data.buyers.length > 0) {
                         ws.send(JSON.stringify({
-                            url:"WS_Market/buyerDealDone",
-                            data:{
-                                traders:json_data.buyers,
+                            url: "WS_Market/buyerDealDone",
+                            data: {
+                                traders: json_data.buyers,
                                 idPlayer: ID_PLAYER,
-                                token:TOKEN
+                                token: TOKEN
                             }
                         }));
                     }
-                    
-                    
-                }else{
-                    
-                    alert(data);                    
+
+
+                } else {
+
+                    alert(data);
                 }
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                
+
             }
         });
-        
-        
-        
-    }else if(sell_or_buy === "buy"){
-        
-        if(Number(Elkaisar.CurrentCity.City.coin) < Number(fees) + unit_price*quantity){
+
+
+
+    } else if (sell_or_buy === "buy") {
+
+        if (Number(Elkaisar.CurrentCity.City.coin) < Number(fees) + unit_price * quantity) {
             alert_box.confirmMessage("عذرا  ليس لديك  سسترسس كافى!");
-            return ;
+            return;
         }
-        
+
         $.ajax({
-            
+
             url: "api/market.php",
-            data:{
-                
-                PROPOSE_BUY_OFFER:true,
-                id_city:Number(Elkaisar.CurrentCity.City.id_city),
-                unit_price:Number(unit_price),
-                resource:resource,
-                quantity:quantity,
-                id_player:ID_PLAYER,
-                    token:TOKEN
-                
-                
+            data: {
+
+                PROPOSE_BUY_OFFER: true,
+                id_city: Number(Elkaisar.CurrentCity.City.id_city),
+                unit_price: Number(unit_price),
+                resource: resource,
+                quantity: quantity,
+                id_player: ID_PLAYER,
+                token: TOKEN
+
+
             },
             type: 'POST',
             beforeSend: function (xhr) {
-                
-                Elkaisar.CurrentCity.City.coin -= Number(fees) + unit_price*quantity;
-                
-                self.attr("disabled" , "disabled");
+
+                Elkaisar.CurrentCity.City.coin -= Number(fees) + unit_price * quantity;
+
+                self.attr("disabled", "disabled");
                 waitCursor();
             },
             success: function (data, textStatus, jqXHR) {
                 unwaitCursor();
                 self.removeAttr("disabled");
-                if(isJson(data)){
+                if (isJson(data)) {
                     var json_data = JSON.parse(data);
-                }else{
+                } else {
                     alert(data);
-                    return ;
+                    return;
                 }
-                
-                if(json_data.state === "ok"){
-                    
+
+                if (json_data.state === "ok") {
+
                     MY_MARKET_OFFERS_LIST = json_data.deal_list;
-                    
-                    Elkaisar.CurrentCity.City.food  = json_data.city_resource.food;
-                    Elkaisar.CurrentCity.City.wood  = json_data.city_resource.wood;
+
+                    Elkaisar.CurrentCity.City.food = json_data.city_resource.food;
+                    Elkaisar.CurrentCity.City.wood = json_data.city_resource.wood;
                     Elkaisar.CurrentCity.City.stone = json_data.city_resource.stone;
                     Elkaisar.CurrentCity.City.metal = json_data.city_resource.metal;
-                    Elkaisar.CurrentCity.City.coin  = json_data.city_resource.coin;
+                    Elkaisar.CurrentCity.City.coin = json_data.city_resource.coin;
                     PLAYER_NOTIF.msg_diff = Number(PLAYER_NOTIF.msg_diff) + Number(json_data.msg_num);
                     city_profile.refresh_resource_view();
                     Fixed.refreshPlayerNotif();
@@ -41967,98 +42079,98 @@ $(document).on('click' , "#confirm-deal button"  , function (){
                     $('#trans-total-price .amount').html(0);
                     $("#dialg_box .box_content  .left-content .resource-list ul .selected").click();
                     alert_box.succesMessage("تمت الصفقة بنجاح");
-                    
-                    
-                    if($.isArray(json_data.seller)  && json_data.seller.length > 0){
+
+
+                    if ($.isArray(json_data.seller) && json_data.seller.length > 0) {
                         ws.send(JSON.stringify({
-                            url:"WS_Market/sellerDealDone",
-                            data:{
-                                traders:json_data.seller,
+                            url: "WS_Market/sellerDealDone",
+                            data: {
+                                traders: json_data.seller,
                                 idPlayer: ID_PLAYER,
-                                token:TOKEN
+                                token: TOKEN
                             }
-                    
+
                         }));
                     }
-                    
-                    
-                }else{
-                    
-                    alert_box.confirmMessage("حدث خطاء  اثناء عمل العرض")  ;         
+
+
+                } else {
+
+                    alert_box.confirmMessage("حدث خطاء  اثناء عمل العرض");
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                
+
             }
-            
+
         });
-        
-        
+
+
     }
-    
-    
-}); 
+
+
+});
 
 /*   WHEN  INPUT CHANG*/
-$(document).on("keyup  change" , "#under-inner-nav .quantity input" , function (){
-    
+$(document).on("keyup  change", "#under-inner-nav .quantity input", function () {
+
     var unit_price = Number($("#under-inner-nav .unite-price input").val());
-    if(!unit_price){
-        
-        return ;
-        
+    if (!unit_price) {
+
+        return;
+
     }
-    
-    $("#trans-fees .amount").html( Math.ceil($(this).val()*unit_price*0.75/100));
-    $("#trans-total-price .amount").html(Math.ceil($(this).val()*unit_price));
-    
-    
-    
+
+    $("#trans-fees .amount").html(Math.ceil($(this).val() * unit_price * 0.75 / 100));
+    $("#trans-total-price .amount").html(Math.ceil($(this).val() * unit_price));
+
+
+
 });
 /*   WHEN  INPUT CHANG*/
-$(document).on("keyup  change" , "#under-inner-nav .unite-price  input" , function (){
-    
-    var quantity =Number($("#under-inner-nav .quantity input").val());
-    if(!quantity){
-        
-        return ;
-        
+$(document).on("keyup  change", "#under-inner-nav .unite-price  input", function () {
+
+    var quantity = Number($("#under-inner-nav .quantity input").val());
+    if (!quantity) {
+
+        return;
+
     }
-    
-    $("#trans-fees .amount").html(Math.round($(this).val()*quantity*0.75/100));
-    $("#trans-total-price .amount").html(Math.round($(this).val()*quantity));
-    
-    
-    
+
+    $("#trans-fees .amount").html(Math.round($(this).val() * quantity * 0.75 / 100));
+    $("#trans-total-price .amount").html(Math.round($(this).val() * quantity));
+
+
+
 });
 
 
 /*    maximum  limit click */
-$(document).on('click' , "#maximum-limit-deal" , function (){
-    
+$(document).on('click', "#maximum-limit-deal", function () {
+
     var sell_or_buy = $('.sell-or-buy input[name="sell_or_buy"]:checked').val();
-    var resource    = $(".resource-list ul .selected").attr("data-resoure-name");
-    var unit_price  = $("#under-inner-nav .unite-price input").val();
-    
-    
-     
-    if(!unit_price){
-        
+    var resource = $(".resource-list ul .selected").attr("data-resoure-name");
+    var unit_price = $("#under-inner-nav .unite-price input").val();
+
+
+
+    if (!unit_price) {
+
         alert_box.confirmMessage("عليك اختيار السعر المطلوب");
-        return ;
-        
-    } 
-    
-    if(sell_or_buy === 'sell'){
-        
-        $("#under-inner-nav .quantity input").val(Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]) , Elkaisar.CurrentCity.City.coin*100/(unit_price*0.75))) , 2e8));
-        
-    }else if(sell_or_buy === 'buy'){
-        
-        $("#under-inner-nav .quantity input").val(Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin/unit_price) , 2e8));
-        
+        return;
+
     }
-    
+
+    if (sell_or_buy === 'sell') {
+
+        $("#under-inner-nav .quantity input").val(Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]), Elkaisar.CurrentCity.City.coin * 100 / (unit_price * 0.75))), 2e8));
+
+    } else if (sell_or_buy === 'buy') {
+
+        $("#under-inner-nav .quantity input").val(Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin / unit_price), 2e8));
+
+    }
+
     $("#under-inner-nav .unite-price input").trigger("keyup");
 });
 
@@ -42066,96 +42178,96 @@ $(document).on('click' , "#maximum-limit-deal" , function (){
 
 
 /*   market inner nav bar   */
-$(document).on("click" ,  "#market-inner-nav .nav-title" , function (){
-    
+$(document).on("click", "#market-inner-nav .nav-title", function () {
+
     $(this).parent("#market-inner-nav").children(".selected").removeClass("selected");
     $(this).addClass("selected");
-    
+
     var nav_for = $(this).attr("data-inner-nav");
-    
-    if(nav_for === "market-my-offers"){
-        
+
+    if (nav_for === "market-my-offers") {
+
         $("#under-inner-nav").replaceWith(Market.innerNav_myOffers());
-        
-    }else if(nav_for === "market-status-offer"){
-        
+
+    } else if (nav_for === "market-status-offer") {
+
         $("#under-inner-nav").replaceWith(Market.innerNav_TradingStatus());
-        
-    }else if(nav_for === "marke-make-offers"){
-        
+
+    } else if (nav_for === "marke-make-offers") {
+
         $("#under-inner-nav").replaceWith(Market.innerNav_creatOffer($(".for_market .resource-list ul .selected").attr("data-resoure-name")));
-        
+
     }
-    
+
 });
 
 
 
 /*    cancsel deal */
 
-$(document).on("click" , ".cansel-market-deal" , function (){
-    
+$(document).on("click", ".cansel-market-deal", function () {
+
     var id_deal = $(this).parents(".tr").attr("data-id-deal");
-    var self_  = $(this).parents(".tr");
-    
-    
+    var self_ = $(this).parents(".tr");
+
+
     $.ajax({
-        
+
         url: "api/market.php",
-        data:{
-            CANSEL_MARKT_DEAL:true,
-            id_deal:id_deal,
-            id_player:ID_PLAYER,
+        data: {
+            CANSEL_MARKT_DEAL: true,
+            id_deal: id_deal,
+            id_player: ID_PLAYER,
             id_city: Elkaisar.CurrentCity.City.id_city,
-                    token:TOKEN
+            token: TOKEN
         },
         type: 'POST',
         beforeSend: function (xhr) {
-            self_.attr("disabled" , "disabled");
+            self_.attr("disabled", "disabled");
             waitCursor();
         },
         success: function (data, textStatus, jqXHR) {
             self_.removeAttr("disabled");
             unwaitCursor();
-            if(isJson(data)){
+            if (isJson(data)) {
                 var json_data = JSON.parse(data);
-            }else{
+            } else {
                 alert(data);
-                return ;
+                return;
             }
-            if(json_data.state === "ok"){
+            if (json_data.state === "ok") {
                 self_.remove();
                 $('#my-offers-full-list').append('<div class="tr"></div>');
-                
-                Elkaisar.CurrentCity.City.food  = json_data.city_resource.food;
-                Elkaisar.CurrentCity.City.wood  = json_data.city_resource.wood;
+
+                Elkaisar.CurrentCity.City.food = json_data.city_resource.food;
+                Elkaisar.CurrentCity.City.wood = json_data.city_resource.wood;
                 Elkaisar.CurrentCity.City.stone = json_data.city_resource.stone;
                 Elkaisar.CurrentCity.City.metal = json_data.city_resource.metal;
-                Elkaisar.CurrentCity.City.coin  = json_data.city_resource.coin;
-                
-                for(var index in MY_MARKET_OFFERS_LIST){
-                    if(Number(MY_MARKET_OFFERS_LIST[index].id_deal) === Number(id_deal)){
-                        MY_MARKET_OFFERS_LIST.splice(index , 1);
+                Elkaisar.CurrentCity.City.coin = json_data.city_resource.coin;
+
+                for (var index in MY_MARKET_OFFERS_LIST) {
+                    if (Number(MY_MARKET_OFFERS_LIST[index].id_deal) === Number(id_deal)) {
+                        MY_MARKET_OFFERS_LIST.splice(index, 1);
                     }
                 }
-                
+
                 city_profile.refresh_resource_view();
                 alert_box.succesMessage("تم الغاء العرض بنجاح");
                 $("#dialg_box .box_content  .left-content .resource-list ul .selected").click();
-                
-            }else{
-               alert_box.confirmMessage("لا يمكنك حذف هذا العرض");
-               $("#market-inner-nav .selected").trigger("click");
-                
+
+            } else {
+                alert_box.confirmMessage("لا يمكنك حذف هذا العرض");
+                $("#market-inner-nav .selected").trigger("click");
+
             }
-            
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            
+
         }
-        
+
     });
-    
+
 });
 
 
@@ -42164,18 +42276,18 @@ $(document).on("click" , ".cansel-market-deal" , function (){
 /*
  *   in this case the acceleration will be full 
  */
-$(document).on("click" , ".acce-arrving-dael" , function (){
-    
+$(document).on("click", ".acce-arrving-dael", function () {
+
     var id_deal = Number($(this).parents(".tr").attr("data-id-deal"));
-    var self_  = $(this).parents(".tr");
-    
-    
+    var self_ = $(this).parents(".tr");
+
+
 
     var matrial = ["shopping_car"];
-    BoxOfMatrialToUse(matrial, "acce-arriving-deal" , 1 , id_deal);
+    BoxOfMatrialToUse(matrial, "acce-arriving-deal", 1, id_deal);
 
-        
-    
+
+
 });
 
 
@@ -42187,334 +42299,280 @@ $(document).on("click" , ".acce-arrving-dael" , function (){
  * **/
 
 
-$(document).on("click" , "#select-city-trans-dis" , function (){
-    
+$(document).on("click", "#select-city-trans-dis", function () {
+
     var list = ``;
-    for (var index in FAVORIT_LIST){
-        
-        list +=`<li data-index="${index}" data-x-coord="${FAVORIT_LIST[index].x_coord}" data-y-coord="${FAVORIT_LIST[index].y_coord}">
+    for (var index in FAVORIT_LIST) {
+
+        list += `<li data-index="${index}" data-x-coord="${FAVORIT_LIST[index].x_coord}" data-y-coord="${FAVORIT_LIST[index].y_coord}">
                     ${FAVORIT_LIST[index].title} [${FAVORIT_LIST[index].x_coord} , ${FAVORIT_LIST[index].y_coord}]
                 </li>`;
-        
+
     }
-    
+
     $("#select_city_trans ol").html(list);
-    
+
     $("#select_city_trans").toggle();
-    
+
 });
 
 
-$(document).on('click' , "#select_city_trans ol li" ,  function (){
-    
+$(document).on('click', "#select_city_trans ol li", function () {
+
     var index = $(this).attr("data-index");
     var x_coord = $(this).attr("data-x-coord");
     var y_coord = $(this).attr("data-y-coord");
     var title = $(this).html();
-    
+
     $("#select-city-trans-dis .value").html(title);
     $("#select_city_trans").hide();
     $("#transport-distin input[data-coord='x']").val(x_coord);
     $("#transport-distin input[data-coord='y']").val(y_coord);
-    
+
 });
 
 
-$(document).on('change keyup' , "#resource-input-list ul li .only_num" , function (){
-    
-   var value    = Math.floor($(this).val());
-   var resource = $(this).attr("data-resource");
-   
-   var total_in = 0;
-   $("#resource-input-list ul li .input-warpper input").each(function (){
-       total_in += Math.floor($(this).val());
-   });
-   
-    
-    
-    var remain = Math.floor(Math.max(Market.getMarketMaxTransNum() - total_in , 0));
-    
-    $("#resource-input-list ul li .input-warpper input").each(function (){
-        $(this).attr("max" , Math.min(Math.floor(Elkaisar.CurrentCity.City[$(this).attr("data-resource")]) ,  remain));
-        $(this).attr("step" , Math.min(Math.floor(Elkaisar.CurrentCity.City[$(this).attr("data-resource")]) ,  remain));
+$(document).on('change keyup', "#resource-input-list ul li .only_num", function () {
+
+    var value = Math.floor($(this).val());
+    var resource = $(this).attr("data-resource");
+
+    var total_in = 0;
+    $("#resource-input-list ul li .input-warpper input").each(function () {
+        total_in += Math.floor($(this).val());
     });
 
-    
-    
-   $(this).parent(".input-warpper").prev(".resource").children("span").html(Math.max(0, (Math.floor(Elkaisar.CurrentCity.City[resource]) - value)));
-    
+
+
+    var remain = Math.floor(Math.max(Market.getMarketMaxTransNum() - total_in, 0));
+
+    $("#resource-input-list ul li .input-warpper input").each(function () {
+        $(this).attr("max", Math.min(Math.floor(Elkaisar.CurrentCity.City[$(this).attr("data-resource")]), remain));
+        $(this).attr("step", Math.min(Math.floor(Elkaisar.CurrentCity.City[$(this).attr("data-resource")]), remain));
+    });
+
+
+
+    $(this).parent(".input-warpper").prev(".resource").children("span").html(Math.max(0, (Math.floor(Elkaisar.CurrentCity.City[resource]) - value)));
+
 });
 
 
 
-$(document).on('change keyup' , "#transport-distin  .only_num" , function (){
-    
-   var x_coord   = Number($("#transport-distin .only_num[data-coord=x]").val()) || 0;
-   var y_coord   = Number($("#transport-distin .only_num[data-coord=y]").val()) || 0;
-   
-   
-   if(x_coord + y_coord > 0){
-       
-       $("#dialg_box .for_market .leftOfLeft .transit-time span")
-               .html(changeTimeFormat(Math.ceil((Math.sqrt(Math.pow((Elkaisar.CurrentCity.City.x - x_coord),2) + Math.pow((Elkaisar.CurrentCity.City.y - y_coord),2))))*20));
-       
-   }else{
-       $("#dialg_box .for_market .leftOfLeft .transit-time span")
-               .html(0);
-   }
+$(document).on('change keyup', "#transport-distin  .only_num", function () {
+
+    var x_coord = Number($("#transport-distin .only_num[data-coord=x]").val()) || 0;
+    var y_coord = Number($("#transport-distin .only_num[data-coord=y]").val()) || 0;
+
+
+    if (x_coord + y_coord > 0) {
+
+        $("#dialg_box .for_market .leftOfLeft .transit-time span")
+                .html(changeTimeFormat(Math.ceil((Math.sqrt(Math.pow((Elkaisar.CurrentCity.City.x - x_coord), 2) + Math.pow((Elkaisar.CurrentCity.City.y - y_coord), 2)))) * 20));
+
+    } else {
+        $("#dialg_box .for_market .leftOfLeft .transit-time span")
+                .html(0);
+    }
 });
 
 
-$(document).on("click" , "#transport-res-inner-nav .nav-title" , function() {
-    
+$(document).on("click", "#transport-res-inner-nav .nav-title", function () {
+
     $("#transport-res-inner-nav .nav-title").removeClass("selected");
     $(this).addClass("selected");
-    
+
     Market.transportedResourcesList($(this).attr("data-in-out"));
-    
-    
+
+
 });
 
 
-$(document).on("click" , "#statrt-transport-res button" , function (){
-    
-    var x_coord = $("#transport-distin input[data-coord='x']").val();
-    var y_coord = $("#transport-distin input[data-coord='y']").val();
-    
-    if(!x_coord || !y_coord){
-        
-        alert_box.failMessage("هذة الاحداثيات غير صحيحة تأكد من الاحداثيات");
-        return ;
-        
-    }
-    
-    var self = $(this);
-    
+$(document).on("click", "#statrt-transport-res button", function () {
+
+    var xCoord = $("#transport-distin input[data-coord='x']").val();
+    var yCoord = $("#transport-distin input[data-coord='y']").val();
+
+    if (!xCoord || !yCoord)
+        return alert_box.failMessage("هذة الاحداثيات غير صحيحة تأكد من الاحداثيات");
+
+
+
+    var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+
+    if (!Unit.idCity)
+        return alert_box.failMessage("هذة الاحداثيات ليست إحداثيات مدينة");
+
     var total_resource = 0;
-    var resource_to_send = {
-        food:0,
-        wood:0,
-        stone:0,
-        metal:0,
-        coin:0
-    };
-    $("#resource-input-list ul li .input-warpper input").each(function (){
-       resource_to_send[$(this).attr("data-resource")] = Number($(this).val());
+    var resource_to_send = {food: 0, wood: 0, stone: 0, metal: 0, coin: 0};
+    $("#resource-input-list ul li .input-warpper input").each(function () {
+        resource_to_send[$(this).attr("data-resource")] = Number($(this).val());
+        total_resource += Number($(this).val());
     });
-    
-    
-    
-    for (var obj in resource_to_send){
-        total_resource +=  resource_to_send[obj];
-    }
-    
-    
-    
-    if(total_resource <= 0){
-        alert_box.failMessage("يجب عليك ادخال  الموارد المراد ارسالها"); 
-        return ;
-    }else if(total_resource > Market.getMarketMaxTransNum()){
+
+
+
+    if (total_resource <= 0) {
+        alert_box.failMessage("يجب عليك ادخال  الموارد المراد ارسالها");
+        return;
+    } else if (total_resource > Market.getMarketMaxTransNum()) {
         alert_box.confirmMessage("لا يستطيع الناقلون نقل كمية اكبر من استيعاب السوق لها");
-        return ;
+        return;
     }
-    
-    if(Number(Elkaisar.CurrentCity.City.food) < resource_to_send.food        || resource_to_send.food  < 0){
+
+    if (Number(Elkaisar.CurrentCity.City.food) < resource_to_send.food || resource_to_send.food < 0) {
         alert_box.failMessage("لا يوجد غذاء كافى ");
-        return ;
-    }else if(Number(Elkaisar.CurrentCity.City.wood ) < resource_to_send.wood  || resource_to_send.wood  < 0){
+        return;
+    } else if (Number(Elkaisar.CurrentCity.City.wood) < resource_to_send.wood || resource_to_send.wood < 0) {
         alert_box.failMessage("لا يوجد اخشاب كافى ");
-        return ;
-    }else if(Number(Elkaisar.CurrentCity.City.stone) < resource_to_send.stone || resource_to_send.stone  < 0){
+        return;
+    } else if (Number(Elkaisar.CurrentCity.City.stone) < resource_to_send.stone || resource_to_send.stone < 0) {
         alert_box.failMessage("لا يوجد حجارة كافى ");
-        return ;
-    }else if(Number(Elkaisar.CurrentCity.City.metal) < resource_to_send.metal || resource_to_send.metal  < 0){
+        return;
+    } else if (Number(Elkaisar.CurrentCity.City.metal) < resource_to_send.metal || resource_to_send.metal < 0) {
         alert_box.failMessage("لا يوجد حديد كافى ");
-        return ;
-    }else if(Number(Elkaisar.CurrentCity.City.coin) < resource_to_send.coin   || resource_to_send.coin  < 0){
+        return;
+    } else if (Number(Elkaisar.CurrentCity.City.coin) < resource_to_send.coin || resource_to_send.coin < 0) {
         alert_box.failMessage("لا يوجد عملات كافى ");
-        return ;
-    } 
-    
-    
+        return;
+    }
+    var self = $(this);
+
     $.ajax({
-       
-        url: "api/market.php",
-        data:{
-            TRANSMIT_RESOURCE_TO:true,
-            x_coord:x_coord,
-            y_coord:y_coord,
-            food:resource_to_send.food,
-            wood:resource_to_send.wood,
-            stone:resource_to_send.stone,
-            metal:resource_to_send.metal,
-            coin:resource_to_send.coin,
-            id_city:Elkaisar.CurrentCity.City.id_city,
-            id_player:ID_PLAYER,
-            x_from : Elkaisar.CurrentCity.City.x,
-            y_from : Elkaisar.CurrentCity.City.y,
-            market_lvl:Elkaisar.City.getCity().BuildingLvl.market,
-            token:TOKEN
+
+        url: `${API_URL}/api/ACityMarketTrans/transportResource`,
+        data: {
+            food: resource_to_send.food,
+            wood: resource_to_send.wood,
+            stone: resource_to_send.stone,
+            metal: resource_to_send.metal,
+            coin: resource_to_send.coin,
+            idCityFrom: Elkaisar.CurrentCity.City.id_city,
+            idCityTo: Unit.idCity,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
         type: 'POST',
         beforeSend: function (xhr) {
-            
-            Elkaisar.CurrentCity.City.food  -= resource_to_send.food;
-            Elkaisar.CurrentCity.City.wood  -= resource_to_send.wood;
-            Elkaisar.CurrentCity.City.stone -= resource_to_send.stone;
-            Elkaisar.CurrentCity.City.metal -= resource_to_send.metal;
-            Elkaisar.CurrentCity.City.coin  -= resource_to_send.coin;
-            city_profile.refresh_resource_view();
-            
-            self.prop("disabled" , true);
-            self.attr("disabled" , "disabled");
+            self.prop("disabled", true);
+            self.attr("disabled", "disabled");
             waitCursor();
         },
         success: function (data, textStatus, jqXHR) {
-            
-            self.prop("disabled" , false);
+
+            self.prop("disabled", false);
             self.removeAttr("disabled");
             unwaitCursor();
-                
-            if(isJson(data)){
-                
-                var json_data = JSON.parse(data);
-                
-                if(json_data.state === "error_1"){
-                    alert_box.confirmMessage("لا يمكنك ارسال بعثات اخرى خارج المدينة جميع النقالين بالخارج"); 
-                    return ;
-                }else if(json_data.state === "error_city"){
-                    
-                    alert_box.confirmMessage("هذة الاحداثيات لا تخص  مدينة ");
-                    return ;
-                    
-                }
-                
-                
-                
-                var list = `<li class="unit-trans-table">
-                                <div class="row">
-                                    <div class="td">
-                                        <img src="images/style/food.png"/>
-                                        <span>${resource_to_send.food}</span>
-                                    </div>
-                                    <div class="td">
-                                        <img src="images/style/wood.png"/>
-                                        <span>${resource_to_send.wood}</span>
-                                    </div>
-                                    <div class="td">
-                                        <img src="images/style/stone.png"/>
-                                        <span>${resource_to_send.stone}</span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                     <div class="td">
-                                         <img src="images/style/iron.png"/>
-                                        <span>${resource_to_send.metal}</span>
-                                    </div>
-                                    <div class="td">
-                                        <img src="images/style/coin.png"/>
-                                        <span>${resource_to_send.coin}</span>
-                                    </div>
-                                    <div class="td">
-                                        <img src="images/style/wait.png"/>
-                                        <span>${changeTimeFormat(json_data.time_arrive - Date.now()/1000)}</span>
-                                    </div>
-                                </div>
-                                <div class="footer">
-                                    <label class="name-city">${Elkaisar.CurrentCity.City.name} &nbsp;&nbsp;[${x_coord} , ${y_coord}] </label>
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
 
-                                    <label class="arrow"><img src="images/arrow/go-right.png"/></label>
-                                    <button data-id-trans="${json_data.id_trans}" class="speed-up speed-up-btn acce-transport-deal"><span>تسريع</span></button>
-                                </div>
-                            </li>`;
-                    
-                $("#under-inner-nav ul").append(list);
-                $("#transport-res-inner-nav .nav-title:first").click();
-                $("#under-inner-nav").niceScroll(SCROLL_BAR_PROP);
-                
-                Elkaisar.CurrentCity.City.food  = Number(json_data.city.food);
-                Elkaisar.CurrentCity.City.wood  = Number(json_data.city.wood);
-                Elkaisar.CurrentCity.City.stone = Number(json_data.city.stone);
-                Elkaisar.CurrentCity.City.metal = Number(json_data.city.metal);
-                Elkaisar.CurrentCity.City.coin  = Number(json_data.city.coin);
-                
-                
-                city_profile.refresh_resource_view();
-                
-                alert_box.succesMessage("تم ارسال النقالين بنجاح");
-              
-            }else{
-                alert(data);
-            }
+
+
+            var JsonData = JSON.parse(data);
+
+            if (JsonData.state == "error_0")
+                return alert_box.failMessage("كمية المواد غير صحيحة");
+            if (JsonData.state == "error_1")
+                return alert_box.confirmMessage("لا يمكنك ارسال بعثات اخرى خارج المدينة جميع النقالين بالخارج");
+            if (JsonData.state == "error_2")
+                return alert_box.confirmMessage("لا يستطيع السوق نقل هذة الكمية");
+            if (JsonData.state == "error_3")
+                return alert_box.confirmMessage("لا توجد موارد كافية فى المدينة");
+
+            Market.transportedResourcesList("out");
+
+            Elkaisar.CurrentCity.City.food = Number(JsonData.cityRes.food);
+            Elkaisar.CurrentCity.City.wood = Number(JsonData.cityRes.wood);
+            Elkaisar.CurrentCity.City.stone = Number(JsonData.cityRes.stone);
+            Elkaisar.CurrentCity.City.metal = Number(JsonData.cityRes.metal);
+            Elkaisar.CurrentCity.City.coin = Number(JsonData.cityRes.coin);
+            city_profile.refresh_resource_view();
+
+            alert_box.succesMessage("تم ارسال النقالين بنجاح");
+
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            
-            
+
+
         }
-        
+
     });
-    
-    
-    
+
+
+
 });
 
 
 
 
-$(document).on("click" , "#auction-buy-btn button" , function (){
-    
-    $("#under-inner-nav .sell-or-buy .buy input").prop("checked" , true);
-    $("#under-inner-nav .unite-price input").val(MARKET_DEAL_LIST.buy_list[0] ? MARKET_DEAL_LIST.buy_list[0].unit_price : 0 );
-    
+$(document).on("click", "#auction-buy-btn button", function () {
+
+    $("#under-inner-nav .sell-or-buy .buy input").prop("checked", true);
+    $("#under-inner-nav .unite-price input").val(MARKET_DEAL_LIST.buy_list[0] ? MARKET_DEAL_LIST.buy_list[0].unit_price : 0);
+
 });
 
-$(document).on("click" , "#auction-sell-btn button" , function (){
-    
-    $("#under-inner-nav .sell-or-buy .sell input").prop("checked" , true);
-    $("#under-inner-nav .unite-price input").val(MARKET_DEAL_LIST.sell_list[0] ? MARKET_DEAL_LIST.sell_list[0].unit_price : 0 );
-    
+$(document).on("click", "#auction-sell-btn button", function () {
+
+    $("#under-inner-nav .sell-or-buy .sell input").prop("checked", true);
+    $("#under-inner-nav .unite-price input").val(MARKET_DEAL_LIST.sell_list[0] ? MARKET_DEAL_LIST.sell_list[0].unit_price : 0);
+
 });
 
 
-$(document).on("click" , ".acce-transport-deal" , function (){
-    
+$(document).on("click", ".acce-transport-deal", function () {
+
     var id_trans = $(this).attr("data-id-trans");
     var self = $(this);
-    if(!id_trans){
+    if (!id_trans) {
         alert_box.failMessage("حدث خطاء");
     }
-    if(Matrial.getPlayerAmount("shopping_car") < 1){
+    if (Matrial.getPlayerAmount("shopping_car") < 1) {
         alert_box.confirmMessage("لا يوجد لديك عربات تسوق للقيام بالعملية");
-        return ;
+        return;
     }
-    
-    alert_box.confirmDialog("تاكيد استعمال 1 عربة تسوق لتسريع  عملية النقل"  , function (){
-        
+
+    alert_box.confirmDialog("تاكيد استعمال 1 عربة تسوق لتسريع  عملية النقل", function () {
+
         $.ajax({
-            url: "api/market.php",
-            data:{
-                ACCE_TRANSPORT: true,
-                id_trans: id_trans,
-                id_player:ID_PLAYER,
-                    token:TOKEN
+            url: `${API_URL}/api/ACityMarketTrans/speedUpTransport`,
+            data: {
+                idTrans  : id_trans,
+                idCity   : Elkaisar.CurrentCity.City.id_city,
+                token    : Elkaisar.Config.OuthToken,
+                server   : Elkaisar.Config.idServer
             },
             type: 'POST',
             beforeSend: function (xhr) {
-                self.attr("disabled" , "disabled");
+                self.attr("disabled", "disabled");
                 waitCursor();
             },
             success: function (data, textStatus, jqXHR) {
                 unwaitCursor();
                 self.removeAttr("disabled");
-                $("#transport-res-inner-nav .selected").click();    
+                
+                if(!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+                
+                var JsonData = JSON.parse(data);
+                
+                if(JsonData.state == "error_0")
+                    return alert_box.failMessage("لقد تم نقل هذه النقله");
+                if(JsonData.state == "error_1")
+                    return alert_box.failMessage("لقد تم تسريع هذه النقله");
+                if(JsonData.state == "error_2")
+                    return alert_box.failMessage("لا توجد عربات نقل كافية لتسريع هذه الدفعة");
+                
+                $("#transport-res-inner-nav .selected").click();
             },
             error: function (jqXHR, textStatus, errorThrown) {
 
             }
         });
-        
+
     });
-    
+
 });/* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -42972,7 +43030,6 @@ $(document).on("click" , "#expan-city button" , function (){
         
             url: `${API_URL}/api/ACityPalace/expandCity`,
             data:{
-                NewName : new_name,
                 idCity  : Elkaisar.CurrentCity.City.id_city,
                 token   : Elkaisar.Config.OuthToken,
                 server  : Elkaisar.Config.idServer
@@ -44515,11 +44572,12 @@ Elkaisar.Equip.distributeEquip = function ()
   
     for(var iii in Elkaisar.DPlayer.Heros)
     {
-        if(!Elkaisar.DPlayer.Heros[iii].Equip)
-            Elkaisar.DPlayer.Heros[iii].Equip = {
-               boot: null, armor: null, shield: null, helmet: null, 
-               sword: null, belt: null, ring: null, steed: null
-            };
+       
+        Elkaisar.DPlayer.Heros[iii].Equip = {
+           boot: null, armor: null, shield: null, helmet: null, 
+           sword: null, belt: null, ring: null, steed: null, 
+           pendant: null, necklace: null
+        };
         
         for(var ii in Elkaisar.DPlayer.Equip)
         {
@@ -44612,9 +44670,12 @@ Elkaisar.Equip.EquipFeature = {
       Title: "لا توجد"
   }  ,
   1 : {
-      Title : "وابل السهام"
+      Title : "وابل السهام أمام"
   },
   2 : {
+      Title : "وابل سهام خلف"
+  },
+  3 : {
       Title : "الدرع"
   }
 };
@@ -46718,16 +46779,16 @@ GodGate.OpenFourthCell = function (Gate){
     
     var Mat = "skill_book";
     
-    if(Matrial.getPlayerAmount(Mat) <= Gate){
+    if(Matrial.getPlayerAmount(Mat) <= Gate*5){
         
         $("#over_lay_alert").remove();
-        alert_box.confirmMessage(`لا يوجد لديك عدد (${Gate}) من ${Matrial.getMatrialName(Mat)}  فى صندوق الموارد خاصتك`);
+        alert_box.confirmMessage(`لا يوجد لديك عدد (${Gate*10}) من ${Matrial.getMatrialName(Mat)}  فى صندوق الموارد خاصتك`);
         return ;
         
     }
-    if(GodGate.playerGate.GodGateData.points < Gate*1500){
+    if(GodGate.playerGate.GodGateData.points < Gate*5000){
         $("#over_lay_alert").remove();
-        alert_box.confirmMessage(`يجب ان تمتلك اكثر من ${Gate*1500} نقطة من نقاط التسليح`);
+        alert_box.confirmMessage(`يجب ان تمتلك اكثر من ${Gate*5000} نقطة من نقاط التسليح`);
         return ;
     }
     
@@ -47113,7 +47174,7 @@ $(document).on("click", "#OpenForthCellGG", function (){
     var matrial = ["skill_book"];
     var Gate = $(this).attr("data-gate");
     
-    alert_box.confirmDialog(`تأكيد إستعمال عدد(${Gate}) من ${Matrial.getMatrialName(matrial[0])} + ${Gate * 1500} نقطة تسليح لفتح المهارة الرابعة للبوابة`, function (){
+    alert_box.confirmDialog(`تأكيد إستعمال عدد(${Gate*10}) من ${Matrial.getMatrialName(matrial[0])} + ${Gate * 5000} نقطة تسليح لفتح المهارة الرابعة للبوابة`, function (){
         BoxOfMatrialToUse(matrial , "open-fourth-cell", Gate, Gate);
     });
     
@@ -49037,6 +49098,7 @@ Chat.msgFrom = function (data){
 };
 
 Chat.worldMessage = function (data){
+  
     
     var user_group_class = data.userGroup;
     var chatMsg = Extract.coords(extractEmjoi(extractUrl(data.chatMsg)));
@@ -49062,6 +49124,7 @@ Chat.worldMessage = function (data){
                         ${Chat.msgFrom(data)}
                     </div>
                     <div class="msg-body flex">${msgContent}</div>
+                    <label class="msg-time">${ ('00' + new Date().getHours()).slice(-2)}:${('00' + new Date().getMinutes()).slice(-2)}</label>
                 </div>`;
     
     UserLag.TranslateChatMsg({id: idMsg, text: data.chatMsg});

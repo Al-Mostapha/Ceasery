@@ -62,6 +62,7 @@ Elkaisar.Item.useItemFunc = function ()
             data: {
                 Item: "prot_pop",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -1214,6 +1215,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
                     alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
@@ -1243,6 +1245,8 @@ Elkaisar.Item.useItemBoxFunc = function () {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
+                    alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
         });
@@ -1271,6 +1275,8 @@ Elkaisar.Item.useItemBoxFunc = function () {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
+                    alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
         });
@@ -1297,7 +1303,10 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (JsonObject.state === "ok")
                 {
                     Elkaisar.City.getCityHero(idCity);
+                    Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
+                    alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
         });
@@ -1326,6 +1335,8 @@ Elkaisar.Item.useItemBoxFunc = function () {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
+                    alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
         });
@@ -1354,6 +1365,8 @@ Elkaisar.Item.useItemBoxFunc = function () {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
+                    Elkaisar.City.getCityHeroArmy(idCity);
+                    alert_box.succesMessage("تم اضافة بطل بنجاح");
                 }
             }
         });

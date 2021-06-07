@@ -1019,11 +1019,16 @@ var Building = {
             this.RefreshLeft(place);
         },
         RefreshLeft: function (place) {
+            
+         
+                        
+                        
+                        
 
             if(!place)
                 place = $(".box_content").attr("data-building-place");
             
-            
+           
 
             var content = "";
             var total_time = 0;
@@ -1033,9 +1038,9 @@ var Building = {
             for( var OneTask in Elkaisar.TimedTask.TaskList.Army)
             {
                 var Task = Elkaisar.TimedTask.TaskList.Army[OneTask];
-                if(Task.place !== place)
+                if(Task.place != place)
                     continue;
-                if(Number(Task.id_city) !== Number(Elkaisar.CurrentCity.City.id_city))
+                if(Number(Task.id_city) != Number(Elkaisar.CurrentCity.City.id_city))
                     continue;
                 
                 
@@ -1064,13 +1069,13 @@ var Building = {
                                            </div>
                                         </div>`;
 
-                if (c === Object.keys(Elkaisar.TimedTask.TaskList.Army).length - 1) {
-                    total_time = parseInt(Task.time_end) - Date.now() / 1000;
-                    end = parseInt(Task.time_end);
-                }
+              
+                end = Math.max(Task.time_end, end);
+                
                 c++;
             };
-
+            
+            total_time = Math.floor( end - Date.now()/1000);
             
             $(".total-work").html(content);
             $("#total-time-pro").html(changeTimeFormat(total_time));

@@ -453,7 +453,7 @@ Elkaisar.City.prepareCity = function (idCity)
                 resourcesRefresh();
                 refreshTime();
 
-            }, 3500);
+            }, 1000);
             Elkaisar.City.getCityBuilding(idCity).done(function () {
                 Elkaisar.City.getCityGarrison(idCity);
                 Elkaisar.Building.getJsonData().done(function () {

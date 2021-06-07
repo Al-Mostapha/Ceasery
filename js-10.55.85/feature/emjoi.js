@@ -68,6 +68,7 @@ Chat.msgFrom = function (data){
 };
 
 Chat.worldMessage = function (data){
+  
     
     var user_group_class = data.userGroup;
     var chatMsg = Extract.coords(extractEmjoi(extractUrl(data.chatMsg)));
@@ -93,6 +94,7 @@ Chat.worldMessage = function (data){
                         ${Chat.msgFrom(data)}
                     </div>
                     <div class="msg-body flex">${msgContent}</div>
+                    <label class="msg-time">${ ('00' + new Date().getHours()).slice(-2)}:${('00' + new Date().getMinutes()).slice(-2)}</label>
                 </div>`;
     
     UserLag.TranslateChatMsg({id: idMsg, text: data.chatMsg});

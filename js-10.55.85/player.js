@@ -169,11 +169,12 @@ var Player_profile = {
     },
     
     refreshPlayerNotif: function (){
+        
         return $.ajax({
-            url:"api/message.php",
+            url:`${API_URL}/api/APlayer/getAllNotif`,
             data:{
-                GET_PLAYER_NOTIF:true,
-                token:TOKEN
+                server : Elkaisar.Config.idServer,
+                token  : Elkaisar.Config.OuthToken
             },
             type: 'GET',
             success: function (data, textStatus, jqXHR) {

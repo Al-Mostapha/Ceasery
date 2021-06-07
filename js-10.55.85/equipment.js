@@ -28,11 +28,12 @@ Elkaisar.Equip.distributeEquip = function ()
   
     for(var iii in Elkaisar.DPlayer.Heros)
     {
-        if(!Elkaisar.DPlayer.Heros[iii].Equip)
-            Elkaisar.DPlayer.Heros[iii].Equip = {
-               boot: null, armor: null, shield: null, helmet: null, 
-               sword: null, belt: null, ring: null, steed: null
-            };
+       
+        Elkaisar.DPlayer.Heros[iii].Equip = {
+           boot: null, armor: null, shield: null, helmet: null, 
+           sword: null, belt: null, ring: null, steed: null, 
+           pendant: null, necklace: null
+        };
         
         for(var ii in Elkaisar.DPlayer.Equip)
         {
@@ -125,9 +126,12 @@ Elkaisar.Equip.EquipFeature = {
       Title: "لا توجد"
   }  ,
   1 : {
-      Title : "وابل السهام"
+      Title : "وابل السهام أمام"
   },
   2 : {
+      Title : "وابل سهام خلف"
+  },
+  3 : {
       Title : "الدرع"
   }
 };

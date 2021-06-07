@@ -674,32 +674,28 @@ function useMatrial(user_for, matrial, other)
 
         var all_heros = "";
         var left_content = "";
+        
+        
         $.ajax({
 
-            url: "api/hero.php",
+            url: `${API_URL}/api/ACityHero/refreshHeroTheaterWithLetter`,
             data: {
-
-                REFRESH_THEATER_WITH_MAT: true,
-                id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player: ID_PLAYER,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer,
+                idCity: Elkaisar.CurrentCity.City.id_city
 
             },
-            type: 'GET',
+            type: 'POST',
             beforeSend: function (xhr) {
 
             },
             success: function (data, textStatus, jqXHR) {
 
-                if (isJson(data)) {
-
-                    var json_data = JSON.parse(data);
-                } else {
-
-                    alert(data);
-                    console.log(data);
-                    return;
-                }
+                if(!Elkaisar.LBase.isJson(data))
+                    Elkaisar.LBase.Error(data);
+                
+                var JsonObject = JSON.parse(data);
+                
                 $("#over_lay_alert").remove();
                 $("#over_lay").remove();
                 Matrial.takeFrom(matrial, 1);

@@ -19,8 +19,8 @@ Elkaisar.WsLib.Chat.GuildMsg = function (data){
 
 
 Elkaisar.WsLib.Chat.deleteMsg = function (data){
-    $(`#msg-area .msg-unit[data-id-msg=${data.id_msg}]`).animate({opacity:0} , 800,function (){
-        var msg = `قام ${data.p_name_delete_by}  بحذف رسالة اللاعب ${data.p_name_delete_for}`;
+    $(`#msg-area .msg-unit[data-id-msg=${data.idMsg}]`).animate({opacity:0} , 800,function (){
+        var msg = `قام ${data.DeletedBy}  بحذف رسالة اللاعب ${data.DeletedFor}`;
        $(this).html(`<div class='d-msg-replacement font-2'>${msg}</div>`) ;
        $(this).css({opacity: 1});
     });
@@ -44,8 +44,10 @@ Elkaisar.WsLib.Chat.banPlayer = function (data){
 
 
 Elkaisar.WsLib.Chat.privateMsg = function (data){
+  
     
-    showPrivateChatNotif(data.idTo ,data.fromName , data.playerToAvatar);
+    
+    showPrivateChatNotif(data.idFrom ,data.fromName , data.playerFromAvatar);
 
     var chatRoom =  $("#SMB-"+data.idFrom);
     var msg_container = `<div class="sender-msg">
