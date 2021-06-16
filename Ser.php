@@ -384,6 +384,7 @@ get_ip_address($playerId);
                 </div>
             </div>
         </div>
+        <div id="GameWindow"></div>
         <script>
             var player           = <?= json_encode($player_data) ?>;
             const  BASE_ASSET_BATH = "";

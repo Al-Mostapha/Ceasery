@@ -1,6 +1,3 @@
-Crafty.init();
-Crafty.timer.FPS(20);
-Crafty.createLayer("UILayer", "Canvas", {scaleResponse: 0, xResponse: 0, yResponse: 0});
 
 
 function isJson(str) {
@@ -176,13 +173,13 @@ if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elain
     isMobile = true;
 }
 
-WORLD_ALL_UNIT = Elkaisar.worldAllUnits;
+
 
 $(document).on("PlayerReady", "html", function () {
 
     $['getJSON'](API_URL + '/js' + Elkaisar['Config']['JsVersion'] + '/json/UnitArmy.json', {}, function (UnitArmy, _0x1d2e97, _0x190ef9) {
         Elkaisar['World']['UnitArmy'] = UnitArmy;
-    })
+    });
     $.getJSON(
             API_URL + "/js" + Elkaisar.Config.JsVersion + "/json/worldUnitData.json", {},
             function (data, textStatus, jqXHR) {
@@ -198,7 +195,7 @@ $(document).on("PlayerReady", "html", function () {
         beforeSend: function (xhr) {
 
         }, success: function (data, textStatus, jqXHR) {
-
+            
             var data_array = data.split(",");
             var iii = 0;
             var end = data_array.length;
@@ -244,6 +241,7 @@ $(document).on("PlayerReady", "html", function () {
                 }
             });
             $("#WorldCity").removeAttr("disabled");
+            
         }, error: function (jqXHR, textStatus, errorThrown) {
 
         }
@@ -260,79 +258,6 @@ function waitCursor() {
 function unwaitCursor() {
     $("body").removeAttr("id");
 }
-
-
-function zoomTowards(amt, posX, posY, time, easingFn) {
-    var scale = Crafty.viewport._scale,
-            // current viewport center
-            centX = -Crafty.viewport._x + Crafty.viewport._width / 2 / scale,
-            centY = -Crafty.viewport._y + Crafty.viewport._height / 2 / scale,
-            // direction vector from viewport center to position
-            deltaX = posX - centX,
-            deltaY = posY - centY;
-
-
-
-    var f = amt - 1;
-
-    Crafty.viewport.zoom(amt, centX + deltaX * f, centY + deltaY * f, time, easingFn);
-}
-
-// don't restrict panning of viewport in any way
-///Crafty.viewport.clampToEntities = false;
-
-// enable panning of viewport by dragging the mouse
-
-
-// enable interactive map-like zooming by scrolling the mouse
-Crafty.bind("MouseWheelScroll", function (evt) {
-    if (Crafty._floor !== "city")
-        return;
-    var scale = Crafty.viewport._scale;
-
-    var newScale = Math.max(MAX_SCREEN_WIDTH / 2500, MAX_SCREEN_HEIGHT / 1400, scale * (1 + evt.direction * 0.05));
-
-
-    Crafty.viewport.pan(0, 0, 100);
-
-
-    Crafty.viewport.scale(Math.min(newScale, 2));
-    // zoomTowards(1 + evt.direction/10, evt.realX, evt.realY, 5);
-});
-
-
-
-
-Crafty.bind("KeyDown", function (e) {
-    if (e.key === Crafty.keys.ENTER) {
-
-        if ($(".enter").last().is(":disabled")) {
-            alert_box.failMessage(`لا يمكنك الهجوم على هذة الوحدة`);
-            return;
-        }
-
-
-        $(".enter").last().click();
-    }
-});
-/*
- $( window ).resize(function (){
- if(isMobile){
- MAX_SCREEN_WIDTH  = screen.height*2 ;
- MAX_SCREEN_HEIGHT = screen.width*2;
- 
- }else{
- MAX_SCREEN_WIDTH  = $("#menu-bar").width();
- MAX_SCREEN_HEIGHT = screen.height;
- }
- 
- 
- });
- */
-
-
-
-var uri_pattern = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/ig;
 const SAVE_URL = [
     "www.elkaisar.com",
     "elkaisar.com",

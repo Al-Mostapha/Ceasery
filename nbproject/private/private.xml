@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/battel.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/world/WorldMapBattel.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/animation.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/ws/lib/battel.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/world/world.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/world/WorldUnitIcon.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/alert.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/world/worldMap.js</file>
+            <file>file:/C:/xampp/htdocs/ceaserGame/js-10.55.85/base/LPreLoad.js</file>
+        </group>
     </open-files>
 </project-private>

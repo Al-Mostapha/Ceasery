@@ -2067,11 +2067,11 @@ function buildingClick(place, fast) {
     if (!fast) {
         fast = false;
     }
-    if (Crafty.onDragClickable) {
+    //if (Elkaisar.GE.CityScene.Scrolling.isBeingDragged) {
         if(place)
             Building.showDialogBox(place, fast);
 
-    }
+    //}
 }
 
 

@@ -1,14 +1,14 @@
-const WUT_EMPTY = 0; 
+const WUT_EMPTY = 0;
 
-const WUT_RIVER_LVL_1 =  1;
-const WUT_RIVER_LVL_2 =  2;
-const WUT_RIVER_LVL_3 =  3;
-const WUT_RIVER_LVL_4 =  4;
-const WUT_RIVER_LVL_5 =  5;
-const WUT_RIVER_LVL_6 =  6;
-const WUT_RIVER_LVL_7 =  7;
-const WUT_RIVER_LVL_8 =  8;
-const WUT_RIVER_LVL_9 =  9;
+const WUT_RIVER_LVL_1 = 1;
+const WUT_RIVER_LVL_2 = 2;
+const WUT_RIVER_LVL_3 = 3;
+const WUT_RIVER_LVL_4 = 4;
+const WUT_RIVER_LVL_5 = 5;
+const WUT_RIVER_LVL_6 = 6;
+const WUT_RIVER_LVL_7 = 7;
+const WUT_RIVER_LVL_8 = 8;
+const WUT_RIVER_LVL_9 = 9;
 const WUT_RIVER_LVL_10 = 10;
 
 const WUT_BUSY_UNIT = 12;
@@ -47,59 +47,59 @@ const WUT_WOODS_LVL_8 = 57;
 const WUT_WOODS_LVL_9 = 58;
 const WUT_WOODS_LVL_10 = 59;
 
-const WUT_CITY_LVL_0 = 60; 
-const WUT_CITY_LVL_1 = 61; 
-const WUT_CITY_LVL_2 = 62; 
+const WUT_CITY_LVL_0 = 60;
+const WUT_CITY_LVL_1 = 61;
+const WUT_CITY_LVL_2 = 62;
 const WUT_CITY_LVL_3 = 63;
 
 const WUT_MONAWRAT = 70;
 
-const WUT_CAMP_BRITONS  = 71;
-const WUT_CAMP_REICH    = 72;
-const WUT_CAMP_ASIANA   = 73;
-const WUT_CAMP_GAULS    = 74;
-const WUT_CAMP_MACEDON  = 75;
+const WUT_CAMP_BRITONS = 71;
+const WUT_CAMP_REICH = 72;
+const WUT_CAMP_ASIANA = 73;
+const WUT_CAMP_GAULS = 74;
+const WUT_CAMP_MACEDON = 75;
 const WUT_CAMP_HISPANIA = 76;
-const WUT_CAMP_ITALIA   = 77;
-const WUT_CAMP_PARTHIA  = 78;
+const WUT_CAMP_ITALIA = 77;
+const WUT_CAMP_PARTHIA = 78;
 const WUT_CAMP_CARTHAGE = 79;
-const WUT_CAMP_EGYPT    = 80;
+const WUT_CAMP_EGYPT = 80;
 
 
 
-const WUT_FRONT_SQUAD    = 81;
-const WUT_FRONT_BAND     = 82;
+const WUT_FRONT_SQUAD = 81;
+const WUT_FRONT_BAND = 82;
 const WUT_FRONT_SQUADRON = 83;
 const WUT_FRONT_DIVISION = 84;
 
 
-const WUT_ARMY_LIGHT_SQUAD     = 85;
-const WUT_ARMY_LIGHT_BAND      = 86;
-const WUT_ARMY_LIGHT_SQUADRON  = 87;
-const WUT_ARMY_LIGHT_DIVISION  = 88;
+const WUT_ARMY_LIGHT_SQUAD = 85;
+const WUT_ARMY_LIGHT_BAND = 86;
+const WUT_ARMY_LIGHT_SQUADRON = 87;
+const WUT_ARMY_LIGHT_DIVISION = 88;
 
-const WUT_ARMY_HEAVY_SQUAD    = 89;
-const WUT_ARMY_HEAVY_BAND     = 90;
+const WUT_ARMY_HEAVY_SQUAD = 89;
+const WUT_ARMY_HEAVY_BAND = 90;
 const WUT_ARMY_HEAVY_SQUADRON = 91;
 const WUT_ARMY_HEAVY_DIVISION = 92;
 
-const WUT_GUARD_SQUAD    = 93;
-const WUT_GUARD_BAND     = 94;
+const WUT_GUARD_SQUAD = 93;
+const WUT_GUARD_BAND = 94;
 const WUT_GUARD_SQUADRON = 95;
 const WUT_GUARD_DIVISION = 96;
 
 const WUT_BRAVE_THUNDER = 97;
 
-const  WUT_GANG    = 98;
-const  WUT_MUGGER  = 99;
-const  WUT_THIEF   = 100;
+const  WUT_GANG = 98;
+const  WUT_MUGGER = 99;
+const  WUT_THIEF = 100;
 
 /* CARTAGE */
 
-const WUT_CARTHAGE_GANG    = 101;
-const WUT_CARTHAGE_TEAMS   = 102;
-const WUT_CARTHAGE_REBELS  = 103;
-const WUT_CARTHAGE_FORCES  = 104;
+const WUT_CARTHAGE_GANG = 101;
+const WUT_CARTHAGE_TEAMS = 102;
+const WUT_CARTHAGE_REBELS = 103;
+const WUT_CARTHAGE_FORCES = 104;
 const WUT_CARTHAGE_CAPITAL = 105;
 
 
@@ -112,8 +112,8 @@ const WUT_ARMY_CAPITAL_F = 155;
 
 
 const WUT_ARENA_CHALLANGE = 175;
-const WUT_ARENA_DEATH     = 176;
-const WUT_ARENA_GUILD     = 177;
+const WUT_ARENA_DEATH = 176;
+const WUT_ARENA_GUILD = 177;
 
 
 const WUT_QUEEN_CITY_A = 180;
@@ -135,459 +135,449 @@ const WUT_WOLF_STATUE_C = 205;
 
 
 const WUT_CHALLAGE_FIELD_PLAYER = 220;
-const WUT_CHALLAGE_FIELD_TEAM   = 221;
-const WUT_CHALLAGE_FIELD_GUILD  = 222;
+const WUT_CHALLAGE_FIELD_TEAM = 221;
+const WUT_CHALLAGE_FIELD_GUILD = 222;
 const WUT_CHALLAGE_FIELD_SERVER = 223;
 
 const WUT_FIEGHT_FIELD_PLAYER = 224;
-const WUT_FIEGHT_FIELD_TEAM   = 225;
-const WUT_FIEGHT_FIELD_GUILD  = 226;
+const WUT_FIEGHT_FIELD_TEAM = 225;
+const WUT_FIEGHT_FIELD_GUILD = 226;
 const WUT_FIEGHT_FIELD_SERVER = 227;
 
-const WUT_SEA_CITY_1 = 231; 
-const WUT_SEA_CITY_2 = 232; 
-const WUT_SEA_CITY_3 = 233; 
-const WUT_SEA_CITY_4 = 234; 
-const WUT_SEA_CITY_5 = 235; 
-const WUT_SEA_CITY_6 = 236; 
+const WUT_SEA_CITY_1 = 231;
+const WUT_SEA_CITY_2 = 232;
+const WUT_SEA_CITY_3 = 233;
+const WUT_SEA_CITY_4 = 234;
+const WUT_SEA_CITY_5 = 235;
+const WUT_SEA_CITY_6 = 236;
 
 var WorldUnit = {
-    
-    isBarrary: function( unitType) {
-	return (Number(unitType) >= WUT_RIVER_LVL_1 && unitType <= WUT_WOODS_LVL_10);
+
+    isBarrary: function (unitType) {
+        return (Number(unitType) >= WUT_RIVER_LVL_1 && unitType <= WUT_WOODS_LVL_10);
     },
 
-    isRiver: function( unitType) {
-            return (Number(unitType) >=  WUT_RIVER_LVL_1 && unitType <= WUT_RIVER_LVL_10);
+    isRiver: function (unitType) {
+        return (Number(unitType) >= WUT_RIVER_LVL_1 && unitType <= WUT_RIVER_LVL_10);
     },
 
-    isEmpty: function( unitType) {
-            return (Number(unitType) === WUT_EMPTY);
+    isEmpty: function (unitType) {
+        return (Number(unitType) === WUT_EMPTY);
     },
 
-    isCity: function( unitType) {
-            return (Number(unitType) >= WUT_CITY_LVL_0 && unitType <= WUT_CITY_LVL_3);
+    isCity: function (unitType) {
+        return (Number(unitType) >= WUT_CITY_LVL_0 && unitType <= WUT_CITY_LVL_3);
     },
-    isCityLv0: function( unitType) {
+    isCityLv0: function (unitType) {
         return (Number(unitType) === WUT_CITY_LVL_0);
     },
-    isCityLv1: function( unitType) {
+    isCityLv1: function (unitType) {
         return (Number(unitType) === WUT_CITY_LVL_1);
     },
-    isCityLv2: function( unitType) {
-          return (Number(unitType) === WUT_CITY_LVL_2);
+    isCityLv2: function (unitType) {
+        return (Number(unitType) === WUT_CITY_LVL_2);
     },
-    isCityLv3: function( unitType) {
-          return (Number(unitType) === WUT_CITY_LVL_3);
-    },
-
-    isMountain: function( unitType) {
-            return (Number(unitType) >= WUT_MOUNT_LVL_1 && unitType <= WUT_MOUNT_LVL_10);
+    isCityLv3: function (unitType) {
+        return (Number(unitType) === WUT_CITY_LVL_3);
     },
 
-    isDesert: function( unitType) {
-            return (Number(unitType) >= WUT_DESERT_LVL_1 && unitType <= WUT_DESERT_LVL_10);
+    isMountain: function (unitType) {
+        return (Number(unitType) >= WUT_MOUNT_LVL_1 && unitType <= WUT_MOUNT_LVL_10);
     },
 
-    isWood: function( unitType) {
-            return (Number(unitType) >= WUT_WOODS_LVL_1 && unitType <= WUT_WOODS_LVL_10);
+    isDesert: function (unitType) {
+        return (Number(unitType) >= WUT_DESERT_LVL_1 && unitType <= WUT_DESERT_LVL_10);
     },
 
-    isMonawrat: function( unitType) {
-            return (Number(unitType) === WUT_MONAWRAT);
+    isWood: function (unitType) {
+        return (Number(unitType) >= WUT_WOODS_LVL_1 && unitType <= WUT_WOODS_LVL_10);
     },
 
-    isCamp: function( unitType) {
-            return (Number(unitType) >= WUT_CAMP_BRITONS && unitType <= WUT_CAMP_EGYPT);
+    isMonawrat: function (unitType) {
+        return (Number(unitType) === WUT_MONAWRAT);
     },
 
-    isAsianSquads: function( unitType) {
-            return (Number(unitType) >= WUT_FRONT_SQUAD && unitType <= WUT_BRAVE_THUNDER);
+    isCamp: function (unitType) {
+        return (Number(unitType) >= WUT_CAMP_BRITONS && unitType <= WUT_CAMP_EGYPT);
     },
 
-    isOneFRONT: function( unitType) {
-            return (Number(unitType) >= WUT_FRONT_SQUAD && unitType <= WUT_FRONT_DIVISION);
+    isAsianSquads: function (unitType) {
+        return (Number(unitType) >= WUT_FRONT_SQUAD && unitType <= WUT_BRAVE_THUNDER);
     },
 
-    isFrontSquad: function( unitType) {
-            return (Number(unitType) === WUT_FRONT_SQUAD);
+    isOneFRONT: function (unitType) {
+        return (Number(unitType) >= WUT_FRONT_SQUAD && unitType <= WUT_FRONT_DIVISION);
     },
 
-    isFrontBand: function( unitType) {
-            return (Number(unitType) === WUT_FRONT_BAND);
+    isFrontSquad: function (unitType) {
+        return (Number(unitType) === WUT_FRONT_SQUAD);
     },
 
-    isFrontSquadron: function( unitType) {
-            return (Number(unitType) === WUT_FRONT_SQUADRON);
+    isFrontBand: function (unitType) {
+        return (Number(unitType) === WUT_FRONT_BAND);
     },
 
-    isFrontDivision: function( unitType) {
-            return (Number(unitType) === WUT_FRONT_DIVISION);
+    isFrontSquadron: function (unitType) {
+        return (Number(unitType) === WUT_FRONT_SQUADRON);
     },
 
-    isOneLight: function( unitType) {
-            return (Number(unitType) >= WUT_ARMY_LIGHT_SQUAD && unitType <= WUT_ARMY_LIGHT_DIVISION);
+    isFrontDivision: function (unitType) {
+        return (Number(unitType) === WUT_FRONT_DIVISION);
     },
 
-    isLightSquad: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_LIGHT_SQUAD);
+    isOneLight: function (unitType) {
+        return (Number(unitType) >= WUT_ARMY_LIGHT_SQUAD && unitType <= WUT_ARMY_LIGHT_DIVISION);
     },
 
-    isLightBand: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_LIGHT_BAND);
+    isLightSquad: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_LIGHT_SQUAD);
     },
 
-    isLightSquadron: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_LIGHT_SQUADRON);
+    isLightBand: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_LIGHT_BAND);
     },
 
-    isLightDivision: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_LIGHT_DIVISION);
+    isLightSquadron: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_LIGHT_SQUADRON);
     },
 
-    isOneHeavy: function( unitType) {
-            return (Number(unitType) >= WUT_ARMY_HEAVY_SQUAD && unitType <= WUT_ARMY_HEAVY_DIVISION);
+    isLightDivision: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_LIGHT_DIVISION);
     },
 
-    isHeavySquad: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_HEAVY_SQUAD);
+    isOneHeavy: function (unitType) {
+        return (Number(unitType) >= WUT_ARMY_HEAVY_SQUAD && unitType <= WUT_ARMY_HEAVY_DIVISION);
     },
 
-    isHeavyBand: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_HEAVY_SQUAD);
+    isHeavySquad: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_HEAVY_SQUAD);
     },
 
-    isHeavySquadron: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_HEAVY_SQUADRON);
+    isHeavyBand: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_HEAVY_SQUAD);
     },
 
-    isHeavyDivision: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_HEAVY_DIVISION);
+    isHeavySquadron: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_HEAVY_SQUADRON);
     },
 
-    isOneGuard: function( unitType) {
-            return (Number(unitType) >= WUT_GUARD_SQUAD && unitType <= WUT_GUARD_DIVISION);
+    isHeavyDivision: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_HEAVY_DIVISION);
     },
 
-    isGuardSquad: function( unitType) {
-            return (Number(unitType) === WUT_GUARD_SQUAD);
+    isOneGuard: function (unitType) {
+        return (Number(unitType) >= WUT_GUARD_SQUAD && unitType <= WUT_GUARD_DIVISION);
     },
 
-    isGuardBand: function( unitType) {
-            return (Number(unitType) === WUT_GUARD_BAND);
+    isGuardSquad: function (unitType) {
+        return (Number(unitType) === WUT_GUARD_SQUAD);
     },
 
-    isGuardSquadron: function( unitType) {
-            return (Number(unitType) === WUT_GUARD_SQUADRON);
+    isGuardBand: function (unitType) {
+        return (Number(unitType) === WUT_GUARD_BAND);
     },
 
-    isGuardDivision: function( unitType) {
-            return (Number(unitType) === WUT_GUARD_DIVISION);
+    isGuardSquadron: function (unitType) {
+        return (Number(unitType) === WUT_GUARD_SQUADRON);
     },
 
-    isBraveThunder: function( unitType) {
-            return (Number(unitType) === WUT_BRAVE_THUNDER);
+    isGuardDivision: function (unitType) {
+        return (Number(unitType) === WUT_GUARD_DIVISION);
     },
 
-    isGangStar: function( unitType) {
-            return (Number(unitType) >= WUT_GANG && unitType <= WUT_THIEF);
+    isBraveThunder: function (unitType) {
+        return (Number(unitType) === WUT_BRAVE_THUNDER);
     },
 
-    isGang: function( unitType) {
-            return (Number(unitType) === WUT_GANG);
+    isGangStar: function (unitType) {
+        return (Number(unitType) >= WUT_GANG && unitType <= WUT_THIEF);
     },
 
-    isMugger: function( unitType) {
-            return (Number(unitType) === WUT_MUGGER);
+    isGang: function (unitType) {
+        return (Number(unitType) === WUT_GANG);
     },
 
-    isThiefs: function( unitType) {
-            return (Number(unitType) === WUT_THIEF);
+    isMugger: function (unitType) {
+        return (Number(unitType) === WUT_MUGGER);
     },
 
-    isCarthagianArmies: function( unitType) {
-            return (Number(unitType) >= WUT_CARTHAGE_GANG && unitType <= WUT_CARTHAGE_CAPITAL);
+    isThiefs: function (unitType) {
+        return (Number(unitType) === WUT_THIEF);
     },
 
-    isCarthasianGang: function( unitType) {
-            return (Number(unitType) === WUT_CARTHAGE_GANG);
+    isCarthagianArmies: function (unitType) {
+        return (Number(unitType) >= WUT_CARTHAGE_GANG && unitType <= WUT_CARTHAGE_CAPITAL);
     },
 
-    isCarthageTeams: function( unitType) {
-            return (Number(unitType) === WUT_CARTHAGE_TEAMS);
+    isCarthasianGang: function (unitType) {
+        return (Number(unitType) === WUT_CARTHAGE_GANG);
     },
 
-    isCarthageRebals: function( unitType) {
-            return (Number(unitType) === WUT_CARTHAGE_REBELS);
+    isCarthageTeams: function (unitType) {
+        return (Number(unitType) === WUT_CARTHAGE_TEAMS);
     },
 
-    isCarthageForces: function( unitType) {
-            return (Number(unitType) === WUT_CARTHAGE_FORCES);
+    isCarthageRebals: function (unitType) {
+        return (Number(unitType) === WUT_CARTHAGE_REBELS);
     },
 
-    isCarthageCapital: function( unitType) {
-            return (Number(unitType) === WUT_CARTHAGE_CAPITAL);
+    isCarthageForces: function (unitType) {
+        return (Number(unitType) === WUT_CARTHAGE_FORCES);
     },
 
-    isArmyCapital: function( unitType) {
-            return (Number(unitType) >= WUT_ARMY_CAPITAL_A && unitType <= WUT_ARMY_CAPITAL_F);
+    isCarthageCapital: function (unitType) {
+        return (Number(unitType) === WUT_CARTHAGE_CAPITAL);
     },
 
-    isArmyCapitalA: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_A);
+    isArmyCapital: function (unitType) {
+        return (Number(unitType) >= WUT_ARMY_CAPITAL_A && unitType <= WUT_ARMY_CAPITAL_F);
     },
 
-    isArmyCapitalB: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_B);
+    isArmyCapitalA: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_A);
     },
 
-    isArmyCapitalC: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_C);
+    isArmyCapitalB: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_B);
     },
 
-    isArmyCapitalD: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_D);
+    isArmyCapitalC: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_C);
     },
 
-    isArmyCapitalE: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_E);
+    isArmyCapitalD: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_D);
     },
 
-    isArmyCapitalF: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_F);
+    isArmyCapitalE: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_E);
     },
 
-    isQueenCity: function( unitType) {
-            return (Number(unitType) >= WUT_QUEEN_CITY_A && unitType <= WUT_QUEEN_CITY_C);
+    isArmyCapitalF: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_F);
     },
 
-    isQueenCityS: function( unitType) {
-            return (Number(unitType) === WUT_QUEEN_CITY_A);
+    isQueenCity: function (unitType) {
+        return (Number(unitType) >= WUT_QUEEN_CITY_A && unitType <= WUT_QUEEN_CITY_C);
     },
 
-    isQueenCityM: function( unitType) {
-            return (Number(unitType) === WUT_QUEEN_CITY_B);
+    isQueenCityS: function (unitType) {
+        return (Number(unitType) === WUT_QUEEN_CITY_A);
     },
 
-    isQueenCityH: function( unitType) {
-            return (Number(unitType) === WUT_QUEEN_CITY_C);
+    isQueenCityM: function (unitType) {
+        return (Number(unitType) === WUT_QUEEN_CITY_B);
     },
 
-    isRepelCastle: function( unitType) {
-            return (Number(unitType) >= WUT_REPLE_CASTLE_A && unitType <= WUT_REPLE_CASTLE_C);
+    isQueenCityH: function (unitType) {
+        return (Number(unitType) === WUT_QUEEN_CITY_C);
     },
 
-    isRepelCastleS: function( unitType) {
-            return (Number(unitType) === WUT_REPLE_CASTLE_A);
+    isRepelCastle: function (unitType) {
+        return (Number(unitType) >= WUT_REPLE_CASTLE_A && unitType <= WUT_REPLE_CASTLE_C);
     },
 
-    isRepelCastleM: function( unitType) {
-            return (Number(unitType) === WUT_REPLE_CASTLE_B);
+    isRepelCastleS: function (unitType) {
+        return (Number(unitType) === WUT_REPLE_CASTLE_A);
     },
 
-    isRepelCastleH: function( unitType) {
-            return (Number(unitType) === WUT_REPLE_CASTLE_C);
+    isRepelCastleM: function (unitType) {
+        return (Number(unitType) === WUT_REPLE_CASTLE_B);
     },
 
-    isStatueWar: function( unitType) {
-            return (Number(unitType) >= WUT_WAR_STATUE_A && unitType <= WUT_WAR_STATUE_C);
+    isRepelCastleH: function (unitType) {
+        return (Number(unitType) === WUT_REPLE_CASTLE_C);
     },
 
-    isStatueWarS: function( unitType) {
-            return (Number(unitType) === WUT_WAR_STATUE_A);
+    isStatueWar: function (unitType) {
+        return (Number(unitType) >= WUT_WAR_STATUE_A && unitType <= WUT_WAR_STATUE_C);
     },
 
-    isStatueWarM: function( unitType) {
-            return (Number(unitType) === WUT_WAR_STATUE_B);
+    isStatueWarS: function (unitType) {
+        return (Number(unitType) === WUT_WAR_STATUE_A);
     },
 
-    isStatueWarH: function( unitType) {
-            return (Number(unitType) === WUT_WAR_STATUE_C);
+    isStatueWarM: function (unitType) {
+        return (Number(unitType) === WUT_WAR_STATUE_B);
     },
 
-    isStatueWalf: function( unitType) {
-            return (Number(unitType) >= WUT_WOLF_STATUE_A && unitType <= WUT_WOLF_STATUE_C);
+    isStatueWarH: function (unitType) {
+        return (Number(unitType) === WUT_WAR_STATUE_C);
     },
 
-    isStatueWalfS: function( unitType) {
-            return (Number(unitType) === WUT_WOLF_STATUE_A);
+    isStatueWalf: function (unitType) {
+        return (Number(unitType) >= WUT_WOLF_STATUE_A && unitType <= WUT_WOLF_STATUE_C);
     },
 
-    isStatueWalfM: function( unitType) {
-            return (Number(unitType) === WUT_WOLF_STATUE_B);
+    isStatueWalfS: function (unitType) {
+        return (Number(unitType) === WUT_WOLF_STATUE_A);
     },
 
-    isStatueWalfH: function( unitType) {
-            return (Number(unitType) === WUT_WOLF_STATUE_C);
+    isStatueWalfM: function (unitType) {
+        return (Number(unitType) === WUT_WOLF_STATUE_B);
     },
 
-    canHasGarrison: function( unitType) {
-            return (isCity( unitType) || isBarrary( unitType));
+    isStatueWalfH: function (unitType) {
+        return (Number(unitType) === WUT_WOLF_STATUE_C);
     },
 
-    isArena: function( unitType) {
-            return (Number(unitType) >= WUT_ARENA_CHALLANGE && unitType <= WUT_ARENA_GUILD);
+    canHasGarrison: function (unitType) {
+        return (isCity(unitType) || isBarrary(unitType));
     },
 
-    isArenaChallange: function( unitType) {
-            return (Number(unitType) === WUT_ARENA_CHALLANGE);
+    isArena: function (unitType) {
+        return (Number(unitType) >= WUT_ARENA_CHALLANGE && unitType <= WUT_ARENA_GUILD);
     },
-    isDominatable : function (unitType) {
+
+    isArenaChallange: function (unitType) {
+        return (Number(unitType) === WUT_ARENA_CHALLANGE);
+    },
+    isDominatable: function (unitType) {
         return WorldUnit['isQueenCity'](unitType) || WorldUnit['isRepelCastle'](unitType) || WorldUnit['isArmyCapital'](unitType);
     },
     'isSeaCity': function (unitType) {
         return Number(unitType) >= WUT_SEA_CITY_1 && unitType <= WUT_SEA_CITY_6;
     },
-    isArenaDeath: function( unitType) {
-            return (Number(unitType) === WUT_ARENA_DEATH);
+    isArenaDeath: function (unitType) {
+        return (Number(unitType) === WUT_ARENA_DEATH);
     },
 
-    isArenaGuild: function( unitType) {
-            return (Number(unitType) === WUT_ARENA_GUILD);
+    isArenaGuild: function (unitType) {
+        return (Number(unitType) === WUT_ARENA_GUILD);
     },
-    
-    getWorldUnit:function (x,y){
-        return Elkaisar.worldAllUnits[x*500 + Number(y)];
+
+    getWorldUnit: function (x, y) {
+        return Elkaisar.worldAllUnits[x * 500 + Number(y)];
     },
-    
-    
-    refreshUnitData: function (x , y){
-        
-        
+
+    refreshUnitData: function (x, y) {
+
+
         return  $.ajax({
-                    url: "api/world.php",
-                    data:{
-                        get_unit_map_data: true,
-                        x_coord: x, 
-                        y_coord: y
-                    },
-                    beforeSend: function (xhr) {
+            url: "api/world.php",
+            data: {
+                get_unit_map_data: true,
+                x_coord: x,
+                y_coord: y
+            },
+            beforeSend: function (xhr) {
 
-                    },
-                    success: function (data, textStatus, jqXHR) {
-                        if(isJson(data)){
-                            var jsonData = JSON.parse(data);
-                            WorldUnit.getWorldUnit(x, y).l = jsonData.l;
-                            WorldUnit.getWorldUnit(x, y).t = jsonData.t;
-                            WorldUnit.getWorldUnit(x, y).ut = jsonData.ut;
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
+            },
+            success: function (data, textStatus, jqXHR) {
+                if (isJson(data)) {
+                    var jsonData = JSON.parse(data);
+                    WorldUnit.getWorldUnit(x, y).l = jsonData.l;
+                    WorldUnit.getWorldUnit(x, y).t = jsonData.t;
+                    WorldUnit.getWorldUnit(x, y).ut = jsonData.ut;
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
 
-                    }
-                });
-        
+            }
+        });
+
     },
-    
-    
-     getCampFlage(x , y){
-         
+
+    getCampFlage(x, y) {
+
         x = Number(x);
         y = Number(y);
-        
+
         var Unit = WorldUnit.getWorldUnit(x, y);
         $flag = "";
-        if(Number(Unit.ut) === WUT_CAMP_GAULS){
+        if (Number(Unit.ut) === WUT_CAMP_GAULS) {
             $flag = "flag_france";
-        }else  if(Number(Unit.ut) === WUT_CAMP_ASIANA){
+        } else if (Number(Unit.ut) === WUT_CAMP_ASIANA) {
             $flag = "flag_magul";
-        }else  if(Number(Unit.ut) === WUT_CAMP_BRITONS){
+        } else if (Number(Unit.ut) === WUT_CAMP_BRITONS) {
             $flag = "flag_england";
-        }else  if(Number(Unit.ut) === WUT_CAMP_MACEDON){
+        } else if (Number(Unit.ut) === WUT_CAMP_MACEDON) {
             $flag = "flag_macdoni";
-        }else  if(Number(Unit.ut) === WUT_CAMP_ITALIA){
+        } else if (Number(Unit.ut) === WUT_CAMP_ITALIA) {
             $flag = "flag_roma";
-        }else  if(Number(Unit.ut) === WUT_CAMP_HISPANIA){
+        } else if (Number(Unit.ut) === WUT_CAMP_HISPANIA) {
             $flag = "flag_spain";
-        }else  if(Number(Unit.ut) === WUT_CAMP_PARTHIA){
-              $flag = "flag_greek";
-        }else  if(Number(Unit.ut) === WUT_CAMP_EGYPT){
+        } else if (Number(Unit.ut) === WUT_CAMP_PARTHIA) {
+            $flag = "flag_greek";
+        } else if (Number(Unit.ut) === WUT_CAMP_EGYPT) {
             $flag = "flag_egypt";
-        }else  if(Number(Unit.ut) === WUT_CAMP_CARTHAGE){
+        } else if (Number(Unit.ut) === WUT_CAMP_CARTHAGE) {
             $flag = "flag_cartaga";
-        }else  if(Number(Unit.ut) === WUT_CAMP_REICH){
+        } else if (Number(Unit.ut) === WUT_CAMP_REICH) {
             $flag = "flag_germany";
-        } 
-            
-            return $flag;
-        
-    },
-    
-    refreshUnitView(x ,y){
-        
-        
-        var entite = this.getWorldUnit(x ,y);
-        if(!entite.entite){
-            return ;
         }
-        entite.on_map = false;
-        entite.entite.destroy();
-        delete(entite.entite);
+
+        return $flag;
+
+    },
+
+    refreshUnitView(x, y) {
         
+        Elkaisar.World.Map.DeletUnit(Elkaisar.World.Map.realCoord(x), Elkaisar.World.Map.realCoord(y))
         addMapUnite({
-            x:entite.x,
-            y:entite.y
+            x: x,
+            y: y
         });
-        
+
     }
 };
 
 
 
-WorldUnit.WorldUnitRank = function (x,y){
-    
-    var unitType = Number(WorldUnit.getWorldUnit(x,y).ut);
+WorldUnit.WorldUnitRank = function (x, y) {
+
+    var unitType = Number(WorldUnit.getWorldUnit(x, y).ut);
     $.ajax({
-       
+
         url: `${API_URL}/api/AWorld/getWorldUnitRank`,
-        data:{
-            xCoord   : x,
-            yCoord   : y,
-            unitType : unitType,
-            token    : Elkaisar.Config.OuthToken,
-            server   : Elkaisar.Config.idServer
+        data: {
+            xCoord: x,
+            yCoord: y,
+            unitType: unitType,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
         type: 'GET',
         success: function (data, textStatus, jqXHR) {
-           
-            if(isJson(data)){
+
+            if (isJson(data)) {
                 var jsonData = JSON.parse(data);
-            }else{
+            } else {
                 alert(data);
             }
-            var icon = ["1st","2nd","3rd","4th","5th"];
-            
+            var icon = ["1st", "2nd", "3rd", "4th", "5th"];
+
             var list = "";
             var name = "";
             var guild = "";
             var duration = "";
             var innerList = "";
-            
-            for(var iii = 0; iii < 5; iii++){
-                
-                if(jsonData[iii]){
-                    
+
+            for (var iii = 0; iii < 5; iii++) {
+
+                if (jsonData[iii]) {
+
                     name = jsonData[iii].PlayerName || jsonData[iii].GuildName;
                     guild = jsonData[iii].GuildName === "NULL" ? "---" : jsonData[iii].GuildName;
-                    duration = `${Math.floor(jsonData[iii].totalDuration/60)}د ${jsonData[iii].totalDuration%60} ث`;
-                   
-                }else{
-                   
+                    duration = `${Math.floor(jsonData[iii].totalDuration / 60)}د ${jsonData[iii].totalDuration % 60} ث`;
+
+                } else {
+
                     name = "";
                     guild = "";
                     duration = "";
-                    
+
                 }
-                
-                if(WorldUnit.isArenaGuild(unitType)){
-                    
+
+                if (WorldUnit.isArenaGuild(unitType)) {
+
                     innerList = `   <div class="td_1" style="width: 30%">
                                         <div class="rank-image" style="background-image: url(images/number/${icon[iii]}.png)"></div>
                                     </div>
                                     <div class="td_1" style="width: 40%">${name}</div>
                                     <div class="td_1 rtl font-2"  style="width: 30%">${duration}</div>`;
-                }else{
-                    
+                } else {
+
                     innerList = `<div class="td_1" style="width: 20%">
                                     <div class="rank-image" style="background-image: url(images/number/${icon[iii]}.png)"></div>
                                 </div>
@@ -596,95 +586,94 @@ WorldUnit.WorldUnitRank = function (x,y){
                                 <div class="td_1 rtl font-2"  style="width: 20%">${duration}</div>`;
 
                 }
-                
+
                 list += `<div class="tr">
                             ${innerList}
                         </div>`;
-                
+
             }
-            
+
             var content = ` <div class="unit-with-rank">
                         
                                 <div class="rank-list">
 
                                     <div class="inner_nav">
                                         ${
-                                            WorldUnit.isArenaGuild(unitType) ? 
-                                            `<div class="td_1 font-2" style="width:30%">التصنيف</div>
+                    WorldUnit.isArenaGuild(unitType) ?
+                    `<div class="td_1 font-2" style="width:30%">التصنيف</div>
                                             <div class="td_1 font-2" style="width: 40%">${Translate.Button.Chat.League[UserLag.language]}</div>
-                                            <div class="td_1 font-2" style="width: 30%">المدة</div>` 
-                                        : 
-                                                
-                                            `<div class="td_1 font-2" style="width:20%">التصنيف</div>
+                                            <div class="td_1 font-2" style="width: 30%">المدة</div>`
+                    :
+                    `<div class="td_1 font-2" style="width:20%">التصنيف</div>
                                             <div class="td_1 font-2" style="width: 30%">الملك</div>
                                             <div class="td_1 font-2" style="width: 30%">${Translate.Button.Chat.League[UserLag.language]}</div>
                                             <div class="td_1 font-2" style="width: 20%">المدة</div>`
-            
-                                        }
+
+                    }
                                     </div>
                                     ${list}
                                 </div>
                             </div>`;
-            
-            
-           $(".unit-with-rank").replaceWith(content);
+
+
+            $(".unit-with-rank").replaceWith(content);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            
+
         }
-        
+
     });
-    
+
 };
 
-$(document).on("click" , "#new-city-confirm button" , function (){
-    
-   var city_new_name = $("#new-city-name").val();
-   var xCoord = $(this).attr("data-x-coord");
-   var yCoord = $(this).attr("data-y-coord");
-   
-    if(city_new_name.length < 1){
+$(document).on("click", "#new-city-confirm button", function () {
+
+    var city_new_name = $("#new-city-name").val();
+    var xCoord = $(this).attr("data-x-coord");
+    var yCoord = $(this).attr("data-y-coord");
+
+    if (city_new_name.length < 1) {
         alert_box.confirmMessage("لا يمكنك ترك اسم المدينة خالى ");
-        return ;
+        return;
     }
-    
-    alert_box.confirmDialog("تأكيد  بناء مدينة " , function (){
-       
-       var idCity = Elkaisar.CurrentCity.City.id_city;
-       
-        if(canBuildNewCity(xCoord, yCoord)){
-            
+
+    alert_box.confirmDialog("تأكيد  بناء مدينة ", function () {
+
+        var idCity = Elkaisar.CurrentCity.City.id_city;
+
+        if (canBuildNewCity(xCoord, yCoord)) {
+
             $.ajax({
                 url: `${API_URL}/api/AWorld/BuildNewCity`,
-                data:{
-                    idCity   : idCity,
-                    xCoord   : xCoord,
-                    yCoord   : yCoord,
-                    CityName : city_new_name,
-                    token    : Elkaisar.Config.OuthToken,
-                    server   : Elkaisar.Config.idServer
+                data: {
+                    idCity: idCity,
+                    xCoord: xCoord,
+                    yCoord: yCoord,
+                    CityName: city_new_name,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
                 },
                 type: 'POST',
                 success: function (data, textStatus, jqXHR) {
-                    
-                    if(!Elkaisar.LBase.isJson(data))
+
+                    if (!Elkaisar.LBase.isJson(data))
                         return Elkaisar.LBase.Error(data);
-                    
+
                     var json_data = JSON.parse(data);
-                    
-                    
-                        
+
+
+
                     var json_data = JSON.parse(data);
-                    if(json_data.state === "error_0"){
+                    if (json_data.state === "error_0") {
 
-                    }else if(json_data.state === "error_1"){
+                    } else if (json_data.state === "error_1") {
 
-                    }else if(json_data.state === "error_2"){
+                    } else if (json_data.state === "error_2") {
 
-                    }else if(json_data.state === "ok") {
+                    } else if (json_data.state === "ok") {
 
-                        if(json_data.City){
-                            
+                        if (json_data.City) {
+
                             Elkaisar.DPlayer.City[json_data.City.id_city].City = json_data.City;
                             Elkaisar.City.refreshBtnList();
                             $(".close_RB img").click();
@@ -693,33 +682,33 @@ $(document).on("click" , "#new-city-confirm button" , function (){
                             $("#nav-btn button").click();
 
 
-                        }else{
+                        } else {
                             alert("error add city");
                         }
 
 
-                    }else{
+                    } else {
 
                         alert(data);
 
                     }
-                        
-                 
-                    
+
+
+
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    
+
                 }
             });
 
 
-        }else{
+        } else {
 
             alert_box.failMessage("لا يمكنك  بناء مدينة جديدة");
-            return ;
+            return;
 
         }
 
-    }); 
-    
+    });
+
 });

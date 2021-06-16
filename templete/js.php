@@ -53,9 +53,12 @@ if(!defined("DEV_MODE")){
         <script type="text/javascript" src="js<?=JS_VERSION?>/ws/lib/Base.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/worldUnit.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/worldCampBox.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/world/WorldUnitIcon.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/world/WorldUnitArmy.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/worldUtil.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/worldUnitPrize.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/worldMap.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/world/WorldMapBattel.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/world.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/battel.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/guild.js"></script>

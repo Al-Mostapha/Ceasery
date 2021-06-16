@@ -1,5 +1,33 @@
 Elkaisar.WsLib.Base = {};
 
+
+WS_utile.Reqs = {};
+WS_utile.CurReqId = 0;
+WS_utile.Ack = function (Req) {
+    
+    var Cu = WS_utile.CurReqId;
+    Req.data.ReqId = Cu;
+    ws.send(JSON.stringify({
+        'url': Req.url,
+        'data': Req.data
+    }));
+
+    WS_utile.Reqs[Cu] = {
+        callBack: Req.callBack
+    };
+    
+    WS_utile.CurReqId++;
+};
+
+
+Elkaisar.WsLib.Base.Ack = function (data){
+    if(!WS_utile.Reqs[data.ReqId])
+        return ;
+    if($.isFunction(WS_utile.Reqs[data.ReqId].callBack))
+        WS_utile.Reqs[data.ReqId].callBack(data.Res);
+};
+
+
 Elkaisar.WsLib.Base.CrossReq = function (data)
 {
 

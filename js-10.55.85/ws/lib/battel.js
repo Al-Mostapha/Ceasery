@@ -2,6 +2,7 @@ Elkaisar.WsLib.Battel = {};
 
 Elkaisar.WsLib.World = {};
 Elkaisar.WsLib.World.Fire = {};
+Elkaisar.WsLib.World.Battel = {};
 
 Elkaisar.WsLib.World.ResetLvl = function (data){
     for (var ii in Elkaisar['worldAllUnits']) {
@@ -15,11 +16,27 @@ Elkaisar.WsLib.World.ResetLvl = function (data){
 
 
 
+Elkaisar.WsLib.World.Battel.Started = function (data)
+{
+    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord).entite;
+    Animation.fireWorldUnit(data.xCoord, data.yCoord);
+    Elkaisar.World.MapBattel.newBattel(data);
+    
+}
+
+
+Elkaisar.WsLib.World.Battel.Ended = function (data)
+{
+    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord).entite;
+    Elkaisar.World.MapBattel.removeBattel(data);
+    
+}
+
 Elkaisar.WsLib.World.Fire.On = function (data)
 {
     var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord).entite;
     world_unit.__state = 1;
-    Animation.fireWorldUnit({x_coord: data.xCoord, y_coord: data.yCoord});
+    Animation.fireWorldUnit(data.xCoord,data.yCoord);
     
 }
 
@@ -148,7 +165,7 @@ Elkaisar.WsLib.Battel.Spy.Notif = function (data){
 
 Elkaisar.WsLib.Battel.garrisonFire = function (data){
     
-    Animation.fireWorldUnit({x_coord: data.x_to , y_coord: data.y_to});
+    Animation.fireWorldUnit(data.x_to ,  data.y_to);
     PLAYER_NOTIF.battel_number =  Number(PLAYER_NOTIF.battel_number) + 1;
     Fixed.refreshPlayerNotif();
 };
@@ -162,7 +179,6 @@ Elkaisar.WsLib.Battel.garrisonCityAdded = function (data){
         if($("#dialg_box .nav_bar .left-nav .selected").attr("head_title") === "city_garrison"){
             $("#palace_content").html( Palace.cityGarrison($("#city-garrison-list .tr:first-child").data("offset")));
         }
-
         alert_box.systemChatMessage("تم استقبال حراس الى مدينتك");
     });
 };

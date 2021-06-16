@@ -361,183 +361,72 @@ function fire_attack_animation()
 
 }
 var WORLD_NUIT_ON_FIRE = [];
-Animation.fireWorldUnit = function (fire_unit) {
 
 
-    var world_unit = WorldUnit.getWorldUnit(fire_unit.x_coord, fire_unit.y_coord);
-    if (!world_unit.entite || $.isEmptyObject(world_unit.entite)) {
+Animation.fireWorldUnit = function (xCoord, yCoord) {
+
+
+    var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+    
+    if (!Unit.entite || $.isEmptyObject(Unit.entite)) {
         return;
     }
+    
+    if(Unit.UnitFire && Unit.UnitFire.length > 0)
+        return ;
+    Unit.UnitFire = [];
 
-    var x = world_unit.entite._x;
-    var y = world_unit.entite._y;
-    var z = world_unit.entite._z;
+    const x = Elkaisar.World.Map.posX(xCoord, yCoord);
+    const y = Elkaisar.World.Map.posY(xCoord, yCoord);
+    const z = Elkaisar.World.Map.posZ(xCoord, yCoord);
+    const lvl = Unit.l;
+    const type = Unit.ut;
+    const Scene = Elkaisar.GE.WorldScene;
 
-    var lvl = world_unit.l;
-    var type = world_unit.ut;
-
-    if (WorldUnit.isRiver(type)) {
+    if (WorldUnit.isRiver(type)) 
         return;
-    }
-    if (world_unit.entite.__has_fire) {
+    if (Unit.entite.data.get("HasFire")) 
         return;
-    }
+    
 
     if (WorldUnit.isBarrary(type) && lvl < 4 || WorldUnit.isGangStar(type)) {
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 52, y: y + 24, z: z}));
+        Unit.UnitFire[0] = Scene.add.sprite(x + 52, y + 24, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
     } else if (WorldUnit.isBarrary(type)) {
-
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL, worldEnt , fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 32, y: y + 16, z: z - 1}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 72, y: y + 16, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 52, y: y + 42, z: z}));
-
-
+        
+        Unit.UnitFire[0] = Scene.add.sprite(x + 32, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 72, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 52, y + 42, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        
     } else if (WorldUnit.isCityLv1(type)) {
-
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 42, y: y + 12, z: z - 1}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 75, y: y + 20, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 12, y: y + 20, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 46, y: y + 42, z: z}));
+        
+        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 75, y + 20, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 20, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 46, y + 42, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        
     } else if (WorldUnit.isCityLv2(type)) {
-
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 42, y: y, z: z - 1}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 80, y: y + 16, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 12, y: y + 12, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 52, y: y + 30, z: z}));
+        
+        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y     , "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 80, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 52, y + 30, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        
     } else if (WorldUnit.isCityLv3(type)) {
+        
+        Unit.UnitFire[0] = Scene.add.sprite(x + 48, y - 10, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 88, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 8 , y + 8 , "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 60, y + 32, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
 
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [5, 0], [6, 0], [7, 0], [0, 0], [1, 0], [2, 0], [3, 0], [4, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 48, y: y - 10, z: z - 1}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL, worldEnt , fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 88, y: y + 12, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [0, 0], [1, 0], [2, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 8, y: y + 8, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 60, y: y + 32, z: z}));
     } else {
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 42, y: y, z: z - 1}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL, worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 80, y: y + 16, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL, worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 12, y: y + 12, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL, worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 52, y: y + 30, z: z}));
+        
+        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y     , "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 80, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 52, y + 30, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
     }
 
-    world_unit.entite.__has_fire = true;
+    Unit.entite.data.set("HasFire", true);
 
 };
 
@@ -549,116 +438,56 @@ Elkaisar.Animation.cityFlagProp = {
 
 Animation.cityFlag = function () {
 
-    Crafty("WorldUnit").each(function (index) {
-
-        var world_unit = WorldUnit.getWorldUnit(this.coord_x, this.coord_y);
-
-        if (!$.isEmptyObject(world_unit.CityFlagEntite)) {
+    Elkaisar.GE.WorldScene.children.list.forEach(function (El) {
+        if (!El.data)
             return;
-        }
-
-        var x = Elkaisar.World.Map.posX(this.coord_x, this.coord_y);
-        var y = Elkaisar.World.Map.posY(this.coord_x, this.coord_y);
-        var z = Elkaisar.World.Map.posZ(this.coord_x, this.coord_y);
-
-        var lvl = world_unit.l;
-
-        if (!WorldUnit.isCity(world_unit.ut)) {
-            return;
-        }
-
-
-
-
-        var flag_array = [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5]];
         
-        if (world_unit.idPlayer === Elkaisar.DPlayer.Player.id_player) {
-            flag_array = [[3, 0], [3, 1], [3, 2], [3, 3], [3, 4], [3, 5]];
-        } else if (!Elkaisar.Guild.GuildData || !world_unit.idGuild) {
-
-            flag_array = [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5]];
-
-        } else if (Number(Elkaisar.DPlayer.Player.id_guild) === Number(world_unit.idGuild)) {
-            console.log("SameGuild")
-            flag_array = [[2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5]];
-        } else {
+        const xCoord = El.data.get("xCoord");
+        const yCoord = El.data.get("yCoord");
+        const Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+        
+        if (Unit.CityFlagEntite)
+            return;
+        if (!WorldUnit.isCity(Unit.ut))
+            return;
+        const x = Elkaisar.World.Map.posX(xCoord, yCoord);
+        const y = Elkaisar.World.Map.posY(xCoord, yCoord);
+        const z = Elkaisar.World.Map.posZ(xCoord, yCoord);
+        const lvl = Unit.l;
+        let FramName = "CityFlag.Nut";
+        if (Unit.idPlayer == Elkaisar.DPlayer.Player.id_player)
+            FramName = "CityFlag.Min";
+        else if (!Unit.idGuild || !Elkaisar.Guild.GuildData)
+            FramName = "CityFlag.Nut";
+        else if (Unit.idGuild == Elkaisar.DPlayer.Player.id_guild)
+            FramName = "CityFlag.All";
+        else {
             for (var jjj in Elkaisar.Guild.Allay) {
-                if (Number(Elkaisar.Guild.Allay[jjj].idGuild) === Number(world_unit.idGuild)) {
+                if (Number(Elkaisar.Guild.Allay[jjj].idGuild) === Number(Unit.idGuild)) {
 
                     if (Number(Elkaisar.Guild.Allay[jjj].state) === 1) {
-                        flag_array = [[4, 0], [4, 1], [4, 2], [4, 3], [4, 4], [4, 5]];
+                        FramName = "CityFlag.Ene";
 
                     } else if (Number(Elkaisar.Guild.Allay[jjj].state) === 2) {
-                        flag_array = [[1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5]];
+                        FramName = "CityFlag.Fri";
                     }
                 }
             }
         }
 
+        let Pos = {x: 0, y: 0};
+        if (Number(Unit.ut) === WUT_CITY_LVL_0)
+            Pos = {x: x + 36, y: y + 50, z: z + 10};
+        else if (Number(Unit.ut) === WUT_CITY_LVL_1)
+            Pos = {x: x + 36, y: y + 50, z: z + 10};
+        else if (Number(Unit.ut) === WUT_CITY_LVL_2)
+            Pos = {x: x + 36, y: y + 50, z: z + 10};
+        else if (Number(Unit.ut) === WUT_CITY_LVL_3)
+            Pos = {x: x + 30, y: y + 45, z: z + 10};
+
+        Unit.CityFlagEntite = Elkaisar.GE.WorldScene.add.sprite(Pos.x, Pos.y, 'flagOverCity').setOrigin(0,0).play(FramName).setDepth(Pos.z);
 
 
-
-
-        if (Number(world_unit.ut) === WUT_CITY_LVL_0) {
-
-            world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
-                    .reel("city_flag", 650, flag_array)
-                    .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 50, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
-                    .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 38, w: 35, h: 20, avoidCss3dTransforms: true, z: 9 ** 9})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
-
-
-        } else if (Number(world_unit.ut) === WUT_CITY_LVL_1) {
-
-            world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
-                    .reel("city_flag", 650, flag_array)
-                    .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 50, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
-                    .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e15})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
-
-        } else if (Number(world_unit.ut) === WUT_CITY_LVL_2) {
-
-            world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
-                    .reel("city_flag", 650, flag_array)
-                    .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 50, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
-                    .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
-
-        } else if (Number(world_unit.ut) === WUT_CITY_LVL_3) {
-
-            world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
-                    .reel("city_flag", 650, flag_array)
-                    .animate("city_flag", -1)
-                    .attr({x: x + 30, y: y + 45, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
-                    .attach(Crafty.e('2D, Canvas, Text, stroke, worldEnt')
-                            .attr({x: x + 34, y: y + 60, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29})
-                            .text("" + world_unit.CityFlag)
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
-
-        } else {
-            console.log(world_unit)
-        }
     });
 
 

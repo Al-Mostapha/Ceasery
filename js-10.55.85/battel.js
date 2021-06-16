@@ -38,28 +38,22 @@ speeds = [
 const BATTEL_JOIN_ATTACK = 2;
 const BATTEL_JOIN_DEFENCE = 3;
 
-$(document).on("click", "#footer_bar li", function () {
 
-    var x_coord = parseInt($("#unit_review").attr("x_coord"));
-    var y_coord = parseInt($("#unit_review").attr("y_coord"));
-    var type = parseInt($("#unit_review").attr("type"));
-    var lvl = parseInt($("#unit_review").attr("lvl"));
-    var battel_task = $(this).attr("data-type");
-    var world_unit = WorldUnit.getWorldUnit(x_coord, y_coord).entite;
-
-
-
-    if (Number(battel_task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY) {
+Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
+   
+   var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+   
+    if (Number(BattelTask) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY) {
 
         buildingClick("market");
         $(".nav_bar .left-nav li[head_title=transport_resources]").click();
-        $("#transport-distin input[data-coord=x]").val(WorldCurrentUnit.coord_x);
-        $("#transport-distin input[data-coord=y]").val(WorldCurrentUnit.coord_y);
+        $("#transport-distin input[data-coord=x]").val(xCoord);
+        $("#transport-distin input[data-coord=y]").val(yCoord);
         $(".close_RB img").trigger("click");
 
         return;
     }
-
+/*
     if (Number(Elkaisar.DPlayer.PlayerState.peace) - 12 * 60 * 60 > ($.now() / 1000)) {
         alert_box.failMessage("لا  يمكنك الهجوم و انت  فى حالة هدنة");
         return;
@@ -68,15 +62,15 @@ $(document).on("click", "#footer_bar li", function () {
 
         return;
     }
+*/
 
+    if (Number(BattelTask) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SPY) {
 
-    if (Number(battel_task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SPY) {
-
-        SPY.sendSpy(x_coord, y_coord);
+        SPY.sendSpy(xCoord, yCoord);
 
         return;
 
-    } else if (Number(battel_task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_ENTER_CITY) {
+    } else if (Number(BattelTask) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_ENTER_CITY) {
 
         $("#WorldCity").trigger("click");
         $(".close_RB img").trigger("click");
@@ -113,14 +107,14 @@ $(document).on("click", "#footer_bar li", function () {
     }
 
     var battel = {
-        x_coord: x_coord,
-        y_coord: y_coord,
-        ar_title: WorldUtil.tooltipHeader(x_coord, y_coord),
-        task: battel_task,
+        x_coord: xCoord,
+        y_coord: yCoord,
+        ar_title: WorldUtil.tooltipHeader(xCoord, yCoord),
+        task: BattelTask,
         task_title: "غزو",
-        time: 60,
-        type: type,
-        lvl: lvl
+        time : 60,
+        type : Unit.ut,
+        lvl  : Unit.l
     };
 
     var content = army.dialogBoxContent_forCamp(Elkaisar.CurrentHero, battel);
@@ -142,6 +136,18 @@ $(document).on("click", "#footer_bar li", function () {
 
     // close  samll box
     $(".close_RB img").trigger("click");
+    
+};
+
+$(document).on("click", "#footer_bar li", function () {
+
+    var xCoord = parseInt($("#unit_review").attr("x_coord"));
+    var yCoord = parseInt($("#unit_review").attr("y_coord"));
+    var BattelTask = $(this).attr("data-type");
+
+    Elkaisar.World.WorldMapIcon.Clicked(xCoord, yCoord, BattelTask);
+
+    
 
 });
 

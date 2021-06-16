@@ -1,0 +1,1404 @@
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 137
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\world.php
+            [line] => 138
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => 
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 3775
+    [GET_EMAIN_BARRY_DATA] => true
+    [id_player] => 3775
+    [token] => 150723-218451-703438-818160-394617
+)

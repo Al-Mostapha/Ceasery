@@ -442,7 +442,7 @@ Elkaisar.City.prepareCity = function (idCity)
 {
     Elkaisar.DPlayer.City[idCity] = {idCity: idCity};
 
-    if(Number(idCity) === Number(Elkaisar.Config.idCities[0]))
+    if (Number(idCity) === Number(Elkaisar.Config.idCities[0]))
         Elkaisar.CurrentCity = Elkaisar.City.getCity(idCity);
 
     Elkaisar.City.getCityJop(idCity).done(function (data) {
@@ -457,8 +457,17 @@ Elkaisar.City.prepareCity = function (idCity)
             Elkaisar.City.getCityBuilding(idCity).done(function () {
                 Elkaisar.City.getCityGarrison(idCity);
                 Elkaisar.Building.getJsonData().done(function () {
-                    if(Number(idCity) === Number(Elkaisar.Config.idCities[0])){
-                        Crafty.enterScene("city");
+                    if (Number(idCity) === Number(Elkaisar.Config.idCities[0])) {
+
+                        Elkaisar.GE.LoadingScene.scene.transition({
+                            target: "City",
+                            duration: 1000,
+                            remove: true,
+                            data: {
+                                idCity: 0
+                            }
+                        });
+
                         $("#loader-layer").remove();
                     }
                 });
@@ -494,6 +503,7 @@ Elkaisar.City.prepareCity = function (idCity)
 
 
 }
+
 $(document).on("PlayerReady", "html", function () {
 
 
@@ -785,7 +795,6 @@ var BuildingConstData = [
         sprit_name: "B11",
         hitArea: [147, 82, 78, 112, 17, 77, 23, 51, 84, 24, 138, 47]
     },
-
     {
         image: "images/city/palace.png", //palace 12 القصر 
         icon: "images/building/building13.jpg",
@@ -873,10 +882,9 @@ var BuildingConstData = [
         getTime: function (lvl) {
             return lvl * 3 * 60;
         },
-        hitArea: [701, 35, 7, 439, 93, 459, 703, 117],
         getHitArea: function () {
             if (Number(Elkaisar.City.getCity().BuildingLvl.wall) >= 10) {
-                return [625, 7, 580, 106, 542, 101, 404, 176, 365, 222, 337, 207, 312, 226, 300, 261, 255, 247, 7, 386, 7, 288, 231, 175, 223, 159, 328, 105, 351, 110, 522, 25, 509, 13, 525, 3];
+                return [510,3,1,256,5,388,576,104,609,11];
             } else if (Number(Elkaisar.City.getCity().BuildingLvl.wall) >= 8) {
                 return [598, 11, 588, 92, 9, 391, 7, 299, 267, 161, 259, 150, 295, 130, 323, 133, 560, 12];
             } else if (Number(Elkaisar.City.getCity().BuildingLvl.wall) >= 4) {
@@ -927,7 +935,8 @@ var BuildingConstData = [
         getTime: function (lvl) {
             return lvl * 3 * 60;
         },
-        hitArea: [160, 90, 87, 124, 17, 87, 18, 52, 97, 28, 155, 48]
+        hitArea: [160, 90, 87, 124, 17, 87, 18, 52, 97, 28, 155, 48],
+        sprit_name: "market",
 
     },
 
@@ -1172,92 +1181,7 @@ Elkaisar.Building.getJsonData = function () {
 
 
 
-Crafty.defineScene("city", function () {
 
-    var floor_width = 2500;
-    var floor_height = 1400;
-
-
-    Crafty._floor = "city";
-    Crafty.onDragClickable = true;
-
-    // Crafty.viewport.bounds = {min:{x:0, y:0}, max:{x:floor_width - window.innerWidth, y:floor_height - window.innerHeight}};
-
-
-    city_floor = Crafty.e("2D, Canvas, city_floor").attr({w: floor_width, h: floor_height, z: -1});
-
-
-
-    /*start draginig map*/
-    Crafty.addEvent(this, Crafty.stage.elem, "mousedown", function (e) {
-
-        if (e.button > 1)
-            return;
-
-        if (Crafty._floor !== "city")
-            return;
-
-
-        var base = {x: e.clientX, y: e.clientY};
-
-        Crafty.viewport.mouselook(true);
-
-        function scroll(e) {
-
-            Crafty("iso_text_left").each(function () {
-
-                this.attr({alpha: 1.0});
-
-            });
-
-        }
-        ;
-
-        Crafty.addEvent(this, Crafty.stage.elem, "mousemove", scroll);
-        Crafty.addEvent(this, Crafty.stage.elem, "mouseup", function () {
-            Crafty.removeEvent(this, Crafty.stage.elem, "mousemove", scroll);
-            setTimeout(function () {
-                Crafty.onDragClickable = true;
-            }, 500);
-            Crafty("iso_text_left").each(function () {
-                // hide building lable
-                this.attr({alpha: 0.0});
-
-            });
-        });
-    });
-
-
-
-    Crafty.viewport.bounds = {min: {x: 0, y: 0}, max: {x: floor_width, y: floor_height}};
-
-
-    Crafty.bind('UpdateFrame', function () {
-
-        if (Crafty.s('Keyboard').isKeyDown(Crafty.keys.LEFT_ARROW)) {
-            Crafty.viewport.x += 20;
-            Crafty.viewport._clamp();
-        } else if (Crafty.s('Keyboard').isKeyDown(Crafty.keys.RIGHT_ARROW)) {
-            Crafty.viewport.x -= 20;
-            Crafty.viewport._clamp();
-        } else if (Crafty.s('Keyboard').isKeyDown(Crafty.keys.UP_ARROW)) {
-            Crafty.viewport.y += 20;
-            Crafty.viewport._clamp();
-        } else if (Crafty.s('Keyboard').isKeyDown(Crafty.keys.DOWN_ARROW)) {
-            Crafty.viewport.y -= 20;
-            Crafty.viewport._clamp();
-        }
-    });
-
-
-
-
-
-    fillCityWithBuilding();
-    Crafty.viewport.centerOn(BuildingOnFloor.palace, 1);
-
-
-});
 
 
 
@@ -1299,14 +1223,7 @@ function MouseOutBuilding()
 function building_title(x, y, place)
 {
 
-
-    return Crafty.e("2D, DOM , iso_text_left , Text")
-            .attr({x: x + 90, y: y + 1.5 * Y_GRID, w: 60, h: 20, avoidCss3dTransforms: true, z: 100, alpha: 0.0})
-            .css({'direction': 'rtl'})
-            .text(BuildingConstData[Elkaisar.City.getCity().BuildingType[place]].title)
-            .textColor('white')
-            .textFont({size: '12px', weight: 'bold', lineHeight: "20px"})
-            .textAlign("center");
+    return  Elkaisar.GE.CityScene.add.text(x + 0.25 * X_GRID, y + 1.5 * Y_GRID, BuildingConstData[Elkaisar.City.getCity().BuildingType[place]].title, Elkaisar.GE.TextConfig);
 
 
 }
@@ -1328,19 +1245,164 @@ function building_lvl_lable(x, y, place)
         lable = "building_lvl_lable_2";
     }
 
-
-    return Crafty.e("2D, DOM , " + lable + " , " + place + "_b_l , Text")
-            .attr({x: x + 0.5 * X_GRID, y: y + 1 * Y_GRID, w: 30, h: 30, avoidCss3dTransforms: true, z: 100, alpha: alpha_})
-            .text(lvl)
-            .textColor('white')
-            .textFont({size: '12px', weight: 'bold'})
-            .textAlign("center");
-
+   
+    Elkaisar.GE.CityScene.add.text(x + 0.5 * X_GRID, y + 1 * Y_GRID, lvl, {
+        color: '#FFFFFF',
+        stroke: '#000000',
+        strokeThickness: 3,
+        fontStyle: "bold",
+        align: "center",
+        fontSize: 14,
+        fixedWidth: 30,
+        fixedHeight: 30
+    }).setOrigin(0, 0).setDepth(4);
+    
+    return Elkaisar.GE.CityScene.add.image(x + 0.5 * X_GRID, y + 1 * Y_GRID - 10, lable).setOrigin(0, 0).setDisplaySize(30, 30).setDepth(3);
 
 }
 
 var Check = true;
 
+Elkaisar.GE.AddCityBuilding = function (x, y, BuildingPlace) {
+    BuildingOnFloor[BuildingPlace] = Elkaisar.GE.CityScene.add.image(x, y, BuildingConstData[Elkaisar.City.getCity().BuildingType[BuildingPlace]].sprit_name).setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType[BuildingPlace]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+    .on("click", function () {
+        buildingClick(BuildingPlace);
+    })
+    .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+    .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    BuildingOnFloor[BuildingPlace].Lable = building_lvl_lable(x, y, BuildingPlace);
+    building_hammer_animate(BuildingPlace);
+    return BuildingOnFloor[BuildingPlace];
+};
+
+
+Elkaisar.GE.AddCityFixedBuilding = function () {
+    
+    BuildingOnFloor.palace = Elkaisar.GE.CityScene.add.image(1190, 545, "palace").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["palace"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
+        buildingClick("palace");
+    })
+    .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+    .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(1260, 580, "palace");
+    building_hammer_animate("palace");
+
+
+    BuildingOnFloor.wall = Elkaisar.GE.CityScene.add.image(0, 0, BuildingConstData[Elkaisar.City.getCity().BuildingType["wall"]].getSpriteName()).setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["wall"]].getHitArea()),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
+                buildingClick("wall");
+            })
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(1.75 * X_GRID, 2.5 * Y_GRID, "wall");
+    building_hammer_animate("wall");
+
+
+
+
+    BuildingOnFloor.seaport = Elkaisar.GE.CityScene.add.image(16 * X_GRID, 9.75 * Y_GRID, "seaport").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["seaport"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
+                buildingClick("seaport");
+            })
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(14 * X_GRID, 3.25 * Y_GRID, "seaport");
+    building_hammer_animate("seaport");
+
+
+    BuildingOnFloor.lighthouse = Elkaisar.GE.CityScene.add.image(15.5 * X_GRID, 5 * Y_GRID, "lighthouse").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["lighthouse"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
+                buildingClick("lighthouse");
+            })
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(14 * X_GRID, 3.25 * Y_GRID, "lighthouse");
+    building_hammer_animate("lighthouse");
+
+
+    BuildingOnFloor.farm = Elkaisar.GE.CityScene.add.image(12.75 * X_GRID, 14.75 * Y_GRID, "farm").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["farm"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
+                buildingClick("farm");
+            })
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(13.5 * X_GRID, 14.75 * Y_GRID, "farm");
+    building_hammer_animate("farm");
+
+
+
+    BuildingOnFloor.mine = Elkaisar.GE.CityScene.add.image(7.75 * X_GRID, 2.25 * Y_GRID, "mine").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["mine"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
+                buildingClick("mine");
+            })
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(8.5 * X_GRID, 3.25 * Y_GRID, "mine");
+    building_hammer_animate("mine");
+
+
+
+    BuildingOnFloor.stone = Elkaisar.GE.CityScene.add.image(11.5 * X_GRID, 5.5 * Y_GRID, "stone").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["stone"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
+                buildingClick("stone");
+            })
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(12.25 * X_GRID, 5.5 * Y_GRID, "stone");
+    building_hammer_animate("stone");
+
+
+    BuildingOnFloor.wood = Elkaisar.GE.CityScene.add.image(2 * X_GRID, 6.5 * Y_GRID, "wood").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["wood"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
+                buildingClick("wood");
+            })
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(2.25 * X_GRID, 6.25 * Y_GRID, "wood");
+    building_hammer_animate("wood");
+
+};
+Elkaisar.GE.TextConfig = {
+    color: '#FFFFFF',
+    stroke: '#000000',
+    strokeThickness: 3,
+    fontStyle: "bold",
+    align: "center",
+    fontSize: 14,
+    fixedWidth: 100,
+    fixedHeight: 24,
+    backgroundColor: "#000000",
+    padding:{
+       y: 5
+    }
+};
 function fillCityWithBuilding()
 {
     for (var prop in BuildingOnFloor) {
@@ -1349,565 +1411,47 @@ function fillCityWithBuilding()
     Crafty("hammer_start").each(function () {
         this.destroy();
     });
-    
-    if(!Elkaisar.City.getCity().BuildingType)
+
+    if (!Elkaisar.City.getCity().BuildingType)
     {
-        if(Check)
-            Elkaisar.City.getCityBuilding().done(function (){
+        if (Check)
+            Elkaisar.City.getCityBuilding().done(function () {
                 fillCityWithBuilding();
             });
         Check = false;
-        return ;
+        return;
     }
-    /*
-     *    PALACE building
-     */
-    BuildingOnFloor.palace = Crafty.e("2D, Canvas, palace , Mouse")
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["palace"]].hitArea)
-            .attr({x: 1190, y: 545, z: 1})
-            .bind("Click", function () {
-                buildingClick("palace");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(
-                    Crafty.e("2D, DOM , iso_text_left  , Text")
-                    .attr({x: 1350, y: 680, w: 90, h: 30, avoidCss3dTransforms: true, alpha: 0.0})
-                    .text(BuildingConstData[Elkaisar.City.getCity().BuildingType["palace"]].title)
-                    .textColor('white')
-                    .textFont({size: '14px', weight: 'bold', lineHeight: "30px"})
-                    .textAlign("center")
 
-                    )
-            .attach(building_lvl_lable(1260, 580, "palace"));
-    building_hammer_animate("palace");
 
+    Elkaisar.GE.AddCityFixedBuilding();
+    Elkaisar.GE.AddCityBuilding(14 * X_GRID, 3.25 * Y_GRID, "market");
+    Elkaisar.GE.AddCityBuilding(1780, 461, "light_house_1");
+    Elkaisar.GE.AddCityBuilding(1685, 506, "light_house_2");
+    Elkaisar.GE.AddCityBuilding(1587, 556, "light_house_3");
+    Elkaisar.GE.AddCityBuilding(1487, 603, "light_house_4");
+    Elkaisar.GE.AddCityBuilding(1792, 557, "light_house_5");
+    Elkaisar.GE.AddCityBuilding(1695, 609, "light_house_6");
+    Elkaisar.GE.AddCityBuilding(1595, 659, "light_house_7");
+    Elkaisar.GE.AddCityBuilding(1807, 663, "light_house_8");
+    Elkaisar.GE.AddCityBuilding(1702, 714, "light_house_9");
+    Elkaisar.GE.AddCityBuilding(1802, 775, "light_house_10");
+
+
+    Elkaisar.GE.AddCityBuilding(1353, 673, "under_palace_1");
+    Elkaisar.GE.AddCityBuilding(1249, 715, "under_palace_2");
+    Elkaisar.GE.AddCityBuilding(1145, 763, "under_palace_3");
+    Elkaisar.GE.AddCityBuilding(1458, 724, "under_palace_4");
+    Elkaisar.GE.AddCityBuilding(1353, 769, "under_palace_5");
+    Elkaisar.GE.AddCityBuilding(1246, 813, "under_palace_6");
+    Elkaisar.GE.AddCityBuilding(1568, 779, "under_palace_7");
+    Elkaisar.GE.AddCityBuilding(1464, 822, "under_palace_8");
+    Elkaisar.GE.AddCityBuilding(1352, 876, "under_palace_9");
+    Elkaisar.GE.AddCityBuilding(1674, 829, "under_palace_10");
+    Elkaisar.GE.AddCityBuilding(1565, 880, "under_palace_11");
+    Elkaisar.GE.AddCityBuilding(1457, 923, "under_palace_12");
+
+   
 
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_1"]].hitArea)
-            .attr({x: 1780, y: 461, z: 5})
-            .bind("Click", function () {
-                buildingClick("light_house_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1780, 461, "light_house_1"))
-            .attach(building_lvl_lable(1780, 461, "light_house_1"));
-    building_hammer_animate("light_house_1");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_2"]].hitArea)
-            .attr({x: 1685, y: 506, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1685, 506, "light_house_2"))
-            .attach(building_lvl_lable(1685, 506, "light_house_2"));
-    building_hammer_animate("light_house_2");
-
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_3"]].hitArea)
-            .attr({x: 1587, y: 556, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1587, 556, "light_house_3"))
-            .attach(building_lvl_lable(1587, 556, "light_house_3"));
-    building_hammer_animate("light_house_3");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_4 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_4"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_4"]].hitArea)
-            .attr({x: 1487, y: 603, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_4");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1487, 603, "light_house_4"))
-            .attach(building_lvl_lable(1487, 603, "light_house_4"));
-    building_hammer_animate("light_house_4");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_5 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_5"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_5"]].hitArea)
-            .attr({x: 1792, y: 557, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_5");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1792, 557, "light_house_5"))
-            .attach(building_lvl_lable(1792, 557, "light_house_5"));
-    building_hammer_animate("light_house_5");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_6 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_6"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_6"]].hitArea)
-            .attr({x: 1695, y: 609, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_6");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1695, 609, "light_house_6"))
-            .attach(building_lvl_lable(1695, 609, "light_house_6"));
-    building_hammer_animate("light_house_6");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_7 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_7"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_7"]].hitArea)
-            .attr({x: 1595, y: 659, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_7");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1595, 659, "light_house_7"))
-            .attach(building_lvl_lable(1595, 659, "light_house_7"));
-    building_hammer_animate("light_house_7");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_8 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_8"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_8"]].hitArea)
-            .attr({x: 1807, y: 663, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_8");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1807, 663, "light_house_8"))
-            .attach(building_lvl_lable(1807, 663, "light_house_8"));
-    building_hammer_animate("light_house_8");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_9 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_9"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_9"]].hitArea)
-            .attr({x: 1702, y: 714, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_9");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1702, 714, "light_house_9"))
-            .attach(building_lvl_lable(1702, 714, "light_house_9"));
-    building_hammer_animate("light_house_9");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_10 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_10"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_10"]].hitArea)
-            .attr({x: 1802, y: 775, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_10");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1802, 775, "light_house_10"))
-            .attach(building_lvl_lable(1802, 775, "light_house_10"));
-    building_hammer_animate("light_house_10");
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_1"]].hitArea)
-            .attr({x: 1353, y: 673, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1353, 673, "under_palace_1"))
-            .attach(building_lvl_lable(1353, 673, "under_palace_1"));
-    building_hammer_animate("light_house_1");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_2"]].hitArea)
-            .attr({x: 1249, y: 715, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1249, 715, "under_palace_2"))
-            .attach(building_lvl_lable(1249, 715, "under_palace_2"));
-    building_hammer_animate("under_palace_2");
-
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_3"]].hitArea)
-            .attr({x: 1145, y: 763, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1145, 763, "under_palace_3"))
-            .attach(building_lvl_lable(1145, 763, "under_palace_3"));
-    building_hammer_animate("under_palace_3");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_4 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_4"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_4"]].hitArea)
-            .attr({x: 1458, y: 724, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_4");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1458, 724, "under_palace_4"))
-            .attach(building_lvl_lable(1458, 724, "under_palace_4"));
-    building_hammer_animate("under_palace_4");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_5 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_5"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_5"]].hitArea)
-            .attr({x: 1353, y: 769, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_5");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1353, 769, "under_palace_5"))
-            .attach(building_lvl_lable(1353, 769, "under_palace_5"));
-    building_hammer_animate("under_palace_5");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_6 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_6"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_6"]].hitArea)
-            .attr({x: 1246, y: 813, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_6");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1246, 813, "under_palace_6"))
-            .attach(building_lvl_lable(1246, 813, "under_palace_6"));
-    building_hammer_animate("under_palace_6");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_7 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_7"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_7"]].hitArea)
-            .attr({x: 1568, y: 779, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_7");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1568, 779, "under_palace_7"))
-            .attach(building_lvl_lable(1568, 779, "under_palace_7"));
-    building_hammer_animate("under_palace_7");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_8 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_8"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_8"]].hitArea)
-            .attr({x: 1464, y: 822, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_8");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1464, 822, "under_palace_8"))
-            .attach(building_lvl_lable(1464, 822, "under_palace_8"));
-    building_hammer_animate("under_palace_8");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_9 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_9"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_9"]].hitArea)
-            .attr({x: 1352, y: 876, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_9");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1352, 876, "under_palace_9"))
-            .attach(building_lvl_lable(1352, 876, "under_palace_9"));
-    building_hammer_animate("under_palace_9");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_10 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_10"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_10"]].hitArea)
-            .attr({x: 1674, y: 829, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_10");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1674, 829, "under_palace_10"))
-            .attach(building_lvl_lable(1674, 829, "under_palace_10"));
-    building_hammer_animate("under_palace_10");
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_11 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_11"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_11"]].hitArea)
-            .attr({x: 1565, y: 880, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_11");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1565, 880, "under_palace_11"))
-            .attach(building_lvl_lable(1565, 880, "under_palace_11"));
-    building_hammer_animate("under_palace_11");
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_12 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_12"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_12"]].hitArea)
-            .attr({x: 1457, y: 923, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_12");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1457, 923, "under_palace_12"))
-            .attach(building_lvl_lable(1457, 923, "under_palace_12"));
-    building_hammer_animate("under_palace_12");
-
-
-
-
-
-
-    BuildingOnFloor.wall = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["wall"]].getSpriteName() + " , Mouse")
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["wall"]].getHitArea())
-            .attr({x: 0, y: 0, z: 3})
-            .bind("Click", function () {
-                buildingClick("wall");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(2 * X_GRID, 2.25 * Y_GRID, "wall"))
-            .attach(building_lvl_lable(1.75 * X_GRID, 2.5 * Y_GRID, "wall"));
-    building_hammer_animate("wall");
-
-
-
-    BuildingOnFloor.market = Crafty.e("2D, Canvas, market , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["market"]].hitArea)
-            .attr({x: 14 * X_GRID, y: 3.25 * Y_GRID, z: 3})
-            .bind("Click", function () {
-                buildingClick("market");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(14 * X_GRID, 3.25 * Y_GRID, "market"))
-            .attach(building_lvl_lable(14 * X_GRID, 3.25 * Y_GRID, "market"));
-    building_hammer_animate("market");
-
-
-
-
-
-    /*
-     *    PUT FIXED PLACES 
-     */
-
-    BuildingOnFloor.seaport = Crafty.e("2D, Canvas, seaport , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["seaport"]].hitArea)
-            .attr({x: 16 * X_GRID, y: 9.75 * Y_GRID, z: 1000})
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
-                buildingClick("seaport");
-            })
-            .attach(building_title(17.75 * X_GRID, 10.25 * Y_GRID, "seaport"))
-            .attach(building_lvl_lable(14 * X_GRID, 3.25 * Y_GRID, "market"));
-    building_hammer_animate("seaport");
-    /*
-     *    PUT FIXED PLACES 
-     */
-
-    BuildingOnFloor.lighthouse = Crafty.e("2D, Canvas, lighthouse , Mouse")
-
-            .attr({x: 15.5 * X_GRID, y: 5 * Y_GRID, z: 1})
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["lighthouse"]].hitArea)
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
-                buildingClick("lighthouse");
-            })
-            .attach(building_title(15.4 * X_GRID, 7.25 * Y_GRID, "lighthouse"))
-            .attach(building_lvl_lable(14 * X_GRID, 3.25 * Y_GRID, "market"));
-    building_hammer_animate("lighthouse");
-
-    /*
-     *    PUT FIXED PLACES 
-     */
-
-    BuildingOnFloor.farm = Crafty.e("2D, Canvas, farm , Mouse")
-
-            .attr({x: 12.75 * X_GRID, y: 14.75 * Y_GRID, z: 1000})
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["farm"]].hitArea)
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
-                buildingClick("farm");
-            })
-            .attach(building_title(13.75 * X_GRID, 15.75 * Y_GRID, "farm"))
-            .attach(building_lvl_lable(13.5 * X_GRID, 14.75 * Y_GRID, "farm"));
-    building_hammer_animate("farm");
-
-    /*
-     *    PUT FIXED PLACES 
-     */
-
-    BuildingOnFloor.mine = Crafty.e("2D, Canvas, mine , Mouse")
-
-            .attr({x: 7.75 * X_GRID, y: 2.25 * Y_GRID, z: 0})
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["mine"]].hitArea)
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
-                buildingClick("mine");
-            })
-            .attach(building_title(9 * X_GRID, 3.25 * Y_GRID, "mine"))
-            .attach(building_lvl_lable(8.5 * X_GRID, 3.25 * Y_GRID, "mine"));
-    building_hammer_animate("mine");
-
-    /*
-     *    PUT FIXED PLACES 
-     */
-
-    BuildingOnFloor.stone = Crafty.e("2D, Canvas, mahger , Mouse")
-
-            .attr({x: 11.5 * X_GRID, y: 5.5 * Y_GRID, z: 0})
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["stone"]].hitArea)
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
-                buildingClick("stone");
-            })
-            .attach(building_title(12.25 * X_GRID, 5.75 * Y_GRID, "stone"))
-            .attach(building_lvl_lable(12.25 * X_GRID, 5.5 * Y_GRID, "stone"));
-    building_hammer_animate("stone");
-
-    /*
-     *    PUT FIXED PLACES 
-     */
-
-    BuildingOnFloor.wood = Crafty.e("2D, Canvas, wood_maker , Mouse")
-
-            .attr({x: 2 * X_GRID, y: 6.5 * Y_GRID, z: 0})
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["wood"]].hitArea)
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
-                buildingClick("wood");
-            })
-            .attach(building_title(2.25 * X_GRID, 6.25 * Y_GRID, "wood"))
-            .attach(building_lvl_lable(2.25 * X_GRID, 6.25 * Y_GRID, "wood"));
-    building_hammer_animate("wood");
 
 
     //start_animation() 
@@ -1948,167 +1492,16 @@ function fillCityWithBuilding()
 
 function fillCityLvl_3() {
 
+    Elkaisar.GE.AddCityBuilding(1172, 368, "above_palace_1").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(1070, 417, "above_palace_2").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(1278, 420, "above_palace_3").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(1173, 469, "above_palace_4").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(1012, 554, "above_palace_5").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(904, 606, "above_palace_6").setFlipX(true);
 
-    BuildingOnFloor.above_palace_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_1"]].hitArea)
-            .attr({x: 1172, y: 368, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1172, 368, "above_palace_1"))
-            .attach(building_lvl_lable(1172, 368, "above_palace_1"));
-    building_hammer_animate("above_palace_1");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.above_palace_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_2"]].hitArea)
-            .attr({x: 1070, y: 417, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1070, 417, "above_palace_2"))
-            .attach(building_lvl_lable(1070, 417, "above_palace_2"));
-    building_hammer_animate("above_palace_2");
-
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.above_palace_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_3"]].hitArea)
-            .attr({x: 1278, y: 420, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1278, 420, "above_palace_3"))
-            .attach(building_lvl_lable(1278, 420, "above_palace_3"));
-    building_hammer_animate("above_palace_3");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.above_palace_4 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_4"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_4"]].hitArea)
-            .attr({x: 1173, y: 469, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_4");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1173, 469, "above_palace_4"))
-            .attach(building_lvl_lable(1173, 469, "above_palace_4"));
-    building_hammer_animate("above_palace_4");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.above_palace_5 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_5"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_5"]].hitArea)
-            .attr({x: 1012, y: 554, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_5");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1012, 554, "above_palace_5"))
-            .attach(building_lvl_lable(1012, 554, "above_palace_5"));
-    building_hammer_animate("above_palace_5");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.above_palace_6 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_6"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_6"]].hitArea)
-            .attr({x: 904, y: 606, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_6");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(904, 606, "above_palace_6"))
-            .attach(building_lvl_lable(904, 606, "above_palace_6"));
-    building_hammer_animate("above_palace_6");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.around_wood_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_1"]].hitArea)
-            .attr({x: 471, y: 413, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("around_wood_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(471, 413, "around_wood_1"))
-            .attach(building_lvl_lable(471, 413, "around_wood_1"));
-    building_hammer_animate("around_wood_1");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.around_wood_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_2"]].hitArea)
-            .attr({x: 580, y: 464, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("around_wood_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(580, 464, "around_wood_2"))
-            .attach(building_lvl_lable(580, 464, "around_wood_2"));
-    building_hammer_animate("around_wood_2");
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.around_wood_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_3"]].hitArea)
-            .attr({x: 479, y: 516, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("around_wood_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(479, 516, "around_wood_3"))
-            .attach(building_lvl_lable(479, 516, "around_wood_3"));
-    building_hammer_animate("around_wood_3");
+    Elkaisar.GE.AddCityBuilding(471, 413, "around_wood_1").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(580, 464, "around_wood_2").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(479, 516, "around_wood_3").setFlipX(true);
 
 }
 
@@ -2116,216 +1509,18 @@ function fillCityLvl_3() {
 
 function fillCityLvl_2() {
 
-    BuildingOnFloor.under_wall_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_1"]].hitArea)
-            .attr({x: 628, y: 139, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(628, 139, "under_wall_1"))
-            .attach(building_lvl_lable(628, 139, "under_wall_1"));
-    building_hammer_animate("under_wall_1");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_2"]].hitArea)
-            .attr({x: 525, y: 185, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(525, 185, "under_wall_2"))
-            .attach(building_lvl_lable(525, 185, "under_wall_2"));
-    building_hammer_animate("under_wall_2");
-
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_3"]].hitArea)
-            .attr({x: 423, y: 229, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(423, 229, "under_wall_3"))
-            .attach(building_lvl_lable(423, 229, "under_wall_3"));
-    building_hammer_animate("under_wall_3");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_4 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_4"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_4"]].hitArea)
-            .attr({x: 728, y: 187, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_4");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(728, 187, "under_wall_4"))
-            .attach(building_lvl_lable(728, 187, "under_wall_4"));
-    building_hammer_animate("under_wall_4");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_5 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_5"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_5"]].hitArea)
-            .attr({x: 628, y: 233, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_5");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(628, 233, "under_wall_5"))
-            .attach(building_lvl_lable(628, 233, "under_wall_5"));
-    building_hammer_animate("under_wall_5");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_6 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_6"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_6"]].hitArea)
-            .attr({x: 526, y: 279, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_6");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(526, 279, "under_wall_6"))
-            .attach(building_lvl_lable(526, 279, "under_wall_6"));
-    building_hammer_animate("under_wall_6");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_7 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_7"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_7"]].hitArea)
-            .attr({x: 823, y: 239, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_7");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(823, 239, "under_wall_7"))
-            .attach(building_lvl_lable(823, 239, "under_wall_7"));
-    building_hammer_animate("under_wall_7");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_8 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_8"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_8"]].hitArea)
-            .attr({x: 725, y: 284, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_8");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(725, 284, "under_wall_8"))
-            .attach(building_lvl_lable(725, 284, "under_wall_8"));
-    building_hammer_animate("under_wall_8");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_9 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_9"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_9"]].hitArea)
-            .attr({x: 627, y: 333, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_9");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(627, 333, "under_wall_9"))
-            .attach(building_lvl_lable(627, 333, "under_wall_9"));
-    building_hammer_animate("under_wall_9");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_10 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_10"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_10"]].hitArea)
-            .attr({x: 930, y: 287, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_10");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(930, 287, "under_wall_10"))
-            .attach(building_lvl_lable(930, 287, "under_wall_10"));
-    building_hammer_animate("under_wall_10");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_11 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_11"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_11"]].hitArea)
-            .attr({x: 836, y: 337, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_11");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(836, 337, "under_wall_11"))
-            .attach(building_lvl_lable(836, 337, "under_wall_11"));
-    building_hammer_animate("under_wall_11");
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_12 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_12"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_12"]].hitArea)
-            .attr({x: 737, y: 383, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_12");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(737, 383, "under_wall_12"))
-            .attach(building_lvl_lable(737, 383, "under_wall_12"));
-    building_hammer_animate("under_wall_12");
+    Elkaisar.GE.AddCityBuilding(628, 139, "under_wall_1").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(525, 185, "under_wall_2").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(423, 229, "under_wall_3").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(728, 187, "under_wall_4").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(628, 233, "under_wall_5").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(526, 279, "under_wall_6").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(823, 239, "under_wall_7").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(725, 284, "under_wall_8").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(627, 333, "under_wall_9").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(930, 287, "under_wall_10").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(836, 337, "under_wall_11").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(737, 383, "under_wall_12").setFlipX(true);
 
 
 
@@ -2334,215 +1529,21 @@ function fillCityLvl_2() {
 
 function fillCityLvl_1() {
 
-
-    BuildingOnFloor.hill_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_1"]].hitArea)
-            .attr({x: 625, y: 918, z: 5})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(625, 918, "hill_1"))
-            .attach(building_lvl_lable(625, 918, "hill_1"));
-    building_hammer_animate("hill_1");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_2"]].hitArea)
-            .attr({x: 732, y: 864, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(732, 864, "hill_2"))
-            .attach(building_lvl_lable(732, 864, "hill_2"));
-    building_hammer_animate("hill_2");
+    Elkaisar.GE.AddCityBuilding(625, 918, "hill_1").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(732, 864, "hill_2").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(832, 814, "hill_3").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(517, 867, "hill_4").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(628, 810, "hill_5").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(729, 759, "hill_6").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(820, 712, "hill_7").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(478, 785, "hill_8").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(575, 733, "hill_9").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(672, 685, "hill_10").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(374, 732, "hill_11").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(478, 680, "hill_12").setFlipX(true);
 
 
 
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_3"]].hitArea)
-            .attr({x: 832, y: 814, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(832, 814, "hill_3"))
-            .attach(building_lvl_lable(832, 814, "hill_3"));
-    building_hammer_animate("hill_3");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_4 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_4"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_4"]].hitArea)
-            .attr({x: 517, y: 867, z: 3})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_4");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(517, 867, "hill_4"))
-            .attach(building_lvl_lable(517, 867, "hill_4"));
-    building_hammer_animate("hill_4");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_5 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_5"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_5"]].hitArea)
-            .attr({x: 628, y: 810, z: 2})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_5");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(628, 810, "hill_5"))
-            .attach(building_lvl_lable(628, 810, "hill_5"));
-    building_hammer_animate("hill_5");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_6 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_6"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_6"]].hitArea)
-            .attr({x: 729, y: 759, z: 2})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_6");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(729, 759, "hill_6"))
-            .attach(building_lvl_lable(729, 759, "hill_6"));
-    building_hammer_animate("hill_6");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_7 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_7"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_7"]].hitArea)
-            .attr({x: 820, y: 712, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_7");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(820, 712, "hill_7"))
-            .attach(building_lvl_lable(820, 712, "hill_7"));
-    building_hammer_animate("hill_7");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_8 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_8"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_8"]].hitArea)
-            .attr({x: 478, y: 785, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_8");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(478, 785, "hill_8"))
-            .attach(building_lvl_lable(478, 785, "hill_8"));
-    building_hammer_animate("hill_8");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_9 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_9"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_9"]].hitArea)
-            .attr({x: 575, y: 733, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_9");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(575, 733, "hill_9"))
-            .attach(building_lvl_lable(575, 733, "hill_9"));
-    building_hammer_animate("hill_9");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_10 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_10"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_10"]].hitArea)
-            .attr({x: 672, y: 685, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_10");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(672, 685, "hill_10"))
-            .attach(building_lvl_lable(672, 685, "hill_10"));
-    building_hammer_animate("hill_10");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_11 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_11"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_11"]].hitArea)
-            .attr({x: 374, y: 732, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_11");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(374, 732, "hill_11"))
-            .attach(building_lvl_lable(374, 732, "hill_11"));
-    building_hammer_animate("hill_11");
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_12 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_12"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_12"]].hitArea)
-            .attr({x: 478, y: 680, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_12");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(478, 680, "hill_12"))
-            .attach(building_lvl_lable(478, 680, "hill_12"));
-    building_hammer_animate("hill_12");
+    for (var ii in BuildingOnFloor)
+        Elkaisar.GE.CityScene.input.enableDebug(BuildingOnFloor[ii]);
 }

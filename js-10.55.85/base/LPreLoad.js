@@ -101,187 +101,551 @@ Elkaisar.CurrentCity = {};
 
 
 Elkaisar.BaseData = {};
-Elkaisar.GE = {}
+Elkaisar.GE = {};
+
+Elkaisar.GE.CLoadingScene = {};
+Elkaisar.GE.CCityScene = {};
+Elkaisar.GE.CWorldScene = {};
 
 Elkaisar.GE.LoadingScene = {};
 Elkaisar.GE.CityScene = {};
 Elkaisar.GE.WorldScene = {};
 
+Elkaisar.World.WorldMapIcon = {};
 
 
 Elkaisar.GE.LPreLoad = function () {
-    Elkaisar.GE.CityScene.load.image('city_0', BASE_ASSET_BATH + 'images/world/city_0.png');
-    Elkaisar.GE.CityScene.load.image('city_1', BASE_ASSET_BATH + 'images/world/city_1.png');
-    Elkaisar.GE.CityScene.load.image('city_2', BASE_ASSET_BATH + 'images/world/city_2.png');
-    Elkaisar.GE.CityScene.load.image('city_3', BASE_ASSET_BATH + 'images/world/city_3.png');
-    Elkaisar.GE.CityScene.load.image('city_4', BASE_ASSET_BATH + 'images/world/city_4.png');
-    Elkaisar.GE.CityScene.load.image('d_1', BASE_ASSET_BATH + 'images/world/wild/d_1.png');
-    Elkaisar.GE.CityScene.load.image('d_2', BASE_ASSET_BATH + 'images/world/wild/d_2.png');
-    Elkaisar.GE.CityScene.load.image('d_3', BASE_ASSET_BATH + 'images/world/wild/d_3.png');
-    Elkaisar.GE.CityScene.load.image('d_4', BASE_ASSET_BATH + 'images/world/wild/d_4.png');
-    Elkaisar.GE.CityScene.load.image('d_5', BASE_ASSET_BATH + 'images/world/wild/d_5.png');
-    Elkaisar.GE.CityScene.load.image('d_6', BASE_ASSET_BATH + 'images/world/wild/d_6.png');
-    Elkaisar.GE.CityScene.load.image('d_7', BASE_ASSET_BATH + 'images/world/wild/d_7.png');
-    Elkaisar.GE.CityScene.load.image('d_8', BASE_ASSET_BATH + 'images/world/wild/d_8.png');
-    Elkaisar.GE.CityScene.load.image('d_9', BASE_ASSET_BATH + 'images/world/wild/d_9.png');
-    Elkaisar.GE.CityScene.load.image('d_10', BASE_ASSET_BATH + 'images/world/wild/d_10.png');
-    Elkaisar.GE.CityScene.load.image('m_1', BASE_ASSET_BATH + 'images/world/wild/m_1.png');
-    Elkaisar.GE.CityScene.load.image('m_2', BASE_ASSET_BATH + 'images/world/wild/m_2.png');
-    Elkaisar.GE.CityScene.load.image('m_3', BASE_ASSET_BATH + 'images/world/wild/m_3.png');
-    Elkaisar.GE.CityScene.load.image('m_4', BASE_ASSET_BATH + 'images/world/wild/m_4.png');
-    Elkaisar.GE.CityScene.load.image('m_5', BASE_ASSET_BATH + 'images/world/wild/m_5.png');
-    Elkaisar.GE.CityScene.load.image('m_6', BASE_ASSET_BATH + 'images/world/wild/m_6.png');
-    Elkaisar.GE.CityScene.load.image('m_7', BASE_ASSET_BATH + 'images/world/wild/m_7.png');
-    Elkaisar.GE.CityScene.load.image('m_8', BASE_ASSET_BATH + 'images/world/wild/m_8.png');
-    Elkaisar.GE.CityScene.load.image('m_9', BASE_ASSET_BATH + 'images/world/wild/m_9.png');
-    Elkaisar.GE.CityScene.load.image('m_10', BASE_ASSET_BATH + 'images/world/wild/m_10.png');
-    Elkaisar.GE.CityScene.load.image('w_1', BASE_ASSET_BATH + 'images/world/wild/w_1.png');
-    Elkaisar.GE.CityScene.load.image('w_2', BASE_ASSET_BATH + 'images/world/wild/w_2.png');
-    Elkaisar.GE.CityScene.load.image('w_3', BASE_ASSET_BATH + 'images/world/wild/w_3.png');
-    Elkaisar.GE.CityScene.load.image('w_4', BASE_ASSET_BATH + 'images/world/wild/w_4.png');
-    Elkaisar.GE.CityScene.load.image('w_5', BASE_ASSET_BATH + 'images/world/wild/w_5.png');
-    Elkaisar.GE.CityScene.load.image('w_6', BASE_ASSET_BATH + 'images/world/wild/w_6.png');
-    Elkaisar.GE.CityScene.load.image('w_7', BASE_ASSET_BATH + 'images/world/wild/w_7.png');
-    Elkaisar.GE.CityScene.load.image('w_8', BASE_ASSET_BATH + 'images/world/wild/w_8.png');
-    Elkaisar.GE.CityScene.load.image('w_9', BASE_ASSET_BATH + 'images/world/wild/w_9.png');
-    Elkaisar.GE.CityScene.load.image('w_10', BASE_ASSET_BATH + 'images/world/wild/w_10.png');
-    Elkaisar.GE.CityScene.load.image('arrow', BASE_ASSET_BATH + 'images/animation/currentUnit.png');
-    Elkaisar.GE.CityScene.load.image('godGateBtn', BASE_ASSET_BATH + 'images/godGate/godGate.png');
-    Elkaisar.GE.CityScene.load.image('fireBtn', BASE_ASSET_BATH + 'images/animation/fireBtn.png');
-    Elkaisar.GE.CityScene.load.image('mnawrat', BASE_ASSET_BATH + 'images/world/30.png');
-    Elkaisar.GE.CityScene.load.image('front_squad', BASE_ASSET_BATH + 'images/world/front_squad.png');
-    Elkaisar.GE.CityScene.load.image('front_band', BASE_ASSET_BATH + 'images/world/front_band.png');
-    Elkaisar.GE.CityScene.load.image('front_squadron', BASE_ASSET_BATH + 'images/world/front_squadron.png');
-    Elkaisar.GE.CityScene.load.image('front_division', BASE_ASSET_BATH + 'images/world/front_division.png');
-    Elkaisar.GE.CityScene.load.image('armed_light_squad', BASE_ASSET_BATH + 'images/world/armed_light_squad.png');
-    Elkaisar.GE.CityScene.load.image('armed_light_band', BASE_ASSET_BATH + 'images/world/armed_light_band.png');
-    Elkaisar.GE.CityScene.load.image('armed_light_squadron', BASE_ASSET_BATH + 'images/world/armed_light_squadron.png');
-    Elkaisar.GE.CityScene.load.image('armed_light_division', BASE_ASSET_BATH + 'images/world/armed_light_division.png');
-    Elkaisar.GE.CityScene.load.image('armed_heavy_squad', BASE_ASSET_BATH + 'images/world/armed_heavy_squad.png');
-    Elkaisar.GE.CityScene.load.image('armed_heavy_band', BASE_ASSET_BATH + 'images/world/armed_heavy_band.png');
-    Elkaisar.GE.CityScene.load.image('armed_heavy_squadron', BASE_ASSET_BATH + 'images/world/armed_heavy_squadron.png');
-    Elkaisar.GE.CityScene.load.image('armed_heavy_division', BASE_ASSET_BATH + 'images/world/armed_heavy_division.png');
-    Elkaisar.GE.CityScene.load.image('guard_squad', BASE_ASSET_BATH + 'images/world/guard_squad.png');
-    Elkaisar.GE.CityScene.load.image('guard_band', BASE_ASSET_BATH + 'images/world/guard_band.png');
-    Elkaisar.GE.CityScene.load.image('guard_squadron', BASE_ASSET_BATH + 'images/world/guard_squadron.png');
-    Elkaisar.GE.CityScene.load.image('guard_division', BASE_ASSET_BATH + 'images/world/guard_division.png');
-    Elkaisar.GE.CityScene.load.image('brave_thunder', BASE_ASSET_BATH + 'images/world/brave_thunder.png');
-    Elkaisar.GE.CityScene.load.image('gang', BASE_ASSET_BATH + 'images/world/gang.png');
-    Elkaisar.GE.CityScene.load.image('mugger', BASE_ASSET_BATH + 'images/world/mugger.png');
-    Elkaisar.GE.CityScene.load.image('thief', BASE_ASSET_BATH + 'images/world/thief.png');
-    Elkaisar.GE.CityScene.load.image('carthage_gang', BASE_ASSET_BATH + 'images/world/carthage/gang.png');
-    Elkaisar.GE.CityScene.load.image('carthage_teams', BASE_ASSET_BATH + 'images/world/carthage/teams.png');
-    Elkaisar.GE.CityScene.load.image('carthage_rebels', BASE_ASSET_BATH + 'images/world/carthage/rebels.png');
-    Elkaisar.GE.CityScene.load.image('carthage_forces', BASE_ASSET_BATH + 'images/world/carthage/forces.png');
-    Elkaisar.GE.CityScene.load.image('carthage_capital', BASE_ASSET_BATH + 'images/world/carthage/capital.png');
-    Elkaisar.GE.CityScene.load.image('army_capital', BASE_ASSET_BATH + 'images/world/army-capital.png');
-    Elkaisar.GE.CityScene.load.image('queenCity_1', BASE_ASSET_BATH + 'images/world/queenCity_1.png');
-    Elkaisar.GE.CityScene.load.image('queenCity_2', BASE_ASSET_BATH + 'images/world/queenCity_2.png');
-    Elkaisar.GE.CityScene.load.image('queenCity_3', BASE_ASSET_BATH + 'images/world/queenCity_3.png');
-    Elkaisar.GE.CityScene.load.image('repleCastle_1', BASE_ASSET_BATH + 'images/world/repleCastle_1.png');
-    Elkaisar.GE.CityScene.load.image('repleCastle_2', BASE_ASSET_BATH + 'images/world/repleCastle_2.png');
-    Elkaisar.GE.CityScene.load.image('repleCastle_3', BASE_ASSET_BATH + 'images/world/repleCastle_3.png');
-    Elkaisar.GE.CityScene.load.image('wolfStatue', BASE_ASSET_BATH + 'images/world/wolf.png');
-    Elkaisar.GE.CityScene.load.image('arena', BASE_ASSET_BATH + 'images/world/arena.png');
-    Elkaisar.GE.CityScene.load.image('seaCity_1', BASE_ASSET_BATH + 'images/world/seaCity_1.png');
-    Elkaisar.GE.CityScene.load.image('seaCity_2', BASE_ASSET_BATH + 'images/world/seaCity_2.png');
-    Elkaisar.GE.CityScene.load.image('seaCity_3', BASE_ASSET_BATH + 'images/world/seaCity_3.png');
-    Elkaisar.GE.CityScene.load.image('seaCity_4', BASE_ASSET_BATH + 'images/world/seaCity_4.png');
-    Elkaisar.GE.CityScene.load.image('seaCity_5', BASE_ASSET_BATH + 'images/world/seaCity_5.png');
-    Elkaisar.GE.CityScene.load.image('seaCity_6', BASE_ASSET_BATH + 'images/world/seaCity_6.png');
-    Elkaisar.GE.CityScene.load.image('challangeFieldPlayer', BASE_ASSET_BATH + 'images/world/challangeFieldPlayer.png');
-    Elkaisar.GE.CityScene.load.image('challangeFieldGuild', BASE_ASSET_BATH + 'images/world/challangeFieldGuild.png');
-    Elkaisar.GE.CityScene.load.image('challangeFieldTeam', BASE_ASSET_BATH + 'images/world/challangeFieldTeam.png');
-    Elkaisar.GE.CityScene.load.image('challangeFieldServer', BASE_ASSET_BATH + 'images/world/challangeFieldServer.png');
-    Elkaisar.GE.CityScene.load.image('fightChallangePlayer', BASE_ASSET_BATH + 'images/world/fightChallangePlayer.png');
-    Elkaisar.GE.CityScene.load.image('fightChallangeGuild', BASE_ASSET_BATH + 'images/world/fightChallangeGuild.png');
-    Elkaisar.GE.CityScene.load.image('fightChallangeTeam', BASE_ASSET_BATH + 'images/world/fightChallangeTeam.png');
-    Elkaisar.GE.CityScene.load.image('fightChallangeServer', BASE_ASSET_BATH + 'images/world/fightChallangeServer.png');
-    Elkaisar.GE.CityScene.load.image('city_shield', BASE_ASSET_BATH + 'images/world/city_shield.png');
-    Elkaisar.GE.CityScene.load.image('palace', BASE_ASSET_BATH + 'images/city/palace.png');
-    Elkaisar.GE.CityScene.load.image('wall_0', BASE_ASSET_BATH + 'images/city/wall_0_.png');
-    Elkaisar.GE.CityScene.load.image('wall_1', BASE_ASSET_BATH + 'images/city/wall_1_.png');
-    Elkaisar.GE.CityScene.load.image('wall_2', BASE_ASSET_BATH + 'images/city/wall_2_.png');
-    Elkaisar.GE.CityScene.load.image('wall_3', BASE_ASSET_BATH + 'images/city/wall_3_.png');
-    Elkaisar.GE.CityScene.load.image('wall_4', BASE_ASSET_BATH + 'images/city/wall_4_.png');
-    Elkaisar.GE.CityScene.load.image('seaport', BASE_ASSET_BATH + 'images/city/_seaport.png');
-    Elkaisar.GE.CityScene.load.image('market', BASE_ASSET_BATH + 'images/city/_market.png');
-    Elkaisar.GE.CityScene.load.image('farm', BASE_ASSET_BATH + 'images/city/_farm.png');
-    Elkaisar.GE.CityScene.load.image('mine', BASE_ASSET_BATH + 'images/city/_mine.png');
-    Elkaisar.GE.CityScene.load.image('mahger', BASE_ASSET_BATH + 'images/city/_mahger.png');
-    Elkaisar.GE.CityScene.load.image('wood_maker', BASE_ASSET_BATH + 'images/city/_wood_maker.png');
-    Elkaisar.GE.CityScene.load.image('lighthouse', BASE_ASSET_BATH + 'images/city/_lighthouse.png');
-    Elkaisar.GE.CityScene.load.image('B1', BASE_ASSET_BATH + 'images/city/_B1.png');
-    Elkaisar.GE.CityScene.load.image('B2', BASE_ASSET_BATH + 'images/city/_B2.png');
-    Elkaisar.GE.CityScene.load.image('B3', BASE_ASSET_BATH + 'images/city/_B3.png');
-    Elkaisar.GE.CityScene.load.image('B4', BASE_ASSET_BATH + 'images/city/_B4.png');
-    Elkaisar.GE.CityScene.load.image('B5', BASE_ASSET_BATH + 'images/city/_B5.png');
-    Elkaisar.GE.CityScene.load.image('B6', BASE_ASSET_BATH + 'images/city/_B6.png');
-    Elkaisar.GE.CityScene.load.image('B7', BASE_ASSET_BATH + 'images/city/_B7.png');
-    Elkaisar.GE.CityScene.load.image('B8', BASE_ASSET_BATH + 'images/city/_B8.png');
-    Elkaisar.GE.CityScene.load.image('B9', BASE_ASSET_BATH + 'images/city/_B9.png');
-    Elkaisar.GE.CityScene.load.image('B10', BASE_ASSET_BATH + 'images/city/_B10.png');
-    Elkaisar.GE.CityScene.load.image('B11', BASE_ASSET_BATH + 'images/city/_B11.png');
-    Elkaisar.GE.CityScene.load.image('no_building', BASE_ASSET_BATH + 'images/city/no_building.png');
-    Elkaisar.GE.CityScene.load.image('city_floor', BASE_ASSET_BATH + 'images/city/city_floor.jpg');
-    Elkaisar.GE.CityScene.load.image('hammer_start', BASE_ASSET_BATH + 'images/animation/upgrading_hammer.png');
-    Elkaisar.GE.CityScene.load.image('fountain', BASE_ASSET_BATH + 'images/animation/fountain.png');
-    Elkaisar.GE.CityScene.load.image('ani_wood_maker', BASE_ASSET_BATH + 'images/animation/wood_maker.png');
-    Elkaisar.GE.CityScene.load.image('ani_wood_man', BASE_ASSET_BATH + 'images/animation/wood_man.png');
-    Elkaisar.GE.CityScene.load.image('mine_man', BASE_ASSET_BATH + 'images/animation/mine_man.png');
-    Elkaisar.GE.CityScene.load.image('stone_man', BASE_ASSET_BATH + 'images/animation/stone_man.png');
-    Elkaisar.GE.CityScene.load.image('stone_carry', BASE_ASSET_BATH + 'images/animation/stone_carry.png');
-    Elkaisar.GE.CityScene.load.image('no_carry', BASE_ASSET_BATH + 'images/animation/no_carry.png');
-    Elkaisar.GE.CityScene.load.image('fire_start', BASE_ASSET_BATH + 'images/animation/attack_fire.png');
-    Elkaisar.GE.CityScene.load.image('flag_over_city', BASE_ASSET_BATH + 'images/animation/flags.png');
-    Elkaisar.GE.CityScene.load.image('cloud', BASE_ASSET_BATH + 'images/animation/cloud.png');
-    Elkaisar.GE.CityScene.load.image('unit_floor', BASE_ASSET_BATH + 'images/world/unit_floor.png');
+
+    Elkaisar.GE.LoadingScene.load.image('worldFloor', BASE_ASSET_BATH + 'images/world/worldFloor.jpg');
+    Elkaisar.GE.LoadingScene.load.image('city_0', BASE_ASSET_BATH + 'images/world/city_0.png');
+    Elkaisar.GE.LoadingScene.load.image('city_1', BASE_ASSET_BATH + 'images/world/city_1.png');
+    Elkaisar.GE.LoadingScene.load.image('city_2', BASE_ASSET_BATH + 'images/world/city_2.png');
+    Elkaisar.GE.LoadingScene.load.image('city_3', BASE_ASSET_BATH + 'images/world/city_3.png');
+    Elkaisar.GE.LoadingScene.load.image('city_4', BASE_ASSET_BATH + 'images/world/city_4.png');
+    Elkaisar.GE.LoadingScene.load.image('d_1', BASE_ASSET_BATH + 'images/world/wild/d_1.png');
+    Elkaisar.GE.LoadingScene.load.image('d_2', BASE_ASSET_BATH + 'images/world/wild/d_2.png');
+    Elkaisar.GE.LoadingScene.load.image('d_3', BASE_ASSET_BATH + 'images/world/wild/d_3.png');
+    Elkaisar.GE.LoadingScene.load.image('d_4', BASE_ASSET_BATH + 'images/world/wild/d_4.png');
+    Elkaisar.GE.LoadingScene.load.image('d_5', BASE_ASSET_BATH + 'images/world/wild/d_5.png');
+    Elkaisar.GE.LoadingScene.load.image('d_6', BASE_ASSET_BATH + 'images/world/wild/d_6.png');
+    Elkaisar.GE.LoadingScene.load.image('d_7', BASE_ASSET_BATH + 'images/world/wild/d_7.png');
+    Elkaisar.GE.LoadingScene.load.image('d_8', BASE_ASSET_BATH + 'images/world/wild/d_8.png');
+    Elkaisar.GE.LoadingScene.load.image('d_9', BASE_ASSET_BATH + 'images/world/wild/d_9.png');
+    Elkaisar.GE.LoadingScene.load.image('d_10', BASE_ASSET_BATH + 'images/world/wild/d_10.png');
+    Elkaisar.GE.LoadingScene.load.image('m_1', BASE_ASSET_BATH + 'images/world/wild/m_1.png');
+    Elkaisar.GE.LoadingScene.load.image('m_2', BASE_ASSET_BATH + 'images/world/wild/m_2.png');
+    Elkaisar.GE.LoadingScene.load.image('m_3', BASE_ASSET_BATH + 'images/world/wild/m_3.png');
+    Elkaisar.GE.LoadingScene.load.image('m_4', BASE_ASSET_BATH + 'images/world/wild/m_4.png');
+    Elkaisar.GE.LoadingScene.load.image('m_5', BASE_ASSET_BATH + 'images/world/wild/m_5.png');
+    Elkaisar.GE.LoadingScene.load.image('m_6', BASE_ASSET_BATH + 'images/world/wild/m_6.png');
+    Elkaisar.GE.LoadingScene.load.image('m_7', BASE_ASSET_BATH + 'images/world/wild/m_7.png');
+    Elkaisar.GE.LoadingScene.load.image('m_8', BASE_ASSET_BATH + 'images/world/wild/m_8.png');
+    Elkaisar.GE.LoadingScene.load.image('m_9', BASE_ASSET_BATH + 'images/world/wild/m_9.png');
+    Elkaisar.GE.LoadingScene.load.image('m_10', BASE_ASSET_BATH + 'images/world/wild/m_10.png');
+    Elkaisar.GE.LoadingScene.load.image('w_1', BASE_ASSET_BATH + 'images/world/wild/w_1.png');
+    Elkaisar.GE.LoadingScene.load.image('w_2', BASE_ASSET_BATH + 'images/world/wild/w_2.png');
+    Elkaisar.GE.LoadingScene.load.image('w_3', BASE_ASSET_BATH + 'images/world/wild/w_3.png');
+    Elkaisar.GE.LoadingScene.load.image('w_4', BASE_ASSET_BATH + 'images/world/wild/w_4.png');
+    Elkaisar.GE.LoadingScene.load.image('w_5', BASE_ASSET_BATH + 'images/world/wild/w_5.png');
+    Elkaisar.GE.LoadingScene.load.image('w_6', BASE_ASSET_BATH + 'images/world/wild/w_6.png');
+    Elkaisar.GE.LoadingScene.load.image('w_7', BASE_ASSET_BATH + 'images/world/wild/w_7.png');
+    Elkaisar.GE.LoadingScene.load.image('w_8', BASE_ASSET_BATH + 'images/world/wild/w_8.png');
+    Elkaisar.GE.LoadingScene.load.image('w_9', BASE_ASSET_BATH + 'images/world/wild/w_9.png');
+    Elkaisar.GE.LoadingScene.load.image('w_10', BASE_ASSET_BATH + 'images/world/wild/w_10.png');
+    Elkaisar.GE.LoadingScene.load.spritesheet('f_1', BASE_ASSET_BATH + 'images/world/wild/f_1.png', {frameWidth: 128, frameHeight: 128});
+    Elkaisar.GE.LoadingScene.load.spritesheet('f_2', BASE_ASSET_BATH + 'images/world/wild/f_2.png', {frameWidth: 128, frameHeight: 128});
+    Elkaisar.GE.LoadingScene.load.spritesheet('f_3', BASE_ASSET_BATH + 'images/world/wild/f_3.png', {frameWidth: 128, frameHeight: 128});
+    Elkaisar.GE.LoadingScene.load.spritesheet('flagOverCity', BASE_ASSET_BATH + 'images/animation/flags.png', {frameWidth: 34, frameHeight: 24});
+    Elkaisar.GE.LoadingScene.load.image('arrow', BASE_ASSET_BATH + 'images/animation/currentUnit.png');
+    Elkaisar.GE.LoadingScene.load.image('godGateBtn', BASE_ASSET_BATH + 'images/godGate/godGate.png');
+    Elkaisar.GE.LoadingScene.load.image('fireBtn', BASE_ASSET_BATH + 'images/animation/fireBtn.png');
+    Elkaisar.GE.LoadingScene.load.image('mnawrat', BASE_ASSET_BATH + 'images/world/30.png');
+    Elkaisar.GE.LoadingScene.load.image('front_squad', BASE_ASSET_BATH + 'images/world/front_squad.png');
+    Elkaisar.GE.LoadingScene.load.image('front_band', BASE_ASSET_BATH + 'images/world/front_band.png');
+    Elkaisar.GE.LoadingScene.load.image('front_squadron', BASE_ASSET_BATH + 'images/world/front_squadron.png');
+    Elkaisar.GE.LoadingScene.load.image('front_division', BASE_ASSET_BATH + 'images/world/front_division.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_light_squad', BASE_ASSET_BATH + 'images/world/armed_light_squad.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_light_band', BASE_ASSET_BATH + 'images/world/armed_light_band.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_light_squadron', BASE_ASSET_BATH + 'images/world/armed_light_squadron.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_light_division', BASE_ASSET_BATH + 'images/world/armed_light_division.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_heavy_squad', BASE_ASSET_BATH + 'images/world/armed_heavy_squad.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_heavy_band', BASE_ASSET_BATH + 'images/world/armed_heavy_band.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_heavy_squadron', BASE_ASSET_BATH + 'images/world/armed_heavy_squadron.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_heavy_division', BASE_ASSET_BATH + 'images/world/armed_heavy_division.png');
+    Elkaisar.GE.LoadingScene.load.image('guard_squad', BASE_ASSET_BATH + 'images/world/guard_squad.png');
+    Elkaisar.GE.LoadingScene.load.image('guard_band', BASE_ASSET_BATH + 'images/world/guard_band.png');
+    Elkaisar.GE.LoadingScene.load.image('guard_squadron', BASE_ASSET_BATH + 'images/world/guard_squadron.png');
+    Elkaisar.GE.LoadingScene.load.image('guard_division', BASE_ASSET_BATH + 'images/world/guard_division.png');
+    Elkaisar.GE.LoadingScene.load.image('brave_thunder', BASE_ASSET_BATH + 'images/world/brave_thunder.png');
+    Elkaisar.GE.LoadingScene.load.image('gang', BASE_ASSET_BATH + 'images/world/gang.png');
+    Elkaisar.GE.LoadingScene.load.image('mugger', BASE_ASSET_BATH + 'images/world/mugger.png');
+    Elkaisar.GE.LoadingScene.load.image('thief', BASE_ASSET_BATH + 'images/world/thief.png');
+    Elkaisar.GE.LoadingScene.load.image('carthage_gang', BASE_ASSET_BATH + 'images/world/carthage/gang.png');
+    Elkaisar.GE.LoadingScene.load.image('carthage_teams', BASE_ASSET_BATH + 'images/world/carthage/teams.png');
+    Elkaisar.GE.LoadingScene.load.image('carthage_rebels', BASE_ASSET_BATH + 'images/world/carthage/rebels.png');
+    Elkaisar.GE.LoadingScene.load.image('carthage_forces', BASE_ASSET_BATH + 'images/world/carthage/forces.png');
+    Elkaisar.GE.LoadingScene.load.image('carthage_capital', BASE_ASSET_BATH + 'images/world/carthage/capital.png');
+    Elkaisar.GE.LoadingScene.load.image('army_capital', BASE_ASSET_BATH + 'images/world/army-capital.png');
+    Elkaisar.GE.LoadingScene.load.image('queenCity_1', BASE_ASSET_BATH + 'images/world/queenCity_1.png');
+    Elkaisar.GE.LoadingScene.load.image('queenCity_2', BASE_ASSET_BATH + 'images/world/queenCity_2.png');
+    Elkaisar.GE.LoadingScene.load.image('queenCity_3', BASE_ASSET_BATH + 'images/world/queenCity_3.png');
+    Elkaisar.GE.LoadingScene.load.image('repleCastle_1', BASE_ASSET_BATH + 'images/world/repleCastle_1.png');
+    Elkaisar.GE.LoadingScene.load.image('repleCastle_2', BASE_ASSET_BATH + 'images/world/repleCastle_2.png');
+    Elkaisar.GE.LoadingScene.load.image('repleCastle_3', BASE_ASSET_BATH + 'images/world/repleCastle_3.png');
+    Elkaisar.GE.LoadingScene.load.image('wolfStatue', BASE_ASSET_BATH + 'images/world/wolf.png');
+    Elkaisar.GE.LoadingScene.load.image('arena', BASE_ASSET_BATH + 'images/world/arena.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_1', BASE_ASSET_BATH + 'images/world/seaCity_1.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_2', BASE_ASSET_BATH + 'images/world/seaCity_2.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_3', BASE_ASSET_BATH + 'images/world/seaCity_3.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_4', BASE_ASSET_BATH + 'images/world/seaCity_4.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_5', BASE_ASSET_BATH + 'images/world/seaCity_5.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_6', BASE_ASSET_BATH + 'images/world/seaCity_6.png');
+    Elkaisar.GE.LoadingScene.load.image('challangeFieldPlayer', BASE_ASSET_BATH + 'images/world/challangeFieldPlayer.png');
+    Elkaisar.GE.LoadingScene.load.image('challangeFieldGuild', BASE_ASSET_BATH + 'images/world/challangeFieldGuild.png');
+    Elkaisar.GE.LoadingScene.load.image('challangeFieldTeam', BASE_ASSET_BATH + 'images/world/challangeFieldTeam.png');
+    Elkaisar.GE.LoadingScene.load.image('challangeFieldServer', BASE_ASSET_BATH + 'images/world/challangeFieldServer.png');
+    Elkaisar.GE.LoadingScene.load.image('fightChallangePlayer', BASE_ASSET_BATH + 'images/world/fightChallangePlayer.png');
+    Elkaisar.GE.LoadingScene.load.image('fightChallangeGuild', BASE_ASSET_BATH + 'images/world/fightChallangeGuild.png');
+    Elkaisar.GE.LoadingScene.load.image('fightChallangeTeam', BASE_ASSET_BATH + 'images/world/fightChallangeTeam.png');
+    Elkaisar.GE.LoadingScene.load.image('fightChallangeServer', BASE_ASSET_BATH + 'images/world/fightChallangeServer.png');
+    Elkaisar.GE.LoadingScene.load.image('city_shield', BASE_ASSET_BATH + 'images/world/city_shield.png');
+    Elkaisar.GE.LoadingScene.load.image('palace', BASE_ASSET_BATH + 'images/city/palace.png');
+    Elkaisar.GE.LoadingScene.load.image('wall_0', BASE_ASSET_BATH + 'images/city/wall_0_.png');
+    Elkaisar.GE.LoadingScene.load.image('wall_1', BASE_ASSET_BATH + 'images/city/wall_1_.png');
+    Elkaisar.GE.LoadingScene.load.image('wall_2', BASE_ASSET_BATH + 'images/city/wall_2_.png');
+    Elkaisar.GE.LoadingScene.load.image('wall_3', BASE_ASSET_BATH + 'images/city/wall_3_.png');
+    Elkaisar.GE.LoadingScene.load.image('wall_4', BASE_ASSET_BATH + 'images/city/wall_4_.png');
+    Elkaisar.GE.LoadingScene.load.image('seaport', BASE_ASSET_BATH + 'images/city/_seaport.png');
+    Elkaisar.GE.LoadingScene.load.image('market', BASE_ASSET_BATH + 'images/city/_market.png');
+    Elkaisar.GE.LoadingScene.load.image('farm', BASE_ASSET_BATH + 'images/city/_farm.png');
+    Elkaisar.GE.LoadingScene.load.image('mine', BASE_ASSET_BATH + 'images/city/_mine.png');
+    Elkaisar.GE.LoadingScene.load.image('stone', BASE_ASSET_BATH + 'images/city/_mahger.png');
+    Elkaisar.GE.LoadingScene.load.image('wood', BASE_ASSET_BATH + 'images/city/_wood_maker.png');
+    Elkaisar.GE.LoadingScene.load.image('lighthouse', BASE_ASSET_BATH + 'images/city/_lighthouse.png');
+    Elkaisar.GE.LoadingScene.load.image('B1', BASE_ASSET_BATH + 'images/city/_B1.png');
+    Elkaisar.GE.LoadingScene.load.image('B2', BASE_ASSET_BATH + 'images/city/_B2.png');
+    Elkaisar.GE.LoadingScene.load.image('B3', BASE_ASSET_BATH + 'images/city/_B3.png');
+    Elkaisar.GE.LoadingScene.load.image('B4', BASE_ASSET_BATH + 'images/city/_B4.png');
+    Elkaisar.GE.LoadingScene.load.image('B5', BASE_ASSET_BATH + 'images/city/_B5.png');
+    Elkaisar.GE.LoadingScene.load.image('B6', BASE_ASSET_BATH + 'images/city/_B6.png');
+    Elkaisar.GE.LoadingScene.load.image('B7', BASE_ASSET_BATH + 'images/city/_B7.png');
+    Elkaisar.GE.LoadingScene.load.image('B8', BASE_ASSET_BATH + 'images/city/_B8.png');
+    Elkaisar.GE.LoadingScene.load.image('B9', BASE_ASSET_BATH + 'images/city/_B9.png');
+    Elkaisar.GE.LoadingScene.load.image('B10', BASE_ASSET_BATH + 'images/city/_B10.png');
+    Elkaisar.GE.LoadingScene.load.image('B11', BASE_ASSET_BATH + 'images/city/_B11.png');
+    Elkaisar.GE.LoadingScene.load.image('no_building', BASE_ASSET_BATH + 'images/city/no_building.png');
+    Elkaisar.GE.LoadingScene.load.image('city_floor', BASE_ASSET_BATH + 'images/city/city_floor.jpg');
+    Elkaisar.GE.LoadingScene.load.image('hammer_start', BASE_ASSET_BATH + 'images/animation/upgrading_hammer.png');
+    Elkaisar.GE.LoadingScene.load.image('fountain', BASE_ASSET_BATH + 'images/animation/fountain.png');
+    Elkaisar.GE.LoadingScene.load.image('ani_wood_maker', BASE_ASSET_BATH + 'images/animation/wood_maker.png');
+    Elkaisar.GE.LoadingScene.load.image('ani_wood_man', BASE_ASSET_BATH + 'images/animation/wood_man.png');
+    Elkaisar.GE.LoadingScene.load.image('mine_man', BASE_ASSET_BATH + 'images/animation/mine_man.png');
+    Elkaisar.GE.LoadingScene.load.image('stone_man', BASE_ASSET_BATH + 'images/animation/stone_man.png');
+    Elkaisar.GE.LoadingScene.load.image('stone_carry', BASE_ASSET_BATH + 'images/animation/stone_carry.png');
+    Elkaisar.GE.LoadingScene.load.image('no_carry', BASE_ASSET_BATH + 'images/animation/no_carry.png');
+    Elkaisar.GE.LoadingScene.load.spritesheet('WorldUnitFire', BASE_ASSET_BATH + 'images/animation/attack_fire.png', {frameWidth: 42, frameHeight: 63});
+
+    Elkaisar.GE.LoadingScene.load.image('cloud', BASE_ASSET_BATH + 'images/animation/cloud.png');
+    Elkaisar.GE.LoadingScene.load.image('unit_floor', BASE_ASSET_BATH + 'images/world/unit_floor.png');
+    Elkaisar.GE.LoadingScene.load.image('building_lvl_lable_1', BASE_ASSET_BATH + 'images/background/lvl_lable/lable_1.png');
+    Elkaisar.GE.LoadingScene.load.image('building_lvl_lable_2', BASE_ASSET_BATH + 'images/background/lvl_lable/lable_2.png');
+    Elkaisar.GE.LoadingScene.load.image('building_lvl_lable_3', BASE_ASSET_BATH + 'images/background/lvl_lable/lable_3.png');
+    Elkaisar.GE.LoadingScene.load.image('building_lvl_lable_4', BASE_ASSET_BATH + 'images/background/lvl_lable/lable_4.png');
+    Elkaisar.GE.LoadingScene.load.image('building_lvl_lable_5', BASE_ASSET_BATH + 'images/background/lvl_lable/lable_5.png');
+
+    Elkaisar.GE.LoadingScene.load.image('MapIconAttack', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/Attack.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconOccupy', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/Occupy.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconRainForce', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/RainForce.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconSpy', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/Spy.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconTransPort', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/TransPort.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconEnter', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/Enter.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconArena', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/BattelField.png');
+    Elkaisar.GE.LoadingScene.load.image('CoordHolder', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/CoordHolder.png');
+    Elkaisar.GE.LoadingScene.load.image('DashedLineRed', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineRed.png');
+    Elkaisar.GE.LoadingScene.load.image('DashedLineGreen', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineGreen.png');
+    Elkaisar.GE.LoadingScene.load.image('DashedLineLGreen', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineLGreen.png');
+    Elkaisar.GE.LoadingScene.load.image('DashedLineBlue', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineBlue.png');
+    Elkaisar.GE.LoadingScene.load.image('DashedLineGray', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineGray.png');
+    
+    
+    Elkaisar.GE.LoadingScene.load.image('goSourceA', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceA.png');
+    Elkaisar.GE.LoadingScene.load.image('goSourceH', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceH.png');
+    Elkaisar.GE.LoadingScene.load.image('goSourceD', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceD.png');
+    Elkaisar.GE.LoadingScene.load.image('goSourceN', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceN.png');
+    
+    
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
 };
 
 
 
-Elkaisar.GE.LoadingScene = new Phaser.Class({
+Elkaisar.GE.ConfigAnims = function () {
+    var Scene = Elkaisar.GE.WorldScene;
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'Forest.1',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('f_1'),
+        frameRate: 3, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'Forest.2',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('f_2'),
+        frameRate: 3, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'Forest.3',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('f_3'),
+        frameRate: 3, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.Nut',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [0, 6, 12, 18, 24, 30]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.Fri',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [1, 7, 13, 19, 25, 31]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.All',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [2, 8, 14, 20, 26, 32]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.Min',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [3, 9, 15, 21, 27, 33]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.Ene',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [4, 10, 16, 22, 28, 34]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.Dea',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [5, 11, 17, 23, 29, 35]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'WorldUnitFire.Ani',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('WorldUnitFire', {frames: [0, 1, 2, 3, 4, 5, 6, 7]}),
+        frameRate: 6, repeat: -1
+    });
+};
+
+
+Elkaisar.GE.Loading = function (percent) {
+    $("#load-percent").html(Math.floor(percent) + "%");
+    $("#load-bar div").css({width: percent + "%"});
+};
+
+
+Elkaisar.GE.CLoadingScene = new Phaser.Class({
     Extends: Phaser.Scene,
-    initialize: function() {
-        Phaser.Scene.call(this, { "key": "LoadingScene" });
+    initialize: function () {
+        Phaser.Scene.call(this, {"key": "LoadingScene"});
+        Elkaisar.GE.LoadingScene = this;
     },
-    init: function() {},
-    preload: function() {
+    init: function () {},
+    preload: function () {
+
         Elkaisar.GE.LPreLoad();
         this.load.on('progress', function (value) {
-            percentText.setText(parseInt(value * 100) + '%');
+            Elkaisar.GE.Loading(value * 100);
         });
         this.load.on('complete', function () {
-            percentText.destroy();
-            ImageBg.destroy();
-            Elkaisar.BattelReplay.drawControllPanel();
-            This.configAnims();
-            (new BattelReplay(BattelReplayData)).startBattelShow();
+            $.ajax({
+
+                url: API_URL + "/home/HLogIn/playerEnterServerWeb",
+                type: 'POST',
+                data: {
+                    server: SERVER_ID,
+                    outhToken: TOKEN
+                },
+                beforeSend: function (xhr) {
+
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar['LBase']['isJson'](data)) {
+                        alert(data), console['log'](data);
+                        return;
+                    }
+                    var JsonData = JSON['parse'](data);
+                    JsonData['state'] !== 'ok' && console['log'](JsonData);
+                    Elkaisar['Config']['WsPort'] = JsonData['WsPort'];
+                    Elkaisar['Config']['WsHost'] = JsonData['WsHost'];
+                    Elkaisar['DPlayer']['Player'] = JsonData['Player'];
+                    Elkaisar['ServerData'] = JsonData['Server'];
+                    Elkaisar['Config']['OuthToken'] = TOKEN;
+                    Elkaisar['Config']['idServer'] = JsonData['idServer'];
+                    Elkaisar['Config']['idCities'] = JsonData['idCities'];
+                    Elkaisar['Config']['JsVersion'] = JsonData['JsVersion'];
+
+                    if (Elkaisar['DPlayer']['Player']['panned'] >= $['now']() / 1000) {
+                        alert('هذا الحساب محظور');
+                        return;
+                    }
+
+                    $['ajaxSetup']({
+                        'data': {
+                            'idPlayerV': Elkaisar['DPlayer']['Player']['id_player']
+                        }
+                    });
+
+                    $('html')['trigger']('PlayerReady');
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                }
+
+            });
+
         });
     },
-    create: function() {},
-    update: function() {}
-});
-
-Elkaisar.GE.CityScene = new Phaser.Class({
-    Extends: Phaser.Scene,
-    initialize: function() {
-        Phaser.Scene.call(this, { "key": "City" });
+    create: function () {
+        Elkaisar.GE.LoadingScene.events.on('transitionout', function (targetScene, duration) { });
     },
-    init: function() {},
-    preload: function() {},
-    create: function() {},
-    update: function() {}
+    update: function () {}
 });
 
 
-Elkaisar.GE.WorldScene = new Phaser.Class({
+var game;
+var speedMult = 0.7;
+var friction = 0.99;
+
+
+Elkaisar.GE.CCityScene = new Phaser.Class({
     Extends: Phaser.Scene,
-    initialize: function() {
-        Phaser.Scene.call(this, { "key": "World" });
+    initialize: function () {
+        Phaser.Scene.call(this, {"key": "City"});
+        Elkaisar.GE.CityScene = this;
     },
-    init: function() {},
-    preload: function() {},
-    create: function() {},
-    update: function() {}
+    init: function () {},
+    preload: function () {},
+    create: function () {
+
+        this.events.on('transitionstart', function (fromScene, duration) {});
+        var floor_width = 2500;
+        var floor_height = 1400;
+
+        fillCityWithBuilding();
+
+        this.input.mousePointer.motionFactor = 0.5;
+        this.input.pointer1.motionFactor = 0.5;
+
+        var cam = this.cameras.main.setBounds(0, 0, floor_width, floor_height);
+        this.add.image(0, 0, "city_floor").setOrigin(0, 0);
+        this.Scrolling = {};
+        var This = this;
+        var downObj;
+        this.input.on('gameobjectdown', function (p, obj) {
+            downObj = obj;
+            This.input.stopPropagation();
+
+        });
+        this.input.on('gameobjectup', function (p, obj) {
+            if (p.downElement !== p.upElement || p.downElement !== Elkaisar.GE.Game.canvas)
+                return;
+            if (downObj === obj) {
+                obj.emit("click", obj);
+                This.input.stopPropagation();
+            }
+        });
+        this.input.on('pointerdown', function (p) {
+            This.Scrolling.movingSpeed = 0;
+
+        });
+        this.input.on('pointerup', function (p) {
+            This.Scrolling.isBeingDragged = false;
+            This.Scrolling.DeltaTime = p.downTime - p.upTime;
+            This.Scrolling.Distance = Phaser.Math.Distance.Between(p.downX, p.downY, p.upX, p.upY);
+            This.Scrolling.Angle = Phaser.Math.Angle.Between(p.downX, p.downY, p.upX, p.upY);
+            This.Scrolling.movingSpeed = This.Scrolling.Distance * 10 / This.Scrolling.DeltaTime;
+            This.input.stopPropagation();
+        });
+
+        this.input.on('pointermove', function (p) {
+            if (!p.isDown)
+                return;
+            This.Scrolling.isBeingDragged = true;
+            cam.scrollX -= (p.x - p.prevPosition.x) / cam.zoom;
+            cam.scrollY -= (p.y - p.prevPosition.y) / cam.zoom;
+        });
+
+
+
+        this.input.on('wheel', function (pointer, gameObjects, deltaX, deltaY, deltaZ) {
+
+            if (deltaY < 0) {
+                if (cam.zoom >= 2)
+                    return cam.zoom = 2;
+                cam.zoom += 0.1;
+            }
+
+        });
+        cam.pan(BuildingOnFloor.palace.x, BuildingOnFloor.palace.y, 700);
+
+        var cursors = this.input.keyboard.createCursorKeys();
+
+        var controlConfig = {
+            camera: this.cameras.main,
+            left: cursors.left,
+            right: cursors.right,
+            up: cursors.up,
+            down: cursors.down,
+            acceleration: 0.06,
+            drag: 0.0005,
+            maxSpeed: 1.0
+        };
+
+        this.controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
+        //Crafty.viewport.centerOn(BuildingOnFloor.palace, 1);
+    },
+    update: function (time, delta) {
+        this.controls.update(delta);
+    }
 });
+
+
+Elkaisar.GE.CWorldScene = new Phaser.Class({
+    Extends: Phaser.Scene,
+    initialize: function () {
+        Phaser.Scene.call(this, {"key": "World"});
+        Elkaisar.GE.WorldScene = this;
+    },
+    init: function () {},
+    preload: function () {},
+    create: function () {
+
+        Elkaisar.GE.ConfigAnims();
+        var cam = this.cameras.main;
+        cam.scrollX = Elkaisar.World.Map.posX(Elkaisar.CurrentCity.City.x, Elkaisar.CurrentCity.City.y) - Elkaisar.MAX_SCREEN_WIDTH / 2 + 64;
+        cam.scrollY = Elkaisar.World.Map.posY(Number(Elkaisar.CurrentCity.City.x), Number(Elkaisar.CurrentCity.City.y)) - Elkaisar.MAX_SCREEN_HEIGHT / 2 + 128;
+        Elkaisar.World.Map.Scroll(true);
+
+        var This = this;
+        var downObj;
+        this.isMapDraging = false;
+
+        this.input.on('gameobjectdown', function (p, obj, E) {
+            if (this.isMapDraging)
+                return;
+            downObj = obj;
+            E.stopPropagation();
+
+        });
+        this.input.on('gameobjectup', function (P, Obj, E) {
+            if (this.isMapDraging)
+                return;
+            if (P.downElement !== Elkaisar.GE.Game.canvas)
+                return;
+            Obj.emit("click", Obj);
+            E.stopPropagation();
+        });
+
+
+        this.input.on('pointerdown', Elkaisar.World.Map.mouseDownFn);
+        this.input.on('pointerup', Elkaisar.World.Map.mouseUpFn);
+        this.input.on('pointermove', Elkaisar.World.Map.mouseMoveFn);
+        this.UnitFloor = this.add.image(0, 0, "unit_floor").setOrigin(0, 0).setDepth(0);
+        this.UnitFloor.ignoreDestroy = true;
+        this.WorldUnitIcons = {};
+
+        this.time.delayedCall(1000, function () { Elkaisar.World.MapBattel.AddBattels();  });
+        this.cursors = this.input.keyboard.createCursorKeys();
+        this.KeySpeed = 4;
+        this.input.keyboard.on('keyup', function (eventName, event) {
+            This.KeySpeed = 4;
+            This.time.delayedCall(500, function () {This.isMapDraging = false;});
+            
+        });
+    },
+    update: function (time, delta) {
+
+        for (var iii in Elkaisar.World.MapBattel.BattelList) {
+            let OneBattel = Elkaisar.World.MapBattel.BattelList[iii];
+            if (OneBattel.Line)
+                OneBattel.Line.tilePositionX -= 0.25;
+        }
+
+        if (this.cursors.up.isDown)
+        {
+            this.isMapDraging = true;
+            this.cameras.main.scrollY -= this.KeySpeed;
+            this.KeySpeed = Math.min(this.KeySpeed + 0.5, 20);
+            if (time % 5 == 0)
+                Elkaisar.World.Map.Scroll(true);
+            if (time % 10 == 0)
+                Elkaisar.World.Map.clear();
+            if (time % 20 == 0)
+                Elkaisar.World.MapBattel.AddBattels();
+
+
+        } else if (this.cursors.down.isDown) {
+            this.isMapDraging = true;
+            this.cameras.main.scrollY += this.KeySpeed;
+            this.KeySpeed = Math.min(this.KeySpeed + 0.5, 20);
+            if (time % 5 == 0)
+                Elkaisar.World.Map.Scroll(true);
+            if (time % 10 == 0)
+                Elkaisar.World.Map.clear();
+            if (time % 20 == 0)
+                Elkaisar.World.MapBattel.AddBattels();
+
+        }
+
+        if (this.cursors.left.isDown)
+        {
+            this.isMapDraging = true;
+            this.cameras.main.scrollX -= this.KeySpeed;
+            this.KeySpeed = Math.min(this.KeySpeed + 0.5, 20);
+            if (time % 5 == 0)
+                Elkaisar.World.Map.Scroll(true);
+            if (time % 10 == 0)
+                Elkaisar.World.Map.clear();
+            if (time % 20 == 0)
+                Elkaisar.World.MapBattel.AddBattels();
+
+        } else if (this.cursors.right.isDown) {
+            this.isMapDraging = true;
+            this.cameras.main.scrollX += this.KeySpeed;
+            this.KeySpeed = Math.min(this.KeySpeed + 0.5, 20);
+            if (time % 5 == 0)
+                Elkaisar.World.Map.Scroll(true);
+            if (time % 10 == 0)
+                Elkaisar.World.Map.clear();
+            if (time % 20 == 0)
+                Elkaisar.World.MapBattel.AddBattels();
+        }
+
+
+    }
+});
+
+
+
+$(document).ready(function () {
+    const phaserConfig = {
+        type: Phaser.AUTO,
+        parent: "GameWindow",
+        width: window.innerWidth,
+        height: window.innerHeight,
+        backgroundColor: "#000000",
+        scene: [Elkaisar.GE.CLoadingScene, Elkaisar.GE.CCityScene, Elkaisar.GE.CWorldScene],
+        /* input: {
+         windowEvents: false
+         }*/
+        fps: {
+            min: 10,
+            target: 20
+        }
+    };
+
+    Elkaisar.GE.Game = new Phaser.Game(phaserConfig);
+});
+
