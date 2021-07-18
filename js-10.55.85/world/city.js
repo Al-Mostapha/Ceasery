@@ -884,7 +884,7 @@ var BuildingConstData = [
         },
         getHitArea: function () {
             if (Number(Elkaisar.City.getCity().BuildingLvl.wall) >= 10) {
-                return [510,3,1,256,5,388,576,104,609,11];
+                return [510, 3, 1, 256, 5, 388, 576, 104, 609, 11];
             } else if (Number(Elkaisar.City.getCity().BuildingLvl.wall) >= 8) {
                 return [598, 11, 588, 92, 9, 391, 7, 299, 267, 161, 259, 150, 295, 130, 323, 133, 560, 12];
             } else if (Number(Elkaisar.City.getCity().BuildingLvl.wall) >= 4) {
@@ -1231,7 +1231,9 @@ function building_lvl_lable(x, y, place)
 {
 
     var lvl = Number(Elkaisar.City.getCity().BuildingLvl[place]);
-    var alpha_ = lvl === 0 ? 0.0 : 1.0;
+    if (lvl == 0)
+        return;
+
 
     var lable = "building_lvl_lable_1";
 
@@ -1245,8 +1247,7 @@ function building_lvl_lable(x, y, place)
         lable = "building_lvl_lable_2";
     }
 
-   
-    Elkaisar.GE.CityScene.add.text(x + 0.5 * X_GRID, y + 1 * Y_GRID, lvl, {
+    BuildingOnFloor[place].LvlText = Elkaisar.GE.CityScene.add.text(x + 0.5 * X_GRID, y + 1 * Y_GRID, lvl, {
         color: '#FFFFFF',
         stroke: '#000000',
         strokeThickness: 3,
@@ -1256,8 +1257,9 @@ function building_lvl_lable(x, y, place)
         fixedWidth: 30,
         fixedHeight: 30
     }).setOrigin(0, 0).setDepth(4);
-    
-    return Elkaisar.GE.CityScene.add.image(x + 0.5 * X_GRID, y + 1 * Y_GRID - 10, lable).setOrigin(0, 0).setDisplaySize(30, 30).setDepth(3);
+    BuildingOnFloor[place].LvlImage = Elkaisar.GE.CityScene.add.image(x + 0.5 * X_GRID, y + 1 * Y_GRID - 10, lable).setOrigin(0, 0).setDisplaySize(30, 30).setDepth(3)
+
+    return BuildingOnFloor[place].LvlImage;
 
 }
 
@@ -1268,11 +1270,11 @@ Elkaisar.GE.AddCityBuilding = function (x, y, BuildingPlace) {
         hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType[BuildingPlace]].hitArea),
         hitAreaCallback: Phaser.Geom.Polygon.Contains
     }).setOrigin(0, 0).setDepth(2)
-    .on("click", function () {
-        buildingClick(BuildingPlace);
-    })
-    .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
-    .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+            .on("click", function () {
+                buildingClick(BuildingPlace);
+            })
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
     BuildingOnFloor[BuildingPlace].Lable = building_lvl_lable(x, y, BuildingPlace);
     building_hammer_animate(BuildingPlace);
     return BuildingOnFloor[BuildingPlace];
@@ -1280,16 +1282,16 @@ Elkaisar.GE.AddCityBuilding = function (x, y, BuildingPlace) {
 
 
 Elkaisar.GE.AddCityFixedBuilding = function () {
-    
+
     BuildingOnFloor.palace = Elkaisar.GE.CityScene.add.image(1190, 545, "palace").setInteractive({
         hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["palace"]].hitArea),
         hitAreaCallback: Phaser.Geom.Polygon.Contains
     }).setOrigin(0, 0).setDepth(2)
-    .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
-        buildingClick("palace");
-    })
-    .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
-    .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
+                buildingClick("palace");
+            })
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
     building_lvl_lable(1260, 580, "palace");
     building_hammer_animate("palace");
 
@@ -1335,7 +1337,7 @@ Elkaisar.GE.AddCityFixedBuilding = function () {
     building_hammer_animate("lighthouse");
 
 
-    BuildingOnFloor.farm = Elkaisar.GE.CityScene.add.image(12.75 * X_GRID, 14.75 * Y_GRID, "farm").setInteractive({
+    BuildingOnFloor.farm = Elkaisar.GE.CityScene.add.image(13 * X_GRID, 14.25 * Y_GRID, "farm").setInteractive({
         hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["farm"]].hitArea),
         hitAreaCallback: Phaser.Geom.Polygon.Contains
     }).setOrigin(0, 0).setDepth(2)
@@ -1399,18 +1401,26 @@ Elkaisar.GE.TextConfig = {
     fixedWidth: 100,
     fixedHeight: 24,
     backgroundColor: "#000000",
-    padding:{
-       y: 5
+    padding: {
+        y: 5
     }
 };
 function fillCityWithBuilding()
 {
     for (var prop in BuildingOnFloor) {
         BuildingOnFloor[prop].destroy();
+        if (BuildingOnFloor[prop].LvlImage)
+            BuildingOnFloor[prop].LvlImage.destroy();
+        if (BuildingOnFloor[prop].LvlText)
+            BuildingOnFloor[prop].LvlText.destroy();
+        for(var iii in BuildingOnFloor[prop].BuildingAni)
+            if(BuildingOnFloor[prop].BuildingAni[iii] && BuildingOnFloor[prop].BuildingAni[iii].destroy)
+            BuildingOnFloor[prop].BuildingAni[iii].destroy();
+        delete BuildingOnFloor[prop];
     }
-    Crafty("hammer_start").each(function () {
-        this.destroy();
-    });
+    /*Crafty("hammer_start").each(function () {
+     this.destroy();
+     });*/
 
     if (!Elkaisar.City.getCity().BuildingType)
     {
@@ -1450,7 +1460,7 @@ function fillCityWithBuilding()
     Elkaisar.GE.AddCityBuilding(1565, 880, "under_palace_11");
     Elkaisar.GE.AddCityBuilding(1457, 923, "under_palace_12");
 
-   
+
 
 
 
@@ -1481,7 +1491,6 @@ function fillCityWithBuilding()
         fillCityLvl_3();
     }
 
-    Animation.FixedCityAnimation();
     if (Elkaisar.CurrentCity.City.food) {
         Animation.cityProductionRate();
     }
@@ -1541,9 +1550,4 @@ function fillCityLvl_1() {
     Elkaisar.GE.AddCityBuilding(672, 685, "hill_10").setFlipX(true);
     Elkaisar.GE.AddCityBuilding(374, 732, "hill_11").setFlipX(true);
     Elkaisar.GE.AddCityBuilding(478, 680, "hill_12").setFlipX(true);
-
-
-
-    for (var ii in BuildingOnFloor)
-        Elkaisar.GE.CityScene.input.enableDebug(BuildingOnFloor[ii]);
 }

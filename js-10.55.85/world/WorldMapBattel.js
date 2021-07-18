@@ -171,6 +171,7 @@ Elkaisar.World.Map.OnCityClicked = function (Unit) {
 };
 
 Elkaisar.World.Map.OnOtherUnitClicked = function (Unit) {
+    
     campDB.showDialogBox(Unit.x, Unit.y);
     $("#camp-over-view-desc").niceScroll(SCROLL_BAR_PROP);
 
@@ -188,9 +189,9 @@ Elkaisar.World.Map.OnOtherUnitClicked = function (Unit) {
 
         $('#lvlChangableUnit')['html'](campDB['armyContainer'](Unit.x, Unit.y));
 
-        if (Number(jsonData.l) > Elkaisar.World.UnitTypeData[type].maxLvl) {
+        if (Number(jsonData.l) > Elkaisar.World.UnitTypeData[Unit.ut].maxLvl) {
             return;
-        } else if (!Elkaisar.World.UnitData.isAttackable(type)) {
+        } else if (!Elkaisar.World.UnitData.isAttackable(Unit.ut)) {
             return;
         } else if (Number(jsonData.lo) === 1) {
             return;
@@ -221,7 +222,11 @@ Elkaisar.World.MapBattel.getAllBattels = function () {
         url: "Battel/getAllWorldBattels",
         data: {},
         callBack: function (Res) {
-            Elkaisar.World.MapBattel.BattelList = Res;
+            if(Res && Res.length)
+                Elkaisar.World.MapBattel.BattelList = Res;
+            else 
+                Elkaisar.World.MapBattel.BattelList = [];
+            
             console.log(Res);
         }
     });
@@ -230,8 +235,18 @@ Elkaisar.World.MapBattel.getAllBattels = function () {
 
 Elkaisar.World.MapBattel.removeBattel = function (Battel) {
     const BattelKey = `${Battel.xCity}.${Battel.yCity}-${Battel.xCoord}.${Battel.yCoord}`;
+    
     if (Elkaisar.World.MapBattel.BattelList[BattelKey].Line)
         Elkaisar.World.MapBattel.BattelList[BattelKey].Line.destroy();
+    if (Elkaisar.World.MapBattel.BattelList[BattelKey].GoSourceBtn)
+        Elkaisar.World.MapBattel.BattelList[BattelKey].GoSourceBtn.destroy();
+    if (Elkaisar.World.MapBattel.BattelList[BattelKey].GoDistBtn)
+        Elkaisar.World.MapBattel.BattelList[BattelKey].GoDistBtn.destroy();
+    if (Elkaisar.World.MapBattel.BattelList[BattelKey].GoHeroAvatarBtn)
+        Elkaisar.World.MapBattel.BattelList[BattelKey].GoHeroAvatarBtn.destroy();
+    if (Elkaisar.World.MapBattel.BattelList[BattelKey].TimeElapsed)
+        Elkaisar.World.MapBattel.BattelList[BattelKey].TimeElapsed.destroy();
+    
     delete Elkaisar.World.MapBattel.BattelList[BattelKey];
 };
 
@@ -307,27 +322,34 @@ Elkaisar.World.MapBattel.BattelLine = function (OneBattel, x1, y1, x2, y2) {
     });
     this.BattelLineOver(OneBattel, x1, y1, x2, y2);
 
-    OneBattel.Line.on("pointerover", function (P, X, Y, E) {
+    OneBattel.Line.on("pointerup", function (P, X, Y, E) {
         Elkaisar.World.WorldMapIcon.removeWorldUnitIcons();
         Elkaisar.World.WorldMapIcon.removeUnitCoords();
         Elkaisar.GE.WorldScene.tweens.add({
             targets: OneBattel.GoSourceBtn,
-            x: x1 + (X - 60) * Math.cos(LineAngle),
-            y: y1 + (X - 60) * Math.sin(LineAngle) + 25*Math.sin(LineAngle),
+            x: x1 + (X - 60) * Math.cos(LineAngle) - 25*Math.cos(Math.PI/2 - LineAngle),
+            y: y1 + (X - 60) * Math.sin(LineAngle) + 25*Math.sin(Math.PI/2 - LineAngle),
             ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
             duration: 600
         });
         Elkaisar.GE.WorldScene.tweens.add({
             targets: OneBattel.GoDistBtn,
-            x: x1 + (X + 60) * Math.cos(LineAngle),
-            y: y1 + (X + 60)  * Math.sin(LineAngle) +  25*Math.sin(LineAngle),
+            x: x1 + (X + 60)  * Math.cos(LineAngle) - 25*Math.cos(Math.PI/2 - LineAngle),
+            y: y1 + (X + 60)  * Math.sin(LineAngle) + 25*Math.sin(Math.PI/2 - LineAngle),
             ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
             duration: 600
         });
         Elkaisar.GE.WorldScene.tweens.add({
             targets: OneBattel.GoHeroAvatarBtn,
-            x: x1 + (X) * Math.cos(LineAngle),
-            y: y1 + (X)  * Math.sin(LineAngle) +  25*Math.sin(LineAngle),
+            x: x1 + (X)  * Math.cos(LineAngle) - 25*Math.cos(Math.PI/2 - LineAngle),
+            y: y1 + (X)  * Math.sin(LineAngle) + 25*Math.sin(Math.PI/2 - LineAngle),
+            ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+            duration: 600
+        });
+        Elkaisar.GE.WorldScene.tweens.add({
+            targets: OneBattel.TimeElapsed,
+            x: x1 + (X)  * Math.cos(LineAngle) - 50*Math.cos(Math.PI/2 - LineAngle),
+            y: y1 + (X)  * Math.sin(LineAngle) + 50*Math.sin(Math.PI/2 - LineAngle),
             ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
             duration: 600
         });
@@ -336,13 +358,29 @@ Elkaisar.World.MapBattel.BattelLine = function (OneBattel, x1, y1, x2, y2) {
 
     
 };
-
+Elkaisar.World.MapBattel.changeTimeFormat = function (time_diff) {
+    if (isNaN(time_diff))
+        return "---";
+    time_diff = parseInt(time_diff);
+    var days = Math.floor(time_diff / (60 * 60 * 24));
+    var hours = Math.floor((time_diff % (60 * 60 * 24)) / (60 * 60));
+    var minutes = Math.floor((time_diff % (60 * 60)) / (60));
+    var seconds = Math.floor((time_diff % (60)) / 1);
+    return ` ث ${seconds} د ${minutes} س ${hours} ي ${days} `;
+    return (getArabicNumbers(seconds) + " ث " + (minutes > 0 ? getArabicNumbers(minutes)
+            + " د " : "") + (hours > 0 ? getArabicNumbers(hours)
+            + " س " : "") + (days > 0 ? getArabicNumbers(days)
+            + " ي " : ""));
+}
 
 Elkaisar.World.MapBattel.BattelLineOver = function (OneBattel, x1, y1, x2, y2){
 
     const LineAngle = Phaser.Math.Angle.Between(x1, y1, x2, y2);
     OneBattel.GoSourceBtn     = Elkaisar.GE.WorldScene.add.image(x1, y1, "goSourceN").setDepth(Elkaisar.World.Map.posZ(255, 255)).setRotation(LineAngle);
     OneBattel.GoHeroAvatarBtn = Elkaisar.GE.WorldScene.add.image(x1, y1, "SFaceA1").setDepth(Elkaisar.World.Map.posZ(255, 255)).setRotation(LineAngle);
+    OneBattel.TimeElapsed     = Elkaisar.GE.WorldScene.add.text(x1, y1, `${this.changeTimeFormat(OneBattel.timeEnd - Date.now()/1000)}`, 
+                                    {fixedHeight: 20, fontStyle: "bold", fontSize: 14, stroke: '#000000', strokeThickness: 3, backgroundColor: "#000000"})
+                                            .setDepth(Elkaisar.World.Map.posZ(255, 255)).setOrigin(0.5, 0.5).setRotation(LineAngle);
     OneBattel.GoDistBtn       = Elkaisar.GE.WorldScene.add.image(x1, y1, "goSourceN").setDepth(Elkaisar.World.Map.posZ(255, 255)).setRotation(LineAngle).setFlipX(true);
 
     OneBattel.GoSourceBtn.setInteractive().on("pointerover", function (P){
@@ -370,6 +408,11 @@ Elkaisar.World.MapBattel.BattelLineOver = function (OneBattel, x1, y1, x2, y2){
             Elkaisar.World.navigateTo(OneBattel.xCoord, OneBattel.yCoord);
         });
     });
+    
+    
+    OneBattel.GoHeroAvatarBtn.setInteractive().on("click", function (){
+        alert_box.confirmMessage("Clicked")
+    })
    
 };
 

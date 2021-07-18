@@ -70,81 +70,147 @@ Animation.cityProductionRate = function () {
 
 };
 
+Animation.FarmAnimation = function () {
 
-Animation.FixedCityAnimation = function () {
-    return;
-    Crafty.e("2D, DOM, Image").image("images/animation/fountain.gif").attr({x: 1300, y: 710, z: 50});
-    Crafty.e("2D, DOM, Image").image("images/animation/fountain.gif").attr({x: 1200, y: 660, z: 50});
+    Elkaisar.GE.CityScene.add.sprite(1895, 1083, "FarmLabor").setDepth(100).play("FarmLabor.A");
+    Elkaisar.GE.CityScene.add.sprite(1804, 1129, "FarmLabor").setDepth(100).playAfterDelay("FarmLabor.A", 500);
+    Elkaisar.GE.CityScene.add.sprite(1777, 1059, "FarmLabor").setDepth(100).playAfterDelay("FarmLabor.A", 250);
 
 
-    Crafty("city_ani").each(function () {
-        this.destroy();
+    var CarryOne = Elkaisar.GE.CityScene.add.sprite(1929, 1086, "FarmLabor").setDepth(100).playAfterDelay("FarmLaborCarryR.A", 250).setDepth(1);
+    var CarryTwo = Elkaisar.GE.CityScene.add.sprite(2071, 1013, "FarmLabor").setDepth(100).playAfterDelay("FarmLaborCarryR.A", 250).setFlipX(true).setDepth(1);
+    var CarryThree = Elkaisar.GE.CityScene.add.sprite(2100, 1000, "FarmLabor").setDepth(100).playAfterDelay("FarmLaborCarryR.A", 250).setFlipX(true).setDepth(1);
+    var CarryFour = Elkaisar.GE.CityScene.add.sprite(2050, 1030, "FarmLabor").setDepth(100).playAfterDelay("FarmLaborCarryR.A", 250).setFlipX(true).setDepth(1);
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryOne, x: 2071, y: 1013, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 15000, yoyo: true,
+        onYoyo: function () {
+            CarryOne.play("noCarryWorkerD.A").setFlipX(true);
+        },
+        onRepeat: function () {
+            CarryOne.play("FarmLaborCarryR.A").setFlipX(false);
+        }
+    });
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryTwo, x: 1450, y: 664, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 45000, yoyo: true,
+        onYoyo: function () {
+            CarryTwo.play("noCarryWorkerD.A").setFlipX(false);
+        },
+        onRepeat: function () {
+            CarryTwo.play("FarmLaborCarryR.A").setFlipX(true);
+        }
+    });
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryThree, x: 1431, y: 678, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 45000, yoyo: true, delay: 15000,
+        onYoyo: function () {
+            CarryThree.play("noCarryWorkerD.A").setFlipX(false);
+        },
+        onRepeat: function () {
+            CarryThree.play("FarmLaborCarryR.A").setFlipX(true);
+        }
+    });
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryFour, x: 1410, y: 683, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 45000, yoyo: true, delay: 30000,
+        onYoyo: function () {
+            CarryFour.play("noCarryWorkerD.A").setFlipX(false);
+        },
+        onRepeat: function () {
+            CarryFour.play("FarmLaborCarryR.A").setFlipX(true);
+        }
+    });
+};
+
+
+Animation.StoneAnimation = function () {
+
+    Elkaisar.GE.CityScene.add.sprite(1523, 442, "StoneLabor").setDepth(100).playAfterDelay("StoneLabor.A", 250).setDepth(100).setScale(1.2, 1.2);
+    Elkaisar.GE.CityScene.add.sprite(1642, 453, "StoneLabor").setDepth(100).playAfterDelay("StoneLabor.A", 0).setDepth(100).setScale(1.2, 1.2);
+    Elkaisar.GE.CityScene.add.sprite(1731, 461, "StoneLabor").setDepth(100).playAfterDelay("StoneLabor.A", 150).setDepth(100).setFlipX(true).setScale(1.2, 1.2);
+    Elkaisar.GE.CityScene.add.sprite(1630, 525, "StoneLabor").setDepth(100).playAfterDelay("StoneLabor.A", 100).setDepth(100).setFlipX(true).setScale(1.2, 1.2);
+
+    var CarryOne = Elkaisar.GE.CityScene.add.sprite(1563, 537, "FarmLabor").setDepth(150).playAfterDelay("StoneLaborCarryL.A", 250).setDepth(1);
+    var CarryTwo = Elkaisar.GE.CityScene.add.sprite(1508, 503, "FarmLabor").setDepth(150).playAfterDelay("StoneLaborCarryL.A", 250).setDepth(1);
+
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryOne, x: 1395, y: 645, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 15000, yoyo: true,
+        onYoyo: function () {
+            CarryOne.play("noCarryWorkerR.A");
+        },
+        onRepeat: function () {
+            CarryOne.play("StoneLaborCarryL.A").setFlipX(false);
+        }
+    });
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryTwo, x: 1312, y: 609, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 15000, yoyo: true, delay: 10000,
+        onYoyo: function () {
+            CarryTwo.play("noCarryWorkerR.A");
+        },
+        onRepeat: function () {
+            CarryTwo.play("StoneLaborCarryL.A").setFlipX(false);
+        }
     });
 
-
-    /* first fountain */
-    Crafty.e('2D, DOM, fountain, SpriteAnimation, city_ani')
-            .reel("walking", 800, [
-                [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0]
-            ])
-            .animate("walking", -1)
-            .attr({x: 1300, y: 710, z: 50});
-    Crafty.e('2D, DOM, fountain, SpriteAnimation, city_ani')
-            .reel("walking", 800, [
-                [2, 0], [3, 0], [4, 0], [5, 0], [0, 0], [1, 0]
-            ])
-            .animate("walking", -1)
-            .attr({x: 1200, y: 660, z: 50});
+};
 
 
-    Crafty.e('2D, DOM, ani_wood_maker, SpriteAnimation, city_ani')
-            .reel("walking", 3000, [
-                [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
-                [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1]
-            ])
-            .animate("walking", -1)
-            .attr({x: 2.5 * X_GRID, y: 8 * Y_GRID, z: 50});
 
-    Crafty.e('2D, DOM, ani_wood_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6]
-            ])
-            .animate("walking", -1)
-            .attr({x: 2 * X_GRID, y: 8.25 * Y_GRID, z: 50});
-    Crafty.e('2D, DOM, ani_wood_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 3], [0, 4], [0, 5], [0, 6], [0, 0], [0, 1], [0, 2]
-            ])
-            .animate("walking", -1)
-            .attr({x: 3 * X_GRID, y: 8.25 * Y_GRID, z: 50}).flip("X");
+Animation.IronAnimation = function () {
 
-    Crafty.e('2D, DOM, stone_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6]
-            ])
-            .animate("walking", -1)
-            .attr({x: 12.3 * X_GRID, y: 7.15 * Y_GRID, z: 50});
 
-    Crafty.e('2D, DOM, stone_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 0], [0, 1]
-            ])
-            .animate("walking", -1)
-            .attr({x: 11.75 * X_GRID, y: 6.5 * Y_GRID, z: 50});
+    Elkaisar.GE.CityScene.add.sprite(1319, 279, "IronLabor").playAfterDelay("IronLabor.A", 0).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(1173, 326, "IronLabor").playAfterDelay("IronLabor.A", 100).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(1061, 317, "IronLabor").playAfterDelay("IronLabor.A", 200).setDepth(100);
 
-    Crafty.e('2D, DOM, mine_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6]
-            ])
-            .animate("walking", -1)
-            .attr({x: 10 * X_GRID, y: 4 * Y_GRID, z: 50});
+};
 
-    Crafty.e('2D, DOM, mine_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 0], [0, 1]
-            ])
-            .animate("walking", -1)
-            .attr({x: 9 * X_GRID, y: 5 * Y_GRID, z: 50});
+
+Animation.WoodAnimation = function () {
+
+
+    Elkaisar.GE.CityScene.add.sprite(437, 477, "WoodLabor").playAfterDelay("WoodLabor.A", 0).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(399, 550, "WoodLabor").playAfterDelay("WoodLabor.A", 100).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(303, 563, "WoodLabor").playAfterDelay("WoodLabor.A", 200).setDepth(100);
+
+    Elkaisar.GE.CityScene.add.sprite(348, 547, "WoodTool").playAfterDelay("WoodTool.A", 200).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(470, 549, "WoodTool").playAfterDelay("WoodTool.A", 100).setFlipX(true).setDepth(100);
+
+
+};
+
+Animation.FixedCityAnimation = function () {
+
+    Animation.FarmAnimation();
+    Animation.StoneAnimation();
+    Animation.IronAnimation();
+    Animation.WoodAnimation();
+
+    Elkaisar.GE.CityScene.add.sprite(1412, 445, "Horse").playAfterDelay("Horse.A", 0).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(1420, 455, "Horse").playAfterDelay("Horse.A", 100).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(1430, 458, "Horse").playAfterDelay("Horse.A", 150).setDepth(100);
+
+
+    Elkaisar.GE.CityScene.add.sprite(1285, 716, "Fountain").playAfterDelay("Fountain.A", 150).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(1235, 680, "Fountain").playAfterDelay("Fountain.A", 150).setDepth(100);
+
+
+    var Woman1 = Elkaisar.GE.CityScene.add.sprite(1696, 555, "Woman").playAfterDelay("WomanFace.A", 150).setDepth(100);
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: Woman1, x: 1178, y: 790, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 45000, yoyo: true,
+        onYoyo: function () {
+            Woman1.play("WomanBack.A");
+        },
+        onRepeat: function () {
+            Woman1.play("WomanFace.A");
+        }
+    });
+
+    return;
 
     Crafty.cityClouds = [];
     Crafty.cityClouds.push(Crafty.e('2D, DOM, cloud ,Motion , city_ani').attr({
@@ -207,148 +273,104 @@ Animation.FixedCityAnimation = function () {
         x: 1600, y: 900, vx: 14, z: 5000, __offsetX: -1600
     }));
 
-
-    /* 
-     
-     Crafty.e('2D, Canvas, stone_carry, SpriteAnimation, Motion , Collision    ,  WiredHitBox')
-     .reel("walking", 1200, [
-     [0, 0], [0,1], [0,2], [0,3], [0,4], [0,5],[0,6]
-     ])
-     .animate("walking", -1)
-     .attr({x:12.5*X_GRID, y:8*Y_GRID, z:50 , vx:-18 , vy:9}).flip("X")
-     .onHit('palace' , function (){
-     
-     var this_ = this;
-     setTimeout(function (){
-     
-     this_.vx =0;
-     this_.vy =0;
-     //this_.attr({__image: "images/animation/stone_carry.png"})
-     
-     
-     }, 3500);
-     
-     
-     
-     })
-     .collision([37,17,19,19,20,47,41,47])
-     .onHit("mine" , function (){
-     
-     console.log("teat")
-     
-     });
-     */
-
-
-
-
-
 };
 
 
 //setTimeout(function (){Animation.FixedCityAnimation();} , 3000)
-var CLOUD_RESET_TIMER = setInterval(function () {
-    for (var cloud in Crafty.cityClouds) {
+/*var CLOUD_RESET_TIMER = setInterval(function () {
+ for (var cloud in Crafty.cityClouds) {
+ 
+ if (Crafty.cityClouds[cloud]._x > 2500) {
+ Crafty.cityClouds[cloud].x = Crafty.cityClouds[cloud].__offsetX;
+ }
+ 
+ }
+ }, 40 * 1000);*/
 
-        if (Crafty.cityClouds[cloud]._x > 2500) {
-            Crafty.cityClouds[cloud].x = Crafty.cityClouds[cloud].__offsetX;
-        }
-
-    }
-}, 40 * 1000);
 
 
-
-function building_hammer_animate(building_place)
+function building_hammer_animate(BuildingPlace)
 {
 
-    if (isUpgradingNow(building_place)) {
+    if (!isUpgradingNow(BuildingPlace))
+        return;
 
-        var x = BuildingOnFloor[building_place]._x;
-        var y = BuildingOnFloor[building_place]._y;
-
-        var x_1 = x - 25;
-        var x_2 = x + 20;
-        var y_1 = y - 10;
-        var y_2 = y;
-
-        if (building_place === "palace") {
-            x_1 = x + 25;
-            x_2 = x + 80;
-            y_1 = y + 5;
-            y_2 = y;
-        } else if (building_place === "wall") {
-
-
-            var hammer_3 = Crafty.e('2D, Canvas, hammer_start, SpriteAnimation,' + building_place + "_ani_up")
-                    .reel("walking", 650, [
-                        [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                    ])
-                    .animate("walking", -1)
-                    .attr({x: 1.5 * X_GRID, y: 3.25 * Y_GRID, z: 5000});
-
-            var hammer_4 = Crafty.e('2D, Canvas, hammer_start, SpriteAnimation,' + building_place + "_ani_up")
-                    .reel("walking", 650, [
-                        [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [0, 0], [1, 0]
-                    ])
-                    .animate("walking", -1)
-                    .attr({x: 0.5 * X_GRID, y: 4.25 * Y_GRID, z: 5000});
-
-            BuildingOnFloor[building_place].attach(hammer_3);
-            BuildingOnFloor[building_place].attach(hammer_4);
-
-
-            x_2 = 3.5 * X_GRID;
-            y_2 = 1.25 * Y_GRID;
-
-
-        } else if (building_place === "farm") {
-            x_1 = x + 0.5 * X_GRID;
-            x_2 = x + X_GRID;
-            y_1 = y + Y_GRID;
-            y_2 = y + 0.5 * Y_GRID;
-        } else if (building_place === "mine") {
-            x_1 = x - 25 + X_GRID;
-            x_2 = x + 20 + X_GRID;
-            y_1 = y - 10 + Y_GRID;
-            y_2 = y + Y_GRID;
-        } else if (building_place === "stone") {
-            x_1 = x - 25 + 0.5 * X_GRID;
-            x_2 = x + 20 + 0.5 * X_GRID;
-            y_1 = y - 10 + 0.5 * Y_GRID;
-            y_2 = y + 0.5 * Y_GRID;
+    var x = BuildingOnFloor[BuildingPlace].x;
+    var y = BuildingOnFloor[BuildingPlace].y;
+    var x_1 = x - 25;
+    var x_2 = x + 20;
+    var y_1 = y - 10;
+    var y_2 = y;
+    if (BuildingOnFloor[BuildingPlace].BuildingAni) {
+        for (var ii in BuildingOnFloor[BuildingPlace].BuildingAni) {
+            BuildingOnFloor[BuildingPlace].BuildingAni[ii].destroy();
+            delete BuildingOnFloor[BuildingPlace].BuildingAni[ii];
         }
+    }
+    BuildingOnFloor[BuildingPlace].BuildingAni = [];
 
+    if (BuildingPlace === "palace") {
+        x_1 = x + 25;
+        x_2 = x + 80;
+        y_1 = y + 5;
+        y_2 = y;
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.image(x + 55, y + 55, "UpgradingPalaceSupD").setOrigin(0, 0).setDepth(3));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.image(x + 55, y + 55, "UpgradingPalaceSupU").setOrigin(0, 0).setDepth(1));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 165, y + 120, "UpgradingLaborR").play("UpgradingLaborR.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 200, y + 100, "UpgradingLaborR").play("UpgradingLaborR.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 70, y + 120, "UpgradingLaborL").play("UpgradingLaborL.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
 
-        if (building_place !== "wall") {
-            var hammer_1 = Crafty.e('2D, Canvas, hammer_start, SpriteAnimation,' + building_place + "_ani_up")
-                    .reel("walking", 650, [
-                        [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                    ])
-                    .animate("walking", -1)
-                    .attr({x: x_1, y: y_1, z: 5000}).flip("X");
-            BuildingOnFloor[building_place].attach(hammer_1);
-        }
+    } else if (BuildingPlace === "wall") {
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(1.5 * X_GRID, 3.25 * Y_GRID, "UpgradingHammer").play("UpgradingHammer.A", Math.random() * 500).setOrigin(0, 0).setDepth(10));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(0.5 * X_GRID, 4.25 * Y_GRID, "UpgradingHammer").play("UpgradingHammer.A", Math.random() * 500).setOrigin(0, 0).setDepth(10));
+        x_2 = 3.5 * X_GRID;
+        y_2 = 1.25 * Y_GRID;
+    } else if (BuildingPlace === "farm") {
+        x_1 = x + 0.5 * X_GRID;
+        x_2 = x + X_GRID;
+        y_1 = y + Y_GRID;
+        y_2 = y + 0.5 * Y_GRID;
+    } else if (BuildingPlace === "mine") {
+        x_1 = x - 25 + X_GRID;
+        x_2 = x + 20 + X_GRID;
+        y_1 = y - 10 + Y_GRID;
+        y_2 = y + Y_GRID;
+    } else if (BuildingPlace === "stone") {
+        x_1 = x - 25 + 0.5 * X_GRID;
+        x_2 = x + 20 + 0.5 * X_GRID;
+        y_1 = y - 10 + 0.5 * Y_GRID;
+        y_2 = y + 0.5 * Y_GRID;
+    } else if (BuildingPlace == "wood") {
 
+    } else {
 
-
-        var hammer_2 = Crafty.e('2D, Canvas, hammer_start, SpriteAnimation,' + building_place + "_ani_up")
-                .reel("walking", 650, [
-                    [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [0, 0], [1, 0]
-                ])
-                .animate("walking", -1)
-                .attr({x: x_2, y: y_2, z: 5000});
-
-
-        BuildingOnFloor[building_place].attach(hammer_2);
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x, y + 60, "UpgradingLaborL").play("UpgradingLaborL.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 45, y + 80, "UpgradingLaborL").play("UpgradingLaborL.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 120, y + 60, "UpgradingLaborR").play("UpgradingLaborR.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 80, y + 80, "UpgradingLaborR").play("UpgradingLaborR.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.image(x, y, "UpgradingSupportsD").setOrigin(0, 0).setDepth(4));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.image(x, y, "UpgradingSupportsU").setOrigin(0, 0).setDepth(3));
 
 
     }
+
+    if (BuildingPlace !== "wall") {
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x_1, y_1, "UpgradingHammer").play("UpgradingHammer.A", Math.random() * 500).setFlipX(true).setOrigin(0, 0).setDepth(10));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x_1, y_1, "UpgradingHammer").play("UpgradingHammer.A", Math.random() * 500).setFlipX(true).setOrigin(0, 0).setDepth(10));
+    }
+
+
+    BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x_2, y_2, "UpgradingHammer").play("UpgradingHammer.A", Math.random() * 500).setOrigin(0, 0).setDepth(10));
+
+
+    return;
+
+
 }
 
 function fire_attack_animation()
 {
-
+    return;
     Crafty.e('2D, Canvas, fire_start, SpriteAnimation, worldEnt')
             .reel("walking", 650, [
                 [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
@@ -367,13 +389,16 @@ Animation.fireWorldUnit = function (xCoord, yCoord) {
 
 
     var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
-    
+
+    if (!Unit.s)
+        return;
+
     if (!Unit.entite || $.isEmptyObject(Unit.entite)) {
         return;
     }
-    
-    if(Unit.UnitFire && Unit.UnitFire.length > 0)
-        return ;
+
+    if (Unit.UnitFire && Unit.UnitFire.length > 0)
+        return;
     Unit.UnitFire = [];
 
     const x = Elkaisar.World.Map.posX(xCoord, yCoord);
@@ -383,47 +408,47 @@ Animation.fireWorldUnit = function (xCoord, yCoord) {
     const type = Unit.ut;
     const Scene = Elkaisar.GE.WorldScene;
 
-    if (WorldUnit.isRiver(type)) 
+    if (WorldUnit.isRiver(type))
         return;
-    if (Unit.entite.data.get("HasFire")) 
+    if (Unit.entite.data.get("HasFire"))
         return;
-    
+
 
     if (WorldUnit.isBarrary(type) && lvl < 4 || WorldUnit.isGangStar(type)) {
-        Unit.UnitFire[0] = Scene.add.sprite(x + 52, y + 24, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[0] = Scene.add.sprite(x + 52, y + 24, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
     } else if (WorldUnit.isBarrary(type)) {
-        
-        Unit.UnitFire[0] = Scene.add.sprite(x + 32, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[1] = Scene.add.sprite(x + 72, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[2] = Scene.add.sprite(x + 52, y + 42, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        
+
+        Unit.UnitFire[0] = Scene.add.sprite(x + 32, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 72, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 52, y + 42, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+
     } else if (WorldUnit.isCityLv1(type)) {
-        
-        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[1] = Scene.add.sprite(x + 75, y + 20, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 20, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[3] = Scene.add.sprite(x + 46, y + 42, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        
+
+        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 75, y + 20, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 20, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 46, y + 42, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+
     } else if (WorldUnit.isCityLv2(type)) {
-        
-        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y     , "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[1] = Scene.add.sprite(x + 80, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[3] = Scene.add.sprite(x + 52, y + 30, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        
+
+        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 80, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 52, y + 30, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+
     } else if (WorldUnit.isCityLv3(type)) {
-        
-        Unit.UnitFire[0] = Scene.add.sprite(x + 48, y - 10, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[1] = Scene.add.sprite(x + 88, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[2] = Scene.add.sprite(x + 8 , y + 8 , "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[3] = Scene.add.sprite(x + 60, y + 32, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+
+        Unit.UnitFire[0] = Scene.add.sprite(x + 48, y - 10, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 88, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 8, y + 8, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 60, y + 32, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
 
     } else {
-        
-        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y     , "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[1] = Scene.add.sprite(x + 80, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
-        Unit.UnitFire[3] = Scene.add.sprite(x + 52, y + 30, "WorldUnitFire").setDepth(z).setOrigin(0,0).play("WorldUnitFire.Ani");
+
+        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 80, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 52, y + 30, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
     }
 
     Unit.entite.data.set("HasFire", true);
@@ -434,18 +459,29 @@ Animation.fireWorldUnit = function (xCoord, yCoord) {
 Elkaisar.Animation.cityFlagProp = {
 
 };
+Animation.WorldFire = function () {
+    Elkaisar.GE.WorldScene.children.list.forEach(function (El) {
+        if (!El.data)
+            return;
 
+        const xCoord = El.data.get("xCoord");
+        const yCoord = El.data.get("yCoord");
+        const Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+        Animation.fireWorldUnit(xCoord, yCoord);
+
+    });
+};
 
 Animation.cityFlag = function () {
 
     Elkaisar.GE.WorldScene.children.list.forEach(function (El) {
         if (!El.data)
             return;
-        
+
         const xCoord = El.data.get("xCoord");
         const yCoord = El.data.get("yCoord");
         const Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
-        
+
         if (Unit.CityFlagEntite)
             return;
         if (!WorldUnit.isCity(Unit.ut))
@@ -485,7 +521,7 @@ Animation.cityFlag = function () {
         else if (Number(Unit.ut) === WUT_CITY_LVL_3)
             Pos = {x: x + 30, y: y + 45, z: z + 10};
 
-        Unit.CityFlagEntite = Elkaisar.GE.WorldScene.add.sprite(Pos.x, Pos.y, 'flagOverCity').setOrigin(0,0).play(FramName).setDepth(Pos.z);
+        Unit.CityFlagEntite = Elkaisar.GE.WorldScene.add.sprite(Pos.x, Pos.y, 'flagOverCity').setOrigin(0, 0).play(FramName).setDepth(Pos.z);
 
 
     });
@@ -495,7 +531,7 @@ Animation.cityFlag = function () {
 
 
 Animation.cityColonizerFlag = function () {
-
+    return;
     Crafty("WorldUnit").each(function (index) {
 
         var world_unit = WorldUnit.getWorldUnit(this.coord_x, this.coord_y);
@@ -616,23 +652,51 @@ Animation.currentUnitArrow.x = 0;
 Animation.currentUnitArrow.y = 0;
 Animation.currentUnitArrow.z = 0;
 
+
+
+Animation.currentUnitArrow.add = function () {
+
+    Animation.currentUnitArrow.arrow = Elkaisar.GE.WorldScene.add.image(0, 0, "arrow").setDepth(0).setVisible(false);
+    return;
+
+
+};
+
 Animation.currentUnitArrow.put = function (x, y) {
 
     Animation.currentUnitArrow.x = Elkaisar.World.Map.posX(x, y) + 50;
     Animation.currentUnitArrow.y = Elkaisar.World.Map.posY(x, y) + 5;
     Animation.currentUnitArrow.z = Elkaisar.World.Map.posZ(x, y) + 1;
-    var dir = 0;
+    Animation.currentUnitArrow.arrow.setVisible(true);
+    Animation.currentUnitArrow.arrow.setPosition(Animation.currentUnitArrow.x, Animation.currentUnitArrow.y);
+    Animation.currentUnitArrow.arrow.setDepth(Animation.currentUnitArrow.z);
 
+
+    if (Animation.currentUnitArrow.tween)
+        Animation.currentUnitArrow.tween.remove();
+
+    Animation.currentUnitArrow.tween = Elkaisar.GE.WorldScene.tweens.add({
+        targets: Animation.currentUnitArrow.arrow,
+        x: Animation.currentUnitArrow.arrow.x,
+        y: Animation.currentUnitArrow.arrow.y + 30,
+        ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1,
+        duration: 1000,
+        yoyo: true,
+        onYoyo: function () {},
+        onRepeat: function () {}
+    });
+
+
+    return;
     if (!$.isEmptyObject(Animation.currentUnitArrow.arrow)) {
-        Animation.currentUnitArrow.arrow.attr({
-            x: Animation.currentUnitArrow.x,
-            y: Animation.currentUnitArrow.y,
-            z: Animation.currentUnitArrow.z
-        }).trigger("TweenEnd");
+        Animation.currentUnitArrow.arrow.setPosition(Animation.currentUnitArrow.x, Animation.currentUnitArrow.y).setDepth(Animation.currentUnitArrow.z);
     } else {
 
         Animation.currentUnitArrow.arrow =
-                Crafty.e("2D, Canvas, Tween, arrow")
+                Elkaisar.GE.WorldScene.add.image(Animation.currentUnitArrow.x, Animation.currentUnitArrow.y).setDepth(Animation.currentUnitArrow.z);
+
+        Crafty.e("2D, Canvas, Tween, arrow")
                 .attr({
                     x: Animation.currentUnitArrow.x,
                     y: Animation.currentUnitArrow.y,

@@ -454,22 +454,24 @@ var WorldUnit = {
 
 
         return  $.ajax({
-            url: "api/world.php",
+            url:  `${API_URL}/api/AWorld/refreshWorldUnitLvl`,
             data: {
-                get_unit_map_data: true,
-                x_coord: x,
-                y_coord: y
+                xCoord: x,
+                yCoord: y,
+                server: Elkaisar.Config.idServer,
+                token : Elkaisar.Config.OuthToken
             },
             beforeSend: function (xhr) {
 
             },
             success: function (data, textStatus, jqXHR) {
-                if (isJson(data)) {
-                    var jsonData = JSON.parse(data);
-                    WorldUnit.getWorldUnit(x, y).l = jsonData.l;
-                    WorldUnit.getWorldUnit(x, y).t = jsonData.t;
-                    WorldUnit.getWorldUnit(x, y).ut = jsonData.ut;
-                }
+                if(!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+                var jsonData = JSON.parse(data);
+                WorldUnit.getWorldUnit(x, y).l = jsonData.l;
+                WorldUnit.getWorldUnit(x, y).t = jsonData.t;
+                WorldUnit.getWorldUnit(x, y).ut = jsonData.ut;
+                
             },
             error: function (jqXHR, textStatus, errorThrown) {
 
@@ -518,6 +520,8 @@ var WorldUnit = {
             x: x,
             y: y
         });
+        Animation.cityFlag();
+        Animation.fireWorldUnit(x, y);
 
     }
 };

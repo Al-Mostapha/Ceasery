@@ -15,7 +15,7 @@ WsBattel.started = function (battel) {
     PLAYER_NOTIF.hero_in_battel = Number(PLAYER_NOTIF.hero_in_battel) + 1;
     Fixed.refreshPlayerNotif();
 
-    Crafty.audio.play("war_sound");
+    //Crafty.audio.play("war_sound");
     city_profile.refresh_hero_view();
 
     var world_unit = WorldUnit.getWorldUnit(battel_data.x_coord, battel_data.y_coord).entite;
@@ -107,7 +107,7 @@ WsBattel.cityIsOnFire = function (data) {
 
     alert_box.failMessage(`يبداء الان الهجوم على المدينة ${data.city_name}(${data.x_to},${data.y_to})  من [${data.x_from},${data.y_from}]`);
     alert_box.systemChatMessage(`يبداء الان الهجوم على المدينة ${data.city_name}(${data.x_to},${data.y_to})  من [${data.x_from},${data.y_from}]`);
-    Crafty.audio.play("war_sound");
+   // Crafty.audio.play("war_sound");
     PLAYER_NOTIF.battel_number = Number(PLAYER_NOTIF.battel_number) + 1;
     Fixed.refreshPlayerNotif();
     city_profile.afterBattelFinish();

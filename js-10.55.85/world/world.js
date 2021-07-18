@@ -19,7 +19,7 @@ const TILE_SIZE = 128;
 
 
 
-Crafty.WORLD_MOVES = 0;
+//Crafty.WORLD_MOVES = 0;
 
 
 

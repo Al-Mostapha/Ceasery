@@ -415,7 +415,7 @@ function dialogBoxShow(dialog_box, callBack)
             if (typeof callBack === "function") {
                 callBack();
             }
-            Crafty.audio.play("click_sound");
+            //Crafty.audio.play("click_sound");
             $("#dialg_box").animate({top: "125"}, 200);
         });
     } else {
@@ -423,7 +423,7 @@ function dialogBoxShow(dialog_box, callBack)
         if (typeof callBack === "function") {
             callBack();
         }
-        Crafty.audio.play("click_sound");
+        //Crafty.audio.play("click_sound");
         $("#dialg_box").animate({top: "125"}, 200);
     }
 
@@ -1832,11 +1832,7 @@ window.addEventListener("orientationchange", function () {
     // Announce the new orientation number
     MAX_SCREEN_WIDTH = $(document).width();
     MAX_SCREEN_HEIGHT = $(document).height();
-    Crafty.viewport.width = MAX_SCREEN_WIDTH;
-    Crafty.viewport.height = MAX_SCREEN_HEIGHT;
-    Crafty.viewport.reload();
-    Crafty.viewport.centerOn(BuildingOnFloor.palace, 1);
-    Crafty.trigger("MouseWheelScroll", {direction: -1});
+
 }, false);
 
 $(document)['on']('click', '#openPlayerItemBox', function () {

@@ -39,7 +39,8 @@ Elkaisar.World.Map.posZ = function (xCoord, yCoord) {
 Elkaisar.World.Map.getEntity = function (xCoord, yCoord) {
 
     var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
-    if (WorldUnit.isRiver(Unit.ut) || WorldUnit.isEmpty(Unit.ut) || (Unit.ut) === WUT_BUSY_UNIT) {
+
+    if (WorldUnit.isRiver(Unit.ut) || WorldUnit.isEmpty(Unit.ut) || (Unit.ut) == WUT_BUSY_UNIT) {
         return Elkaisar.GE.WorldScene.add.rectangle(Elkaisar.World.Map.posX(xCoord, yCoord), Elkaisar.World.Map.posY(xCoord, yCoord), 128, 128).setOrigin(0, 0).setDepth(0);
     } else if (WorldUnit.isWood(Unit.ut))
         return Elkaisar.GE.WorldScene.add
@@ -47,6 +48,7 @@ Elkaisar.World.Map.getEntity = function (xCoord, yCoord) {
                         Elkaisar.World.Map.posX(xCoord, yCoord),
                         Elkaisar.World.Map.posY(xCoord, yCoord),
                         Elkaisar.World.UnitTypeData[Unit.ut].tileName).setDepth(Elkaisar.World.Map.posZ(xCoord, yCoord)).setOrigin(0, 0).play(Elkaisar.World.UnitTypeData[Unit.ut].AnimKey);
+
 
     return Elkaisar.GE.WorldScene.add
             .image(
@@ -127,7 +129,8 @@ function  addMapUnite(el) {
                 if (tile.PointerOver)
                     return;
                 tile.PointerOver = true;
-                if (WorldUnit.isEmpty(unit.ut)) {
+                
+                if (WorldUnit.isEmpty(unit.ut) || true) {
                     Elkaisar.World.WorldMapIcon.removeWorldUnitIcons();
                     Elkaisar.World.WorldMapIcon.showUnitCoords(el.x, el.y);
                     return;
@@ -187,8 +190,8 @@ Elkaisar.World.Map.mouseMoveFn = function (Pointer, ObjArr) {
     if (!Pointer.isDown) {
         return;
     }
-    
-    
+
+
     if (Elkaisar.World.Map.dragStartOn === 0) {
         Elkaisar.World.Map.dragStartOn = Date.now();
         Elkaisar.World.Map.dragStartAt.x = cam.x;
@@ -301,6 +304,7 @@ Elkaisar.World.Map.Scroll = function (Force) {
 Elkaisar.World.Map.RefreshWorld = function () {
     Animation.cityFlag();
     Animation.cityColonizerFlag();
+    Animation.WorldFire();
 };
 
 Elkaisar.World.Map.clear = function () {
@@ -321,12 +325,56 @@ Elkaisar.World.Map.clear = function () {
 
 };
 
+Elkaisar.World.Map.CityFound = false;
 
 Elkaisar.World.Map.getWorldCity = function () {
+    
+    return $.ajax({
+        url: `http://${WS_HOST}:${WS_PORT}/AWorld/getWorldCity`,
+        type: 'GET',
+        crossDomain: true,
+        data:{
+            token: Elkaisar.Config.OuthToken,
+            idPlayer: Elkaisar.DPlayer.Player.id_player
+        },
+        success: function (data, textStatus, jqXHR) {
 
-    ws.send(JSON.stringify({
-        url: "World/getWorldCity"
-    }));
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonObject = JSON.parse(data);
+
+            var Unit;
+
+            for (var iii in JsonObject)
+            {
+
+                Unit = WorldUnit.getWorldUnit(JsonObject[iii].x, JsonObject[iii].y);
+                if (!Unit)
+                    continue;
+
+
+                Unit.idGuild = JsonObject[iii].ig;
+                Unit.CityLvl = JsonObject[iii].l;
+                Unit.idCity = JsonObject[iii].ic;
+                Unit.idPlayer = JsonObject[iii].ip;
+                Unit.CityFlag = JsonObject[iii].f;
+                Unit.ut = Number(JsonObject[iii].l) + WUT_CITY_LVL_0;
+                Unit.l = JsonObject[iii].l;
+                Unit.t = Number(JsonObject[iii].l) + 17;
+            }
+            Elkaisar.World.Map.CityFound = true;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
+    /*
+     
+     ws.send(JSON.stringify({
+     url: "World/getWorldCity"
+     }));*/
 
 
 };

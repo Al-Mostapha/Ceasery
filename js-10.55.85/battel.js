@@ -299,7 +299,7 @@ function battelStart() {
         });
     } else {
         if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPORT'])
-            Elkaisar['Battel']['supportByHero']();
+            Elkaisar.Battel.supportByHero();
         else
             Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_HERO_TRANS'] ? Elkaisar['Battel']['TransHero']() : ws['send'](JSON['stringify']({
                 'url': 'Battel/start',
@@ -411,10 +411,11 @@ Elkaisar.Battel.supportByHero = function (idHero)
 
             if (JsonObject.state === "ok")
             {
-                Elkaisar.Hero.getHero(idHero);
+                
                 alert_box.succesMessage("تم ارسال البطل الى البعثة");
                 PLAYER_NOTIF.hero_in_battel = Number(PLAYER_NOTIF.hero_in_battel) + 1;
                 Fixed.refreshPlayerNotif();
+                Elkaisar.Hero.getHero(idHero).Hero.in_city =  Elkaisar.Hero.HeroState.HERO_IN_BATTEL;
                 city_profile.refresh_hero_view();
                 $(".nav_icon .close_dialog").click();
 

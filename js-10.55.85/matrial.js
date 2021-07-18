@@ -628,13 +628,11 @@ function useMatrial(user_for, matrial, other)
 
             $.ajax({
 
-                url: "api/player.php",
+                url: `${API_URL}/api/APlayer/changePlayerName`,
                 data: {
-
                     NewName: new_name,
                     token: Elkaisar.Config.OuthToken,
                     server: Elkaisar.Config.idServer
-
                 },
                 type: 'POST',
                 success: function (data, textStatus, jqXHR) {
@@ -650,6 +648,8 @@ function useMatrial(user_for, matrial, other)
                         $(".select_over_lay").remove();
                         Elkaisar.DPlayer.Player = JsonObject.Player;
                         Player_profile.refresh_view();
+                        alert_box.succesMessage("تم تغير الإسم بنجاح");
+                        
                     } else if (JsonObject.state === "error_2")
                         alert_box.failMessage("يوجد لاعب يحمل نفس الاسم");
                 },

@@ -1224,7 +1224,7 @@ NavBar.Building.Lighthouse = [
         "title": "soon"
     }
 ];$.ajaxSetup({
-    crossDomain:true
+    crossDomain: true
 });
 var FIXED_WORLD_UNIT = [];
 var ALL_WORLD_CITY = [];
@@ -1273,17 +1273,17 @@ Elkaisar.Guild = {
 };
 
 Elkaisar.CurrentWorldUnit = {
-    AttackQueList : [],
-    Army          :{
-        army_a : 0, army_b : 0, army_c : 0,
-        army_d : 0, army_e : 0, army_f : 0 
+    AttackQueList: [],
+    Army: {
+        army_a: 0, army_b: 0, army_c: 0,
+        army_d: 0, army_e: 0, army_f: 0
     },
-    EQuip         :{
-        boot : {}, armor : {}, shield : {}, helmet : {}, sword : {},
-        belt :{}, necklace: {}, pendant: {}, ring : {}, steed : {}
+    EQuip: {
+        boot: {}, armor: {}, shield: {}, helmet: {}, sword: {},
+        belt: {}, necklace: {}, pendant: {}, ring: {}, steed: {}
     },
-    xCoord : 0,
-    yCoord : 0
+    xCoord: 0,
+    yCoord: 0
 };
 
 Elkaisar.TimedTask = {
@@ -1298,12 +1298,12 @@ Elkaisar.TimedTask = {
 
 
 Elkaisar.Battel = {
-    Battels       : [],
-    LeavinHeros   : [],
-    HeroBack      : [],
-    HeroGarrison  : [],
-    SpyingList    : [],
-    CurrentBattel : {}
+    Battels: [],
+    LeavinHeros: [],
+    HeroBack: [],
+    HeroGarrison: [],
+    SpyingList: [],
+    CurrentBattel: {}
 };
 
 Elkaisar.ServerData = {};
@@ -1325,7 +1325,649 @@ Elkaisar.CurrentCity = {};
 
 
 
-Elkaisar.BaseData = {};Elkaisar.LBase.Error = function (data)
+Elkaisar.BaseData = {};
+Elkaisar.GE = {};
+
+Elkaisar.GE.CLoadingScene = {};
+Elkaisar.GE.CCityScene = {};
+Elkaisar.GE.CWorldScene = {};
+
+Elkaisar.GE.LoadingScene = {};
+Elkaisar.GE.CityScene = {};
+Elkaisar.GE.WorldScene = {};
+
+Elkaisar.World.WorldMapIcon = {};
+
+
+Elkaisar.GE.LPreLoad = function () {
+
+    Elkaisar.GE.LoadingScene.load.image('worldFloor', BASE_ASSET_BATH + 'images/world/worldFloor.jpg');
+    Elkaisar.GE.LoadingScene.load.image('city_0', BASE_ASSET_BATH + 'images/world/city_0.png');
+    Elkaisar.GE.LoadingScene.load.image('city_1', BASE_ASSET_BATH + 'images/world/city_1.png');
+    Elkaisar.GE.LoadingScene.load.image('city_2', BASE_ASSET_BATH + 'images/world/city_2.png');
+    Elkaisar.GE.LoadingScene.load.image('city_3', BASE_ASSET_BATH + 'images/world/city_3.png');
+    Elkaisar.GE.LoadingScene.load.image('city_4', BASE_ASSET_BATH + 'images/world/city_4.png');
+    Elkaisar.GE.LoadingScene.load.image('d_1', BASE_ASSET_BATH + 'images/world/wild/d_1.png');
+    Elkaisar.GE.LoadingScene.load.image('d_2', BASE_ASSET_BATH + 'images/world/wild/d_2.png');
+    Elkaisar.GE.LoadingScene.load.image('d_3', BASE_ASSET_BATH + 'images/world/wild/d_3.png');
+    Elkaisar.GE.LoadingScene.load.image('d_4', BASE_ASSET_BATH + 'images/world/wild/d_4.png');
+    Elkaisar.GE.LoadingScene.load.image('d_5', BASE_ASSET_BATH + 'images/world/wild/d_5.png');
+    Elkaisar.GE.LoadingScene.load.image('d_6', BASE_ASSET_BATH + 'images/world/wild/d_6.png');
+    Elkaisar.GE.LoadingScene.load.image('d_7', BASE_ASSET_BATH + 'images/world/wild/d_7.png');
+    Elkaisar.GE.LoadingScene.load.image('d_8', BASE_ASSET_BATH + 'images/world/wild/d_8.png');
+    Elkaisar.GE.LoadingScene.load.image('d_9', BASE_ASSET_BATH + 'images/world/wild/d_9.png');
+    Elkaisar.GE.LoadingScene.load.image('d_10', BASE_ASSET_BATH + 'images/world/wild/d_10.png');
+    Elkaisar.GE.LoadingScene.load.image('m_1', BASE_ASSET_BATH + 'images/world/wild/m_1.png');
+    Elkaisar.GE.LoadingScene.load.image('m_2', BASE_ASSET_BATH + 'images/world/wild/m_2.png');
+    Elkaisar.GE.LoadingScene.load.image('m_3', BASE_ASSET_BATH + 'images/world/wild/m_3.png');
+    Elkaisar.GE.LoadingScene.load.image('m_4', BASE_ASSET_BATH + 'images/world/wild/m_4.png');
+    Elkaisar.GE.LoadingScene.load.image('m_5', BASE_ASSET_BATH + 'images/world/wild/m_5.png');
+    Elkaisar.GE.LoadingScene.load.image('m_6', BASE_ASSET_BATH + 'images/world/wild/m_6.png');
+    Elkaisar.GE.LoadingScene.load.image('m_7', BASE_ASSET_BATH + 'images/world/wild/m_7.png');
+    Elkaisar.GE.LoadingScene.load.image('m_8', BASE_ASSET_BATH + 'images/world/wild/m_8.png');
+    Elkaisar.GE.LoadingScene.load.image('m_9', BASE_ASSET_BATH + 'images/world/wild/m_9.png');
+    Elkaisar.GE.LoadingScene.load.image('m_10', BASE_ASSET_BATH + 'images/world/wild/m_10.png');
+    Elkaisar.GE.LoadingScene.load.image('w_1', BASE_ASSET_BATH + 'images/world/wild/w_1.png');
+    Elkaisar.GE.LoadingScene.load.image('w_2', BASE_ASSET_BATH + 'images/world/wild/w_2.png');
+    Elkaisar.GE.LoadingScene.load.image('w_3', BASE_ASSET_BATH + 'images/world/wild/w_3.png');
+    Elkaisar.GE.LoadingScene.load.image('w_4', BASE_ASSET_BATH + 'images/world/wild/w_4.png');
+    Elkaisar.GE.LoadingScene.load.image('w_5', BASE_ASSET_BATH + 'images/world/wild/w_5.png');
+    Elkaisar.GE.LoadingScene.load.image('w_6', BASE_ASSET_BATH + 'images/world/wild/w_6.png');
+    Elkaisar.GE.LoadingScene.load.image('w_7', BASE_ASSET_BATH + 'images/world/wild/w_7.png');
+    Elkaisar.GE.LoadingScene.load.image('w_8', BASE_ASSET_BATH + 'images/world/wild/w_8.png');
+    Elkaisar.GE.LoadingScene.load.image('w_9', BASE_ASSET_BATH + 'images/world/wild/w_9.png');
+    Elkaisar.GE.LoadingScene.load.image('w_10', BASE_ASSET_BATH + 'images/world/wild/w_10.png');
+    Elkaisar.GE.LoadingScene.load.spritesheet('f_1', BASE_ASSET_BATH + 'images/world/wild/f_1.png', {frameWidth: 128, frameHeight: 128});
+    Elkaisar.GE.LoadingScene.load.spritesheet('f_2', BASE_ASSET_BATH + 'images/world/wild/f_2.png', {frameWidth: 128, frameHeight: 128});
+    Elkaisar.GE.LoadingScene.load.spritesheet('f_3', BASE_ASSET_BATH + 'images/world/wild/f_3.png', {frameWidth: 128, frameHeight: 128});
+    Elkaisar.GE.LoadingScene.load.spritesheet('flagOverCity', BASE_ASSET_BATH + 'images/animation/flags.png', {frameWidth: 34, frameHeight: 24});
+    Elkaisar.GE.LoadingScene.load.image('arrow', BASE_ASSET_BATH + 'images/animation/currentUnit.png');
+    Elkaisar.GE.LoadingScene.load.image('godGateBtn', BASE_ASSET_BATH + 'images/godGate/godGate.png');
+    Elkaisar.GE.LoadingScene.load.image('fireBtn', BASE_ASSET_BATH + 'images/animation/fireBtn.png');
+    Elkaisar.GE.LoadingScene.load.image('mnawrat', BASE_ASSET_BATH + 'images/world/30.png');
+    Elkaisar.GE.LoadingScene.load.image('front_squad', BASE_ASSET_BATH + 'images/world/front_squad.png');
+    Elkaisar.GE.LoadingScene.load.image('front_band', BASE_ASSET_BATH + 'images/world/front_band.png');
+    Elkaisar.GE.LoadingScene.load.image('front_squadron', BASE_ASSET_BATH + 'images/world/front_squadron.png');
+    Elkaisar.GE.LoadingScene.load.image('front_division', BASE_ASSET_BATH + 'images/world/front_division.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_light_squad', BASE_ASSET_BATH + 'images/world/armed_light_squad.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_light_band', BASE_ASSET_BATH + 'images/world/armed_light_band.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_light_squadron', BASE_ASSET_BATH + 'images/world/armed_light_squadron.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_light_division', BASE_ASSET_BATH + 'images/world/armed_light_division.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_heavy_squad', BASE_ASSET_BATH + 'images/world/armed_heavy_squad.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_heavy_band', BASE_ASSET_BATH + 'images/world/armed_heavy_band.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_heavy_squadron', BASE_ASSET_BATH + 'images/world/armed_heavy_squadron.png');
+    Elkaisar.GE.LoadingScene.load.image('armed_heavy_division', BASE_ASSET_BATH + 'images/world/armed_heavy_division.png');
+    Elkaisar.GE.LoadingScene.load.image('guard_squad', BASE_ASSET_BATH + 'images/world/guard_squad.png');
+    Elkaisar.GE.LoadingScene.load.image('guard_band', BASE_ASSET_BATH + 'images/world/guard_band.png');
+    Elkaisar.GE.LoadingScene.load.image('guard_squadron', BASE_ASSET_BATH + 'images/world/guard_squadron.png');
+    Elkaisar.GE.LoadingScene.load.image('guard_division', BASE_ASSET_BATH + 'images/world/guard_division.png');
+    Elkaisar.GE.LoadingScene.load.image('brave_thunder', BASE_ASSET_BATH + 'images/world/brave_thunder.png');
+    Elkaisar.GE.LoadingScene.load.image('gang', BASE_ASSET_BATH + 'images/world/gang.png');
+    Elkaisar.GE.LoadingScene.load.image('mugger', BASE_ASSET_BATH + 'images/world/mugger.png');
+    Elkaisar.GE.LoadingScene.load.image('thief', BASE_ASSET_BATH + 'images/world/thief.png');
+    Elkaisar.GE.LoadingScene.load.image('carthage_gang', BASE_ASSET_BATH + 'images/world/carthage/gang.png');
+    Elkaisar.GE.LoadingScene.load.image('carthage_teams', BASE_ASSET_BATH + 'images/world/carthage/teams.png');
+    Elkaisar.GE.LoadingScene.load.image('carthage_rebels', BASE_ASSET_BATH + 'images/world/carthage/rebels.png');
+    Elkaisar.GE.LoadingScene.load.image('carthage_forces', BASE_ASSET_BATH + 'images/world/carthage/forces.png');
+    Elkaisar.GE.LoadingScene.load.image('carthage_capital', BASE_ASSET_BATH + 'images/world/carthage/capital.png');
+    Elkaisar.GE.LoadingScene.load.image('army_capital', BASE_ASSET_BATH + 'images/world/army-capital.png');
+    Elkaisar.GE.LoadingScene.load.image('queenCity_1', BASE_ASSET_BATH + 'images/world/queenCity_1.png');
+    Elkaisar.GE.LoadingScene.load.image('queenCity_2', BASE_ASSET_BATH + 'images/world/queenCity_2.png');
+    Elkaisar.GE.LoadingScene.load.image('queenCity_3', BASE_ASSET_BATH + 'images/world/queenCity_3.png');
+    Elkaisar.GE.LoadingScene.load.image('repleCastle_1', BASE_ASSET_BATH + 'images/world/repleCastle_1.png');
+    Elkaisar.GE.LoadingScene.load.image('repleCastle_2', BASE_ASSET_BATH + 'images/world/repleCastle_2.png');
+    Elkaisar.GE.LoadingScene.load.image('repleCastle_3', BASE_ASSET_BATH + 'images/world/repleCastle_3.png');
+    Elkaisar.GE.LoadingScene.load.image('wolfStatue', BASE_ASSET_BATH + 'images/world/wolf.png');
+    Elkaisar.GE.LoadingScene.load.image('arena', BASE_ASSET_BATH + 'images/world/arena.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_1', BASE_ASSET_BATH + 'images/world/seaCity_1.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_2', BASE_ASSET_BATH + 'images/world/seaCity_2.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_3', BASE_ASSET_BATH + 'images/world/seaCity_3.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_4', BASE_ASSET_BATH + 'images/world/seaCity_4.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_5', BASE_ASSET_BATH + 'images/world/seaCity_5.png');
+    Elkaisar.GE.LoadingScene.load.image('seaCity_6', BASE_ASSET_BATH + 'images/world/seaCity_6.png');
+    Elkaisar.GE.LoadingScene.load.image('challangeFieldPlayer', BASE_ASSET_BATH + 'images/world/challangeFieldPlayer.png');
+    Elkaisar.GE.LoadingScene.load.image('challangeFieldGuild', BASE_ASSET_BATH + 'images/world/challangeFieldGuild.png');
+    Elkaisar.GE.LoadingScene.load.image('challangeFieldTeam', BASE_ASSET_BATH + 'images/world/challangeFieldTeam.png');
+    Elkaisar.GE.LoadingScene.load.image('challangeFieldServer', BASE_ASSET_BATH + 'images/world/challangeFieldServer.png');
+    Elkaisar.GE.LoadingScene.load.image('fightChallangePlayer', BASE_ASSET_BATH + 'images/world/fightChallangePlayer.png');
+    Elkaisar.GE.LoadingScene.load.image('fightChallangeGuild', BASE_ASSET_BATH + 'images/world/fightChallangeGuild.png');
+    Elkaisar.GE.LoadingScene.load.image('fightChallangeTeam', BASE_ASSET_BATH + 'images/world/fightChallangeTeam.png');
+    Elkaisar.GE.LoadingScene.load.image('fightChallangeServer', BASE_ASSET_BATH + 'images/world/fightChallangeServer.png');
+    Elkaisar.GE.LoadingScene.load.image('city_shield', BASE_ASSET_BATH + 'images/world/city_shield.png');
+    Elkaisar.GE.LoadingScene.load.image('palace', BASE_ASSET_BATH + 'images/city/palace.png');
+    Elkaisar.GE.LoadingScene.load.image('wall_0', BASE_ASSET_BATH + 'images/city/wall_0_.png');
+    Elkaisar.GE.LoadingScene.load.image('wall_1', BASE_ASSET_BATH + 'images/city/wall_1_.png');
+    Elkaisar.GE.LoadingScene.load.image('wall_2', BASE_ASSET_BATH + 'images/city/wall_2_.png');
+    Elkaisar.GE.LoadingScene.load.image('wall_3', BASE_ASSET_BATH + 'images/city/wall_3_.png');
+    Elkaisar.GE.LoadingScene.load.image('wall_4', BASE_ASSET_BATH + 'images/city/wall_4_.png');
+    Elkaisar.GE.LoadingScene.load.image('seaport', BASE_ASSET_BATH + 'images/city/_seaport.png');
+    Elkaisar.GE.LoadingScene.load.image('market', BASE_ASSET_BATH + 'images/city/_market.png');
+    Elkaisar.GE.LoadingScene.load.image('farm', BASE_ASSET_BATH + 'images/city/_farm.png');
+    Elkaisar.GE.LoadingScene.load.image('mine', BASE_ASSET_BATH + 'images/city/_mine.png');
+    Elkaisar.GE.LoadingScene.load.image('stone', BASE_ASSET_BATH + 'images/city/_mahger.png');
+    Elkaisar.GE.LoadingScene.load.image('wood', BASE_ASSET_BATH + 'images/city/_wood_maker.png');
+    Elkaisar.GE.LoadingScene.load.image('lighthouse', BASE_ASSET_BATH + 'images/city/_lighthouse.png');
+    Elkaisar.GE.LoadingScene.load.image('B1', BASE_ASSET_BATH + 'images/city/_B1.png');
+    Elkaisar.GE.LoadingScene.load.image('B2', BASE_ASSET_BATH + 'images/city/_B2.png');
+    Elkaisar.GE.LoadingScene.load.image('B3', BASE_ASSET_BATH + 'images/city/_B3.png');
+    Elkaisar.GE.LoadingScene.load.image('B4', BASE_ASSET_BATH + 'images/city/_B4.png');
+    Elkaisar.GE.LoadingScene.load.image('B5', BASE_ASSET_BATH + 'images/city/_B5.png');
+    Elkaisar.GE.LoadingScene.load.image('B6', BASE_ASSET_BATH + 'images/city/_B6.png');
+    Elkaisar.GE.LoadingScene.load.image('B7', BASE_ASSET_BATH + 'images/city/_B7.png');
+    Elkaisar.GE.LoadingScene.load.image('B8', BASE_ASSET_BATH + 'images/city/_B8.png');
+    Elkaisar.GE.LoadingScene.load.image('B9', BASE_ASSET_BATH + 'images/city/_B9.png');
+    Elkaisar.GE.LoadingScene.load.image('B10', BASE_ASSET_BATH + 'images/city/_B10.png');
+    Elkaisar.GE.LoadingScene.load.image('B11', BASE_ASSET_BATH + 'images/city/_B11.png');
+    Elkaisar.GE.LoadingScene.load.image('no_building', BASE_ASSET_BATH + 'images/city/no_building.png');
+    Elkaisar.GE.LoadingScene.load.image('city_floor', BASE_ASSET_BATH + 'images/city/city_floor.jpg');
+    
+   
+    Elkaisar.GE.LoadingScene.load.image('fountain', BASE_ASSET_BATH + 'images/animation/fountain.png');
+    Elkaisar.GE.LoadingScene.load.image('ani_wood_maker', BASE_ASSET_BATH + 'images/animation/wood_maker.png');
+    Elkaisar.GE.LoadingScene.load.image('ani_wood_man', BASE_ASSET_BATH + 'images/animation/wood_man.png');
+    Elkaisar.GE.LoadingScene.load.image('mine_man', BASE_ASSET_BATH + 'images/animation/mine_man.png');
+    Elkaisar.GE.LoadingScene.load.image('stone_man', BASE_ASSET_BATH + 'images/animation/stone_man.png');
+    Elkaisar.GE.LoadingScene.load.image('stone_carry', BASE_ASSET_BATH + 'images/animation/stone_carry.png');
+    Elkaisar.GE.LoadingScene.load.image('no_carry', BASE_ASSET_BATH + 'images/animation/no_carry.png');
+    Elkaisar.GE.LoadingScene.load.spritesheet('WorldUnitFire', BASE_ASSET_BATH + 'images/animation/attack_fire.png', {frameWidth: 42, frameHeight: 63});
+
+    Elkaisar.GE.LoadingScene.load.image('cloud', BASE_ASSET_BATH + 'images/animation/cloud.png');
+    Elkaisar.GE.LoadingScene.load.image('unit_floor', BASE_ASSET_BATH + 'images/world/unit_floor.png');
+    Elkaisar.GE.LoadingScene.load.image('building_lvl_lable_1', BASE_ASSET_BATH + 'images/background/lvl_lable/lable_1.png');
+    Elkaisar.GE.LoadingScene.load.image('building_lvl_lable_2', BASE_ASSET_BATH + 'images/background/lvl_lable/lable_2.png');
+    Elkaisar.GE.LoadingScene.load.image('building_lvl_lable_3', BASE_ASSET_BATH + 'images/background/lvl_lable/lable_3.png');
+    Elkaisar.GE.LoadingScene.load.image('building_lvl_lable_4', BASE_ASSET_BATH + 'images/background/lvl_lable/lable_4.png');
+    Elkaisar.GE.LoadingScene.load.image('building_lvl_lable_5', BASE_ASSET_BATH + 'images/background/lvl_lable/lable_5.png');
+
+    Elkaisar.GE.LoadingScene.load.image('MapIconAttack', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/Attack.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconOccupy', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/Occupy.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconRainForce', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/RainForce.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconSpy', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/Spy.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconTransPort', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/TransPort.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconEnter', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/Enter.png');
+    Elkaisar.GE.LoadingScene.load.image('MapIconArena', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/BattelField.png');
+    Elkaisar.GE.LoadingScene.load.image('CoordHolder', BASE_ASSET_BATH + 'images/world/WorldFloorIcon/CoordHolder.png');
+    Elkaisar.GE.LoadingScene.load.image('DashedLineRed', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineRed.png');
+    Elkaisar.GE.LoadingScene.load.image('DashedLineGreen', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineGreen.png');
+    Elkaisar.GE.LoadingScene.load.image('DashedLineLGreen', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineLGreen.png');
+    Elkaisar.GE.LoadingScene.load.image('DashedLineBlue', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineBlue.png');
+    Elkaisar.GE.LoadingScene.load.image('DashedLineGray', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineGray.png');
+
+
+    Elkaisar.GE.LoadingScene.load.image('goSourceA', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceA.png');
+    Elkaisar.GE.LoadingScene.load.image('goSourceH', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceH.png');
+    Elkaisar.GE.LoadingScene.load.image('goSourceD', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceD.png');
+    Elkaisar.GE.LoadingScene.load.image('goSourceN', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceN.png');
+
+
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLabor', BASE_ASSET_BATH + 'images/animation/City/FarmLabor.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLaborCarryR', BASE_ASSET_BATH + 'images/animation/City/FarmLaborCarryR.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLaborCarryD', BASE_ASSET_BATH + 'images/animation/City/FarmLaborCarryD.png', {frameWidth: 42, frameHeight: 42});
+    
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLabor', BASE_ASSET_BATH + 'images/animation/City/StoneLabor.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLaborCarryL', BASE_ASSET_BATH + 'images/animation/City/StoneLaborCarryL.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLaborCarryD', BASE_ASSET_BATH + 'images/animation/City/StoneLaborCarryD.png', {frameWidth: 42, frameHeight: 42});
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('IronLabor', BASE_ASSET_BATH + 'images/animation/City/IronLabor.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('WoodLabor', BASE_ASSET_BATH + 'images/animation/City/WoodLabor.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('WoodTool', BASE_ASSET_BATH + 'images/animation/City/WoodTool.png', {frameWidth: 65, frameHeight: 46});
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('Horse', BASE_ASSET_BATH + 'images/animation/City/Horse.png', {frameWidth: 34, frameHeight: 20});
+    Elkaisar.GE.LoadingScene.load.spritesheet('Fountain', BASE_ASSET_BATH + 'images/animation/City/Fountain.png', {frameWidth: 40, frameHeight: 32});
+    Elkaisar.GE.LoadingScene.load.spritesheet('Woman', BASE_ASSET_BATH + 'images/animation/City/Woman.png', {frameWidth: 28, frameHeight: 28});
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('noCarryWorkerD', BASE_ASSET_BATH + 'images/animation/City/noCarryWorkerD.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('noCarryWorkerR', BASE_ASSET_BATH + 'images/animation/City/noCarryWorkerR.png', {frameWidth: 42, frameHeight: 42});
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingHammer', BASE_ASSET_BATH + 'images/animation/City/UpgradingHammer.png', {frameWidth: 161, frameHeight: 120});
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingLaborL', BASE_ASSET_BATH + 'images/animation/City/UpgradingLaborL.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingLaborR', BASE_ASSET_BATH + 'images/animation/City/UpgradingLaborR.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.image('UpgradingSupportsU', BASE_ASSET_BATH + 'images/animation/City/UpgradingSupportsU.png');
+    Elkaisar.GE.LoadingScene.load.image('UpgradingSupportsD', BASE_ASSET_BATH + 'images/animation/City/UpgradingSupportsD.png');
+    Elkaisar.GE.LoadingScene.load.image('UpgradingPalaceSupU', BASE_ASSET_BATH + 'images/animation/City/UpgradingPalaceSupU.png');
+    Elkaisar.GE.LoadingScene.load.image('UpgradingPalaceSupD', BASE_ASSET_BATH + 'images/animation/City/UpgradingPalaceSupD.png');
+};
+
+Elkaisar.GE.ConfigCityAnims = function (){
+  
+    
+    var Scene = Elkaisar.GE.CityScene;
+    Scene.anims.create({ key: 'FarmLabor.A', frames: Scene.anims.generateFrameNumbers('FarmLabor'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'FarmLaborCarryR.A', frames: Scene.anims.generateFrameNumbers('FarmLaborCarryR'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'FarmLaborCarryD.A', frames: Scene.anims.generateFrameNumbers('FarmLaborCarryD'), frameRate: 6, repeat: -1 });
+    
+    Scene.anims.create({ key: 'noCarryWorkerD.A', frames: Scene.anims.generateFrameNumbers('noCarryWorkerD'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'noCarryWorkerR.A', frames: Scene.anims.generateFrameNumbers('noCarryWorkerR'), frameRate: 6, repeat: -1 });
+    
+    Scene.anims.create({ key: 'StoneLabor.A', frames: Scene.anims.generateFrameNumbers('StoneLabor'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'StoneLaborCarryL.A', frames: Scene.anims.generateFrameNumbers('StoneLaborCarryL'), frameRate: 6, repeat: -1 });
+    
+    Scene.anims.create({ key: 'IronLabor.A', frames: Scene.anims.generateFrameNumbers('IronLabor'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'WoodLabor.A', frames: Scene.anims.generateFrameNumbers('WoodLabor'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'WoodTool.A', frames: Scene.anims.generateFrameNumbers('WoodTool'), frameRate: 6, repeat: -1 });
+    
+    
+    Scene.anims.create({ key: 'Horse.A', frames: Scene.anims.generateFrameNumbers('Horse'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'Fountain.A', frames: Scene.anims.generateFrameNumbers('Fountain'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'WomanFace.A', frames: Scene.anims.generateFrameNumbers('Woman', {frames: [0,1,2,3,4,5,6,7,8,9]}), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'WomanBack.A', frames: Scene.anims.generateFrameNumbers('Woman', {frames: [10,11,12,13,14,15,16,17,18,19]}), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'Woman.A', frames: Scene.anims.generateFrameNumbers('Woman'), frameRate: 6, repeat: -1 });
+    
+    Scene.anims.create({ key: 'UpgradingHammer.A', frames: Scene.anims.generateFrameNumbers('UpgradingHammer'), frameRate: 10, repeat: -1 });
+    Scene.anims.create({ key: 'UpgradingLaborL.A', frames: Scene.anims.generateFrameNumbers('UpgradingLaborL'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'UpgradingLaborR.A', frames: Scene.anims.generateFrameNumbers('UpgradingLaborR'), frameRate: 6, repeat: -1 });
+    
+    Animation.FixedCityAnimation();
+};
+
+Elkaisar.GE.ConfigAnims = function () {
+    
+    var Scene = Elkaisar.GE.WorldScene;
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'Forest.1',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('f_1'),
+        frameRate: 3, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'Forest.2',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('f_2'),
+        frameRate: 3, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'Forest.3',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('f_3'),
+        frameRate: 3, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.Nut',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [0, 6, 12, 18, 24, 30]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.Fri',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [1, 7, 13, 19, 25, 31]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.All',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [2, 8, 14, 20, 26, 32]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.Min',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [3, 9, 15, 21, 27, 33]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.Ene',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [4, 10, 16, 22, 28, 34]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'CityFlag.Dea',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [5, 11, 17, 23, 29, 35]}),
+        frameRate: 6, repeat: -1
+    });
+    Elkaisar.GE.WorldScene.anims.create({
+        key: 'WorldUnitFire.Ani',
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('WorldUnitFire', {frames: [0, 1, 2, 3, 4, 5, 6, 7]}),
+        frameRate: 6, repeat: -1
+    });
+};
+
+
+Elkaisar.GE.Loading = function (percent) {
+    $("#load-percent").html(Math.floor(percent) + "%");
+    $("#load-bar div").css({width: percent + "%"});
+};
+
+
+Elkaisar.GE.CLoadingScene = new Phaser.Class({
+    Extends: Phaser.Scene,
+    initialize: function () {
+        Phaser.Scene.call(this, {"key": "LoadingScene"});
+        Elkaisar.GE.LoadingScene = this;
+    },
+    init: function () {},
+    preload: function () {
+
+        Elkaisar.GE.LPreLoad();
+        this.load.on('progress', function (value) {
+            Elkaisar.GE.Loading(value * 100);
+        });
+        this.load.on('complete', function () {
+            $.ajax({
+
+                url: API_URL + "/home/HLogIn/playerEnterServerWeb",
+                type: 'POST',
+                data: {
+                    server: SERVER_ID,
+                    outhToken: TOKEN
+                },
+                beforeSend: function (xhr) {
+
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar['LBase']['isJson'](data)) {
+                        alert(data), console['log'](data);
+                        return;
+                    }
+                    var JsonData = JSON['parse'](data);
+                    JsonData['state'] !== 'ok' && console['log'](JsonData);
+                    Elkaisar['Config']['WsPort'] = JsonData['WsPort'];
+                    Elkaisar['Config']['WsHost'] = JsonData['WsHost'];
+                    Elkaisar['DPlayer']['Player'] = JsonData['Player'];
+                    Elkaisar['ServerData'] = JsonData['Server'];
+                    Elkaisar['Config']['OuthToken'] = TOKEN;
+                    Elkaisar['Config']['idServer'] = JsonData['idServer'];
+                    Elkaisar['Config']['idCities'] = JsonData['idCities'];
+                    Elkaisar['Config']['JsVersion'] = JsonData['JsVersion'];
+
+                    if (Elkaisar['DPlayer']['Player']['panned'] >= $['now']() / 1000) {
+                        alert('هذا الحساب محظور');
+                        return;
+                    }
+
+                    $['ajaxSetup']({
+                        'data': {
+                            'idPlayerV': Elkaisar['DPlayer']['Player']['id_player']
+                        }/*,
+                        beforeSend(){
+                            $("button").attr("disabled", "disabled");
+                            $("button").prop("disabled", true);
+                        },
+                        complete(){
+                            $("button").removeAttr("disabled");
+                            $("button").prop("disabled", false);
+                        }*/
+                    });
+
+                    $('html')['trigger']('PlayerReady');
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+
+                }
+
+            });
+
+        });
+    },
+    create: function () {
+        Elkaisar.GE.LoadingScene.events.on('transitionout', function (targetScene, duration) { });
+    },
+    update: function () {}
+});
+
+
+var game;
+var speedMult = 0.7;
+var friction = 0.99;
+
+
+Elkaisar.GE.CCityScene = new Phaser.Class({
+    Extends: Phaser.Scene,
+    initialize: function () {
+        Phaser.Scene.call(this, {"key": "City"});
+        Elkaisar.GE.CityScene = this;
+    },
+    init: function () {},
+    preload: function () {},
+    create: function () {
+
+        this.events.on('transitionstart', function (fromScene, duration) {});
+        var floor_width = 2500;
+        var floor_height = 1400;
+
+        
+        Elkaisar.GE.ConfigCityAnims();
+        fillCityWithBuilding();
+        this.input.mousePointer.motionFactor = 0.5;
+        this.input.pointer1.motionFactor = 0.5;
+
+        var cam = this.cameras.main.setBounds(0, 0, floor_width, floor_height);
+        this.add.image(0, 0, "city_floor").setOrigin(0, 0);
+        this.Scrolling = {};
+        var This = this;
+        var downObj;
+        this.input.on('gameobjectdown', function (p, obj, E) {
+            if (this.isMapDraging)
+                return;
+            downObj = obj;
+            E.stopPropagation();
+
+        });
+        this.input.on('gameobjectup', function (P, Obj, E) {
+            
+            if (P.downElement !== Elkaisar.GE.Game.canvas || P.getDuration() > 250)
+                return;
+            Obj.emit("click", Obj, P, E);
+            E.stopPropagation();
+        });
+        
+        this.input.on('pointerdown', function (p) {
+            console.log(p.worldX, p.worldY)
+            This.Scrolling.movingSpeed = 0;
+
+        });
+        this.input.on('pointerup', function (p) {
+            This.Scrolling.isBeingDragged = false;
+            This.Scrolling.DeltaTime = p.downTime - p.upTime;
+            This.Scrolling.Distance = Phaser.Math.Distance.Between(p.downX, p.downY, p.upX, p.upY);
+            This.Scrolling.Angle = Phaser.Math.Angle.Between(p.downX, p.downY, p.upX, p.upY);
+            This.Scrolling.movingSpeed = This.Scrolling.Distance * 10 / This.Scrolling.DeltaTime;
+            This.input.stopPropagation();
+        });
+
+        this.input.on('pointermove', function (p) {
+            if (!p.isDown)
+                return;
+            This.Scrolling.isBeingDragged = true;
+            cam.scrollX -= (p.x - p.prevPosition.x) / cam.zoom;
+            cam.scrollY -= (p.y - p.prevPosition.y) / cam.zoom;
+        });
+
+
+
+        this.input.on('wheel', function (pointer, gameObjects, deltaX, deltaY, deltaZ) {
+
+            if (deltaY < 0) {
+                if (cam.zoom >= 2)
+                    return cam.zoom = 2;
+                cam.zoom += 0.1;
+            }else{
+                 if (cam.zoom <= 1)
+                    return cam.zoom = 1;
+                cam.zoom -= 0.1;
+            }
+
+        });
+        cam.pan(BuildingOnFloor.palace.x, BuildingOnFloor.palace.y, 700);
+
+
+
+        var controlConfig = {
+            camera: this.cameras.main,
+            left: this.input.keyboard.addKey('left'),
+            right: this.input.keyboard.addKey('right'),
+            up: this.input.keyboard.addKey('up'),
+            down: this.input.keyboard.addKey('down'),
+            acceleration: 0.06,
+            drag: 0.0005,
+            maxSpeed: 1.0
+        };
+
+        this.controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
+        //Crafty.viewport.centerOn(BuildingOnFloor.palace, 1);
+    },
+    update: function (time, delta) {
+        this.controls.update(delta);
+    }
+});
+
+
+Elkaisar.GE.CWorldScene = new Phaser.Class({
+    Extends: Phaser.Scene,
+    initialize: function () {
+        Phaser.Scene.call(this, {"key": "World"});
+        Elkaisar.GE.WorldScene = this;
+    },
+    init: function () {},
+    preload: function () {},
+    create: function () {
+
+        Elkaisar.GE.ConfigAnims();
+        var cam = this.cameras.main;
+        cam.scrollX = Elkaisar.World.Map.posX(Elkaisar.CurrentCity.City.x, Elkaisar.CurrentCity.City.y) - Elkaisar.MAX_SCREEN_WIDTH / 2 + 64;
+        cam.scrollY = Elkaisar.World.Map.posY(Number(Elkaisar.CurrentCity.City.x), Number(Elkaisar.CurrentCity.City.y)) - Elkaisar.MAX_SCREEN_HEIGHT / 2 + 128;
+        Animation.currentUnitArrow.add();
+        cam.on("camerapancomplete", function () {
+            
+            Elkaisar.World.MapBattel.AddBattels();
+            Elkaisar.World.Map.RefreshWorld();
+        });
+
+        Elkaisar.World.Map.Scroll(true);
+
+        var This = this;
+        var downObj;
+        this.isMapDraging = false;
+
+        this.input.on('gameobjectdown', function (p, obj, E) {
+            if (this.isMapDraging)
+                return;
+            downObj = obj;
+            E.stopPropagation();
+
+        });
+        this.input.on('gameobjectup', function (P, Obj, E) {
+            
+            if (P.downElement !== Elkaisar.GE.Game.canvas || P.getDuration() > 250)
+                return;
+            Obj.emit("click", Obj, P, E);
+            E.stopPropagation();
+        });
+
+
+        this.input.on('pointerdown', Elkaisar.World.Map.mouseDownFn);
+        this.input.on('pointerup', Elkaisar.World.Map.mouseUpFn);
+        this.input.on('pointermove', Elkaisar.World.Map.mouseMoveFn);
+        this.UnitFloor = this.add.image(0, 0, "unit_floor").setOrigin(0, 0).setDepth(0);
+        this.UnitFloor.ignoreDestroy = true;
+        this.WorldUnitIcons = {};
+
+        this.time.delayedCall(1000, function () {
+            Elkaisar.World.MapBattel.AddBattels();
+        });
+        this.cursors = {
+            left: this.input.keyboard.addKey('left'),
+            right: this.input.keyboard.addKey('right'),
+            up: this.input.keyboard.addKey('up'),
+            down: this.input.keyboard.addKey('down')
+        };
+        this.KeySpeed = 4;
+        this.input.keyboard.on('keyup', function (eventName, event) {
+            This.KeySpeed = 4;
+            This.time.delayedCall(500, function () {
+                This.isMapDraging = false;
+            });
+
+        });
+    },
+    update: function (time, delta) {
+
+        for (var iii in Elkaisar.World.MapBattel.BattelList) {
+            let OneBattel = Elkaisar.World.MapBattel.BattelList[iii];
+          
+            if (OneBattel && OneBattel.Line)
+                OneBattel.Line.tilePositionX -= 0.25;
+        }
+
+        if (this.cursors.up.isDown)
+        {
+            this.isMapDraging = true;
+            this.cameras.main.scrollY -= this.KeySpeed;
+            this.KeySpeed = Math.min(this.KeySpeed + 0.5, 20);
+            if (time % 5 == 0)
+                Elkaisar.World.Map.Scroll(true);
+            if (time % 10 == 0)
+                Elkaisar.World.Map.clear();
+            if (time % 20 == 0)
+                Elkaisar.World.MapBattel.AddBattels();
+
+
+        } else if (this.cursors.down.isDown) {
+            this.isMapDraging = true;
+            this.cameras.main.scrollY += this.KeySpeed;
+            this.KeySpeed = Math.min(this.KeySpeed + 0.5, 20);
+            if (time % 5 == 0)
+                Elkaisar.World.Map.Scroll(true);
+            if (time % 10 == 0)
+                Elkaisar.World.Map.clear();
+            if (time % 20 == 0)
+                Elkaisar.World.MapBattel.AddBattels();
+
+        }
+
+        if (this.cursors.left.isDown)
+        {
+            this.isMapDraging = true;
+            this.cameras.main.scrollX -= this.KeySpeed;
+            this.KeySpeed = Math.min(this.KeySpeed + 0.5, 20);
+            if (time % 5 == 0)
+                Elkaisar.World.Map.Scroll(true);
+            if (time % 10 == 0)
+                Elkaisar.World.Map.clear();
+            if (time % 20 == 0)
+                Elkaisar.World.MapBattel.AddBattels();
+
+        } else if (this.cursors.right.isDown) {
+            this.isMapDraging = true;
+            this.cameras.main.scrollX += this.KeySpeed;
+            this.KeySpeed = Math.min(this.KeySpeed + 0.5, 20);
+            if (time % 5 == 0)
+                Elkaisar.World.Map.Scroll(true);
+            if (time % 10 == 0)
+                Elkaisar.World.Map.clear();
+            if (time % 20 == 0)
+                Elkaisar.World.MapBattel.AddBattels();
+        }
+
+
+    }
+});
+
+
+
+$(document).ready(function () {
+    const phaserConfig = {
+        type: Phaser.AUTO,
+        parent: "GameWindow",
+        width: window.innerWidth,
+        height: window.innerHeight,
+        backgroundColor: "#000000",
+        scene: [Elkaisar.GE.CLoadingScene, Elkaisar.GE.CCityScene, Elkaisar.GE.CWorldScene],
+        /* input: {
+         windowEvents: false
+         }*/
+        fps: {
+            min: 10,
+            target: 20
+        }
+    };
+
+    Elkaisar.GE.Game = new Phaser.Game(phaserConfig);
+});
+
+Elkaisar.LBase.Error = function (data)
 {
 
     alert(data);
@@ -1999,68 +2641,6 @@ const  THINGS_TO_LOAD = {
 
 
 };
-
-$(document).ready(function () {
-
-    Crafty.load(THINGS_TO_LOAD, function () {
-
-
-        $.ajax({
-
-            url: API_URL + "/home/HLogIn/playerEnterServerWeb",
-            type: 'POST',
-            data: {
-                server: SERVER_ID,
-                outhToken: TOKEN
-            },
-            beforeSend: function (xhr) {
-
-            },
-            success: function (data, textStatus, jqXHR) {
-                if (!Elkaisar['LBase']['isJson'](data)) {
-                    alert(data), console['log'](data);
-                    return;
-                }
-                var JsonData = JSON['parse'](data);
-                JsonData['state'] !== 'ok' && console['log'](JsonData);
-                Elkaisar['Config']['WsPort'] = JsonData['WsPort'];
-                Elkaisar['Config']['WsHost'] = JsonData['WsHost'];
-                Elkaisar['DPlayer']['Player'] = JsonData['Player'];
-                Elkaisar['ServerData'] = JsonData['Server'];
-                Elkaisar['Config']['OuthToken'] = TOKEN;
-                Elkaisar['Config']['idServer'] = JsonData['idServer'];
-                Elkaisar['Config']['idCities'] = JsonData['idCities'];
-                Elkaisar['Config']['JsVersion'] = JsonData['JsVersion'];
-
-                if (Elkaisar['DPlayer']['Player']['panned'] >= $['now']() / 1000) {
-                    alert('هذا الحساب محظور');
-                    return;
-                }
-                Crafty['audio']['play']('war_sound');
-                $['ajaxSetup']({
-                    'data': {
-                        'idPlayerV': Elkaisar['DPlayer']['Player']['id_player']
-                    }
-                });
-                $('html')['trigger']('PlayerReady');
-
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-
-        });
-
-
-    },
-            function (e) {
-                loading(e.percent);
-            }, function (e) {
-        console.log(e);
-    }
-    );
-
-});
 
 
 Elkaisar.BaseData.Promotion = [
@@ -3691,6 +4271,7 @@ Elkaisar.BaseData.HeroTheaterName = [
 ];
 
 Elkaisar.BaseData.BattelTasks = {
+    BATTEL_TASK_OPEN_BATTEL_FIELD: -1,
     BATTEL_TASK_CONQUER: 0,
     BATTEL_TASK_DOMINATE: 1,
     BATTEL_TASK_JOIN_ATT: 2,
@@ -3758,10 +4339,1644 @@ Elkaisar.BaseData.GuildRelationTitle = {
     [Elkaisar.BaseData.GuildRelation.RelationEnemy]: 'عدو',
     [Elkaisar.BaseData.GuildRelation.RelationFriend]: 'صديق'
 };
-Crafty.init();
-Crafty.timer.FPS(20);
-Crafty.createLayer("UILayer", "Canvas", {scaleResponse: 0, xResponse: 0, yResponse: 0});
 
+
+Elkaisar.World.UnitData = {
+
+    "0": {
+
+        snapShoot: "river_3.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [64, 64, 128, 96, 64, 128, 0, 96],
+        tileName: {"0": "floor"},
+        getTitle: (x_coord, y_coord) => {
+            return "مكان خالى";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "1": {
+        snapShoot: "river_3.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [64, 64, 128, 96, 64, 128, 0, 96],
+        tileName: {"0": "river_1"},
+        getTitle: (x_coord, y_coord) => {
+            return "بحيرة";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "17": {
+        snapShoot: "river_3.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [112, 95, 70, 118, 23, 92, 65, 70],
+        tileName: {"0": "city_0"},
+        getTitle: (x_coord, y_coord) => {
+            return "مدينة مستوى 1";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "18": {
+
+        snapShoot: "river_3.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [103, 78, 106, 100, 63, 118, 18, 98, 17, 83, 58, 56],
+        tileName: {"0": "city_1"},
+        getTitle: (x_coord, y_coord) => {
+            return "مدينة مستوى 2";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "19": {
+
+        snapShoot: "river_3.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [105, 72, 107, 100, 63, 125, 15, 97, 21, 72, 61, 50],
+        tileName: {"0": "city_2"},
+        getTitle: (x_coord, y_coord) => {
+            return "مدينة مستوى 3";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "20": {
+
+        snapShoot: "river_3.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {"0": "city_3"},
+        getTitle: (x_coord, y_coord) => {
+            return "مدينة مستوى 4";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "21": {
+
+        snapShoot: "mountain_1.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [101, 94, 67, 115, 27, 96, 63, 72],
+        tileName: {1: "m_1", 2: "m_2", 3: "m_3", 4: "m_4"},
+        getTitle: (x_coord, y_coord) => {
+            return "هضبة";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "22": {
+
+        snapShoot: "mountain_2.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [123, 96, 67, 123, 12, 96, 49, 66, 74, 52],
+        tileName: {5: "m_5", 6: "m_6", 7: "m_7"},
+        getTitle: (x_coord, y_coord) => {
+            return "جبل";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "23": {
+
+        snapShoot: "mountain_3.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [119, 92, 70, 122, 11, 90, 61, 27, 88, 31],
+        tileName: {8: "m_8", 9: "m_9", 10: "m_10"},
+        getTitle: (x_coord, y_coord) => {
+            return "جبال";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "24": {
+
+        snapShoot: "desert_1.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [65, 67, 20, 91, 73, 118, 105, 92],
+        tileName: {1: "d_1", 2: "d_2", 3: "d_3", 4: "d_4"},
+        getTitle: (x_coord, y_coord) => {
+            return "رمال";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "25": {
+
+        snapShoot: "desert_2.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [112, 98, 60, 120, 15, 96, 60, 72, 86, 66],
+        tileName: {5: "d_5", 6: "d_6", 7: "d_7"},
+        getTitle: (x_coord, y_coord) => {
+            return "صحراء";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "26": {
+
+        snapShoot: "desert_3.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [119, 97, 62, 120, 19, 95, 41, 77, 47, 56, 86, 58],
+        tileName: {8: "d_8", 9: "d_9", "10": "d_10"},
+        getTitle: (x_coord, y_coord) => {
+            return "صحراء";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "27": {
+
+        snapShoot: "wood_1.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [63, 72, 90, 83, 92, 97, 67, 112, 39, 99, 47, 84],
+        tileName: {1: "w_1", 2: "w_2", 3: "w_3", 4: "w_4"},
+        getTitle: (x_coord, y_coord) => {
+            return "احراش";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "28": {
+
+        snapShoot: "wood_2.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [64, 64, 106, 86, 109, 101, 66, 122, 27, 97, 33, 80],
+        tileName: {5: "w_5", 6: "w_6", 7: "w_7"},
+        getTitle: (x_coord, y_coord) => {
+            return "اخشاب";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "29": {
+
+        snapShoot: "wood_3.png",
+        desc: null,
+        maxLvl: 0,
+        prom_lvl: 0,
+        fitness: 0,
+        make_req: [],
+        join_req: [],
+        hitArea: [62, 48, 116, 77, 120, 97, 65, 127, 15, 100, 16, 74],
+        tileName: {8: "w_8", 9: "w_9", 10: "w_10"},
+        getTitle: (x_coord, y_coord) => {
+            return "غابات";
+        },
+        timeNextRest: () => {
+            return null;
+        }
+
+    },
+    "30": {
+        snapShoot: "monwrat.png",
+        ar_title: "مناورات",
+        prom_title: "مواطن",
+        prom_lvl: 0,
+        fitness: 40,
+        make_req: ["necklace_4"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "مناورات";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+        maxLvl: 50,
+        hitArea: [64, 0, 128, 32, 128, 96, 64, 128, 0, 96, 0, 32],
+        tileName: {0: "mnawrat"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+
+    },
+    "31": {
+        snapShoot: "camps.png",
+        ar_title: "معسكرات",
+        prom_title: "مواطن",
+        prom_lvl: 0,
+        fitness: 40,
+        make_req: ["necklace_4"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            if (x_coord === 136 && y_coord === 160) {
+                return `المعسكر الفرنسى المتمرد`;
+            } else if (x_coord === 407 && y_coord === 66) {
+                return `المعسكر الاسيوى المتمرد`;
+            } else if (x_coord === 106 && y_coord === 19) {
+                return `المعسكر البريطانى المتمرد`;
+            } else if (x_coord === 392 && y_coord === 213) {
+                return `المعسكر المقدونى المتمرد`;
+            } else if (x_coord === 266 && y_coord === 245) {
+                return `المعسكر الايطالى المتمرد`;
+            } else if (x_coord === 78 && y_coord === 300) {
+                return `المعسكر الاسبانى المتمرد`;
+            } else if (x_coord === 427 && y_coord === 337) {
+                return `المعسكر الفارسى المتمرد`;
+            } else if (x_coord === 316 && y_coord === 450) {
+                return `المعسكر المصرى المتمرد`;
+            } else if (x_coord === 88 && y_coord === 444) {
+                return `المعسكر القرطاجى المتمرد`;
+            } else if (x_coord === 246 && y_coord === 111) {
+                return `المعسكر الالمانى المتمرد`;
+            }
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 50,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "city_4"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "32": {
+        snapShoot: "front_squad.png",
+        ar_title: "الفرقة الامامية",
+        prom_lvl: 3,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        getTitle: function (x_coord, y_coord) {
+            return "الفرقة الامامية";
+        },
+        maxLvl: 40,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "front_squad"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "33": {
+        snapShoot: "front_squad.png",
+        ar_title: "السرية الامامية",
+        prom_lvl: 3,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        getTitle: function (x_coord, y_coord) {
+            return "السرية الامامية";
+        },
+        maxLvl: 40,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "front_band"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "34": {
+        snapShoot: "front_band.png",
+        ar_title: "الجماعة الامامية",
+        prom_lvl: 3,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        getTitle: function (x_coord, y_coord) {
+            return "الجماعة الامامية";
+        },
+        maxLvl: 40,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "front_squadron"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "35": {
+        snapShoot: "front_division.png",
+        ar_title: "الكتيبة الامامية",
+        prom_lvl: 3,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "الكتيبة الامامية";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 40,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "front_division"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "36": {
+        snapShoot: "armed_light_squad.png",
+        ar_title: "فرقة التسليح الخفيف",
+        prom_lvl: 10,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "فرقة التسليح الخفيف";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 30,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "armed_light_squad"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "37": {
+        snapShoot: "armed_light_band.png",
+        ar_title: "سرية التسليح الخفيف",
+        prom_lvl: 10,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "سرية التسليح الخفيف";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 30,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "armed_light_band"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "38": {
+        snapShoot: "armed_light_squadron.png",
+        ar_title: "جماعة التسليح الخفيف",
+        prom_lvl: 10,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "جماعة التسليح الخفيف";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 30,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "armed_light_squadron"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "39": {
+        snapShoot: "armed_light_division.png",
+        ar_title: "كتيبة التسليح الخفيف",
+        prom_lvl: 10,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "كتيبة التسليح الخفيف";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 30,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "armed_light_division"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "40": {
+        snapShoot: "armed_heavy_squad.png",
+        ar_title: "فرقة التسليح الثقيل",
+        prom_lvl: 20,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "فرقة التسليح الثقيل";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 20,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "armed_heavy_squad"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "41": {
+        snapShoot: "armed_heavy_band.png",
+        ar_title: "سرية التسليح الثقيل",
+        prom_lvl: 20,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "سرية التسليح الثقيل";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 20,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "armed_heavy_band"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "42": {
+        snapShoot: "armed_heavy_squadron.png",
+        ar_title: "جماعة التسليح الثقيل",
+        prom_lvl: 20,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "جماعة التسليح الثقيل";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 20,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "armed_heavy_squadron"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "43": {
+        snapShoot: "armed_heavy_division.png",
+        ar_title: "كتيبة التسليح الثقيل",
+        prom_lvl: 20,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "كتيبة التسليح الثقيل";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 20,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "armed_heavy_division"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "44": {
+        snapShoot: "guard_squad.png",
+        ar_title: "فرقة الحراسة",
+        prom_lvl: 25,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "فرقة الحراسة";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 20,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "guard_squad"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "45": {
+        snapShoot: "guard_band.png",
+        ar_title: "سرية الحراسة",
+        prom_lvl: 25,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "سرية الحراسة";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 20,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "guard_band"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "46": {
+        snapShoot: "guard_squadron.png",
+        ar_title: "جماعة الحراسة",
+        prom_lvl: 25,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "جماعة الحراسة";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 20,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "guard_squadron"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "47": {
+        snapShoot: "guard_division.png",
+        ar_title: "كتيبة الحراسة",
+        prom_lvl: 25,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "كتيبة الحراسة";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 20,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "guard_division"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "48": {
+        snapShoot: "thunder.png",
+        ar_title: "الساندرز",
+        prom_lvl: 29,
+        fitness: 40,
+        make_req: ["truce_pack"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "الساندرز الشجاع";
+        },
+        desc: `
+            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
+
+            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
+             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
+             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
+             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
+             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
+              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
+            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
+
+        maxLvl: 10,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "brave_thunder"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "49": {
+        snapShoot: "gang.png",
+        ar_title: "العصابات",
+        prom_lvl: 1,
+        fitness: 20,
+        make_req: ["t_map"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "العصابات";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 2,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "gang"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "50": {
+        snapShoot: "mugger.png",
+        ar_title: "قطاع الطرق",
+        prom_lvl: 1,
+        fitness: 20,
+        make_req: ["t_map"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "قطاع الطريق";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 2,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "mugger"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "51": {
+        snapShoot: "thief.png",
+        ar_title: "اللصوص",
+        prom_lvl: 1,
+        fitness: 20,
+        make_req: ["t_map"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "اللصوص";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 2,
+        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
+        tileName: {0: "thief"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "52": {
+        snapShoot: "c_gang.png",
+        ar_title: "العصابات القرطاجية",
+        prom_lvl: 4,
+        fitness: 20,
+        make_req: ["repel_trumpet_1"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "العصابات القرطاجية";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [69, 110, 90, 101, 90, 69, 63, 53, 42, 64, 41, 97],
+        tileName: {0: "carthage_gang"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "53": {
+        snapShoot: "c_teams.png",
+        ar_title: "فرق العصيان القرطاجى",
+        prom_lvl: 1,
+        fitness: 30,
+        make_req: ["repel_trumpet_1"],
+        join_req: [""],
+        getTitle: function (x_coord, y_coord) {
+            return "فرق العصيان القرطاجى";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [63, 112, 97, 96, 94, 71, 65, 54, 35, 68, 34, 98],
+        tileName: {0: "carthage_teams"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "54": {
+        snapShoot: "c_rebels.png",
+        ar_title: "متمردى قرطاجة",
+        prom_lvl: 7,
+        fitness: 40,
+        make_req: ["repel_trumpet_2"],
+        join_req: ["repel_trumpet_2"],
+        getTitle: function (x_coord, y_coord) {
+            return "متمردى قرطاجة";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [69, 115, 104, 102, 97, 68, 61, 48, 34, 64, 31, 98],
+        tileName: {0: "carthage_rebels"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "55": {
+        snapShoot: "c_forces.png",
+        ar_title: "القوات الخاصة القرطاجية",
+        prom_lvl: 14,
+        fitness: 50,
+        make_req: ["repel_trumpet_2"],
+        join_req: ["repel_trumpet_2"],
+        getTitle: function (x_coord, y_coord) {
+            return "القوات الخاصة القرطاجية";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [67, 116, 110, 100, 101, 67, 69, 47, 31, 65, 29, 100],
+        tileName: {0: "carthage_forces"},
+        timeNextRest: function () {
+            return TimeRest.restEvery6();
+        }
+    },
+    "56": {
+        snapShoot: "c_capital.png",
+        ar_title: "عاصمة التمرد",
+        prom_lvl: 19,
+        fitness: 60,
+        make_req: ["repel_medal"],
+        join_req: ["repel_medal"],
+        getTitle: function (x_coord, y_coord) {
+            return "عاصمة التمرد";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [62, 116, 108, 97, 102, 67, 71, 46, 29, 64, 27, 98],
+        tileName: {0: "carthage_capital"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "100": {
+        snapShoot: "armyCapital.png",
+        ar_title: "عاصمة المشاة",
+        prom_lvl: 1,
+        fitness: 50,
+        make_req: ["warrior_medal"],
+        join_req: [],
+        hero_army_req: 1,
+        getTitle: function (x_coord, y_coord) {
+            return "عاصمة المشاة";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "army_capital"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "101": {
+        snapShoot: "armyCapital.png",
+        ar_title: "عاصمة الفرسان",
+        prom_lvl: 1,
+        fitness: 50,
+        hero_army_req: 2,
+        make_req: ["warrior_medal"],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "عاصمة الفرسان";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "army_capital"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "102": {
+        snapShoot: "armyCapital.png",
+        ar_title: "عاصمة المدرعين",
+        prom_lvl: 1,
+        fitness: 50,
+        hero_army_req: 3,
+        make_req: ["warrior_medal"],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "عاصمة المدرعين";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "army_capital"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "103": {
+        snapShoot: "armyCapital.png",
+        ar_title: "عاصمة رماة السهم",
+        prom_lvl: 1,
+        fitness: 50,
+        hero_army_req: 4,
+        make_req: ["warrior_medal"],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "عاصمة رماة السهم";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "army_capital"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "104": {
+        snapShoot: "armyCapital.png",
+        ar_title: "عاصمة المقاليعٍ",
+        prom_lvl: 1,
+        fitness: 50,
+        hero_army_req: 5,
+        make_req: ["warrior_medal"],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "عاصمة المقاليع";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "army_capital"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "105": {
+        snapShoot: "armyCapital.png",
+        ar_title: "عاصمة المنجنيق",
+        prom_lvl: 1,
+        fitness: 50,
+        hero_army_req: 6,
+        make_req: ["warrior_medal"],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "عاصمة المنجنيق";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "army_capital"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "125": {
+        snapShoot: "arena.png",
+        ar_title: "حلبة التحدى",
+        prom_lvl: 1,
+        fitness: 10,
+        make_req: [],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "حلبة التحدى";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "arena"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "126": {
+        snapShoot: "arena.png",
+        ar_title: "حلبة الموت",
+        prom_lvl: 1,
+        fitness: 10,
+        make_req: [],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "حلبة الموت";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "arena"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "127": {
+        snapShoot: "arena.png",
+        ar_title: "حلبة تحدى الاحلاف",
+        prom_lvl: 1,
+        fitness: 10,
+        make_req: [],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "حلبة تحدى الاحلاف";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "arena"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "130": {
+        snapShoot: "queenCityS.png",
+        ar_title: "الملكة الصغرى",
+        prom_lvl: 3,
+        fitness: 40,
+        make_req: ["bronze_horn"],
+        join_req: ["bronze_horn"],
+        getTitle: function (x_coord, y_coord) {
+            return "الملكة الصغرى";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "queenCity_1"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "131": {
+        snapShoot: "queenCityM.png",
+        ar_title: "الملكة الوسطى",
+        prom_lvl: 4,
+        fitness: 50,
+        make_req: ["silver_horn"],
+        join_req: ["silver_horn"],
+        getTitle: function (x_coord, y_coord) {
+            return "الملكة الصغرى";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "queenCity_2"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "132": {
+        snapShoot: "queenCityH.png",
+        ar_title: "الملكة الكبرى",
+        prom_lvl: 5,
+        fitness: 60,
+        make_req: ["gold_horn"],
+        join_req: ["gold_horn"],
+        getTitle: function (x_coord, y_coord) {
+            return "الملكة الصغرى";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "queenCity_3"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "134": {
+        snapShoot: "repleCastleS.png",
+        ar_title: "القلاع الصغرى",
+        prom_lvl: 3,
+        fitness: 40,
+        make_req: ["bronze_horn"],
+        join_req: ["bronze_horn"],
+        getTitle: function (x_coord, y_coord) {
+            return "القلاع الصغرى";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "repleCastle_1"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "135": {
+        snapShoot: "repleCastleM.png",
+        ar_title: "القلاع الوسطى",
+        prom_lvl: 4,
+        fitness: 50,
+        make_req: ["silver_horn"],
+        join_req: ["silver_horn"],
+        getTitle: function (x_coord, y_coord) {
+            return "القلاع الوسطى";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "repleCastle_2"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "136": {
+        snapShoot: "repleCastleH.png",
+        ar_title: "القلاع الكبرى",
+        prom_lvl: 5,
+        fitness: 60,
+        make_req: ["gold_horn"],
+        join_req: ["gold_horn"],
+        getTitle: function (x_coord, y_coord) {
+            return "القلاع الكبرى";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
+        tileName: {0: "repleCastle_3"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "150": {
+        snapShoot: "statueWar_1.png",
+        ar_title: "تمثال الحرب الاصغر",
+        prom_lvl: 29,
+        fitness: 100,
+        make_req: ["evil_army_pass"],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "تمثال الحرب الاصغر";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 75,
+        heroNum: 3,
+        techLvl: 10,
+        heroLvl: 255,
+        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
+        tileName: {0: "wolfStatue"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "151": {
+        snapShoot: "statueWar_2.png",
+        ar_title: "تمثال الحرب الاوسط",
+        prom_lvl: 29,
+        fitness: 100,
+        make_req: ["evil_army_pass"],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "تمثال الحرب الاوسط";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 50,
+        heroNum: 3,
+        techLvl: 10,
+        heroLvl: 255,
+        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
+        tileName: {0: "wolfStatue"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "152": {
+        snapShoot: "statueWar_3.png",
+        ar_title: "تمثال الحرب الاكبر",
+        prom_lvl: 5,
+        fitness: 60,
+        make_req: ["evil_army_pass"],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "تمثال الحرب الاكبر";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 25,
+        heroNum: 3,
+        techLvl: 10,
+        heroLvl: 255,
+        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
+        tileName: {0: "wolfStatue"},
+        timeNextRest: function () {
+            return TimeRest.restEvery12();
+        }
+    },
+    "153": {
+        snapShoot: "wolf_1.png",
+        ar_title: "مجموعة الذئب 1",
+        prom_lvl: 29,
+        fitness: 100,
+        make_req: ["evil_pass"],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "مجموعة الذئب 1";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        heroNum: 3,
+        techLvl: 10,
+        heroLvl: 255,
+        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
+        tileName: {0: "wolfStatue"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "154": {
+        snapShoot: "wolf_2.png",
+        ar_title: "مجموعة الذئب 2",
+        prom_lvl: 29,
+        fitness: 100,
+        make_req: ["evil_pass"],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "مجموعة الذئب 2";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        heroNum: 3,
+        techLvl: 10,
+        heroLvl: 255,
+        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
+        tileName: {0: "wolfStatue"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+    "155": {
+        snapShoot: "wolf_3.png",
+        ar_title: "مجموعة الذئب 3",
+        prom_lvl: 29,
+        fitness: 100,
+        make_req: ["evil_pass"],
+        join_req: [],
+        getTitle: function (x_coord, y_coord) {
+            return "مجموعة الذئب 3";
+        },
+        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
+
+الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
+             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
+            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
+             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
+            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
+            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
+
+        maxLvl: 10,
+        heroNum: 3,
+        techLvl: 10,
+        heroLvl: 255,
+        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
+        tileName: {0: "wolfStatue"},
+        timeNextRest: function () {
+            return TimeRest.restEvery4();
+        }
+    },
+
+    isPromLvlOk: function (type) {
+        var camp = Elkaisar.World.UnitTypeData[type];
+        return (Elkaisar.DPlayer.Player.porm >= camp.reqProm);
+    },
+
+    isAttackable: function (type) {
+        var camp = Elkaisar.World.UnitTypeData[type];
+        for (var mat in camp.MakeReq) {
+            if (Matrial.getPlayerAmount(camp.MakeReq[mat].Item) < camp.MakeReq[mat].amount) {
+                return false;
+            }
+        }
+        return (Elkaisar.DPlayer.Player.porm >= camp.reqProm);
+    }
+
+
+
+};
 
 function isJson(str) {
     try {
@@ -3936,13 +6151,13 @@ if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elain
     isMobile = true;
 }
 
-WORLD_ALL_UNIT = Elkaisar.worldAllUnits;
+
 
 $(document).on("PlayerReady", "html", function () {
 
     $['getJSON'](API_URL + '/js' + Elkaisar['Config']['JsVersion'] + '/json/UnitArmy.json', {}, function (UnitArmy, _0x1d2e97, _0x190ef9) {
         Elkaisar['World']['UnitArmy'] = UnitArmy;
-    })
+    });
     $.getJSON(
             API_URL + "/js" + Elkaisar.Config.JsVersion + "/json/worldUnitData.json", {},
             function (data, textStatus, jqXHR) {
@@ -3958,7 +6173,7 @@ $(document).on("PlayerReady", "html", function () {
         beforeSend: function (xhr) {
 
         }, success: function (data, textStatus, jqXHR) {
-
+            
             var data_array = data.split(",");
             var iii = 0;
             var end = data_array.length;
@@ -4004,6 +6219,7 @@ $(document).on("PlayerReady", "html", function () {
                 }
             });
             $("#WorldCity").removeAttr("disabled");
+            
         }, error: function (jqXHR, textStatus, errorThrown) {
 
         }
@@ -4022,77 +6238,8 @@ function unwaitCursor() {
 }
 
 
-function zoomTowards(amt, posX, posY, time, easingFn) {
-    var scale = Crafty.viewport._scale,
-            // current viewport center
-            centX = -Crafty.viewport._x + Crafty.viewport._width / 2 / scale,
-            centY = -Crafty.viewport._y + Crafty.viewport._height / 2 / scale,
-            // direction vector from viewport center to position
-            deltaX = posX - centX,
-            deltaY = posY - centY;
-
-
-
-    var f = amt - 1;
-
-    Crafty.viewport.zoom(amt, centX + deltaX * f, centY + deltaY * f, time, easingFn);
-}
-
-// don't restrict panning of viewport in any way
-///Crafty.viewport.clampToEntities = false;
-
-// enable panning of viewport by dragging the mouse
-
-
-// enable interactive map-like zooming by scrolling the mouse
-Crafty.bind("MouseWheelScroll", function (evt) {
-    if (Crafty._floor !== "city")
-        return;
-    var scale = Crafty.viewport._scale;
-
-    var newScale = Math.max(MAX_SCREEN_WIDTH / 2500, MAX_SCREEN_HEIGHT / 1400, scale * (1 + evt.direction * 0.05));
-
-
-    Crafty.viewport.pan(0, 0, 100);
-
-
-    Crafty.viewport.scale(Math.min(newScale, 2));
-    // zoomTowards(1 + evt.direction/10, evt.realX, evt.realY, 5);
-});
-
-
-
-
-Crafty.bind("KeyDown", function (e) {
-    if (e.key === Crafty.keys.ENTER) {
-
-        if ($(".enter").last().is(":disabled")) {
-            alert_box.failMessage(`لا يمكنك الهجوم على هذة الوحدة`);
-            return;
-        }
-
-
-        $(".enter").last().click();
-    }
-});
-/*
- $( window ).resize(function (){
- if(isMobile){
- MAX_SCREEN_WIDTH  = screen.height*2 ;
- MAX_SCREEN_HEIGHT = screen.width*2;
- 
- }else{
- MAX_SCREEN_WIDTH  = $("#menu-bar").width();
- MAX_SCREEN_HEIGHT = screen.height;
- }
- 
- 
- });
- */
-
-
-
 var uri_pattern = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/ig;
+
 const SAVE_URL = [
     "www.elkaisar.com",
     "elkaisar.com",
@@ -4332,6 +6479,104 @@ $(document).on("click", ".number-arrow-wrapper .down", function () {
     input.val(Math.max(Number(input.val() || 0) - Number(input.attr("step") || 1), 0));
     input.trigger("keyup");
 
+});
+
+
+
+$(document).on("mouseup", "#dialg_box", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#dialg_box", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#over_lay_alert", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#over_lay_alert", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#over_lay", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#over_lay", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#alert_container", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#alert_container", function (e){
+    e.stopPropagation();
+});
+
+
+$(document).on("mouseup", "#city-profile", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#city-profile", function (e){
+    e.stopPropagation();
+});
+
+
+$(document).on("mouseup", "#chat-box", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#chat-box", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#current-tasks", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#current-tasks", function (e){
+    e.stopPropagation();
+});
+$(document).on("mouseup", "#city_col", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#city_col", function (e){
+    e.stopPropagation();
+});
+$(document).on("mouseup", "#player-profile", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#player-profile", function (e){
+    e.stopPropagation();
+});
+
+
+$(document).on("mouseup", "#godGateBtnWrapper", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#godGateBtnWrapper", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#helpGateBtnWrapper", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#helpGateBtnWrapper", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#ArenaChallangeBtnWrapper", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#ArenaChallangeBtnWrapper", function (e){
+    e.stopPropagation();
+});
+
+
+
+$(document).keydown(function(event){ 
+    var keyCode = (event.keyCode ? event.keyCode : event.which);   
+    if (keyCode == 13) {
+        $('.enter').last().trigger('click');
+        event.preventDefault();
+        event.stopPropagation();
+    }
 });var BoxMid = {};
 
 BoxMid.box = function (title, navBar, content){
@@ -5216,7 +7461,7 @@ Elkaisar.City.prepareCity = function (idCity)
 {
     Elkaisar.DPlayer.City[idCity] = {idCity: idCity};
 
-    if(Number(idCity) === Number(Elkaisar.Config.idCities[0]))
+    if (Number(idCity) === Number(Elkaisar.Config.idCities[0]))
         Elkaisar.CurrentCity = Elkaisar.City.getCity(idCity);
 
     Elkaisar.City.getCityJop(idCity).done(function (data) {
@@ -5231,8 +7476,17 @@ Elkaisar.City.prepareCity = function (idCity)
             Elkaisar.City.getCityBuilding(idCity).done(function () {
                 Elkaisar.City.getCityGarrison(idCity);
                 Elkaisar.Building.getJsonData().done(function () {
-                    if(Number(idCity) === Number(Elkaisar.Config.idCities[0])){
-                        Crafty.enterScene("city");
+                    if (Number(idCity) === Number(Elkaisar.Config.idCities[0])) {
+
+                        Elkaisar.GE.LoadingScene.scene.transition({
+                            target: "City",
+                            duration: 1000,
+                            remove: true,
+                            data: {
+                                idCity: 0
+                            }
+                        });
+
                         $("#loader-layer").remove();
                     }
                 });
@@ -5268,6 +7522,7 @@ Elkaisar.City.prepareCity = function (idCity)
 
 
 }
+
 $(document).on("PlayerReady", "html", function () {
 
 
@@ -5559,7 +7814,6 @@ var BuildingConstData = [
         sprit_name: "B11",
         hitArea: [147, 82, 78, 112, 17, 77, 23, 51, 84, 24, 138, 47]
     },
-
     {
         image: "images/city/palace.png", //palace 12 القصر 
         icon: "images/building/building13.jpg",
@@ -5647,10 +7901,9 @@ var BuildingConstData = [
         getTime: function (lvl) {
             return lvl * 3 * 60;
         },
-        hitArea: [701, 35, 7, 439, 93, 459, 703, 117],
         getHitArea: function () {
             if (Number(Elkaisar.City.getCity().BuildingLvl.wall) >= 10) {
-                return [625, 7, 580, 106, 542, 101, 404, 176, 365, 222, 337, 207, 312, 226, 300, 261, 255, 247, 7, 386, 7, 288, 231, 175, 223, 159, 328, 105, 351, 110, 522, 25, 509, 13, 525, 3];
+                return [510, 3, 1, 256, 5, 388, 576, 104, 609, 11];
             } else if (Number(Elkaisar.City.getCity().BuildingLvl.wall) >= 8) {
                 return [598, 11, 588, 92, 9, 391, 7, 299, 267, 161, 259, 150, 295, 130, 323, 133, 560, 12];
             } else if (Number(Elkaisar.City.getCity().BuildingLvl.wall) >= 4) {
@@ -5701,7 +7954,8 @@ var BuildingConstData = [
         getTime: function (lvl) {
             return lvl * 3 * 60;
         },
-        hitArea: [160, 90, 87, 124, 17, 87, 18, 52, 97, 28, 155, 48]
+        hitArea: [160, 90, 87, 124, 17, 87, 18, 52, 97, 28, 155, 48],
+        sprit_name: "market",
 
     },
 
@@ -5946,92 +8200,7 @@ Elkaisar.Building.getJsonData = function () {
 
 
 
-Crafty.defineScene("city", function () {
 
-    var floor_width = 2500;
-    var floor_height = 1400;
-
-
-    Crafty._floor = "city";
-    Crafty.onDragClickable = true;
-
-    // Crafty.viewport.bounds = {min:{x:0, y:0}, max:{x:floor_width - window.innerWidth, y:floor_height - window.innerHeight}};
-
-
-    city_floor = Crafty.e("2D, Canvas, city_floor").attr({w: floor_width, h: floor_height, z: -1});
-
-
-
-    /*start draginig map*/
-    Crafty.addEvent(this, Crafty.stage.elem, "mousedown", function (e) {
-
-        if (e.button > 1)
-            return;
-
-        if (Crafty._floor !== "city")
-            return;
-
-
-        var base = {x: e.clientX, y: e.clientY};
-
-        Crafty.viewport.mouselook(true);
-
-        function scroll(e) {
-
-            Crafty("iso_text_left").each(function () {
-
-                this.attr({alpha: 1.0});
-
-            });
-
-        }
-        ;
-
-        Crafty.addEvent(this, Crafty.stage.elem, "mousemove", scroll);
-        Crafty.addEvent(this, Crafty.stage.elem, "mouseup", function () {
-            Crafty.removeEvent(this, Crafty.stage.elem, "mousemove", scroll);
-            setTimeout(function () {
-                Crafty.onDragClickable = true;
-            }, 500);
-            Crafty("iso_text_left").each(function () {
-                // hide building lable
-                this.attr({alpha: 0.0});
-
-            });
-        });
-    });
-
-
-
-    Crafty.viewport.bounds = {min: {x: 0, y: 0}, max: {x: floor_width, y: floor_height}};
-
-
-    Crafty.bind('UpdateFrame', function () {
-
-        if (Crafty.s('Keyboard').isKeyDown(Crafty.keys.LEFT_ARROW)) {
-            Crafty.viewport.x += 20;
-            Crafty.viewport._clamp();
-        } else if (Crafty.s('Keyboard').isKeyDown(Crafty.keys.RIGHT_ARROW)) {
-            Crafty.viewport.x -= 20;
-            Crafty.viewport._clamp();
-        } else if (Crafty.s('Keyboard').isKeyDown(Crafty.keys.UP_ARROW)) {
-            Crafty.viewport.y += 20;
-            Crafty.viewport._clamp();
-        } else if (Crafty.s('Keyboard').isKeyDown(Crafty.keys.DOWN_ARROW)) {
-            Crafty.viewport.y -= 20;
-            Crafty.viewport._clamp();
-        }
-    });
-
-
-
-
-
-    fillCityWithBuilding();
-    Crafty.viewport.centerOn(BuildingOnFloor.palace, 1);
-
-
-});
 
 
 
@@ -6073,14 +8242,7 @@ function MouseOutBuilding()
 function building_title(x, y, place)
 {
 
-
-    return Crafty.e("2D, DOM , iso_text_left , Text")
-            .attr({x: x + 90, y: y + 1.5 * Y_GRID, w: 60, h: 20, avoidCss3dTransforms: true, z: 100, alpha: 0.0})
-            .css({'direction': 'rtl'})
-            .text(BuildingConstData[Elkaisar.City.getCity().BuildingType[place]].title)
-            .textColor('white')
-            .textFont({size: '12px', weight: 'bold', lineHeight: "20px"})
-            .textAlign("center");
+    return  Elkaisar.GE.CityScene.add.text(x + 0.25 * X_GRID, y + 1.5 * Y_GRID, BuildingConstData[Elkaisar.City.getCity().BuildingType[place]].title, Elkaisar.GE.TextConfig);
 
 
 }
@@ -6088,7 +8250,9 @@ function building_lvl_lable(x, y, place)
 {
 
     var lvl = Number(Elkaisar.City.getCity().BuildingLvl[place]);
-    var alpha_ = lvl === 0 ? 0.0 : 1.0;
+    if (lvl == 0)
+        return;
+
 
     var lable = "building_lvl_lable_1";
 
@@ -6102,586 +8266,221 @@ function building_lvl_lable(x, y, place)
         lable = "building_lvl_lable_2";
     }
 
+    BuildingOnFloor[place].LvlText = Elkaisar.GE.CityScene.add.text(x + 0.5 * X_GRID, y + 1 * Y_GRID, lvl, {
+        color: '#FFFFFF',
+        stroke: '#000000',
+        strokeThickness: 3,
+        fontStyle: "bold",
+        align: "center",
+        fontSize: 14,
+        fixedWidth: 30,
+        fixedHeight: 30
+    }).setOrigin(0, 0).setDepth(4);
+    BuildingOnFloor[place].LvlImage = Elkaisar.GE.CityScene.add.image(x + 0.5 * X_GRID, y + 1 * Y_GRID - 10, lable).setOrigin(0, 0).setDisplaySize(30, 30).setDepth(3)
 
-    return Crafty.e("2D, DOM , " + lable + " , " + place + "_b_l , Text")
-            .attr({x: x + 0.5 * X_GRID, y: y + 1 * Y_GRID, w: 30, h: 30, avoidCss3dTransforms: true, z: 100, alpha: alpha_})
-            .text(lvl)
-            .textColor('white')
-            .textFont({size: '12px', weight: 'bold'})
-            .textAlign("center");
-
+    return BuildingOnFloor[place].LvlImage;
 
 }
 
 var Check = true;
 
-function fillCityWithBuilding()
-{
-    for (var prop in BuildingOnFloor) {
-        BuildingOnFloor[prop].destroy();
-    }
-    Crafty("hammer_start").each(function () {
-        this.destroy();
-    });
-    
-    if(!Elkaisar.City.getCity().BuildingType)
-    {
-        if(Check)
-            Elkaisar.City.getCityBuilding().done(function (){
-                fillCityWithBuilding();
-            });
-        Check = false;
-        return ;
-    }
-    /*
-     *    PALACE building
-     */
-    BuildingOnFloor.palace = Crafty.e("2D, Canvas, palace , Mouse")
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["palace"]].hitArea)
-            .attr({x: 1190, y: 545, z: 1})
-            .bind("Click", function () {
+Elkaisar.GE.AddCityBuilding = function (x, y, BuildingPlace) {
+    BuildingOnFloor[BuildingPlace] = Elkaisar.GE.CityScene.add.image(x, y, BuildingConstData[Elkaisar.City.getCity().BuildingType[BuildingPlace]].sprit_name).setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType[BuildingPlace]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on("click", function () {
+                buildingClick(BuildingPlace);
+            })
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    BuildingOnFloor[BuildingPlace].Lable = building_lvl_lable(x, y, BuildingPlace);
+    building_hammer_animate(BuildingPlace);
+    return BuildingOnFloor[BuildingPlace];
+};
+
+
+Elkaisar.GE.AddCityFixedBuilding = function () {
+
+    BuildingOnFloor.palace = Elkaisar.GE.CityScene.add.image(1190, 545, "palace").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["palace"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
                 buildingClick("palace");
             })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(
-                    Crafty.e("2D, DOM , iso_text_left  , Text")
-                    .attr({x: 1350, y: 680, w: 90, h: 30, avoidCss3dTransforms: true, alpha: 0.0})
-                    .text(BuildingConstData[Elkaisar.City.getCity().BuildingType["palace"]].title)
-                    .textColor('white')
-                    .textFont({size: '14px', weight: 'bold', lineHeight: "30px"})
-                    .textAlign("center")
-
-                    )
-            .attach(building_lvl_lable(1260, 580, "palace"));
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(1260, 580, "palace");
     building_hammer_animate("palace");
 
 
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_1"]].hitArea)
-            .attr({x: 1780, y: 461, z: 5})
-            .bind("Click", function () {
-                buildingClick("light_house_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1780, 461, "light_house_1"))
-            .attach(building_lvl_lable(1780, 461, "light_house_1"));
-    building_hammer_animate("light_house_1");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_2"]].hitArea)
-            .attr({x: 1685, y: 506, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1685, 506, "light_house_2"))
-            .attach(building_lvl_lable(1685, 506, "light_house_2"));
-    building_hammer_animate("light_house_2");
-
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_3"]].hitArea)
-            .attr({x: 1587, y: 556, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1587, 556, "light_house_3"))
-            .attach(building_lvl_lable(1587, 556, "light_house_3"));
-    building_hammer_animate("light_house_3");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_4 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_4"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_4"]].hitArea)
-            .attr({x: 1487, y: 603, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_4");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1487, 603, "light_house_4"))
-            .attach(building_lvl_lable(1487, 603, "light_house_4"));
-    building_hammer_animate("light_house_4");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_5 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_5"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_5"]].hitArea)
-            .attr({x: 1792, y: 557, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_5");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1792, 557, "light_house_5"))
-            .attach(building_lvl_lable(1792, 557, "light_house_5"));
-    building_hammer_animate("light_house_5");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_6 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_6"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_6"]].hitArea)
-            .attr({x: 1695, y: 609, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_6");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1695, 609, "light_house_6"))
-            .attach(building_lvl_lable(1695, 609, "light_house_6"));
-    building_hammer_animate("light_house_6");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_7 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_7"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_7"]].hitArea)
-            .attr({x: 1595, y: 659, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_7");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1595, 659, "light_house_7"))
-            .attach(building_lvl_lable(1595, 659, "light_house_7"));
-    building_hammer_animate("light_house_7");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_8 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_8"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_8"]].hitArea)
-            .attr({x: 1807, y: 663, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_8");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1807, 663, "light_house_8"))
-            .attach(building_lvl_lable(1807, 663, "light_house_8"));
-    building_hammer_animate("light_house_8");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_9 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_9"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_9"]].hitArea)
-            .attr({x: 1702, y: 714, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_9");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1702, 714, "light_house_9"))
-            .attach(building_lvl_lable(1702, 714, "light_house_9"));
-    building_hammer_animate("light_house_9");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.light_house_10 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_10"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["light_house_10"]].hitArea)
-            .attr({x: 1802, y: 775, z: 4})
-            .bind("Click", function () {
-                buildingClick("light_house_10");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1802, 775, "light_house_10"))
-            .attach(building_lvl_lable(1802, 775, "light_house_10"));
-    building_hammer_animate("light_house_10");
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_1"]].hitArea)
-            .attr({x: 1353, y: 673, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1353, 673, "under_palace_1"))
-            .attach(building_lvl_lable(1353, 673, "under_palace_1"));
-    building_hammer_animate("light_house_1");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_2"]].hitArea)
-            .attr({x: 1249, y: 715, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1249, 715, "under_palace_2"))
-            .attach(building_lvl_lable(1249, 715, "under_palace_2"));
-    building_hammer_animate("under_palace_2");
-
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_3"]].hitArea)
-            .attr({x: 1145, y: 763, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1145, 763, "under_palace_3"))
-            .attach(building_lvl_lable(1145, 763, "under_palace_3"));
-    building_hammer_animate("under_palace_3");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_4 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_4"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_4"]].hitArea)
-            .attr({x: 1458, y: 724, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_4");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1458, 724, "under_palace_4"))
-            .attach(building_lvl_lable(1458, 724, "under_palace_4"));
-    building_hammer_animate("under_palace_4");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_5 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_5"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_5"]].hitArea)
-            .attr({x: 1353, y: 769, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_5");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1353, 769, "under_palace_5"))
-            .attach(building_lvl_lable(1353, 769, "under_palace_5"));
-    building_hammer_animate("under_palace_5");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_6 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_6"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_6"]].hitArea)
-            .attr({x: 1246, y: 813, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_6");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1246, 813, "under_palace_6"))
-            .attach(building_lvl_lable(1246, 813, "under_palace_6"));
-    building_hammer_animate("under_palace_6");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_7 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_7"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_7"]].hitArea)
-            .attr({x: 1568, y: 779, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_7");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1568, 779, "under_palace_7"))
-            .attach(building_lvl_lable(1568, 779, "under_palace_7"));
-    building_hammer_animate("under_palace_7");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_8 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_8"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_8"]].hitArea)
-            .attr({x: 1464, y: 822, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_8");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1464, 822, "under_palace_8"))
-            .attach(building_lvl_lable(1464, 822, "under_palace_8"));
-    building_hammer_animate("under_palace_8");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_9 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_9"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_9"]].hitArea)
-            .attr({x: 1352, y: 876, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_9");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1352, 876, "under_palace_9"))
-            .attach(building_lvl_lable(1352, 876, "under_palace_9"));
-    building_hammer_animate("under_palace_9");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_10 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_10"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_10"]].hitArea)
-            .attr({x: 1674, y: 829, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_10");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1674, 829, "under_palace_10"))
-            .attach(building_lvl_lable(1674, 829, "under_palace_10"));
-    building_hammer_animate("under_palace_10");
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_11 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_11"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_11"]].hitArea)
-            .attr({x: 1565, y: 880, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_11");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1565, 880, "under_palace_11"))
-            .attach(building_lvl_lable(1565, 880, "under_palace_11"));
-    building_hammer_animate("under_palace_11");
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_palace_12 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_12"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_palace_12"]].hitArea)
-            .attr({x: 1457, y: 923, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_palace_12");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1457, 923, "under_palace_12"))
-            .attach(building_lvl_lable(1457, 923, "under_palace_12"));
-    building_hammer_animate("under_palace_12");
-
-
-
-
-
-
-    BuildingOnFloor.wall = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["wall"]].getSpriteName() + " , Mouse")
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["wall"]].getHitArea())
-            .attr({x: 0, y: 0, z: 3})
-            .bind("Click", function () {
+    BuildingOnFloor.wall = Elkaisar.GE.CityScene.add.image(0, 0, BuildingConstData[Elkaisar.City.getCity().BuildingType["wall"]].getSpriteName()).setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["wall"]].getHitArea()),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
                 buildingClick("wall");
             })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(2 * X_GRID, 2.25 * Y_GRID, "wall"))
-            .attach(building_lvl_lable(1.75 * X_GRID, 2.5 * Y_GRID, "wall"));
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(1.75 * X_GRID, 2.5 * Y_GRID, "wall");
     building_hammer_animate("wall");
 
 
 
-    BuildingOnFloor.market = Crafty.e("2D, Canvas, market , Mouse")
 
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["market"]].hitArea)
-            .attr({x: 14 * X_GRID, y: 3.25 * Y_GRID, z: 3})
-            .bind("Click", function () {
-                buildingClick("market");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(14 * X_GRID, 3.25 * Y_GRID, "market"))
-            .attach(building_lvl_lable(14 * X_GRID, 3.25 * Y_GRID, "market"));
-    building_hammer_animate("market");
-
-
-
-
-
-    /*
-     *    PUT FIXED PLACES 
-     */
-
-    BuildingOnFloor.seaport = Crafty.e("2D, Canvas, seaport , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["seaport"]].hitArea)
-            .attr({x: 16 * X_GRID, y: 9.75 * Y_GRID, z: 1000})
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
+    BuildingOnFloor.seaport = Elkaisar.GE.CityScene.add.image(16 * X_GRID, 9.75 * Y_GRID, "seaport").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["seaport"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
                 buildingClick("seaport");
             })
-            .attach(building_title(17.75 * X_GRID, 10.25 * Y_GRID, "seaport"))
-            .attach(building_lvl_lable(14 * X_GRID, 3.25 * Y_GRID, "market"));
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(14 * X_GRID, 3.25 * Y_GRID, "seaport");
     building_hammer_animate("seaport");
-    /*
-     *    PUT FIXED PLACES 
-     */
 
-    BuildingOnFloor.lighthouse = Crafty.e("2D, Canvas, lighthouse , Mouse")
 
-            .attr({x: 15.5 * X_GRID, y: 5 * Y_GRID, z: 1})
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["lighthouse"]].hitArea)
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
+    BuildingOnFloor.lighthouse = Elkaisar.GE.CityScene.add.image(15.5 * X_GRID, 5 * Y_GRID, "lighthouse").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["lighthouse"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
                 buildingClick("lighthouse");
             })
-            .attach(building_title(15.4 * X_GRID, 7.25 * Y_GRID, "lighthouse"))
-            .attach(building_lvl_lable(14 * X_GRID, 3.25 * Y_GRID, "market"));
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(14 * X_GRID, 3.25 * Y_GRID, "lighthouse");
     building_hammer_animate("lighthouse");
 
-    /*
-     *    PUT FIXED PLACES 
-     */
 
-    BuildingOnFloor.farm = Crafty.e("2D, Canvas, farm , Mouse")
-
-            .attr({x: 12.75 * X_GRID, y: 14.75 * Y_GRID, z: 1000})
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["farm"]].hitArea)
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
+    BuildingOnFloor.farm = Elkaisar.GE.CityScene.add.image(13 * X_GRID, 14.25 * Y_GRID, "farm").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["farm"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
                 buildingClick("farm");
             })
-            .attach(building_title(13.75 * X_GRID, 15.75 * Y_GRID, "farm"))
-            .attach(building_lvl_lable(13.5 * X_GRID, 14.75 * Y_GRID, "farm"));
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(13.5 * X_GRID, 14.75 * Y_GRID, "farm");
     building_hammer_animate("farm");
 
-    /*
-     *    PUT FIXED PLACES 
-     */
 
-    BuildingOnFloor.mine = Crafty.e("2D, Canvas, mine , Mouse")
 
-            .attr({x: 7.75 * X_GRID, y: 2.25 * Y_GRID, z: 0})
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["mine"]].hitArea)
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
+    BuildingOnFloor.mine = Elkaisar.GE.CityScene.add.image(7.75 * X_GRID, 2.25 * Y_GRID, "mine").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["mine"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
                 buildingClick("mine");
             })
-            .attach(building_title(9 * X_GRID, 3.25 * Y_GRID, "mine"))
-            .attach(building_lvl_lable(8.5 * X_GRID, 3.25 * Y_GRID, "mine"));
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(8.5 * X_GRID, 3.25 * Y_GRID, "mine");
     building_hammer_animate("mine");
 
-    /*
-     *    PUT FIXED PLACES 
-     */
 
-    BuildingOnFloor.stone = Crafty.e("2D, Canvas, mahger , Mouse")
 
-            .attr({x: 11.5 * X_GRID, y: 5.5 * Y_GRID, z: 0})
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["stone"]].hitArea)
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
+    BuildingOnFloor.stone = Elkaisar.GE.CityScene.add.image(11.5 * X_GRID, 5.5 * Y_GRID, "stone").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["stone"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
                 buildingClick("stone");
             })
-            .attach(building_title(12.25 * X_GRID, 5.75 * Y_GRID, "stone"))
-            .attach(building_lvl_lable(12.25 * X_GRID, 5.5 * Y_GRID, "stone"));
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(12.25 * X_GRID, 5.5 * Y_GRID, "stone");
     building_hammer_animate("stone");
 
-    /*
-     *    PUT FIXED PLACES 
-     */
 
-    BuildingOnFloor.wood = Crafty.e("2D, Canvas, wood_maker , Mouse")
-
-            .attr({x: 2 * X_GRID, y: 6.5 * Y_GRID, z: 0})
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["wood"]].hitArea)
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .bind("Click", function () {
+    BuildingOnFloor.wood = Elkaisar.GE.CityScene.add.image(2 * X_GRID, 6.5 * Y_GRID, "wood").setInteractive({
+        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType["wood"]].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    }).setOrigin(0, 0).setDepth(2)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, function () {
                 buildingClick("wood");
             })
-            .attach(building_title(2.25 * X_GRID, 6.25 * Y_GRID, "wood"))
-            .attach(building_lvl_lable(2.25 * X_GRID, 6.25 * Y_GRID, "wood"));
+            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
+            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
+    building_lvl_lable(2.25 * X_GRID, 6.25 * Y_GRID, "wood");
     building_hammer_animate("wood");
+
+};
+Elkaisar.GE.TextConfig = {
+    color: '#FFFFFF',
+    stroke: '#000000',
+    strokeThickness: 3,
+    fontStyle: "bold",
+    align: "center",
+    fontSize: 14,
+    fixedWidth: 100,
+    fixedHeight: 24,
+    backgroundColor: "#000000",
+    padding: {
+        y: 5
+    }
+};
+function fillCityWithBuilding()
+{
+    for (var prop in BuildingOnFloor) {
+        BuildingOnFloor[prop].destroy();
+        if (BuildingOnFloor[prop].LvlImage)
+            BuildingOnFloor[prop].LvlImage.destroy();
+        if (BuildingOnFloor[prop].LvlText)
+            BuildingOnFloor[prop].LvlText.destroy();
+        for(var iii in BuildingOnFloor[prop].BuildingAni)
+            if(BuildingOnFloor[prop].BuildingAni[iii] && BuildingOnFloor[prop].BuildingAni[iii].destroy)
+            BuildingOnFloor[prop].BuildingAni[iii].destroy();
+        delete BuildingOnFloor[prop];
+    }
+    /*Crafty("hammer_start").each(function () {
+     this.destroy();
+     });*/
+
+    if (!Elkaisar.City.getCity().BuildingType)
+    {
+        if (Check)
+            Elkaisar.City.getCityBuilding().done(function () {
+                fillCityWithBuilding();
+            });
+        Check = false;
+        return;
+    }
+
+
+    Elkaisar.GE.AddCityFixedBuilding();
+    Elkaisar.GE.AddCityBuilding(14 * X_GRID, 3.25 * Y_GRID, "market");
+    Elkaisar.GE.AddCityBuilding(1780, 461, "light_house_1");
+    Elkaisar.GE.AddCityBuilding(1685, 506, "light_house_2");
+    Elkaisar.GE.AddCityBuilding(1587, 556, "light_house_3");
+    Elkaisar.GE.AddCityBuilding(1487, 603, "light_house_4");
+    Elkaisar.GE.AddCityBuilding(1792, 557, "light_house_5");
+    Elkaisar.GE.AddCityBuilding(1695, 609, "light_house_6");
+    Elkaisar.GE.AddCityBuilding(1595, 659, "light_house_7");
+    Elkaisar.GE.AddCityBuilding(1807, 663, "light_house_8");
+    Elkaisar.GE.AddCityBuilding(1702, 714, "light_house_9");
+    Elkaisar.GE.AddCityBuilding(1802, 775, "light_house_10");
+
+
+    Elkaisar.GE.AddCityBuilding(1353, 673, "under_palace_1");
+    Elkaisar.GE.AddCityBuilding(1249, 715, "under_palace_2");
+    Elkaisar.GE.AddCityBuilding(1145, 763, "under_palace_3");
+    Elkaisar.GE.AddCityBuilding(1458, 724, "under_palace_4");
+    Elkaisar.GE.AddCityBuilding(1353, 769, "under_palace_5");
+    Elkaisar.GE.AddCityBuilding(1246, 813, "under_palace_6");
+    Elkaisar.GE.AddCityBuilding(1568, 779, "under_palace_7");
+    Elkaisar.GE.AddCityBuilding(1464, 822, "under_palace_8");
+    Elkaisar.GE.AddCityBuilding(1352, 876, "under_palace_9");
+    Elkaisar.GE.AddCityBuilding(1674, 829, "under_palace_10");
+    Elkaisar.GE.AddCityBuilding(1565, 880, "under_palace_11");
+    Elkaisar.GE.AddCityBuilding(1457, 923, "under_palace_12");
+
+
+
 
 
     //start_animation() 
@@ -6711,7 +8510,6 @@ function fillCityWithBuilding()
         fillCityLvl_3();
     }
 
-    Animation.FixedCityAnimation();
     if (Elkaisar.CurrentCity.City.food) {
         Animation.cityProductionRate();
     }
@@ -6722,167 +8520,16 @@ function fillCityWithBuilding()
 
 function fillCityLvl_3() {
 
+    Elkaisar.GE.AddCityBuilding(1172, 368, "above_palace_1").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(1070, 417, "above_palace_2").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(1278, 420, "above_palace_3").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(1173, 469, "above_palace_4").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(1012, 554, "above_palace_5").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(904, 606, "above_palace_6").setFlipX(true);
 
-    BuildingOnFloor.above_palace_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_1"]].hitArea)
-            .attr({x: 1172, y: 368, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1172, 368, "above_palace_1"))
-            .attach(building_lvl_lable(1172, 368, "above_palace_1"));
-    building_hammer_animate("above_palace_1");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.above_palace_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_2"]].hitArea)
-            .attr({x: 1070, y: 417, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1070, 417, "above_palace_2"))
-            .attach(building_lvl_lable(1070, 417, "above_palace_2"));
-    building_hammer_animate("above_palace_2");
-
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.above_palace_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_3"]].hitArea)
-            .attr({x: 1278, y: 420, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1278, 420, "above_palace_3"))
-            .attach(building_lvl_lable(1278, 420, "above_palace_3"));
-    building_hammer_animate("above_palace_3");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.above_palace_4 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_4"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_4"]].hitArea)
-            .attr({x: 1173, y: 469, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_4");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1173, 469, "above_palace_4"))
-            .attach(building_lvl_lable(1173, 469, "above_palace_4"));
-    building_hammer_animate("above_palace_4");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.above_palace_5 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_5"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_5"]].hitArea)
-            .attr({x: 1012, y: 554, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_5");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(1012, 554, "above_palace_5"))
-            .attach(building_lvl_lable(1012, 554, "above_palace_5"));
-    building_hammer_animate("above_palace_5");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.above_palace_6 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_6"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["above_palace_6"]].hitArea)
-            .attr({x: 904, y: 606, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("above_palace_6");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(904, 606, "above_palace_6"))
-            .attach(building_lvl_lable(904, 606, "above_palace_6"));
-    building_hammer_animate("above_palace_6");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.around_wood_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_1"]].hitArea)
-            .attr({x: 471, y: 413, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("around_wood_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(471, 413, "around_wood_1"))
-            .attach(building_lvl_lable(471, 413, "around_wood_1"));
-    building_hammer_animate("around_wood_1");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.around_wood_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_2"]].hitArea)
-            .attr({x: 580, y: 464, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("around_wood_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(580, 464, "around_wood_2"))
-            .attach(building_lvl_lable(580, 464, "around_wood_2"));
-    building_hammer_animate("around_wood_2");
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.around_wood_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["around_wood_3"]].hitArea)
-            .attr({x: 479, y: 516, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("around_wood_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(479, 516, "around_wood_3"))
-            .attach(building_lvl_lable(479, 516, "around_wood_3"));
-    building_hammer_animate("around_wood_3");
+    Elkaisar.GE.AddCityBuilding(471, 413, "around_wood_1").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(580, 464, "around_wood_2").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(479, 516, "around_wood_3").setFlipX(true);
 
 }
 
@@ -6890,216 +8537,18 @@ function fillCityLvl_3() {
 
 function fillCityLvl_2() {
 
-    BuildingOnFloor.under_wall_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_1"]].hitArea)
-            .attr({x: 628, y: 139, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(628, 139, "under_wall_1"))
-            .attach(building_lvl_lable(628, 139, "under_wall_1"));
-    building_hammer_animate("under_wall_1");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_2"]].hitArea)
-            .attr({x: 525, y: 185, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(525, 185, "under_wall_2"))
-            .attach(building_lvl_lable(525, 185, "under_wall_2"));
-    building_hammer_animate("under_wall_2");
-
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_3"]].hitArea)
-            .attr({x: 423, y: 229, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(423, 229, "under_wall_3"))
-            .attach(building_lvl_lable(423, 229, "under_wall_3"));
-    building_hammer_animate("under_wall_3");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_4 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_4"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_4"]].hitArea)
-            .attr({x: 728, y: 187, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_4");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(728, 187, "under_wall_4"))
-            .attach(building_lvl_lable(728, 187, "under_wall_4"));
-    building_hammer_animate("under_wall_4");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_5 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_5"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_5"]].hitArea)
-            .attr({x: 628, y: 233, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_5");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(628, 233, "under_wall_5"))
-            .attach(building_lvl_lable(628, 233, "under_wall_5"));
-    building_hammer_animate("under_wall_5");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_6 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_6"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_6"]].hitArea)
-            .attr({x: 526, y: 279, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_6");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(526, 279, "under_wall_6"))
-            .attach(building_lvl_lable(526, 279, "under_wall_6"));
-    building_hammer_animate("under_wall_6");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_7 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_7"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_7"]].hitArea)
-            .attr({x: 823, y: 239, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_7");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(823, 239, "under_wall_7"))
-            .attach(building_lvl_lable(823, 239, "under_wall_7"));
-    building_hammer_animate("under_wall_7");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_8 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_8"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_8"]].hitArea)
-            .attr({x: 725, y: 284, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_8");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(725, 284, "under_wall_8"))
-            .attach(building_lvl_lable(725, 284, "under_wall_8"));
-    building_hammer_animate("under_wall_8");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_9 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_9"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_9"]].hitArea)
-            .attr({x: 627, y: 333, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_9");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(627, 333, "under_wall_9"))
-            .attach(building_lvl_lable(627, 333, "under_wall_9"));
-    building_hammer_animate("under_wall_9");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_10 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_10"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_10"]].hitArea)
-            .attr({x: 930, y: 287, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_10");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(930, 287, "under_wall_10"))
-            .attach(building_lvl_lable(930, 287, "under_wall_10"));
-    building_hammer_animate("under_wall_10");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_11 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_11"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_11"]].hitArea)
-            .attr({x: 836, y: 337, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_11");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(836, 337, "under_wall_11"))
-            .attach(building_lvl_lable(836, 337, "under_wall_11"));
-    building_hammer_animate("under_wall_11");
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.under_wall_12 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_12"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["under_wall_12"]].hitArea)
-            .attr({x: 737, y: 383, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("under_wall_12");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(737, 383, "under_wall_12"))
-            .attach(building_lvl_lable(737, 383, "under_wall_12"));
-    building_hammer_animate("under_wall_12");
+    Elkaisar.GE.AddCityBuilding(628, 139, "under_wall_1").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(525, 185, "under_wall_2").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(423, 229, "under_wall_3").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(728, 187, "under_wall_4").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(628, 233, "under_wall_5").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(526, 279, "under_wall_6").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(823, 239, "under_wall_7").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(725, 284, "under_wall_8").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(627, 333, "under_wall_9").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(930, 287, "under_wall_10").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(836, 337, "under_wall_11").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(737, 383, "under_wall_12").setFlipX(true);
 
 
 
@@ -7108,217 +8557,18 @@ function fillCityLvl_2() {
 
 function fillCityLvl_1() {
 
-
-    BuildingOnFloor.hill_1 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_1"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_1"]].hitArea)
-            .attr({x: 625, y: 918, z: 5})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_1");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(625, 918, "hill_1"))
-            .attach(building_lvl_lable(625, 918, "hill_1"));
-    building_hammer_animate("hill_1");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_2 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_2"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_2"]].hitArea)
-            .attr({x: 732, y: 864, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_2");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(732, 864, "hill_2"))
-            .attach(building_lvl_lable(732, 864, "hill_2"));
-    building_hammer_animate("hill_2");
-
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_3 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_3"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_3"]].hitArea)
-            .attr({x: 832, y: 814, z: 4})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_3");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(832, 814, "hill_3"))
-            .attach(building_lvl_lable(832, 814, "hill_3"));
-    building_hammer_animate("hill_3");
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_4 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_4"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_4"]].hitArea)
-            .attr({x: 517, y: 867, z: 3})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_4");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(517, 867, "hill_4"))
-            .attach(building_lvl_lable(517, 867, "hill_4"));
-    building_hammer_animate("hill_4");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_5 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_5"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_5"]].hitArea)
-            .attr({x: 628, y: 810, z: 2})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_5");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(628, 810, "hill_5"))
-            .attach(building_lvl_lable(628, 810, "hill_5"));
-    building_hammer_animate("hill_5");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_6 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_6"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_6"]].hitArea)
-            .attr({x: 729, y: 759, z: 2})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_6");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(729, 759, "hill_6"))
-            .attach(building_lvl_lable(729, 759, "hill_6"));
-    building_hammer_animate("hill_6");
-
-
-
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_7 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_7"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_7"]].hitArea)
-            .attr({x: 820, y: 712, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_7");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(820, 712, "hill_7"))
-            .attach(building_lvl_lable(820, 712, "hill_7"));
-    building_hammer_animate("hill_7");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_8 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_8"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_8"]].hitArea)
-            .attr({x: 478, y: 785, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_8");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(478, 785, "hill_8"))
-            .attach(building_lvl_lable(478, 785, "hill_8"));
-    building_hammer_animate("hill_8");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_9 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_9"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_9"]].hitArea)
-            .attr({x: 575, y: 733, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_9");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(575, 733, "hill_9"))
-            .attach(building_lvl_lable(575, 733, "hill_9"));
-    building_hammer_animate("hill_9");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_10 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_10"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_10"]].hitArea)
-            .attr({x: 672, y: 685, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_10");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(672, 685, "hill_10"))
-            .attach(building_lvl_lable(672, 685, "hill_10"));
-    building_hammer_animate("hill_10");
-
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_11 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_11"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_11"]].hitArea)
-            .attr({x: 374, y: 732, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_11");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(374, 732, "hill_11"))
-            .attach(building_lvl_lable(374, 732, "hill_11"));
-    building_hammer_animate("hill_11");
-    /*
-     *    top_right_1 building
-     */
-    BuildingOnFloor.hill_12 = Crafty.e("2D, Canvas, " + BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_12"]].sprit_name + " , Mouse")
-
-            .areaMap(BuildingConstData[Elkaisar.City.getCity().BuildingType["hill_12"]].hitArea)
-            .attr({x: 478, y: 680, z: 1})
-            .flip("X")
-            .bind("Click", function () {
-                buildingClick("hill_12");
-            })
-            .bind("MouseOver", MouseOverBuilding)
-            .bind("MouseOut", MouseOutBuilding)
-            .attach(building_title(478, 680, "hill_12"))
-            .attach(building_lvl_lable(478, 680, "hill_12"));
-    building_hammer_animate("hill_12");
+    Elkaisar.GE.AddCityBuilding(625, 918, "hill_1").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(732, 864, "hill_2").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(832, 814, "hill_3").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(517, 867, "hill_4").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(628, 810, "hill_5").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(729, 759, "hill_6").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(820, 712, "hill_7").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(478, 785, "hill_8").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(575, 733, "hill_9").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(672, 685, "hill_10").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(374, 732, "hill_11").setFlipX(true);
+    Elkaisar.GE.AddCityBuilding(478, 680, "hill_12").setFlipX(true);
 }/*!
 * screenfull
 * v3.3.2 - 2017-10-27
@@ -8095,6 +9345,7 @@ $(document).on("click", "#downgradeBuildingConfirmButton", function(){
 //<button class="full-btn pull-L full-btn-2x" id="dismissArmyButton" onclick="" data-place="undefined">طرد</button>
 
 $(document).on("click", "#dismissArmyButton", function (){
+    $("#dismissArmyButton").prop("disabled", true);
     Elkaisar.Army.armyDismes();
 });
 
@@ -8692,7 +9943,7 @@ $(document).on("click" , "#city-taxs-in-cp" , function (){
     
     buildingClick(cityHasType(BUILDING_TYPS.PALACE));
     $("#dialg_box .nav_bar .left-nav li[head_title=taxs]").click();
-    Crafty.audio.play("click_sound");
+    //Crafty.audio.play("click_sound");
     
 });
 
@@ -8783,7 +10034,7 @@ $("#city-profile .upper_nave_bar ul li").click(function (){
             break;
         
     }
-    Crafty.audio.play("click_sound");
+    //Crafty.audio.play("click_sound");
 });$(document).on("click" , "#mili-inner-nav .nav-title" , function (){
     
     
@@ -9409,7 +10660,7 @@ function dialogBoxShow(dialog_box, callBack)
             if (typeof callBack === "function") {
                 callBack();
             }
-            Crafty.audio.play("click_sound");
+            //Crafty.audio.play("click_sound");
             $("#dialg_box").animate({top: "125"}, 200);
         });
     } else {
@@ -9417,7 +10668,7 @@ function dialogBoxShow(dialog_box, callBack)
         if (typeof callBack === "function") {
             callBack();
         }
-        Crafty.audio.play("click_sound");
+        //Crafty.audio.play("click_sound");
         $("#dialg_box").animate({top: "125"}, 200);
     }
 
@@ -10826,11 +12077,7 @@ window.addEventListener("orientationchange", function () {
     // Announce the new orientation number
     MAX_SCREEN_WIDTH = $(document).width();
     MAX_SCREEN_HEIGHT = $(document).height();
-    Crafty.viewport.width = MAX_SCREEN_WIDTH;
-    Crafty.viewport.height = MAX_SCREEN_HEIGHT;
-    Crafty.viewport.reload();
-    Crafty.viewport.centerOn(BuildingOnFloor.palace, 1);
-    Crafty.trigger("MouseWheelScroll", {direction: -1});
+
 }, false);
 
 $(document)['on']('click', '#openPlayerItemBox', function () {
@@ -11196,7 +12443,7 @@ Elkaisar.WsLib.TimedTask.Army = function (data) {
 
 Elkaisar.WsLib.TimedTask.Building = function (data) {
 
-    Crafty.audio.play("upgrade_done");
+   // Crafty.audio.play("upgrade_done");
 
     Elkaisar.City.getCity(data.Task.id_city).BuildingLvl[data.Task.place] = data.Task.lvl_to;
 
@@ -11236,9 +12483,7 @@ Elkaisar.WsLib.TimedTask.Building = function (data) {
     }
 
 
-    if ($("#dialg_box .box_header").attr("place") === data.Task.place && Number(Elkaisar.CurrentCity.City.id_city) === Number(data.Task.id_city)) {
-        buildingClick(data.Task.place, true);
-    }
+    
 
 
 
@@ -11248,13 +12493,17 @@ Elkaisar.WsLib.TimedTask.Building = function (data) {
     delete(Elkaisar.TimedTask.TaskList.Building[data.Task.id]);
     Elkaisar.TimedTask.refreshListView();
     fillCityWithBuilding();
+    
+    if ($("#dialg_box .box_header").attr("place") === data.Task.place && Number(Elkaisar.CurrentCity.City.id_city) === Number(data.Task.id_city)) {
+        buildingClick(data.Task.place, true);
+    }
 
 };
 
 
 Elkaisar.WsLib.TimedTask.Jop = function (data) {
 
-    Crafty.audio.play("upgrade_done");
+    //Crafty.audio.play("upgrade_done");
 
     Elkaisar.DPlayer.Player.prestige = Number(Elkaisar.DPlayer.Player.prestige) + data.prestige;
 
@@ -11282,7 +12531,7 @@ Elkaisar.WsLib.TimedTask.Study = function (data){
     
   
             
-    Crafty.audio.play("upgrade_done");
+    //Crafty.audio.play("upgrade_done");
     Elkaisar.DPlayer.Player.prestige = Number(Elkaisar.DPlayer.Player.prestige) + data.prestige;
     Player_profile.getPlayerEdu();
     
@@ -13500,11 +14749,11 @@ function buildingClick(place, fast) {
     if (!fast) {
         fast = false;
     }
-    if (Crafty.onDragClickable) {
+    //if (Elkaisar.GE.CityScene.Scrolling.isBeingDragged) {
         if(place)
             Building.showDialogBox(place, fast);
 
-    }
+    //}
 }
 
 
@@ -19505,7 +20754,7 @@ Elkaisar.HeroArmy.dragArmy = function (e, el) {
 
 
     var hold_type = dragPlace.attr("army-type");
-    
+
     $(".sol").each(function () {
         if ($(this).attr("army-type") === hold_type || $(this).attr("army-type") === "sol-0") {
             $(this).children(".permit-layer").hide();
@@ -19547,8 +20796,8 @@ Elkaisar.HeroArmy.dropArmy = function (e, el_to) {
     var DragArmyFrom = DragPlace.attr("data-army-place");
     var DropArmyTo = $(el_to).attr("data-army-place");
     var solCap = 0;
-    
-    
+
+
 
     var solCap = soldier_cap[DragPlace.attr("army-type").split("-")[1]];
     var available_place = 0;
@@ -19626,8 +20875,8 @@ Elkaisar.HeroArmy.dropArmyToCity = function (DragPlace, DropPlace) {
 };
 
 Elkaisar.HeroArmy.StartDialogBox = function (DragPlace, DropPlace, MaxNum) {
-    
-   
+
+
 
     var army_content = ` <div id="alert_box" class="alert_for_hero_trade">
                                 <div class="row-1"> 
@@ -19669,9 +20918,9 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
     var ArmyPlaceTo = $("#confirmTransArmy").attr("data-drop-army-place");
 
     var amount = Math.floor($("#input-army-move").val());
-
+    $("#confirmTransArmy").attr("disabled", "disabled");
     $.ajax({
-        url: `${API_URL}/api/AHeroArmy/transArmyFromHeroToHero`,
+        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromHeroToHero`,
         data: {
             amount: amount,
             idCity: Elkaisar.CurrentCity.City.id_city,
@@ -19679,9 +20928,10 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
             idHeroTo: idHeroTo,
             ArmyPlaceFrom: ArmyPlaceFrom,
             ArmyPlaceTo: ArmyPlaceTo,
-            token: Elkaisar.Config.OuthToken
+            token: Elkaisar.Config.OuthToken,
+            idPlayer: Elkaisar.DPlayer.Player.id_player
         },
-        type: 'POST',
+        type: 'GET',
         beforeSend: function (xhr) {
 
         },
@@ -19695,7 +20945,8 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
                 return;
             }
 
-
+            if (json_data.state == "SysBusy")
+                return alert_box.confirmMessage("النظام مشغول الان حاول فى وقت لاحق");
             if (json_data.state === "ok") {
 
                 Elkaisar.Hero.getHero(idHeroFrom).Army = json_data.HeroArmyFrom;
@@ -19731,29 +20982,33 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
 
 
 Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
+
     var amount = Math.floor($("#input-army-move").val());
     var ArmyPlace = $("#confirmTransArmy").attr("data-drag-army-place");
     var idHero = $("#confirmTransArmy").attr("data-drag-id-hero");
-
     $(document).off("click", ".trans-con");
+    $("#confirmTransArmy").attr("disabled", "disabled");
     var idCity = Elkaisar.CurrentCity.City.id_city;
+
     $.ajax({
-        url: `${API_URL}/api/AHeroArmy/transArmyFromHeroToCity`,
+        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromHeroToCity`,
         data: {
             amount: amount,
             idHero: idHero,
             idCity: Elkaisar.CurrentCity.City.id_city,
             ArmyPlace: ArmyPlace,
             token: Elkaisar.Config.OuthToken,
-            server: Elkaisar.Config.idServer
+            server: Elkaisar.Config.idServer,
+            idPlayer: Elkaisar.DPlayer.Player.id_player
 
         },
-        type: 'POST',
+        type: 'GET',
         beforeSend: function (xhr) {
 
         },
         success: function (data, textStatus, jqXHR) {
             $("#over_lay_alert").remove();
+            $("#confirmTransArmy").removeAttr("disabled");
 
             if (isJson(data)) {
                 var json_data = JSON.parse(data);
@@ -19761,6 +21016,9 @@ Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
                 alert(data);
                 return;
             }
+
+            if (json_data.state == "SysBusy")
+                return alert_box.confirmMessage("النظام مشغول الان حاول فى وقت لاحق");
 
 
             if (json_data.state === "ok") {
@@ -19799,13 +21057,15 @@ Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
 
 
 Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
-    
+
     var amount = Math.floor($("#input-army-move").val());
     var idHero = $("#confirmTransArmy").attr("data-drop-id-hero");
     var ArmyHeroPlace = $("#confirmTransArmy").attr("data-drop-army-place");
     var ArmyCityPlace = $("#confirmTransArmy").attr("data-drag-army-place");
+    $("#confirmTransArmy").attr("disabled", "disabled");
+    
     $.ajax({
-        url: `${API_URL}/api/AHeroArmy/transArmyFromCityToHero`,
+        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromCityToHero`,
         data: {
             idHero: idHero,
             amount: amount,
@@ -19813,15 +21073,17 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
             ArmyPlace: ArmyHeroPlace,
             ArmyType: ArmyCityPlace,
             server: Elkaisar.Config.idServer,
-            token: Elkaisar.Config.OuthToken
+            token: Elkaisar.Config.OuthToken,
+            idPlayer: Elkaisar.DPlayer.Player.id_player
 
         },
-        type: 'POST',
+        type: 'GET',
         beforeSend: function (xhr) {
         },
         success: function (data, textStatus, jqXHR) {
+            
+            $("#confirmTransArmy").removeAttr("disabled");
             $("#over_lay_alert").remove();
-
             if (isJson(data)) {
                 var json_data = JSON.parse(data);
             } else {
@@ -19829,6 +21091,8 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
                 return;
             }
 
+            if (json_data.state == "SysBusy")
+                return alert_box.confirmMessage("النظام مشغول الان حاول فى وقت لاحق");
             if (json_data.state === "ok") {
 
                 Elkaisar.CurrentCity.City = json_data.City;
@@ -19876,7 +21140,8 @@ $(document).on("click", "#confirmTransArmy", function () {
     var maxAmount = $(this).attr("data-max-num");
     var DragPlace = $(this).attr("data-drag-place");
     var DropPlace = $(this).attr("data-drop-place");
-
+    $("#confirmTransArmy").attr("disabled", "disabled");
+    $("#confirmTransArmy").prop("disabled", true);
     if (amount < 1) {
         $("#over_lay_alert").remove();
         alert_box.failMessage("عدد القوات غير كافى");
@@ -20541,13 +21806,11 @@ function useMatrial(user_for, matrial, other)
 
             $.ajax({
 
-                url: "api/player.php",
+                url: `${API_URL}/api/APlayer/changePlayerName`,
                 data: {
-
                     NewName: new_name,
                     token: Elkaisar.Config.OuthToken,
                     server: Elkaisar.Config.idServer
-
                 },
                 type: 'POST',
                 success: function (data, textStatus, jqXHR) {
@@ -20563,6 +21826,8 @@ function useMatrial(user_for, matrial, other)
                         $(".select_over_lay").remove();
                         Elkaisar.DPlayer.Player = JsonObject.Player;
                         Player_profile.refresh_view();
+                        alert_box.succesMessage("تم تغير الإسم بنجاح");
+                        
                     } else if (JsonObject.state === "error_2")
                         alert_box.failMessage("يوجد لاعب يحمل نفس الاسم");
                 },
@@ -25756,90 +27021,92 @@ WS_utile.failsConTime = 0;
 
 
 
-WS_utile.onopen = function (){
+WS_utile.onopen = function () {
     WS_utile.failsConTime = 0;
     ws.send(JSON.stringify({
-        url:"Player/addPlayer",
-        data:{
-            idPlayer:ID_PLAYER
+        url: "Player/addPlayer",
+        data: {
+            idPlayer: ID_PLAYER
         }
     }));
     Elkaisar.World.Map.getWorldCity();
     Elkaisar.World.Map.getWorldCityColonized();
     Elkaisar.World.Map.getWorldFiredUnit();
+    Elkaisar.World.MapBattel.getAllBattels();
 };
 
-WS_utile.onmessage =  function (e){
-    
+WS_utile.onmessage = function (e) {
+
     console.log(e.data);
-    
-    if(isJson(e.data)){
-      var data = JSON.parse(e.data);  
-    }else{
-        
+
+    if (isJson(e.data)) {
+        var data = JSON.parse(e.data);
+    } else {
+
         alert(e.data);
         console.log(e);
     }
-    
+
     var classPath = data.classPath.split(".");
-   
-    if(!$.isArray(classPath)){
+
+    if (!$.isArray(classPath)) {
         alert_box.confirmMessage("برجاء تصوير الرسالة وارسالها الى فريق الدعم" + e.data);
     }
-    
-    if(classPath.length === 2)
+
+    if (classPath.length === 2)
         Elkaisar.WsLib[classPath[0]][classPath[1]](data);
-    else if(classPath.length === 3)
+    else if (classPath.length === 3)
         Elkaisar.WsLib[classPath[0]][classPath[1]][classPath[2]](data);
-    
+
 };
 
 WS_utile.onclose = function (event) {
-        
-        alert_box.confirmMessage("انقطاع الاتصال");
-        
-        $(".close-alert").remove();
-        $(".confim-btn").off("click");
-        $(".confim-btn").click(function (){
-            window.location.href = "http://www.elkaisar.com";
-            window.location.replace("http://www.elkaisar.com");
-        }); 
 
-        
+    alert_box.confirmMessage("انقطاع الاتصال");
+
+    $(".close-alert").remove();
+    $(".confim-btn").off("click");
+    $(".confim-btn").click(function () {
+        window.location.href = "http://www.elkaisar.com";
+        window.location.replace("http://www.elkaisar.com");
+    });
+
+
 };
 
 
-WS_utile.connect = function (){
-   
-    ws =  new WebSocket(`ws://${WS_HOST}:${WS_PORT}?idPlayer=${ID_PLAYER}&server=${SERVER_ID}&token=${Elkaisar.Config.OuthToken}`);
-    ws.onopen    = WS_utile.onopen;
+WS_utile.connect = function () {
+
+    ws = new WebSocket(`ws://${WS_HOST}:${WS_PORT}?idPlayer=${ID_PLAYER}&server=${SERVER_ID}&token=${Elkaisar.Config.OuthToken}`);
+    ws.onopen = WS_utile.onopen;
     ws.onmessage = WS_utile.onmessage;
-    ws.onclose   = WS_utile.onclose;
+    ws.onclose = WS_utile.onclose;
     console.log("connected");
 };
 
+
 /*
-$(document).on("PlayerReady", "html", function (){
-    
-    $.getScript(`js${JS_VERSION}/ws/lib/chat.js`, function (){
-        $.getScript(`js${JS_VERSION}/ws/lib/battel.js`, function (){
-            $.getScript(`js${JS_VERSION}/ws/lib/guild.js`, function (){
-                $.getScript(`js${JS_VERSION}/ws/lib/mail.js`, function (){
-                    $.getScript(`js${JS_VERSION}/ws/lib/hero.js`, function (){
-                        $.getScript(`js${JS_VERSION}/ws/lib/player.js`, function (){
-                            $.getScript(`js${JS_VERSION}/ws/lib/serverAnnounce.js`, function (){
-                                $.getScript(`js${JS_VERSION}/ws/lib/city.js`, function (){
-                                    WS_utile.connect();
-                                });
-                               
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    });
-});*/var WsBattel = {};
+ $(document).on("PlayerReady", "html", function (){
+ 
+ $.getScript(`js${JS_VERSION}/ws/lib/chat.js`, function (){
+ $.getScript(`js${JS_VERSION}/ws/lib/battel.js`, function (){
+ $.getScript(`js${JS_VERSION}/ws/lib/guild.js`, function (){
+ $.getScript(`js${JS_VERSION}/ws/lib/mail.js`, function (){
+ $.getScript(`js${JS_VERSION}/ws/lib/hero.js`, function (){
+ $.getScript(`js${JS_VERSION}/ws/lib/player.js`, function (){
+ $.getScript(`js${JS_VERSION}/ws/lib/serverAnnounce.js`, function (){
+ $.getScript(`js${JS_VERSION}/ws/lib/city.js`, function (){
+ WS_utile.connect();
+ });
+ 
+ });
+ });
+ });
+ });
+ });
+ });
+ });
+ });*/var WsBattel = {};
 
 WsBattel.started = function (battel) {
 
@@ -25856,7 +27123,7 @@ WsBattel.started = function (battel) {
     PLAYER_NOTIF.hero_in_battel = Number(PLAYER_NOTIF.hero_in_battel) + 1;
     Fixed.refreshPlayerNotif();
 
-    Crafty.audio.play("war_sound");
+    //Crafty.audio.play("war_sound");
     city_profile.refresh_hero_view();
 
     var world_unit = WorldUnit.getWorldUnit(battel_data.x_coord, battel_data.y_coord).entite;
@@ -25948,7 +27215,7 @@ WsBattel.cityIsOnFire = function (data) {
 
     alert_box.failMessage(`يبداء الان الهجوم على المدينة ${data.city_name}(${data.x_to},${data.y_to})  من [${data.x_from},${data.y_from}]`);
     alert_box.systemChatMessage(`يبداء الان الهجوم على المدينة ${data.city_name}(${data.x_to},${data.y_to})  من [${data.x_from},${data.y_from}]`);
-    Crafty.audio.play("war_sound");
+   // Crafty.audio.play("war_sound");
     PLAYER_NOTIF.battel_number = Number(PLAYER_NOTIF.battel_number) + 1;
     Fixed.refreshPlayerNotif();
     city_profile.afterBattelFinish();
@@ -26157,6 +27424,7 @@ Elkaisar.WsLib.Chat.PrizeSent = function (data){
 
 Elkaisar.WsLib.World = {};
 Elkaisar.WsLib.World.Fire = {};
+Elkaisar.WsLib.World.Battel = {};
 
 Elkaisar.WsLib.World.ResetLvl = function (data){
     for (var ii in Elkaisar['worldAllUnits']) {
@@ -26170,11 +27438,28 @@ Elkaisar.WsLib.World.ResetLvl = function (data){
 
 
 
+Elkaisar.WsLib.World.Battel.Started = function (data)
+{
+    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
+    world_unit.s = 1;
+    Animation.fireWorldUnit(data.xCoord, data.yCoord);
+    Elkaisar.World.MapBattel.newBattel(data);
+    
+}
+
+
+Elkaisar.WsLib.World.Battel.Ended = function (data)
+{
+    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
+    Elkaisar.World.MapBattel.removeBattel(data);
+    
+}
+
 Elkaisar.WsLib.World.Fire.On = function (data)
 {
-    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord).entite;
-    world_unit.__state = 1;
-    Animation.fireWorldUnit({x_coord: data.xCoord, y_coord: data.yCoord});
+    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
+    world_unit.s = 1;
+    Animation.fireWorldUnit(data.xCoord, data.yCoord);
     
 }
 
@@ -26303,7 +27588,7 @@ Elkaisar.WsLib.Battel.Spy.Notif = function (data){
 
 Elkaisar.WsLib.Battel.garrisonFire = function (data){
     
-    Animation.fireWorldUnit({x_coord: data.x_to , y_coord: data.y_to});
+    Animation.fireWorldUnit(data.x_to ,  data.y_to);
     PLAYER_NOTIF.battel_number =  Number(PLAYER_NOTIF.battel_number) + 1;
     Fixed.refreshPlayerNotif();
 };
@@ -26317,7 +27602,6 @@ Elkaisar.WsLib.Battel.garrisonCityAdded = function (data){
         if($("#dialg_box .nav_bar .left-nav .selected").attr("head_title") === "city_garrison"){
             $("#palace_content").html( Palace.cityGarrison($("#city-garrison-list .tr:first-child").data("offset")));
         }
-
         alert_box.systemChatMessage("تم استقبال حراس الى مدينتك");
     });
 };Elkaisar.WsLib.Guild = {};
@@ -26700,6 +27984,34 @@ Elkaisar.WsLib.Market.Buy.TransmitDone = function (){
     alert_box.succesMessage("تم وصول الموارد");
 };Elkaisar.WsLib.Base = {};
 
+
+WS_utile.Reqs = {};
+WS_utile.CurReqId = 0;
+WS_utile.Ack = function (Req) {
+    
+    var Cu = WS_utile.CurReqId;
+    Req.data.ReqId = Cu;
+    ws.send(JSON.stringify({
+        'url': Req.url,
+        'data': Req.data
+    }));
+
+    WS_utile.Reqs[Cu] = {
+        callBack: Req.callBack
+    };
+    
+    WS_utile.CurReqId++;
+};
+
+
+Elkaisar.WsLib.Base.Ack = function (data){
+    if(!WS_utile.Reqs[data.ReqId])
+        return ;
+    if($.isFunction(WS_utile.Reqs[data.ReqId].callBack))
+        WS_utile.Reqs[data.ReqId].callBack(data.Res);
+};
+
+
 Elkaisar.WsLib.Base.CrossReq = function (data)
 {
 
@@ -26797,17 +28109,17 @@ Elkaisar.WsLib.Base.refreshWorldCitiesForPlayers = function (data){
 
 Elkaisar['WsLib']['Base']['DailyRest'] = function () {
     alert_box['systemChatMessage']('تمت اعادة التعيين اليومية.');
-};const WUT_EMPTY = 0; 
+};const WUT_EMPTY = 0;
 
-const WUT_RIVER_LVL_1 =  1;
-const WUT_RIVER_LVL_2 =  2;
-const WUT_RIVER_LVL_3 =  3;
-const WUT_RIVER_LVL_4 =  4;
-const WUT_RIVER_LVL_5 =  5;
-const WUT_RIVER_LVL_6 =  6;
-const WUT_RIVER_LVL_7 =  7;
-const WUT_RIVER_LVL_8 =  8;
-const WUT_RIVER_LVL_9 =  9;
+const WUT_RIVER_LVL_1 = 1;
+const WUT_RIVER_LVL_2 = 2;
+const WUT_RIVER_LVL_3 = 3;
+const WUT_RIVER_LVL_4 = 4;
+const WUT_RIVER_LVL_5 = 5;
+const WUT_RIVER_LVL_6 = 6;
+const WUT_RIVER_LVL_7 = 7;
+const WUT_RIVER_LVL_8 = 8;
+const WUT_RIVER_LVL_9 = 9;
 const WUT_RIVER_LVL_10 = 10;
 
 const WUT_BUSY_UNIT = 12;
@@ -26846,59 +28158,59 @@ const WUT_WOODS_LVL_8 = 57;
 const WUT_WOODS_LVL_9 = 58;
 const WUT_WOODS_LVL_10 = 59;
 
-const WUT_CITY_LVL_0 = 60; 
-const WUT_CITY_LVL_1 = 61; 
-const WUT_CITY_LVL_2 = 62; 
+const WUT_CITY_LVL_0 = 60;
+const WUT_CITY_LVL_1 = 61;
+const WUT_CITY_LVL_2 = 62;
 const WUT_CITY_LVL_3 = 63;
 
 const WUT_MONAWRAT = 70;
 
-const WUT_CAMP_BRITONS  = 71;
-const WUT_CAMP_REICH    = 72;
-const WUT_CAMP_ASIANA   = 73;
-const WUT_CAMP_GAULS    = 74;
-const WUT_CAMP_MACEDON  = 75;
+const WUT_CAMP_BRITONS = 71;
+const WUT_CAMP_REICH = 72;
+const WUT_CAMP_ASIANA = 73;
+const WUT_CAMP_GAULS = 74;
+const WUT_CAMP_MACEDON = 75;
 const WUT_CAMP_HISPANIA = 76;
-const WUT_CAMP_ITALIA   = 77;
-const WUT_CAMP_PARTHIA  = 78;
+const WUT_CAMP_ITALIA = 77;
+const WUT_CAMP_PARTHIA = 78;
 const WUT_CAMP_CARTHAGE = 79;
-const WUT_CAMP_EGYPT    = 80;
+const WUT_CAMP_EGYPT = 80;
 
 
 
-const WUT_FRONT_SQUAD    = 81;
-const WUT_FRONT_BAND     = 82;
+const WUT_FRONT_SQUAD = 81;
+const WUT_FRONT_BAND = 82;
 const WUT_FRONT_SQUADRON = 83;
 const WUT_FRONT_DIVISION = 84;
 
 
-const WUT_ARMY_LIGHT_SQUAD     = 85;
-const WUT_ARMY_LIGHT_BAND      = 86;
-const WUT_ARMY_LIGHT_SQUADRON  = 87;
-const WUT_ARMY_LIGHT_DIVISION  = 88;
+const WUT_ARMY_LIGHT_SQUAD = 85;
+const WUT_ARMY_LIGHT_BAND = 86;
+const WUT_ARMY_LIGHT_SQUADRON = 87;
+const WUT_ARMY_LIGHT_DIVISION = 88;
 
-const WUT_ARMY_HEAVY_SQUAD    = 89;
-const WUT_ARMY_HEAVY_BAND     = 90;
+const WUT_ARMY_HEAVY_SQUAD = 89;
+const WUT_ARMY_HEAVY_BAND = 90;
 const WUT_ARMY_HEAVY_SQUADRON = 91;
 const WUT_ARMY_HEAVY_DIVISION = 92;
 
-const WUT_GUARD_SQUAD    = 93;
-const WUT_GUARD_BAND     = 94;
+const WUT_GUARD_SQUAD = 93;
+const WUT_GUARD_BAND = 94;
 const WUT_GUARD_SQUADRON = 95;
 const WUT_GUARD_DIVISION = 96;
 
 const WUT_BRAVE_THUNDER = 97;
 
-const  WUT_GANG    = 98;
-const  WUT_MUGGER  = 99;
-const  WUT_THIEF   = 100;
+const  WUT_GANG = 98;
+const  WUT_MUGGER = 99;
+const  WUT_THIEF = 100;
 
 /* CARTAGE */
 
-const WUT_CARTHAGE_GANG    = 101;
-const WUT_CARTHAGE_TEAMS   = 102;
-const WUT_CARTHAGE_REBELS  = 103;
-const WUT_CARTHAGE_FORCES  = 104;
+const WUT_CARTHAGE_GANG = 101;
+const WUT_CARTHAGE_TEAMS = 102;
+const WUT_CARTHAGE_REBELS = 103;
+const WUT_CARTHAGE_FORCES = 104;
 const WUT_CARTHAGE_CAPITAL = 105;
 
 
@@ -26911,8 +28223,8 @@ const WUT_ARMY_CAPITAL_F = 155;
 
 
 const WUT_ARENA_CHALLANGE = 175;
-const WUT_ARENA_DEATH     = 176;
-const WUT_ARENA_GUILD     = 177;
+const WUT_ARENA_DEATH = 176;
+const WUT_ARENA_GUILD = 177;
 
 
 const WUT_QUEEN_CITY_A = 180;
@@ -26934,459 +28246,453 @@ const WUT_WOLF_STATUE_C = 205;
 
 
 const WUT_CHALLAGE_FIELD_PLAYER = 220;
-const WUT_CHALLAGE_FIELD_TEAM   = 221;
-const WUT_CHALLAGE_FIELD_GUILD  = 222;
+const WUT_CHALLAGE_FIELD_TEAM = 221;
+const WUT_CHALLAGE_FIELD_GUILD = 222;
 const WUT_CHALLAGE_FIELD_SERVER = 223;
 
 const WUT_FIEGHT_FIELD_PLAYER = 224;
-const WUT_FIEGHT_FIELD_TEAM   = 225;
-const WUT_FIEGHT_FIELD_GUILD  = 226;
+const WUT_FIEGHT_FIELD_TEAM = 225;
+const WUT_FIEGHT_FIELD_GUILD = 226;
 const WUT_FIEGHT_FIELD_SERVER = 227;
 
-const WUT_SEA_CITY_1 = 231; 
-const WUT_SEA_CITY_2 = 232; 
-const WUT_SEA_CITY_3 = 233; 
-const WUT_SEA_CITY_4 = 234; 
-const WUT_SEA_CITY_5 = 235; 
-const WUT_SEA_CITY_6 = 236; 
+const WUT_SEA_CITY_1 = 231;
+const WUT_SEA_CITY_2 = 232;
+const WUT_SEA_CITY_3 = 233;
+const WUT_SEA_CITY_4 = 234;
+const WUT_SEA_CITY_5 = 235;
+const WUT_SEA_CITY_6 = 236;
 
 var WorldUnit = {
-    
-    isBarrary: function( unitType) {
-	return (Number(unitType) >= WUT_RIVER_LVL_1 && unitType <= WUT_WOODS_LVL_10);
+
+    isBarrary: function (unitType) {
+        return (Number(unitType) >= WUT_RIVER_LVL_1 && unitType <= WUT_WOODS_LVL_10);
     },
 
-    isRiver: function( unitType) {
-            return (Number(unitType) >=  WUT_RIVER_LVL_1 && unitType <= WUT_RIVER_LVL_10);
+    isRiver: function (unitType) {
+        return (Number(unitType) >= WUT_RIVER_LVL_1 && unitType <= WUT_RIVER_LVL_10);
     },
 
-    isEmpty: function( unitType) {
-            return (Number(unitType) === WUT_EMPTY);
+    isEmpty: function (unitType) {
+        return (Number(unitType) === WUT_EMPTY);
     },
 
-    isCity: function( unitType) {
-            return (Number(unitType) >= WUT_CITY_LVL_0 && unitType <= WUT_CITY_LVL_3);
+    isCity: function (unitType) {
+        return (Number(unitType) >= WUT_CITY_LVL_0 && unitType <= WUT_CITY_LVL_3);
     },
-    isCityLv0: function( unitType) {
+    isCityLv0: function (unitType) {
         return (Number(unitType) === WUT_CITY_LVL_0);
     },
-    isCityLv1: function( unitType) {
+    isCityLv1: function (unitType) {
         return (Number(unitType) === WUT_CITY_LVL_1);
     },
-    isCityLv2: function( unitType) {
-          return (Number(unitType) === WUT_CITY_LVL_2);
+    isCityLv2: function (unitType) {
+        return (Number(unitType) === WUT_CITY_LVL_2);
     },
-    isCityLv3: function( unitType) {
-          return (Number(unitType) === WUT_CITY_LVL_3);
-    },
-
-    isMountain: function( unitType) {
-            return (Number(unitType) >= WUT_MOUNT_LVL_1 && unitType <= WUT_MOUNT_LVL_10);
+    isCityLv3: function (unitType) {
+        return (Number(unitType) === WUT_CITY_LVL_3);
     },
 
-    isDesert: function( unitType) {
-            return (Number(unitType) >= WUT_DESERT_LVL_1 && unitType <= WUT_DESERT_LVL_10);
+    isMountain: function (unitType) {
+        return (Number(unitType) >= WUT_MOUNT_LVL_1 && unitType <= WUT_MOUNT_LVL_10);
     },
 
-    isWood: function( unitType) {
-            return (Number(unitType) >= WUT_WOODS_LVL_1 && unitType <= WUT_WOODS_LVL_10);
+    isDesert: function (unitType) {
+        return (Number(unitType) >= WUT_DESERT_LVL_1 && unitType <= WUT_DESERT_LVL_10);
     },
 
-    isMonawrat: function( unitType) {
-            return (Number(unitType) === WUT_MONAWRAT);
+    isWood: function (unitType) {
+        return (Number(unitType) >= WUT_WOODS_LVL_1 && unitType <= WUT_WOODS_LVL_10);
     },
 
-    isCamp: function( unitType) {
-            return (Number(unitType) >= WUT_CAMP_BRITONS && unitType <= WUT_CAMP_EGYPT);
+    isMonawrat: function (unitType) {
+        return (Number(unitType) === WUT_MONAWRAT);
     },
 
-    isAsianSquads: function( unitType) {
-            return (Number(unitType) >= WUT_FRONT_SQUAD && unitType <= WUT_BRAVE_THUNDER);
+    isCamp: function (unitType) {
+        return (Number(unitType) >= WUT_CAMP_BRITONS && unitType <= WUT_CAMP_EGYPT);
     },
 
-    isOneFRONT: function( unitType) {
-            return (Number(unitType) >= WUT_FRONT_SQUAD && unitType <= WUT_FRONT_DIVISION);
+    isAsianSquads: function (unitType) {
+        return (Number(unitType) >= WUT_FRONT_SQUAD && unitType <= WUT_BRAVE_THUNDER);
     },
 
-    isFrontSquad: function( unitType) {
-            return (Number(unitType) === WUT_FRONT_SQUAD);
+    isOneFRONT: function (unitType) {
+        return (Number(unitType) >= WUT_FRONT_SQUAD && unitType <= WUT_FRONT_DIVISION);
     },
 
-    isFrontBand: function( unitType) {
-            return (Number(unitType) === WUT_FRONT_BAND);
+    isFrontSquad: function (unitType) {
+        return (Number(unitType) === WUT_FRONT_SQUAD);
     },
 
-    isFrontSquadron: function( unitType) {
-            return (Number(unitType) === WUT_FRONT_SQUADRON);
+    isFrontBand: function (unitType) {
+        return (Number(unitType) === WUT_FRONT_BAND);
     },
 
-    isFrontDivision: function( unitType) {
-            return (Number(unitType) === WUT_FRONT_DIVISION);
+    isFrontSquadron: function (unitType) {
+        return (Number(unitType) === WUT_FRONT_SQUADRON);
     },
 
-    isOneLight: function( unitType) {
-            return (Number(unitType) >= WUT_ARMY_LIGHT_SQUAD && unitType <= WUT_ARMY_LIGHT_DIVISION);
+    isFrontDivision: function (unitType) {
+        return (Number(unitType) === WUT_FRONT_DIVISION);
     },
 
-    isLightSquad: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_LIGHT_SQUAD);
+    isOneLight: function (unitType) {
+        return (Number(unitType) >= WUT_ARMY_LIGHT_SQUAD && unitType <= WUT_ARMY_LIGHT_DIVISION);
     },
 
-    isLightBand: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_LIGHT_BAND);
+    isLightSquad: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_LIGHT_SQUAD);
     },
 
-    isLightSquadron: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_LIGHT_SQUADRON);
+    isLightBand: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_LIGHT_BAND);
     },
 
-    isLightDivision: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_LIGHT_DIVISION);
+    isLightSquadron: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_LIGHT_SQUADRON);
     },
 
-    isOneHeavy: function( unitType) {
-            return (Number(unitType) >= WUT_ARMY_HEAVY_SQUAD && unitType <= WUT_ARMY_HEAVY_DIVISION);
+    isLightDivision: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_LIGHT_DIVISION);
     },
 
-    isHeavySquad: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_HEAVY_SQUAD);
+    isOneHeavy: function (unitType) {
+        return (Number(unitType) >= WUT_ARMY_HEAVY_SQUAD && unitType <= WUT_ARMY_HEAVY_DIVISION);
     },
 
-    isHeavyBand: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_HEAVY_SQUAD);
+    isHeavySquad: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_HEAVY_SQUAD);
     },
 
-    isHeavySquadron: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_HEAVY_SQUADRON);
+    isHeavyBand: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_HEAVY_SQUAD);
     },
 
-    isHeavyDivision: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_HEAVY_DIVISION);
+    isHeavySquadron: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_HEAVY_SQUADRON);
     },
 
-    isOneGuard: function( unitType) {
-            return (Number(unitType) >= WUT_GUARD_SQUAD && unitType <= WUT_GUARD_DIVISION);
+    isHeavyDivision: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_HEAVY_DIVISION);
     },
 
-    isGuardSquad: function( unitType) {
-            return (Number(unitType) === WUT_GUARD_SQUAD);
+    isOneGuard: function (unitType) {
+        return (Number(unitType) >= WUT_GUARD_SQUAD && unitType <= WUT_GUARD_DIVISION);
     },
 
-    isGuardBand: function( unitType) {
-            return (Number(unitType) === WUT_GUARD_BAND);
+    isGuardSquad: function (unitType) {
+        return (Number(unitType) === WUT_GUARD_SQUAD);
     },
 
-    isGuardSquadron: function( unitType) {
-            return (Number(unitType) === WUT_GUARD_SQUADRON);
+    isGuardBand: function (unitType) {
+        return (Number(unitType) === WUT_GUARD_BAND);
     },
 
-    isGuardDivision: function( unitType) {
-            return (Number(unitType) === WUT_GUARD_DIVISION);
+    isGuardSquadron: function (unitType) {
+        return (Number(unitType) === WUT_GUARD_SQUADRON);
     },
 
-    isBraveThunder: function( unitType) {
-            return (Number(unitType) === WUT_BRAVE_THUNDER);
+    isGuardDivision: function (unitType) {
+        return (Number(unitType) === WUT_GUARD_DIVISION);
     },
 
-    isGangStar: function( unitType) {
-            return (Number(unitType) >= WUT_GANG && unitType <= WUT_THIEF);
+    isBraveThunder: function (unitType) {
+        return (Number(unitType) === WUT_BRAVE_THUNDER);
     },
 
-    isGang: function( unitType) {
-            return (Number(unitType) === WUT_GANG);
+    isGangStar: function (unitType) {
+        return (Number(unitType) >= WUT_GANG && unitType <= WUT_THIEF);
     },
 
-    isMugger: function( unitType) {
-            return (Number(unitType) === WUT_MUGGER);
+    isGang: function (unitType) {
+        return (Number(unitType) === WUT_GANG);
     },
 
-    isThiefs: function( unitType) {
-            return (Number(unitType) === WUT_THIEF);
+    isMugger: function (unitType) {
+        return (Number(unitType) === WUT_MUGGER);
     },
 
-    isCarthagianArmies: function( unitType) {
-            return (Number(unitType) >= WUT_CARTHAGE_GANG && unitType <= WUT_CARTHAGE_CAPITAL);
+    isThiefs: function (unitType) {
+        return (Number(unitType) === WUT_THIEF);
     },
 
-    isCarthasianGang: function( unitType) {
-            return (Number(unitType) === WUT_CARTHAGE_GANG);
+    isCarthagianArmies: function (unitType) {
+        return (Number(unitType) >= WUT_CARTHAGE_GANG && unitType <= WUT_CARTHAGE_CAPITAL);
     },
 
-    isCarthageTeams: function( unitType) {
-            return (Number(unitType) === WUT_CARTHAGE_TEAMS);
+    isCarthasianGang: function (unitType) {
+        return (Number(unitType) === WUT_CARTHAGE_GANG);
     },
 
-    isCarthageRebals: function( unitType) {
-            return (Number(unitType) === WUT_CARTHAGE_REBELS);
+    isCarthageTeams: function (unitType) {
+        return (Number(unitType) === WUT_CARTHAGE_TEAMS);
     },
 
-    isCarthageForces: function( unitType) {
-            return (Number(unitType) === WUT_CARTHAGE_FORCES);
+    isCarthageRebals: function (unitType) {
+        return (Number(unitType) === WUT_CARTHAGE_REBELS);
     },
 
-    isCarthageCapital: function( unitType) {
-            return (Number(unitType) === WUT_CARTHAGE_CAPITAL);
+    isCarthageForces: function (unitType) {
+        return (Number(unitType) === WUT_CARTHAGE_FORCES);
     },
 
-    isArmyCapital: function( unitType) {
-            return (Number(unitType) >= WUT_ARMY_CAPITAL_A && unitType <= WUT_ARMY_CAPITAL_F);
+    isCarthageCapital: function (unitType) {
+        return (Number(unitType) === WUT_CARTHAGE_CAPITAL);
     },
 
-    isArmyCapitalA: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_A);
+    isArmyCapital: function (unitType) {
+        return (Number(unitType) >= WUT_ARMY_CAPITAL_A && unitType <= WUT_ARMY_CAPITAL_F);
     },
 
-    isArmyCapitalB: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_B);
+    isArmyCapitalA: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_A);
     },
 
-    isArmyCapitalC: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_C);
+    isArmyCapitalB: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_B);
     },
 
-    isArmyCapitalD: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_D);
+    isArmyCapitalC: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_C);
     },
 
-    isArmyCapitalE: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_E);
+    isArmyCapitalD: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_D);
     },
 
-    isArmyCapitalF: function( unitType) {
-            return (Number(unitType) === WUT_ARMY_CAPITAL_F);
+    isArmyCapitalE: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_E);
     },
 
-    isQueenCity: function( unitType) {
-            return (Number(unitType) >= WUT_QUEEN_CITY_A && unitType <= WUT_QUEEN_CITY_C);
+    isArmyCapitalF: function (unitType) {
+        return (Number(unitType) === WUT_ARMY_CAPITAL_F);
     },
 
-    isQueenCityS: function( unitType) {
-            return (Number(unitType) === WUT_QUEEN_CITY_A);
+    isQueenCity: function (unitType) {
+        return (Number(unitType) >= WUT_QUEEN_CITY_A && unitType <= WUT_QUEEN_CITY_C);
     },
 
-    isQueenCityM: function( unitType) {
-            return (Number(unitType) === WUT_QUEEN_CITY_B);
+    isQueenCityS: function (unitType) {
+        return (Number(unitType) === WUT_QUEEN_CITY_A);
     },
 
-    isQueenCityH: function( unitType) {
-            return (Number(unitType) === WUT_QUEEN_CITY_C);
+    isQueenCityM: function (unitType) {
+        return (Number(unitType) === WUT_QUEEN_CITY_B);
     },
 
-    isRepelCastle: function( unitType) {
-            return (Number(unitType) >= WUT_REPLE_CASTLE_A && unitType <= WUT_REPLE_CASTLE_C);
+    isQueenCityH: function (unitType) {
+        return (Number(unitType) === WUT_QUEEN_CITY_C);
     },
 
-    isRepelCastleS: function( unitType) {
-            return (Number(unitType) === WUT_REPLE_CASTLE_A);
+    isRepelCastle: function (unitType) {
+        return (Number(unitType) >= WUT_REPLE_CASTLE_A && unitType <= WUT_REPLE_CASTLE_C);
     },
 
-    isRepelCastleM: function( unitType) {
-            return (Number(unitType) === WUT_REPLE_CASTLE_B);
+    isRepelCastleS: function (unitType) {
+        return (Number(unitType) === WUT_REPLE_CASTLE_A);
     },
 
-    isRepelCastleH: function( unitType) {
-            return (Number(unitType) === WUT_REPLE_CASTLE_C);
+    isRepelCastleM: function (unitType) {
+        return (Number(unitType) === WUT_REPLE_CASTLE_B);
     },
 
-    isStatueWar: function( unitType) {
-            return (Number(unitType) >= WUT_WAR_STATUE_A && unitType <= WUT_WAR_STATUE_C);
+    isRepelCastleH: function (unitType) {
+        return (Number(unitType) === WUT_REPLE_CASTLE_C);
     },
 
-    isStatueWarS: function( unitType) {
-            return (Number(unitType) === WUT_WAR_STATUE_A);
+    isStatueWar: function (unitType) {
+        return (Number(unitType) >= WUT_WAR_STATUE_A && unitType <= WUT_WAR_STATUE_C);
     },
 
-    isStatueWarM: function( unitType) {
-            return (Number(unitType) === WUT_WAR_STATUE_B);
+    isStatueWarS: function (unitType) {
+        return (Number(unitType) === WUT_WAR_STATUE_A);
     },
 
-    isStatueWarH: function( unitType) {
-            return (Number(unitType) === WUT_WAR_STATUE_C);
+    isStatueWarM: function (unitType) {
+        return (Number(unitType) === WUT_WAR_STATUE_B);
     },
 
-    isStatueWalf: function( unitType) {
-            return (Number(unitType) >= WUT_WOLF_STATUE_A && unitType <= WUT_WOLF_STATUE_C);
+    isStatueWarH: function (unitType) {
+        return (Number(unitType) === WUT_WAR_STATUE_C);
     },
 
-    isStatueWalfS: function( unitType) {
-            return (Number(unitType) === WUT_WOLF_STATUE_A);
+    isStatueWalf: function (unitType) {
+        return (Number(unitType) >= WUT_WOLF_STATUE_A && unitType <= WUT_WOLF_STATUE_C);
     },
 
-    isStatueWalfM: function( unitType) {
-            return (Number(unitType) === WUT_WOLF_STATUE_B);
+    isStatueWalfS: function (unitType) {
+        return (Number(unitType) === WUT_WOLF_STATUE_A);
     },
 
-    isStatueWalfH: function( unitType) {
-            return (Number(unitType) === WUT_WOLF_STATUE_C);
+    isStatueWalfM: function (unitType) {
+        return (Number(unitType) === WUT_WOLF_STATUE_B);
     },
 
-    canHasGarrison: function( unitType) {
-            return (isCity( unitType) || isBarrary( unitType));
+    isStatueWalfH: function (unitType) {
+        return (Number(unitType) === WUT_WOLF_STATUE_C);
     },
 
-    isArena: function( unitType) {
-            return (Number(unitType) >= WUT_ARENA_CHALLANGE && unitType <= WUT_ARENA_GUILD);
+    canHasGarrison: function (unitType) {
+        return (isCity(unitType) || isBarrary(unitType));
     },
 
-    isArenaChallange: function( unitType) {
-            return (Number(unitType) === WUT_ARENA_CHALLANGE);
+    isArena: function (unitType) {
+        return (Number(unitType) >= WUT_ARENA_CHALLANGE && unitType <= WUT_ARENA_GUILD);
     },
-    isDominatable : function (unitType) {
+
+    isArenaChallange: function (unitType) {
+        return (Number(unitType) === WUT_ARENA_CHALLANGE);
+    },
+    isDominatable: function (unitType) {
         return WorldUnit['isQueenCity'](unitType) || WorldUnit['isRepelCastle'](unitType) || WorldUnit['isArmyCapital'](unitType);
     },
     'isSeaCity': function (unitType) {
         return Number(unitType) >= WUT_SEA_CITY_1 && unitType <= WUT_SEA_CITY_6;
     },
-    isArenaDeath: function( unitType) {
-            return (Number(unitType) === WUT_ARENA_DEATH);
+    isArenaDeath: function (unitType) {
+        return (Number(unitType) === WUT_ARENA_DEATH);
     },
 
-    isArenaGuild: function( unitType) {
-            return (Number(unitType) === WUT_ARENA_GUILD);
+    isArenaGuild: function (unitType) {
+        return (Number(unitType) === WUT_ARENA_GUILD);
     },
-    
-    getWorldUnit:function (x,y){
-        return Elkaisar.worldAllUnits[x*500 + Number(y)];
+
+    getWorldUnit: function (x, y) {
+        return Elkaisar.worldAllUnits[x * 500 + Number(y)];
     },
-    
-    
-    refreshUnitData: function (x , y){
-        
-        
+
+    refreshUnitData: function (x, y) {
+
+
         return  $.ajax({
-                    url: "api/world.php",
-                    data:{
-                        get_unit_map_data: true,
-                        x_coord: x, 
-                        y_coord: y
-                    },
-                    beforeSend: function (xhr) {
+            url:  `${API_URL}/api/AWorld/refreshWorldUnitLvl`,
+            data: {
+                xCoord: x,
+                yCoord: y,
+                server: Elkaisar.Config.idServer,
+                token : Elkaisar.Config.OuthToken
+            },
+            beforeSend: function (xhr) {
 
-                    },
-                    success: function (data, textStatus, jqXHR) {
-                        if(isJson(data)){
-                            var jsonData = JSON.parse(data);
-                            WorldUnit.getWorldUnit(x, y).l = jsonData.l;
-                            WorldUnit.getWorldUnit(x, y).t = jsonData.t;
-                            WorldUnit.getWorldUnit(x, y).ut = jsonData.ut;
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
+            },
+            success: function (data, textStatus, jqXHR) {
+                if(!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+                var jsonData = JSON.parse(data);
+                WorldUnit.getWorldUnit(x, y).l = jsonData.l;
+                WorldUnit.getWorldUnit(x, y).t = jsonData.t;
+                WorldUnit.getWorldUnit(x, y).ut = jsonData.ut;
+                
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
 
-                    }
-                });
-        
+            }
+        });
+
     },
-    
-    
-     getCampFlage(x , y){
-         
+
+    getCampFlage(x, y) {
+
         x = Number(x);
         y = Number(y);
-        
+
         var Unit = WorldUnit.getWorldUnit(x, y);
         $flag = "";
-        if(Number(Unit.ut) === WUT_CAMP_GAULS){
+        if (Number(Unit.ut) === WUT_CAMP_GAULS) {
             $flag = "flag_france";
-        }else  if(Number(Unit.ut) === WUT_CAMP_ASIANA){
+        } else if (Number(Unit.ut) === WUT_CAMP_ASIANA) {
             $flag = "flag_magul";
-        }else  if(Number(Unit.ut) === WUT_CAMP_BRITONS){
+        } else if (Number(Unit.ut) === WUT_CAMP_BRITONS) {
             $flag = "flag_england";
-        }else  if(Number(Unit.ut) === WUT_CAMP_MACEDON){
+        } else if (Number(Unit.ut) === WUT_CAMP_MACEDON) {
             $flag = "flag_macdoni";
-        }else  if(Number(Unit.ut) === WUT_CAMP_ITALIA){
+        } else if (Number(Unit.ut) === WUT_CAMP_ITALIA) {
             $flag = "flag_roma";
-        }else  if(Number(Unit.ut) === WUT_CAMP_HISPANIA){
+        } else if (Number(Unit.ut) === WUT_CAMP_HISPANIA) {
             $flag = "flag_spain";
-        }else  if(Number(Unit.ut) === WUT_CAMP_PARTHIA){
-              $flag = "flag_greek";
-        }else  if(Number(Unit.ut) === WUT_CAMP_EGYPT){
+        } else if (Number(Unit.ut) === WUT_CAMP_PARTHIA) {
+            $flag = "flag_greek";
+        } else if (Number(Unit.ut) === WUT_CAMP_EGYPT) {
             $flag = "flag_egypt";
-        }else  if(Number(Unit.ut) === WUT_CAMP_CARTHAGE){
+        } else if (Number(Unit.ut) === WUT_CAMP_CARTHAGE) {
             $flag = "flag_cartaga";
-        }else  if(Number(Unit.ut) === WUT_CAMP_REICH){
+        } else if (Number(Unit.ut) === WUT_CAMP_REICH) {
             $flag = "flag_germany";
-        } 
-            
-            return $flag;
-        
-    },
-    
-    refreshUnitView(x ,y){
-        
-        
-        var entite = this.getWorldUnit(x ,y);
-        if(!entite.entite){
-            return ;
         }
-        entite.on_map = false;
-        entite.entite.destroy();
-        delete(entite.entite);
+
+        return $flag;
+
+    },
+
+    refreshUnitView(x, y) {
         
+        Elkaisar.World.Map.DeletUnit(Elkaisar.World.Map.realCoord(x), Elkaisar.World.Map.realCoord(y))
         addMapUnite({
-            x:entite.x,
-            y:entite.y
+            x: x,
+            y: y
         });
-        
+        Animation.cityFlag();
+        Animation.fireWorldUnit(x, y);
+
     }
 };
 
 
 
-WorldUnit.WorldUnitRank = function (x,y){
-    
-    var unitType = Number(WorldUnit.getWorldUnit(x,y).ut);
+WorldUnit.WorldUnitRank = function (x, y) {
+
+    var unitType = Number(WorldUnit.getWorldUnit(x, y).ut);
     $.ajax({
-       
+
         url: `${API_URL}/api/AWorld/getWorldUnitRank`,
-        data:{
-            xCoord   : x,
-            yCoord   : y,
-            unitType : unitType,
-            token    : Elkaisar.Config.OuthToken,
-            server   : Elkaisar.Config.idServer
+        data: {
+            xCoord: x,
+            yCoord: y,
+            unitType: unitType,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
         type: 'GET',
         success: function (data, textStatus, jqXHR) {
-           
-            if(isJson(data)){
+
+            if (isJson(data)) {
                 var jsonData = JSON.parse(data);
-            }else{
+            } else {
                 alert(data);
             }
-            var icon = ["1st","2nd","3rd","4th","5th"];
-            
+            var icon = ["1st", "2nd", "3rd", "4th", "5th"];
+
             var list = "";
             var name = "";
             var guild = "";
             var duration = "";
             var innerList = "";
-            
-            for(var iii = 0; iii < 5; iii++){
-                
-                if(jsonData[iii]){
-                    
+
+            for (var iii = 0; iii < 5; iii++) {
+
+                if (jsonData[iii]) {
+
                     name = jsonData[iii].PlayerName || jsonData[iii].GuildName;
                     guild = jsonData[iii].GuildName === "NULL" ? "---" : jsonData[iii].GuildName;
-                    duration = `${Math.floor(jsonData[iii].totalDuration/60)}د ${jsonData[iii].totalDuration%60} ث`;
-                   
-                }else{
-                   
+                    duration = `${Math.floor(jsonData[iii].totalDuration / 60)}د ${jsonData[iii].totalDuration % 60} ث`;
+
+                } else {
+
                     name = "";
                     guild = "";
                     duration = "";
-                    
+
                 }
-                
-                if(WorldUnit.isArenaGuild(unitType)){
-                    
+
+                if (WorldUnit.isArenaGuild(unitType)) {
+
                     innerList = `   <div class="td_1" style="width: 30%">
                                         <div class="rank-image" style="background-image: url(images/number/${icon[iii]}.png)"></div>
                                     </div>
                                     <div class="td_1" style="width: 40%">${name}</div>
                                     <div class="td_1 rtl font-2"  style="width: 30%">${duration}</div>`;
-                }else{
-                    
+                } else {
+
                     innerList = `<div class="td_1" style="width: 20%">
                                     <div class="rank-image" style="background-image: url(images/number/${icon[iii]}.png)"></div>
                                 </div>
@@ -27395,95 +28701,94 @@ WorldUnit.WorldUnitRank = function (x,y){
                                 <div class="td_1 rtl font-2"  style="width: 20%">${duration}</div>`;
 
                 }
-                
+
                 list += `<div class="tr">
                             ${innerList}
                         </div>`;
-                
+
             }
-            
+
             var content = ` <div class="unit-with-rank">
                         
                                 <div class="rank-list">
 
                                     <div class="inner_nav">
                                         ${
-                                            WorldUnit.isArenaGuild(unitType) ? 
-                                            `<div class="td_1 font-2" style="width:30%">التصنيف</div>
+                    WorldUnit.isArenaGuild(unitType) ?
+                    `<div class="td_1 font-2" style="width:30%">التصنيف</div>
                                             <div class="td_1 font-2" style="width: 40%">${Translate.Button.Chat.League[UserLag.language]}</div>
-                                            <div class="td_1 font-2" style="width: 30%">المدة</div>` 
-                                        : 
-                                                
-                                            `<div class="td_1 font-2" style="width:20%">التصنيف</div>
+                                            <div class="td_1 font-2" style="width: 30%">المدة</div>`
+                    :
+                    `<div class="td_1 font-2" style="width:20%">التصنيف</div>
                                             <div class="td_1 font-2" style="width: 30%">الملك</div>
                                             <div class="td_1 font-2" style="width: 30%">${Translate.Button.Chat.League[UserLag.language]}</div>
                                             <div class="td_1 font-2" style="width: 20%">المدة</div>`
-            
-                                        }
+
+                    }
                                     </div>
                                     ${list}
                                 </div>
                             </div>`;
-            
-            
-           $(".unit-with-rank").replaceWith(content);
+
+
+            $(".unit-with-rank").replaceWith(content);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            
+
         }
-        
+
     });
-    
+
 };
 
-$(document).on("click" , "#new-city-confirm button" , function (){
-    
-   var city_new_name = $("#new-city-name").val();
-   var xCoord = $(this).attr("data-x-coord");
-   var yCoord = $(this).attr("data-y-coord");
-   
-    if(city_new_name.length < 1){
+$(document).on("click", "#new-city-confirm button", function () {
+
+    var city_new_name = $("#new-city-name").val();
+    var xCoord = $(this).attr("data-x-coord");
+    var yCoord = $(this).attr("data-y-coord");
+
+    if (city_new_name.length < 1) {
         alert_box.confirmMessage("لا يمكنك ترك اسم المدينة خالى ");
-        return ;
+        return;
     }
-    
-    alert_box.confirmDialog("تأكيد  بناء مدينة " , function (){
-       
-       var idCity = Elkaisar.CurrentCity.City.id_city;
-       
-        if(canBuildNewCity(xCoord, yCoord)){
-            
+
+    alert_box.confirmDialog("تأكيد  بناء مدينة ", function () {
+
+        var idCity = Elkaisar.CurrentCity.City.id_city;
+
+        if (canBuildNewCity(xCoord, yCoord)) {
+
             $.ajax({
                 url: `${API_URL}/api/AWorld/BuildNewCity`,
-                data:{
-                    idCity   : idCity,
-                    xCoord   : xCoord,
-                    yCoord   : yCoord,
-                    CityName : city_new_name,
-                    token    : Elkaisar.Config.OuthToken,
-                    server   : Elkaisar.Config.idServer
+                data: {
+                    idCity: idCity,
+                    xCoord: xCoord,
+                    yCoord: yCoord,
+                    CityName: city_new_name,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
                 },
                 type: 'POST',
                 success: function (data, textStatus, jqXHR) {
-                    
-                    if(!Elkaisar.LBase.isJson(data))
+
+                    if (!Elkaisar.LBase.isJson(data))
                         return Elkaisar.LBase.Error(data);
-                    
+
                     var json_data = JSON.parse(data);
-                    
-                    
-                        
+
+
+
                     var json_data = JSON.parse(data);
-                    if(json_data.state === "error_0"){
+                    if (json_data.state === "error_0") {
 
-                    }else if(json_data.state === "error_1"){
+                    } else if (json_data.state === "error_1") {
 
-                    }else if(json_data.state === "error_2"){
+                    } else if (json_data.state === "error_2") {
 
-                    }else if(json_data.state === "ok") {
+                    } else if (json_data.state === "ok") {
 
-                        if(json_data.City){
-                            
+                        if (json_data.City) {
+
                             Elkaisar.DPlayer.City[json_data.City.id_city].City = json_data.City;
                             Elkaisar.City.refreshBtnList();
                             $(".close_RB img").click();
@@ -27492,35 +28797,35 @@ $(document).on("click" , "#new-city-confirm button" , function (){
                             $("#nav-btn button").click();
 
 
-                        }else{
+                        } else {
                             alert("error add city");
                         }
 
 
-                    }else{
+                    } else {
 
                         alert(data);
 
                     }
-                        
-                 
-                    
+
+
+
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    
+
                 }
             });
 
 
-        }else{
+        } else {
 
             alert_box.failMessage("لا يمكنك  بناء مدينة جديدة");
-            return ;
+            return;
 
         }
 
-    }); 
-    
+    });
+
 });var campDB = {
     
     
@@ -27859,7 +29164,7 @@ $(document).on("click" , "#new-city-confirm button" , function (){
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
+                                        <td id="reviewUnitBoxName" colspan="2">
                                             ${title}
                                         </td>
                                     </tr>
@@ -27977,22 +29282,24 @@ $(document).on("click" , "#new-city-confirm button" , function (){
         if (!Elkaisar['World']['UnitArmy'][unitType][Lvl][ArmyType]) return 0x0;
         return Elkaisar['World']['UnitArmy'][unitType][Lvl][ArmyType];
     },
-    'getDominaterName'(_0x55fe70, _0x2ed502) {
-        var _0x2fc550 = WorldUnit['getWorldUnit'](_0x55fe70, _0x2ed502);
+    'getDominaterName'(xCoord, yCoord) {
+        var Unit = WorldUnit['getWorldUnit'](xCoord, yCoord);
         $['ajax']({
             'url': API_URL + '/api/AWorldUnit/getWorldUnitDominator',
             'type': 'GET',
             'data': {
-                'xCoord': _0x55fe70,
-                'yCoord': _0x2ed502,
-                'unitType': _0x2fc550['ut'],
-                'server': Elkaisar['Config']['idServer'],
-                'token': Elkaisar['Config']['OuthToken']
+                'xCoord': xCoord,
+                'yCoord': yCoord,
+                'unitType': Unit.ut,
+                'server': Elkaisar.Config.idServer,
+                'token': Elkaisar.Config.OuthToken
             },
-            'success': function (_0x3a86ff, _0x2bf316, _0x1a4707) {
-                if (!Elkaisar['LBase']['isJson'](_0x3a86ff)) return Elkaisar['LBase']['Error'](_0x3a86ff);
-                var _0x46e8fa = JSON['parse'](_0x3a86ff);
-                if (_0x46e8fa['Name'] != '') $('#reviewUnitBox')['html'](_0x46e8fa['Name']);
+            'success': function (data, _0x2bf316, _0x1a4707) {
+                if (!Elkaisar['LBase']['isJson'](data)) 
+                    return Elkaisar['LBase']['Error'](data);
+                var JsonData = JSON['parse'](data);
+                if (JsonData['Name'] != '') 
+                    $('#reviewUnitBoxName').html(JsonData['Name']);
             },
             'error': function (_0x1ed427, _0xebf258, _0x2fd59e) {}
         });
@@ -28203,7 +29510,367 @@ campDB.refreshQueAttackList = function (xCoord, yCoord)
             
             
            $(".unit-with-rank").replaceWith(content);
-};/* global WorldUnit */
+};Elkaisar.World.WorldMapIcon.MapIcon = {};
+
+Elkaisar.World.WorldMapIcon.Rad = 70;
+
+Elkaisar.World.WorldMapIcon.MapIcon = {
+    AttackOnlyUnit: [
+        {
+            Deg: -90,
+            Icon: "MapIconAttack",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_CONQUER,
+            YOffset: 0
+        },
+        {
+            Deg: 90,
+            Icon: "MapIconArena",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_OPEN_BATTEL_FIELD,
+            YOffset: -15
+        },
+        {
+            Deg: 90,
+            Icon: "Text",
+            Id: "Title",
+            YOffset: -15
+        },
+        {
+            Deg: -90,
+            Icon: "Text",
+            Id: "Coord",
+            YOffset: 40
+        },
+        {
+            Deg: -90,
+            Icon: "Text",
+            Id: "CoordBg",
+            YOffset: 38
+        }
+    ],
+    BarrayAttack: [
+        {
+            Deg: -15,
+            Icon: "MapIconRainForce",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPORT,
+            YOffset: 0
+        },
+        {
+            Deg: -65,
+            Icon: "MapIconSpy",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SPY,
+            YOffset: 0
+        },
+        {
+            Deg: -115,
+            Icon: "MapIconOccupy",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_DOMINATE,
+            YOffset: 0
+        },
+        {
+            Deg: -165,
+            Icon: "MapIconAttack",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_CONQUER,
+            YOffset: 0
+        },
+        {
+            Deg: 90,
+            Icon: "MapIconArena",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_OPEN_BATTEL_FIELD,
+            YOffset: -15
+        },
+        {
+            Deg: 90,
+            Icon: "Text",
+            Id: "Title",
+            YOffset: -15
+        },
+        {
+            Deg: -90,
+            Icon: "Text",
+            Id: "Coord",
+            YOffset: 40
+        },
+        {
+            Deg: -90,
+            Icon: "Text",
+            Id: "CoordBg",
+            YOffset: 38
+        }
+    ],
+    CityAttack: [
+        {
+            Deg: 10,
+            Icon: "MapIconTransPort",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY,
+            YOffset: 0
+        },
+        {
+            Deg: -40,
+            Icon: "MapIconRainForce",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPORT,
+            YOffset: 0
+        },
+        {
+            Deg: -90,
+            Icon: "MapIconSpy",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SPY,
+            YOffset: 0
+        },
+        {
+            Deg: -140,
+            Icon: "MapIconOccupy",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_DOMINATE,
+            YOffset: 0
+        },
+        {
+            Deg: -190,
+            Icon: "MapIconAttack",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_CONQUER,
+            YOffset: 0
+        },
+        {
+            Deg: 90,
+            Icon: "MapIconArena",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_OPEN_BATTEL_FIELD,
+            YOffset: -15
+        },
+        {
+            Deg: 90,
+            Icon: "Text",
+            Id: "Title",
+            YOffset: -15
+        },
+        {
+            Deg: -90,
+            Icon: "Text",
+            Id: "Coord",
+            YOffset: 40
+        },
+        {
+            Deg: -90,
+            Icon: "Text",
+            Id: "CoordBg",
+            YOffset: 38
+        }
+    ],
+    MyCity: [
+        {
+            Deg: -45,
+            Icon: "MapIconTransPort",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY,
+            YOffset: 0
+        },
+        {
+            Deg: -90,
+            Icon: "MapIconRainForce",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_HERO_TRANS,
+            YOffset: 0
+        },
+        {
+            Deg: -135,
+            Icon: "MapIconEnter",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_ENTER_CITY,
+            YOffset: 0
+        },
+        {
+            Deg: 90,
+            Icon: "MapIconArena",
+            Task: Elkaisar.BaseData.BattelTasks.BATTEL_TASK_OPEN_BATTEL_FIELD,
+            YOffset: -15
+        },
+        {
+            Deg: 90,
+            Icon: "Text",
+            Id: "Title",
+            YOffset: -15
+        },
+        {
+            Deg: -90,
+            Icon: "Text",
+            Id: "Coord",
+            YOffset: 40
+        },
+        {
+            Deg: -90,
+            Icon: "Text",
+            Id: "CoordBg",
+            YOffset: 38
+        }
+    ]
+};
+
+
+
+
+Elkaisar.World.WorldMapIcon.getIconList = function (xCoord, yCoord) {
+
+    var Unit = WorldUnit.getWorldUnit(Elkaisar.World.Map.realCoord(xCoord), Elkaisar.World.Map.realCoord(yCoord));
+
+    if (
+            WorldUnit.isArena(Unit.ut)
+            || WorldUnit.isArmyCapital(Unit.ut) || WorldUnit.isAsianSquads(Unit.ut)
+            || WorldUnit.isCamp(Unit.ut) || WorldUnit.isCarthagianArmies(Unit.ut)
+            || WorldUnit.isSeaCity(Unit.ut) || WorldUnit.isQueenCity(Unit.ut)
+            || WorldUnit.isRepelCastle(Unit.ut) || WorldUnit.isThiefs(Unit.ut)
+            || WorldUnit.isGang(Unit.ut) || WorldUnit.isMugger(Unit.ut)
+            || WorldUnit.isStatueWar(Unit.ut) || WorldUnit.isStatueWalf(Unit.ut)
+            )
+        return Elkaisar.World.WorldMapIcon.MapIcon.AttackOnlyUnit;
+    if (WorldUnit.isBarrary(Unit.ut))
+        return Elkaisar.World.WorldMapIcon.MapIcon.BarrayAttack;
+    if (WorldUnit.isCity(Unit.ut))
+        return Elkaisar.World.WorldMapIcon.MapIcon.CityAttack;
+
+    return Elkaisar.World.WorldMapIcon.MapIcon.AttackOnlyUnit;
+};
+
+Elkaisar.World.WorldMapIcon.IconClicked = function (xCoord, yCoord, BattelTask) {
+    Elkaisar.World.WorldMapIcon.Clicked(Elkaisar.World.Map.realCoord(xCoord), Elkaisar.World.Map.realCoord(yCoord), BattelTask);
+};
+
+
+
+Elkaisar.World.WorldMapIcon.showWorldUnitIcons = function (xCoord, yCoord) {
+
+    this.removeWorldUnitIcons();
+    var x = Elkaisar.World.Map.posX(xCoord, yCoord) + 64;
+    var y = Elkaisar.World.Map.posY(xCoord, yCoord) + 80;
+    var z = Elkaisar.World.Map.posZ(xCoord, yCoord) + 15;
+
+    var IconList = Elkaisar.World.WorldMapIcon.getIconList(xCoord, yCoord);
+    var xPos, yPos;
+
+    //var Icon = {0: "MapIconAttack", "1": "MapIconOccupy", "2": "MapIconRainForce", "3": "MapIconSpy", "4": "MapIconTransPort", "5": "MapIconEnter", "5": "MapIconEnter", "6": "MapIconArena"};
+
+    for (var iii in IconList) {
+        xPos = Math.cos(Phaser.Math.DegToRad(IconList[iii].Deg));
+        yPos = Math.sin(Phaser.Math.DegToRad(IconList[iii].Deg));
+        if (IconList[iii].Icon == "Text") {
+            if (IconList[iii].Id == "Title") {
+                Elkaisar.GE.WorldScene.WorldUnitIcons[iii] = Elkaisar.GE.WorldScene.add.text(0, 0, "أرض المعركة",
+                        {fixedHeight: 20, fontStyle: "bold", fontSize: 14, stroke: '#000000', strokeThickness: 3}).setDepth(z + 10).setOrigin(0.5, 0.5);
+            } else if (IconList[iii].Id == "Coord") {
+                Elkaisar.GE.WorldScene.WorldUnitIcons[iii] = Elkaisar.GE.WorldScene.add.text(0, 0, `${xCoord}  ${yCoord}`,
+                        {fixedHeight: 20, fontStyle: "bold", fontSize: 14, stroke: '#000000', strokeThickness: 3}).setDepth(z + 10).setOrigin(0.5, 0.5);
+            } else if (IconList[iii].Id == "CoordBg") {
+                Elkaisar.GE.WorldScene.WorldUnitIcons[iii] = Elkaisar.GE.WorldScene.add.image(x + 20 * xPos, y + 20 * yPos, "CoordHolder").setDepth(z + 9).setScale(0.8, 0.6)
+            }
+
+
+        } else {
+            Elkaisar.GE.WorldScene.WorldUnitIcons[iii] = Elkaisar.GE.WorldScene.add.image(x + 20 * xPos, y + 20 * yPos, IconList[iii].Icon).setDepth(z + 10)
+                    .setInteractive()
+                    .on("click", function (Obj) {
+                        Elkaisar.World.WorldMapIcon.IconClicked(Obj.data.get("xCoord"), Obj.data.get("yCoord"), Obj.data.get("BattelTask"));
+                    });
+            Elkaisar.GE.WorldScene.WorldUnitIcons[iii].setDataEnabled();
+            Elkaisar.GE.WorldScene.WorldUnitIcons[iii].data.set('BattelTask', IconList[iii].Task);
+            Elkaisar.GE.WorldScene.WorldUnitIcons[iii].data.set('xCoord', Elkaisar.World.Map.realCoord(xCoord));
+            Elkaisar.GE.WorldScene.WorldUnitIcons[iii].data.set('yCoord', Elkaisar.World.Map.realCoord(yCoord));
+        }
+
+    }
+
+    this.tweenWorldUnitIcons(x, y, IconList);
+
+    Elkaisar.GE.WorldScene.CircleUnitIcon = Elkaisar.GE.WorldScene.add.circle(x, y, Elkaisar.World.WorldMapIcon.Rad).setStrokeStyle(4, 0x000000)
+            .setDepth(z + 9)
+            .setInteractive(new Phaser.Geom.Circle(70, 70, Elkaisar.World.WorldMapIcon.Rad + 10), Phaser.Geom.Circle.Contains)
+            .on("pointerover", function (P, X, Y, E) {
+                E.stopPropagation();
+            })
+            .on("pointerdown", function (P, X, Y, E) {
+                Elkaisar.World.WorldMapIcon.removeWorldUnitIcons();
+            });
+    Elkaisar.GE.WorldScene.CircleUnitIcon.canClickThrough = true;
+    Elkaisar.GE.WorldScene.tweens.add({
+        targets: Elkaisar.GE.WorldScene.CircleUnitIcon,
+        scale: {from: 0.75, to: 1},
+        ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        duration: 600
+    });
+};
+
+Elkaisar.World.WorldMapIcon.removeWorldUnitIcons = function () {
+
+    for (var ii in Elkaisar.GE.WorldScene.WorldUnitIcons) {
+        if (Elkaisar.GE.WorldScene.WorldUnitIcons[ii])
+            Elkaisar.GE.WorldScene.WorldUnitIcons[ii].destroy();
+    }
+    if (Elkaisar.GE.WorldScene.Tween)
+        Elkaisar.GE.WorldScene.Tween.remove();
+    if (Elkaisar.GE.WorldScene.CircleUnitIcon)
+        Elkaisar.GE.WorldScene.CircleUnitIcon.destroy();
+};
+
+
+Elkaisar.World.WorldMapIcon.removeUnitCoords = function (){
+     if (Elkaisar.GE.WorldScene.UnitCoords && Elkaisar.GE.WorldScene.UnitCoords.Bg) {
+        Elkaisar.GE.WorldScene.UnitCoords.Bg.destroy();
+        Elkaisar.GE.WorldScene.UnitCoords.Text.destroy();
+    }
+};
+Elkaisar.World.WorldMapIcon.showUnitCoords = function (xCoord, yCoord) {
+
+   
+    Elkaisar.World.WorldMapIcon.removeUnitCoords ();
+    
+    var x = Elkaisar.World.Map.posX(xCoord, yCoord) + 64;
+    var y = Elkaisar.World.Map.posY(xCoord, yCoord) + 80;
+    var z = Elkaisar.World.Map.posZ(xCoord, yCoord) + 15;
+    Elkaisar.GE.WorldScene.UnitCoords = {};
+    Elkaisar.GE.WorldScene.UnitCoords.Text = Elkaisar.GE.WorldScene.add.text(x, y, `${xCoord}  ${yCoord}`,
+            {fixedHeight: 20, fontStyle: "bold", fontSize: 14, stroke: '#000000', strokeThickness: 3}).setDepth(z + 10).setOrigin(0.5, 0.5);
+    Elkaisar.GE.WorldScene.UnitCoords.Bg = Elkaisar.GE.WorldScene.add.image(x, y , "CoordHolder").setDepth(z + 9).setScale(0.8, 0.6);
+
+
+};
+
+Elkaisar.World.WorldMapIcon.tweenWorldUnitIcons = function (x, y, IconList) {
+    var Rad = 70;
+    var xPos, yPos;
+    Elkaisar.GE.WorldScene.Tween = Elkaisar.GE.WorldScene.tweens.add({
+        targets: Object.values(Elkaisar.GE.WorldScene.WorldUnitIcons),
+        x: {
+            getStart: function (target, key, value, targetIndex, totalTargets, tween) {
+                if (!IconList[targetIndex]) {
+                    console.log(targetIndex, target, key)
+                    return 0;
+                }
+
+
+                return x + 52.5 * Math.cos(Phaser.Math.DegToRad(IconList[targetIndex].Deg));
+            },
+            getEnd: function (target, key, value, targetIndex, totalTargets, tween) {
+                if (!IconList[targetIndex]) {
+                    console.log(targetIndex, target, key)
+                    return 0;
+                }
+                return x + Rad * Math.cos(Phaser.Math.DegToRad(IconList[targetIndex].Deg));
+            }
+        },
+        y: {
+            getStart: function (target, key, value, targetIndex, totalTargets, tween) {
+                if (!IconList[targetIndex]) {
+                    console.log(targetIndex, target, key)
+                    return 0;
+                }
+                return y + 52.5 * Math.sin(Phaser.Math.DegToRad(IconList[targetIndex].Deg));
+            },
+            getEnd: function (target, key, value, targetIndex, totalTargets, tween) {
+                if (!IconList[targetIndex]) {
+                    console.log(targetIndex, target, key)
+                    return 0;
+                }
+                return y + Rad * Math.sin(Phaser.Math.DegToRad(IconList[targetIndex].Deg)) + IconList[targetIndex].YOffset;
+            }
+        },
+        ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        duration: 600
+    });
+
+};
+  /* global WorldUnit */
 
 const army_mo3_and_mon = {
     "1": {
@@ -29133,6 +30800,10 @@ var allUniteType = {
 
 };
 
+
+
+
+
 var TimeRest = {
     restEvery4: function () {
         var date = new Date();
@@ -29301,7 +30972,7 @@ var WorldUtil = {
                                     </div>
                                 </div>`;
 
-                if (Crafty("UnitToolTip").get().length === 0) {
+                /*if (Crafty("UnitToolTip").get().length === 0) {
 
                     Crafty.e("HTML , UnitToolTip").append(tooltip).attr({x: x_coord * 64 - y_coord * 64 + 100, y: x_coord * 32 + y_coord * 32 + 100, z: 99999999999});
 
@@ -29309,7 +30980,7 @@ var WorldUtil = {
 
                     Crafty("UnitToolTip").get(0).replace(tooltip).attr({x: x_coord * 64 - y_coord * 64 + 100, y: x_coord * 32 + y_coord * 32 + 100, z: 999999999999});
 
-                }
+                }*/
 
 
             });
@@ -29367,42 +31038,17 @@ var WorldUtil = {
         });
 
     },
-    showMapTooltip: function (x_coord, y_coord) {
 
-        var unit = WorldUnit.getWorldUnit(x_coord, y_coord);
-        var desc = WorldUtil.getDesc(unit.ut, x_coord, y_coord);
-
-        if ($.isEmptyObject(unit.entite))
-        {
-            console.log(unit, x_coord, y_coord);
-        }
-
-        var tooltip = ` <div class="map-tooltip">
-                                <div class="tt-header">
-                                    <div class="coords">
-                                       [ ${getArabicNumbers(y_coord)}  , ${getArabicNumbers(x_coord)}  ]  
-                                    </div>
-                                </div>
-                                <div class="tt-title">
-                                       ${WorldUtil.tooltipHeader(Number(unit.x), Number(unit.y))}
-                                </div>
-                                <div class="tt-desc">
-                                    ${desc}
-                                </div>
-                            </div>`;
-
-        if (Crafty("UnitToolTip").get().length === 0) {
-
-            Crafty.e("HTML , UnitToolTip").append(tooltip).attr({x: unit.entite.x + 100, y: unit.entite.y + 100, z: 100000000});
-
-        } else {
-
-            Crafty("UnitToolTip").get(0).replace(tooltip).attr({x: unit.entite.x + 100, y: unit.entite.y + 100, z: 100000000});
-
-        }
-
-
-
+    showMapTooltip: function (xCoord, yCoord) {
+        return ;
+        var unit = WorldUnit.getWorldUnit(Elkaisar.World.Map.realCoord(xCoord), Elkaisar.World.Map.realCoord(yCoord));
+        /* var desc = WorldUtil.getDesc(unit.ut, x_coord, y_coord);*/
+        if(unit.ut == WUT_BUSY_UNIT)
+            return ;
+        else if(WorldUnit.isEmpty(unit.ut))
+            Elkaisar.World.WorldMapIcon.showWorldUnitIcons(xCoord, yCoord);
+        else 
+            Elkaisar.World.WorldMapIcon.showWorldUnitIcons(xCoord, yCoord);
 
     }
 
@@ -29415,235 +31061,21 @@ function uniteMapClick(x_coord, y_coord)
 {
     var unit = WorldUnit.getWorldUnit(x_coord, y_coord);
     var type = unit.ut;
-    var lvl = unit.l;
-    var state = unit.s;
 
-    if (WorldUnit.isEmpty(type)) {  // مكان خالى 
-
-        var city_counts = Object.keys(Elkaisar.DPlayer.City).length;
-
-        var box = ` <div id="unit_review" class="bg-general" x_coord="${x_coord}" y_coord="${y_coord}" type="0" lvl="${lvl}">
-                        <div class="header">
-                            <div class="title banner-red">
-                                مكان خالى
-                            </div>
-                            <div class="close_RB">
-                                <img src="images/btns/close_b.png">.
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="right_cont">
-                                <div class="dist">
-                                    <div class="coords" style="margin-right: 37px">
-                                        <a href="#">[${y_coord} , ${x_coord}]</a>
-                                    </div>
-                                    <div class="mile">
-                                        ${getDistance(x_coord, y_coord)} ميل
-                                    </div>
-                                    <div class="copy-coord-icon">
-                                        <button class="copy-coord" data-x-coord="${x_coord}" data-y-coord="${y_coord}"></button>
-                                    </div>
-                                </div>
-                                <div class="new-city-req-table">
-                                    <table class="req_table " border="0"> 
-                                        <tbody> 
-                                            <tr> 
-                                                <td> 
-                                                    <img src="images/style/food.png"> 
-                                                    <div class="amount ${Number(Elkaisar.CurrentCity.City.food) < Math.pow(10, city_counts + 3) ? "not_enough" : "enough"}"> 
-                                                        ${Math.pow(10, city_counts + 3)} 
-                                                    </div> 
-                                                </td> 
-                                                <td> 
-                                                    <img src="images/style/stone.png"> 
-                                                    <div class="amount ${Number(Elkaisar.CurrentCity.City.stone) < Math.pow(10, city_counts + 3) ? "not_enough" : "enough"}"> 
-                                                        ${Math.pow(10, city_counts + 3)}  
-                                                    </div> 
-                                                </td> 
-                                            </tr> 
-                                            <tr> 
-                                                <td> 
-                                                    <img src="images/style/wood.png"> 
-                                                    <div class="amount ${Number(Elkaisar.CurrentCity.City.wood) < Math.pow(10, city_counts + 3) ? "not_enough" : "enough"}"> 
-                                                        ${Math.pow(10, city_counts + 3)}  
-                                                    </div> 
-                                                </td> 
-                                                <td> 
-                                                    <img src="images/style/iron.png"> 
-                                                    <div class="amount ${Number(Elkaisar.CurrentCity.City.metal) < Math.pow(10, city_counts + 3) ? "not_enough" : "enough"} "> 
-                                                        ${Math.pow(10, city_counts + 3)}  
-                                                    </div> 
-                                                </td> 
-                                            </tr> 
-                                            <tr> 
-                                                <td> 
-                                                    <img src="images/style/coin.png"> 
-                                                    <div class="amount ${Number(Elkaisar.CurrentCity.City.coin) < Math.pow(10, city_counts + 3) ? "not_enough" : "enough"}"> 
-                                                        ${Math.pow(10, city_counts + 3)}  
-                                                    </div> 
-                                                </td> 
-                                                <td> 
-                                                    <img src="images/style/wait.png"> 
-                                                    <div class="amount sol-people"> 
-                                                        0 ث
-                                                    </div> 
-                                                </td> 
-                                            </tr> 
-                                        </tbody> 
-                                    </table> 
-                                    
-                                    <div class="province">${Translate.Text.Province[UserLag.language]}: ${Elkaisar.World.Province.getTitle(x_coord, y_coord)}</div>
-                                    
-                                </div>
-                            </div>
-                            <div class="left_cont">
-                                <div class="unite_image">
-                                    <div style="background-image:url(images/world/snap-shot/empty-place.jpg)"></div>
-                                </div>
-                                <div class="required-prom">
-                                    <label>تصنيف لنبيل:</label><span class="${Number(Elkaisar.DPlayer.Player.porm) < city_counts * 2 ? "not_enough" : "enough" }">${Elkaisar.BaseData.Promotion[city_counts * 2].Title}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footer  new-city-footer">
-                            <ul>
-                                <div class="inputs">
-                                    <div class="input-wrapper pull-L">
-                                        <input id="new-city-name" ${canBuildNewCity(x_coord, y_coord) ? "" : "disabled='disabled'"} type="text" class="input" placeholder="اسم المدينة الجديدة"/>
-                                    </div>
-                                    <div  id="new-city-confirm" class="pull-R">
-                                        <button class="full-btn-3x" ${canBuildNewCity(x_coord, y_coord) ? "" : "disabled='disabled'"} data-x-coord="${x_coord}" data-y-coord="${y_coord}"> بناء مدينة</button>
-                                    </div>
-                                </div>
-                            </ul>
-
-                        </div>
-                    </div>`;
-
-        $("#unit_review").remove();
-        $("body").append(box);
-
-
-    } 
-    else if (WorldUnit.isBarrary(type)) { // show  review box  for barary
-
-
-
-        /*
-         *unitObj holds  the name of unit   and the prize from it 
-         */
-        var unitObj = getUnitObj(type);
-
-        var title = `${Elkaisar.World.UnitTypeData[type].Title}  مستوى ${getArabicNumbers(lvl)}`;
-
-        var desc = reviewBox.descForBarray(type, lvl);
-        var box = reviewBox.getSmallBox(x_coord, y_coord, type, title, desc, lvl, state, `images/world/snap-shot/${Elkaisar.World.UnitTypeData[type].WSnapShoot}`);
-        $("#unit_review").remove();
-        $("body").append(box);
-        addRemainBarryData(x_coord, y_coord);
-
-
-
-    } 
+    if (WorldUnit.isEmpty(type))
+        Elkaisar.World.Map.OnEmptyUnitClick(unit);
+    else if (WorldUnit.isBarrary(type))
+        Elkaisar.World.Map.onBarrayClicked(unit);
     else if (WorldUnit['isSeaCity'](type)) {
-        //x_coord , y_coord , type ,title, desc , lvl , state , snap_shoot
-        var Box = reviewBox.getSmallBox(x_coord, y_coord, type, Elkaisar['World']['UnitTypeData'][type]['Title'], Elkaisar['World']['UnitTypeData'][type]['Desc'], lvl, state, 'images/world/snap-shot/' + Elkaisar['World']['UnitTypeData'][type]['WSnapShoot']);
-        $('#unit_review')['remove'](), $('body')['append'](Box);
-    } 
-    else if (WorldUnit.isCity(type)) {   // review bo for city
-
-        $.ajax({
-
-            url: "api/city.php",
-            data: {
-                get_data_by_coords: true,
-                x_coord: x_coord,
-                y_coord: y_coord,
-                id_player: ID_PLAYER,
-                token: TOKEN
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-
-            },
-            success: function (data, textStatus, jqXHR) {
-
-                if (isJson(data)) {
-
-                    var json_data = JSON.parse(data);
-
-                } else {
-
-                    alert(data);
-                    console.log(data);
-                    return;
-
-                }
-
-                var lvl_ = lvl ? lvl : 0;
-
-                var title = json_data.name;
-
-                WorldCurrentUnit.__id_guild = json_data.id_guild;
-                WorldCurrentUnit.__id_city = json_data.id_city;
-                WorldCurrentUnit.__id_player = json_data.id_player;
-                WorldCurrentUnit.__player_name = json_data.p_name;
-                WorldCurrentUnit.__guild_name = json_data.guild;
-
-                var desc = reviewBox.descForCity(json_data.p_name, json_data.prestige, json_data.guild);
-
-                var box = reviewBox.getSmallBox(x_coord, y_coord,
-                        type, title, desc, lvl,
-                        WorldCurrentUnit.__state,
-                        PLAYER_FACES[json_data.avatar]);
-
-                $("#unit_review").remove();
-                $("body").append(box);
-
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(errorThrown)
-            }
-        });
-    }
-    else {
-
-        campDB.showDialogBox(x_coord, y_coord);
-        $("#camp-over-view-desc").niceScroll(SCROLL_BAR_PROP);
-
-        WorldUnit.refreshUnitData(x_coord, y_coord).done(function (data) {
-
-            if (isJson(data)) {
-                var jsonData = JSON.parse(data);
-                WorldUnit.getWorldUnit(x_coord, y_coord).l = jsonData.l;
-            } else {
-                alert(data);
-                return;
-            }
-            campDB.equipRow(jsonData.equip);
-            campDB.armyRow(jsonData.hero);
-            
-            $('#lvlChangableUnit')['html'](campDB['armyContainer'](x_coord, y_coord));
-            
-            if (Number(jsonData.l) > Elkaisar.World.UnitTypeData[type].maxLvl) {
-                return;
-            } else if (!Elkaisar.World.UnitData.isAttackable(type)) {
-                return;
-            } else if (Number(jsonData.lo) === 1) {
-                return;
-            } else {
-                $("#JOIN_ATTACK").removeAttr("disabled");
-                $("#START_ATTACK").removeAttr("disabled");
-            }
+       Elkaisar.World.Map.OnSeaCityClicked(unit);
+    } else if (WorldUnit.isCity(type)) 
+        Elkaisar.World.Map.OnCityClicked(unit);
+    else 
+        Elkaisar.World.Map.OnOtherUnitClicked(unit);
 
 
-
-
-        });
-    }
-
-
-    if (WorldUnit['isDominatable'](type)) campDB['getDominaterName'](x_coord, y_coord);
+    if (WorldUnit['isDominatable'](type))
+        campDB.getDominaterName(x_coord, y_coord);
 }
 
 
@@ -29651,7 +31083,7 @@ function uniteMapClick(x_coord, y_coord)
 
 function canBuildNewCity(x_coord, y_coord)
 {
-    var city_counts = Object.keys(Elkaisar.DPlayer.City).length
+    var city_counts = Object.keys(Elkaisar.DPlayer.City).length;
     if (!WorldUnit.isEmpty(WorldUnit.getWorldUnit(x_coord, y_coord).ut)) {
         return false;
     } else if (Number(Elkaisar.CurrentCity.City.food) < Math.pow(10, city_counts + 3)) {
@@ -29733,7 +31165,7 @@ var reviewBox = {
                             </div>
                         </div>
                         <div class="footer">
-                            ${this.footer(type)}
+                            ${this.footer(x_coord, y_coord)}
                         </div>
                     </div>`;
         return box;
@@ -29744,28 +31176,28 @@ var reviewBox = {
                     زيادة انتاج ${getUnitObj(type).prod} بمقدار ${getArabicNumbers(3 * lvl)}% فى مديتك
                </p>`;
     },
-    descForCity: function (p_name, prestige, union) {
+    descForCity: function (JsonData) {
 
 
 
         var desc = `<div class="name bg-btn-blu">
                         <h1>
-                            ${p_name}
+                            ${JsonData.PlayerName}
                         </h1>
                         <div class="msg_icon">
-                            ${Number(WorldCurrentUnit.__id_player) === Number(Elkaisar.DPlayer.Player.id_player) ? "" :
+                            ${Number(JsonData.id_player) === Number(Elkaisar.DPlayer.Player.id_player) ? "" :
                 `<img src="images/tech/message_icon.png" 
-                                        id="mail-player-from-world" data-id-player="${WorldCurrentUnit.__id_player}"
-                                        data-player-name="${WorldCurrentUnit.__player_name}"/>`}
+                                        id="mail-player-from-world" data-id-player="${JsonData.id_player}"
+                                        data-player-name="${JsonData.PlayerName}"/>`}
                         </div>
                     </div>
                     <table class="player-table-data">
                         <tr>
-                            <td>${getArabicNumbers(prestige)}</td>
+                            <td>${getArabicNumbers(JsonData.prestige)}</td>
                             <td>البرستيج</td>
                         </tr>
                         <tr>
-                            <td>${union}</td>
+                            <td>${JsonData.GuildName}</td>
                             <td>الاتحاد</td>
                         </tr>
                         <tr>
@@ -29775,17 +31207,17 @@ var reviewBox = {
                     </table>`;
         return desc;
     },
-    footer: function (type) {
+    footer: function (xCoord, yCoord) {
 
         var recource_supply = "";
-
+        const Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
         for (var ii in Elkaisar.DPlayer.City)
         {
 
             var CCity = Elkaisar.DPlayer.City[ii];
-            if (Number(CCity.City.x) !== Number(WorldCurrentUnit.coord_x))
+            if (Number(CCity.City.x) !== Number(xCoord))
                 continue;
-            if (Number(CCity.City.y) !== Number(WorldCurrentUnit.coord_y))
+            if (Number(CCity.City.y) !== Number(xCoord))
                 continue;
 
             return ` <ul id="footer_bar">
@@ -29802,7 +31234,7 @@ var reviewBox = {
 
         }
 
-        if (WorldUnit.isCity(type)) {
+        if (WorldUnit.isCity(Unit.ut)) {
 
             recource_supply = ` <li data-type="${Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY}">
                                         <img src="images/icons/war-icon/resource-supply.png"/> 
@@ -29810,7 +31242,7 @@ var reviewBox = {
 
         }
 
-        if (Number(WorldCurrentUnit.__id_guild) === Number(Elkaisar.DPlayer.Player.id_guild) && !isNaN(Elkaisar.DPlayer.Player.id_guild)) {
+        if (Number(Unit.idGuild) === Number(Elkaisar.DPlayer.Player.id_guild) && !isNaN(Elkaisar.DPlayer.Player.id_guild)) {
 
             return `<ul id="footer_bar">
                         <li data-type="${Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPORT}">
@@ -30157,239 +31589,6 @@ $(document).on("click", ".close_RB img", function () {
 
 
 
-
-/*$(document).on("click", "#smallMap-icon img", function () {
-
-    var myCityIcons = "";
-
-    for (var iii in Elkaisar.DPlayer.City) {
-
-        myCityIcons += `
-                         <lable type="18" style="background-image: url(images/world/map-icon/myCity.png); width:20px; height:20px; left: ${Elkaisar.DPlayer.City[iii].City.x}px; top: ${Elkaisar.DPlayer.City[iii].City.y}px"></lable>`;
-
-    }
-
-    var smallMap = `<div id="smallMap">
-                        <img src="images/world/smallMap.jpg"/>
-                        <div id="smallMap_close">
-                            <img src="images/btns/close_b.png"/>
-                        </div>
-                        <div class="overMap">
-                            <div id="CURRENT_CURSOR_COORDS"></div>
-                            <lable type="${WUT_CAMP_ASIANA}" style="background-image: url(images/world/ratterCastle.png); left: 78px; top: 300px"></lable>
-                            <lable type="${WUT_CAMP_BRITONS}" style="background-image: url(images/world/ratterCastle.png); left: 88px; top: 444px"></lable>
-                            <lable type="${WUT_CAMP_CARTHAGE}" style="background-image: url(images/world/ratterCastle.png); left: 106px;top: 19px"></lable>
-                            <lable type="${WUT_CAMP_EGYPT}" style="background-image: url(images/world/ratterCastle.png); left: 136px;top: 160px"></lable>
-                            <lable type="${WUT_CAMP_GAULS}" style="background-image: url(images/world/ratterCastle.png); left: 246px;top: 111px"></lable>
-                            <lable type="${WUT_CAMP_HISPANIA}" style="background-image: url(images/world/ratterCastle.png); left: 266px;top: 245px"></lable>
-                            <lable type="${WUT_CAMP_ITALIA}" style="background-image: url(images/world/ratterCastle.png); left: 316px;top: 450px"></lable>
-                            <lable type="${WUT_CAMP_MACEDON}" style="background-image: url(images/world/ratterCastle.png); left: 392px;top: 213px"></lable>
-                            <lable type="${WUT_CAMP_PARTHIA}" style="background-image: url(images/world/ratterCastle.png); left: 407px;top: 66px"></lable>
-                            <lable type="${WUT_CAMP_REICH}" style="background-image: url(images/world/ratterCastle.png); left: 427px;top: 337px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 30px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 170px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 310px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 20px;top: 470px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 60px;top: 100px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 60px;top: 230px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 60px;top: 390px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 30px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 170px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 310px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 100px;top: 470px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 140px;top: 100px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 140px;top: 230px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 140px;top: 390px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 30px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 170px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 310px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 180px;top: 470px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 220px;top: 100px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 220px;top: 230px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 220px;top: 390px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 30px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 170px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 310px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 260px;top: 470px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 300px;top: 230px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 300px;top: 390px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 30px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 170px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 310px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 340px;top: 470px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 380px;top: 100px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 380px;top: 230px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 380px;top: 390px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 30px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 170px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 310px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 420px;top: 470px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 460px;top: 100px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 460px;top: 230px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 460px;top: 390px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 30px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 170px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 310px"></lable>
-                            <lable type="${WUT_MONAWRAT}" style="background-image: url(images/world/npcCastle.png); left: 490px;top: 470px"></lable>
-    
-    
-    
-    
-    
-    
-    
-                            <lable type="${WUT_FRONT_SQUAD}" style="background-image: url(images/world/map-icon/dr.png); left: 464px;top:  93px"></lable>
-                            <lable type="${WUT_FRONT_SQUAD}" style="background-image: url(images/world/map-icon/dr.png); left: 463px;top:  86px"></lable>
-                            <lable type="${WUT_FRONT_BAND}" style="background-image: url(images/world/map-icon/dr.png); left: 447px;top:  72px"></lable>
-                            <lable type="${WUT_FRONT_BAND}" style="background-image: url(images/world/map-icon/dr.png); left: 450px;top:  69px"></lable>
-                            <lable type="${WUT_FRONT_SQUADRON}" style="background-image: url(images/world/map-icon/dr.png); left: 432px;top:  52px"></lable>
-                            <lable type="${WUT_FRONT_SQUADRON}" style="background-image: url(images/world/map-icon/dr.png); left: 434px;top:  56px"></lable>
-                            <lable type="${WUT_FRONT_DIVISION}" style="background-image: url(images/world/map-icon/dr.png); left: 417px;top:  39px"></lable>
-                            <lable type="${WUT_FRONT_DIVISION}" style="background-image: url(images/world/map-icon/dr.png); left: 412px;top:  37px"></lable>
-                            <lable type="${WUT_ARMY_LIGHT_SQUAD}" style="background-image: url(images/world/map-icon/dr.png); left: 470px;top:  76px"></lable>
-                            <lable type="${WUT_ARMY_LIGHT_SQUAD}" style="background-image: url(images/world/map-icon/dr.png); left: 473px;top:  72px"></lable>
-                            <lable type="${WUT_ARMY_LIGHT_BAND}" style="background-image: url(images/world/map-icon/dr.png); left: 458px;top:  62px"></lable>
-                            <lable type="${WUT_ARMY_LIGHT_BAND}" style="background-image: url(images/world/map-icon/dr.png); left: 456px;top:  58px"></lable>
-                            <lable type="${WUT_ARMY_LIGHT_SQUADRON}" style="background-image: url(images/world/map-icon/dr.png); left: 445px;top:  48px"></lable>
-                            <lable type="${WUT_ARMY_LIGHT_SQUADRON}" style="background-image: url(images/world/map-icon/dr.png); left: 442px;top:  47px"></lable>
-                            <lable type="${WUT_ARMY_LIGHT_DIVISION}" style="background-image: url(images/world/map-icon/dr.png); left: 427px;top:  33px"></lable>
-                            <lable type="${WUT_ARMY_LIGHT_DIVISION}" style="background-image: url(images/world/map-icon/dr.png); left: 431px;top:  30px"></lable>
-                            <lable type="${WUT_ARMY_HEAVY_SQUAD}" style="background-image: url(images/world/map-icon/dr.png); left: 475px;top:  57px"></lable>
-                            <lable type="${WUT_ARMY_HEAVY_SQUAD}" style="background-image: url(images/world/map-icon/dr.png); left: 479px;top:  60px"></lable>
-                            <lable type="${WUT_ARMY_HEAVY_BAND}" style="background-image: url(images/world/map-icon/dr.png); left: 467px;top:  47px"></lable>
-                            <lable type="${WUT_ARMY_HEAVY_BAND}" style="background-image: url(images/world/map-icon/dr.png); left: 465px;top:  49px"></lable>
-                            <lable type="${WUT_ARMY_HEAVY_SQUADRON}" style="background-image: url(images/world/map-icon/dr.png); left: 453px;top:  37px"></lable>
-                            <lable type="${WUT_ARMY_HEAVY_SQUADRON}" style="background-image: url(images/world/map-icon/dr.png); left: 457px;top:  36px"></lable>
-                            <lable type="${WUT_ARMY_HEAVY_DIVISION}" style="background-image: url(images/world/map-icon/dr.png); left: 446px;top:  28px"></lable>
-                            <lable type="${WUT_ARMY_HEAVY_DIVISION}" style="background-image: url(images/world/map-icon/dr.png); left: 441px;top:  23px"></lable>
-                            <lable type="${WUT_GUARD_SQUAD}" style="background-image: url(images/world/map-icon/dr.png); left: 480px;top:  42px"></lable>
-                            <lable type="${WUT_GUARD_BAND}" style="background-image: url(images/world/map-icon/dr.png); left: 475px;top:  35px"></lable>
-                            <lable type="${WUT_GUARD_SQUADRON}" style="background-image: url(images/world/map-icon/dr.png); left: 464px;top:  26px"></lable>
-                            <lable type="${WUT_GUARD_DIVISION}" style="background-image: url(images/world/map-icon/dr.png); left: 458px;top:  20px"></lable>
-                            <lable type="${WUT_BRAVE_THUNDER}" style="background-image: url(images/world/map-icon/dr.png); left: 478px;top:  21px"></lable>
- 
-                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 44px;top:  465px"></lable>
-                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 353px;top:  233px"></lable>
-                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 284px;top:  141px"></lable>
-                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 281px;top:  299px"></lable>
-                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 264px;top:  458px"></lable>
-                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 367px;top:  87px"></lable>
-                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 122px;top:  154px"></lable>
-                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 74px; top:  33px"></lable>
-                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 74px; top:  326px"></lable>
-                            <lable type="49" style="background-image: url(images/world/map-icon/p33.png); left: 472px;top:  379px"></lable>
-    
-                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 363px;top: 76px"></lable>
-                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 354px;top: 233px"></lable>
-                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 59px;top:  456px"></lable>
-                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 467px;top: 370px"></lable>
-                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 282px;top: 297px"></lable>
-                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 77px;top:  33px"></lable>
-                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 262px;top: 459px"></lable>
-                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 261px;top: 137px"></lable>
-                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 136px;top: 158px"></lable>
-                            <lable type="50" style="background-image: url(images/world/map-icon/p33.png); left: 75px;top:  325px"></lable>
-    
-                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 474px;top:  378px"></lable>
-                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 135px;top:  157px"></lable>
-                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 352px;top:  237px"></lable>
-                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 286px;top:  296px"></lable>
-                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 259px;top:  136px"></lable>
-                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 286px;top:  296px"></lable>
-                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 135px;top:  157px"></lable>
-                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 259px;top:  136px"></lable>
-                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 260px;top:  458px"></lable>
-                            <lable type="51" style="background-image: url(images/world/map-icon/p33.png); left: 474px;top:  378px"></lable>
-    
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 66px; top:  470px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 220px;top:  463px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 187px;top:  493px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 133px;top:  410px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 58px; top:  452px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 136px;top:  450px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 50px; top:  433px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 150px;top:  433px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 44px; top:  472px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 159px;top:  408px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 32px; top:  495px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 28px; top:  489px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 24px; top:  429px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 11px; top:  400px"></lable>
-                            <lable type="52" style="background-image: url(images/world/map-icon/p33.png); left: 79px; top:  490px"></lable>
-    
-    
-                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 1px;   top:  380px"></lable>
-                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 16px;  top:  380px"></lable>
-                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 47px;  top:  486px"></lable>
-                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 57px;  top:  410px"></lable>
-                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 64px;  top:  470px"></lable>
-                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 73px;  top:  483px"></lable>
-                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 81px;  top:  425px"></lable>
-                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 86px;  top:  429px"></lable>
-                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 104px; top:  469px"></lable>
-                            <lable type="53" style="background-image: url(images/world/map-icon/p33.png); left: 109px; top:  440px"></lable>
-    
-                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 40px;  top:  412px"></lable>
-                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 67px;  top:  395px"></lable>
-                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 80px;  top:  469px"></lable>
-                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 83px;  top:  418px"></lable>
-                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 85px;  top:  428px"></lable>
-                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 85px;  top:  461px"></lable>
-                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 95px;  top:  418px"></lable>
-                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 99px;  top:  392px"></lable>
-                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 120px; top:  450px"></lable>
-                            <lable type="54" style="background-image: url(images/world/map-icon/p33.png); left: 132px; top:  448px"></lable>
-    
-                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 80px;  top:  460px"></lable>
-                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 88px;  top:  448px"></lable>
-                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 90px;  top:  476px"></lable>
-                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 94px;  top:  463px"></lable>
-                            <lable type="55" style="background-image: url(images/world/map-icon/p33.png); left: 104px; top:  483px"></lable>
-    
-                            <lable type="56" style="background-image: url(images/world/map-icon/p33.png); left: 103px; top:  447px"></lable>
-                            
-                            <lable type="100" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 235px; top:  125px"></lable>
-                            <lable type="101" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 140px; top:  170px"></lable>
-                            <lable type="102" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 400px; top:  230px"></lable>
-                            <lable type="103" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 255px; top:  266px"></lable>
-                            <lable type="104" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 80px;  top:  280px"></lable>
-                            <lable type="105" style="background-image: url(images/world/map-icon/army-capital.png); width:15px; height:15px; left: 400px; top:  340px"></lable>
-                            
-                            
-                            <lable type="125" style="background-image: url(images/world/map-icon/arena.png); width:15px; height:15px; left: 249px; top:  247px"></lable>
-    
-                            <lable type="130" style="background-image: url(images/world/map-icon/matchNpc.png); left: 300px; top:  100px"></lable>
-                            <lable type="131" style="background-image: url(images/world/map-icon/matchNpc.png); left: 300px; top:   90px"></lable>
-                            <lable type="132" style="background-image: url(images/world/map-icon/matchNpc.png); left: 300px; top:   80px"></lable>
-                            <lable type="134" style="background-image: url(images/world/map-icon/occupy.png); left: 280px; top:  100px"></lable>
-                            <lable type="135" style="background-image: url(images/world/map-icon/occupy.png); left: 280px; top:   90px"></lable>
-                            <lable type="136" style="background-image: url(images/world/map-icon/occupy.png); left: 280px; top:   80px"></lable>
-    
-                            <lable type="150" style="background-image: url(images/world/map-icon/npcBlue.png); left: 320px; top:  410px"></lable>
-                            <lable type="151" style="background-image: url(images/world/map-icon/npcBlue.png); left: 330px; top:   410px"></lable>
-                            <lable type="152" style="background-image: url(images/world/map-icon/npcBlue.png); left: 340px; top:   410px"></lable>
-                            <lable type="153" style="background-image: url(images/world/map-icon/ratterCastle1.png); left: 320px; top:  420px"></lable>
-                            <lable type="154" style="background-image: url(images/world/map-icon/ratterCastle1.png); left: 330px; top:   420px"></lable>
-                            <lable type="155" style="background-image: url(images/world/map-icon/ratterCastle1.png); left: 340px; top:   420px"></lable>
-    
-                            
-                            ${myCityIcons}
-                            
-                        </div>
-                    </div>`;
-
-    if ($("#smallMap").length > 0) {
-
-    } else {
-        $("body").append(smallMap);
-    }
-
-    CURRENT_CURSOR_COORDS = $("#CURRENT_CURSOR_COORDS");
-
-});
-*/
-
-
 $(document)['on']('click', '#smallMap-icon img', function () {
     var CityIcons = '';
     for (var idCity in Elkaisar['DPlayer']['City']) {
@@ -30611,7 +31810,9 @@ $(document)['on']('click', '#smallMap-icon img', function () {
                             
                         </div>
                     </div>`;
-    if ($('#smallMap')['length'] > 0x0) {} else $('body')['append'](Map);
+    if ($('#smallMap')['length'] > 0x0) {
+    } else
+        $('body')['append'](Map);
     CURRENT_CURSOR_COORDS = $('#CURRENT_CURSOR_COORDS');
 });
 
@@ -30802,55 +32003,45 @@ $(document).on("click", "#mail-player-from-world", function () {
 
 
 
-function addRemainBarryData(x_coord, y_coord)
+function addRemainBarryData(xCoord, yCoord)
 {
     $.ajax({
-        url: "api/world.php",
+        url:   `${API_URL}/api/AWorld/getBarrayConolizer`,
         data: {
-            GET_EMAIN_BARRY_DATA: true,
-            x_coord: WorldCurrentUnit.coord_x,
-            y_coord: WorldCurrentUnit.coord_y,
-            id_player: ID_PLAYER,
-            token: TOKEN
+            xCoord: xCoord,
+            yCoord: yCoord,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
         type: 'GET',
         beforeSend: function (xhr) {
-            $("#unit_review .prize-list ul").html(WorldUnit.prize.prizeList(x_coord, y_coord));
+            $("#unit_review .prize-list ul").html(WorldUnit.prize.prizeList(xCoord, yCoord));
         },
         success: function (data, textStatus, jqXHR) {
-
-            if (isJson(data)) {
-
-                var json_data = JSON.parse(data);
-
-            } else {
-
-                console.log(data);
-                alert(data);
-                return;
-
-            }
-
-            if (!json_data) {
-                return;
-            }
-
+            
+            if(!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            
+            const JsonObject = JSON.parse(data);
+            if(JsonObject.length ==  0)
+                return ;
+            
             var under_desc = `  <ul>
                                     <li> 
                                         <label>المدينة :</label>
-                                        <span>${json_data.c_name}</span>
+                                        <span>${JsonObject[0].CityName}</span>
                                     </li>
                                     <li> 
                                         <label>الاحداثيات :</label>
-                                        <span>${json_data.x} , ${json_data.y}</span>
+                                        <span>${JsonObject[0].x} , ${JsonObject[0].y}</span>
                                     </li>
                                     <li> 
                                         <label>الملك :</label>
-                                        <span>${json_data.p_name}</span>
+                                        <span>${JsonObject[0].PlayerName}</span>
                                     </li>
                                     <li> 
                                         <label>${Translate.Button.Chat.League[UserLag.language]} : </label>
-                                        <span>${json_data.guild}</span>
+                                        <span>${JsonObject[0].GuildName}</span>
                                     </li>
                                 </ul>`;
             $("#unit_review .under-desc").html(under_desc);
@@ -30974,11 +32165,11 @@ WorldUnit['prize']['prizeAllLvlsList'] = function (xCoord, yCoord, prizeFor = 'W
 $(document).on("PlayerReady", "html", function () {
     WorldUnit.prize.getAllPrize();
 });Elkaisar.World.Map.posX = function (xCoord, yCoord) {
-    return xCoord * 64 - yCoord * 64;
+    return  xCoord * 64 - yCoord * 64;
 };
 
 Elkaisar.World.Map.posY = function (xCoord, yCoord) {
-    return xCoord * 32 + yCoord * 32;
+    return  xCoord * 32 + yCoord * 32;
 };
 
 
@@ -30996,9 +32187,7 @@ Elkaisar.World.Map.heightInTile = function () {
     return Math.ceil(Elkaisar.MAX_SCREEN_HEIGHT / 64);
 };
 
-Elkaisar.World.Map.posY = function (xCoord, yCoord) {
-    return xCoord * 32 + yCoord * 32;
-};
+
 
 Elkaisar.World.Map.realCoord = function (coord) {
     return (500 * 500 + Number(coord)) % 500;
@@ -31017,1651 +32206,25 @@ Elkaisar.World.Map.getEntity = function (xCoord, yCoord) {
 
     var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
 
-    if (WorldUnit.isRiver(Unit.ut) || WorldUnit.isEmpty(Unit.ut) || (Unit.ut) === WUT_BUSY_UNIT) {
-        return Crafty.e("2D, Canvas , Mouse , WorldUnit, worldEnt").attr({_w: 128, _h: 128});
-    }
-
-    if(!Elkaisar.World.UnitTypeData[Unit.ut])
-        console.log(Unit)
-    return Crafty.e(`2D, Canvas, ${Elkaisar.World.UnitTypeData[Unit.ut].tileName}, Mouse , WorldUnit, worldEnt`);
-
-};
-Elkaisar.World.UnitData = {
-
-    "0": {
-
-        snapShoot: "river_3.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [64, 64, 128, 96, 64, 128, 0, 96],
-        tileName: {"0": "floor"},
-        getTitle: (x_coord, y_coord) => {
-            return "مكان خالى";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "1": {
-        snapShoot: "river_3.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [64, 64, 128, 96, 64, 128, 0, 96],
-        tileName: {"0": "river_1"},
-        getTitle: (x_coord, y_coord) => {
-            return "بحيرة";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "17": {
-        snapShoot: "river_3.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [112, 95, 70, 118, 23, 92, 65, 70],
-        tileName: {"0": "city_0"},
-        getTitle: (x_coord, y_coord) => {
-            return "مدينة مستوى 1";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "18": {
-
-        snapShoot: "river_3.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [103, 78, 106, 100, 63, 118, 18, 98, 17, 83, 58, 56],
-        tileName: {"0": "city_1"},
-        getTitle: (x_coord, y_coord) => {
-            return "مدينة مستوى 2";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "19": {
-
-        snapShoot: "river_3.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [105, 72, 107, 100, 63, 125, 15, 97, 21, 72, 61, 50],
-        tileName: {"0": "city_2"},
-        getTitle: (x_coord, y_coord) => {
-            return "مدينة مستوى 3";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "20": {
-
-        snapShoot: "river_3.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {"0": "city_3"},
-        getTitle: (x_coord, y_coord) => {
-            return "مدينة مستوى 4";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "21": {
-
-        snapShoot: "mountain_1.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [101, 94, 67, 115, 27, 96, 63, 72],
-        tileName: {1: "m_1", 2: "m_2", 3: "m_3", 4: "m_4"},
-        getTitle: (x_coord, y_coord) => {
-            return "هضبة";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "22": {
-
-        snapShoot: "mountain_2.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [123, 96, 67, 123, 12, 96, 49, 66, 74, 52],
-        tileName: {5: "m_5", 6: "m_6", 7: "m_7"},
-        getTitle: (x_coord, y_coord) => {
-            return "جبل";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "23": {
-
-        snapShoot: "mountain_3.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [119, 92, 70, 122, 11, 90, 61, 27, 88, 31],
-        tileName: {8: "m_8", 9: "m_9", 10: "m_10"},
-        getTitle: (x_coord, y_coord) => {
-            return "جبال";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "24": {
-
-        snapShoot: "desert_1.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [65, 67, 20, 91, 73, 118, 105, 92],
-        tileName: {1: "d_1", 2: "d_2", 3: "d_3", 4: "d_4"},
-        getTitle: (x_coord, y_coord) => {
-            return "رمال";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "25": {
-
-        snapShoot: "desert_2.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [112, 98, 60, 120, 15, 96, 60, 72, 86, 66],
-        tileName: {5: "d_5", 6: "d_6", 7: "d_7"},
-        getTitle: (x_coord, y_coord) => {
-            return "صحراء";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "26": {
-
-        snapShoot: "desert_3.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [119, 97, 62, 120, 19, 95, 41, 77, 47, 56, 86, 58],
-        tileName: {8: "d_8", 9: "d_9", "10": "d_10"},
-        getTitle: (x_coord, y_coord) => {
-            return "صحراء";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "27": {
-
-        snapShoot: "wood_1.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [63, 72, 90, 83, 92, 97, 67, 112, 39, 99, 47, 84],
-        tileName: {1: "w_1", 2: "w_2", 3: "w_3", 4: "w_4"},
-        getTitle: (x_coord, y_coord) => {
-            return "احراش";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "28": {
-
-        snapShoot: "wood_2.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [64, 64, 106, 86, 109, 101, 66, 122, 27, 97, 33, 80],
-        tileName: {5: "w_5", 6: "w_6", 7: "w_7"},
-        getTitle: (x_coord, y_coord) => {
-            return "اخشاب";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "29": {
-
-        snapShoot: "wood_3.png",
-        desc: null,
-        maxLvl: 0,
-        prom_lvl: 0,
-        fitness: 0,
-        make_req: [],
-        join_req: [],
-        hitArea: [62, 48, 116, 77, 120, 97, 65, 127, 15, 100, 16, 74],
-        tileName: {8: "w_8", 9: "w_9", 10: "w_10"},
-        getTitle: (x_coord, y_coord) => {
-            return "غابات";
-        },
-        timeNextRest: () => {
-            return null;
-        }
-
-    },
-    "30": {
-        snapShoot: "monwrat.png",
-        ar_title: "مناورات",
-        prom_title: "مواطن",
-        prom_lvl: 0,
-        fitness: 40,
-        make_req: ["necklace_4"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "مناورات";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-        maxLvl: 50,
-        hitArea: [64, 0, 128, 32, 128, 96, 64, 128, 0, 96, 0, 32],
-        tileName: {0: "mnawrat"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-
-    },
-    "31": {
-        snapShoot: "camps.png",
-        ar_title: "معسكرات",
-        prom_title: "مواطن",
-        prom_lvl: 0,
-        fitness: 40,
-        make_req: ["necklace_4"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            if (x_coord === 136 && y_coord === 160) {
-                return `المعسكر الفرنسى المتمرد`;
-            } else if (x_coord === 407 && y_coord === 66) {
-                return `المعسكر الاسيوى المتمرد`;
-            } else if (x_coord === 106 && y_coord === 19) {
-                return `المعسكر البريطانى المتمرد`;
-            } else if (x_coord === 392 && y_coord === 213) {
-                return `المعسكر المقدونى المتمرد`;
-            } else if (x_coord === 266 && y_coord === 245) {
-                return `المعسكر الايطالى المتمرد`;
-            } else if (x_coord === 78 && y_coord === 300) {
-                return `المعسكر الاسبانى المتمرد`;
-            } else if (x_coord === 427 && y_coord === 337) {
-                return `المعسكر الفارسى المتمرد`;
-            } else if (x_coord === 316 && y_coord === 450) {
-                return `المعسكر المصرى المتمرد`;
-            } else if (x_coord === 88 && y_coord === 444) {
-                return `المعسكر القرطاجى المتمرد`;
-            } else if (x_coord === 246 && y_coord === 111) {
-                return `المعسكر الالمانى المتمرد`;
-            }
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 50,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "city_4"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "32": {
-        snapShoot: "front_squad.png",
-        ar_title: "الفرقة الامامية",
-        prom_lvl: 3,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        getTitle: function (x_coord, y_coord) {
-            return "الفرقة الامامية";
-        },
-        maxLvl: 40,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "front_squad"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "33": {
-        snapShoot: "front_squad.png",
-        ar_title: "السرية الامامية",
-        prom_lvl: 3,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        getTitle: function (x_coord, y_coord) {
-            return "السرية الامامية";
-        },
-        maxLvl: 40,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "front_band"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "34": {
-        snapShoot: "front_band.png",
-        ar_title: "الجماعة الامامية",
-        prom_lvl: 3,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        getTitle: function (x_coord, y_coord) {
-            return "الجماعة الامامية";
-        },
-        maxLvl: 40,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "front_squadron"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "35": {
-        snapShoot: "front_division.png",
-        ar_title: "الكتيبة الامامية",
-        prom_lvl: 3,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "الكتيبة الامامية";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 40,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "front_division"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "36": {
-        snapShoot: "armed_light_squad.png",
-        ar_title: "فرقة التسليح الخفيف",
-        prom_lvl: 10,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "فرقة التسليح الخفيف";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 30,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "armed_light_squad"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "37": {
-        snapShoot: "armed_light_band.png",
-        ar_title: "سرية التسليح الخفيف",
-        prom_lvl: 10,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "سرية التسليح الخفيف";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 30,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "armed_light_band"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "38": {
-        snapShoot: "armed_light_squadron.png",
-        ar_title: "جماعة التسليح الخفيف",
-        prom_lvl: 10,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "جماعة التسليح الخفيف";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 30,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "armed_light_squadron"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "39": {
-        snapShoot: "armed_light_division.png",
-        ar_title: "كتيبة التسليح الخفيف",
-        prom_lvl: 10,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "كتيبة التسليح الخفيف";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 30,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "armed_light_division"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "40": {
-        snapShoot: "armed_heavy_squad.png",
-        ar_title: "فرقة التسليح الثقيل",
-        prom_lvl: 20,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "فرقة التسليح الثقيل";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 20,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "armed_heavy_squad"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "41": {
-        snapShoot: "armed_heavy_band.png",
-        ar_title: "سرية التسليح الثقيل",
-        prom_lvl: 20,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "سرية التسليح الثقيل";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 20,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "armed_heavy_band"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "42": {
-        snapShoot: "armed_heavy_squadron.png",
-        ar_title: "جماعة التسليح الثقيل",
-        prom_lvl: 20,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "جماعة التسليح الثقيل";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 20,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "armed_heavy_squadron"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "43": {
-        snapShoot: "armed_heavy_division.png",
-        ar_title: "كتيبة التسليح الثقيل",
-        prom_lvl: 20,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "كتيبة التسليح الثقيل";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 20,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "armed_heavy_division"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "44": {
-        snapShoot: "guard_squad.png",
-        ar_title: "فرقة الحراسة",
-        prom_lvl: 25,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "فرقة الحراسة";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 20,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "guard_squad"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "45": {
-        snapShoot: "guard_band.png",
-        ar_title: "سرية الحراسة",
-        prom_lvl: 25,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "سرية الحراسة";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 20,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "guard_band"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "46": {
-        snapShoot: "guard_squadron.png",
-        ar_title: "جماعة الحراسة",
-        prom_lvl: 25,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "جماعة الحراسة";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 20,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "guard_squadron"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "47": {
-        snapShoot: "guard_division.png",
-        ar_title: "كتيبة الحراسة",
-        prom_lvl: 25,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "كتيبة الحراسة";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 20,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "guard_division"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "48": {
-        snapShoot: "thunder.png",
-        ar_title: "الساندرز",
-        prom_lvl: 29,
-        fitness: 40,
-        make_req: ["truce_pack"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "الساندرز الشجاع";
-        },
-        desc: `
-            مرحبا بكم في فتح باب الدم. ثق بي ، هذه مجرد البداية.
-
-            بعد سلسلة من الحروب الطويلة ، أصبحت قوة قوات المتمردين في الجمهورية الرومانية أضعف وأضعف.
-             النجاح الكبير لا يرجع فقط إلى تصميم مجلس الشيوخ ، ولكن أيضًا يرتبط ارتباطًا وثيقًا باستراتيجية عسكرية جديدة وافق عليها جميع قضاة المقاطعات سابقًا.
-             وفقًا للاستراتيجية ، يلعب مجلس الشيوخ في الواقع لعبة القط والفأر مع المتمردين ، بهدف القضاء عليهم جميعًا في وقت واحد في المستقبل.
-             هنا تأتي الفرصة الآن. لقد جمع المتمردون أخيرًا في الشمال الشرقي شديد البرودة كما هو متوقع.
-             ومع ذلك ، فقد شكلوا مجموعة قوية للغاية تسمى محور الاستقلال وأعلنت Fearless Skullbearer كزعيم.
-              Fearless Skullbearer هو مقاتلة حديدية الوحد الذي يوحد الغشاشين ويلهم قوات المتمردين. 
-            مع نظر العالم إلى الشمال الشرقي للجمهورية الرومانية ، ينادي مجلس الشيوخ بهجوم عام ضد محور الاستقلال.`,
-
-        maxLvl: 10,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "brave_thunder"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "49": {
-        snapShoot: "gang.png",
-        ar_title: "العصابات",
-        prom_lvl: 1,
-        fitness: 20,
-        make_req: ["t_map"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "العصابات";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 2,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "gang"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "50": {
-        snapShoot: "mugger.png",
-        ar_title: "قطاع الطرق",
-        prom_lvl: 1,
-        fitness: 20,
-        make_req: ["t_map"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "قطاع الطريق";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 2,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "mugger"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "51": {
-        snapShoot: "thief.png",
-        ar_title: "اللصوص",
-        prom_lvl: 1,
-        fitness: 20,
-        make_req: ["t_map"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "اللصوص";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 2,
-        hitArea: [63, 37, 11, 60, 6, 94, 66, 126, 124, 100, 115, 66],
-        tileName: {0: "thief"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "52": {
-        snapShoot: "c_gang.png",
-        ar_title: "العصابات القرطاجية",
-        prom_lvl: 4,
-        fitness: 20,
-        make_req: ["repel_trumpet_1"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "العصابات القرطاجية";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [69, 110, 90, 101, 90, 69, 63, 53, 42, 64, 41, 97],
-        tileName: {0: "carthage_gang"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "53": {
-        snapShoot: "c_teams.png",
-        ar_title: "فرق العصيان القرطاجى",
-        prom_lvl: 1,
-        fitness: 30,
-        make_req: ["repel_trumpet_1"],
-        join_req: [""],
-        getTitle: function (x_coord, y_coord) {
-            return "فرق العصيان القرطاجى";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [63, 112, 97, 96, 94, 71, 65, 54, 35, 68, 34, 98],
-        tileName: {0: "carthage_teams"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "54": {
-        snapShoot: "c_rebels.png",
-        ar_title: "متمردى قرطاجة",
-        prom_lvl: 7,
-        fitness: 40,
-        make_req: ["repel_trumpet_2"],
-        join_req: ["repel_trumpet_2"],
-        getTitle: function (x_coord, y_coord) {
-            return "متمردى قرطاجة";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [69, 115, 104, 102, 97, 68, 61, 48, 34, 64, 31, 98],
-        tileName: {0: "carthage_rebels"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "55": {
-        snapShoot: "c_forces.png",
-        ar_title: "القوات الخاصة القرطاجية",
-        prom_lvl: 14,
-        fitness: 50,
-        make_req: ["repel_trumpet_2"],
-        join_req: ["repel_trumpet_2"],
-        getTitle: function (x_coord, y_coord) {
-            return "القوات الخاصة القرطاجية";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [67, 116, 110, 100, 101, 67, 69, 47, 31, 65, 29, 100],
-        tileName: {0: "carthage_forces"},
-        timeNextRest: function () {
-            return TimeRest.restEvery6();
-        }
-    },
-    "56": {
-        snapShoot: "c_capital.png",
-        ar_title: "عاصمة التمرد",
-        prom_lvl: 19,
-        fitness: 60,
-        make_req: ["repel_medal"],
-        join_req: ["repel_medal"],
-        getTitle: function (x_coord, y_coord) {
-            return "عاصمة التمرد";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [62, 116, 108, 97, 102, 67, 71, 46, 29, 64, 27, 98],
-        tileName: {0: "carthage_capital"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "100": {
-        snapShoot: "armyCapital.png",
-        ar_title: "عاصمة المشاة",
-        prom_lvl: 1,
-        fitness: 50,
-        make_req: ["warrior_medal"],
-        join_req: [],
-        hero_army_req: 1,
-        getTitle: function (x_coord, y_coord) {
-            return "عاصمة المشاة";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "army_capital"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "101": {
-        snapShoot: "armyCapital.png",
-        ar_title: "عاصمة الفرسان",
-        prom_lvl: 1,
-        fitness: 50,
-        hero_army_req: 2,
-        make_req: ["warrior_medal"],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "عاصمة الفرسان";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "army_capital"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "102": {
-        snapShoot: "armyCapital.png",
-        ar_title: "عاصمة المدرعين",
-        prom_lvl: 1,
-        fitness: 50,
-        hero_army_req: 3,
-        make_req: ["warrior_medal"],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "عاصمة المدرعين";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "army_capital"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "103": {
-        snapShoot: "armyCapital.png",
-        ar_title: "عاصمة رماة السهم",
-        prom_lvl: 1,
-        fitness: 50,
-        hero_army_req: 4,
-        make_req: ["warrior_medal"],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "عاصمة رماة السهم";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "army_capital"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "104": {
-        snapShoot: "armyCapital.png",
-        ar_title: "عاصمة المقاليعٍ",
-        prom_lvl: 1,
-        fitness: 50,
-        hero_army_req: 5,
-        make_req: ["warrior_medal"],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "عاصمة المقاليع";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "army_capital"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "105": {
-        snapShoot: "armyCapital.png",
-        ar_title: "عاصمة المنجنيق",
-        prom_lvl: 1,
-        fitness: 50,
-        hero_army_req: 6,
-        make_req: ["warrior_medal"],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "عاصمة المنجنيق";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "army_capital"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "125": {
-        snapShoot: "arena.png",
-        ar_title: "حلبة التحدى",
-        prom_lvl: 1,
-        fitness: 10,
-        make_req: [],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "حلبة التحدى";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "arena"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "126": {
-        snapShoot: "arena.png",
-        ar_title: "حلبة الموت",
-        prom_lvl: 1,
-        fitness: 10,
-        make_req: [],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "حلبة الموت";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "arena"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "127": {
-        snapShoot: "arena.png",
-        ar_title: "حلبة تحدى الاحلاف",
-        prom_lvl: 1,
-        fitness: 10,
-        make_req: [],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "حلبة تحدى الاحلاف";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "arena"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "130": {
-        snapShoot: "queenCityS.png",
-        ar_title: "الملكة الصغرى",
-        prom_lvl: 3,
-        fitness: 40,
-        make_req: ["bronze_horn"],
-        join_req: ["bronze_horn"],
-        getTitle: function (x_coord, y_coord) {
-            return "الملكة الصغرى";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "queenCity_1"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "131": {
-        snapShoot: "queenCityM.png",
-        ar_title: "الملكة الوسطى",
-        prom_lvl: 4,
-        fitness: 50,
-        make_req: ["silver_horn"],
-        join_req: ["silver_horn"],
-        getTitle: function (x_coord, y_coord) {
-            return "الملكة الصغرى";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "queenCity_2"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "132": {
-        snapShoot: "queenCityH.png",
-        ar_title: "الملكة الكبرى",
-        prom_lvl: 5,
-        fitness: 60,
-        make_req: ["gold_horn"],
-        join_req: ["gold_horn"],
-        getTitle: function (x_coord, y_coord) {
-            return "الملكة الصغرى";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "queenCity_3"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "134": {
-        snapShoot: "repleCastleS.png",
-        ar_title: "القلاع الصغرى",
-        prom_lvl: 3,
-        fitness: 40,
-        make_req: ["bronze_horn"],
-        join_req: ["bronze_horn"],
-        getTitle: function (x_coord, y_coord) {
-            return "القلاع الصغرى";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "repleCastle_1"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "135": {
-        snapShoot: "repleCastleM.png",
-        ar_title: "القلاع الوسطى",
-        prom_lvl: 4,
-        fitness: 50,
-        make_req: ["silver_horn"],
-        join_req: ["silver_horn"],
-        getTitle: function (x_coord, y_coord) {
-            return "القلاع الوسطى";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "repleCastle_2"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "136": {
-        snapShoot: "repleCastleH.png",
-        ar_title: "القلاع الكبرى",
-        prom_lvl: 5,
-        fitness: 60,
-        make_req: ["gold_horn"],
-        join_req: ["gold_horn"],
-        getTitle: function (x_coord, y_coord) {
-            return "القلاع الكبرى";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        hitArea: [81, 30, 39, 32, 26, 110, 62, 129, 106, 118],
-        tileName: {0: "repleCastle_3"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "150": {
-        snapShoot: "statueWar_1.png",
-        ar_title: "تمثال الحرب الاصغر",
-        prom_lvl: 29,
-        fitness: 100,
-        make_req: ["evil_army_pass"],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "تمثال الحرب الاصغر";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 75,
-        heroNum: 3,
-        techLvl: 10,
-        heroLvl: 255,
-        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
-        tileName: {0: "wolfStatue"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "151": {
-        snapShoot: "statueWar_2.png",
-        ar_title: "تمثال الحرب الاوسط",
-        prom_lvl: 29,
-        fitness: 100,
-        make_req: ["evil_army_pass"],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "تمثال الحرب الاوسط";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 50,
-        heroNum: 3,
-        techLvl: 10,
-        heroLvl: 255,
-        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
-        tileName: {0: "wolfStatue"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "152": {
-        snapShoot: "statueWar_3.png",
-        ar_title: "تمثال الحرب الاكبر",
-        prom_lvl: 5,
-        fitness: 60,
-        make_req: ["evil_army_pass"],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "تمثال الحرب الاكبر";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 25,
-        heroNum: 3,
-        techLvl: 10,
-        heroLvl: 255,
-        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
-        tileName: {0: "wolfStatue"},
-        timeNextRest: function () {
-            return TimeRest.restEvery12();
-        }
-    },
-    "153": {
-        snapShoot: "wolf_1.png",
-        ar_title: "مجموعة الذئب 1",
-        prom_lvl: 29,
-        fitness: 100,
-        make_req: ["evil_pass"],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "مجموعة الذئب 1";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        heroNum: 3,
-        techLvl: 10,
-        heroLvl: 255,
-        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
-        tileName: {0: "wolfStatue"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "154": {
-        snapShoot: "wolf_2.png",
-        ar_title: "مجموعة الذئب 2",
-        prom_lvl: 29,
-        fitness: 100,
-        make_req: ["evil_pass"],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "مجموعة الذئب 2";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        heroNum: 3,
-        techLvl: 10,
-        heroLvl: 255,
-        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
-        tileName: {0: "wolfStatue"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-    "155": {
-        snapShoot: "wolf_3.png",
-        ar_title: "مجموعة الذئب 3",
-        prom_lvl: 29,
-        fitness: 100,
-        make_req: ["evil_pass"],
-        join_req: [],
-        getTitle: function (x_coord, y_coord) {
-            return "مجموعة الذئب 3";
-        },
-        desc: `التخلي عن النضال عديمة الفائدة! أنا هنا لإنهاء حياتك السلمية.
-
-الجمهورية الرومانية تتعرض للهجوم من قبل              Skullbearer Fearless ويشارك اللوردات في المعركة مع قوات المتمردين.
-             وبالتالي لا يوجد عدد كاف من القوات للحفاظ على النظام في المدن.
-            في هذا الوقت ، تتعرض الثروة الشعبية للتهديد من قبل مجرمين مثل اللصوص وعصابات العصابات المتجولين وعصابات العصابات ،
-             وكلهم يختبئون في الجمهورية الرومانية لفترة طويلة. إنهم يقرعون ويقتلون السكان ، مما يجعل الناس يعانون.
-            أيضا ، يحرقون المنازل لإخراج الناس من المكان الذي يعيشون فيه ، مما يسبب عدم استقرار المجتمع.
-            الآن المواطنون الرومانيون يتوقون إلى الحياة السلمية وينتظرون المنقذ الذي يمكنه القضاء على الجرائم وتقديمهم إلى الحياة السعيدة السابقة.`,
-
-        maxLvl: 10,
-        heroNum: 3,
-        techLvl: 10,
-        heroLvl: 255,
-        hitArea: [33, 111, 56, 126, 85, 113, 78, 37, 53, 34],
-        tileName: {0: "wolfStatue"},
-        timeNextRest: function () {
-            return TimeRest.restEvery4();
-        }
-    },
-
-    isPromLvlOk: function (type) {
-        var camp = Elkaisar.World.UnitTypeData[type];
-        return (Elkaisar.DPlayer.Player.porm >= camp.reqProm);
-    },
-
-    isAttackable: function (type) {
-        var camp = Elkaisar.World.UnitTypeData[type];
-        for (var mat in camp.MakeReq) {
-            if (Matrial.getPlayerAmount(camp.MakeReq[mat].Item) < camp.MakeReq[mat].amount) {
-                return false;
-            }
-        }
-        return (Elkaisar.DPlayer.Player.porm >= camp.reqProm);
-    }
-
+    if (WorldUnit.isRiver(Unit.ut) || WorldUnit.isEmpty(Unit.ut) || (Unit.ut) == WUT_BUSY_UNIT) {
+        return Elkaisar.GE.WorldScene.add.rectangle(Elkaisar.World.Map.posX(xCoord, yCoord), Elkaisar.World.Map.posY(xCoord, yCoord), 128, 128).setOrigin(0, 0).setDepth(0);
+    } else if (WorldUnit.isWood(Unit.ut))
+        return Elkaisar.GE.WorldScene.add
+                .sprite(
+                        Elkaisar.World.Map.posX(xCoord, yCoord),
+                        Elkaisar.World.Map.posY(xCoord, yCoord),
+                        Elkaisar.World.UnitTypeData[Unit.ut].tileName).setDepth(Elkaisar.World.Map.posZ(xCoord, yCoord)).setOrigin(0, 0).play(Elkaisar.World.UnitTypeData[Unit.ut].AnimKey);
+
+
+    return Elkaisar.GE.WorldScene.add
+            .image(
+                    Elkaisar.World.Map.posX(xCoord, yCoord),
+                    Elkaisar.World.Map.posY(xCoord, yCoord),
+                    Elkaisar.World.UnitTypeData[Unit.ut].tileName).setDepth(Elkaisar.World.Map.posZ(xCoord, yCoord)).setOrigin(0, 0);
 
 
 };
+
 
 
 
@@ -32678,33 +32241,131 @@ Elkaisar.World.Map.deltaDrag = {x: 0, y: 0};
 
 
 
+Elkaisar.World.Map.DeletUnit = function (xCoord, yCoord) {
+    var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+    delete Unit.entite;
+    delete Unit.floor;
 
-Elkaisar.World.Map.mouseMoveFn = function (e) {
+    if ($.isArray(Unit.UnitFire)) {
+        for (var iii in Unit.UnitFire) {
+            Unit.UnitFire[iii].destroy();
+        }
+        delete(Unit.UnitFire);
+    }
 
-    if (!Elkaisar.World.Map.dragging) {
+    if (Unit.CityFlagEntite) {
+        Unit.CityFlagEntite.destroy();
+        delete Unit.CityFlagEntite;
+    }
+
+
+
+};
+
+
+function  addMapUnite(el) {
+
+    var unit = Elkaisar
+            .worldAllUnits
+    [Elkaisar.World.Map.realCoord(el.x) * 500 + Number(Elkaisar.World.Map.realCoord(el.y))];
+
+    if (!$.isEmptyObject(unit.entite)) {
+        unit.entite.setPosition(Elkaisar.World.Map.posX(el.x, el.y), Elkaisar.World.Map.posY(el.x, el.y));
+        return false;
+
+    }
+
+
+
+
+    var tile = Elkaisar.World.Map.getEntity(unit.x, unit.y);
+
+
+
+    tile.setInteractive({
+        hitArea: new Phaser.Geom.Polygon(Elkaisar.World.UnitTypeData[unit.ut].hitArea),
+        hitAreaCallback: Phaser.Geom.Polygon.Contains
+    })
+            .on("click", function (e) {
+                uniteMapClick(unit.x, unit.y);
+            })
+            .on("pointerover", function (P) {
+                Elkaisar.GE.WorldScene.UnitFloor.setPosition(Elkaisar.World.Map.posX(el.x, el.y), Elkaisar.World.Map.posY(el.x, el.y) + TILE_SIZE / 2);
+
+                if (tile.PointerOver)
+                    return;
+                tile.PointerOver = true;
+                
+                if (WorldUnit.isEmpty(unit.ut) || true) {
+                    Elkaisar.World.WorldMapIcon.removeWorldUnitIcons();
+                    Elkaisar.World.WorldMapIcon.showUnitCoords(el.x, el.y);
+                    return;
+                }
+
+                WorldUtil.showMapTooltip(el.x, el.y);
+
+            })
+            .on("pointerout", function () {
+                tile.PointerOver = false;
+                Elkaisar.World.WorldMapIcon.removeUnitCoords();
+            }).setOrigin(0, 0);
+
+    unit.entite = tile;
+    tile.setDataEnabled();
+    tile.data.set("xCoord", unit.x);
+    tile.data.set("yCoord", unit.y);
+
+
+    return true;
+
+
+
+
+
+}
+
+function addMapWorldFloor(el) {
+
+    var realX = Elkaisar.World.Map.realCoord(el.x);
+    var realY = Elkaisar.World.Map.realCoord(el.y);
+
+    var unit = WorldUnit.getWorldUnit(realX, realY);
+
+
+    if (typeof unit.floor === "object" && !$.isEmptyObject(unit.floor)) {
+
+        unit.floor.setPosition(
+                Elkaisar.World.Map.posX(el.x, el.y),
+                Elkaisar.World.Map.posY(el.x, el.y)
+                );
+        return false;
+    }
+    unit.floor = Elkaisar.GE.WorldScene.add.image(Elkaisar.World.Map.posX(el.x, el.y), Elkaisar.World.Map.posY(el.x, el.y), "worldFloor").setDepth(-1).setOrigin(0, 0);
+    unit.floor.setDataEnabled();
+    unit.floor.data.set("xCoord", realX);
+    unit.floor.data.set("yCoord", realY);
+    return true;
+}
+
+
+
+Elkaisar.World.Map.mouseMoveFn = function (Pointer, ObjArr) {
+
+
+    var cam = Elkaisar.GE.WorldScene.cameras.main;
+    if (!Pointer.isDown) {
         return;
     }
 
+
     if (Elkaisar.World.Map.dragStartOn === 0) {
         Elkaisar.World.Map.dragStartOn = Date.now();
-        Elkaisar.World.Map.dragStartAt.x = Crafty.viewport.x;
-        Elkaisar.World.Map.dragStartAt.y = Crafty.viewport.y;
+        Elkaisar.World.Map.dragStartAt.x = cam.x;
+        Elkaisar.World.Map.dragStartAt.y = cam.y;
     }
-
-    Crafty.onDragClickable = false;
-
-
-    Elkaisar.World.Map.diff.x = e.clientX - Elkaisar.World.Map.lastMouse.x;
-    Elkaisar.World.Map.diff.y = e.clientY - Elkaisar.World.Map.lastMouse.y;
-
-    Elkaisar.World.Map.lastMouse.x = e.clientX;
-    Elkaisar.World.Map.lastMouse.y = e.clientY;
-
-
-
-    var viewport = Crafty.viewport;
-    viewport.x += Elkaisar.World.Map.diff.x / viewport._scale;
-    viewport.y += Elkaisar.World.Map.diff.y / viewport._scale;
+    Elkaisar.GE.WorldScene.isMapDraging = true;
+    cam.scrollX -= (Pointer.x - Pointer.prevPosition.x) / cam.zoom;
+    cam.scrollY -= (Pointer.y - Pointer.prevPosition.y) / cam.zoom;
     Elkaisar.World.Map.Scroll();
 
 };
@@ -32712,32 +32373,29 @@ Elkaisar.World.Map.mouseMoveFn = function (e) {
 
 Elkaisar.World.Map.mouseUpFn = function (e) {
 
-    setTimeout(function () {
-        Crafty.onDragClickable = true;
-    }, 100);
-
-    Elkaisar.World.Map.RefreshWorld();
-    
     Elkaisar.World.Map.clear();
+    Elkaisar.World.Map.clear();
+    Elkaisar.World.Map.RefreshWorld();
+    Elkaisar.World.MapBattel.AddBattels();
     Elkaisar.World.Map.dragging = false;
     Elkaisar.World.Map.dragStartOn = 0;
+
+    Elkaisar.GE.WorldScene.time.delayedCall(500, function () {
+        Elkaisar.GE.WorldScene.isMapDraging = false;
+    });
+
 };
 
 
 
-Elkaisar.World.Map.mouseDownFn = function (e) {
+Elkaisar.World.Map.mouseDownFn = function (P) {
 
 
     if (Elkaisar.World.Map.dragging)
         return;
 
-    Crafty.trigger("StopCamera");
-    Elkaisar.World.Map.lastMouse.x = e.clientX;
-    Elkaisar.World.Map.lastMouse.y = e.clientY;
-
-    Elkaisar.World.Map.base.x = Crafty.viewport.x;
-    Elkaisar.World.Map.base.y = Crafty.viewport.y;
-
+    Elkaisar.World.Map.base.x = Elkaisar.GE.WorldScene.cameras.main.scrollX;
+    Elkaisar.World.Map.base.y = Elkaisar.GE.WorldScene.cameras.main.scrollY;
     Elkaisar.World.Map.dragging = true;
 
 
@@ -32750,24 +32408,26 @@ Elkaisar.World.Map.mouseDownFn = function (e) {
 
 Elkaisar.World.Map.Scroll = function (Force) {
 
-    if (Crafty._floor !== "world")
-        return;
-
-    var viewport = Crafty.viewport;
+    var viewport = {
+        x: Elkaisar.GE.WorldScene.cameras.main.scrollX,
+        y: Elkaisar.GE.WorldScene.cameras.main.scrollY
+    };
 
 
 
     if (Math.abs(viewport.x - Elkaisar.World.Map.base.x) >= 50 || Math.abs(viewport.y - Elkaisar.World.Map.base.y) >= 50 || Force) {
 
+        var FloorCount = 0;
+        var UnitCount = 0;
 
         Elkaisar.World.Map.base.x = viewport.x;
         Elkaisar.World.Map.base.y = viewport.y;
 
-        var xCoord = -Elkaisar.World.Map.xCoord(viewport.x, viewport.y) - 2;
-        var yCoord = -Elkaisar.World.Map.yCoord(viewport.x, viewport.y);
+        var xCoord = Elkaisar.World.Map.xCoord(viewport.x, viewport.y) - 2;
+        var yCoord = Elkaisar.World.Map.yCoord(viewport.x, viewport.y);
         var widthInTile = Elkaisar.World.Map.widthInTile() + 4;
         var heightInTile = Elkaisar.World.Map.heightInTile() + 4;
-
+        console.log("Coord ", xCoord, yCoord);
 
         var vvv = 0;
         var kkk = 0;
@@ -32775,30 +32435,31 @@ Elkaisar.World.Map.Scroll = function (Force) {
         for (; vvv <= heightInTile; vvv++) {
             for (; kkk <= widthInTile; kkk++) {
 
-                addMapUnite({x: xCoord + vvv + kkk, y: yCoord + vvv - kkk});
-                addMapUnite({x: xCoord + vvv + kkk + 1, y: yCoord + vvv - kkk});
+                UnitCount += addMapUnite({x: xCoord + vvv + kkk, y: yCoord + vvv - kkk});
+                UnitCount += addMapUnite({x: xCoord + vvv + kkk + 1, y: yCoord + vvv - kkk});
 
             }
             kkk = 0;
         }
 
 
-        var floorXStart = xCoord - (xCoord % 10) - 20;
-        var floorYStart = yCoord - (yCoord % 10);
+
+
+        var floorXStart = Math.round(xCoord / 10) * 10 - 20;
+        var floorYStart = Math.round(yCoord / 10) * 10 - 10;
         var iii = 0;
         var jjj = 0;
 
         for (; iii <= heightInTile + 20; iii += 10) {
-            for (; jjj <= widthInTile + 20; jjj += 10) {
+            for (; jjj <= widthInTile + 10; jjj += 10) {
 
 
-                addMapWorldFloor({x: floorXStart + iii + jjj, y: floorYStart + iii - jjj});
-                addMapWorldFloor({x: floorXStart + iii + jjj + 10, y: floorYStart + iii - jjj});
+                FloorCount += addMapWorldFloor({x: floorXStart + iii + jjj, y: floorYStart + iii - jjj});
+                FloorCount += addMapWorldFloor({x: floorXStart + iii + jjj + 10, y: floorYStart + iii - jjj});
 
             }
             jjj = 0;
         }
-
     }
 
 
@@ -32807,17 +32468,79 @@ Elkaisar.World.Map.Scroll = function (Force) {
 
 
 Elkaisar.World.Map.RefreshWorld = function () {
-
     Animation.cityFlag();
     Animation.cityColonizerFlag();
+    Animation.WorldFire();
 };
 
+Elkaisar.World.Map.clear = function () {
+
+
+    if (Elkaisar.GE.WorldScene.children.list.length < 500)
+        return;
+
+    var R = Elkaisar.World.getRectView();
+    Elkaisar.GE.WorldScene.children.list.forEach(function (Obj, Index) {
+        if (!Phaser.Geom.Rectangle.Overlaps(Obj.getBounds(), R)) {
+            if (Obj.data)
+                Elkaisar.World.Map.DeletUnit(Obj.data.get("xCoord"), Obj.data.get("yCoord"));
+
+            Obj.destroy();
+        }
+    });
+
+};
+
+Elkaisar.World.Map.CityFound = false;
 
 Elkaisar.World.Map.getWorldCity = function () {
+    
+    return $.ajax({
+        url: `http://${WS_HOST}:${WS_PORT}/AWorld/getWorldCity`,
+        type: 'GET',
+        crossDomain: true,
+        data:{
+            token: Elkaisar.Config.OuthToken,
+            idPlayer: Elkaisar.DPlayer.Player.id_player
+        },
+        success: function (data, textStatus, jqXHR) {
 
-    ws.send(JSON.stringify({
-        url: "World/getWorldCity"
-    }));
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonObject = JSON.parse(data);
+
+            var Unit;
+
+            for (var iii in JsonObject)
+            {
+
+                Unit = WorldUnit.getWorldUnit(JsonObject[iii].x, JsonObject[iii].y);
+                if (!Unit)
+                    continue;
+
+
+                Unit.idGuild = JsonObject[iii].ig;
+                Unit.CityLvl = JsonObject[iii].l;
+                Unit.idCity = JsonObject[iii].ic;
+                Unit.idPlayer = JsonObject[iii].ip;
+                Unit.CityFlag = JsonObject[iii].f;
+                Unit.ut = Number(JsonObject[iii].l) + WUT_CITY_LVL_0;
+                Unit.l = JsonObject[iii].l;
+                Unit.t = Number(JsonObject[iii].l) + 17;
+            }
+            Elkaisar.World.Map.CityFound = true;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
+    /*
+     
+     ws.send(JSON.stringify({
+     url: "World/getWorldCity"
+     }));*/
 
 
 };
@@ -32834,13 +32557,443 @@ Elkaisar.World.Map.getWorldFiredUnit = function () {
     ws.send(JSON.stringify({
         url: "World/getWorldFireUnit"
     }));
+};
+function t(x_coord, y_coord)
+{
+}
+
+
+Elkaisar.World.Map.OnEmptyUnitClick = function (Unit) {
+
+
+    var city_counts = Object.keys(Elkaisar.DPlayer.City).length;
+
+    var box = ` <div id="unit_review" class="bg-general" x_coord="${Unit.x}" y_coord="${Unit.y}" type="0" lvl="${Unit.l}">
+                        <div class="header">
+                            <div class="title banner-red">
+                                مكان خالى
+                            </div>
+                            <div class="close_RB">
+                                <img src="images/btns/close_b.png">.
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="right_cont">
+                                <div class="dist">
+                                    <div class="coords" style="margin-right: 37px">
+                                        <a href="#">[${Unit.y} , ${Unit.x}]</a>
+                                    </div>
+                                    <div class="mile">
+                                        ${getDistance(Unit.x, Unit.y)} ميل
+                                    </div>
+                                    <div class="copy-coord-icon">
+                                        <button class="copy-coord" data-x-coord="${Unit.x}" data-y-coord="${Unit.y}"></button>
+                                    </div>
+                                </div>
+                                <div class="new-city-req-table">
+                                    <table class="req_table " border="0"> 
+                                        <tbody> 
+                                            <tr> 
+                                                <td> 
+                                                    <img src="images/style/food.png"> 
+                                                    <div class="amount ${Number(Elkaisar.CurrentCity.City.food) < Math.pow(10, city_counts + 3) ? "not_enough" : "enough"}"> 
+                                                        ${Math.pow(10, city_counts + 3)} 
+                                                    </div> 
+                                                </td> 
+                                                <td> 
+                                                    <img src="images/style/stone.png"> 
+                                                    <div class="amount ${Number(Elkaisar.CurrentCity.City.stone) < Math.pow(10, city_counts + 3) ? "not_enough" : "enough"}"> 
+                                                        ${Math.pow(10, city_counts + 3)}  
+                                                    </div> 
+                                                </td> 
+                                            </tr> 
+                                            <tr> 
+                                                <td> 
+                                                    <img src="images/style/wood.png"> 
+                                                    <div class="amount ${Number(Elkaisar.CurrentCity.City.wood) < Math.pow(10, city_counts + 3) ? "not_enough" : "enough"}"> 
+                                                        ${Math.pow(10, city_counts + 3)}  
+                                                    </div> 
+                                                </td> 
+                                                <td> 
+                                                    <img src="images/style/iron.png"> 
+                                                    <div class="amount ${Number(Elkaisar.CurrentCity.City.metal) < Math.pow(10, city_counts + 3) ? "not_enough" : "enough"} "> 
+                                                        ${Math.pow(10, city_counts + 3)}  
+                                                    </div> 
+                                                </td> 
+                                            </tr> 
+                                            <tr> 
+                                                <td> 
+                                                    <img src="images/style/coin.png"> 
+                                                    <div class="amount ${Number(Elkaisar.CurrentCity.City.coin) < Math.pow(10, city_counts + 3) ? "not_enough" : "enough"}"> 
+                                                        ${Math.pow(10, city_counts + 3)}  
+                                                    </div> 
+                                                </td> 
+                                                <td> 
+                                                    <img src="images/style/wait.png"> 
+                                                    <div class="amount sol-people"> 
+                                                        0 ث
+                                                    </div> 
+                                                </td> 
+                                            </tr> 
+                                        </tbody> 
+                                    </table> 
+                                    
+                                    <div class="province">${Translate.Text.Province[UserLag.language]}: ${Elkaisar.World.Province.getTitle(Unit.x, Unit.y)}</div>
+                                    
+                                </div>
+                            </div>
+                            <div class="left_cont">
+                                <div class="unite_image">
+                                    <div style="background-image:url(images/world/snap-shot/empty-place.jpg)"></div>
+                                </div>
+                                <div class="required-prom">
+                                    <label>تصنيف لنبيل:</label><span class="${Number(Elkaisar.DPlayer.Player.porm) < city_counts * 2 ? "not_enough" : "enough" }">${Elkaisar.BaseData.Promotion[city_counts * 2].Title}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer  new-city-footer">
+                            <ul>
+                                <div class="inputs">
+                                    <div class="input-wrapper pull-L">
+                                        <input id="new-city-name" ${canBuildNewCity(Unit.x, Unit.y) ? "" : "disabled='disabled'"} type="text" class="input" placeholder="اسم المدينة الجديدة"/>
+                                    </div>
+                                    <div  id="new-city-confirm" class="pull-R">
+                                        <button class="full-btn-3x" ${canBuildNewCity(Unit.x, Unit.y) ? "" : "disabled='disabled'"} data-x-coord="${Unit.x}" data-y-coord="${Unit.y}"> بناء مدينة</button>
+                                    </div>
+                                </div>
+                            </ul>
+
+                        </div>
+                    </div>`;
+
+    $("#unit_review").remove();
+    $("body").append(box);
+
+
+
+};
+
+Elkaisar.World.Map.onBarrayClicked = function (Unit) {
+    var unitObj = getUnitObj(Unit.ut);
+    var title = `${Elkaisar.World.UnitTypeData[Unit.ut].Title}  مستوى ${getArabicNumbers(Unit.l)}`;
+    var desc = reviewBox.descForBarray(Unit.ut, Unit.l);
+    var box = reviewBox.getSmallBox(Unit.x, Unit.y, Unit.ut, title, desc, Unit.l, Unit.s, `images/world/snap-shot/${Elkaisar.World.UnitTypeData[Unit.ut].WSnapShoot}`);
+    $("#unit_review").remove();
+    $("body").append(box);
+    addRemainBarryData(Unit.x, Unit.y);
+};
+
+
+
+Elkaisar.World.Map.OnSeaCityClicked = function (Unit) {
+    var Box = reviewBox.getSmallBox(Unit.x, Unit.y, Unit.ut, Elkaisar.World.UnitTypeData[Unit.ut].Title, Elkaisar.World.UnitTypeData[Unit.ut].Desc, Unit.l, Unit.s, 'images/world/snap-shot/' + Elkaisar.World.UnitTypeData[Unit.ut].WSnapShoot);
+    $('#unit_review')['remove'](), $('body')['append'](Box);
+};
+
+Elkaisar.World.Map.OnCityClicked = function (Unit) {
+
+    $.ajax({
+
+        url: `${API_URL}/api/AWorld/getCityData`,
+        data: {
+            xCoord: Unit.x,
+            yCoord: Unit.y,
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+
+            if (!Elkaisar.LBase.isJson(data))
+                return  Elkaisar.LBase.Error(data);
+            var JsonData = JSON.parse(data);
+
+
+            var desc = reviewBox.descForCity(JsonData);
+
+            var box = reviewBox.getSmallBox(Unit.x, Unit.y,
+                    Unit.ut, JsonData.CityName, desc, Unit.l,
+                    Unit.s, PLAYER_FACES[JsonData.avatar]);
+
+            $("#unit_review").remove();
+            $("body").append(box);
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown)
+        }
+    });
+
+};
+
+Elkaisar.World.Map.OnOtherUnitClicked = function (Unit) {
+    
+    campDB.showDialogBox(Unit.x, Unit.y);
+    $("#camp-over-view-desc").niceScroll(SCROLL_BAR_PROP);
+
+    WorldUnit.refreshUnitData(Unit.x, Unit.y).done(function (data) {
+
+        if (isJson(data)) {
+            var jsonData = JSON.parse(data);
+            Unit.l = jsonData.l;
+        } else {
+            alert(data);
+            return;
+        }
+        campDB.equipRow(jsonData.equip);
+        campDB.armyRow(jsonData.hero);
+
+        $('#lvlChangableUnit')['html'](campDB['armyContainer'](Unit.x, Unit.y));
+
+        if (Number(jsonData.l) > Elkaisar.World.UnitTypeData[Unit.ut].maxLvl) {
+            return;
+        } else if (!Elkaisar.World.UnitData.isAttackable(Unit.ut)) {
+            return;
+        } else if (Number(jsonData.lo) === 1) {
+            return;
+        } else {
+            $("#JOIN_ATTACK").removeAttr("disabled");
+            $("#START_ATTACK").removeAttr("disabled");
+        }
+
+
+
+
+    });
+}
+
+Elkaisar.World.MapBattel = {};
+
+
+
+
+
+
+
+Elkaisar.World.MapBattel.BattelList = {};
+
+
+Elkaisar.World.MapBattel.getAllBattels = function () {
+    WS_utile.Ack({
+        url: "Battel/getAllWorldBattels",
+        data: {},
+        callBack: function (Res) {
+            if(Res && Res.length)
+                Elkaisar.World.MapBattel.BattelList = Res;
+            else 
+                Elkaisar.World.MapBattel.BattelList = [];
+            
+            console.log(Res);
+        }
+    });
+};
+
+
+Elkaisar.World.MapBattel.removeBattel = function (Battel) {
+    const BattelKey = `${Battel.xCity}.${Battel.yCity}-${Battel.xCoord}.${Battel.yCoord}`;
+    
+    if (Elkaisar.World.MapBattel.BattelList[BattelKey].Line)
+        Elkaisar.World.MapBattel.BattelList[BattelKey].Line.destroy();
+    if (Elkaisar.World.MapBattel.BattelList[BattelKey].GoSourceBtn)
+        Elkaisar.World.MapBattel.BattelList[BattelKey].GoSourceBtn.destroy();
+    if (Elkaisar.World.MapBattel.BattelList[BattelKey].GoDistBtn)
+        Elkaisar.World.MapBattel.BattelList[BattelKey].GoDistBtn.destroy();
+    if (Elkaisar.World.MapBattel.BattelList[BattelKey].GoHeroAvatarBtn)
+        Elkaisar.World.MapBattel.BattelList[BattelKey].GoHeroAvatarBtn.destroy();
+    if (Elkaisar.World.MapBattel.BattelList[BattelKey].TimeElapsed)
+        Elkaisar.World.MapBattel.BattelList[BattelKey].TimeElapsed.destroy();
+    
+    delete Elkaisar.World.MapBattel.BattelList[BattelKey];
+};
+
+
+Elkaisar.World.MapBattel.LineColor = function (OneBattel) {
+    var LineKey = "DashedLineGray";
+    if (OneBattel.idPlayer == Elkaisar.DPlayer.Player.id_player)
+        LineKey = "DashedLineBlue";
+    else if (!OneBattel.idGuild || !Elkaisar.Guild.GuildData)
+        LineKey = "DashedLineGray";
+    else if (OneBattel.idGuild == Elkaisar.DPlayer.Player.id_guild)
+        LineKey = "DashedLineLGreen";
+    else {
+        for (var jjj in Elkaisar.Guild.Allay) {
+            if (Number(Elkaisar.Guild.Allay[jjj].idGuild) === Number(OneBattel.idGuild)) {
+
+                if (Number(Elkaisar.Guild.Allay[jjj].state) === 1) {
+                    LineKey = "DashedLineRed";
+
+                } else if (Number(Elkaisar.Guild.Allay[jjj].state) === 2) {
+                    LineKey = "DashedLineGreen";
+                }
+            }
+        }
+    }
+
+    return LineKey;
+};
+
+Elkaisar.World.MapBattel.AddBattels = function () {
+
+
+    var OneBattel;
+    for (var iii in Elkaisar.World.MapBattel.BattelList) {
+
+        OneBattel = Elkaisar.World.MapBattel.BattelList[iii];
+        if (OneBattel.Line)
+            continue;
+        if (OneBattel.timeEnd < Date.now() / 1000) {
+            Elkaisar.World.MapBattel.removeBattel(OneBattel);
+            continue;
+        }
+
+        let x1 = Elkaisar.World.Map.posX(OneBattel.xCity, OneBattel.yCity) + 64;
+        let y1 = Elkaisar.World.Map.posY(OneBattel.xCity, OneBattel.yCity) + 64;
+        let x2 = Elkaisar.World.Map.posX(OneBattel.xCoord, OneBattel.yCoord) + 64;
+        let y2 = Elkaisar.World.Map.posY(OneBattel.xCoord, OneBattel.yCoord) + 64;
+
+        if (!Phaser.Geom.Intersects.LineToRectangle(new Phaser.Geom.Line(x1, y1, x2, y2), Elkaisar.World.getRectView()))
+            continue;
+
+
+
+        Elkaisar.World.MapBattel.BattelLine(OneBattel, x1, y1, x2, y2);
+
+
+    }
+};
+
+
+Elkaisar.World.MapBattel.BattelLine = function (OneBattel, x1, y1, x2, y2) {
+
+
+    const LineWidth = Phaser.Math.Distance.Between(x1, y1, x2, y2);
+    const LineAngle = Phaser.Math.Angle.Between(x1, y1, x2, y2);
+    OneBattel.Line = Elkaisar.GE.WorldScene.add.tileSprite(x1, y1, LineWidth, 4, this.LineColor(OneBattel)).setDepth(Elkaisar.World.Map.posZ(255, 255))
+            .setInteractive({cursor: 'pointer'});
+    OneBattel.Line.input.hitArea.setTo(0, -4, LineWidth, 12);
+    OneBattel.Line.setOrigin(0, 0);
+    OneBattel.Line.setRotation(LineAngle);
+    OneBattel.Line.on("destroy", function () {
+        delete OneBattel.Line;
+    });
+    this.BattelLineOver(OneBattel, x1, y1, x2, y2);
+
+    OneBattel.Line.on("pointerup", function (P, X, Y, E) {
+        Elkaisar.World.WorldMapIcon.removeWorldUnitIcons();
+        Elkaisar.World.WorldMapIcon.removeUnitCoords();
+        Elkaisar.GE.WorldScene.tweens.add({
+            targets: OneBattel.GoSourceBtn,
+            x: x1 + (X - 60) * Math.cos(LineAngle) - 25*Math.cos(Math.PI/2 - LineAngle),
+            y: y1 + (X - 60) * Math.sin(LineAngle) + 25*Math.sin(Math.PI/2 - LineAngle),
+            ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+            duration: 600
+        });
+        Elkaisar.GE.WorldScene.tweens.add({
+            targets: OneBattel.GoDistBtn,
+            x: x1 + (X + 60)  * Math.cos(LineAngle) - 25*Math.cos(Math.PI/2 - LineAngle),
+            y: y1 + (X + 60)  * Math.sin(LineAngle) + 25*Math.sin(Math.PI/2 - LineAngle),
+            ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+            duration: 600
+        });
+        Elkaisar.GE.WorldScene.tweens.add({
+            targets: OneBattel.GoHeroAvatarBtn,
+            x: x1 + (X)  * Math.cos(LineAngle) - 25*Math.cos(Math.PI/2 - LineAngle),
+            y: y1 + (X)  * Math.sin(LineAngle) + 25*Math.sin(Math.PI/2 - LineAngle),
+            ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+            duration: 600
+        });
+        Elkaisar.GE.WorldScene.tweens.add({
+            targets: OneBattel.TimeElapsed,
+            x: x1 + (X)  * Math.cos(LineAngle) - 50*Math.cos(Math.PI/2 - LineAngle),
+            y: y1 + (X)  * Math.sin(LineAngle) + 50*Math.sin(Math.PI/2 - LineAngle),
+            ease: 'Cubic', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+            duration: 600
+        });
+        E.stopPropagation();
+    });
+
+    
+};
+Elkaisar.World.MapBattel.changeTimeFormat = function (time_diff) {
+    if (isNaN(time_diff))
+        return "---";
+    time_diff = parseInt(time_diff);
+    var days = Math.floor(time_diff / (60 * 60 * 24));
+    var hours = Math.floor((time_diff % (60 * 60 * 24)) / (60 * 60));
+    var minutes = Math.floor((time_diff % (60 * 60)) / (60));
+    var seconds = Math.floor((time_diff % (60)) / 1);
+    return ` ث ${seconds} د ${minutes} س ${hours} ي ${days} `;
+    return (getArabicNumbers(seconds) + " ث " + (minutes > 0 ? getArabicNumbers(minutes)
+            + " د " : "") + (hours > 0 ? getArabicNumbers(hours)
+            + " س " : "") + (days > 0 ? getArabicNumbers(days)
+            + " ي " : ""));
+}
+
+Elkaisar.World.MapBattel.BattelLineOver = function (OneBattel, x1, y1, x2, y2){
+
+    const LineAngle = Phaser.Math.Angle.Between(x1, y1, x2, y2);
+    OneBattel.GoSourceBtn     = Elkaisar.GE.WorldScene.add.image(x1, y1, "goSourceN").setDepth(Elkaisar.World.Map.posZ(255, 255)).setRotation(LineAngle);
+    OneBattel.GoHeroAvatarBtn = Elkaisar.GE.WorldScene.add.image(x1, y1, "SFaceA1").setDepth(Elkaisar.World.Map.posZ(255, 255)).setRotation(LineAngle);
+    OneBattel.TimeElapsed     = Elkaisar.GE.WorldScene.add.text(x1, y1, `${this.changeTimeFormat(OneBattel.timeEnd - Date.now()/1000)}`, 
+                                    {fixedHeight: 20, fontStyle: "bold", fontSize: 14, stroke: '#000000', strokeThickness: 3, backgroundColor: "#000000"})
+                                            .setDepth(Elkaisar.World.Map.posZ(255, 255)).setOrigin(0.5, 0.5).setRotation(LineAngle);
+    OneBattel.GoDistBtn       = Elkaisar.GE.WorldScene.add.image(x1, y1, "goSourceN").setDepth(Elkaisar.World.Map.posZ(255, 255)).setRotation(LineAngle).setFlipX(true);
+
+    OneBattel.GoSourceBtn.setInteractive().on("pointerover", function (P){
+        if(P.isDown)
+            OneBattel.GoSourceBtn.setTexture("goSourceA");
+        else
+            OneBattel.GoSourceBtn.setTexture("goSourceH");
+    }).on("pointerout", function (P){
+            OneBattel.GoSourceBtn.setTexture("goSourceN");
+    }).on("pointerup", function (){
+        alert_box.confirmDialog("تأكيد الذهاب الى مصدر الهجوم", function (){
+            Elkaisar.World.navigateTo(OneBattel.xCity, OneBattel.yCity);
+        });
+    });
+    
+    OneBattel.GoDistBtn.setInteractive().on("pointerover", function (P){
+        if(P.isDown)
+            OneBattel.GoDistBtn.setTexture("goSourceA");
+        else
+            OneBattel.GoDistBtn.setTexture("goSourceH");
+    }).on("pointerout", function (P){
+            OneBattel.GoDistBtn.setTexture("goSourceN");
+    }).on("pointerup", function (){
+        alert_box.confirmDialog("تأكيد الذهاب الى جهة الهجوم", function (){
+            Elkaisar.World.navigateTo(OneBattel.xCoord, OneBattel.yCoord);
+        });
+    });
+    
+    
+    OneBattel.GoHeroAvatarBtn.setInteractive().on("click", function (){
+        alert_box.confirmMessage("Clicked")
+    })
+   
+};
+
+
+Elkaisar.World.MapBattel.newBattel = function (Battel) {
+    const BattelKey = `${Battel.xCity}.${Battel.yCity}-${Battel.xCoord}.${Battel.yCoord}`;
+    Elkaisar.World.MapBattel.BattelList[BattelKey] = Battel;
+    Elkaisar.World.MapBattel.AddBattels();
+
+
+};
+
+
+Elkaisar.World.MapBattel.battelEnded = function (Battel) {
+
 };var WorldCurrentUnit = {};
 
 
-Elkaisar.World.unitWidth  = 128;
+Elkaisar.World.unitWidth = 128;
 Elkaisar.World.unitHeight = 128;
 
-MAX_SCREEN_WIDTH  = $(document).width();
+MAX_SCREEN_WIDTH = $(document).width();
 MAX_SCREEN_HEIGHT = $(document).height();
 
 
@@ -32853,253 +33006,84 @@ const TILE_SIZE = 128;
 
 
 
-    
 
-Crafty.WORLD_MOVES = 0;
 
-Crafty.defineScene("world" , function (){
-    
-    Crafty._floor = "world";
-        Crafty.onDragClickable = true;
-       
-       // Crafty.bind("ViewportScroll", Elkaisar.World.Map.Scroll);
-        
-        Crafty.widthInTile = 35;
-        Crafty.heightIntile =35;
-        
-    
-         
-                
-                
-                
-        Crafty.addEvent(this, Crafty.stage.elem, "mousedown", Elkaisar.World.Map.mouseDownFn);
-        Crafty.addEvent(this, Crafty.stage.elem, "mouseup",   Elkaisar.World.Map.mouseUpFn );
-        Crafty.addEvent(this, Crafty.stage.elem, "mousemove", Elkaisar.World.Map.mouseMoveFn);
-	
-        
-        
-        Crafty.viewport.x  = -Elkaisar.World.Map.posX(Elkaisar.CurrentCity.City.x, Elkaisar.CurrentCity.City.y) + Elkaisar.MAX_SCREEN_WIDTH/2 - 64; // 56 is displacement to center the view port 
-        Crafty.viewport.y  = -Elkaisar.World.Map.posY(Number(Elkaisar.CurrentCity.City.x), Number(Elkaisar.CurrentCity.City.y)) + Elkaisar.MAX_SCREEN_HEIGHT/2 - 128;
-        
+//Crafty.WORLD_MOVES = 0;
 
-    
-    
-    UnitFloor = Crafty.e("2D, DOM, unit_floor")
-                .attr({w: TILE_SIZE, h: 96 });
-    
-}, function () {
-    Crafty.removeEvent(this, Crafty.stage.elem, "mousedown", Elkaisar.World.Map.mouseDownFn);
-    Crafty.removeEvent(this, Crafty.stage.elem, "mouseup"  ,   Elkaisar.World.Map.mouseUpFn );
-    Crafty.removeEvent(this, Crafty.stage.elem, "mousemove", Elkaisar.World.Map.mouseMoveFn);
-    //Crafty.unbind("ViewportScroll", Elkaisar.World.Map.Scroll);
-});
 
 
 function loading(percent)
 {
-    
-    $("#load-percent").html(Math.floor(percent)+"%");
-    $("#load-bar div").css({width: percent+"%"});
-    
+
+    $("#load-percent").html(Math.floor(percent) + "%");
+    $("#load-bar div").css({width: percent + "%"});
+
 }
 
 
 
 
 
-Crafty.sprite("images/world/worldFloor.jpg", {worldFloor:[0,0,640,640]});
 
 
 
 
 
 
-function  addMapUnite(el){
+
+
+Elkaisar.World.navigateTo = function (x, y) {
+    $("#x_coord-input input").val(x);
+    $("#y_coord-input input").val(y);
+    $("#nav-btn button").trigger("click");
     
-    
-                
-       setTimeout(function (){
-                    
-                    var unit = Elkaisar
-                            .worldAllUnits
-                            [Elkaisar.World.Map.realCoord(el.x)*500+Number(Elkaisar.World.Map.realCoord(el.y))];
-                    
-                     if( !$.isEmptyObject(unit.entite)){
-                         
-                         unit.entite.attr({
-                            x: Elkaisar.World.Map.posX(el.x, el.y),
-                            y: Elkaisar.World.Map.posY(el.x, el.y),
-                            z: Elkaisar.World.Map.posZ(el.x , el.y)
-                         });
-                        return ;
-                        
-                     }
-
-
-
-
-                    var tile = Elkaisar.World.Map.getEntity(unit.x , unit.y);
-                    
-                   
-                    
-                    tile
-                            .bind("Click", function(e) {
-                                if(Crafty.onDragClickable){
-
-                                    WorldCurrentUnit = this;
-                                    uniteMapClick(unit.x , unit.y);
-
-
-                                }
-                            })
-                            .bind("MouseOver", function() {
-
-                            
-                                UnitFloor.x = this.x;
-                                UnitFloor.y = this.y + TILE_SIZE/2;
-                                WorldUtil.showMapTooltip(unit.x , unit.y);
-
-
-                            })
-                            .bind("MouseOut", function() {
-
-                                //Crafty("UnitToolTip").each(function (){this.destroy();});
-
-                            })
-                            .areaMap(Elkaisar.World.UnitTypeData[unit.ut].hitArea)
-                            .attr({
-                                x: Elkaisar.World.Map.posX(el.x, el.y),
-                                y: Elkaisar.World.Map.posY(el.x, el.y),
-                                z: Elkaisar.World.Map.posZ(el.x , el.y),
-                                coord_x: parseInt(unit.x),
-                                coord_y: parseInt(unit.y)
-                            });
-
-                    unit.entite = tile;
-                    Crafty.__end ++;
-                        
-                });
-       
-   
-   
- 
-                      
-}
-
-function addMapWorldFloor(el){
-    
-    var realX = Elkaisar.World.Map.realCoord(el.x);
-    var realY = Elkaisar.World.Map.realCoord(el.y);
-    
-    var unit = WorldUnit.getWorldUnit(realX , realY);
-   
-    
-    if(typeof unit.floor === "object" && !$.isEmptyObject(unit.floor)){
-        
-        unit.floor.attr({
-            x:Elkaisar.World.Map.posX(el.x, el.y),
-            y:Elkaisar.World.Map.posY(el.x, el.y)
-        });
-        return ; 
-    }
-   
-  
-    unit.floor =  Crafty
-           .e("2D, Canvas, worldFloor ,  Sprite")
-           .attr({
-                x: Elkaisar.World.Map.posX(el.x, el.y),
-                y: Elkaisar.World.Map.posY(el.x, el.y),
-                z: -1,
-                coord_x: parseInt(unit.x),
-                coord_y: parseInt(unit.y)
-            });
-    
-    return unit;
-}
-
-
-
-
-Elkaisar.World.navigateTo = function (x, y){
     
 };
 
-Elkaisar.World.Map.clear = function(){
-    
-   if(Crafty("*").length < 500)
-        return ;
-    
-   var rect = Crafty.viewport.rect();
-   rect._x -= Elkaisar.World.unitWidth*3;
-   rect._y -= Elkaisar.World.unitHeight*3;
-   rect._h += Elkaisar.World.unitHeight*6;
-   rect._w += Elkaisar.World.unitWidth*6;
-   
-   setTimeout(function (){
-        Crafty("2D").each(function (){
-           
-            if(!this.intersect(rect) && $.isFunction(this.destroy)){
-                
-                    this.destroy();
-                    delete WorldUnit.getWorldUnit(this.coord_x , this.coord_y).entite;
-                    delete WorldUnit.getWorldUnit(this.coord_x , this.coord_y).floor;
-                    delete WorldUnit.getWorldUnit(this.coord_x , this.coord_y).CityFlagEntite;
-                
-            }
-        });
-    }, 0, rect);
-   
+
+
+
+Elkaisar.World.getRectView = function () {
+    var camView = Elkaisar.GE.WorldScene.cameras.main.worldView;
+    return  new Phaser.Geom.Rectangle(camView.x - 600, camView.y - 300, camView.width + 1200, camView.height + 600);
 };
 
 
 /*____________________________________________________________________________*/
 /*__________________________NAVIGET IN WORLD MAP______________________________*/
-$("#nav-btn .full-btn").click(function (){
-    
-    var x_coord = parseInt($("#x_coord-input input").val())||0;
-    var y_coord = parseInt($("#y_coord-input input").val())||0;
-    
-    Crafty.viewport.x = - Elkaisar.World.Map.posX(Number(x_coord) , Number(y_coord))+ Math.floor( MAX_SCREEN_WIDTH/2 - 128);
-    Crafty.viewport.y = - Elkaisar.World.Map.posY(Number(x_coord) , Number(y_coord)) + Math.floor( MAX_SCREEN_HEIGHT/2 - 128) ;
-    Animation.currentUnitArrow.put(x_coord, y_coord);
-    
-    
-    Elkaisar.World.Map.Scroll();
-    setTimeout(Elkaisar.World.Map.RefreshWorld , 250);
-    Elkaisar.World.Map.clear();
-});
 
 
 
 
 
 
-$(document).on("mousemove" , "#smallMap .overMap" , function (evt){
-    
+
+$(document).on("mousemove", "#smallMap .overMap", function (evt) {
+
     var x = Math.floor(evt.pageX - $(this).offset().left);
     var y = Math.floor(evt.pageY - $(this).offset().top);
-    
-    CURRENT_CURSOR_COORDS.css({left:x + 25 , top:y + 25});
+
+    CURRENT_CURSOR_COORDS.css({left: x + 25, top: y + 25});
     CURRENT_CURSOR_COORDS.html(`[${x} , ${y}]`);
-    
-    
+
+
 });
-$(document).on("mouseout" , "#smallMap .overMap" , function (){
+$(document).on("mouseout", "#smallMap .overMap", function () {
     CURRENT_CURSOR_COORDS.html("");
-    
+
 });
 
-$(document).on("click" , "#smallMap .overMap" , function (evt){
-    
+$(document).on("click", "#smallMap .overMap", function (evt) {
+
     var x = Math.floor(evt.pageX - $(this).offset().left);
     var y = Math.floor(evt.pageY - $(this).offset().top);
-    
+
     $("#x_coord-input input").val(x);
     $("#y_coord-input input").val(y);
-    
-    
+
+
     $("#nav-btn button").trigger("click");
-    
+
 });
 
 
@@ -33112,23 +33096,23 @@ $(document).on("click" , "#smallMap .overMap" , function (evt){
 /*___________________________________CHAT BOX_________________________________*/
 
 /*$(document).on("keydown", "#input-chat input", function (e){
-    if(e.keyCode ===13 && !e.shiftKey){
-        var msg = `<div class="msg-unit">
-                        <div class="msg-from">
-                            [Mustapha]:
-                        </div>
-                        <div class="msg-body">
-                            <P>
-                               ${$("#input-chat input").val()}
-                            </P>
-                        </div>
-                    </div>`;
-        $("#msg-area").append(msg);
-        $("#input-chat input").val("");
-        setTimeout(function (){$("#msg-area").getNiceScroll(0).doScrollTop($("#msg-area").getNiceScroll(0).getContentSize().h , 0);} , 100);
-    }
-});
-*/var army_icon = {
+ if(e.keyCode ===13 && !e.shiftKey){
+ var msg = `<div class="msg-unit">
+ <div class="msg-from">
+ [Mustapha]:
+ </div>
+ <div class="msg-body">
+ <P>
+ ${$("#input-chat input").val()}
+ </P>
+ </div>
+ </div>`;
+ $("#msg-area").append(msg);
+ $("#input-chat input").val("");
+ setTimeout(function (){$("#msg-area").getNiceScroll(0).doScrollTop($("#msg-area").getNiceScroll(0).getContentSize().h , 0);} , 100);
+ }
+ });
+ */var army_icon = {
     "0": "",
     "1": '<img src="images/tech/soldier_1.jpg"/>',
     "2": '<img src="images/tech/soldier_2.jpg"/>',
@@ -33168,28 +33152,22 @@ speeds = [
 const BATTEL_JOIN_ATTACK = 2;
 const BATTEL_JOIN_DEFENCE = 3;
 
-$(document).on("click", "#footer_bar li", function () {
 
-    var x_coord = parseInt($("#unit_review").attr("x_coord"));
-    var y_coord = parseInt($("#unit_review").attr("y_coord"));
-    var type = parseInt($("#unit_review").attr("type"));
-    var lvl = parseInt($("#unit_review").attr("lvl"));
-    var battel_task = $(this).attr("data-type");
-    var world_unit = WorldUnit.getWorldUnit(x_coord, y_coord).entite;
-
-
-
-    if (Number(battel_task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY) {
+Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
+   
+   var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+   
+    if (Number(BattelTask) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY) {
 
         buildingClick("market");
         $(".nav_bar .left-nav li[head_title=transport_resources]").click();
-        $("#transport-distin input[data-coord=x]").val(WorldCurrentUnit.coord_x);
-        $("#transport-distin input[data-coord=y]").val(WorldCurrentUnit.coord_y);
+        $("#transport-distin input[data-coord=x]").val(xCoord);
+        $("#transport-distin input[data-coord=y]").val(yCoord);
         $(".close_RB img").trigger("click");
 
         return;
     }
-
+/*
     if (Number(Elkaisar.DPlayer.PlayerState.peace) - 12 * 60 * 60 > ($.now() / 1000)) {
         alert_box.failMessage("لا  يمكنك الهجوم و انت  فى حالة هدنة");
         return;
@@ -33198,15 +33176,15 @@ $(document).on("click", "#footer_bar li", function () {
 
         return;
     }
+*/
 
+    if (Number(BattelTask) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SPY) {
 
-    if (Number(battel_task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SPY) {
-
-        SPY.sendSpy(x_coord, y_coord);
+        SPY.sendSpy(xCoord, yCoord);
 
         return;
 
-    } else if (Number(battel_task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_ENTER_CITY) {
+    } else if (Number(BattelTask) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_ENTER_CITY) {
 
         $("#WorldCity").trigger("click");
         $(".close_RB img").trigger("click");
@@ -33243,14 +33221,14 @@ $(document).on("click", "#footer_bar li", function () {
     }
 
     var battel = {
-        x_coord: x_coord,
-        y_coord: y_coord,
-        ar_title: WorldUtil.tooltipHeader(x_coord, y_coord),
-        task: battel_task,
+        x_coord: xCoord,
+        y_coord: yCoord,
+        ar_title: WorldUtil.tooltipHeader(xCoord, yCoord),
+        task: BattelTask,
         task_title: "غزو",
-        time: 60,
-        type: type,
-        lvl: lvl
+        time : 60,
+        type : Unit.ut,
+        lvl  : Unit.l
     };
 
     var content = army.dialogBoxContent_forCamp(Elkaisar.CurrentHero, battel);
@@ -33272,6 +33250,18 @@ $(document).on("click", "#footer_bar li", function () {
 
     // close  samll box
     $(".close_RB img").trigger("click");
+    
+};
+
+$(document).on("click", "#footer_bar li", function () {
+
+    var xCoord = parseInt($("#unit_review").attr("x_coord"));
+    var yCoord = parseInt($("#unit_review").attr("y_coord"));
+    var BattelTask = $(this).attr("data-type");
+
+    Elkaisar.World.WorldMapIcon.Clicked(xCoord, yCoord, BattelTask);
+
+    
 
 });
 
@@ -33423,7 +33413,7 @@ function battelStart() {
         });
     } else {
         if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPORT'])
-            Elkaisar['Battel']['supportByHero']();
+            Elkaisar.Battel.supportByHero();
         else
             Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_HERO_TRANS'] ? Elkaisar['Battel']['TransHero']() : ws['send'](JSON['stringify']({
                 'url': 'Battel/start',
@@ -33535,10 +33525,11 @@ Elkaisar.Battel.supportByHero = function (idHero)
 
             if (JsonObject.state === "ok")
             {
-                Elkaisar.Hero.getHero(idHero);
+                
                 alert_box.succesMessage("تم ارسال البطل الى البعثة");
                 PLAYER_NOTIF.hero_in_battel = Number(PLAYER_NOTIF.hero_in_battel) + 1;
                 Fixed.refreshPlayerNotif();
+                Elkaisar.Hero.getHero(idHero).Hero.in_city =  Elkaisar.Hero.HeroState.HERO_IN_BATTEL;
                 city_profile.refresh_hero_view();
                 $(".nav_icon .close_dialog").click();
 
@@ -39753,7 +39744,7 @@ $("#UPDOWN-chat img").click(function () {
         $("#chat-box").css("bottom", "-220px");
         $(this).addClass("smalled");
     }
-    Crafty.audio.play("close_sound");
+   // Crafty.audio.play("close_sound");
 });
 $("#p-provile-slider img").click(function () {
 
@@ -39771,7 +39762,7 @@ $("#p-provile-slider img").click(function () {
         $("#luck-wheel-btn").css("left", "-75px");
         $(this).addClass("smalled");
     }
-    Crafty.audio.play("close_sound");
+    //Crafty.audio.play("close_sound");
 });
 
 $("#city-profile-slider img").click(function () {
@@ -39788,7 +39779,7 @@ $("#city-profile-slider img").click(function () {
         $("#city-profile").css("right", "-425px");
         $(this).addClass("smalled");
     }
-    Crafty.audio.play("close_sound");
+   // Crafty.audio.play("close_sound");
 });
 
 
@@ -39835,6 +39826,7 @@ if (!document.fullscreenElement) {
 
 
 document.getElementById('ToggelFullSrc').addEventListener('click', function () {
+    return ;
     if (document.fullscreenElement) {
         document.exitFullscreen().then(function () {
             Crafty.viewport.height = $(document).height();
@@ -39870,11 +39862,11 @@ document.getElementById('ToggelFullSrc').addEventListener('click', function () {
 $(document).on("click", "#ToggelSound", function () {
     if ($(this).attr("data-state") === "on") {
         $(this).attr("data-state", "off");
-        Crafty.audio.mute();
+       // Crafty.audio.mute();
         $(this).css({"background-image": "url(images/btns/withBg/buttonSoundOptions.png)"});
     } else {
         $(this).attr("data-state", "on");
-        Crafty.audio.unmute();
+        //Crafty.audio.unmute();
         $(this).css({"background-image": "url(images/btns/withBg/sound_on_off.png)"});
 
     }
@@ -43582,73 +43574,74 @@ $(document).on("click" , "#city-garrison-footer button" , function (){
 
 
 
-};$("#WorldCity").click(function (){
-    
+};$("#WorldCity").click(function () {
+
     afterChangeView();
-    
-    if($(this).attr("data-view") === "world"){
-        
-        
-        Crafty.enterScene("city");
-        
-        
-        if(!$.isEmptyObject(Animation.currentUnitArrow.arrow)){
+
+    if ($(this).attr("data-view") === "world") {
+
+
+        Elkaisar.GE.WorldScene.scene.start("City");
+
+
+        if (!$.isEmptyObject(Animation.currentUnitArrow.arrow)) {
             Animation.currentUnitArrow.arrow.destroy();
-            delete(Animation.currentUnitArrow.arrow);   
+            delete(Animation.currentUnitArrow.arrow);
         }
-        
-        
-        Animation.FixedCityAnimation();
-        $(this).attr("data-view" , "city") ;
+
+        $(this).attr("data-view", "city");
         $(this).html(Translate.Button.Chat.World[UserLag.language]);
         $("#hide-show").hide();
-        Crafty.audio.stop("bird_sound");
+        //Crafty.audio.stop("bird_sound");
         $("#smallMap-icon").fadeOut();
         $(".nav-to-city").fadeOut();
-        setTimeout(function (){
+        setTimeout(function () {
             var iii = 0;
-            for (iii ; iii < 500*500 ; iii++){
+            for (iii; iii < 500 * 500; iii++) {
                 delete Elkaisar.worldAllUnits[iii].entite;
                 delete Elkaisar.worldAllUnits[iii].floor;
                 delete Elkaisar.worldAllUnits[iii].CityFlagEntite;
+                delete Elkaisar.worldAllUnits[iii].UnitFire;
             }
         });
-        
-    }
-    else if($(this).data("view") === "city"){
-        
-        Crafty("city_ani").each(function (){
-            this.destroy();
-        });
-        
-        Crafty.enterScene("world");
-        Elkaisar.World.Map.Scroll(true);
-        $(this).attr("data-view" , "world") ;
+
+    } else if ($(this).data("view") === "city") {
+        if (!Elkaisar.World.Map.CityFound)
+            Elkaisar.World.Map.getWorldCity().done(function () {
+                Elkaisar.GE.CityScene.scene.start("World");
+            });
+        else
+            Elkaisar.GE.CityScene.scene.start("World");
+
+        $(this).attr("data-view", "world");
         $(this).html("المدينة");
         $("#hide-show").show();
-        Crafty.audio.play("bird_sound" , -1);
+
         $("#smallMap-icon").fadeIn();
         $(".nav-to-city").fadeIn();
-        setTimeout(function (){Elkaisar.World.Map.RefreshWorld();}, 1000);
+        setTimeout(function () {
+            Elkaisar.World.Map.RefreshWorld();
+        }, 1000);
     }
-    
+
 });
 
 
 
-$(document).on("click" , "#player-city-list ul li" ,  function (){
-    
+
+$(document).on("click", "#player-city-list ul li", function () {
+
     afterChangeView();
-    
-    var index   = Number($(this).attr("data-index"));
+
+    var index = Number($(this).attr("data-index"));
     var id_city = Number($(this).attr("data-id-city"));
-    
+
     $("#player-city-list ul .selected").removeClass("selected");
     $(this).addClass("selected");
-    
+
     var view = $("#WorldCity").attr("data-view");
-    
-    
+
+
     Elkaisar.City.getCityHero(id_city);
     Elkaisar.City.getCityBarray(id_city);
     Elkaisar.City.getCityHeroArmy(id_city);
@@ -43658,71 +43651,117 @@ $(document).on("click" , "#player-city-list ul li" ,  function (){
     Elkaisar.TimedTask.getCityBuildingTasks(id_city);
     Elkaisar.TimedTask.getCityJopTasks(id_city);
     Elkaisar.TimedTask.getCityStudyTasks(id_city);
-    
+
     city_profile.refresh_resource_view();
     city_profile.refresh_hero_view();
     city_profile.refresh_army_view();
     Elkaisar.TimedTask.refreshListView();
     Elkaisar.City.refreshBtnList();
-    
+
     Elkaisar.CurrentCity = Elkaisar.City.getCity(id_city);
-     
-    Elkaisar.City.getCityBuilding().done(function (data){
-        
-        if(view === "city"){
+
+    Elkaisar.City.getCityBuilding().done(function (data) {
+
+        if (view === "city") {
             fillCityWithBuilding();
         }
-        
+
         Elkaisar.City.getCityBase();
-        
-        
+
+
     });
-    
-   
-    
+
+
+
     $("#city-data .name").html(Elkaisar.CurrentCity.City.name);
     $("#city-data .coords").html(`[ ${Elkaisar.CurrentCity.City.y} , ${Elkaisar.CurrentCity.City.x} ]`);
-    
-    
-    
-    
-    if( view === "world"){
-        
-        $("#x_coord-input input").val(Elkaisar.CurrentCity.City.x);    
-        $("#y_coord-input input").val(Elkaisar.CurrentCity.City.y);    
+
+
+
+
+    if (view === "world") {
+
+        $("#x_coord-input input").val(Elkaisar.CurrentCity.City.x);
+        $("#y_coord-input input").val(Elkaisar.CurrentCity.City.y);
         $("#nav-btn button").click();
-        
+
     }
-    
+
 });
 
 
 
-$(document).on("click", ".nav-to-city", function (){
-   
+$(document).on("click", ".nav-to-city", function () {
+
     var xCoord = $(this).attr("data-x-coord");
     var yCoord = $(this).attr("data-y-coord");
-    
+
     $("#x_coord-input input").val(xCoord);
     $("#y_coord-input input").val(yCoord);
     $("#nav-btn button").click();
-    
+
 });
 
 
-$(document).on("click", ".copy-coord", function (){
+$(document).on("click", ".copy-coord", function () {
     var coord = `[${$(this).attr("data-x-coord")},${$(this).attr("data-y-coord")}]`;
     var inputVal = $("#input-chat input").val();
-    $("#input-chat input").val(inputVal +" "+ coord);
+    $("#input-chat input").val(inputVal + " " + coord);
     $("#input-chat input").focus();
 });
 
 
 
-function afterChangeView(){
+function afterChangeView() {
     $(".close_dialog").click();
     $(".close_select_menu").click();
-}Animation = {};
+}
+
+
+
+$(document).on("click", "#chat-box", function (e) {
+    e.stopPropagation();
+});
+
+
+$("#nav-btn .full-btn").click(function () {
+
+    var x_coord = parseInt($("#x_coord-input input").val()) || 0;
+    var y_coord = parseInt($("#y_coord-input input").val()) || 0;
+    const cam = Elkaisar.GE.WorldScene.cameras.main;
+    const x = Elkaisar.World.Map.posX(Number(x_coord), Number(y_coord)) + 64;
+    const y = Elkaisar.World.Map.posY(Number(x_coord), Number(y_coord)) + 128;
+    const Dist = Phaser.Math.Distance.Between(cam.scrollX, cam.scrollY, x, y);
+
+    if ($("#FastNav").is(':checked')) {
+
+        Elkaisar.GE.WorldScene.cameras.main.scrollX = Elkaisar.World.Map.posX(Number(x_coord), Number(y_coord)) - Math.floor(MAX_SCREEN_WIDTH / 2 - 128);
+        Elkaisar.GE.WorldScene.cameras.main.scrollY = Elkaisar.World.Map.posY(Number(x_coord), Number(y_coord)) - Math.floor(MAX_SCREEN_HEIGHT / 2 - 128);
+
+
+        Animation.currentUnitArrow.put(x_coord, y_coord);
+        Elkaisar.World.Map.Scroll(true);
+
+        Elkaisar.GE.WorldScene.time.delayedCall(500, function () {
+            Elkaisar.World.Map.clear();
+            Elkaisar.World.Map.clear();
+            Elkaisar.World.MapBattel.AddBattels();
+            Elkaisar.World.Map.RefreshWorld();
+        });
+
+    } else {
+        cam.pan(x, y, Math.max(Dist / 2, 1500), "Sine.easeInOut", false, function (camera, progress, x, y) {
+            Elkaisar.World.Map.Scroll(true);
+            Elkaisar.World.Map.clear();
+        });
+
+        Animation.currentUnitArrow.put(x_coord, y_coord);
+
+
+    }
+
+
+});Animation = {};
 Animation.RATES = [];
 Animation.cityProductionRate = function () {
     return;
@@ -43794,81 +43833,147 @@ Animation.cityProductionRate = function () {
 
 };
 
+Animation.FarmAnimation = function () {
 
-Animation.FixedCityAnimation = function () {
-    return;
-    Crafty.e("2D, DOM, Image").image("images/animation/fountain.gif").attr({x: 1300, y: 710, z: 50});
-    Crafty.e("2D, DOM, Image").image("images/animation/fountain.gif").attr({x: 1200, y: 660, z: 50});
+    Elkaisar.GE.CityScene.add.sprite(1895, 1083, "FarmLabor").setDepth(100).play("FarmLabor.A");
+    Elkaisar.GE.CityScene.add.sprite(1804, 1129, "FarmLabor").setDepth(100).playAfterDelay("FarmLabor.A", 500);
+    Elkaisar.GE.CityScene.add.sprite(1777, 1059, "FarmLabor").setDepth(100).playAfterDelay("FarmLabor.A", 250);
 
 
-    Crafty("city_ani").each(function () {
-        this.destroy();
+    var CarryOne = Elkaisar.GE.CityScene.add.sprite(1929, 1086, "FarmLabor").setDepth(100).playAfterDelay("FarmLaborCarryR.A", 250).setDepth(1);
+    var CarryTwo = Elkaisar.GE.CityScene.add.sprite(2071, 1013, "FarmLabor").setDepth(100).playAfterDelay("FarmLaborCarryR.A", 250).setFlipX(true).setDepth(1);
+    var CarryThree = Elkaisar.GE.CityScene.add.sprite(2100, 1000, "FarmLabor").setDepth(100).playAfterDelay("FarmLaborCarryR.A", 250).setFlipX(true).setDepth(1);
+    var CarryFour = Elkaisar.GE.CityScene.add.sprite(2050, 1030, "FarmLabor").setDepth(100).playAfterDelay("FarmLaborCarryR.A", 250).setFlipX(true).setDepth(1);
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryOne, x: 2071, y: 1013, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 15000, yoyo: true,
+        onYoyo: function () {
+            CarryOne.play("noCarryWorkerD.A").setFlipX(true);
+        },
+        onRepeat: function () {
+            CarryOne.play("FarmLaborCarryR.A").setFlipX(false);
+        }
+    });
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryTwo, x: 1450, y: 664, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 45000, yoyo: true,
+        onYoyo: function () {
+            CarryTwo.play("noCarryWorkerD.A").setFlipX(false);
+        },
+        onRepeat: function () {
+            CarryTwo.play("FarmLaborCarryR.A").setFlipX(true);
+        }
+    });
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryThree, x: 1431, y: 678, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 45000, yoyo: true, delay: 15000,
+        onYoyo: function () {
+            CarryThree.play("noCarryWorkerD.A").setFlipX(false);
+        },
+        onRepeat: function () {
+            CarryThree.play("FarmLaborCarryR.A").setFlipX(true);
+        }
+    });
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryFour, x: 1410, y: 683, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 45000, yoyo: true, delay: 30000,
+        onYoyo: function () {
+            CarryFour.play("noCarryWorkerD.A").setFlipX(false);
+        },
+        onRepeat: function () {
+            CarryFour.play("FarmLaborCarryR.A").setFlipX(true);
+        }
+    });
+};
+
+
+Animation.StoneAnimation = function () {
+
+    Elkaisar.GE.CityScene.add.sprite(1523, 442, "StoneLabor").setDepth(100).playAfterDelay("StoneLabor.A", 250).setDepth(100).setScale(1.2, 1.2);
+    Elkaisar.GE.CityScene.add.sprite(1642, 453, "StoneLabor").setDepth(100).playAfterDelay("StoneLabor.A", 0).setDepth(100).setScale(1.2, 1.2);
+    Elkaisar.GE.CityScene.add.sprite(1731, 461, "StoneLabor").setDepth(100).playAfterDelay("StoneLabor.A", 150).setDepth(100).setFlipX(true).setScale(1.2, 1.2);
+    Elkaisar.GE.CityScene.add.sprite(1630, 525, "StoneLabor").setDepth(100).playAfterDelay("StoneLabor.A", 100).setDepth(100).setFlipX(true).setScale(1.2, 1.2);
+
+    var CarryOne = Elkaisar.GE.CityScene.add.sprite(1563, 537, "FarmLabor").setDepth(150).playAfterDelay("StoneLaborCarryL.A", 250).setDepth(1);
+    var CarryTwo = Elkaisar.GE.CityScene.add.sprite(1508, 503, "FarmLabor").setDepth(150).playAfterDelay("StoneLaborCarryL.A", 250).setDepth(1);
+
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryOne, x: 1395, y: 645, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 15000, yoyo: true,
+        onYoyo: function () {
+            CarryOne.play("noCarryWorkerR.A");
+        },
+        onRepeat: function () {
+            CarryOne.play("StoneLaborCarryL.A").setFlipX(false);
+        }
+    });
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: CarryTwo, x: 1312, y: 609, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 15000, yoyo: true, delay: 10000,
+        onYoyo: function () {
+            CarryTwo.play("noCarryWorkerR.A");
+        },
+        onRepeat: function () {
+            CarryTwo.play("StoneLaborCarryL.A").setFlipX(false);
+        }
     });
 
-
-    /* first fountain */
-    Crafty.e('2D, DOM, fountain, SpriteAnimation, city_ani')
-            .reel("walking", 800, [
-                [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0]
-            ])
-            .animate("walking", -1)
-            .attr({x: 1300, y: 710, z: 50});
-    Crafty.e('2D, DOM, fountain, SpriteAnimation, city_ani')
-            .reel("walking", 800, [
-                [2, 0], [3, 0], [4, 0], [5, 0], [0, 0], [1, 0]
-            ])
-            .animate("walking", -1)
-            .attr({x: 1200, y: 660, z: 50});
+};
 
 
-    Crafty.e('2D, DOM, ani_wood_maker, SpriteAnimation, city_ani')
-            .reel("walking", 3000, [
-                [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
-                [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1]
-            ])
-            .animate("walking", -1)
-            .attr({x: 2.5 * X_GRID, y: 8 * Y_GRID, z: 50});
 
-    Crafty.e('2D, DOM, ani_wood_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6]
-            ])
-            .animate("walking", -1)
-            .attr({x: 2 * X_GRID, y: 8.25 * Y_GRID, z: 50});
-    Crafty.e('2D, DOM, ani_wood_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 3], [0, 4], [0, 5], [0, 6], [0, 0], [0, 1], [0, 2]
-            ])
-            .animate("walking", -1)
-            .attr({x: 3 * X_GRID, y: 8.25 * Y_GRID, z: 50}).flip("X");
+Animation.IronAnimation = function () {
 
-    Crafty.e('2D, DOM, stone_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6]
-            ])
-            .animate("walking", -1)
-            .attr({x: 12.3 * X_GRID, y: 7.15 * Y_GRID, z: 50});
 
-    Crafty.e('2D, DOM, stone_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 0], [0, 1]
-            ])
-            .animate("walking", -1)
-            .attr({x: 11.75 * X_GRID, y: 6.5 * Y_GRID, z: 50});
+    Elkaisar.GE.CityScene.add.sprite(1319, 279, "IronLabor").playAfterDelay("IronLabor.A", 0).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(1173, 326, "IronLabor").playAfterDelay("IronLabor.A", 100).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(1061, 317, "IronLabor").playAfterDelay("IronLabor.A", 200).setDepth(100);
 
-    Crafty.e('2D, DOM, mine_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6]
-            ])
-            .animate("walking", -1)
-            .attr({x: 10 * X_GRID, y: 4 * Y_GRID, z: 50});
+};
 
-    Crafty.e('2D, DOM, mine_man, SpriteAnimation, city_ani')
-            .reel("walking", 1000, [
-                [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 0], [0, 1]
-            ])
-            .animate("walking", -1)
-            .attr({x: 9 * X_GRID, y: 5 * Y_GRID, z: 50});
+
+Animation.WoodAnimation = function () {
+
+
+    Elkaisar.GE.CityScene.add.sprite(437, 477, "WoodLabor").playAfterDelay("WoodLabor.A", 0).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(399, 550, "WoodLabor").playAfterDelay("WoodLabor.A", 100).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(303, 563, "WoodLabor").playAfterDelay("WoodLabor.A", 200).setDepth(100);
+
+    Elkaisar.GE.CityScene.add.sprite(348, 547, "WoodTool").playAfterDelay("WoodTool.A", 200).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(470, 549, "WoodTool").playAfterDelay("WoodTool.A", 100).setFlipX(true).setDepth(100);
+
+
+};
+
+Animation.FixedCityAnimation = function () {
+
+    Animation.FarmAnimation();
+    Animation.StoneAnimation();
+    Animation.IronAnimation();
+    Animation.WoodAnimation();
+
+    Elkaisar.GE.CityScene.add.sprite(1412, 445, "Horse").playAfterDelay("Horse.A", 0).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(1420, 455, "Horse").playAfterDelay("Horse.A", 100).setFlipX(true).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(1430, 458, "Horse").playAfterDelay("Horse.A", 150).setDepth(100);
+
+
+    Elkaisar.GE.CityScene.add.sprite(1285, 716, "Fountain").playAfterDelay("Fountain.A", 150).setDepth(100);
+    Elkaisar.GE.CityScene.add.sprite(1235, 680, "Fountain").playAfterDelay("Fountain.A", 150).setDepth(100);
+
+
+    var Woman1 = Elkaisar.GE.CityScene.add.sprite(1696, 555, "Woman").playAfterDelay("WomanFace.A", 150).setDepth(100);
+    Elkaisar.GE.CityScene.tweens.add({
+        targets: Woman1, x: 1178, y: 790, ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1, duration: 45000, yoyo: true,
+        onYoyo: function () {
+            Woman1.play("WomanBack.A");
+        },
+        onRepeat: function () {
+            Woman1.play("WomanFace.A");
+        }
+    });
+
+    return;
 
     Crafty.cityClouds = [];
     Crafty.cityClouds.push(Crafty.e('2D, DOM, cloud ,Motion , city_ani').attr({
@@ -43931,148 +44036,104 @@ Animation.FixedCityAnimation = function () {
         x: 1600, y: 900, vx: 14, z: 5000, __offsetX: -1600
     }));
 
-
-    /* 
-     
-     Crafty.e('2D, Canvas, stone_carry, SpriteAnimation, Motion , Collision    ,  WiredHitBox')
-     .reel("walking", 1200, [
-     [0, 0], [0,1], [0,2], [0,3], [0,4], [0,5],[0,6]
-     ])
-     .animate("walking", -1)
-     .attr({x:12.5*X_GRID, y:8*Y_GRID, z:50 , vx:-18 , vy:9}).flip("X")
-     .onHit('palace' , function (){
-     
-     var this_ = this;
-     setTimeout(function (){
-     
-     this_.vx =0;
-     this_.vy =0;
-     //this_.attr({__image: "images/animation/stone_carry.png"})
-     
-     
-     }, 3500);
-     
-     
-     
-     })
-     .collision([37,17,19,19,20,47,41,47])
-     .onHit("mine" , function (){
-     
-     console.log("teat")
-     
-     });
-     */
-
-
-
-
-
 };
 
 
 //setTimeout(function (){Animation.FixedCityAnimation();} , 3000)
-var CLOUD_RESET_TIMER = setInterval(function () {
-    for (var cloud in Crafty.cityClouds) {
+/*var CLOUD_RESET_TIMER = setInterval(function () {
+ for (var cloud in Crafty.cityClouds) {
+ 
+ if (Crafty.cityClouds[cloud]._x > 2500) {
+ Crafty.cityClouds[cloud].x = Crafty.cityClouds[cloud].__offsetX;
+ }
+ 
+ }
+ }, 40 * 1000);*/
 
-        if (Crafty.cityClouds[cloud]._x > 2500) {
-            Crafty.cityClouds[cloud].x = Crafty.cityClouds[cloud].__offsetX;
-        }
-
-    }
-}, 40 * 1000);
 
 
-
-function building_hammer_animate(building_place)
+function building_hammer_animate(BuildingPlace)
 {
 
-    if (isUpgradingNow(building_place)) {
+    if (!isUpgradingNow(BuildingPlace))
+        return;
 
-        var x = BuildingOnFloor[building_place]._x;
-        var y = BuildingOnFloor[building_place]._y;
-
-        var x_1 = x - 25;
-        var x_2 = x + 20;
-        var y_1 = y - 10;
-        var y_2 = y;
-
-        if (building_place === "palace") {
-            x_1 = x + 25;
-            x_2 = x + 80;
-            y_1 = y + 5;
-            y_2 = y;
-        } else if (building_place === "wall") {
-
-
-            var hammer_3 = Crafty.e('2D, Canvas, hammer_start, SpriteAnimation,' + building_place + "_ani_up")
-                    .reel("walking", 650, [
-                        [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                    ])
-                    .animate("walking", -1)
-                    .attr({x: 1.5 * X_GRID, y: 3.25 * Y_GRID, z: 5000});
-
-            var hammer_4 = Crafty.e('2D, Canvas, hammer_start, SpriteAnimation,' + building_place + "_ani_up")
-                    .reel("walking", 650, [
-                        [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [0, 0], [1, 0]
-                    ])
-                    .animate("walking", -1)
-                    .attr({x: 0.5 * X_GRID, y: 4.25 * Y_GRID, z: 5000});
-
-            BuildingOnFloor[building_place].attach(hammer_3);
-            BuildingOnFloor[building_place].attach(hammer_4);
-
-
-            x_2 = 3.5 * X_GRID;
-            y_2 = 1.25 * Y_GRID;
-
-
-        } else if (building_place === "farm") {
-            x_1 = x + 0.5 * X_GRID;
-            x_2 = x + X_GRID;
-            y_1 = y + Y_GRID;
-            y_2 = y + 0.5 * Y_GRID;
-        } else if (building_place === "mine") {
-            x_1 = x - 25 + X_GRID;
-            x_2 = x + 20 + X_GRID;
-            y_1 = y - 10 + Y_GRID;
-            y_2 = y + Y_GRID;
-        } else if (building_place === "stone") {
-            x_1 = x - 25 + 0.5 * X_GRID;
-            x_2 = x + 20 + 0.5 * X_GRID;
-            y_1 = y - 10 + 0.5 * Y_GRID;
-            y_2 = y + 0.5 * Y_GRID;
+    var x = BuildingOnFloor[BuildingPlace].x;
+    var y = BuildingOnFloor[BuildingPlace].y;
+    var x_1 = x - 25;
+    var x_2 = x + 20;
+    var y_1 = y - 10;
+    var y_2 = y;
+    if (BuildingOnFloor[BuildingPlace].BuildingAni) {
+        for (var ii in BuildingOnFloor[BuildingPlace].BuildingAni) {
+            BuildingOnFloor[BuildingPlace].BuildingAni[ii].destroy();
+            delete BuildingOnFloor[BuildingPlace].BuildingAni[ii];
         }
+    }
+    BuildingOnFloor[BuildingPlace].BuildingAni = [];
 
+    if (BuildingPlace === "palace") {
+        x_1 = x + 25;
+        x_2 = x + 80;
+        y_1 = y + 5;
+        y_2 = y;
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.image(x + 55, y + 55, "UpgradingPalaceSupD").setOrigin(0, 0).setDepth(3));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.image(x + 55, y + 55, "UpgradingPalaceSupU").setOrigin(0, 0).setDepth(1));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 165, y + 120, "UpgradingLaborR").play("UpgradingLaborR.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 200, y + 100, "UpgradingLaborR").play("UpgradingLaborR.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 70, y + 120, "UpgradingLaborL").play("UpgradingLaborL.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
 
-        if (building_place !== "wall") {
-            var hammer_1 = Crafty.e('2D, Canvas, hammer_start, SpriteAnimation,' + building_place + "_ani_up")
-                    .reel("walking", 650, [
-                        [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                    ])
-                    .animate("walking", -1)
-                    .attr({x: x_1, y: y_1, z: 5000}).flip("X");
-            BuildingOnFloor[building_place].attach(hammer_1);
-        }
+    } else if (BuildingPlace === "wall") {
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(1.5 * X_GRID, 3.25 * Y_GRID, "UpgradingHammer").play("UpgradingHammer.A", Math.random() * 500).setOrigin(0, 0).setDepth(10));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(0.5 * X_GRID, 4.25 * Y_GRID, "UpgradingHammer").play("UpgradingHammer.A", Math.random() * 500).setOrigin(0, 0).setDepth(10));
+        x_2 = 3.5 * X_GRID;
+        y_2 = 1.25 * Y_GRID;
+    } else if (BuildingPlace === "farm") {
+        x_1 = x + 0.5 * X_GRID;
+        x_2 = x + X_GRID;
+        y_1 = y + Y_GRID;
+        y_2 = y + 0.5 * Y_GRID;
+    } else if (BuildingPlace === "mine") {
+        x_1 = x - 25 + X_GRID;
+        x_2 = x + 20 + X_GRID;
+        y_1 = y - 10 + Y_GRID;
+        y_2 = y + Y_GRID;
+    } else if (BuildingPlace === "stone") {
+        x_1 = x - 25 + 0.5 * X_GRID;
+        x_2 = x + 20 + 0.5 * X_GRID;
+        y_1 = y - 10 + 0.5 * Y_GRID;
+        y_2 = y + 0.5 * Y_GRID;
+    } else if (BuildingPlace == "wood") {
 
+    } else {
 
-
-        var hammer_2 = Crafty.e('2D, Canvas, hammer_start, SpriteAnimation,' + building_place + "_ani_up")
-                .reel("walking", 650, [
-                    [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [0, 0], [1, 0]
-                ])
-                .animate("walking", -1)
-                .attr({x: x_2, y: y_2, z: 5000});
-
-
-        BuildingOnFloor[building_place].attach(hammer_2);
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x, y + 60, "UpgradingLaborL").play("UpgradingLaborL.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 45, y + 80, "UpgradingLaborL").play("UpgradingLaborL.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 120, y + 60, "UpgradingLaborR").play("UpgradingLaborR.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x + 80, y + 80, "UpgradingLaborR").play("UpgradingLaborR.A", Math.random() * 500).setOrigin(0, 0).setDepth(5));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.image(x, y, "UpgradingSupportsD").setOrigin(0, 0).setDepth(4));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.image(x, y, "UpgradingSupportsU").setOrigin(0, 0).setDepth(3));
 
 
     }
+
+    if (BuildingPlace !== "wall") {
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x_1, y_1, "UpgradingHammer").play("UpgradingHammer.A", Math.random() * 500).setFlipX(true).setOrigin(0, 0).setDepth(10));
+        BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x_1, y_1, "UpgradingHammer").play("UpgradingHammer.A", Math.random() * 500).setFlipX(true).setOrigin(0, 0).setDepth(10));
+    }
+
+
+    BuildingOnFloor[BuildingPlace].BuildingAni.push(Elkaisar.GE.CityScene.add.sprite(x_2, y_2, "UpgradingHammer").play("UpgradingHammer.A", Math.random() * 500).setOrigin(0, 0).setDepth(10));
+
+
+    return;
+
+
 }
 
 function fire_attack_animation()
 {
-
+    return;
     Crafty.e('2D, Canvas, fire_start, SpriteAnimation, worldEnt')
             .reel("walking", 650, [
                 [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
@@ -44085,183 +44146,75 @@ function fire_attack_animation()
 
 }
 var WORLD_NUIT_ON_FIRE = [];
-Animation.fireWorldUnit = function (fire_unit) {
 
 
-    var world_unit = WorldUnit.getWorldUnit(fire_unit.x_coord, fire_unit.y_coord);
-    if (!world_unit.entite || $.isEmptyObject(world_unit.entite)) {
+Animation.fireWorldUnit = function (xCoord, yCoord) {
+
+
+    var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+
+    if (!Unit.s)
+        return;
+
+    if (!Unit.entite || $.isEmptyObject(Unit.entite)) {
         return;
     }
 
-    var x = world_unit.entite._x;
-    var y = world_unit.entite._y;
-    var z = world_unit.entite._z;
-
-    var lvl = world_unit.l;
-    var type = world_unit.ut;
-
-    if (WorldUnit.isRiver(type)) {
+    if (Unit.UnitFire && Unit.UnitFire.length > 0)
         return;
-    }
-    if (world_unit.entite.__has_fire) {
+    Unit.UnitFire = [];
+
+    const x = Elkaisar.World.Map.posX(xCoord, yCoord);
+    const y = Elkaisar.World.Map.posY(xCoord, yCoord);
+    const z = Elkaisar.World.Map.posZ(xCoord, yCoord);
+    const lvl = Unit.l;
+    const type = Unit.ut;
+    const Scene = Elkaisar.GE.WorldScene;
+
+    if (WorldUnit.isRiver(type))
         return;
-    }
+    if (Unit.entite.data.get("HasFire"))
+        return;
+
 
     if (WorldUnit.isBarrary(type) && lvl < 4 || WorldUnit.isGangStar(type)) {
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 52, y: y + 24, z: z}));
+        Unit.UnitFire[0] = Scene.add.sprite(x + 52, y + 24, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
     } else if (WorldUnit.isBarrary(type)) {
 
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL, worldEnt , fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 32, y: y + 16, z: z - 1}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 72, y: y + 16, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 52, y: y + 42, z: z}));
-
+        Unit.UnitFire[0] = Scene.add.sprite(x + 32, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 72, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 52, y + 42, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
 
     } else if (WorldUnit.isCityLv1(type)) {
 
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 42, y: y + 12, z: z - 1}))
+        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 75, y + 20, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 20, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 46, y + 42, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
 
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 75, y: y + 20, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 12, y: y + 20, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 46, y: y + 42, z: z}));
     } else if (WorldUnit.isCityLv2(type)) {
 
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 42, y: y, z: z - 1}))
+        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 80, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 52, y + 30, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
 
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 80, y: y + 16, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 12, y: y + 12, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 52, y: y + 30, z: z}));
     } else if (WorldUnit.isCityLv3(type)) {
 
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [5, 0], [6, 0], [7, 0], [0, 0], [1, 0], [2, 0], [3, 0], [4, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 48, y: y - 10, z: z - 1}))
+        Unit.UnitFire[0] = Scene.add.sprite(x + 48, y - 10, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 88, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 8, y + 8, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 60, y + 32, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
 
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL, worldEnt , fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 88, y: y + 12, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [0, 0], [1, 0], [2, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 8, y: y + 8, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 60, y: y + 32, z: z}));
     } else {
-        world_unit.entite
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL , worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 42, y: y, z: z - 1}))
 
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL, worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 80, y: y + 16, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL, worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 12, y: y + 12, z: z}))
-
-                .attach(Crafty.e('2D, DOM, FIRE_OF_HILL, worldEnt, fire_start, SpriteAnimation')
-                        .reel("fire_unit", 650, [
-                            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]
-                        ])
-                        .animate("fire_unit", -1)
-                        .attr({x: x + 52, y: y + 30, z: z}));
+        Unit.UnitFire[0] = Scene.add.sprite(x + 42, y, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 80, y + 16, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 12, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 52, y + 30, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
     }
 
-    world_unit.entite.__has_fire = true;
+    Unit.entite.data.set("HasFire", true);
 
 };
 
@@ -44269,120 +44222,71 @@ Animation.fireWorldUnit = function (fire_unit) {
 Elkaisar.Animation.cityFlagProp = {
 
 };
+Animation.WorldFire = function () {
+    Elkaisar.GE.WorldScene.children.list.forEach(function (El) {
+        if (!El.data)
+            return;
 
+        const xCoord = El.data.get("xCoord");
+        const yCoord = El.data.get("yCoord");
+        const Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+        Animation.fireWorldUnit(xCoord, yCoord);
+
+    });
+};
 
 Animation.cityFlag = function () {
 
-    Crafty("WorldUnit").each(function (index) {
-
-        var world_unit = WorldUnit.getWorldUnit(this.coord_x, this.coord_y);
-
-        if (!$.isEmptyObject(world_unit.CityFlagEntite)) {
+    Elkaisar.GE.WorldScene.children.list.forEach(function (El) {
+        if (!El.data)
             return;
-        }
 
-        var x = Elkaisar.World.Map.posX(this.coord_x, this.coord_y);
-        var y = Elkaisar.World.Map.posY(this.coord_x, this.coord_y);
-        var z = Elkaisar.World.Map.posZ(this.coord_x, this.coord_y);
+        const xCoord = El.data.get("xCoord");
+        const yCoord = El.data.get("yCoord");
+        const Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
 
-        var lvl = world_unit.l;
-
-        if (!WorldUnit.isCity(world_unit.ut)) {
+        if (Unit.CityFlagEntite)
             return;
-        }
-
-
-
-
-        var flag_array = [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5]];
-        
-        if (world_unit.idPlayer === Elkaisar.DPlayer.Player.id_player) {
-            flag_array = [[3, 0], [3, 1], [3, 2], [3, 3], [3, 4], [3, 5]];
-        } else if (!Elkaisar.Guild.GuildData || !world_unit.idGuild) {
-
-            flag_array = [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5]];
-
-        } else if (Number(Elkaisar.DPlayer.Player.id_guild) === Number(world_unit.idGuild)) {
-            console.log("SameGuild")
-            flag_array = [[2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5]];
-        } else {
+        if (!WorldUnit.isCity(Unit.ut))
+            return;
+        const x = Elkaisar.World.Map.posX(xCoord, yCoord);
+        const y = Elkaisar.World.Map.posY(xCoord, yCoord);
+        const z = Elkaisar.World.Map.posZ(xCoord, yCoord);
+        const lvl = Unit.l;
+        let FramName = "CityFlag.Nut";
+        if (Unit.idPlayer == Elkaisar.DPlayer.Player.id_player)
+            FramName = "CityFlag.Min";
+        else if (!Unit.idGuild || !Elkaisar.Guild.GuildData)
+            FramName = "CityFlag.Nut";
+        else if (Unit.idGuild == Elkaisar.DPlayer.Player.id_guild)
+            FramName = "CityFlag.All";
+        else {
             for (var jjj in Elkaisar.Guild.Allay) {
-                if (Number(Elkaisar.Guild.Allay[jjj].idGuild) === Number(world_unit.idGuild)) {
+                if (Number(Elkaisar.Guild.Allay[jjj].idGuild) === Number(Unit.idGuild)) {
 
                     if (Number(Elkaisar.Guild.Allay[jjj].state) === 1) {
-                        flag_array = [[4, 0], [4, 1], [4, 2], [4, 3], [4, 4], [4, 5]];
+                        FramName = "CityFlag.Ene";
 
                     } else if (Number(Elkaisar.Guild.Allay[jjj].state) === 2) {
-                        flag_array = [[1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5]];
+                        FramName = "CityFlag.Fri";
                     }
                 }
             }
         }
 
+        let Pos = {x: 0, y: 0};
+        if (Number(Unit.ut) === WUT_CITY_LVL_0)
+            Pos = {x: x + 36, y: y + 50, z: z + 10};
+        else if (Number(Unit.ut) === WUT_CITY_LVL_1)
+            Pos = {x: x + 36, y: y + 50, z: z + 10};
+        else if (Number(Unit.ut) === WUT_CITY_LVL_2)
+            Pos = {x: x + 36, y: y + 50, z: z + 10};
+        else if (Number(Unit.ut) === WUT_CITY_LVL_3)
+            Pos = {x: x + 30, y: y + 45, z: z + 10};
+
+        Unit.CityFlagEntite = Elkaisar.GE.WorldScene.add.sprite(Pos.x, Pos.y, 'flagOverCity').setOrigin(0, 0).play(FramName).setDepth(Pos.z);
 
 
-
-
-        if (Number(world_unit.ut) === WUT_CITY_LVL_0) {
-
-            world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
-                    .reel("city_flag", 650, flag_array)
-                    .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 50, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
-                    .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 38, w: 35, h: 20, avoidCss3dTransforms: true, z: 9 ** 9})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
-
-
-        } else if (Number(world_unit.ut) === WUT_CITY_LVL_1) {
-
-            world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
-                    .reel("city_flag", 650, flag_array)
-                    .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 50, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
-                    .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e15})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
-
-        } else if (Number(world_unit.ut) === WUT_CITY_LVL_2) {
-
-            world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
-                    .reel("city_flag", 650, flag_array)
-                    .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 50, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
-                    .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
-
-        } else if (Number(world_unit.ut) === WUT_CITY_LVL_3) {
-
-            world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
-                    .reel("city_flag", 650, flag_array)
-                    .animate("city_flag", -1)
-                    .attr({x: x + 30, y: y + 45, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
-                    .attach(Crafty.e('2D, Canvas, Text, stroke, worldEnt')
-                            .attr({x: x + 34, y: y + 60, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29})
-                            .text("" + world_unit.CityFlag)
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
-
-        } else {
-            console.log(world_unit)
-        }
     });
 
 
@@ -44390,7 +44294,7 @@ Animation.cityFlag = function () {
 
 
 Animation.cityColonizerFlag = function () {
-
+    return;
     Crafty("WorldUnit").each(function (index) {
 
         var world_unit = WorldUnit.getWorldUnit(this.coord_x, this.coord_y);
@@ -44511,23 +44415,51 @@ Animation.currentUnitArrow.x = 0;
 Animation.currentUnitArrow.y = 0;
 Animation.currentUnitArrow.z = 0;
 
+
+
+Animation.currentUnitArrow.add = function () {
+
+    Animation.currentUnitArrow.arrow = Elkaisar.GE.WorldScene.add.image(0, 0, "arrow").setDepth(0).setVisible(false);
+    return;
+
+
+};
+
 Animation.currentUnitArrow.put = function (x, y) {
 
     Animation.currentUnitArrow.x = Elkaisar.World.Map.posX(x, y) + 50;
     Animation.currentUnitArrow.y = Elkaisar.World.Map.posY(x, y) + 5;
     Animation.currentUnitArrow.z = Elkaisar.World.Map.posZ(x, y) + 1;
-    var dir = 0;
+    Animation.currentUnitArrow.arrow.setVisible(true);
+    Animation.currentUnitArrow.arrow.setPosition(Animation.currentUnitArrow.x, Animation.currentUnitArrow.y);
+    Animation.currentUnitArrow.arrow.setDepth(Animation.currentUnitArrow.z);
 
+
+    if (Animation.currentUnitArrow.tween)
+        Animation.currentUnitArrow.tween.remove();
+
+    Animation.currentUnitArrow.tween = Elkaisar.GE.WorldScene.tweens.add({
+        targets: Animation.currentUnitArrow.arrow,
+        x: Animation.currentUnitArrow.arrow.x,
+        y: Animation.currentUnitArrow.arrow.y + 30,
+        ease: 'Linear', // 'Cubic', 'Elastic', 'Bounce', 'Back'
+        repeat: -1,
+        duration: 1000,
+        yoyo: true,
+        onYoyo: function () {},
+        onRepeat: function () {}
+    });
+
+
+    return;
     if (!$.isEmptyObject(Animation.currentUnitArrow.arrow)) {
-        Animation.currentUnitArrow.arrow.attr({
-            x: Animation.currentUnitArrow.x,
-            y: Animation.currentUnitArrow.y,
-            z: Animation.currentUnitArrow.z
-        }).trigger("TweenEnd");
+        Animation.currentUnitArrow.arrow.setPosition(Animation.currentUnitArrow.x, Animation.currentUnitArrow.y).setDepth(Animation.currentUnitArrow.z);
     } else {
 
         Animation.currentUnitArrow.arrow =
-                Crafty.e("2D, Canvas, Tween, arrow")
+                Elkaisar.GE.WorldScene.add.image(Animation.currentUnitArrow.x, Animation.currentUnitArrow.y).setDepth(Animation.currentUnitArrow.z);
+
+        Crafty.e("2D, Canvas, Tween, arrow")
                 .attr({
                     x: Animation.currentUnitArrow.x,
                     y: Animation.currentUnitArrow.y,
@@ -47403,7 +47335,372 @@ $(document).on("change" , "#game-lang-list .choose-lang", function (){
 
 if(UserLag.isDefault){
     $("#OpenSettingsBox").click();
-}Elkaisar.Contribute.For = {
+}const Emjoi = {
+
+    ":D": "iconfinder_01_EmoticonsHDcom_343133.png",
+    ";)": "iconfinder_02_EmoticonsHDcom_343145.png",
+    "o{|": "iconfinder_03_EmoticonsHDcom_343126.png",
+    ":x)": "iconfinder_04_EmoticonsHDcom_343148.png",
+    ":*": "iconfinder_11_EmoticonsHDcom_343153.png",
+    ":|": "iconfinder_14_EmoticonsHDcom_343141.png",
+    "8)": "iconfinder_18_EmoticonsHDcom_343124.png",
+    "8>": "iconfinder_19_EmoticonsHDcom_343161.png",
+    ":o": "iconfinder_20_EmoticonsHDcom_343139.png",
+    "3:)": "iconfinder_22_EmoticonsHDcom_343170.png",
+    "*_*": "iconfinder_26_EmoticonsHDcom_343122.png",
+    "._.*": "iconfinder_28_EmoticonsHDcom_343128.png",
+    "8o:": "iconfinder_30_EmoticonsHDcom_343169.png",
+    "Dx:": "iconfinder_30_EmoticonsHDcom_343169.png",
+    ":8*": "iconfinder_31_EmoticonsHDcom_343146.png",
+    ":)": "iconfinder_32_EmoticonsHDcom_343171.png",
+    "*,": "iconfinder_34_EmoticonsHDcom_343142.png",
+    "8:D": "iconfinder_35_EmoticonsHDcom_343158.png",
+    "*._.*": "iconfinder_36_EmoticonsHDcom_343143.png",
+    "8o": "iconfinder_38_EmoticonsHDcom_343162.png",
+    "^._.^": "iconfinder_39_EmoticonsHDcom_343137.png",
+    ":/": "iconfinder_42_EmoticonsHDcom_343138.png",
+    "^=^": "iconfinder_46_EmoticonsHDcom_343155.png",
+    ":lol:": "iconfinder_49_EmoticonsHDcom_343130.png",
+    ":'D": "iconfinder_49_EmoticonsHDcom_343130.png",
+    ":')": "iconfinder_49_EmoticonsHDcom_343130.png",
+    "xD": "iconfinder_49_EmoticonsHDcom_343130.png",
+    "XD": "iconfinder_49_EmoticonsHDcom_343130.png",
+    "*^_^*": "iconfinder_50_EmoticonsHDcom_343163.png",
+    ".^_^.": "iconfinder_50_EmoticonsHDcom_343163.png",
+    ":z": "iconfinder_51_EmoticonsHDcom_343165.png",
+    ":}": "iconfinder_51_EmoticonsHDcom_343165.png",
+    ":3": "iconfinder_51_EmoticonsHDcom_343165.png",
+    ":<3": "iconfinder_56_EmoticonsHDcom_343159.png",
+    "':D": "iconfinder_58_EmoticonsHDcom_343166.png",
+    ":'o": "iconfinder_59_EmoticonsHDcom_343167.png",
+    ":'(": "iconfinder_59_EmoticonsHDcom_343167.png",
+    "'^o^'": "iconfinder_61_EmoticonsHDcom_343131.png",
+    "(^_^)": "iconfinder_65_EmoticonsHDcom_343144.png",
+    "^_^)": "iconfinder_69_EmoticonsHDcom_343154.png",
+    "^_^": "iconfinder_69_EmoticonsHDcom_343154.png",
+    ";):": "iconfinder_67_EmoticonsHDcom_343136.png",
+    ">:(": "iconfinder_70_EmoticonsHDcom_343164.png",
+    ">:/": "iconfinder_70_EmoticonsHDcom_343164.png",
+    ">:@": "iconfinder_70_EmoticonsHDcom_343164.png",
+    "<(": "iconfinder_71_EmoticonsHDcom_343132.png",
+    "=_=": "iconfinder_79_EmoticonsHDcom_343140.png"
+
+};
+
+var Chat = {};
+Chat.msgId = 0;
+
+Chat.msgFrom = function (data){
+  
+   
+    var name = `<div class="reply" data-msg="${data.chatMsg}" data-from="${data.fromName}">(رد)</div>
+                <div class="name">[${data.fromName}]:</div> `;
+    
+    for(var iii in data.playerTitle){
+     
+        console.log(iii);
+        name += `<div class="rank-title rank-${iii}">${data.playerTitle[iii]}</div>`;
+    }
+    return name;
+};
+
+Chat.worldMessage = function (data){
+  
+    
+    var user_group_class = data.userGroup;
+    var chatMsg = Extract.coords(extractEmjoi(extractUrl(data.chatMsg)));
+    var idMsg = (++Chat.msgId);
+    var msgContent = ``;
+    if(data.quoted){
+        
+        msgContent = `  <div class="with-reply">
+                            <p class="quote ellipsis">[${data.quoteFrom}]: ${data.quote}</p>
+                            <p class="q-r msg-text" data-msg-org="${data.chatMsg}">${chatMsg}</p>
+                        </div>`;
+    }else{
+        msgContent = `<p class="msg-text flex"  data-msg-org="${data.chatMsg}">
+                        ${chatMsg}
+                     </p>`;
+    }
+    
+    var msg = `<div id="mg-id-${idMsg}" data-id-msg="${data.idFrom}-${data.idMsg}" 
+                    class="msg-unit world_chat ${"user-group-"+user_group_class}" 
+                    data-id-player="${data.idFrom}" data-avatar="${data.p_avatar}" 
+                    data-name="${data.fromName}" data-user-group="${data.userGroup}">
+                    <div class="msg-from flex">
+                        ${Chat.msgFrom(data)}
+                    </div>
+                    <div class="msg-body flex">${msgContent}</div>
+                    <label class="msg-time">${ ('00' + new Date().getHours()).slice(-2)}:${('00' + new Date().getMinutes()).slice(-2)}</label>
+                </div>`;
+    
+    UserLag.TranslateChatMsg({id: idMsg, text: data.chatMsg});
+    var htmlMsg = $($.parseHTML(msg));
+    htmlMsg.children(".msg-from").children(".rank-title").css("width" , "60px");
+    setTimeout(function (){
+        htmlMsg.children(".msg-from").children(".rank-title").css("width" , "15px");
+    },1000);
+    
+    $("#msg-area").append(htmlMsg);
+  
+};
+
+Chat.guildMessage = function (data){
+    
+    var user_group_class = data.userGroup;
+    var chatMsg = Extract.coords(extractEmjoi(extractUrl(data.chatMsg)));
+    var idMsg = (++Chat.msgId);
+
+    var msg = `<div id="mg-id-${idMsg}" class="msg-unit guild_msg" data-id-player="${data.idFrom}" data-avatar="${data.playerAvatar}" data-name="${data.fromName}">
+                    <div class="msg-from flex">
+                        ${Chat.msgFrom(data)}
+                    </div>
+                    <div class="msg-body flex">
+                        <p class="msg-text flex" data-msg-org="${data.chatMsg}">
+                           ${chatMsg}
+                        </p>
+                    </div>
+                </div>`;
+    
+    UserLag.TranslateChatMsg({id: idMsg, text: data.chatMsg});
+    var htmlMsg = $($.parseHTML(msg));
+    htmlMsg.children(".msg-from").children(".rank-title").css("width" , "60px");
+    setTimeout(function (){
+        htmlMsg.children(".msg-from").children(".rank-title").css("width" , "15px");
+    },1000);
+    $("#msg-area").append(htmlMsg);
+};
+
+$(document).on("click", "#msg-area .msg-from  .rank-title", function () {
+    
+    if($(this).hasClass("active")){
+        $(this).css({"width": "10px", "margin-left": "0px"});
+        $(this).removeClass("active");
+    }else{
+        $(this).css({"width": "60px", "margin-left": "5px"});
+        $(this).addClass("active");
+    }
+});
+
+
+
+
+Chat.append =  function (message){
+    
+    console.log(message)
+   
+    var msg = `<div class="msg-unit"  >
+                            <div class="msg-body">
+                                <P>
+                                   ${message}
+                                </P>
+                            </div>
+                        </div>`;
+            $("#msg-area").append(msg);
+            
+            if($("#msg-area").getNiceScroll(0).page.maxh - $("#msg-area").getNiceScroll(0).getScrollTop() < 5 ){
+                setTimeout(function (){$("#msg-area").getNiceScroll(0).doScrollTop($("#msg-area").getNiceScroll(0).getContentSize().h , 0);} , 100);
+            }
+            
+    
+};
+
+
+
+
+var Announce = {};
+
+
+Announce.queu = [];
+
+Announce.global = function (text){
+    
+    Announce.queu.push(text);
+    
+    setTimeout(()=>{
+        
+        var duration = 6000;
+        var dest     = -500;
+        var container = $("#global-announce"); 
+        
+        
+        $("#global-announce .wrapper .text").html(Announce.queu[0]);
+        console.log(Announce.queu[0])
+        container.css("transform", "rotateX(0deg)");
+
+
+        setTimeout(()=>{
+
+            container.attr("date-statge" , "1");
+            $("#global-announce .text").animate({right: dest},{
+                duration : duration, 
+
+                complete: function (){
+
+                    container.removeAttr("style");  
+                    $("#global-announce .wrapper .text").removeAttr("style");  
+                   // $("#global-announce .wrapper .text").html("");
+                    Announce.queu.splice(0,1);
+                },
+                step: function (now , fx){
+
+                    container.attr("data-now" , Math.floor((now * duration) / dest));
+                        
+                }
+
+            });
+
+        }, 1800 + duration - Number(container.attr("data-now")) , container);
+        
+        
+    } , (Announce.queu.length-1)*9000);
+    
+    
+    
+};
+
+
+
+$(document).on("click", "#msg-area .reply", function (){
+    
+    var msg  = $(this).attr("data-msg");
+    var from = $(this).attr("data-from");
+    
+    var Quot =  `
+                <button class="close-btn"></button>
+                <div class="msg-to-reply ellipsis">
+                    <bold>[${from}]: </bold>${msg}
+                </div>`;
+    
+    $("#input-area .quote-wrapper").html(Quot);
+    $("#input-area .quote-wrapper").attr("data-quote", msg);
+    $("#input-area .quote-wrapper").attr("data-from", from);
+    $("#input-area .quote-wrapper .msg-to-reply").width("100%");
+    $("#input-area .quote-wrapper").attr("data-has-quote", "true");
+    
+});
+
+
+$(document).on("click", "#input-area .quote-wrapper .close-btn", function (){
+    $("#input-area .quote-wrapper").attr("data-has-quote", "false");
+    $("#input-area .quote-wrapper").removeAttr("data-quote");
+    $("#input-area .quote-wrapper").removeAttr("data-from");
+    $("#input-area .quote-wrapper").html("");
+});
+
+$(document).on("keyup" , "#input-chat input" , function (e){
+    
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (e.keyCode === 13) {
+        
+        $("#expand-chat .send").click();
+        
+    }
+});
+
+
+$(document).on("keydown" , "#input-chat input" , function (e){
+ 
+    e.stopPropagation();
+});
+
+
+$(document).on("click" , "#expand-chat .send" , function (){
+    
+    
+    var chat_to = $("#chat-to").attr("data-chat-to");
+    
+    if(!chat_to){
+        
+        chat_to = "world";
+    }
+    
+    var msg = $("#input-chat input").val();
+    
+    if(msg.length < 1){
+        
+        return ;
+        
+    }
+    
+    if(Elkaisar.DPlayer.Player.porm < 2 && chat_to === "world"){
+        alert_box.confirmMessage("لا يمكنك استعمال الشات ورتبتك اقل من رقيب\n يمكنك استعمال الخاص او شات الحلف وطلب تفعيل الشات من الادارة ");
+        return ;
+    }
+    
+    
+    if(chat_to === "world" && player.chat_panne > Date.now()/1000){
+        alert_box.confirmMessage("  لقد قام المراقب بحظرك من الشات  <br/>\n\
+                                            اذا ان لديك اى شكوى يمكنك تقديمها فى صندوق الشكاوى <a href='http://forum.elkaisar.com/index.php?forums/14/' target='_blank'>هنا</a>");
+        $("#input-chat input").val("");
+        return ;
+    }
+    
+    var quoteWrapper = $("#input-area .quote-wrapper");
+    
+    if(quoteWrapper.attr("data-has-quote") === "true"){
+        
+        var json_obj = {
+            url: "Chat/sendMsg",
+            data:{
+                chat_to: chat_to,
+                chat_msg:msg,
+                p_name: player.name,
+                idPlayer:ID_PLAYER,
+                p_avatar: player.avatar,
+                quoted:true,
+                quote: quoteWrapper.attr("data-quote"),
+                quoteFrom: quoteWrapper.attr("data-from")
+            }
+        };
+       
+    }else{
+        
+        var json_obj = {
+        
+            url: "Chat/sendMsg",
+            data:{
+                chat_to: chat_to,
+                chat_msg:msg,
+                p_avatar: player.avatar,
+                id_guild:player.id_guild,
+            }
+        };
+    }
+    
+    
+        
+    ws.send(JSON.stringify(json_obj));
+    $("#input-chat input").val("");
+    $("#input-area .quote-wrapper .close-btn").click();
+
+    
+});
+
+
+
+
+
+$(document).on("click",".select-list", function (){
+    
+    var active = $(this).attr("data-active");
+    
+    if(active === "true"){
+        
+        $(this).attr("data-active", "false");
+        $(this).children(".option").children("ul").hide();
+        $(this).children(".option").animate({"height" :  0})
+        
+    }else{
+        $(this).attr("data-active", "true");
+        $(this).children(".option").animate({"height" :  "266px"}, function () {
+            $(this).children("ul").show();
+        });
+    }
+    
+});Elkaisar.Contribute.For = {
     'Contribute': 'contribute',
     'EquipUpgrade': 'upgrade'
 };
@@ -49028,366 +49325,7 @@ $(document)['on']('click', '#arenaHeroList .showCityHero', function (e) {
 });
 
 
-const Emjoi = {
-
-    ":D": "iconfinder_01_EmoticonsHDcom_343133.png",
-    ";)": "iconfinder_02_EmoticonsHDcom_343145.png",
-    "o{|": "iconfinder_03_EmoticonsHDcom_343126.png",
-    ":x)": "iconfinder_04_EmoticonsHDcom_343148.png",
-    ":*": "iconfinder_11_EmoticonsHDcom_343153.png",
-    ":|": "iconfinder_14_EmoticonsHDcom_343141.png",
-    "8)": "iconfinder_18_EmoticonsHDcom_343124.png",
-    "8>": "iconfinder_19_EmoticonsHDcom_343161.png",
-    ":o": "iconfinder_20_EmoticonsHDcom_343139.png",
-    "3:)": "iconfinder_22_EmoticonsHDcom_343170.png",
-    "*_*": "iconfinder_26_EmoticonsHDcom_343122.png",
-    "._.*": "iconfinder_28_EmoticonsHDcom_343128.png",
-    "8o:": "iconfinder_30_EmoticonsHDcom_343169.png",
-    "Dx:": "iconfinder_30_EmoticonsHDcom_343169.png",
-    ":8*": "iconfinder_31_EmoticonsHDcom_343146.png",
-    ":)": "iconfinder_32_EmoticonsHDcom_343171.png",
-    "*,": "iconfinder_34_EmoticonsHDcom_343142.png",
-    "8:D": "iconfinder_35_EmoticonsHDcom_343158.png",
-    "*._.*": "iconfinder_36_EmoticonsHDcom_343143.png",
-    "8o": "iconfinder_38_EmoticonsHDcom_343162.png",
-    "^._.^": "iconfinder_39_EmoticonsHDcom_343137.png",
-    ":/": "iconfinder_42_EmoticonsHDcom_343138.png",
-    "^=^": "iconfinder_46_EmoticonsHDcom_343155.png",
-    ":lol:": "iconfinder_49_EmoticonsHDcom_343130.png",
-    ":'D": "iconfinder_49_EmoticonsHDcom_343130.png",
-    ":')": "iconfinder_49_EmoticonsHDcom_343130.png",
-    "xD": "iconfinder_49_EmoticonsHDcom_343130.png",
-    "XD": "iconfinder_49_EmoticonsHDcom_343130.png",
-    "*^_^*": "iconfinder_50_EmoticonsHDcom_343163.png",
-    ".^_^.": "iconfinder_50_EmoticonsHDcom_343163.png",
-    ":z": "iconfinder_51_EmoticonsHDcom_343165.png",
-    ":}": "iconfinder_51_EmoticonsHDcom_343165.png",
-    ":3": "iconfinder_51_EmoticonsHDcom_343165.png",
-    ":<3": "iconfinder_56_EmoticonsHDcom_343159.png",
-    "':D": "iconfinder_58_EmoticonsHDcom_343166.png",
-    ":'o": "iconfinder_59_EmoticonsHDcom_343167.png",
-    ":'(": "iconfinder_59_EmoticonsHDcom_343167.png",
-    "'^o^'": "iconfinder_61_EmoticonsHDcom_343131.png",
-    "(^_^)": "iconfinder_65_EmoticonsHDcom_343144.png",
-    "^_^)": "iconfinder_69_EmoticonsHDcom_343154.png",
-    "^_^": "iconfinder_69_EmoticonsHDcom_343154.png",
-    ";):": "iconfinder_67_EmoticonsHDcom_343136.png",
-    ">:(": "iconfinder_70_EmoticonsHDcom_343164.png",
-    ">:/": "iconfinder_70_EmoticonsHDcom_343164.png",
-    ">:@": "iconfinder_70_EmoticonsHDcom_343164.png",
-    "<(": "iconfinder_71_EmoticonsHDcom_343132.png",
-    "=_=": "iconfinder_79_EmoticonsHDcom_343140.png"
-
-};
-
-var Chat = {};
-Chat.msgId = 0;
-
-Chat.msgFrom = function (data){
-  
-   
-    var name = `<div class="reply" data-msg="${data.chatMsg}" data-from="${data.fromName}">(رد)</div>
-                <div class="name">[${data.fromName}]:</div> `;
-    
-    for(var iii in data.playerTitle){
-     
-        console.log(iii);
-        name += `<div class="rank-title rank-${iii}">${data.playerTitle[iii]}</div>`;
-    }
-    return name;
-};
-
-Chat.worldMessage = function (data){
-  
-    
-    var user_group_class = data.userGroup;
-    var chatMsg = Extract.coords(extractEmjoi(extractUrl(data.chatMsg)));
-    var idMsg = (++Chat.msgId);
-    var msgContent = ``;
-    if(data.quoted){
-        
-        msgContent = `  <div class="with-reply">
-                            <p class="quote ellipsis">[${data.quoteFrom}]: ${data.quote}</p>
-                            <p class="q-r msg-text" data-msg-org="${data.chatMsg}">${chatMsg}</p>
-                        </div>`;
-    }else{
-        msgContent = `<p class="msg-text flex"  data-msg-org="${data.chatMsg}">
-                        ${chatMsg}
-                     </p>`;
-    }
-    
-    var msg = `<div id="mg-id-${idMsg}" data-id-msg="${data.idFrom}-${data.idMsg}" 
-                    class="msg-unit world_chat ${"user-group-"+user_group_class}" 
-                    data-id-player="${data.idFrom}" data-avatar="${data.p_avatar}" 
-                    data-name="${data.fromName}" data-user-group="${data.userGroup}">
-                    <div class="msg-from flex">
-                        ${Chat.msgFrom(data)}
-                    </div>
-                    <div class="msg-body flex">${msgContent}</div>
-                    <label class="msg-time">${ ('00' + new Date().getHours()).slice(-2)}:${('00' + new Date().getMinutes()).slice(-2)}</label>
-                </div>`;
-    
-    UserLag.TranslateChatMsg({id: idMsg, text: data.chatMsg});
-    var htmlMsg = $($.parseHTML(msg));
-    htmlMsg.children(".msg-from").children(".rank-title").css("width" , "60px");
-    setTimeout(function (){
-        htmlMsg.children(".msg-from").children(".rank-title").css("width" , "15px");
-    },1000);
-    
-    $("#msg-area").append(htmlMsg);
-  
-};
-
-Chat.guildMessage = function (data){
-    
-    var user_group_class = data.userGroup;
-    var chatMsg = Extract.coords(extractEmjoi(extractUrl(data.chatMsg)));
-    var idMsg = (++Chat.msgId);
-
-    var msg = `<div id="mg-id-${idMsg}" class="msg-unit guild_msg" data-id-player="${data.idFrom}" data-avatar="${data.playerAvatar}" data-name="${data.fromName}">
-                    <div class="msg-from flex">
-                        ${Chat.msgFrom(data)}
-                    </div>
-                    <div class="msg-body flex">
-                        <p class="msg-text flex" data-msg-org="${data.chatMsg}">
-                           ${chatMsg}
-                        </p>
-                    </div>
-                </div>`;
-    
-    UserLag.TranslateChatMsg({id: idMsg, text: data.chatMsg});
-    var htmlMsg = $($.parseHTML(msg));
-    htmlMsg.children(".msg-from").children(".rank-title").css("width" , "60px");
-    setTimeout(function (){
-        htmlMsg.children(".msg-from").children(".rank-title").css("width" , "15px");
-    },1000);
-    $("#msg-area").append(htmlMsg);
-};
-
-$(document).on("click", "#msg-area .msg-from  .rank-title", function () {
-    
-    if($(this).hasClass("active")){
-        $(this).css({"width": "10px", "margin-left": "0px"});
-        $(this).removeClass("active");
-    }else{
-        $(this).css({"width": "60px", "margin-left": "5px"});
-        $(this).addClass("active");
-    }
-});
-
-
-
-
-Chat.append =  function (message){
-    
-    console.log(message)
-   
-    var msg = `<div class="msg-unit"  >
-                            <div class="msg-body">
-                                <P>
-                                   ${message}
-                                </P>
-                            </div>
-                        </div>`;
-            $("#msg-area").append(msg);
-            
-            if($("#msg-area").getNiceScroll(0).page.maxh - $("#msg-area").getNiceScroll(0).getScrollTop() < 5 ){
-                setTimeout(function (){$("#msg-area").getNiceScroll(0).doScrollTop($("#msg-area").getNiceScroll(0).getContentSize().h , 0);} , 100);
-            }
-            
-    
-};
-
-
-
-
-var Announce = {};
-
-
-Announce.queu = [];
-
-Announce.global = function (text){
-    
-    Announce.queu.push(text);
-    
-    setTimeout(()=>{
-        
-        var duration = 6000;
-        var dest     = -500;
-        var container = $("#global-announce"); 
-        
-        
-        $("#global-announce .wrapper .text").html(Announce.queu[0]);
-        console.log(Announce.queu[0])
-        container.css("transform", "rotateX(0deg)");
-
-
-        setTimeout(()=>{
-
-            container.attr("date-statge" , "1");
-            $("#global-announce .text").animate({right: dest},{
-                duration : duration, 
-
-                complete: function (){
-
-                    container.removeAttr("style");  
-                    $("#global-announce .wrapper .text").removeAttr("style");  
-                   // $("#global-announce .wrapper .text").html("");
-                    Announce.queu.splice(0,1);
-                },
-                step: function (now , fx){
-
-                    container.attr("data-now" , Math.floor((now * duration) / dest));
-                        
-                }
-
-            });
-
-        }, 1800 + duration - Number(container.attr("data-now")) , container);
-        
-        
-    } , (Announce.queu.length-1)*9000);
-    
-    
-    
-};
-
-
-
-$(document).on("click", "#msg-area .reply", function (){
-    
-    var msg  = $(this).attr("data-msg");
-    var from = $(this).attr("data-from");
-    
-    var Quot =  `
-                <button class="close-btn"></button>
-                <div class="msg-to-reply ellipsis">
-                    <bold>[${from}]: </bold>${msg}
-                </div>`;
-    
-    $("#input-area .quote-wrapper").html(Quot);
-    $("#input-area .quote-wrapper").attr("data-quote", msg);
-    $("#input-area .quote-wrapper").attr("data-from", from);
-    $("#input-area .quote-wrapper .msg-to-reply").width("100%");
-    $("#input-area .quote-wrapper").attr("data-has-quote", "true");
-    
-});
-
-
-$(document).on("click", "#input-area .quote-wrapper .close-btn", function (){
-    $("#input-area .quote-wrapper").attr("data-has-quote", "false");
-    $("#input-area .quote-wrapper").removeAttr("data-quote");
-    $("#input-area .quote-wrapper").removeAttr("data-from");
-    $("#input-area .quote-wrapper").html("");
-});
-
-$(document).on("keyup" , "#input-chat input" , function (e){
-    
-    e.preventDefault();
-    e.stopPropagation();
-    
-    if (e.keyCode === 13) {
-        
-        $("#expand-chat .send").click();
-        
-    }
-});
-
-
-$(document).on("click" , "#expand-chat .send" , function (){
-    
-    
-    var chat_to = $("#chat-to").attr("data-chat-to");
-    
-    if(!chat_to){
-        
-        chat_to = "world";
-    }
-    
-    var msg = $("#input-chat input").val();
-    
-    if(msg.length < 1){
-        
-        return ;
-        
-    }
-    
-    if(Elkaisar.DPlayer.Player.porm < 2 && chat_to === "world"){
-        alert_box.confirmMessage("لا يمكنك استعمال الشات ورتبتك اقل من رقيب\n يمكنك استعمال الخاص او شات الحلف وطلب تفعيل الشات من الادارة ");
-        return ;
-    }
-    
-    
-    if(chat_to === "world" && player.chat_panne > Date.now()/1000){
-        alert_box.confirmMessage("  لقد قام المراقب بحظرك من الشات  <br/>\n\
-                                            اذا ان لديك اى شكوى يمكنك تقديمها فى صندوق الشكاوى <a href='http://forum.elkaisar.com/index.php?forums/14/' target='_blank'>هنا</a>");
-        $("#input-chat input").val("");
-        return ;
-    }
-    
-    var quoteWrapper = $("#input-area .quote-wrapper");
-    
-    if(quoteWrapper.attr("data-has-quote") === "true"){
-        
-        var json_obj = {
-            url: "Chat/sendMsg",
-            data:{
-                chat_to: chat_to,
-                chat_msg:msg,
-                p_name: player.name,
-                idPlayer:ID_PLAYER,
-                p_avatar: player.avatar,
-                quoted:true,
-                quote: quoteWrapper.attr("data-quote"),
-                quoteFrom: quoteWrapper.attr("data-from")
-            }
-        };
-       
-    }else{
-        
-        var json_obj = {
-        
-            url: "Chat/sendMsg",
-            data:{
-                chat_to: chat_to,
-                chat_msg:msg,
-                p_avatar: player.avatar,
-                id_guild:player.id_guild,
-            }
-        };
-    }
-    
-    
-        
-    ws.send(JSON.stringify(json_obj));
-    $("#input-chat input").val("");
-    $("#input-area .quote-wrapper .close-btn").click();
-
-    
-});
-
-
-
-
-
-$(document).on("click",".select-list", function (){
-    
-    var active = $(this).attr("data-active");
-    
-    if(active === "true"){
-        
-        $(this).attr("data-active", "false");
-        $(this).children(".option").children("ul").hide();
-        $(this).children(".option").animate({"height" :  0})
-        
-    }else{
-        $(this).attr("data-active", "true");
-        $(this).children(".option").animate({"height" :  "266px"}, function () {
-            $(this).children("ul").show();
-        });
-    }
-    
-});Elkaisar.Ui.Select.menuList = function (list, selectedIndex){
+Elkaisar.Ui.Select.menuList = function (list, selectedIndex){
     
     var optionList = "";
     

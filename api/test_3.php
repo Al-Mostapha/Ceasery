@@ -1,7 +1,6 @@
 <?php
 
-$test = 
-'base/translate.js,
+$test = 'base/translate.js,
 base/userLan.js,
 base/navBar.js,
 base/LPreLoad.js,
@@ -43,12 +42,14 @@ ws/lib/player.js,
 ws/lib/serverAnnounce.js,
 ws/lib/city.js,
 ws/lib/Base.js,
-
 world/worldUnit.js,
 world/worldCampBox.js,
+world/WorldUnitIcon.js,
+world/WorldUnitArmy.js,
 world/worldUtil.js,
 world/worldUnitPrize.js,
 world/worldMap.js,
+world/WorldMapBattel.js,
 world/world.js,
 battel.js,
 guild.js,
@@ -68,18 +69,17 @@ battel/joinAttack.js,
 battel/battelField.js,
 feature/godGate.js,
 feature/setting.js,
+feature/emjoi.js,
 feature/contribute.js,
 feature/arenaChallange.js,
-feature/emjoi.js,
 ui/ui.js';
 
 $files = explode(",", $test);
 $file = "";
+
 foreach ($files as $one) {
     $file .= file_get_contents("../js-10.55.85/" . trim($one));
-    
-    
 }
 
-file_put_contents("totalFile.js", $file);
+file_put_contents("obfuscated.js", $file);
 echo 'Obs';

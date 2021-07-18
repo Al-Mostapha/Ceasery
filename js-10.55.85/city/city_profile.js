@@ -587,7 +587,7 @@ $(document).on("click" , "#city-taxs-in-cp" , function (){
     
     buildingClick(cityHasType(BUILDING_TYPS.PALACE));
     $("#dialg_box .nav_bar .left-nav li[head_title=taxs]").click();
-    Crafty.audio.play("click_sound");
+    //Crafty.audio.play("click_sound");
     
 });
 
@@ -678,5 +678,5 @@ $("#city-profile .upper_nave_bar ul li").click(function (){
             break;
         
     }
-    Crafty.audio.play("click_sound");
+    //Crafty.audio.play("click_sound");
 });

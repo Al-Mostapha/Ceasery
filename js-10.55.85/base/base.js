@@ -258,6 +258,10 @@ function waitCursor() {
 function unwaitCursor() {
     $("body").removeAttr("id");
 }
+
+
+var uri_pattern = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/ig;
+
 const SAVE_URL = [
     "www.elkaisar.com",
     "elkaisar.com",
@@ -497,4 +501,102 @@ $(document).on("click", ".number-arrow-wrapper .down", function () {
     input.val(Math.max(Number(input.val() || 0) - Number(input.attr("step") || 1), 0));
     input.trigger("keyup");
 
+});
+
+
+
+$(document).on("mouseup", "#dialg_box", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#dialg_box", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#over_lay_alert", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#over_lay_alert", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#over_lay", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#over_lay", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#alert_container", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#alert_container", function (e){
+    e.stopPropagation();
+});
+
+
+$(document).on("mouseup", "#city-profile", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#city-profile", function (e){
+    e.stopPropagation();
+});
+
+
+$(document).on("mouseup", "#chat-box", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#chat-box", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#current-tasks", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#current-tasks", function (e){
+    e.stopPropagation();
+});
+$(document).on("mouseup", "#city_col", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#city_col", function (e){
+    e.stopPropagation();
+});
+$(document).on("mouseup", "#player-profile", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#player-profile", function (e){
+    e.stopPropagation();
+});
+
+
+$(document).on("mouseup", "#godGateBtnWrapper", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#godGateBtnWrapper", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#helpGateBtnWrapper", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#helpGateBtnWrapper", function (e){
+    e.stopPropagation();
+});
+
+$(document).on("mouseup", "#ArenaChallangeBtnWrapper", function (e){
+    e.stopPropagation();
+});
+$(document).on("mousedown", "#ArenaChallangeBtnWrapper", function (e){
+    e.stopPropagation();
+});
+
+
+
+$(document).keydown(function(event){ 
+    var keyCode = (event.keyCode ? event.keyCode : event.which);   
+    if (keyCode == 13) {
+        $('.enter').last().trigger('click');
+        event.preventDefault();
+        event.stopPropagation();
+    }
 });

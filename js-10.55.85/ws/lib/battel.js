@@ -18,7 +18,8 @@ Elkaisar.WsLib.World.ResetLvl = function (data){
 
 Elkaisar.WsLib.World.Battel.Started = function (data)
 {
-    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord).entite;
+    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
+    world_unit.s = 1;
     Animation.fireWorldUnit(data.xCoord, data.yCoord);
     Elkaisar.World.MapBattel.newBattel(data);
     
@@ -27,16 +28,16 @@ Elkaisar.WsLib.World.Battel.Started = function (data)
 
 Elkaisar.WsLib.World.Battel.Ended = function (data)
 {
-    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord).entite;
+    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
     Elkaisar.World.MapBattel.removeBattel(data);
     
 }
 
 Elkaisar.WsLib.World.Fire.On = function (data)
 {
-    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord).entite;
-    world_unit.__state = 1;
-    Animation.fireWorldUnit(data.xCoord,data.yCoord);
+    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
+    world_unit.s = 1;
+    Animation.fireWorldUnit(data.xCoord, data.yCoord);
     
 }
 

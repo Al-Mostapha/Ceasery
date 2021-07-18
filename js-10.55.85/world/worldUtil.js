@@ -219,7 +219,7 @@ var WorldUtil = {
                                     </div>
                                 </div>`;
 
-                if (Crafty("UnitToolTip").get().length === 0) {
+                /*if (Crafty("UnitToolTip").get().length === 0) {
 
                     Crafty.e("HTML , UnitToolTip").append(tooltip).attr({x: x_coord * 64 - y_coord * 64 + 100, y: x_coord * 32 + y_coord * 32 + 100, z: 99999999999});
 
@@ -227,7 +227,7 @@ var WorldUtil = {
 
                     Crafty("UnitToolTip").get(0).replace(tooltip).attr({x: x_coord * 64 - y_coord * 64 + 100, y: x_coord * 32 + y_coord * 32 + 100, z: 999999999999});
 
-                }
+                }*/
 
 
             });
@@ -287,7 +287,7 @@ var WorldUtil = {
     },
 
     showMapTooltip: function (xCoord, yCoord) {
-
+        return ;
         var unit = WorldUnit.getWorldUnit(Elkaisar.World.Map.realCoord(xCoord), Elkaisar.World.Map.realCoord(yCoord));
         /* var desc = WorldUtil.getDesc(unit.ut, x_coord, y_coord);*/
         if(unit.ut == WUT_BUSY_UNIT)
@@ -322,7 +322,7 @@ function uniteMapClick(x_coord, y_coord)
 
 
     if (WorldUnit['isDominatable'](type))
-        campDB['getDominaterName'](x_coord, y_coord);
+        campDB.getDominaterName(x_coord, y_coord);
 }
 
 
@@ -330,7 +330,7 @@ function uniteMapClick(x_coord, y_coord)
 
 function canBuildNewCity(x_coord, y_coord)
 {
-    var city_counts = Object.keys(Elkaisar.DPlayer.City).length
+    var city_counts = Object.keys(Elkaisar.DPlayer.City).length;
     if (!WorldUnit.isEmpty(WorldUnit.getWorldUnit(x_coord, y_coord).ut)) {
         return false;
     } else if (Number(Elkaisar.CurrentCity.City.food) < Math.pow(10, city_counts + 3)) {
@@ -412,7 +412,7 @@ var reviewBox = {
                             </div>
                         </div>
                         <div class="footer">
-                            ${this.footer(type)}
+                            ${this.footer(x_coord, y_coord)}
                         </div>
                     </div>`;
         return box;
@@ -454,17 +454,17 @@ var reviewBox = {
                     </table>`;
         return desc;
     },
-    footer: function (type) {
+    footer: function (xCoord, yCoord) {
 
         var recource_supply = "";
-
+        const Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
         for (var ii in Elkaisar.DPlayer.City)
         {
 
             var CCity = Elkaisar.DPlayer.City[ii];
-            if (Number(CCity.City.x) !== Number(WorldCurrentUnit.coord_x))
+            if (Number(CCity.City.x) !== Number(xCoord))
                 continue;
-            if (Number(CCity.City.y) !== Number(WorldCurrentUnit.coord_y))
+            if (Number(CCity.City.y) !== Number(xCoord))
                 continue;
 
             return ` <ul id="footer_bar">
@@ -481,7 +481,7 @@ var reviewBox = {
 
         }
 
-        if (WorldUnit.isCity(type)) {
+        if (WorldUnit.isCity(Unit.ut)) {
 
             recource_supply = ` <li data-type="${Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY}">
                                         <img src="images/icons/war-icon/resource-supply.png"/> 
@@ -489,7 +489,7 @@ var reviewBox = {
 
         }
 
-        if (Number(WorldCurrentUnit.__id_guild) === Number(Elkaisar.DPlayer.Player.id_guild) && !isNaN(Elkaisar.DPlayer.Player.id_guild)) {
+        if (Number(Unit.idGuild) === Number(Elkaisar.DPlayer.Player.id_guild) && !isNaN(Elkaisar.DPlayer.Player.id_guild)) {
 
             return `<ul id="footer_bar">
                         <li data-type="${Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPORT}">

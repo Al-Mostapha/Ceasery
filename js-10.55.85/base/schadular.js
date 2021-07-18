@@ -326,7 +326,7 @@ Elkaisar.WsLib.TimedTask.Army = function (data) {
 
 Elkaisar.WsLib.TimedTask.Building = function (data) {
 
-    Crafty.audio.play("upgrade_done");
+   // Crafty.audio.play("upgrade_done");
 
     Elkaisar.City.getCity(data.Task.id_city).BuildingLvl[data.Task.place] = data.Task.lvl_to;
 
@@ -366,9 +366,7 @@ Elkaisar.WsLib.TimedTask.Building = function (data) {
     }
 
 
-    if ($("#dialg_box .box_header").attr("place") === data.Task.place && Number(Elkaisar.CurrentCity.City.id_city) === Number(data.Task.id_city)) {
-        buildingClick(data.Task.place, true);
-    }
+    
 
 
 
@@ -378,13 +376,17 @@ Elkaisar.WsLib.TimedTask.Building = function (data) {
     delete(Elkaisar.TimedTask.TaskList.Building[data.Task.id]);
     Elkaisar.TimedTask.refreshListView();
     fillCityWithBuilding();
+    
+    if ($("#dialg_box .box_header").attr("place") === data.Task.place && Number(Elkaisar.CurrentCity.City.id_city) === Number(data.Task.id_city)) {
+        buildingClick(data.Task.place, true);
+    }
 
 };
 
 
 Elkaisar.WsLib.TimedTask.Jop = function (data) {
 
-    Crafty.audio.play("upgrade_done");
+    //Crafty.audio.play("upgrade_done");
 
     Elkaisar.DPlayer.Player.prestige = Number(Elkaisar.DPlayer.Player.prestige) + data.prestige;
 
@@ -412,7 +414,7 @@ Elkaisar.WsLib.TimedTask.Study = function (data){
     
   
             
-    Crafty.audio.play("upgrade_done");
+    //Crafty.audio.play("upgrade_done");
     Elkaisar.DPlayer.Player.prestige = Number(Elkaisar.DPlayer.Player.prestige) + data.prestige;
     Player_profile.getPlayerEdu();
     

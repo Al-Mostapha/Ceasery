@@ -30,7 +30,7 @@ $("#UPDOWN-chat img").click(function () {
         $("#chat-box").css("bottom", "-220px");
         $(this).addClass("smalled");
     }
-    Crafty.audio.play("close_sound");
+   // Crafty.audio.play("close_sound");
 });
 $("#p-provile-slider img").click(function () {
 
@@ -48,7 +48,7 @@ $("#p-provile-slider img").click(function () {
         $("#luck-wheel-btn").css("left", "-75px");
         $(this).addClass("smalled");
     }
-    Crafty.audio.play("close_sound");
+    //Crafty.audio.play("close_sound");
 });
 
 $("#city-profile-slider img").click(function () {
@@ -65,7 +65,7 @@ $("#city-profile-slider img").click(function () {
         $("#city-profile").css("right", "-425px");
         $(this).addClass("smalled");
     }
-    Crafty.audio.play("close_sound");
+   // Crafty.audio.play("close_sound");
 });
 
 
@@ -112,6 +112,7 @@ if (!document.fullscreenElement) {
 
 
 document.getElementById('ToggelFullSrc').addEventListener('click', function () {
+    return ;
     if (document.fullscreenElement) {
         document.exitFullscreen().then(function () {
             Crafty.viewport.height = $(document).height();
@@ -147,11 +148,11 @@ document.getElementById('ToggelFullSrc').addEventListener('click', function () {
 $(document).on("click", "#ToggelSound", function () {
     if ($(this).attr("data-state") === "on") {
         $(this).attr("data-state", "off");
-        Crafty.audio.mute();
+       // Crafty.audio.mute();
         $(this).css({"background-image": "url(images/btns/withBg/buttonSoundOptions.png)"});
     } else {
         $(this).attr("data-state", "on");
-        Crafty.audio.unmute();
+        //Crafty.audio.unmute();
         $(this).css({"background-image": "url(images/btns/withBg/sound_on_off.png)"});
 
     }

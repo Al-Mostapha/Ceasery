@@ -25,7 +25,7 @@ Elkaisar.HeroArmy.dragArmy = function (e, el) {
 
 
     var hold_type = dragPlace.attr("army-type");
-    
+
     $(".sol").each(function () {
         if ($(this).attr("army-type") === hold_type || $(this).attr("army-type") === "sol-0") {
             $(this).children(".permit-layer").hide();
@@ -67,8 +67,8 @@ Elkaisar.HeroArmy.dropArmy = function (e, el_to) {
     var DragArmyFrom = DragPlace.attr("data-army-place");
     var DropArmyTo = $(el_to).attr("data-army-place");
     var solCap = 0;
-    
-    
+
+
 
     var solCap = soldier_cap[DragPlace.attr("army-type").split("-")[1]];
     var available_place = 0;
@@ -146,8 +146,8 @@ Elkaisar.HeroArmy.dropArmyToCity = function (DragPlace, DropPlace) {
 };
 
 Elkaisar.HeroArmy.StartDialogBox = function (DragPlace, DropPlace, MaxNum) {
-    
-   
+
+
 
     var army_content = ` <div id="alert_box" class="alert_for_hero_trade">
                                 <div class="row-1"> 
@@ -189,9 +189,9 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
     var ArmyPlaceTo = $("#confirmTransArmy").attr("data-drop-army-place");
 
     var amount = Math.floor($("#input-army-move").val());
-
+    $("#confirmTransArmy").attr("disabled", "disabled");
     $.ajax({
-        url: `${API_URL}/api/AHeroArmy/transArmyFromHeroToHero`,
+        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromHeroToHero`,
         data: {
             amount: amount,
             idCity: Elkaisar.CurrentCity.City.id_city,
@@ -199,9 +199,10 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
             idHeroTo: idHeroTo,
             ArmyPlaceFrom: ArmyPlaceFrom,
             ArmyPlaceTo: ArmyPlaceTo,
-            token: Elkaisar.Config.OuthToken
+            token: Elkaisar.Config.OuthToken,
+            idPlayer: Elkaisar.DPlayer.Player.id_player
         },
-        type: 'POST',
+        type: 'GET',
         beforeSend: function (xhr) {
 
         },
@@ -215,7 +216,8 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
                 return;
             }
 
-
+            if (json_data.state == "SysBusy")
+                return alert_box.confirmMessage("النظام مشغول الان حاول فى وقت لاحق");
             if (json_data.state === "ok") {
 
                 Elkaisar.Hero.getHero(idHeroFrom).Army = json_data.HeroArmyFrom;
@@ -251,29 +253,33 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
 
 
 Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
+
     var amount = Math.floor($("#input-army-move").val());
     var ArmyPlace = $("#confirmTransArmy").attr("data-drag-army-place");
     var idHero = $("#confirmTransArmy").attr("data-drag-id-hero");
-
     $(document).off("click", ".trans-con");
+    $("#confirmTransArmy").attr("disabled", "disabled");
     var idCity = Elkaisar.CurrentCity.City.id_city;
+
     $.ajax({
-        url: `${API_URL}/api/AHeroArmy/transArmyFromHeroToCity`,
+        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromHeroToCity`,
         data: {
             amount: amount,
             idHero: idHero,
             idCity: Elkaisar.CurrentCity.City.id_city,
             ArmyPlace: ArmyPlace,
             token: Elkaisar.Config.OuthToken,
-            server: Elkaisar.Config.idServer
+            server: Elkaisar.Config.idServer,
+            idPlayer: Elkaisar.DPlayer.Player.id_player
 
         },
-        type: 'POST',
+        type: 'GET',
         beforeSend: function (xhr) {
 
         },
         success: function (data, textStatus, jqXHR) {
             $("#over_lay_alert").remove();
+            $("#confirmTransArmy").removeAttr("disabled");
 
             if (isJson(data)) {
                 var json_data = JSON.parse(data);
@@ -281,6 +287,9 @@ Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
                 alert(data);
                 return;
             }
+
+            if (json_data.state == "SysBusy")
+                return alert_box.confirmMessage("النظام مشغول الان حاول فى وقت لاحق");
 
 
             if (json_data.state === "ok") {
@@ -319,13 +328,15 @@ Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
 
 
 Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
-    
+
     var amount = Math.floor($("#input-army-move").val());
     var idHero = $("#confirmTransArmy").attr("data-drop-id-hero");
     var ArmyHeroPlace = $("#confirmTransArmy").attr("data-drop-army-place");
     var ArmyCityPlace = $("#confirmTransArmy").attr("data-drag-army-place");
+    $("#confirmTransArmy").attr("disabled", "disabled");
+    
     $.ajax({
-        url: `${API_URL}/api/AHeroArmy/transArmyFromCityToHero`,
+        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromCityToHero`,
         data: {
             idHero: idHero,
             amount: amount,
@@ -333,15 +344,17 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
             ArmyPlace: ArmyHeroPlace,
             ArmyType: ArmyCityPlace,
             server: Elkaisar.Config.idServer,
-            token: Elkaisar.Config.OuthToken
+            token: Elkaisar.Config.OuthToken,
+            idPlayer: Elkaisar.DPlayer.Player.id_player
 
         },
-        type: 'POST',
+        type: 'GET',
         beforeSend: function (xhr) {
         },
         success: function (data, textStatus, jqXHR) {
+            
+            $("#confirmTransArmy").removeAttr("disabled");
             $("#over_lay_alert").remove();
-
             if (isJson(data)) {
                 var json_data = JSON.parse(data);
             } else {
@@ -349,6 +362,8 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
                 return;
             }
 
+            if (json_data.state == "SysBusy")
+                return alert_box.confirmMessage("النظام مشغول الان حاول فى وقت لاحق");
             if (json_data.state === "ok") {
 
                 Elkaisar.CurrentCity.City = json_data.City;
@@ -396,7 +411,8 @@ $(document).on("click", "#confirmTransArmy", function () {
     var maxAmount = $(this).attr("data-max-num");
     var DragPlace = $(this).attr("data-drag-place");
     var DropPlace = $(this).attr("data-drop-place");
-
+    $("#confirmTransArmy").attr("disabled", "disabled");
+    $("#confirmTransArmy").prop("disabled", true);
     if (amount < 1) {
         $("#over_lay_alert").remove();
         alert_box.failMessage("عدد القوات غير كافى");

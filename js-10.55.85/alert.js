@@ -767,6 +767,7 @@ $(document).on("click", "#downgradeBuildingConfirmButton", function(){
 //<button class="full-btn pull-L full-btn-2x" id="dismissArmyButton" onclick="" data-place="undefined">طرد</button>
 
 $(document).on("click", "#dismissArmyButton", function (){
+    $("#dismissArmyButton").prop("disabled", true);
     Elkaisar.Army.armyDismes();
 });
 

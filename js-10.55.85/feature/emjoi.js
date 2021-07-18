@@ -264,6 +264,12 @@ $(document).on("keyup" , "#input-chat input" , function (e){
 });
 
 
+$(document).on("keydown" , "#input-chat input" , function (e){
+ 
+    e.stopPropagation();
+});
+
+
 $(document).on("click" , "#expand-chat .send" , function (){
     
     

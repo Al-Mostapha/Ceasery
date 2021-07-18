@@ -308,8 +308,10 @@ get_ip_address($playerId);
                     <img src="images/btns/show_hide.png"/>
                 </div>
                 <div id="hide-show" style="display: none">
-                    <div id="nav-btn">
-                        <button class="full-btn full-btn-3x">اذهب الى </button>
+                    <div id="nav-btn" class="flex">
+                        <input type="checkbox" id="FastNav" style="margin-right: 10px;">
+                        <button class="full-btn full-btn-3x" style="">اذهب الى </button>
+                        
                     </div>
 
                     <label class="pull-R">Y</label>

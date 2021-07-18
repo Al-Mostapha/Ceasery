@@ -336,7 +336,7 @@ var campDB = {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
+                                        <td id="reviewUnitBoxName" colspan="2">
                                             ${title}
                                         </td>
                                     </tr>
@@ -454,22 +454,24 @@ var campDB = {
         if (!Elkaisar['World']['UnitArmy'][unitType][Lvl][ArmyType]) return 0x0;
         return Elkaisar['World']['UnitArmy'][unitType][Lvl][ArmyType];
     },
-    'getDominaterName'(_0x55fe70, _0x2ed502) {
-        var _0x2fc550 = WorldUnit['getWorldUnit'](_0x55fe70, _0x2ed502);
+    'getDominaterName'(xCoord, yCoord) {
+        var Unit = WorldUnit['getWorldUnit'](xCoord, yCoord);
         $['ajax']({
             'url': API_URL + '/api/AWorldUnit/getWorldUnitDominator',
             'type': 'GET',
             'data': {
-                'xCoord': _0x55fe70,
-                'yCoord': _0x2ed502,
-                'unitType': _0x2fc550['ut'],
-                'server': Elkaisar['Config']['idServer'],
-                'token': Elkaisar['Config']['OuthToken']
+                'xCoord': xCoord,
+                'yCoord': yCoord,
+                'unitType': Unit.ut,
+                'server': Elkaisar.Config.idServer,
+                'token': Elkaisar.Config.OuthToken
             },
-            'success': function (_0x3a86ff, _0x2bf316, _0x1a4707) {
-                if (!Elkaisar['LBase']['isJson'](_0x3a86ff)) return Elkaisar['LBase']['Error'](_0x3a86ff);
-                var _0x46e8fa = JSON['parse'](_0x3a86ff);
-                if (_0x46e8fa['Name'] != '') $('#reviewUnitBox')['html'](_0x46e8fa['Name']);
+            'success': function (data, _0x2bf316, _0x1a4707) {
+                if (!Elkaisar['LBase']['isJson'](data)) 
+                    return Elkaisar['LBase']['Error'](data);
+                var JsonData = JSON['parse'](data);
+                if (JsonData['Name'] != '') 
+                    $('#reviewUnitBoxName').html(JsonData['Name']);
             },
             'error': function (_0x1ed427, _0xebf258, _0x2fd59e) {}
         });

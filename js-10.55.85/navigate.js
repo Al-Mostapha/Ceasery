@@ -13,13 +13,10 @@ $("#WorldCity").click(function () {
             delete(Animation.currentUnitArrow.arrow);
         }
 
-
-        Animation.FixedCityAnimation();
-
         $(this).attr("data-view", "city");
         $(this).html(Translate.Button.Chat.World[UserLag.language]);
         $("#hide-show").hide();
-        Crafty.audio.stop("bird_sound");
+        //Crafty.audio.stop("bird_sound");
         $("#smallMap-icon").fadeOut();
         $(".nav-to-city").fadeOut();
         setTimeout(function () {
@@ -28,12 +25,17 @@ $("#WorldCity").click(function () {
                 delete Elkaisar.worldAllUnits[iii].entite;
                 delete Elkaisar.worldAllUnits[iii].floor;
                 delete Elkaisar.worldAllUnits[iii].CityFlagEntite;
+                delete Elkaisar.worldAllUnits[iii].UnitFire;
             }
         });
 
     } else if ($(this).data("view") === "city") {
-
-        Elkaisar.GE.CityScene.scene.start("World");
+        if (!Elkaisar.World.Map.CityFound)
+            Elkaisar.World.Map.getWorldCity().done(function () {
+                Elkaisar.GE.CityScene.scene.start("World");
+            });
+        else
+            Elkaisar.GE.CityScene.scene.start("World");
 
         $(this).attr("data-view", "world");
         $(this).html("المدينة");
@@ -150,19 +152,37 @@ $("#nav-btn .full-btn").click(function () {
 
     var x_coord = parseInt($("#x_coord-input input").val()) || 0;
     var y_coord = parseInt($("#y_coord-input input").val()) || 0;
+    const cam = Elkaisar.GE.WorldScene.cameras.main;
+    const x = Elkaisar.World.Map.posX(Number(x_coord), Number(y_coord)) + 64;
+    const y = Elkaisar.World.Map.posY(Number(x_coord), Number(y_coord)) + 128;
+    const Dist = Phaser.Math.Distance.Between(cam.scrollX, cam.scrollY, x, y);
 
-    Elkaisar.GE.WorldScene.cameras.main.scrollX = Elkaisar.World.Map.posX(Number(x_coord), Number(y_coord)) - Math.floor(MAX_SCREEN_WIDTH / 2 - 128);
-    Elkaisar.GE.WorldScene.cameras.main.scrollY = Elkaisar.World.Map.posY(Number(x_coord), Number(y_coord)) - Math.floor(MAX_SCREEN_HEIGHT / 2 - 128);
+    if ($("#FastNav").is(':checked')) {
+
+        Elkaisar.GE.WorldScene.cameras.main.scrollX = Elkaisar.World.Map.posX(Number(x_coord), Number(y_coord)) - Math.floor(MAX_SCREEN_WIDTH / 2 - 128);
+        Elkaisar.GE.WorldScene.cameras.main.scrollY = Elkaisar.World.Map.posY(Number(x_coord), Number(y_coord)) - Math.floor(MAX_SCREEN_HEIGHT / 2 - 128);
 
 
-    //Animation.currentUnitArrow.put(x_coord, y_coord);
-    Elkaisar.World.Map.Scroll(true);
-    Elkaisar.GE.WorldScene.time.delayedCall(500, function () {
-        Elkaisar.World.Map.clear();
-        Elkaisar.World.Map.clear();
-        Elkaisar.World.MapBattel.AddBattels();
-        Elkaisar.World.Map.RefreshWorld();
-    });
+        Animation.currentUnitArrow.put(x_coord, y_coord);
+        Elkaisar.World.Map.Scroll(true);
 
-    ;
+        Elkaisar.GE.WorldScene.time.delayedCall(500, function () {
+            Elkaisar.World.Map.clear();
+            Elkaisar.World.Map.clear();
+            Elkaisar.World.MapBattel.AddBattels();
+            Elkaisar.World.Map.RefreshWorld();
+        });
+
+    } else {
+        cam.pan(x, y, Math.max(Dist / 2, 1500), "Sine.easeInOut", false, function (camera, progress, x, y) {
+            Elkaisar.World.Map.Scroll(true);
+            Elkaisar.World.Map.clear();
+        });
+
+        Animation.currentUnitArrow.put(x_coord, y_coord);
+
+
+    }
+
+
 });

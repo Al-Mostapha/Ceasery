@@ -235,7 +235,8 @@ Elkaisar.GE.LPreLoad = function () {
     Elkaisar.GE.LoadingScene.load.image('B11', BASE_ASSET_BATH + 'images/city/_B11.png');
     Elkaisar.GE.LoadingScene.load.image('no_building', BASE_ASSET_BATH + 'images/city/no_building.png');
     Elkaisar.GE.LoadingScene.load.image('city_floor', BASE_ASSET_BATH + 'images/city/city_floor.jpg');
-    Elkaisar.GE.LoadingScene.load.image('hammer_start', BASE_ASSET_BATH + 'images/animation/upgrading_hammer.png');
+    
+   
     Elkaisar.GE.LoadingScene.load.image('fountain', BASE_ASSET_BATH + 'images/animation/fountain.png');
     Elkaisar.GE.LoadingScene.load.image('ani_wood_maker', BASE_ASSET_BATH + 'images/animation/wood_maker.png');
     Elkaisar.GE.LoadingScene.load.image('ani_wood_man', BASE_ASSET_BATH + 'images/animation/wood_man.png');
@@ -266,24 +267,84 @@ Elkaisar.GE.LPreLoad = function () {
     Elkaisar.GE.LoadingScene.load.image('DashedLineLGreen', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineLGreen.png');
     Elkaisar.GE.LoadingScene.load.image('DashedLineBlue', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineBlue.png');
     Elkaisar.GE.LoadingScene.load.image('DashedLineGray', BASE_ASSET_BATH + 'images/world/DashedLine/DashedLineGray.png');
-    
-    
+
+
     Elkaisar.GE.LoadingScene.load.image('goSourceA', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceA.png');
     Elkaisar.GE.LoadingScene.load.image('goSourceH', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceH.png');
     Elkaisar.GE.LoadingScene.load.image('goSourceD', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceD.png');
     Elkaisar.GE.LoadingScene.load.image('goSourceN', BASE_ASSET_BATH + 'images/world/DashedLine/goSourceN.png');
+
+
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLabor', BASE_ASSET_BATH + 'images/animation/City/FarmLabor.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLaborCarryR', BASE_ASSET_BATH + 'images/animation/City/FarmLaborCarryR.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLaborCarryD', BASE_ASSET_BATH + 'images/animation/City/FarmLaborCarryD.png', {frameWidth: 42, frameHeight: 42});
     
     
-    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
-    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
-    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
-    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
-    Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
+    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLabor', BASE_ASSET_BATH + 'images/animation/City/StoneLabor.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLaborCarryL', BASE_ASSET_BATH + 'images/animation/City/StoneLaborCarryL.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLaborCarryD', BASE_ASSET_BATH + 'images/animation/City/StoneLaborCarryD.png', {frameWidth: 42, frameHeight: 42});
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('IronLabor', BASE_ASSET_BATH + 'images/animation/City/IronLabor.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('WoodLabor', BASE_ASSET_BATH + 'images/animation/City/WoodLabor.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('WoodTool', BASE_ASSET_BATH + 'images/animation/City/WoodTool.png', {frameWidth: 65, frameHeight: 46});
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('Horse', BASE_ASSET_BATH + 'images/animation/City/Horse.png', {frameWidth: 34, frameHeight: 20});
+    Elkaisar.GE.LoadingScene.load.spritesheet('Fountain', BASE_ASSET_BATH + 'images/animation/City/Fountain.png', {frameWidth: 40, frameHeight: 32});
+    Elkaisar.GE.LoadingScene.load.spritesheet('Woman', BASE_ASSET_BATH + 'images/animation/City/Woman.png', {frameWidth: 28, frameHeight: 28});
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('noCarryWorkerD', BASE_ASSET_BATH + 'images/animation/City/noCarryWorkerD.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('noCarryWorkerR', BASE_ASSET_BATH + 'images/animation/City/noCarryWorkerR.png', {frameWidth: 42, frameHeight: 42});
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingHammer', BASE_ASSET_BATH + 'images/animation/City/UpgradingHammer.png', {frameWidth: 161, frameHeight: 120});
+    
+    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingLaborL', BASE_ASSET_BATH + 'images/animation/City/UpgradingLaborL.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingLaborR', BASE_ASSET_BATH + 'images/animation/City/UpgradingLaborR.png', {frameWidth: 42, frameHeight: 42});
+    Elkaisar.GE.LoadingScene.load.image('UpgradingSupportsU', BASE_ASSET_BATH + 'images/animation/City/UpgradingSupportsU.png');
+    Elkaisar.GE.LoadingScene.load.image('UpgradingSupportsD', BASE_ASSET_BATH + 'images/animation/City/UpgradingSupportsD.png');
+    Elkaisar.GE.LoadingScene.load.image('UpgradingPalaceSupU', BASE_ASSET_BATH + 'images/animation/City/UpgradingPalaceSupU.png');
+    Elkaisar.GE.LoadingScene.load.image('UpgradingPalaceSupD', BASE_ASSET_BATH + 'images/animation/City/UpgradingPalaceSupD.png');
 };
 
-
+Elkaisar.GE.ConfigCityAnims = function (){
+  
+    
+    var Scene = Elkaisar.GE.CityScene;
+    Scene.anims.create({ key: 'FarmLabor.A', frames: Scene.anims.generateFrameNumbers('FarmLabor'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'FarmLaborCarryR.A', frames: Scene.anims.generateFrameNumbers('FarmLaborCarryR'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'FarmLaborCarryD.A', frames: Scene.anims.generateFrameNumbers('FarmLaborCarryD'), frameRate: 6, repeat: -1 });
+    
+    Scene.anims.create({ key: 'noCarryWorkerD.A', frames: Scene.anims.generateFrameNumbers('noCarryWorkerD'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'noCarryWorkerR.A', frames: Scene.anims.generateFrameNumbers('noCarryWorkerR'), frameRate: 6, repeat: -1 });
+    
+    Scene.anims.create({ key: 'StoneLabor.A', frames: Scene.anims.generateFrameNumbers('StoneLabor'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'StoneLaborCarryL.A', frames: Scene.anims.generateFrameNumbers('StoneLaborCarryL'), frameRate: 6, repeat: -1 });
+    
+    Scene.anims.create({ key: 'IronLabor.A', frames: Scene.anims.generateFrameNumbers('IronLabor'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'WoodLabor.A', frames: Scene.anims.generateFrameNumbers('WoodLabor'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'WoodTool.A', frames: Scene.anims.generateFrameNumbers('WoodTool'), frameRate: 6, repeat: -1 });
+    
+    
+    Scene.anims.create({ key: 'Horse.A', frames: Scene.anims.generateFrameNumbers('Horse'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'Fountain.A', frames: Scene.anims.generateFrameNumbers('Fountain'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'WomanFace.A', frames: Scene.anims.generateFrameNumbers('Woman', {frames: [0,1,2,3,4,5,6,7,8,9]}), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'WomanBack.A', frames: Scene.anims.generateFrameNumbers('Woman', {frames: [10,11,12,13,14,15,16,17,18,19]}), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'Woman.A', frames: Scene.anims.generateFrameNumbers('Woman'), frameRate: 6, repeat: -1 });
+    
+    Scene.anims.create({ key: 'UpgradingHammer.A', frames: Scene.anims.generateFrameNumbers('UpgradingHammer'), frameRate: 10, repeat: -1 });
+    Scene.anims.create({ key: 'UpgradingLaborL.A', frames: Scene.anims.generateFrameNumbers('UpgradingLaborL'), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'UpgradingLaborR.A', frames: Scene.anims.generateFrameNumbers('UpgradingLaborR'), frameRate: 6, repeat: -1 });
+    
+    Animation.FixedCityAnimation();
+};
 
 Elkaisar.GE.ConfigAnims = function () {
+    
     var Scene = Elkaisar.GE.WorldScene;
     Elkaisar.GE.WorldScene.anims.create({
         key: 'Forest.1',
@@ -393,7 +454,15 @@ Elkaisar.GE.CLoadingScene = new Phaser.Class({
                     $['ajaxSetup']({
                         'data': {
                             'idPlayerV': Elkaisar['DPlayer']['Player']['id_player']
-                        }
+                        }/*,
+                        beforeSend(){
+                            $("button").attr("disabled", "disabled");
+                            $("button").prop("disabled", true);
+                        },
+                        complete(){
+                            $("button").removeAttr("disabled");
+                            $("button").prop("disabled", false);
+                        }*/
                     });
 
                     $('html')['trigger']('PlayerReady');
@@ -433,8 +502,9 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
         var floor_width = 2500;
         var floor_height = 1400;
 
+        
+        Elkaisar.GE.ConfigCityAnims();
         fillCityWithBuilding();
-
         this.input.mousePointer.motionFactor = 0.5;
         this.input.pointer1.motionFactor = 0.5;
 
@@ -443,20 +513,23 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
         this.Scrolling = {};
         var This = this;
         var downObj;
-        this.input.on('gameobjectdown', function (p, obj) {
+        this.input.on('gameobjectdown', function (p, obj, E) {
+            if (this.isMapDraging)
+                return;
             downObj = obj;
-            This.input.stopPropagation();
+            E.stopPropagation();
 
         });
-        this.input.on('gameobjectup', function (p, obj) {
-            if (p.downElement !== p.upElement || p.downElement !== Elkaisar.GE.Game.canvas)
+        this.input.on('gameobjectup', function (P, Obj, E) {
+            
+            if (P.downElement !== Elkaisar.GE.Game.canvas || P.getDuration() > 250)
                 return;
-            if (downObj === obj) {
-                obj.emit("click", obj);
-                This.input.stopPropagation();
-            }
+            Obj.emit("click", Obj, P, E);
+            E.stopPropagation();
         });
+        
         this.input.on('pointerdown', function (p) {
+            console.log(p.worldX, p.worldY)
             This.Scrolling.movingSpeed = 0;
 
         });
@@ -485,19 +558,23 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
                 if (cam.zoom >= 2)
                     return cam.zoom = 2;
                 cam.zoom += 0.1;
+            }else{
+                 if (cam.zoom <= 1)
+                    return cam.zoom = 1;
+                cam.zoom -= 0.1;
             }
 
         });
         cam.pan(BuildingOnFloor.palace.x, BuildingOnFloor.palace.y, 700);
 
-        var cursors = this.input.keyboard.createCursorKeys();
+
 
         var controlConfig = {
             camera: this.cameras.main,
-            left: cursors.left,
-            right: cursors.right,
-            up: cursors.up,
-            down: cursors.down,
+            left: this.input.keyboard.addKey('left'),
+            right: this.input.keyboard.addKey('right'),
+            up: this.input.keyboard.addKey('up'),
+            down: this.input.keyboard.addKey('down'),
             acceleration: 0.06,
             drag: 0.0005,
             maxSpeed: 1.0
@@ -526,6 +603,13 @@ Elkaisar.GE.CWorldScene = new Phaser.Class({
         var cam = this.cameras.main;
         cam.scrollX = Elkaisar.World.Map.posX(Elkaisar.CurrentCity.City.x, Elkaisar.CurrentCity.City.y) - Elkaisar.MAX_SCREEN_WIDTH / 2 + 64;
         cam.scrollY = Elkaisar.World.Map.posY(Number(Elkaisar.CurrentCity.City.x), Number(Elkaisar.CurrentCity.City.y)) - Elkaisar.MAX_SCREEN_HEIGHT / 2 + 128;
+        Animation.currentUnitArrow.add();
+        cam.on("camerapancomplete", function () {
+            
+            Elkaisar.World.MapBattel.AddBattels();
+            Elkaisar.World.Map.RefreshWorld();
+        });
+
         Elkaisar.World.Map.Scroll(true);
 
         var This = this;
@@ -540,11 +624,10 @@ Elkaisar.GE.CWorldScene = new Phaser.Class({
 
         });
         this.input.on('gameobjectup', function (P, Obj, E) {
-            if (this.isMapDraging)
+            
+            if (P.downElement !== Elkaisar.GE.Game.canvas || P.getDuration() > 250)
                 return;
-            if (P.downElement !== Elkaisar.GE.Game.canvas)
-                return;
-            Obj.emit("click", Obj);
+            Obj.emit("click", Obj, P, E);
             E.stopPropagation();
         });
 
@@ -556,20 +639,30 @@ Elkaisar.GE.CWorldScene = new Phaser.Class({
         this.UnitFloor.ignoreDestroy = true;
         this.WorldUnitIcons = {};
 
-        this.time.delayedCall(1000, function () { Elkaisar.World.MapBattel.AddBattels();  });
-        this.cursors = this.input.keyboard.createCursorKeys();
+        this.time.delayedCall(1000, function () {
+            Elkaisar.World.MapBattel.AddBattels();
+        });
+        this.cursors = {
+            left: this.input.keyboard.addKey('left'),
+            right: this.input.keyboard.addKey('right'),
+            up: this.input.keyboard.addKey('up'),
+            down: this.input.keyboard.addKey('down')
+        };
         this.KeySpeed = 4;
         this.input.keyboard.on('keyup', function (eventName, event) {
             This.KeySpeed = 4;
-            This.time.delayedCall(500, function () {This.isMapDraging = false;});
-            
+            This.time.delayedCall(500, function () {
+                This.isMapDraging = false;
+            });
+
         });
     },
     update: function (time, delta) {
 
         for (var iii in Elkaisar.World.MapBattel.BattelList) {
             let OneBattel = Elkaisar.World.MapBattel.BattelList[iii];
-            if (OneBattel.Line)
+          
+            if (OneBattel && OneBattel.Line)
                 OneBattel.Line.tilePositionX -= 0.25;
         }
 
