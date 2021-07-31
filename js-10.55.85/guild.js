@@ -1,7 +1,6 @@
 var guild_Detail;
 
-function showInVitedMembers()
-{
+function showInVitedMembers() {
 
     $.ajax({
 
@@ -118,7 +117,7 @@ $(document).on("click", ".accept-guild-req", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/acceptGuildReq`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/acceptGuildReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -138,11 +137,19 @@ $(document).on("click", ".accept-guild-req", function () {
 
                 alert_box.succesMessage("تم اضافة الملك بنجاح");
                 self_.remove();
-                Elkaisar.Guild.Invetaions = JsonObject.GuildReqInvList.GuildInv;
-                Elkaisar.Guild.Requests = JsonObject.GuildReqInvList.GuildReq;
-                $("#dialg_box .left-nav li[head_title='g_relation']").click();
-            } else {
-                alert(data);
+                
+                Guild.getGuildData().done(function (){
+                    $("#dialg_box .left-nav li[head_title='g_relation']").click();
+                });
+                
+            } else if(JsonObject.state == "error_0") {
+                alert_box.failMessage("اللاعب منضم فى حلف بالفعل");
+            } else if(JsonObject.state == "error_1") {
+                alert_box.failMessage("لست منضم فى أى حلف");
+            } else if(JsonObject.state == "error_2") {
+                alert_box.failMessage("رتبتك فى الحلف لا تسمح");
+            } else if(JsonObject.state == "error_3") {
+                alert_box.failMessage("طلب الانضمام ليس لهذا الحلف");
             }
 
         },
@@ -162,7 +169,7 @@ $(document).on("click", ".cansel-guild-req", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/rejectGuildJoinReq`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/rejectGuildJoinReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -179,14 +186,20 @@ $(document).on("click", ".cansel-guild-req", function () {
             if (JsonObject.state === "ok") {
 
                 alert_box.succesMessage("تم الغاء الطلب بنجاح");
-                Elkaisar.Guild.Invetaions = JsonObject.GuildReqInvList.GuildInv;
-                Elkaisar.Guild.Requests = JsonObject.GuildReqInvList.GuildReq;
-
                 self_.remove();
-                $("#dialg_box .left-nav li[head_title='g_relation']").click();
+                Guild.getGuildData().done(function (){
+                    $("#dialg_box .left-nav li[head_title='g_relation']").click();
+                });
+                
 
-            } else {
-                alert(data);
+            } else if(JsonObject.state == "error_0") {
+                alert_box.failMessage("اللاعب منضم فى حلف بالفعل");
+            } else if(JsonObject.state == "error_1") {
+                alert_box.failMessage("لست منضم فى أى حلف");
+            } else if(JsonObject.state == "error_2") {
+                alert_box.failMessage("رتبتك فى الحلف لا تسمح");
+            } else if(JsonObject.state == "error_3") {
+                alert_box.failMessage("طلب الانضمام ليس لهذا الحلف");
             }
 
         },
@@ -208,7 +221,7 @@ $(document).on("click", ".cansel-inv-action", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/cancelGuildInv`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/cancelGuildInv`,
         data: {
             idPlayerToInvite: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -227,13 +240,12 @@ $(document).on("click", ".cansel-inv-action", function () {
 
                 alert_box.succesMessage("تم الغاء الطلب بنجاح");
                 self_.remove();
-                Elkaisar.Guild.Invetaions = JsonObject.GuildReqInvList.GuildInv;
-                Elkaisar.Guild.Requests = JsonObject.GuildReqInvList.GuildReq;
                 showInVitedMembers();
 
-            } else {
-                alert(data);
-            }
+            }else if(jsonObject.state == "error_0")
+                alert_box.failMessage("لست عضو فى أى حلف");
+            else if(jsonObject.state == "error_1")
+                alert_box.failMessage("رتبتك فى الحلف لا تسمح");
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -256,19 +268,19 @@ $(document).on("click", "#show_avail_guild", function () {
     var content = menu_bar.dialogBoxcontent_Ranks(true);
     var dialog_box = menu_bar.dialogBox(Translate.Title.MenuList.Ranking[UserLag.language], NavBar.Ranking, content, 0);
     if ($("#dialg_box").length > 0) {
-        $("#dialg_box").animate({top: "-800px"}, 200, "linear", function () {
+        $("#dialg_box").animate({ top: "-800px" }, 200, "linear", function () {
             $(this).remove();
             $("body").append(dialog_box);
-            menu_bar.getContentForRanks("unuions", 0);
+            menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Guild, 0);
             $("#dialg_box").attr("type", "messages");
-            $("#dialg_box").animate({top: "125"}, 200);
+            $("#dialg_box").animate({ top: "125" }, 200);
 
         });
     } else {
         $("body").append(dialog_box);
-        menu_bar.getContentForRanks("unuions", 0);
+        menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Guild, 0);
         $("#dialg_box").attr("type", "messages");
-        $("#dialg_box").animate({top: "125"}, 200);
+        $("#dialg_box").animate({ top: "125" }, 200);
 
     }
 
@@ -286,7 +298,7 @@ $(document).on("click", "#show_avail_guild", function () {
  */
 $(document).on("click", ".show-guild-prev", function () {
 
-    var id_guild = $(this).parents(".tr").data("id_guild");
+    var id_guild = $(this).attr("data-id-guild");
 
 
     $.ajax({
@@ -401,10 +413,9 @@ var Guild = {
     dialogBox: function (title, nav_bar, content) {
 
         var nav_list = "";
-        nav_bar.forEach(function (one, index)
-        {
+        nav_bar.forEach(function (one, index) {
             nav_list += ` <li head_title = "${one["title"]}" class="${index === 0 ? "selected" : ""}" >
-                               ${one[("title_" + UserLag.language)] }
+                               ${one[("title_" + UserLag.language)]}
                            </li>`;
         });
 
@@ -554,15 +565,15 @@ var Guild = {
                     alert(data);
                     return;
                 }
-                
-                
+
+
                 console.log(json_data)
 
                 if (json_data.guild_req.length > 0) {
 
-                    var guild = `<div class="td_1" style="width: 70%;">${json_data.guild_req.name}</div>
+                    var guild = `<div class="td_1" style="width: 70%;">${json_data.guild_req[0].name}</div>
                                 <div class="td_2" style="width: 30%;">
-                                    <button  class="full-btn full-btn-1x ellipsis" style="width: 80%; margin: auto" id="cansel-guild_req" data-id-guild="${json_data.guild_req.id_guild}">${Translate.Button.General.Cancel[UserLag.language]}</button>
+                                    <button  class="full-btn full-btn-1x ellipsis" style="width: 80%; margin: auto" id="cansel-guild_req" data-id-guild="${json_data.guild_req[0].id_guild}">${Translate.Button.General.Cancel[UserLag.language]}</button>
                                 </div>`;
                     $("#A-A-guild_req-list").html(guild);
 
@@ -578,7 +589,7 @@ var Guild = {
                                             <div class="td_1" style="width: 50%;">${json_data.guild_inv[iii].name}</div>
                                             <div class="td_2" style="width: 48%; margin-right: 2%">
                                                 <button  class="full-btn full-btn-1x pull-R ellipsis" style="width: 30%;" id="cansel-guild_inv" data-id-guild="${json_data.guild_inv[iii].id_guild}">الغاء</button>
-                                                <button  class="full-btn full-btn-1x ellipsis" style="width: 30%; display: inline-block; " id="accept-guild-inv" data-id-guild="${json_data.guild_inv[iii].id_guild}" >قبول</button>
+                                                <button  class="full-btn full-btn-1x ellipsis" style="width: 30%; display: inline-block; " class="accept-guild-inv" data-id-guild="${json_data.guild_inv[iii].id_guild}" >قبول</button>
                                                 <button  class="full-btn full-btn-1x pull-R show-guild-prev ellipsis" style="width: 30%; margin-right:3%" >${Translate.Button.MenuList.View[UserLag.language]}</button>
                                             </div>
                                         </div>`;
@@ -651,7 +662,16 @@ var Guild = {
                         Player_profile.refresh_player_data();
                         alert_box.succesMessage(`تم انشاء حلف ${JsonObject.GuildData.GuildData.name} بنجاح`);
 
-                    } else {
+                    } else if (JsonObject.state == "error_0")
+                        return alert_box.confirmMessage("لا يوجد إسم للحلف");
+                    else if (JsonObject.state == "error_1")
+                        return alert_box.confirmMessage("يوجد حلف يحمل نفس الأسم");
+                    else if (JsonObject.state == "error_2")
+                        return alert_box.confirmMessage("أنت بالفعل على قوة حلف أخر");
+                    else if (JsonObject.state == "error_3")
+                        return alert_box.confirmMessage("لا يوجد لديك موارد كافية لإنشاء حلف");
+                    else if (JsonObject.state == "error_4")
+                        return alert_box.confirmMessage("حدث خطاء ما اثناء إنشاء حلف"); else {
 
                         alert(data);
 
@@ -1555,10 +1575,10 @@ $(document).on("click", "#show_allay", function () {
 
 $(document).on("click", "#up_with_mat", function () {
     BoxOfMatrialToUse(
-            ["union_slogan", "union_declar", "union_era"],
-            "upgrade_guild",
-            1
-            );
+        ["union_slogan", "union_declar", "union_era"],
+        "upgrade_guild",
+        1
+    );
 });
 
 
@@ -1597,6 +1617,9 @@ $(document).on("click", "#guild_lead", function () {
     $(this).next(".drop-list").slideToggle();
 
 });
+
+
+
 
 
 /*   CHANGE GUILD WORD   */
@@ -1664,7 +1687,7 @@ $(document).on("click", "#chang-g-word", function () {
                                     <div class="down">
                                         <div class="th ellipsis">${Translate.Title.TH.Intro[UserLag.language]}</div>
                                         <p>
-                                            <textarea value="${Elkaisar.Guild.GuildData.word}">${Elkaisar.Guild.GuildData.word}</textarea>
+                                            <textarea value="${Elkaisar.Guild.GuildData.word}" class="input">${Elkaisar.Guild.GuildData.word}</textarea>
                                             <button class="full-btn full-btn-2x " id="save-g-intro" > تعديل</button>
                                         </p>
                                     </div>
@@ -1725,6 +1748,12 @@ $(document).on("click", "#save-g-intro", function () {
                 self_.parents("p").html(new_intro);
                 Elkaisar.Guild.GuildData.word = new_intro;
                 alert_box.succesMessage("تم تعديل المقدمة بنجاح");
+            } else if(JsonObject.state == "error_0"){
+                alert_box.failMessage("لست عضواً بهذا الحلف");
+            } else if(JsonObject.state == "error_1"){
+                alert_box.failMessage("لا يمكن تعديل المقدمة إلا بواسطة قائد الحلف");
+            } else if(JsonObject.state == "error_2"){
+                alert_box.failMessage("لا يمكن أن تكون المقدمة أكثر من 512 حرف");
             }
         }
 
@@ -1752,7 +1781,7 @@ $(document).on("click", "#change-g-F_E-list", function () {
 
 });
 
-$(document).on("keyup", ".F_E-list .row-1 input", function () {
+$(document).on("keyup", "#GuildEneFriInput", function () {
 
     var search_val = $(this).val();
 
@@ -1789,7 +1818,7 @@ $(document).on("keyup", ".F_E-list .row-1 input", function () {
 
             for (var iii = 0; iii < json_data.length; iii++) {
 
-                list += `   <li data-id-guild="${json_data[iii].id_guild}" data-g-name = "${json_data[iii].name}"> 
+                list += `   <li class="SearchGuildUnitRes" data-id-guild="${json_data[iii].id_guild}" data-g-name = "${json_data[iii].name}"> 
                                 <div class="pull-L image">
                                     <img src="images/style/bottom-${json_data[iii].slog_btm}.png">
                                     <img src="images/style/central-${json_data[iii].slog_cnt}.png">
@@ -1821,13 +1850,7 @@ $(document).on("keyup", ".F_E-list .row-1 input", function () {
 });
 
 
-
-
-
-/*
- * SELECT GUILD FOR RELATION 
- */
-$(document).on("click", "#g-search_result li", function () {
+$(document).on("click", "#g-search_result .SearchGuildUnitRes", function () {
 
     var id_guild = parseInt($(this).attr("data-id-guild"));
     var guild_name = $(this).attr("data-g-name");
@@ -1844,45 +1867,48 @@ $(document).on("click", "#g-search_result li", function () {
 
 
 $(document)['on']('click', '#submit-guild-relation', function () {
-    var _0x3e3f99 = $('.F_E-list input[name=guild_relation]:checked')['val'](),
-            _0x1b5257 = parseInt($('.F_E-list .row-1 input')['attr']('data-id-guild')),
-            _0x3f0b1a = $('.F_E-list .row-1 input')['attr']('data-g-name');
-    if (!_0x1b5257) {
-        alert_box['confirmMessage']('عليك اختيار الحلف اولا');
+    var GuildRel = $('.F_E-list input[name=guild_relation]:checked')['val']();
+    var idGuild = parseInt($('.F_E-list .row-1 input')['attr']('data-id-guild'));
+    if (!idGuild) {
+        alert_box.confirmMessage('عليك اختيار الحلف اولا');
         return;
-    } else if (!_0x3e3f99['length']) {
-        alert_box['confirmMessage']('اختار العلاقة بين الحلفين');
+    } else if (!GuildRel['length']) {
+        alert_box.confirmMessage('اختار العلاقة بين الحلفين');
         return;
     }
-    $['ajax']({
+    $.ajax({
         'url': API_URL + '/api/AGuild/changeGuildRelation',
         'data': {
-            'idGuild': _0x1b5257,
-            'relation': _0x3e3f99,
-            'token': Elkaisar['Config']['OuthToken'],
-            'server': Elkaisar['Config']['idServer']
+            'idGuild': idGuild,
+            'relation': GuildRel,
+            'token': Elkaisar.Config.OuthToken,
+            'server': Elkaisar.Config.idServer
         },
         'type': 'POST',
-        'success': function (_0x1ba7ed, _0x5b5eee, _0x5af2f1) {
-            if (!Elkaisar['LBase']['isJson'](_0x1ba7ed))
-                return Elkaisar['LBase']['Error'](_0x1ba7ed);
-            var _0x5d4425 = JSON['parse'](_0x1ba7ed);
-            if (_0x5d4425['state'] == 'ok')
-                $('.close-alert')['click'](), alert_box['succesMessage']('تم اضافة العلاقة بين الحلفين بنجاح'), Guild['getGuildData']()['done'](function () {
-                    $('.left-nav .selected')['attr']('head_title') === 'guild_data' && $('.left-nav .selected')['click'](), Elkaisar['World']['Map']['RefreshWorld']();
+        'success': function (data, _0x5b5eee, _0x5af2f1) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            var JsonData = JSON.parse(data);
+            if (JsonData.state == 'ok') {
+                $('.close-alert').click();
+                alert_box.succesMessage('تم اضافة العلاقة بين الحلفين بنجاح');
+                Guild.getGuildData().done(function () {
+                    if ($('.left-nav .selected')['attr']('head_title') === 'guild_data') {
+                        $('.left-nav .selected').click();
+                        Elkaisar.World.Map.RefreshWorld();
+                    }
                 });
-            else {
-                if (_0x5d4425['state'] == 'error_0')
-                    alert_box['failMessage']('لست عضو فى الحلف');
-                else {
-                    if (_0x5d4425['state'] == 'error_1')
-                        alert_box['failMessage']('رتيتك فى الحلف لا تسمح');
-                    else
-                        _0x5d4425['state'] == 'error_2' ? alert_box['failMessage']('نوع العلاقة غير صالحة') : alert(_0x1ba7ed);
-                }
-            }
+            } else if (JsonData['state'] == 'error_0')
+                alert_box['failMessage']('لست عضو فى الحلف');
+            else if (JsonData['state'] == 'error_1')
+                alert_box['failMessage']('رتيتك فى الحلف لا تسمح');
+            else if (JsonData['state'] == 'error_2')
+                alert_box['failMessage']('نوع العلاقة غير صالحة')
+            else
+                alert(data);
+
         },
-        'error': function (_0xf6addd, _0x324ef9, _0x45d39a) {}
+        'error': function (_0xf6addd, _0x324ef9, _0x45d39a) { }
     });
 });
 
@@ -1944,32 +1970,33 @@ $(document).on("click", "#submit-guild-invite", function () {
 
     $.ajax({
 
-        url: "api/guild.php",
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/sendGuildJoinInv`,
         data: {
-
-            INVITE_GUILD_MEMBER: true,
-            id_player: id_player,
-            id_admin: ID_PLAYER,
-            token: TOKEN
-
+            idPlayerToInvite: id_player,
+            token: Elkaisar.Config.OuthToken
         },
         type: 'POST',
-        beforeSend: function (xhr) {
-
-        },
+        beforeSend: function (xhr) {},
         success: function (data, textStatus, jqXHR) {
-
-            if (data === "added") {
-
+            if(!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            
+            var JsonObject = JSON.parse(data);
+            
+            if(JsonObject.state == "ok"){
                 $(".close-alert").click();
                 if ($("#guild-g_relation").length > 0) {
                     showInVitedMembers();
                 }
                 alert_box.succesMessage('تم ارسال الدعوة بنجح');
-            } else {
-                alert(data);
-                console.log(data);
-            }
+                Guild.getGuildData();
+            }else if(JsonObject.state == "error_0")
+                alert_box.failMessage("اللاعب منضم فى حلف بالفعل");
+            else if(JsonObject.state == "error_1")
+                alert_box.failMessage("لست عضو فى أى حلف");
+            else if(JsonObject.state == "error_3")
+                alert_box.failMessage("رتبتك فى الحلف لا تسمح");
+            
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -2059,15 +2086,10 @@ $(document).on("click", "#change-g-slog", function () {
 $(document).on("click", "#send-guild-req button", function () {
 
     var id_guild = parseInt($(this).attr("data-id-guild"));
-
-    if (typeof id_guild !== 'number') {
-
-        return;
-
-    }
+    
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/sendGuildRequest`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/sendGuildRequest`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken,
@@ -2075,8 +2097,7 @@ $(document).on("click", "#send-guild-req button", function () {
         },
         type: 'POST',
         success: function (data, textStatus, jqXHR) {
-
-
+            
             if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
@@ -2086,7 +2107,9 @@ $(document).on("click", "#send-guild-req button", function () {
 
                 alert_box.succesMessage("تم ارسال الدعوة الى المسؤلين للانضمام للحلف");
                 $(".close_use_menu").click();
-            }
+            }else if(JsonObject.state == "error_0")
+                alert_box.failMessage("لست منضم فى أى حلف");
+            
 
 
         },
@@ -2104,16 +2127,14 @@ $(document).on("click", "#send-guild-req button", function () {
  * 
  */
 
-function canselGuildInvetation(id_player, id_guild)
-{
+function canselGuildInvetation(id_player, id_guild) {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/rejectGuildInv`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/rejectGuildInv`,
         data: {
             idGuild: id_guild,
-            token: Elkaisar.Config.OuthToken,
-            server: Elkaisar.Config.idServer
+            token: Elkaisar.Config.OuthToken
         },
         type: 'POST',
         beforeSend: function (xhr) {
@@ -2129,6 +2150,7 @@ function canselGuildInvetation(id_player, id_guild)
 
                 alert_box.succesMessage("تم الغاء  دعوة الانضمام بنجاح");
                 $(".close_use_menu").click();
+                Guild.getGuildData();
             }
 
 
@@ -2147,12 +2169,11 @@ function canselGuildInvetation(id_player, id_guild)
  * 
  */
 
-function canselGuildJoinRequest(id_player, id_guild)
-{
+function canselGuildJoinRequest(id_player, id_guild) {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/cancelGuildRequest`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/cancelGuildRequest`,
         data: {
             idGuild: id_guild,
             server: Elkaisar.Config.idServer,
@@ -2212,16 +2233,15 @@ $(document).on("click", "#cansel-guild_req", function () {
  * accept guild invetation
  * 
  */
-$(document).on("click", "#accept-guild-inv", function () {
+$(document).on("click", ".accept-guild-inv", function () {
 
     var id_guild = parseInt($(this).attr("data-id-guild"));
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/cancelGuildRequest`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/acceptGuildInv`,
         data: {
             idGuild: id_guild,
-            server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken
         },
         type: 'POST',
@@ -2500,8 +2520,7 @@ $(document).on("click", ".mem-prize-percent", function () {
 
         var newVal = Number($("#modfie-prize-share-input").val());
         if (newVal > Math.max(100 - Number(Elkaisar.Guild.GuildData.total_prize_share) + prize_share, 0)
-                || newVal < 0)
-        {
+            || newVal < 0) {
             alert_box.failMessage("نسبة الجوائز غير مسموح بيها");
             return;
         }

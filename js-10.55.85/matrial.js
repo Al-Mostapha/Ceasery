@@ -965,7 +965,7 @@ function buyMatrial(matrial, amount)
 
     $.ajax({
 
-        url: `${API_URL}/api/AItem/buyItem`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AItem/buyItem`,
         data: {
             item: matrial,
             amount: amount,
@@ -973,7 +973,7 @@ function buyMatrial(matrial, amount)
             server: Elkaisar.Config.idServer
 
         },
-        type: 'POST',
+        type: 'GET',
         success: function (data, textStatus, jqXHR) {
 
             if (!Elkaisar.LBase.isJson(data))
@@ -997,6 +997,8 @@ function buyMatrial(matrial, amount)
                 });
                 $(".close-alert_container").click();
                 alert_box.succesMessage("تمت عملية الشراء بنجاح");
+            }else{
+                alert(data);
             }
 
         },
@@ -1181,12 +1183,12 @@ var Matrial = {
     }
 
 };
-Matrial.prizeToString = function (data) {
+Matrial.prizeToString = function (PrizeList) {
 
     var stringArray = [];
-    for (var jjj in data.WinPrize) {
+    for (var jjj in PrizeList) {
 
-        stringArray.push(` x ${data.WinPrize[jjj].amount} ${this.getMatrialName(data.WinPrize[jjj].Item)}`);
+        stringArray.push(` x ${PrizeList[jjj].amount} ${this.getMatrialName(PrizeList[jjj].Item)}`);
     }
 
 
@@ -1238,3 +1240,8 @@ Matrial.itemUnitWidget = function (Item, isMall = false)
     return list + tail + "";
 };
 
+
+$(document).on("click", "#buyNewItem", function () {
+    var item = $(this).attr("data-item-name");
+    buyMatrial(item);
+});

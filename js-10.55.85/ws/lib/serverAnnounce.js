@@ -50,11 +50,11 @@ Elkaisar.WsLib.ServerAnnounce.RepleCastleOpened = function (data) {
     var GuildDef = "---";
     var WorldUnit = data.WorldUnit;
 
-    if (data.GuildDef && data.GuildAtt && data.GuildDef.GuildName)
+    if (data.GuildDef)
         var msg = ` <div class="msg-unit  battel-f-ann">
                     تم فتح 
                     <span class="ann-red">&nbsp;${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}&nbsp;</span>
-                     للإستقبال معركة حلف <span class="ann-red">&nbsp;${data.GuildAtt.GuildName} (هجوم)&nbsp;</span> ضد حلف <span class="ann-red">&nbsp;${data.GuildDef.GuildName} (دفاع)&nbsp;</span> الأن!
+                     للإستقبال معركة حلف <span class="ann-red">&nbsp;${data.GuildAtt ? data.GuildAtt.GuildName : "----" } (هجوم)&nbsp;</span> ضد حلف <span class="ann-red">&nbsp;${data.GuildDef ? data.GuildAtt.GuildName : "===="} (دفاع)&nbsp;</span> الأن!
                 </div>`;
     else
         var msg = ` <div class="msg-unit announce battel-f-ann">تم فتح &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} &nbsp;
@@ -115,7 +115,7 @@ Elkaisar.WsLib.ServerAnnounce.Battel.Win = function (data) {
     var msg = `<div class="battel-f-ann">
                         قام <span class="red">${data.Attacker.name}</span> بهزيمة بطل النظام ${playerNames.enemyList} فى <span class="red">${Elkaisar.World.UnitTypeData[data.WorldUnit.ut].Title}</span> مستوى <span class="red">${data.WorldUnit.l}</span>.
                         ${playerNames.allaylist},
-                        وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data)}</span> 
+                        وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data.WinPrize)}</span> 
                         وايضا <span class="red">${data.honor}</span> شرف
                  </div>`;
     Chat.append(msg);

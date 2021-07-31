@@ -1,72 +1,79 @@
 Animation = {};
-Animation.RATES = [];
+Animation.ProductioRats = [];
+Animation.ProductionTweens = [];
+Animation.PluseProFontStyle = {
+    fixedHeight: 20,
+    fontStyle: "bold",
+    fontSize: 14,
+    stroke: '#000000',
+    strokeThickness: 3,
+    color: "#a7e328"
+};
+Animation.MinusProFontStyle = {
+    fixedHeight: 20,
+    fontStyle: "bold",
+    fontSize: 14,
+    stroke: '#000000',
+    strokeThickness: 3,
+    color: "#a7e328"
+};
 Animation.cityProductionRate = function () {
-    return;
-    for (var iii in Animation.RATES) {
-        Animation.RATES[iii].destroy();
-        Animation.RATES.splice(iii, 1);
-    }
-    /* resource  in city animation*/
-    var coin_in_ratio = parseFloat(Math.round(((Elkaisar.CurrentCity.City.coin_in - Elkaisar.CurrentCity.City.coin_out) / (30 * 60)) * 100) / 100);
-    var temp;
-    temp = Crafty.e(`2D, DOM , stroke , iso_text_right , UPFADE ${coin_in_ratio >= 0 ? 'OVER_ZERO' : "BELOW_ZERO"} , city_ani , Text`)
-            .attr({x: BuildingOnFloor.palace._x + 0.6 * X_GRID, y: BuildingOnFloor.palace._y + 1.85 * Y_GRID - 30, h: 30, w: 30, avoidCss3dTransforms: true, z: 100})
-            .text(coin_in_ratio >= 0 ? "+" + coin_in_ratio : '-' + coin_in_ratio)
-            .textFont({size: '12px', weight: 'bold', lineHeight: "32px"})
-            .textAlign("center");
 
-    $(temp._element).attr("data-ratio-for", "coin");
-    Animation.RATES.push(temp);
-
+    Animation.ProductioRats.forEach(function(OneRate){
+        OneRate.destroy();
+    });
+    Animation.ProductionTweens.forEach(function(OneTween){
+        OneTween.remove();
+    });
+    Animation.ProductioRats = [];
+    Animation.ProductionTweens = [];
 
     /* resource  in city animation*/
-    var food_in_ratio = parseFloat(Math.round(((Elkaisar.CurrentCity.City.food_in - Elkaisar.CurrentCity.City.food_out) / (30 * 60)) * 100) / 100);
-    var temp;
-    temp = Crafty.e(`2D, DOM , stroke , iso_text_right , UPFADE ${food_in_ratio > 0 ? 'OVER_ZERO' : "BELOW_ZERO"}, city_ani , Text`)
-            .attr({x: BuildingOnFloor.farm._x + 0.6 * X_GRID, y: BuildingOnFloor.farm._y + 1.85 * Y_GRID - 30, h: 30, w: 30, avoidCss3dTransforms: true, z: 100})
-            .text(food_in_ratio > 0 ? "+" + food_in_ratio : '-' + food_in_ratio)
-            .textFont({size: '12px', weight: 'bold', lineHeight: "32px"})
-            .textAlign("center");
+    const coin_in_ratio = parseFloat(Math.round(((Elkaisar.CurrentCity.City.coin_in - Elkaisar.CurrentCity.City.coin_out) / (30 * 60)) * 100) / 100);
+    Animation.ProductioRats.push(Elkaisar.GE.CityScene.add.text(
+        BuildingOnFloor.palace.x + 0.6 * X_GRID,
+        BuildingOnFloor.palace.y + 1.85 * Y_GRID ,
+        coin_in_ratio >= 0 ? "+" + coin_in_ratio : '-' + coin_in_ratio,
+        coin_in_ratio >= 0 ? Animation.PluseProFontStyle : Animation.MinusProFontStyle ).setDepth(1000).setOrigin(0, 0));
 
-    $(temp._element).attr("data-ratio-for", "food");
-    Animation.RATES.push(temp);
+    const food_in_ratio = parseFloat(Math.round(((Elkaisar.CurrentCity.City.food_in - Elkaisar.CurrentCity.City.food_out) / (30 * 60)) * 100) / 100);
+    Animation.ProductioRats.push(Elkaisar.GE.CityScene.add.text(
+        BuildingOnFloor.farm.x + 0.6 * X_GRID,
+        BuildingOnFloor.farm.y + 1.85 * Y_GRID,
+        food_in_ratio >= 0 ? "+" + food_in_ratio : '-' + food_in_ratio,
+        food_in_ratio >= 0 ? Animation.PluseProFontStyle : Animation.MinusProFontStyle ).setDepth(1000).setOrigin(0, 0));
 
-
-    /* resource  in city animation*/
     var wood_in_ratio = parseFloat(Math.round(((Elkaisar.CurrentCity.City.wood_in - Elkaisar.CurrentCity.City.wood_out) / (30 * 60)) * 100) / 100);
-    var temp;
-    temp = Crafty.e(`2D, DOM , stroke , iso_text_right , UPFADE ${wood_in_ratio > 0 ? 'OVER_ZERO' : "BELOW_ZERO"}, city_ani , Text`)
-            .attr({x: BuildingOnFloor.wood._x + 0.6 * X_GRID, y: BuildingOnFloor.wood._y + 1.85 * Y_GRID - 30, h: 30, w: 30, avoidCss3dTransforms: true, z: 100})
-            .text(Elkaisar.CurrentCity.City.wood_in > 0 ? "+" + wood_in_ratio : '-' + wood_in_ratio)
-            .textFont({size: '12px', weight: 'bold', lineHeight: "32px"})
-            .textAlign("center");
+    Animation.ProductioRats.push(Elkaisar.GE.CityScene.add.text(
+        BuildingOnFloor.wood.x + 0.6 * X_GRID,
+        BuildingOnFloor.wood.y + 1.85 * Y_GRID,
+        wood_in_ratio >= 0 ? "+" + wood_in_ratio : '-' + wood_in_ratio,
+        wood_in_ratio >= 0 ? Animation.PluseProFontStyle : Animation.MinusProFontStyle ).setDepth(1000).setOrigin(0, 0));
 
-    $(temp._element).attr("data-ratio-for", "wood");
-    Animation.RATES.push(temp);
 
-    /* resource  in city animation*/
     var stone_in_ratio = parseFloat(Math.round((Elkaisar.CurrentCity.City.stone_in / (30 * 60)) * 100) / 100);
-    var temp;
-    temp = Crafty.e(`2D, DOM , stroke , iso_text_right , UPFADE ${stone_in_ratio > 0 ? 'OVER_ZERO' : "BELOW_ZERO"} , city_ani , Text`)
-            .attr({x: BuildingOnFloor.stone._x + 0.6 * X_GRID, y: BuildingOnFloor.stone._y + 1.85 * Y_GRID - 30, h: 30, w: 30, avoidCss3dTransforms: true, z: 100})
-            .text(Elkaisar.CurrentCity.City.stone_in > 0 ? "+" + stone_in_ratio : '-' + stone_in_ratio)
-            .textFont({size: '12px', weight: 'bold', lineHeight: "32px"})
-            .textAlign("center");
+    Animation.ProductioRats.push(Elkaisar.GE.CityScene.add.text(
+        BuildingOnFloor.stone.x + 0.6 * X_GRID,
+        BuildingOnFloor.stone.y + 1.85 * Y_GRID,
+        stone_in_ratio >= 0 ? "+" + stone_in_ratio : '-' + stone_in_ratio,
+        stone_in_ratio >= 0 ? Animation.PluseProFontStyle : Animation.MinusProFontStyle ).setDepth(1000).setOrigin(0, 0));
 
-    $(temp._element).attr("data-ratio-for", "stone");
-    Animation.RATES.push(temp);
-
-    /* resource  in city animation*/
     var metal_in_ratio = parseFloat(Math.round((Elkaisar.CurrentCity.City.metal_in / (30 * 60)) * 100) / 100);
-    var temp;
-    temp = Crafty.e(`2D, DOM , stroke , iso_text_right , UPFADE ${metal_in_ratio > 0 ? 'OVER_ZERO' : "BELOW_ZERO"}, city_ani , Text`)
-            .attr({x: BuildingOnFloor.mine._x + 1.6 * X_GRID, y: BuildingOnFloor.mine._y + 2.25 * Y_GRID - 30, h: 30, w: 30, avoidCss3dTransforms: true, z: 100})
-            .text(Elkaisar.CurrentCity.City.stone_in > 0 ? "+" + metal_in_ratio : '-' + metal_in_ratio)
-            .textFont({size: '12px', weight: 'bold', lineHeight: "32px"})
-            .textAlign("center");
+    Animation.ProductioRats.push(Elkaisar.GE.CityScene.add.text(
+        BuildingOnFloor.mine.x + 1.6 * X_GRID,
+        BuildingOnFloor.mine.y + 2.25 * Y_GRID,
+        metal_in_ratio >= 0 ? "+" + metal_in_ratio : '-' + metal_in_ratio,
+        metal_in_ratio >= 0 ? Animation.PluseProFontStyle : Animation.MinusProFontStyle ).setDepth(1000).setOrigin(0, 0));
 
-    $(temp._element).attr("data-ratio-for", "metal");
-    Animation.RATES.push(temp);
+
+
+    Animation.ProductioRats.forEach(function (El, Ind) {
+        Animation.ProductionTweens.push(Elkaisar.GE.CityScene.tweens.add({
+            targets: El, y: "-=50", alpha: 0.2 ,ease: 'Linear',
+            repeat: -1, duration: 3000
+        }));
+    });
+    return;
 
 };
 
@@ -289,8 +296,7 @@ Animation.FixedCityAnimation = function () {
 
 
 
-function building_hammer_animate(BuildingPlace)
-{
+function building_hammer_animate(BuildingPlace) {
 
     if (!isUpgradingNow(BuildingPlace))
         return;
@@ -368,17 +374,16 @@ function building_hammer_animate(BuildingPlace)
 
 }
 
-function fire_attack_animation()
-{
+function fire_attack_animation() {
     return;
     Crafty.e('2D, Canvas, fire_start, SpriteAnimation, worldEnt')
-            .reel("walking", 650, [
-                [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
-                [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1],
-                [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
-            ])
-            .animate("walking", -1)
-            .attr({x: 800 + 100, y: 600 + 50, z: 50});
+        .reel("walking", 650, [
+            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
+            [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1],
+            [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
+        ])
+        .animate("walking", -1)
+        .attr({ x: 800 + 100, y: 600 + 50, z: 50 });
 
 
 }
@@ -442,6 +447,15 @@ Animation.fireWorldUnit = function (xCoord, yCoord) {
         Unit.UnitFire[1] = Scene.add.sprite(x + 88, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
         Unit.UnitFire[2] = Scene.add.sprite(x + 8, y + 8, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
         Unit.UnitFire[3] = Scene.add.sprite(x + 60, y + 32, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+
+    } else if (WorldUnit.isSeaCity(type)) {
+
+        Unit.UnitFire[0] = Scene.add.sprite(x + 240, y + 70, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 150, y + 75, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 275, y + 150, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 175, y + 190, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[4] = Scene.add.sprite(x + 60, y + 175, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[5] = Scene.add.sprite(x + 175, y + 260, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
 
     } else {
 
@@ -511,15 +525,15 @@ Animation.cityFlag = function () {
             }
         }
 
-        let Pos = {x: 0, y: 0};
+        let Pos = { x: 0, y: 0 };
         if (Number(Unit.ut) === WUT_CITY_LVL_0)
-            Pos = {x: x + 36, y: y + 50, z: z + 10};
+            Pos = { x: x + 36, y: y + 50, z: z + 10 };
         else if (Number(Unit.ut) === WUT_CITY_LVL_1)
-            Pos = {x: x + 36, y: y + 50, z: z + 10};
+            Pos = { x: x + 36, y: y + 50, z: z + 10 };
         else if (Number(Unit.ut) === WUT_CITY_LVL_2)
-            Pos = {x: x + 36, y: y + 50, z: z + 10};
+            Pos = { x: x + 36, y: y + 50, z: z + 10 };
         else if (Number(Unit.ut) === WUT_CITY_LVL_3)
-            Pos = {x: x + 30, y: y + 45, z: z + 10};
+            Pos = { x: x + 30, y: y + 45, z: z + 10 };
 
         Unit.CityFlagEntite = Elkaisar.GE.WorldScene.add.sprite(Pos.x, Pos.y, 'flagOverCity').setOrigin(0, 0).play(FramName).setDepth(Pos.z);
 
@@ -583,59 +597,59 @@ Animation.cityColonizerFlag = function () {
         if (Number(world_unit.ut) === WUT_CITY_LVL_0) {
 
             world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
+                Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
                     .reel("city_flag", 650, flag_array)
                     .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
+                    .attr({ x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y })
                     .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 38, w: 35, h: 20, avoidCss3dTransforms: true, z: 9 ** 9})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
+                        .attr({ x: x + 34, y: y + 38, w: 35, h: 20, avoidCss3dTransforms: true, z: 9 ** 9 })
+                        .text("")
+                        .textColor('white')
+                        .textFont({ size: '12px', lineHeight: "20px" })
+                        .textAlign("center"));
 
 
         } else if (Number(world_unit.ut) === WUT_CITY_LVL_1) {
 
             world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
+                Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
                     .reel("city_flag", 650, flag_array)
                     .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
+                    .attr({ x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y })
                     .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e15})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
+                        .attr({ x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e15 })
+                        .text("")
+                        .textColor('white')
+                        .textFont({ size: '12px', lineHeight: "20px" })
+                        .textAlign("center"));
 
         } else if (Number(world_unit.ut) === WUT_CITY_LVL_2) {
 
             world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
+                Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
                     .reel("city_flag", 650, flag_array)
                     .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
+                    .attr({ x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y })
                     .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
+                        .attr({ x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29 })
+                        .text("")
+                        .textColor('white')
+                        .textFont({ size: '12px', lineHeight: "20px" })
+                        .textAlign("center"));
 
         } else if (Number(world_unit.ut) === WUT_CITY_LVL_3) {
 
             world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
+                Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
                     .reel("city_flag", 650, flag_array)
                     .animate("city_flag", -1)
-                    .attr({x: x + 30, y: y + 30, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
+                    .attr({ x: x + 30, y: y + 30, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y })
                     .attach(Crafty.e('2D, Canvas, Text, stroke, worldEnt')
-                            .attr({x: x + 34, y: y + 60, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29})
-                            .text("" + world_unit.CityFlag)
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
+                        .attr({ x: x + 34, y: y + 60, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29 })
+                        .text("" + world_unit.CityFlag)
+                        .textColor('white')
+                        .textFont({ size: '12px', lineHeight: "20px" })
+                        .textAlign("center"));
 
         } else {
             console.log(world_unit)
@@ -683,8 +697,8 @@ Animation.currentUnitArrow.put = function (x, y) {
         repeat: -1,
         duration: 1000,
         yoyo: true,
-        onYoyo: function () {},
-        onRepeat: function () {}
+        onYoyo: function () { },
+        onRepeat: function () { }
     });
 
 
@@ -694,19 +708,19 @@ Animation.currentUnitArrow.put = function (x, y) {
     } else {
 
         Animation.currentUnitArrow.arrow =
-                Elkaisar.GE.WorldScene.add.image(Animation.currentUnitArrow.x, Animation.currentUnitArrow.y).setDepth(Animation.currentUnitArrow.z);
+            Elkaisar.GE.WorldScene.add.image(Animation.currentUnitArrow.x, Animation.currentUnitArrow.y).setDepth(Animation.currentUnitArrow.z);
 
         Crafty.e("2D, Canvas, Tween, arrow")
-                .attr({
-                    x: Animation.currentUnitArrow.x,
-                    y: Animation.currentUnitArrow.y,
-                    z: Animation.currentUnitArrow.z
-                })
-                .tween({y: Animation.currentUnitArrow.y + 30}, 1000, "easeInOutQuad")
-                .bind("TweenEnd", function () {
-                    this.tween({y: Animation.currentUnitArrow.y + (dir ? 30 : 0)}, 1000, "easeInOutQuad");
-                    dir = 1 - dir;
-                });
+            .attr({
+                x: Animation.currentUnitArrow.x,
+                y: Animation.currentUnitArrow.y,
+                z: Animation.currentUnitArrow.z
+            })
+            .tween({ y: Animation.currentUnitArrow.y + 30 }, 1000, "easeInOutQuad")
+            .bind("TweenEnd", function () {
+                this.tween({ y: Animation.currentUnitArrow.y + (dir ? 30 : 0) }, 1000, "easeInOutQuad");
+                dir = 1 - dir;
+            });
 
     }
 

@@ -449,6 +449,9 @@ var WorldUnit = {
     getWorldUnit: function (x, y) {
         return Elkaisar.worldAllUnits[x * 500 + Number(y)];
     },
+    getUnitData: function(unitType){
+        return Elkaisar.World.UnitTypeData[unitType];
+    },
 
     refreshUnitData: function (x, y) {
 

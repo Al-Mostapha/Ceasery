@@ -330,7 +330,7 @@ Elkaisar.World.Map.CityFound = false;
 Elkaisar.World.Map.getWorldCity = function () {
     
     return $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/AWorld/getWorldCity`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AWorld/getWorldCity`,
         type: 'GET',
         crossDomain: true,
         data:{
@@ -338,14 +338,13 @@ Elkaisar.World.Map.getWorldCity = function () {
             idPlayer: Elkaisar.DPlayer.Player.id_player
         },
         success: function (data, textStatus, jqXHR) {
-
+           
             if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
-
+            console.log(data)
             var JsonObject = JSON.parse(data);
-
+            console.log(JsonObject)
             var Unit;
-
             for (var iii in JsonObject)
             {
 
@@ -362,11 +361,12 @@ Elkaisar.World.Map.getWorldCity = function () {
                 Unit.ut = Number(JsonObject[iii].l) + WUT_CITY_LVL_0;
                 Unit.l = JsonObject[iii].l;
                 Unit.t = Number(JsonObject[iii].l) + 17;
+                Elkaisar.World.Map.CityFound = true;
             }
-            Elkaisar.World.Map.CityFound = true;
+            
         },
         error: function (jqXHR, textStatus, errorThrown) {
-
+            console.log(arguments)
         }
     });
 

@@ -462,11 +462,11 @@ var reviewBox = {
         {
 
             var CCity = Elkaisar.DPlayer.City[ii];
-            if (Number(CCity.City.x) !== Number(xCoord))
+            
+            if (Number(CCity.City.x) != Number(xCoord))
                 continue;
-            if (Number(CCity.City.y) !== Number(xCoord))
+            if (Number(CCity.City.y) != Number(yCoord))
                 continue;
-
             return ` <ul id="footer_bar">
                         <li data-type="${Elkaisar.BaseData.BattelTasks.BATTEL_TASK_ENTER_CITY}">
                             <img src="images/icons/war-icon/enter-city.png" /> 

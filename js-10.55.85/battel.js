@@ -39,10 +39,10 @@ const BATTEL_JOIN_ATTACK = 2;
 const BATTEL_JOIN_DEFENCE = 3;
 
 
-Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
-   
-   var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
-   
+Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask) {
+
+    var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+
     if (Number(BattelTask) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY) {
 
         buildingClick("market");
@@ -53,16 +53,16 @@ Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
 
         return;
     }
-/*
-    if (Number(Elkaisar.DPlayer.PlayerState.peace) - 12 * 60 * 60 > ($.now() / 1000)) {
-        alert_box.failMessage("لا  يمكنك الهجوم و انت  فى حالة هدنة");
-        return;
-    } else if (world_unit.__peace && world_unit.__peace > $.now() / 1000) {
-        alert_box.succesMessage("لا يمكنك الهجوم على هذه المدينة  </br> ( ملك المدينة قام بتفعيل هدنة)");
-
-        return;
-    }
-*/
+    /*
+     if (Number(Elkaisar.DPlayer.PlayerState.peace) - 12 * 60 * 60 > ($.now() / 1000)) {
+     alert_box.failMessage("لا  يمكنك الهجوم و انت  فى حالة هدنة");
+     return;
+     } else if (world_unit.__peace && world_unit.__peace > $.now() / 1000) {
+     alert_box.succesMessage("لا يمكنك الهجوم على هذه المدينة  </br> ( ملك المدينة قام بتفعيل هدنة)");
+     
+     return;
+     }
+     */
 
     if (Number(BattelTask) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SPY) {
 
@@ -82,8 +82,7 @@ Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
     // get hero id 
     var hero_object;
 
-    for (var iii in Elkaisar.DPlayer.Heros)
-    {
+    for (var iii in Elkaisar.DPlayer.Heros) {
         if (Elkaisar.DPlayer.Heros[iii].Hero.id_city != Elkaisar.CurrentCity.City.id_city)
             continue;
         if (Elkaisar.DPlayer.Heros[iii].Hero.in_city != Elkaisar.Hero.HeroState.HERO_IN_CITY)
@@ -112,9 +111,9 @@ Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
         ar_title: WorldUtil.tooltipHeader(xCoord, yCoord),
         task: BattelTask,
         task_title: "غزو",
-        time : 60,
-        type : Unit.ut,
-        lvl  : Unit.l
+        time: 60,
+        type: Unit.ut,
+        lvl: Unit.l
     };
 
     var content = army.dialogBoxContent_forCamp(Elkaisar.CurrentHero, battel);
@@ -136,7 +135,7 @@ Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
 
     // close  samll box
     $(".close_RB img").trigger("click");
-    
+
 };
 
 $(document).on("click", "#footer_bar li", function () {
@@ -147,14 +146,13 @@ $(document).on("click", "#footer_bar li", function () {
 
     Elkaisar.World.WorldMapIcon.Clicked(xCoord, yCoord, BattelTask);
 
-    
+
 
 });
 
 
 
-function getUnitTitle(type)
-{
+function getUnitTitle(type) {
     if (Elkaisar.World.UnitTypeData[type])
         return Elkaisar.World.UnitTypeData[type].Title;
     return "---";
@@ -206,12 +204,14 @@ function isMyBarr(_0x22de03, _0x4dcc19) {
 
 
 function battelStart() {
-    if (Number(Elkaisar['CurrentHero']['Hero']['in_city']) !== Elkaisar['Hero']['HeroState']['HERO_IN_CITY']) {
-        $('.close-alert')['click'](), alert_box['failMessage']('لا يمكنك ارسال بطل الى بعثة و هو فى ليس داخل المدينة');
+    if (Number(Elkaisar.CurrentHero.Hero.in_city) !== Elkaisar.Hero.HeroState.HERO_IN_CITY) {
+        $('.close-alert').click();
+        alert_box.failMessage('لا يمكنك ارسال بطل الى بعثة و هو فى ليس داخل المدينة');
         return;
     }
-    if (Number(Elkaisar['CurrentHero']['Hero']['id_hero']) === Number(Elkaisar['CurrentCity']['City']['console'])) {
-        $('.close-alert')['click'](), alert_box['failMessage']('لا يمكنك ارسال بطل الى بعثة و هو قنصل');
+    if (Number(Elkaisar.CurrentHero.Hero.id_hero) === Number(Elkaisar['CurrentCity']['City']['console'])) {
+        $('.close-alert').click();
+        alert_box['failMessage']('لا يمكنك ارسال بطل الى بعثة و هو قنصل');
         return;
     }
     var _0x2d501c = WorldUnit['getWorldUnit'](battel_data['x_coord'], battel_data['y_coord']);
@@ -240,8 +240,10 @@ function battelStart() {
         alert_box['failMessage']('لا يمكنك الهجوم بالبطل الحالى! ');
         return;
     }
-    if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPLY']) {
-        Battel['millertySupply'](battel_data['x_coord'], battel_data['y_coord']), Elkaisar['CurrentHero']['Hero']['in_city'] = 0x1, city_profile['refresh_hero_view']();
+    if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPORT']) {
+        Battel['millertySupply'](battel_data['x_coord'], battel_data['y_coord']);
+        Elkaisar['CurrentHero']['Hero']['in_city'] = 0;
+        city_profile['refresh_hero_view']();
         return;
     }
     if (isMyBarr(_0x2d501c['x'], _0x2d501c['y'])) {
@@ -253,8 +255,8 @@ function battelStart() {
             alert_box['failMessage']('لا يوجد لديك مواد كافية للانضمام');
             return;
         }
-        $['ajax']({
-            'url': API_URL + '/api/ABattelRunning/joinBattel',
+        $.ajax({
+            'url': `http://${WS_HOST}:${WS_PORT}/api/ABattel/joinBattel`,
             'data': {
                 'idBattel': battel_data['id_battel'],
                 'idHero': Elkaisar['CurrentHero']['Hero']['id_hero'],
@@ -263,39 +265,54 @@ function battelStart() {
                 'server': Elkaisar['Config']['idServer']
             },
             'type': 'POST',
-            'success': function (_0x311475, _0x4f103d, _0x3e9120) {
-                if (isJson(_0x311475))
-                    var _0x12bab5 = JSON['parse'](_0x311475);
+            'success': function (data, _0x4f103d, _0x3e9120) {
+                if (isJson(data))
+                    var JsonObject = JSON['parse'](data);
                 else
-                    alert(_0x311475);
-                if (_0x12bab5['state'] === 'ok') {
-                    $('.close_dialog')['trigger']('click'), Elkaisar['CurrentHero']['Hero']['in_city'] = 0x0, $('.close-alert')['trigger']('click'), battel_data['type'] = _0x12bab5['unit_type'], battel_data['lvl'] = _0x12bab5['unit_lvl'], Hero['heroAttackProc'](), PLAYER_NOTIF['hero_in_battel'] = Number(PLAYER_NOTIF['hero_in_battel']) + 0x1, city_profile['refresh_hero_view']();
-                    var _0x4cad5b = _0x12bab5['Battel'],
-                            _0xf08408 = ![];
-                    for (var _0x5f08e9 in Elkaisar['Battel']['Battels']) {
-                        Number(Elkaisar['Battel']['Battels'][_0x5f08e9]['id_battel']) === Number(battel_data['id_battel']) && (_0xf08408 = !![], Elkaisar['Battel']['Battels'][_0x5f08e9] = _0x4cad5b);
-                    }
-                    !_0xf08408 && (PLAYER_NOTIF['battel_number'] = Number(PLAYER_NOTIF['battel_number']) + 0x1, !Elkaisar['Battel']['Battels'] ? Elkaisar['Battel']['Battels'] = [_0x4cad5b] : Elkaisar['Battel']['Battels']['push'](_0x4cad5b)), Fixed['refreshPlayerNotif'](), Battel['afterJoin'](battel_data['x_coord'], battel_data['y_coord']);
-                } else {
-                    if (_0x12bab5['state'] === 'error_1')
-                        alert_box['confirmMessage']('البطل ليس فى المدينة');
-                    else {
-                        if (_0x12bab5['state'] === 'error_2')
-                            alert_box['confirmMessage']('انتهت المعركة لا يمكنك الانضمام');
-                        else {
-                            if (_0x12bab5['state'] === 'error_3')
-                                alert_box['confirmMessage']('لا يمكنك الانضمام للدفاع </br> (وصل عدد المنضمين الى الحد الاقصى)');
-                            else {
-                                if (_0x12bab5['state'] === 'error_5')
-                                    alert_box['confirmMessage']('لا يمكنك الدفاع ضد هذا الحلف');
-                                else
-                                    _0x12bab5['state'] === 'error_6' ? alert_box['confirmMessage']('المواد غير كافية') : alert_box['confirmMessage']('لا يمكنك الانضمام');
-                            }
+                    alert(data);
+                if (JsonObject['state'] === 'ok') {
+                    $('.close_dialog')['trigger']('click');
+                    Elkaisar['CurrentHero']['Hero']['in_city'] = 0x0;
+                    $('.close-alert')['trigger']('click');
+                    battel_data['type'] = JsonObject['unit_type'];
+                    battel_data['lvl'] = JsonObject['unit_lvl'];
+                    Hero['heroAttackProc']();
+                    PLAYER_NOTIF['hero_in_battel'] = Number(PLAYER_NOTIF['hero_in_battel']) + 0x1, city_profile['refresh_hero_view']();
+                    var Battel = JsonObject['Battel'];
+
+                    var found = false;
+                    for (var iii in Elkaisar['Battel']['Battels']) {
+                        if (Number(Elkaisar['Battel']['Battels'][iii]['id_battel']) === Number(battel_data['id_battel'])) {
+                            found = true;
+                            Elkaisar['Battel']['Battels'][iii] = Battel;
                         }
+                        ;
                     }
+
+                    if (!found) {
+                        PLAYER_NOTIF['battel_number'] = Number(PLAYER_NOTIF['battel_number']) + 0x1;
+                        if (!Elkaisar['Battel']['Battels']) {
+                            Elkaisar['Battel']['Battels'] = [];
+                        }
+                        Elkaisar['Battel']['Battels']['push'](Battel);
+                        Fixed['refreshPlayerNotif']();
+                        Battel['afterJoin'](battel_data['x_coord'], battel_data['y_coord'])
+                    }
+                } else if (JsonObject['state'] === 'error_1') {
+                    alert_box['confirmMessage']('البطل ليس فى المدينة');
+                } else if (JsonObject['state'] === 'error_2') {
+                    alert_box['confirmMessage']('انتهت المعركة لا يمكنك الانضمام');
+                } else if (JsonObject['state'] === 'error_3') {
+                    alert_box['confirmMessage']('لا يمكنك الانضمام للدفاع </br> (وصل عدد المنضمين الى الحد الاقصى)');
+                } else if (JsonObject['state'] === 'error_5') {
+                    alert_box['confirmMessage']('لا يمكنك الدفاع ضد هذا الحلف');
+                }else if(JsonObject.state == "error_6"){
+                    alert_box['confirmMessage'](`متطلبات الإنضمام غير مكتملة`);
+                }else if(JsonObject.state == "error_7"){
+                    alert_box['confirmMessage'](`البطل ليس لدية لياقة كافية`);
                 }
             },
-            'error': function (_0x9c1e15, _0x370e1e, _0x58f5ad) {}
+            'error': function (_0x9c1e15, _0x370e1e, _0x58f5ad) { }
         });
     } else {
         if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPORT'])
@@ -315,21 +332,19 @@ function battelStart() {
 
 
 
-function getReportTitle(type, lvl, x_coord, y_coord)
-{
+function getReportTitle(type, lvl, x_coord, y_coord) {
 
     var Unit = WorldUnit.getWorldUnit(x_coord, y_coord);
     if (WorldUnit.isArmyCapital(Unit.ut) || WorldUnit.isArena(Unit.ut)) {
-        return `تقرير المعركة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${getArabicNumbers(y_coord) } ,${getArabicNumbers(x_coord)}] `;
+        return `تقرير المعركة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${getArabicNumbers(y_coord)} ,${getArabicNumbers(x_coord)}] `;
     } else {
-        return `تقرير المعركة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${getArabicNumbers(y_coord) } ,${getArabicNumbers(x_coord)}] مستوى ${lvl}`;
+        return `تقرير المعركة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${getArabicNumbers(y_coord)} ,${getArabicNumbers(x_coord)}] مستوى ${lvl}`;
     }
 
 }
-function getSpyReportTitle(type, lvl, x_coord, y_coord)
-{
+function getSpyReportTitle(type, lvl, x_coord, y_coord) {
     var Unit = WorldUnit.getWorldUnit(x_coord, y_coord);
-    return  `تقرير التجسس على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${(y_coord) } ,${(x_coord)}] مستوى ${(lvl)}`;
+    return `تقرير التجسس على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${(y_coord)} ,${(x_coord)}] مستوى ${(lvl)}`;
 }
 
 $(document).on("click", ".battel-con", function () {
@@ -387,8 +402,7 @@ $(document).on("PlayerReady", "html", function () {
 
 
 
-Elkaisar.Battel.supportByHero = function (idHero)
-{
+Elkaisar.Battel.supportByHero = function (idHero) {
     if (!idHero)
         idHero = Elkaisar.CurrentHero.Hero.id_hero;
 
@@ -409,13 +423,12 @@ Elkaisar.Battel.supportByHero = function (idHero)
 
             var JsonObject = JSON.parse(data);
 
-            if (JsonObject.state === "ok")
-            {
-                
+            if (JsonObject.state === "ok") {
+
                 alert_box.succesMessage("تم ارسال البطل الى البعثة");
                 PLAYER_NOTIF.hero_in_battel = Number(PLAYER_NOTIF.hero_in_battel) + 1;
                 Fixed.refreshPlayerNotif();
-                Elkaisar.Hero.getHero(idHero).Hero.in_city =  Elkaisar.Hero.HeroState.HERO_IN_BATTEL;
+                Elkaisar.Hero.getHero(idHero).Hero.in_city = Elkaisar.Hero.HeroState.HERO_IN_BATTEL;
                 city_profile.refresh_hero_view();
                 $(".nav_icon .close_dialog").click();
 
@@ -435,8 +448,7 @@ Elkaisar.Battel.supportByHero = function (idHero)
 
 };
 
-Elkaisar.Battel.TransHero = function (idHero)
-{
+Elkaisar.Battel.TransHero = function (idHero) {
 
     if (!idHero)
         idHero = Elkaisar.CurrentHero.Hero.id_hero;
@@ -459,8 +471,7 @@ Elkaisar.Battel.TransHero = function (idHero)
 
             var JsonObject = JSON.parse(data);
 
-            if (JsonObject.state === "ok")
-            {
+            if (JsonObject.state === "ok") {
                 Elkaisar.Hero.getHero(idHero).in_city = Elkaisar.Hero.HeroState.HERO_IN_BATTEL;
                 alert_box.succesMessage("تم ارسال البطل الى البعثة");
                 PLAYER_NOTIF.hero_in_battel = Number(PLAYER_NOTIF.hero_in_battel) + 1;
@@ -484,18 +495,11 @@ Elkaisar.Battel.TransHero = function (idHero)
 
 
 
-
-
-
-
-/*
- *   REFRESH BATTEL DATA 
- */
 $(document).on("click", "#REFRESH_BATTEL_DATA", function () {
 
-    var id_battel = parseInt($(this).attr("data-id-battel"));
+    var idBattel = parseInt($(this).attr("data-id-battel"));
 
-    if (!id_battel) {
+    if (!idBattel) {
 
         alert_box.confirmMessage("برجاء اختيار المعركة");
 
@@ -503,25 +507,24 @@ $(document).on("click", "#REFRESH_BATTEL_DATA", function () {
 
         $.ajax({
 
-            url: "api/battel.php",
+            url: `http://${WS_HOST}:${WS_PORT}/api/ABattelRuning/refreshBattelData`,
             data: {
-
-                REFRESH_BATTEL_DATA: true,
-                id_battel: id_battel,
-                id_player: ID_PLAYER,
-                token: TOKEN
-
+                token: Elkaisar.Config.OuthToken,
+                idBattel: idBattel
             },
             type: 'GET',
             beforeSend: function (xhr) {
                 console.log(this.data)
             },
             success: function (data, textStatus, jqXHR) {
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+                var JsonObject = JSON.parse(data);
 
-                var json_data = JSON.parse(data);
-                // refresh attack num
-                $(".attack-side .joined-num").html(getArabicNumbers(json_data.attack_num));
-                $(".defense-side .joined-num").html(getArabicNumbers(json_data.defence_num)); // refresh defence num
+
+
+                $(".attack-side .joined-num").html(JsonObject.attackNum || 0);
+                $(".defense-side .joined-num").html(JsonObject.defenceNum || 0); // refresh defence num
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -543,16 +546,13 @@ Battel = {
 
 
         $.ajax({
-            url: "api/battel.php",
+            url: `${API_URL}/api/AWorldUnit/supportByHero`,
             data: {
-                SUPPLY_WORLD_UNIT_HERO: true,
-                x_to: x_coord,
-                y_to: y_coord,
-                x_from: Elkaisar.CurrentCity.City.x,
-                y_from: Elkaisar.CurrentCity.City.y,
-                id_hero: Elkaisar.CurrentHero.Hero.id_hero,
-                id_player: ID_PLAYER,
-                token: TOKEN
+                xTo: x_coord,
+                yTo: y_coord,
+                idHero: Elkaisar.CurrentHero.Hero.id_hero,
+                token: TOKEN,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             beforeSend: function (xhr) {
@@ -597,8 +597,7 @@ Battel = {
         Elkaisar.DPlayer.Player.honor = Number(Elkaisar.DPlayer.Player.honor) + Number(Battel.Player.Honor);
 
 
-        if (Number(Battel.Battel.task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_DOMINATE)
-        {
+        if (Number(Battel.Battel.task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_DOMINATE) {
             Elkaisar.City.getCityBarray();
         }
 
@@ -669,18 +668,18 @@ Battel.heroArmiesAre = function (idHero, armyType) {
 
     armyType = Number(armyType);
 
-    if (Number(hero.army.f_1_type) > 0 && Number(hero.army.f_1_type) !== armyType)
+    if (Number(hero.Army.f_1_type) > 0 && Number(hero.Army.f_1_type) !== armyType)
         return false;
-    if (Number(hero.army.f_2_type) > 0 && Number(hero.army.f_2_type) !== armyType)
+    if (Number(hero.Army.f_2_type) > 0 && Number(hero.Army.f_2_type) !== armyType)
         return false;
-    if (Number(hero.army.f_3_type) > 0 && Number(hero.army.f_3_type) !== armyType)
+    if (Number(hero.Army.f_3_type) > 0 && Number(hero.Army.f_3_type) !== armyType)
         return false;
 
-    if (Number(hero.army.b_1_type) > 0 && Number(hero.army.b_1_type) !== armyType)
+    if (Number(hero.Army.b_1_type) > 0 && Number(hero.Army.b_1_type) !== armyType)
         return false;
-    if (Number(hero.army.b_2_type) > 0 && Number(hero.army.b_2_type) !== armyType)
+    if (Number(hero.Army.b_2_type) > 0 && Number(hero.Army.b_2_type) !== armyType)
         return false;
-    if (Number(hero.army.b_3_type) > 0 && Number(hero.army.b_3_type) !== armyType)
+    if (Number(hero.Army.b_3_type) > 0 && Number(hero.Army.b_3_type) !== armyType)
         return false;
 
 

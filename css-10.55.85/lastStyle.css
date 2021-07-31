@@ -886,6 +886,11 @@
 #guild_lead{
     display: inline-table;
     width: 115px;
+    margin-top: 25px;
+}
+#TeamAdmins{
+    display: inline-table;
+    width: 115px;
     margin-top: 12px;
 }
 .for_guild .right-content-footer{

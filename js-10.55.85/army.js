@@ -577,11 +577,11 @@ var army = {
 
                 state = '<img src="images/icons/h_s_console.png">';
 
-            } else if (Number(Hero.Hero.in_city) === 0) {
+            } else if (Number(Hero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL) {
 
                 state = '<img src="images/icons/h_s_attack_2.png">';
 
-            } else if (Number(Hero.Hero.in_city) === -1) {
+            } else if (Number(Hero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON) {
 
                 state = '<img src="images/icons/h_s_support.png">';
 
@@ -643,17 +643,17 @@ var army = {
         var state = '<img src="images/icons/h_s_incity.png" class="img-sml pull-R" >';
         var state_ar_title = "فى المدينة";
 
-        if (Number(Elkaisar.CurrentHero.Hero.console) === 1) {
+        if (Number(Elkaisar.CurrentHero.Hero.id_hero) == Elkaisar.CurrentCity.City.console) {
 
             state = '<img src="images/icons/h_s_console.png"  class="pull-R">';
             state_ar_title = "قنصل المدينة";
 
-        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === 0) {
+        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL) {
 
             state = '<img src="images/icons/h_s_attack_2.png"  class="img-sml pull-R">';
             state_ar_title = "يهاجم";
 
-        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === -1) {
+        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON) {
 
             state = '<img src="images/icons/h_s_support.png" class="img-sml pull-R">';
             state_ar_title = "حراسة";
@@ -1166,17 +1166,17 @@ var army = {
         Elkaisar.NextHero = sec_hero;
         var state = '<img src="images/icons/h_s_incity.png" class="img-sml pull-R " >';
         var state_ar_title = "فى المدينة";
-        if (parseInt(sec_hero.Hero.console) === 1) {
+        if (parseInt(sec_hero.Hero.id_hero) === Elkaisar.CurrentCity.City.console) {
 
             state = '<img src="images/icons/h_s_console.png"  class="pull-R">';
             state_ar_title = "قنصل المدينة";
 
-        } else if (parseInt(sec_hero.Hero.in_city) === 0) {
+        } else if (parseInt(sec_hero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL) {
 
             state = '<img src="images/icons/h_s_attack_2.png"  class="img-sml pull-R">';
             state_ar_title = "يهاجم";
 
-        } else if (Number(sec_hero.Hero.in_city) === -1) {
+        } else if (Number(sec_hero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON) {
 
             state = '<img src="images/icons/h_s_support.png" class="img-sml pull-R">';
             state_ar_title = "حراسة";
@@ -1253,17 +1253,17 @@ var army = {
 
         var state = '<img src="images/icons/h_s_incity.png" class="img-sml pull-R" >';
         var state_ar_title = "فى المدينة";
-        if (parseInt(Elkaisar.CurrentHero.Hero.console) === 1) {
+        if (parseInt(Elkaisar.CurrentHero.Hero.id_hero) === Elkaisar.CurrentCity.City.console) {
 
             state = '<img src="images/icons/h_s_console.png"  class="pull-R">';
             state_ar_title = "قنصل المدينة";
 
-        } else if (parseInt(Elkaisar.CurrentHero.Hero.in_city) === 0) {
+        } else if (parseInt(Elkaisar.CurrentHero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL) {
 
             state = '<img src="images/icons/h_s_attack_2.png"  class="img-sml pull-R">';
             state_ar_title = "يهاجم";
 
-        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === -1) {
+        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON) {
 
             state = '<img src="images/icons/h_s_support.png" class="img-sml pull-R">';
             state_ar_title = "حراسة";
@@ -1741,150 +1741,11 @@ $(document).on("click", ".left-nav ul  li", function () {
 
 });
 
-$(document).on("click", "#left-down , #right-down", function () {
 
-    // get id_hero
-    var id_hero = $(this).attr("id_hero");
-
-    if (!heroAvailableForTask(id_hero)) {
-        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات </br> البطل فى مهمة"));
-        return false;
-
-    }
-
-    if ($(this).attr("id") === "left-down") {
-        if (getHeroCapById(Elkaisar.CurrentHero.Hero.id_hero) <= 0) {
-            return;
-        }
-    } else {
-        if (getHeroCapById(Elkaisar.NextHero.Hero.id_hero) <= 0) {
-            return;
-        }
-    }
-
-    var id_city = Elkaisar.CurrentCity.City.id_city;
-    var this_ = $(this);
-
-    $.ajax({
-        url: `${API_URL}/api/AHeroArmy/clearHeroArmy`,
-        data: {
-            idHero: id_hero,
-            token: Elkaisar.Config.OuthToken,
-            server: Elkaisar.Config.idServer
-        },
-        type: 'POST',
-        beforeSend: function (xhr) {
-            waitCursor();
-            $("#left-down , #right-down").attr("disabled", "disabled");
-        },
-        success: function (data, textStatus, jqXHR) {
-            unwaitCursor();
-            $("#left-down , #right-down").removeAttr("disabled");
-            if (isJson(data)) {
-                var json_data = JSON.parse(data);
-            } else {
-                alert(data);
-                return;
-            }
-
-            if (json_data.state === "ok")
-            {
-                Elkaisar.City.getCity(id_city).City = json_data.City;
-
-                Elkaisar.Hero.getHero(id_hero).Army = json_data.HeroArmy;
-
-            } else if (json_data.state === "error_1") {
-                alert_box.failMessage("البطل ليس فى المدينة");
-            }
-
-
-            city_profile.refresh_army_view();
-            army.refreshArmy_leftTrade();
-            army.refreshArmy_rightTrade();
-            $("#down-trade-army").html(army.downTradeArmy());
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
-        }
-    });
-
-});
 
 
 // to  swap  army brtween heros
-$(document).on("click", "#swap_army", function () {
 
-
-
-    var right_hero_id = $(".right-content").children(".army_container").attr("id_hero");
-    var left_hero_id = $(".middle-content").children(".army_container").attr("id_hero");
-    var id_city = Elkaisar.CurrentCity.City.id_city;
-    var temp_ol = $("#hero-right-ol").html();
-    var temp_o_l = $("#hero-left-ol").html();
-
-
-    var first_cap = getHeroCap(Elkaisar.CurrentHero.Army);
-    var sec_cap = getHeroCap(Elkaisar.NextHero.Army);
-    var first_max = getHeroMaxCap(Elkaisar.CurrentHero);
-    var sec_max = getHeroMaxCap(Elkaisar.NextHero);
-
-    if (first_cap === 0 && sec_cap === 0) {
-        return;
-    }
-
-    if (!heroAvailableForTask(right_hero_id) || !heroAvailableForTask(left_hero_id)) {
-        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات </br> البطل فى مهمة"));
-        return false;
-    }
-
-    if (first_cap > sec_max || sec_cap > first_max) {
-
-        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات"));
-        return;
-    }
-
-    $.ajax({
-        url: `${API_URL}/api/AHeroArmy/swapHeroArmy`,
-        data: {
-            idHeroRight: right_hero_id,
-            idHeroLeft: left_hero_id,
-            token: Elkaisar.Config.OuthToken,
-            server: Elkaisar.Config.idServer
-        },
-        type: 'POST',
-        beforeSend: function (xhr) {
-            $("#swap_army").attr("disabled", "disabled");
-            waitCursor();
-        },
-        success: function (data, textStatus, jqXHR) {
-            unwaitCursor();
-
-            if (!Elkaisar.LBase.isJson(data))
-                return Elkaisar.LBase.Error(data);
-
-            var JsonObject = JSON.parse(data);
-
-            if (JsonObject.state === 'ok') {
-
-                Elkaisar.NextHero.Army = JsonObject.HeroArmyRight;
-                Elkaisar.CurrentHero.Army = JsonObject.HeroArmyLeft;
-                $("#swap_army").removeAttr("disabled");
-                $("#hero-left-ol").html(temp_ol);
-                $("#hero-right-ol").html(temp_o_l);
-                $(".hero-1  ol li:nth-child(2) .header-2:nth-child(2)").html(sec_cap + "/" + first_max);
-                $(".hero-2  ol li:nth-child(2) .header-2:nth-child(2)").html(first_cap + "/" + sec_max);
-            } else if (JsonObject.state === "error_1")
-                alert_box.failMessage("البطل لايستوعب العدد الحالى");
-            else if (JsonObject.state === "error_2")
-                alert_box.failMessage("البطل ليس فى المدينة");
-
-
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-
-        }
-    });
-});
 
 
 
@@ -2824,17 +2685,17 @@ $(document).on("click", "#selected_hero", function () {
 
             var state = '<img src="images/icons/h_s_incity.png" class="img-sml" >';
 
-            if (parseInt(el.console) === 1) {
+            if (parseInt(el.id_hero) === Elkaisar.CurrentCity.City.console) {
 
                 state = '<img src="images/icons/h_s_console.png">';
 
 
-            } else if (parseInt(el.in_city) === 0) {
+            } else if (parseInt(el.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL) {
 
                 state = '<img src="images/icons/h_s_attack_2.png"  class="img-sml">';
 
 
-            } else if (Number(el.in_city) === -1) {
+            } else if (Number(el.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON) {
 
                 state = '<img src="images/icons/h_s_support.png" class="img-sml">';
             }

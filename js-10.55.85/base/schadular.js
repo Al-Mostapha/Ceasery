@@ -380,32 +380,44 @@ Elkaisar.WsLib.TimedTask.Building = function (data) {
     if ($("#dialg_box .box_header").attr("place") === data.Task.place && Number(Elkaisar.CurrentCity.City.id_city) === Number(data.Task.id_city)) {
         buildingClick(data.Task.place, true);
     }
+    
+    var id_console = Elkaisar.CurrentCity.City.console;
+    
+    var hero = getHeroById(id_console);
+    if(hero){
+        hero.exp = Number(hero.exp) + Number(data.prestige) * 2;
+        $("#dialg_box[type='hero'] .middle-content").replaceWith(army.middle_content(hero));
+    }
 
 };
 
 
 Elkaisar.WsLib.TimedTask.Jop = function (data) {
 
-    //Crafty.audio.play("upgrade_done");
+
 
     Elkaisar.DPlayer.Player.prestige = Number(Elkaisar.DPlayer.Player.prestige) + data.prestige;
 
-    Elkaisar.City.getCity(data.City.id_city).City = data.City;
-    Elkaisar.City.getCity(data.CityJop).Jop = data.CityJop;
 
-    var id_console = Elkaisar.CurrentCity.City.console;
-    if (id_console) {
-        var hero = getHeroById(id_console);
-        hero.exp = Number(hero.exp) + Number(data.prestige) * 2;
-        $("#dialg_box[type='hero'] .middle-content").replaceWith(army.middle_content(hero));
-    }
-
+   
+ 
 
     $("#job-typs .selected").click();
     city_profile.refresh_city_resources();
     delete(Elkaisar.TimedTask.TaskList.Jop[data.Task.id]);
     Elkaisar.TimedTask.refreshListView();
     Player_profile.refresh_view();
+    Elkaisar.City.getCityBase();
+    Elkaisar.City.getCityJop();
+    
+    var id_console = Elkaisar.CurrentCity.City.console;
+    
+    var hero = getHeroById(id_console);
+    if(hero){
+        hero.exp = Number(hero.exp) + Number(data.prestige) * 2;
+        $("#dialg_box[type='hero'] .middle-content").replaceWith(army.middle_content(hero));
+    }
+
     
 };
 
@@ -416,28 +428,26 @@ Elkaisar.WsLib.TimedTask.Study = function (data){
             
     //Crafty.audio.play("upgrade_done");
     Elkaisar.DPlayer.Player.prestige = Number(Elkaisar.DPlayer.Player.prestige) + data.prestige;
-    Player_profile.getPlayerEdu();
+    Player_profile.getPlayerEdu().done(function (){
+        $(".uni_tech .left-content .total").replaceWith(edu.getUniTech());
+        $(".acad_tech .left-content .total").replaceWith(edu.getAcadTech());
+    });
     
-    var id_console = Elkaisar.CurrentCity.City.console;
+   
 
-    if (id_console) {
-        var hero = getHeroById(id_console);
-        hero.exp = Number(hero.exp) + Number(data.prestige) * 2;
-        $("#dialg_box[type='hero'] .middle-content").replaceWith(army.middle_content(hero));
-    }
-
-
-    $(".uni_tech .left-content .total").replaceWith(edu.getUniTech());
-    $(".acad_tech .left-content .total").replaceWith(edu.getAcadTech());
-
-            
-
+   
 
     city_profile.refresh_city_resources();
     delete(Elkaisar.TimedTask.TaskList.Study[data.Task.id]);
     Elkaisar.TimedTask.refreshListView();
     Player_profile.refresh_view();
-
+    
+    var id_console = Elkaisar.CurrentCity.City.console;
+    var hero = getHeroById(id_console);
+    if(hero){
+        hero.exp = Number(hero.exp) + Number(data.prestige) * 2;
+        $("#dialg_box[type='hero'] .middle-content").replaceWith(army.middle_content(hero));
+    }
 };
 
 

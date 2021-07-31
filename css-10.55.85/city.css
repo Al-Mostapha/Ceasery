@@ -225,7 +225,7 @@
     float: left;
 }
 .nav_bar .left-nav{
-    min-width: 80%;
+    /*min-width: 80%;*/
 }
 .nav_bar .right-nav{
     display: flex

@@ -364,3 +364,16 @@ $(document).on("click",".select-list", function (){
     }
     
 });
+/*
+
+Chat.openMediaDevices = async (constraints) => {
+    return await navigator.mediaDevices.getUserMedia(constraints);
+};
+
+try {
+    const stream = Chat.openMediaDevices({'video':false,'audio':true});
+    console.log('Got MediaStream:', stream);
+} catch(error) {
+    console.error('Error accessing media devices.', error);
+}*/
+

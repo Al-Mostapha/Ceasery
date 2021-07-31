@@ -68,7 +68,7 @@ $(document).on("click", "#PLUNDE_PRIZE", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AWorldUnit/plundePrize`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AWorldUnit/plundePrize`,
         data: {
             xCoord: xCoord,
             yCoord: yCoord,
@@ -77,7 +77,7 @@ $(document).on("click", "#PLUNDE_PRIZE", function () {
         },
         type: 'POST',
         success: function (data, textStatus, jqXHR) {
-            console.log(data)
+            
             if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
             console.log(data)

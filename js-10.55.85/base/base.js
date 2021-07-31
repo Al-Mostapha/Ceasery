@@ -410,7 +410,7 @@ var Extract = {
             return;
         return txt.replace(/\[\s*\d{1,3}\s*\,\s*\d{1,3}\s*\]/g, function (match) {
             var coords = Extract.digits(match);
-            return `<label class="clickable-coords font-2" data-x-coord="${coords[1]}" data-y-coord="${coords[0]}"><i>${match}</i></label>`;
+            return `<label class="clickable-coords font-2" data-x-coord="${coords[0]}" data-y-coord="${coords[1]}"><i>${match}</i></label>`;
 
         });
     },

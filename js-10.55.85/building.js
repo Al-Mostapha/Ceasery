@@ -1736,44 +1736,6 @@ var Building = {
 
             return lvl < 30 ? BUILDING_JSON_DATA[type]["lvl_req"][lvl]["metal"] : "--";
         }
-    },
-    getHeroTheater: function () {
-        var all_heros = "";
-        var left_content = "";
-
-        return  $.ajax({
-                    url: "api/hero.php",
-                    data: {
-                        get_theater_hero: true,
-                        id_city: Elkaisar.CurrentCity.City.id_city,
-                        theater_place: cityHasType(6),
-                        id_player: ID_PLAYER,
-                        token: TOKEN
-                    },
-                    type: 'GET',
-                    beforeSend: function (xhr) {
-
-                    },
-                    success: function (data, textStatus, jqXHR) {
-
-                        if (isJson(data)) {
-                            var json_data = JSON.parse(data);
-                        } else {
-
-                            console.log(data);
-                            alert(data);
-                            return;
-
-                        }
-
-                        HERO_IN_THEATER = json_data;
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus);
-                    }
-                });
-
     }
 
 };
@@ -2133,14 +2095,12 @@ $(document).on("click", "#confirmChoose button", function () {
     var helper = $(this).attr("helper-type");
     $.ajax({
 
-        url: "api/city.php",
+        url: `${API_URL}/api/ACity/changeCityHelper`,
         data: {
-            SET_CITY_HELPER: true,
-            id_city: Elkaisar.CurrentCity.City.id_city,
-            helper: helper,
-            id_player: ID_PLAYER,
-            helper_place: cityHasType(BUILDING_TYPS.WORSHIP),
-            token: TOKEN
+            idCity: Elkaisar.CurrentCity.City.id_city,
+            newHelper: helper,
+            token: Elkaisar.Config.OuthToken,
+            server : Elkaisar.Config.idServer
         },
         type: 'POST',
         beforeSend: function (xhr) {
@@ -2157,12 +2117,7 @@ $(document).on("click", "#confirmChoose button", function () {
 
             if (json_data.state === "ok")
             {
-                Elkaisar.CurrentCity.City.helper = helper;
-
-                if (Number(helper) === 2) {
-                    Elkaisar.CurrentCity.City.pop_cap = json_data.data.pop_cap;
-                }
-
+                Elkaisar.CurrentCity.City = json_data.City;
                 $(".box_content").replaceWith(Building.dialogBoxContnet_forworship());
                 alert_box.succesMessage("تم تعديل المساعد بنجاح");
 

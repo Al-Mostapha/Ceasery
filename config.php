@@ -3,7 +3,7 @@
     $SERVER_LIST = [
         "1"=>[
             "db_name"=>"elkaisar",
-            "port"=>8080,
+            "port"=>8081,
             "name"=>"الجبابرة"
         ],
         "2"=>[

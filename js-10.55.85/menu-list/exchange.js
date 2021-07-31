@@ -54,6 +54,8 @@ var Trading = {
                   
                 }else if(req[iii].type === "matrial"){
                     image = Matrial.image(req[iii].matrial) ;
+                }else if(req[iii].type === "equip"){
+                    image = Equipment.getImage(req[iii].Equip, req[iii].Part, req[iii].lvl);
                 }
                 
                 req_list += `<li class="pull-L">
@@ -77,9 +79,9 @@ var Trading = {
                 player_amount = Matrial.getPlayerAmount(reword.matrial);
                
             } else if(reword.type === "equip"){
-                prize_image = Equipment.getImage(reword.equip , reword.part, reword.lvl);
-                prize_name  = Equipment.getName(reword.equip , reword.part, reword.lvl);
-                player_amount = Equipment.getPlayerAmount(reword.equip , reword.part, reword.lvl);
+                prize_image = Equipment.getImage(reword.Equip , reword.Part, reword.lvl);
+                prize_name  = Equipment.getName(reword.Equip , reword.Part, reword.lvl);
+                player_amount = Equipment.getPlayerAmount(reword.Equip , reword.Part, reword.lvl);
             }
 
          

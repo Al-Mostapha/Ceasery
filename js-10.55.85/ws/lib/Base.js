@@ -126,3 +126,8 @@ Elkaisar.WsLib.Base.refreshWorldCitiesForPlayers = function (data){
 Elkaisar['WsLib']['Base']['DailyRest'] = function () {
     alert_box['systemChatMessage']('تمت اعادة التعيين اليومية.');
 };
+Elkaisar.WsLib.Base.PrizeSent = function () {
+    PLAYER_NOTIF.msg_diff = Number(PLAYER_NOTIF.msg_diff) + 1;
+    Fixed.refreshPlayerNotif();
+    alert_box['systemChatMessage']('وصلك جوائز فى صندوقك إفحص البريد');
+};
