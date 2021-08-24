@@ -12,7 +12,9 @@ WS_utile.onopen = function () {
             idPlayer: ID_PLAYER
         }
     }));
-    Elkaisar.World.Map.getWorldCity();
+    Elkaisar.World.Map.getWorldCity().done(function (){
+        Elkaisar.Team.getPlayerTeam();
+    });
     Elkaisar.World.Map.getWorldCityColonized();
     Elkaisar.World.Map.getWorldFiredUnit();
     Elkaisar.World.MapBattel.getAllBattels();

@@ -25,7 +25,7 @@ Elkaisar.WsLib.Hero.Back = function (data) {
 
     var HeroName = '';
     var CityName = 'المدينة';
-    var Hero = Elkaisar['Hero']['getHero'](data['idHero']);
+    var Hero = Elkaisar.Hero.getHero(data['idHero']);
     var City = Elkaisar['City']['getCityByCoord'](data['xTo'], data['yTo']);
 
     if (Hero && Hero['Hero'] && Hero['Hero']['name'])

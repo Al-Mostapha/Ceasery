@@ -284,7 +284,7 @@ $(document).on("click" , "#AllBattelLists .has_battel" , function (){
 
 
 BattelField.addToWatchList = function (x_coord , y_coord){
-    
+    return;
     ws.send(
             JSON.stringify(
                 {
@@ -304,7 +304,7 @@ BattelField.addToWatchList = function (x_coord , y_coord){
 
 BattelField.removeFromWatchList = function (x_coord , y_coord){
     
-    ws.send(
+   /* ws.send(
         JSON.stringify(
             {
                 url:"WS_BattelWatchList/removePlayer",
@@ -317,7 +317,7 @@ BattelField.removeFromWatchList = function (x_coord , y_coord){
                 
             }
         )
-    );
+    );*/
     
 };
 

@@ -83,17 +83,17 @@ Elkaisar.Equip.getEquipUnit = function(idEquip)
 
 Elkaisar.Equip.EquipList = {},
 Elkaisar.Equip.getEquipData = function () {
-    $['ajax']({
+    $.ajax({
         'url': API_URL + '/js' + Elkaisar['Config']['JsVersion'] + '/json/equipment/' + UserLag['language'] + '.json',
-        'success': function (data, _0x18a598, _0x1ed6f5) {
+        success: function (data, _0x18a598, _0x1ed6f5) {
             Elkaisar['Equip']['EquipList'] = data;
-            $['ajax']({
+            $.ajax({
                 'url': API_URL + '/api/APlayerEquip/getEquipPower',
                 'data': {
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (DataI, _0x23bbdc, _0x2945f2) {
+                success: function (DataI, _0x23bbdc, _0x2945f2) {
                     if (!Elkaisar['LBase']['isJson'](DataI))
                         return Elkaisar['LBase']['Error'](DataI);
                     var JsonData = JSON['parse'](DataI);

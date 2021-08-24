@@ -241,8 +241,6 @@ var Hero = {
     heroAttackProc: function (){
         Elkaisar.CurrentHero.Hero.in_city  = 0;
         Elkaisar.CurrentHero.Hero.attack   = 1;
-        Elkaisar.CurrentHero.Hero.power   -= Hero.getPowerRequired(battel_data.x_coord, battel_data.y_coord);
-        Elkaisar.CurrentHero.Hero.power_ls = Math.floor($.now()/1000);
     },
     // get hero equip
     getHeroEquip: function (id_hero){
@@ -666,13 +664,18 @@ $(document).on("mouseenter" ,  "#city-profile .page_content ul .hero_profile" , 
     var hero_effect = Hero.getEquipEffectsForHero(hero);
     
     
-    if(Number(hero.Hero.console) === 1){
+    if(Number(hero.Hero.id_hero) === Elkaisar.CurrentCity.City.console){
         image_state = "images/icons/h_s_console.png";
         state_title = 'قنصل المدينة';
     }
     
-    if(Number(hero.Hero.in_city) !== 1){
+    if(Number(hero.Hero.in_city) == Elkaisar.Hero.HeroState.HERO_IN_BATTEL){
         image_state = "images/icons/h_s_attack_2.png";
+        state_title = 'خارج المدينة';
+    }
+
+    if(Number(hero.Hero.in_city) == Elkaisar.Hero.HeroState.HERO_IN_GARISON){
+        image_state = "images/icons/h_s_support.png";
         state_title = 'خارج المدينة';
     }
     
@@ -1134,18 +1137,18 @@ $(document).on("dblclick" , ".putable-equi" , function (){
 
 
 Elkaisar.Hero.getEquipOffHero = function (idEquip) {
-    return $['ajax']({
+    return $.ajax({
         'url': API_URL + '/api/AHeroEquip/putEquipOffHero',
         'data': {
             'idEquip': idEquip,
-            'token': Elkaisar['Config']['OuthToken'],
-            'server': Elkaisar['Config']['idServer']
+            token: Elkaisar['Config']['OuthToken'],
+            server: Elkaisar['Config']['idServer']
         },
         'type': 'POST',
-        'beforeSend': function (_0x357aa2) {
+        beforeSend: function (_0x357aa2) {
             waitCursor();
         },
-        'success': function (_0x1b8d26, _0x56a04b, _0x499453) {
+        success: function (_0x1b8d26, _0x56a04b, _0x499453) {
             unwaitCursor();
             if (!Elkaisar['LBase']['isJson'](_0x1b8d26)) return Elkaisar['Error'](_0x1b8d26);
             var _0x29c7b2 = JSON['parse'](_0x1b8d26);

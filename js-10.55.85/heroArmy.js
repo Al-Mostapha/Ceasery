@@ -21,7 +21,7 @@ Elkaisar.HeroArmy.dragArmy = function (e, el) {
     }
 
     if (Amount <= 0)
-        return  ev.preventDefault();
+        return ev.preventDefault();
 
 
     var hold_type = dragPlace.attr("army-type");
@@ -191,7 +191,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
     var amount = Math.floor($("#input-army-move").val());
     $("#confirmTransArmy").attr("disabled", "disabled");
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromHeroToHero`,
+        url: `${NODE_URL}/api/AHeroArmy/transArmyFromHeroToHero`,
         data: {
             amount: amount,
             idCity: Elkaisar.CurrentCity.City.id_city,
@@ -262,7 +262,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
     var idCity = Elkaisar.CurrentCity.City.id_city;
 
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromHeroToCity`,
+        url: `${NODE_URL}/api/AHeroArmy/transArmyFromHeroToCity`,
         data: {
             amount: amount,
             idHero: idHero,
@@ -334,9 +334,9 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
     var ArmyHeroPlace = $("#confirmTransArmy").attr("data-drop-army-place");
     var ArmyCityPlace = $("#confirmTransArmy").attr("data-drag-army-place");
     $("#confirmTransArmy").attr("disabled", "disabled");
-    
+
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromCityToHero`,
+        url: `${NODE_URL}/api/AHeroArmy/transArmyFromCityToHero`,
         data: {
             idHero: idHero,
             amount: amount,
@@ -352,7 +352,7 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
         beforeSend: function (xhr) {
         },
         success: function (data, textStatus, jqXHR) {
-            
+
             $("#confirmTransArmy").removeAttr("disabled");
             $("#over_lay_alert").remove();
             if (isJson(data)) {
@@ -446,5 +446,155 @@ $(document).on("click", "#confirmTransArmy", function () {
     } else {
         alert("Droplace Error");
     }
+
+});
+
+
+
+$(document).on("click", "#swap_army", function () {
+
+
+
+    var right_hero_id = $(".right-content").children(".army_container").attr("id_hero");
+    var left_hero_id = $(".middle-content").children(".army_container").attr("id_hero");
+    var id_city = Elkaisar.CurrentCity.City.id_city;
+    var temp_ol = $("#hero-right-ol").html();
+    var temp_o_l = $("#hero-left-ol").html();
+
+
+    var first_cap = getHeroCap(Elkaisar.CurrentHero.Army);
+    var sec_cap = getHeroCap(Elkaisar.NextHero.Army);
+    var first_max = getHeroMaxCap(Elkaisar.CurrentHero);
+    var sec_max = getHeroMaxCap(Elkaisar.NextHero);
+
+    if (first_cap === 0 && sec_cap === 0) {
+        return;
+    }
+
+    if (!heroAvailableForTask(right_hero_id) || !heroAvailableForTask(left_hero_id)) {
+        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات </br> البطل فى مهمة"));
+        return false;
+    }
+
+    if (first_cap > sec_max || sec_cap > first_max) {
+
+        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات"));
+        return;
+    }
+
+    $.ajax({
+        url: `${NODE_URL}/api/AHeroArmy/swapHeroArmy`,
+        data: {
+            idHeroRight: right_hero_id,
+            idHeroLeft: left_hero_id,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+            $("#swap_army").attr("disabled", "disabled");
+            waitCursor();
+        },
+        success: function (data, textStatus, jqXHR) {
+            unwaitCursor();
+
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonObject = JSON.parse(data);
+
+            if (JsonObject.state === 'ok') {
+
+                Elkaisar.NextHero.Army = JsonObject.HeroArmyRight;
+                Elkaisar.CurrentHero.Army = JsonObject.HeroArmyLeft;
+                $("#swap_army").removeAttr("disabled");
+                $("#hero-left-ol").html(temp_ol);
+                $("#hero-right-ol").html(temp_o_l);
+                $(".hero-1  ol li:nth-child(2) .header-2:nth-child(2)").html(sec_cap + "/" + first_max);
+                $(".hero-2  ol li:nth-child(2) .header-2:nth-child(2)").html(first_cap + "/" + sec_max);
+            } else if (JsonObject.state === "error_1")
+                alert_box.failMessage("البطل لايستوعب العدد الحالى");
+            else if (JsonObject.state === "error_2")
+                alert_box.failMessage("البطل ليس فى المدينة");
+            else if (JsonObject.state == "SysBusy")
+                alert_box.confirmMessage("النظام مشغول الان حاول فى وقت لاحق");
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+});
+
+
+
+$(document).on("click", "#left-down , #right-down", function () {
+
+    // get id_hero
+    var id_hero = $(this).attr("id_hero");
+
+    if (!heroAvailableForTask(id_hero)) {
+        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات </br> البطل فى مهمة"));
+        return false;
+
+    }
+
+    if ($(this).attr("id") === "left-down") {
+        if (getHeroCapById(Elkaisar.CurrentHero.Hero.id_hero) <= 0) {
+            return;
+        }
+    } else {
+        if (getHeroCapById(Elkaisar.NextHero.Hero.id_hero) <= 0) {
+            return;
+        }
+    }
+
+    var id_city = Elkaisar.CurrentCity.City.id_city;
+    var this_ = $(this);
+
+    $.ajax({
+        url: `${NODE_URL}/api/AHeroArmy/clearHeroArmy`,
+        data: {
+            idHero: id_hero,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+            waitCursor();
+            $("#left-down , #right-down").attr("disabled", "disabled");
+        },
+        success: function (data, textStatus, jqXHR) {
+            unwaitCursor();
+            $("#left-down , #right-down").removeAttr("disabled");
+            if (isJson(data)) {
+                var json_data = JSON.parse(data);
+            } else {
+                alert(data);
+                return;
+            }
+
+            if (json_data.state === "ok") {
+                Elkaisar.City.getCity(id_city).City = json_data.City;
+
+                Elkaisar.Hero.getHero(id_hero).Army = json_data.HeroArmy;
+
+            } else if (json_data.state === "error_1") {
+                alert_box.failMessage("البطل ليس فى المدينة");
+            }
+            else if (JsonObject.state == "SysBusy")
+                alert_box.confirmMessage("النظام مشغول الان حاول فى وقت لاحق");
+
+
+            city_profile.refresh_army_view();
+            army.refreshArmy_leftTrade();
+            army.refreshArmy_rightTrade();
+            $("#down-trade-army").html(army.downTradeArmy());
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+        }
+    });
 
 });

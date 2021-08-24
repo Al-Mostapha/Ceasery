@@ -6,9 +6,9 @@ Elkaisar.Contribute.For = {
 Elkaisar.Contribute.List = {};
 
 Elkaisar.Contribute.getList = function () {
-    $['ajax']({
+    $.ajax({
         'url': `${API_URL }/js${ Elkaisar['Config']['JsVersion'] }/json/contribute.json`,
-        'success': function (data, _0x5852fa, _0x1a4a01) {
+        success: function (data, _0x5852fa, _0x1a4a01) {
             Elkaisar['Contribute']['List'] = data;
         }
     });
@@ -494,11 +494,11 @@ $(document)['on']('click', '#helpGateBtnWrapper', function () {
 
 
 $(document)['on']('click', '.ContributeForUp', function () {
-    $('#dialg_box')['replaceWith'](Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['EquipUpgrade']));
+    $('#dialg_box').replaceWith(Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['EquipUpgrade']));
 });
 
 $(document)['on']('click', '.ContributeForC', function () {
-    $('#dialg_box')['replaceWith'](Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['Contribute']));
+    $('#dialg_box').replaceWith(Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['Contribute']));
 });
 
 $(document)['on']('click', '.SelectContReq', function () {
@@ -510,7 +510,7 @@ $(document)['on']('click', '.SelectContReq', function () {
 $(document)['on']('click', '.downEquipFromHero', function () {
     var idEquip = $(this)['attr']('data-id-equip');
     var idHero = $(this)['attr']('data-id-hero');
-    var Hero = Elkaisar['Hero']['getHero'](idHero);
+    var Hero = Elkaisar.Hero.getHero(idHero);
     var idCont = $(this)['attr']('data-id-cont');
     var ReqIndex = $(this)['attr']('data-cont-req-index');
     if (!Hero) {
@@ -563,7 +563,7 @@ $(document)['on']('click', '.ConSelectReqItem', function () {
         Elkaisar['Contribute']['ReqSelectListContent'](idCont, ReqIndex);
         return;
     }
-    Cont['ListOfNeed'][ReqIndex]['SelectedList']['push'](idEquip);
+    Cont['ListOfNeed'][ReqIndex]['SelectedList'].push(idEquip);
     Elkaisar['Contribute']['ReqSelectListContent'](idCont, ReqIndex);
 });
 
@@ -606,18 +606,18 @@ $(document)['on']('click', '#ContributeUpStart', function () {
     if (!Cont['ListOfNeed'][0]['SelectedList'][0])
         return alert_box['failMessage']('عليك اختيار المعدة اولا');
 
-    $['ajax']({
+    $.ajax({
         'url': `${API_URL }/api/AContribute/upgradeEquip`,
         'data': {
             'idCont': idCont,
             'idEquip': Cont['ListOfNeed'][0]['SelectedList'][0],
             'idCity': Elkaisar['CurrentCity']['idCity'],
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+            server: Elkaisar['Config']['idServer'],
+            token: Elkaisar['Config']['OuthToken']
         },
         'type': 'POST',
-        'beforeSend': function (_0x138564) {},
-        'success': function (data, _0x555139, _0x357269) {
+        beforeSend: function (_0x138564) {},
+        success: function (data, _0x555139, _0x357269) {
 
             if (!Elkaisar['LBase']['isJson'](data))
                 return Elkaisar['LBase']['Error'](data);
@@ -657,17 +657,17 @@ $(document)['on']('click', '#ContributeStart', function () {
     var idCont = $(this)['attr']('data-id-cont');
     var Cont = Elkaisar['Contribute']['List'][idCont];
 
-    $['ajax']({
+    $.ajax({
         'url': `${API_URL}/api/AContribute/contribute`,
         'data': {
             'idCont': idCont,
             'idCity': Elkaisar['CurrentCity']['idCity'],
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+            server: Elkaisar['Config']['idServer'],
+            token: Elkaisar['Config']['OuthToken']
         },
         'type': 'POST',
-        'beforeSend': function (_0x489a69) {},
-        'success': function (data, _0xbb6f87, _0x319448) {
+        beforeSend: function (_0x489a69) {},
+        success: function (data, _0xbb6f87, _0x319448) {
 
             if (!Elkaisar['LBase']['isJson'](data))
                 return Elkaisar['LBase']['Error'](data);

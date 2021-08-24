@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>قيصر الشرق</title>
+        <link rel="icon" type="image/png" href="images/favicon.png" sizes="128×128">
+        <meta id="" name="viewport"
+              content="width=device-width, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">
+        <link rel="stylesheet" href="css-10.55.85/reset-min.css" />
+        <link rel="stylesheet" href="css-10.55.85/fonts-min.css" />
+        <link rel="stylesheet" href="css-10.55.85/base.css" />
+        <link rel="stylesheet" href="css-10.55.85/city.css" />
+        <link rel="stylesheet" href="css-10.55.85/world.css" />
+        <link rel="stylesheet" href="css-10.55.85/lastStyle.css" />
+        <link rel="stylesheet" href="css-10.55.85/lastOfLast.css" />
+        <link rel="stylesheet" href="css-10.55.85/finishing.css" />
+        <link rel="stylesheet" href="css-10.55.85/tooltips.css" />
+        <link rel="stylesheet" href="css-10.55.85/animation.css" />
+        <link rel="stylesheet" href="css-10.55.85/hero.css" />
+        <link rel="stylesheet" href="css-10.55.85/godPoints.css" />
+        <link rel="stylesheet" href="css-10.55.85/ui.css" />
+        <link rel="stylesheet" href="css-10.55.85/team.css" />
+        <!-- <link rel="stylesheet" href="css/loader.css"/>-->
+        <!--<script src="js/loader.js"></script>-->
+
+    </head>
+
+    <body>
+        <div id="dialg_box" class="fullBoxContent" style="top: 125px;">
+            <div class="head_bar">
+                <img src="images/style/head_bar.png">
+                <div class="title">الميدان</div>
+            </div>
+            <div class="nav_bar">
+                <div class="left-nav">
+                    <ul> 
+                        <li class="selected" id="SArenaTroops">
+                            القوات
+                        </li> 
+                        <li class="" id="SArenaField">
+                            الميدان
+                        </li>
+                        <li class="" id="SArenaRanking">
+                            التصنيف
+                        </li>
+                    </ul>
+                </div>
+                <div id="NavSelectList" class="flex">
+                    <div class="select-list" data-value="KingArenaChallange" data-active="false" data-height="200" data-width="158">
+                        <div class="select select-input">
+                            <div class="value">ميدان تحدى الملك</div>
+                        </div>
+                        <div class="option" style="width: 158px;"><ul style="display : none"><li class="unit-option selected-op" data-title="ميدان تحدى الملك" data-value="KingArenaChallange">ميدان تحدى الملك</li><li class="unit-option" data-title="ميدان تحدى الفريق" data-value="TeamArenaChallange" data-index="1">ميدان تحدى الفريق</li><li class="unit-option" data-title="ميدان تحدى الحلف" data-value="GuildArenaChallange" data-index="2">ميدان تحدى الحلف</li></ul></div>
+                    </div></div>
+                <div class="right-nav">
+                    <div class="nav_icon">
+                        <img class="close_dialog" src="images/btns/close_b.png">
+                    </div>
+                </div>
+            </div>
+            <div class="box_content arenaChallange">
+                <div id="ArenaChallangeHome" class="fullBoxContent flex">
+                    <div id="heroArenaSelectList">
+                        <div class="prize-row">
+                            <div style="font-size: 16px;line-height: 40px;direction: rtl;margin-right: 15px;">قائمة الابطال:</div>
+                            <div id="selectHeroCity">
+                                <div class="select-list" data-value="39161" data-active="false" data-height="266" data-width="160">
+                                    <div class="select select-input">
+                                        <div class="value">التمثال</div>
+                                    </div>
+                                    <div class="option" style="width: 160px;"><ul style="display : none"><li class="unit-option selected-op" data-title="التمثال" data-value="39161">التمثال</li><li class="unit-option" data-title="بريطانيا" data-value="39162" data-index="1">بريطانيا</li><li class="unit-option" data-title="فرنسي" data-value="39163" data-index="2">فرنسي</li><li class="unit-option" data-title="مقدوني" data-value="39164" data-index="3">مقدوني</li><li class="unit-option" data-title="هجوم الديب" data-value="39165" data-index="4">هجوم الديب</li></ul></div>
+                                </div></div>
+                        </div>
+                        <div class="RankList heroCityList hero-select-list"><ol class="ol" style="overflow-y: hidden; outline: currentcolor none medium;" tabindex="4">
+                                <li class="tr" data-id-hero="3916102">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceB1.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">2srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916102"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916008">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA6.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">3srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916008"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916103">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceB3.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">4srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916103"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916070">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA7.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">5srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916070"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916099">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA1.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">6srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916099"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916040">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceB1.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">7srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916040"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916032">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA9.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">8srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916032"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916035">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA2.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">9srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916035"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916024">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceB3.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">10srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916024"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916011">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA6.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">11srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916011"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916006">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceB3.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">12srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916006"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916017">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA5.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">13sit</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916017"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916063">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA10.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">14sit</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916063"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916005">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA8.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">15srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916005"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916012">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA7.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">16srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916012"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916054">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceB1.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">17sit</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916054"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916021">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceB7.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">18sit</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916021"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916062">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA8.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">19sit</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916062"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916060">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA6.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">20sit</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916060"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916076">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA10.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">99نقاط</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916076"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916107">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceB7.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">مفتري</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916107"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916088">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA4.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">100نقاط</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916088"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916056">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA7.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">123</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916056"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_console.png)"></div>
+                                    </div>
+                                </li>
+                                <li class="tr" data-id-hero="3916002">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA5.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 35%">
+                                        <div class="name POT-HERO" style="width: 100%">ماجد</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916002"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">2</div>
+                                    </div>
+                                    <div class="td" style="width: 15%">
+                                        <div class="heroState" style="background-image: url(images/icons/h_s_incity.png)"></div>
+                                    </div>
+                                </li></ol></div>
+                    </div>
+                    <div class="heroControlBtns flex">
+                        <div class="border"></div>
+                        <div class="content">
+                            <div class="heroAdding btnBlock">
+                                <button class="full-btn-2x" id="cpGoRight" disabled="disabled">
+                                    <label class="cb goRight"></label>
+                                </button>
+                                <button class="full-btn-2x" id="cpGoLeft" disabled="disabled">
+                                    <label class="cb goLeft"></label>
+                                </button>
+                            </div>
+                            <div class="heroOrder btnBlock">
+                                <button class="full-btn-2x" id="cpGoUp" disabled="disabled">
+                                    <label class="cb goUp"></label>
+                                </button>
+                                <button class="full-btn-2x" id="cpGoDown" disabled="disabled">
+                                    <label class="cb goDown"></label>
+                                </button>
+                            </div>
+                            <div class="heroConfirm btnBlock">
+                                <button id="refreshArenaHero" class="full-btn-2x">
+                                    <label class="cb" style="background-image: url(images/icons/war-icon/enter-city.png)"></label>
+                                </button>
+                                <button id="saveArenaHero" class="full-btn-2x" disabled="disabled">
+                                    <label class="cb" style="background-image: url(images/btns/done.png)"></label>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="border"></div>
+                    </div>
+                    <div id="arenaHeroList" class="arenaHeroList">
+                        <div class="prize-row">
+                            <div class="banner-red">قائمة الميدان</div>
+                        </div>
+                        <div class="hero-select-list"><ol><li class="tr" data-id-hero="3916064" data-index="0">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA4.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 40%">
+                                        <div class="name POT-HERO" style="width: 100%">1srt123</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916064"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                </li><li class="tr" data-id-hero="3916102" data-index="1">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceB1.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 40%">
+                                        <div class="name POT-HERO" style="width: 100%">2srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916102"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                </li><li class="tr" data-id-hero="3916008" data-index="2">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA6.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 40%">
+                                        <div class="name POT-HERO" style="width: 100%">3srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916008"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                </li><li class="tr" data-id-hero="3916103" data-index="3">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceB3.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 40%">
+                                        <div class="name POT-HERO" style="width: 100%">4srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916103"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                </li><li class="tr" data-id-hero="3916070" data-index="4">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA7.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 40%">
+                                        <div class="name POT-HERO" style="width: 100%">5srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916070"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                </li><li class="tr" data-id-hero="3916099" data-index="5">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA1.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 40%">
+                                        <div class="name POT-HERO" style="width: 100%">6srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916099"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                </li><li class="tr" data-id-hero="3916040" data-index="6">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceB1.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 40%">
+                                        <div class="name POT-HERO" style="width: 100%">7srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916040"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                </li><li class="tr" data-id-hero="3916032" data-index="7">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA9.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 40%">
+                                        <div class="name POT-HERO" style="width: 100%">8srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916032"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                </li><li class="tr" data-id-hero="3916035" data-index="8">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA2.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 40%">
+                                        <div class="name POT-HERO" style="width: 100%">9srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916035"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                </li><li class="tr" data-id-hero="3916011" data-index="9">
+                                    <div class="td" style="width: 25%">
+                                        <div class="wrapper">
+                                            <div class="image" style="background-image: url(images/hero/faceA6.jpg)">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="td" style="width: 40%">
+                                        <div class="name POT-HERO" style="width: 100%">11srt</div>
+                                    </div>
+                                    <div class="td flex" style="width: 16%">
+                                        <button class="full-btn-3x showCityHero flex" data-id-hero="3916011"><img src="images/icons/showIcon.png"></button>
+                                    </div>
+                                    <div class="td" style="width: 20%">
+                                        <div class="lvl">255</div>
+                                    </div>
+                                </li><li class="tr"></li></ol></div>
+                    </div>
+                    <div class="arenaChallangeReview flex">
+                        <div class="border"></div>
+                        <div class="content">
+                            <div class="title">
+                                <h1 class="banner-red">الميدان</h1>
+                            </div>
+                            <div class="playerProfile flex">
+                                <div class="playerProfileImage">
+                                    <div class="avatar">
+                                        <div class="avatar-img">
+                                            <div id="ArenaChallangeSlog">
+                                                <div class="slog" style="background-image: url(images/style/bottom-2.png);"></div>
+                                                <div class="slog" style="background-image: url(images/style/central-1.png); margin-top: -78px;"></div>
+                                                <div class="slog" style="background-image: url(images/style/top-10.png); margin-top: -82px;"></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="avatar-name">
+                                        <h2>𝓢𝓐𝓕𝓐𝓗</h2>
+                                    </div>
+                                </div>
+                                <div class="arenaChallangeProfile">
+                                    <ul>
+                                        <li>مستوى الميدان: 10</li>
+                                        <li>
+                                            <button id="useArenaExpBox" class="pluse"></button>
+                                            خبرة: 5979
+                                        </li>
+                                        <li>فوز: 1993</li>
+                                        <li>خسارة: 127</li>
+                                        <li>يطل: 152</li>
+                                        <li>تصنيف(الجولة): 510</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="th">
+                                جوائز &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الملك
+                            </div>
+                            <div class="arenaKingPrize">
+                                <div class="bg prizeList"><ul><li>
+                                            <div class="golden-border">
+                                                <div class="unit-image" style="background-image: url(images/items/KingMedal.jpg)">
+                                                    <div class="amount stroke">(1)X</div>
+                                                </div>
+                                            </div>
+                                        </li><li>
+                                            <div class="golden-border">
+                                                <div class="unit-image" style="background-image: url(images/items/GoldBarPiece.jpg)">
+                                                    <div class="amount stroke">(3-5)X</div>
+                                                </div>
+                                            </div>
+                                        </li><li>
+                                            <div class="golden-border">
+                                                <div class="unit-image" style="background-image: url(images/items/item016.jpg)">
+                                                    <div class="amount stroke">(1)X</div>
+                                                </div>
+                                            </div>
+                                        </li><li>
+                                            <div class="golden-border">
+                                                <div class="unit-image" style="background-image: url(images/items/item094.jpg)">
+                                                    <div class="amount stroke">(1)X</div>
+                                                </div>
+                                            </div>
+                                        </li><li>
+                                            <div class="golden-border">
+                                                <div class="unit-image" style="background-image: url(images/items/item042.jpg)">
+                                                    <div class="amount stroke">(1)X</div>
+                                                </div>
+                                            </div>
+                                        </li><li>
+                                            <div class="golden-border">
+                                                <div class="unit-image" style="background-image: url(images/items/GoldMedal.jpg)">
+                                                    <div class="amount stroke">(5)X</div>
+                                                </div>
+                                            </div>
+                                        </li><li>
+                                            <div class="golden-border">
+                                                <div class="unit-image" style="background-image: url(images/items/item066.jpg)">
+                                                    <div class="amount stroke">(1)X</div>
+                                                </div>
+                                            </div>
+                                        </li></ul></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="ascrail2002" class="nicescroll-rails nicescroll-rails-vr" style="width: 10px; z-index: 11; background: rgba(0, 0, 0, 0) url(&quot;images/bars/scroll_rail.png&quot;) repeat-y scroll center 5% / 100%; cursor: default; position: absolute; top: 111px; left: 250.917px; height: 347px; opacity: 1; display: none;"><div style="position: relative; top: 0px; float: right; width: 10px; height: 0px; background-color: rgb(66, 66, 66); border: medium none; background-clip: padding-box; border-radius: 0px;" class="nicescroll-cursors"></div></div><div id="ascrail2003" class="nicescroll-rails nicescroll-rails-vr" style="width: 10px; z-index: 11; background: rgba(0, 0, 0, 0) url(&quot;images/bars/scroll_rail.png&quot;) repeat-y scroll center 5% / 100%; cursor: default; position: absolute; top: 111px; left: 250.917px; height: 347px; opacity: 1;"><div style="position: relative; top: 0px; float: right; width: 10px; height: 159px; background-color: rgb(66, 66, 66); border: medium none; background-clip: padding-box; border-radius: 0px;" class="nicescroll-cursors"></div></div></div>
+        <script>
+
+            var Elkaisar = {};
+        </script> 
+        <script src="js-10.55.85/lib/Peer.js"></script>
+        <script src="js-10.55.85/feature/VoiceChat.js"></script>
+
+
+    </body>
+
+
+</html>

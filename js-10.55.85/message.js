@@ -877,7 +877,7 @@ function searchByName(segmant , condtion)
                 search_by_name: true,
                 name: segmant,
                 id_guild_no: false,
-                id_guild: playerElkaisar.DPlayer.Player.id_guild,
+                id_guild: Elkaisar.DPlayer.Player.id_guild,
                 id_player:ID_PLAYER,
                 token:TOKEN
                 
@@ -944,6 +944,7 @@ $(document).on("click" , "#search_result ul li" , function (){
     $("#search_by_name").attr("id_player" , id_player); 
     $("#search_by_name").val(p_name);
     $("#search_by_name_forGuild").attr("id_player" , id_player); 
+    $("#SearchByNameForTeam").attr("data-id-player" , id_player); 
     $("#search_by_name_forGuild").val(p_name);
     $("#search_result").hide();
     

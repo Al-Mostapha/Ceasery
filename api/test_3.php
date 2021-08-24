@@ -1,6 +1,7 @@
 <?php
 
-$test = 'base/translate.js,
+$test = 'feature/VoiceChat.js,
+base/translate.js,
 base/userLan.js,
 base/navBar.js,
 base/LPreLoad.js,
@@ -31,6 +32,7 @@ menu-list/exchange.js,
 menu-list/battelReport.js,
 menu-list/dominant.js,
 menu-list/LItem.js,
+menu-list/Rank.js,
 ws/server.js,
 ws/wsBattel.js,
 ws/lib/chat.js,
@@ -42,6 +44,7 @@ ws/lib/player.js,
 ws/lib/serverAnnounce.js,
 ws/lib/city.js,
 ws/lib/Base.js,
+ws/lib/wsWorld.js,
 world/worldUnit.js,
 world/worldCampBox.js,
 world/WorldUnitIcon.js,
@@ -72,6 +75,7 @@ feature/setting.js,
 feature/emjoi.js,
 feature/contribute.js,
 feature/arenaChallange.js,
+feature/team.js,
 ui/ui.js';
 
 $files = explode(",", $test);

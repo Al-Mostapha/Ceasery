@@ -438,8 +438,8 @@ function useMatrial(user_for, matrial, other)
                     for (var iii in Elkaisar.TimedTask.TaskList.Study)
                         if (Number(Elkaisar.TimedTask.TaskList.Study[iii].id_city) === Number(idCity))
                             delete(Elkaisar.TimedTask.TaskList.Study[iii]);
-                    for (var iii in JsonObject.JopTaskList)
-                        Elkaisar.TimedTask.TaskList.Study[JsonObject.JopTaskList[iii].id] = JsonObject.JopTaskList[iii];
+                    for (var iii in JsonObject.list)
+                        Elkaisar.TimedTask.TaskList.Study[JsonObject.list[iii].id] = JsonObject.list[iii];
                     Elkaisar.TimedTask.refreshListView();
                     buildingClick($("#dialg_box .box_header").attr("place"), true);
                 } else if (JsonObject.state === "error_0") {
@@ -553,7 +553,7 @@ function useMatrial(user_for, matrial, other)
         useMatrialBox(matrial);
         $("#over_lay_alert").remove();
         $("#over_lay").remove();
-    }
+    } 
 
 
 
@@ -831,10 +831,13 @@ function useMatrial(user_for, matrial, other)
     /*____________________________GOD_GATE____________________________________*/
 
     else if (user_for === "add-god-points") {
-
         GodGate.useBoxPoint(matrial);
     } else if (user_for === "open-fourth-cell") {
         GodGate.OpenFourthCell(other);
+    }else if(user_for == "addArenaExp"){  
+        Elkaisar.ArenaChallange.addExpByBox(matrial);
+    }else if(user_for == "addArenaAtt"){  
+        Elkaisar.ArenaChallange.addAttByBox(matrial);
     }
 
 }
@@ -965,7 +968,7 @@ function buyMatrial(matrial, amount)
 
     $.ajax({
 
-        url: `${API_URL}/api/AItem/buyItem`,
+        url: `${NODE_URL}/api/AItem/buyItem`,
         data: {
             item: matrial,
             amount: amount,
@@ -973,7 +976,7 @@ function buyMatrial(matrial, amount)
             server: Elkaisar.Config.idServer
 
         },
-        type: 'POST',
+        type: 'GET',
         success: function (data, textStatus, jqXHR) {
 
             if (!Elkaisar.LBase.isJson(data))
@@ -997,6 +1000,8 @@ function buyMatrial(matrial, amount)
                 });
                 $(".close-alert_container").click();
                 alert_box.succesMessage("تمت عملية الشراء بنجاح");
+            }else{
+                alert(data);
             }
 
         },
@@ -1090,18 +1095,31 @@ function showMatrialGiftList(list) {
 
     var list_item = "";
     for (var iii in list) {
-        list_item += `<li>
-                        <div class="image">
-                            <img  src="${Elkaisar.BaseData.Items[list[iii].Item].image}"/>
-                        </div>
-                        <div class="amount stroke">
-                            ${list[iii].amount} X
-                        </div>
-                    </li>`;
+
+        if(list[iii].prizeType == "E"){
+            const Equip = list[iii].Item.split("_");
+            list_item += `<li>
+                            <div class="image">
+                                <img  src="${Equipment.getImage(Equip[0], Equip[1], Equip[2])}"/>
+                            </div>
+                            <div class="amount stroke">
+                                ${list[iii].amount} X
+                            </div>
+                        </li>`;
+        }else{
+            list_item += `<li>
+                <div class="image">
+                    <img  src="${Matrial.image(list[iii].Item)}"/>
+                </div>
+                <div class="amount stroke">
+                    ${list[iii].amount} X
+                </div>
+            </li>`;
+        }
+        
     }
 
-
-
+    
     var mat_list = `<div id="over_lay">
                         <div id="select_from">
                             <div class="head_bar">
@@ -1181,12 +1199,12 @@ var Matrial = {
     }
 
 };
-Matrial.prizeToString = function (data) {
+Matrial.prizeToString = function (PrizeList) {
 
     var stringArray = [];
-    for (var jjj in data.WinPrize) {
+    for (var jjj in PrizeList) {
 
-        stringArray.push(` x ${data.WinPrize[jjj].amount} ${this.getMatrialName(data.WinPrize[jjj].Item)}`);
+        stringArray.push(` x ${PrizeList[jjj].amount} ${this.getMatrialName(PrizeList[jjj].Item)}`);
     }
 
 
@@ -1238,3 +1256,8 @@ Matrial.itemUnitWidget = function (Item, isMall = false)
     return list + tail + "";
 };
 
+
+$(document).on("click", "#buyNewItem", function () {
+    var item = $(this).attr("data-item-name");
+    buyMatrial(item);
+});

@@ -456,17 +456,17 @@ var campDB = {
     },
     'getDominaterName'(xCoord, yCoord) {
         var Unit = WorldUnit['getWorldUnit'](xCoord, yCoord);
-        $['ajax']({
+        $.ajax({
             'url': API_URL + '/api/AWorldUnit/getWorldUnitDominator',
             'type': 'GET',
             'data': {
                 'xCoord': xCoord,
                 'yCoord': yCoord,
                 'unitType': Unit.ut,
-                'server': Elkaisar.Config.idServer,
-                'token': Elkaisar.Config.OuthToken
+                server: Elkaisar.Config.idServer,
+                token: Elkaisar.Config.OuthToken
             },
-            'success': function (data, _0x2bf316, _0x1a4707) {
+            success: function (data, _0x2bf316, _0x1a4707) {
                 if (!Elkaisar['LBase']['isJson'](data)) 
                     return Elkaisar['LBase']['Error'](data);
                 var JsonData = JSON['parse'](data);

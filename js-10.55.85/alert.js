@@ -51,7 +51,7 @@ var alert_box = {
         
         var army_content =  `   <div id="alert_box" class="F_E-list">
                                     <div class="row-1"> 
-                                        <input type="text" data-id-guild="null" class="input">
+                                        <input id="GuildEneFriInput" type="text" data-id-guild="null" class="input">
                                         <label class="th ellipsis">${Translate.Title.TH.LeagueName[UserLag.language]}</label>
                                         <div id="g-search_result"class="search_res">
                                             <ul> 
@@ -63,17 +63,17 @@ var alert_box = {
                                     <div class="row-2">
                                         <ul>
                                             <li>    
-                                                <input id="trigger_1" type="radio" name="guild_relation" value="enemy" >
+                                                <input id="trigger_1" type="radio" name="guild_relation" value="${Elkaisar.BaseData.GuildRelation.RelationEnemy}" >
                                                 <label for="trigger_1" class="checker"></label>
                                                 <span> عدو</span>
                                             </li>
                                             <li>    
-                                                <input id="trigger_2" type="radio" name="guild_relation" value="friend">
+                                                <input id="trigger_2" type="radio" name="guild_relation" value="${Elkaisar.BaseData.GuildRelation.RelationFriend}">
                                                 <label for="trigger_2" class="checker"></label>
                                                 <span>صديق</span>
                                             </li>
                                             <li>    
-                                                <input id="trigger_3" type="radio" name="guild_relation"  checked value="ally">
+                                                <input id="trigger_3" type="radio" name="guild_relation"  checked value="${Elkaisar.BaseData.GuildRelation.RelationAllay}">
                                                 <label for="trigger_3" class="checker" ></label>
                                                 <span> محايد</span>
                                             </li>

@@ -153,16 +153,16 @@ var city_profile = {
                 continue;
             
             var state = '<img src="images/icons/h_s_incity.png" >';
-            if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.console) === 1){
+            if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.id_hero) === Elkaisar.CurrentCity.City.console){
 
                 state = '<img src="images/icons/h_s_console.png">';
-            }else if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.in_city) === 0){
+            }else if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL){
 
                 state = '<img src="images/icons/h_s_attack_2.png" >';
 
-            }else if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.in_city) === -1){
+            }else if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON){
 
-                state = '<img src="images/icons/h_s_support.png" >';
+                state = '<img src="images/icons/h_s_support.png">';
 
             }
 

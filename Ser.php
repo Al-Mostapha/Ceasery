@@ -16,7 +16,7 @@ require_once 'base.php';
 
 
 
-$playerId = 3775;
+$playerId = 22;
 $token = selectFromTable("auth_token", "player_auth", "id_player = :idp", ["idp" => $playerId]);
 if(!count($token))
 {
@@ -99,6 +99,7 @@ get_ip_address($playerId);
         <link rel="stylesheet" href="css<?=JS_VERSION?>/hero.css"/>
         <link rel="stylesheet" href="css<?=JS_VERSION?>/godPoints.css"/>
         <link rel="stylesheet" href="css<?=JS_VERSION?>/ui.css"/>
+        <link rel="stylesheet" href="css<?=JS_VERSION?>/team.css"/>
         <!-- <link rel="stylesheet" href="css/loader.css"/>-->
         <!--<script src="js/loader.js"></script>-->
 
@@ -187,9 +188,12 @@ get_ip_address($playerId);
             <button title="بوبات الالهة"></button>
             <div class="fire-tail"></div>
         </div>
-	<div id="ArenaChallangeBtnWrapper">
+	    <div id="ArenaChallangeBtnWrapper">
             <button></button>
             <div class="fire-tail"></div>
+        </div>
+        <div id="PlayerTeamWrapper">
+            <button class="NoTeamIcon"></button>
         </div>
         <div class="profile" id="player-profile">
             <div id="p-provile-slider">
@@ -309,7 +313,7 @@ get_ip_address($playerId);
                 </div>
                 <div id="hide-show" style="display: none">
                     <div id="nav-btn" class="flex">
-                        <input type="checkbox" id="FastNav" style="margin-right: 10px;">
+                        <input type="checkbox" id="FastNav" checked="true" style="margin-right: 10px;">
                         <button class="full-btn full-btn-3x" style="">اذهب الى </button>
                         
                     </div>

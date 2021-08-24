@@ -199,7 +199,7 @@ WsBattel.endedAnnounce = function (data) {
     var msg = `<div class="battel-f-ann">
                         قام <span class="red">${data.Attacker.name}</span> بهزيمة بطل النظام ${playerNames.enemyList} فى <span class="red">${Elkaisar.World.UnitTypeData[data.WorldUnit.t].Title}</span> مستوى <span class="red">${data.WorldUnit.l}</span>.
                         ${playerNames.allaylist},
-                        وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data)}</span> 
+                        وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data.WinPrize)}</span> 
                         وايضا <span class="red">${data.honor}</span> شرف
                  </div>`;
     Chat.append(msg);

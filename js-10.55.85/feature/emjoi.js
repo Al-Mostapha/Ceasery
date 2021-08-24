@@ -354,13 +354,26 @@ $(document).on("click",".select-list", function (){
         
         $(this).attr("data-active", "false");
         $(this).children(".option").children("ul").hide();
-        $(this).children(".option").animate({"height" :  0})
+        $(this).children(".option").animate({"height" :  0});
         
     }else{
         $(this).attr("data-active", "true");
-        $(this).children(".option").animate({"height" :  "266px"}, function () {
+        $(this).children(".option").animate({"height" :  $(this).attr("data-height") + "px"}, function () {
             $(this).children("ul").show();
         });
     }
     
 });
+/*
+
+Chat.openMediaDevices = async (constraints) => {
+    return await navigator.mediaDevices.getUserMedia(constraints);
+};
+
+try {
+    const stream = Chat.openMediaDevices({'video':false,'audio':true});
+    console.log('Got MediaStream:', stream);
+} catch(error) {
+    console.error('Error accessing media devices.', error);
+}*/
+

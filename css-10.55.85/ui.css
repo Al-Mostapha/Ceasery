@@ -95,7 +95,7 @@
 .select-list .option{
     background-image: url(../images/background/column.png);
     position: absolute;
-    background-size: 100% auto;
+    background-size: 100% 100%;
     z-index: 0;
     height: 0px;
 }
@@ -558,7 +558,21 @@
     line-height: 23px;
 }
 
+#ArenaChallangeSlog{
+    width: 120px; 
+    height: 80px; 
+    margin-left: 15px; 
+    margin-top: 5px;
+}
 
+
+#ArenaChallangeSlog .slog{
+    width: 100%;
+    height: 100%; 
+    background-size: auto 100%; 
+    background-position: center; 
+    background-repeat: no-repeat
+}
 .goRight{
     background-image: url(../images/arrow/go-right-n.png);
     background-size: auto 100%;
@@ -690,8 +704,8 @@
     pointer-events: none;
 }
 #ArenaChallangeHome .arenaChallangeReview .arenaKingPrize {
-   width: 100%;
-   height: 170px;
+    width: 100%;
+    height: 170px;
 }
 #ArenaChallangeHome .arenaChallangeReview .arenaKingPrize .bg{
     width: 95%;
@@ -729,9 +743,9 @@
     height: 100%;
 }
 #ArenaChallangeRankList .tr{
-   height: 33px;
-   line-height: 33px;
-   font-size: 16px;
+    height: 33px;
+    line-height: 33px;
+    font-size: 16px;
 }
 
 #ArenaChallangeHome .right-content-footer{
@@ -747,25 +761,25 @@
 }
 
 #useAttemptBox{
-    
+
     height: 20px;
     width: 20px;
     background-position: center;
     background-repeat: no-repeat;
     vertical-align: top;
     margin-bottom: 8px;
-    
+
 }
 
 #useArenaExpBox{
-    
+
     height: 20px;
     width: 20px;
     background-position: center;
     background-repeat: no-repeat;
     vertical-align: middle;
     margin-right: 10px;
-    
+
 }
 
 
@@ -776,4 +790,11 @@
 }
 .showCityHero img{
     margin: auto
+}
+
+#NavSelectList{
+    margin-top: 22px;
+    line-height: 33px;
+    font-size: 14px;
+    font-weight: bold;
 }

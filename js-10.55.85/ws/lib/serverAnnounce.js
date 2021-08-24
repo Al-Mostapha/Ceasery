@@ -19,7 +19,7 @@ Elkaisar.WsLib.ServerAnnounce.capitalLock = function (data) {
 
     var WorldUnit = data.WorldUnit;
 
-    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coordDirect(WorldUnit.x,WorldUnit.y)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
+    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
     Chat.append(msg);
 };
 
@@ -37,7 +37,7 @@ Elkaisar.WsLib.ServerAnnounce.QueenCityOpened = function (data) {
 Elkaisar.WsLib.ServerAnnounce.QueenCityClosed = function (data) {
 
     var WorldUnit = data.WorldUnit;
-    var msg = ` <div class="msg-unit  battel-f-ann">تم إغلاق &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x ,WorldUnit.y)} &nbsp;
+    var msg = ` <div class="msg-unit  battel-f-ann">تم إغلاق &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} &nbsp;
                     وكان الفوز من نصيب حلف <span class="ann-red">&nbsp;${data.WinnerGuild.GuildName || " ---"}&nbsp;</span>
                 </div>`;
     Chat.append(msg);
@@ -50,11 +50,11 @@ Elkaisar.WsLib.ServerAnnounce.RepleCastleOpened = function (data) {
     var GuildDef = "---";
     var WorldUnit = data.WorldUnit;
 
-    if (data.GuildDef && data.GuildAtt && data.GuildDef.GuildName)
+    if (data.GuildDef)
         var msg = ` <div class="msg-unit  battel-f-ann">
                     تم فتح 
                     <span class="ann-red">&nbsp;${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}&nbsp;</span>
-                     للإستقبال معركة حلف <span class="ann-red">&nbsp;${data.GuildAtt.GuildName} (هجوم)&nbsp;</span> ضد حلف <span class="ann-red">&nbsp;${data.GuildDef.GuildName} (دفاع)&nbsp;</span> الأن!
+                     للإستقبال معركة حلف <span class="ann-red">&nbsp;${data.GuildAtt ? data.GuildAtt.GuildName : "----" } (هجوم)&nbsp;</span> ضد حلف <span class="ann-red">&nbsp;${data.GuildDef ? data.GuildAtt.GuildName : "===="} (دفاع)&nbsp;</span> الأن!
                 </div>`;
     else
         var msg = ` <div class="msg-unit announce battel-f-ann">تم فتح &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} &nbsp;
@@ -115,7 +115,7 @@ Elkaisar.WsLib.ServerAnnounce.Battel.Win = function (data) {
     var msg = `<div class="battel-f-ann">
                         قام <span class="red">${data.Attacker.name}</span> بهزيمة بطل النظام ${playerNames.enemyList} فى <span class="red">${Elkaisar.World.UnitTypeData[data.WorldUnit.ut].Title}</span> مستوى <span class="red">${data.WorldUnit.l}</span>.
                         ${playerNames.allaylist},
-                        وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data)}</span> 
+                        وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data.WinPrize)}</span> 
                         وايضا <span class="red">${data.honor}</span> شرف
                  </div>`;
     Chat.append(msg);
@@ -181,18 +181,65 @@ Elkaisar.WsLib.ServerAnnounce.ArenachallangeLvlUp = function (data) {
         });
 };
 
-Elkaisar.WsLib.ServerAnnounce.KingOfArenaChallange = function (data) {
-    var Msg = `<div class="battel-f-ann">تهانينا! اصبح الملك   (<span class="red">  ${data['Player']['PlayerName']}  </span>)   ملك ميدان التحدى الاول!}</div>`;
-    Chat['append'](Msg);
-    if (Elkaisar['DPlayer']['Player']['id_player'] == _0x363f73['Player']['id_player']) {
-        Elkaisar['ArenaChallange']['getArenaData']()['done'](function () {
-            $('#SArenaField')['click']();
-        });
-    }
+Elkaisar.WsLib.ServerAnnounce.ArenachallangeTeamLvlUp = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! تم ترقية ميدان الفريق  
+                (<span class="red"> ${data.Team.TeamName}</span>)
+              الى مستوى   (<span class="red">  ${(Number(data.ArenaData.lvl) + 0x1)}  </span>)  
+                </div>'`;
+    Chat.append(Msg);
+
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
 };
 
- Elkaisar.WsLib.ServerAnnounce.ArenaChallangeRoundEnd = function (data) {
+Elkaisar.WsLib.ServerAnnounce.ArenachallangeGuildLvlUp = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! تم ترقية ميدان حلف  
+                (<span class="red"> ${data.Guild.GuildName}</span>)
+              الى مستوى   (<span class="red">  ${(Number(data.ArenaData.lvl) + 0x1)}  </span>)  
+                </div>'`;
+    Chat.append(Msg);
+
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
+};
+
+Elkaisar.WsLib.ServerAnnounce.KingOfArenaChallange = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! اصبح الملك   (<span class="red">  ${data['Player']['PlayerName']}  </span>)   ملك ميدان التحدى الاول!}</div>`;
+    Chat.append(Msg);
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
+};
+
+Elkaisar.WsLib.ServerAnnounce.KingOfArenaTeamChallange = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! اصبح الفريق   (<span class="red">  ${data.Team.TeamName}  </span>)   ملك ميدان تحدى الفرق الاول!}</div>`;
+    Chat.append(Msg);
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
+};
+
+
+Elkaisar.WsLib.ServerAnnounce.KingOfArenaGuildChallange = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! اصبح حلف   (<span class="red">  ${data.Guild.GuildName}  </span>)   ملك ميدان تحدى الأحلاف الاول!}</div>`;
+    Chat.append(Msg);
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField').click();
+    });
+};
+
+Elkaisar.WsLib.ServerAnnounce.ArenaChallangeRoundEnd = function (data) {
     var Msg = `<div class="battel-f-ann">تم انهاء جولة ميدان التحدى و فاز الملك   (<span class="red">  ${data['PlayerName']}  </span>)   !</div>`;
+    Chat['append'](Msg);
+};
+Elkaisar.WsLib.ServerAnnounce.ArenaChallangeTeamRoundEnd = function (data) {
+    var Msg = `<div class="battel-f-ann">تم انهاء جولة ميدان التحدى و فاز الفريق   (<span class="red">  ${data['TeamName']}  </span>)   !</div>`;
+    Chat['append'](Msg);
+};
+Elkaisar.WsLib.ServerAnnounce.ArenaChallangeGuildRoundEnd = function (data) {
+    var Msg = `<div class="battel-f-ann">تم انهاء جولة ميدان التحدى و فاز الحلف   (<span class="red">  ${data['GuildName']}  </span>)   !</div>`;
     Chat['append'](Msg);
 };
 

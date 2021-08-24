@@ -1,3 +1,99 @@
+
+
+/*
+Elkaisar.Peer = {};
+Elkaisar.Peer.Conns = {};
+
+Elkaisar.Peer.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+Elkaisar.Peer.Peer = new Peer(undefined, {
+    host: 'localhost',
+    port: 8080,
+    path: '/VoiceChat'
+});
+
+
+Elkaisar.Peer.Peer.on("open", function (idPeer) {
+    $.ajax({
+        url: `http://${WS_HOST}:${WS_PORT}/api/ATeam/playerOnline`,
+        data: {
+            token: Elkaisar.Config.OuthToken,
+            idPeer : idPeer
+        },
+        type: 'POST',
+        beforeSend: function (xhr) {
+            
+        },
+        success: function (data, textStatus, jqXHR) {
+            if(!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            
+            var JsonObject = JSON.parse(data);
+            
+            if(JsonObject.state == "ok"){
+                JsonObject.TeamPeers.forEach(function (onePeer){
+                    Elkaisar.Peer.Call(onePeer.id_peer);
+                });
+            }
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            
+            
+        }
+    });
+});
+
+
+
+Elkaisar.Peer.RecievConn = function (conn) {
+    conn.on("data", function (data) {
+        console.log(data);
+        var JsonObject = JSON.parse(data);
+        if (JsonObject.classPath == "Player.newConn") {
+            Elkaisar.Peer.Conns[JsonObject.idPlayer] = conn;
+        }
+    });
+};
+
+
+Elkaisar.Peer.Peer.on('connection', Elkaisar.Peer.RecievConn);
+
+Elkaisar.Peer.Call = function (PeerId) {
+    Elkaisar.Peer.getUserMedia({video: false, audio: true}, function (stream) {
+        var call = Elkaisar.Peer.Peer.call(PeerId, stream);
+        const video = document.createElement('video');
+        call.on('stream', function (remoteStream) {
+            addVideoStream(video, remoteStream);
+        });
+    }, function (err) {
+        console.log('Failed to get local stream', err);
+    });
+};
+
+Elkaisar.Peer.Peer.on('call', function (call) {
+    Elkaisar.Peer.getUserMedia({video: false, audio: true}, function (stream) {
+        call.answer(stream); // Answer the call with an A/V stream.
+        const video = document.createElement('video');
+        call.on('stream', function (remoteStream) {
+            console.log(remoteStream)
+            addVideoStream(video, remoteStream);
+        });
+    }, function (err) {
+        console.log('Failed to get local stream', err);
+    });
+});
+
+function addVideoStream(video, stream) {
+    video.srcObject = stream;
+    video.addEventListener('loadedmetadata', () => {
+        video.play();
+    });
+
+    document.getElementById("dialg_box").append(video);
+}
+*/
+
+
 Translate = {};
 
 Translate.Text   = {};
@@ -1377,10 +1473,10 @@ Elkaisar.GE.LPreLoad = function () {
     Elkaisar.GE.LoadingScene.load.image('w_8', BASE_ASSET_BATH + 'images/world/wild/w_8.png');
     Elkaisar.GE.LoadingScene.load.image('w_9', BASE_ASSET_BATH + 'images/world/wild/w_9.png');
     Elkaisar.GE.LoadingScene.load.image('w_10', BASE_ASSET_BATH + 'images/world/wild/w_10.png');
-    Elkaisar.GE.LoadingScene.load.spritesheet('f_1', BASE_ASSET_BATH + 'images/world/wild/f_1.png', {frameWidth: 128, frameHeight: 128});
-    Elkaisar.GE.LoadingScene.load.spritesheet('f_2', BASE_ASSET_BATH + 'images/world/wild/f_2.png', {frameWidth: 128, frameHeight: 128});
-    Elkaisar.GE.LoadingScene.load.spritesheet('f_3', BASE_ASSET_BATH + 'images/world/wild/f_3.png', {frameWidth: 128, frameHeight: 128});
-    Elkaisar.GE.LoadingScene.load.spritesheet('flagOverCity', BASE_ASSET_BATH + 'images/animation/flags.png', {frameWidth: 34, frameHeight: 24});
+    Elkaisar.GE.LoadingScene.load.spritesheet('f_1', BASE_ASSET_BATH + 'images/world/wild/f_1.png', { frameWidth: 128, frameHeight: 128 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('f_2', BASE_ASSET_BATH + 'images/world/wild/f_2.png', { frameWidth: 128, frameHeight: 128 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('f_3', BASE_ASSET_BATH + 'images/world/wild/f_3.png', { frameWidth: 128, frameHeight: 128 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('flagOverCity', BASE_ASSET_BATH + 'images/animation/flags.png', { frameWidth: 34, frameHeight: 24 });
     Elkaisar.GE.LoadingScene.load.image('arrow', BASE_ASSET_BATH + 'images/animation/currentUnit.png');
     Elkaisar.GE.LoadingScene.load.image('godGateBtn', BASE_ASSET_BATH + 'images/godGate/godGate.png');
     Elkaisar.GE.LoadingScene.load.image('fireBtn', BASE_ASSET_BATH + 'images/animation/fireBtn.png');
@@ -1460,8 +1556,8 @@ Elkaisar.GE.LPreLoad = function () {
     Elkaisar.GE.LoadingScene.load.image('B11', BASE_ASSET_BATH + 'images/city/_B11.png');
     Elkaisar.GE.LoadingScene.load.image('no_building', BASE_ASSET_BATH + 'images/city/no_building.png');
     Elkaisar.GE.LoadingScene.load.image('city_floor', BASE_ASSET_BATH + 'images/city/city_floor.jpg');
-    
-   
+
+
     Elkaisar.GE.LoadingScene.load.image('fountain', BASE_ASSET_BATH + 'images/animation/fountain.png');
     Elkaisar.GE.LoadingScene.load.image('ani_wood_maker', BASE_ASSET_BATH + 'images/animation/wood_maker.png');
     Elkaisar.GE.LoadingScene.load.image('ani_wood_man', BASE_ASSET_BATH + 'images/animation/wood_man.png');
@@ -1469,7 +1565,7 @@ Elkaisar.GE.LPreLoad = function () {
     Elkaisar.GE.LoadingScene.load.image('stone_man', BASE_ASSET_BATH + 'images/animation/stone_man.png');
     Elkaisar.GE.LoadingScene.load.image('stone_carry', BASE_ASSET_BATH + 'images/animation/stone_carry.png');
     Elkaisar.GE.LoadingScene.load.image('no_carry', BASE_ASSET_BATH + 'images/animation/no_carry.png');
-    Elkaisar.GE.LoadingScene.load.spritesheet('WorldUnitFire', BASE_ASSET_BATH + 'images/animation/attack_fire.png', {frameWidth: 42, frameHeight: 63});
+    Elkaisar.GE.LoadingScene.load.spritesheet('WorldUnitFire', BASE_ASSET_BATH + 'images/animation/attack_fire.png', { frameWidth: 42, frameHeight: 63 });
 
     Elkaisar.GE.LoadingScene.load.image('cloud', BASE_ASSET_BATH + 'images/animation/cloud.png');
     Elkaisar.GE.LoadingScene.load.image('unit_floor', BASE_ASSET_BATH + 'images/world/unit_floor.png');
@@ -1505,71 +1601,75 @@ Elkaisar.GE.LPreLoad = function () {
     Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
     Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
     Elkaisar.GE.LoadingScene.load.image('SFaceA1', BASE_ASSET_BATH + 'images/hero/faceA1.png');
-    
-    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLabor', BASE_ASSET_BATH + 'images/animation/City/FarmLabor.png', {frameWidth: 42, frameHeight: 42});
-    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLaborCarryR', BASE_ASSET_BATH + 'images/animation/City/FarmLaborCarryR.png', {frameWidth: 42, frameHeight: 42});
-    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLaborCarryD', BASE_ASSET_BATH + 'images/animation/City/FarmLaborCarryD.png', {frameWidth: 42, frameHeight: 42});
-    
-    
-    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLabor', BASE_ASSET_BATH + 'images/animation/City/StoneLabor.png', {frameWidth: 42, frameHeight: 42});
-    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLaborCarryL', BASE_ASSET_BATH + 'images/animation/City/StoneLaborCarryL.png', {frameWidth: 42, frameHeight: 42});
-    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLaborCarryD', BASE_ASSET_BATH + 'images/animation/City/StoneLaborCarryD.png', {frameWidth: 42, frameHeight: 42});
-    
-    Elkaisar.GE.LoadingScene.load.spritesheet('IronLabor', BASE_ASSET_BATH + 'images/animation/City/IronLabor.png', {frameWidth: 42, frameHeight: 42});
-    Elkaisar.GE.LoadingScene.load.spritesheet('WoodLabor', BASE_ASSET_BATH + 'images/animation/City/WoodLabor.png', {frameWidth: 42, frameHeight: 42});
-    Elkaisar.GE.LoadingScene.load.spritesheet('WoodTool', BASE_ASSET_BATH + 'images/animation/City/WoodTool.png', {frameWidth: 65, frameHeight: 46});
-    
-    Elkaisar.GE.LoadingScene.load.spritesheet('Horse', BASE_ASSET_BATH + 'images/animation/City/Horse.png', {frameWidth: 34, frameHeight: 20});
-    Elkaisar.GE.LoadingScene.load.spritesheet('Fountain', BASE_ASSET_BATH + 'images/animation/City/Fountain.png', {frameWidth: 40, frameHeight: 32});
-    Elkaisar.GE.LoadingScene.load.spritesheet('Woman', BASE_ASSET_BATH + 'images/animation/City/Woman.png', {frameWidth: 28, frameHeight: 28});
-    
-    Elkaisar.GE.LoadingScene.load.spritesheet('noCarryWorkerD', BASE_ASSET_BATH + 'images/animation/City/noCarryWorkerD.png', {frameWidth: 42, frameHeight: 42});
-    Elkaisar.GE.LoadingScene.load.spritesheet('noCarryWorkerR', BASE_ASSET_BATH + 'images/animation/City/noCarryWorkerR.png', {frameWidth: 42, frameHeight: 42});
-    
-    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingHammer', BASE_ASSET_BATH + 'images/animation/City/UpgradingHammer.png', {frameWidth: 161, frameHeight: 120});
-    
-    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingLaborL', BASE_ASSET_BATH + 'images/animation/City/UpgradingLaborL.png', {frameWidth: 42, frameHeight: 42});
-    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingLaborR', BASE_ASSET_BATH + 'images/animation/City/UpgradingLaborR.png', {frameWidth: 42, frameHeight: 42});
+
+    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLabor', BASE_ASSET_BATH + 'images/animation/City/FarmLabor.png', { frameWidth: 42, frameHeight: 42 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLaborCarryR', BASE_ASSET_BATH + 'images/animation/City/FarmLaborCarryR.png', { frameWidth: 42, frameHeight: 42 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('FarmLaborCarryD', BASE_ASSET_BATH + 'images/animation/City/FarmLaborCarryD.png', { frameWidth: 42, frameHeight: 42 });
+
+
+    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLabor', BASE_ASSET_BATH + 'images/animation/City/StoneLabor.png', { frameWidth: 42, frameHeight: 42 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLaborCarryL', BASE_ASSET_BATH + 'images/animation/City/StoneLaborCarryL.png', { frameWidth: 42, frameHeight: 42 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('StoneLaborCarryD', BASE_ASSET_BATH + 'images/animation/City/StoneLaborCarryD.png', { frameWidth: 42, frameHeight: 42 });
+
+    Elkaisar.GE.LoadingScene.load.spritesheet('IronLabor', BASE_ASSET_BATH + 'images/animation/City/IronLabor.png', { frameWidth: 42, frameHeight: 42 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('WoodLabor', BASE_ASSET_BATH + 'images/animation/City/WoodLabor.png', { frameWidth: 42, frameHeight: 42 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('WoodTool', BASE_ASSET_BATH + 'images/animation/City/WoodTool.png', { frameWidth: 65, frameHeight: 46 });
+
+    Elkaisar.GE.LoadingScene.load.spritesheet('Horse', BASE_ASSET_BATH + 'images/animation/City/Horse.png', { frameWidth: 34, frameHeight: 20 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('Fountain', BASE_ASSET_BATH + 'images/animation/City/Fountain.png', { frameWidth: 40, frameHeight: 32 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('Woman', BASE_ASSET_BATH + 'images/animation/City/Woman.png', { frameWidth: 28, frameHeight: 28 });
+
+    Elkaisar.GE.LoadingScene.load.spritesheet('noCarryWorkerD', BASE_ASSET_BATH + 'images/animation/City/noCarryWorkerD.png', { frameWidth: 42, frameHeight: 42 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('noCarryWorkerR', BASE_ASSET_BATH + 'images/animation/City/noCarryWorkerR.png', { frameWidth: 42, frameHeight: 42 });
+
+    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingHammer', BASE_ASSET_BATH + 'images/animation/City/UpgradingHammer.png', { frameWidth: 161, frameHeight: 120 });
+
+    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingLaborL', BASE_ASSET_BATH + 'images/animation/City/UpgradingLaborL.png', { frameWidth: 42, frameHeight: 42 });
+    Elkaisar.GE.LoadingScene.load.spritesheet('UpgradingLaborR', BASE_ASSET_BATH + 'images/animation/City/UpgradingLaborR.png', { frameWidth: 42, frameHeight: 42 });
     Elkaisar.GE.LoadingScene.load.image('UpgradingSupportsU', BASE_ASSET_BATH + 'images/animation/City/UpgradingSupportsU.png');
     Elkaisar.GE.LoadingScene.load.image('UpgradingSupportsD', BASE_ASSET_BATH + 'images/animation/City/UpgradingSupportsD.png');
     Elkaisar.GE.LoadingScene.load.image('UpgradingPalaceSupU', BASE_ASSET_BATH + 'images/animation/City/UpgradingPalaceSupU.png');
     Elkaisar.GE.LoadingScene.load.image('UpgradingPalaceSupD', BASE_ASSET_BATH + 'images/animation/City/UpgradingPalaceSupD.png');
+
+    Elkaisar.GE.LoadingScene.load.image('ConstructingHammer', BASE_ASSET_BATH + 'images/city/Space.png');
+
+
 };
 
-Elkaisar.GE.ConfigCityAnims = function (){
-  
-    
+Elkaisar.GE.ConfigCityAnims = function () {
+
+
     var Scene = Elkaisar.GE.CityScene;
     Scene.anims.create({ key: 'FarmLabor.A', frames: Scene.anims.generateFrameNumbers('FarmLabor'), frameRate: 6, repeat: -1 });
     Scene.anims.create({ key: 'FarmLaborCarryR.A', frames: Scene.anims.generateFrameNumbers('FarmLaborCarryR'), frameRate: 6, repeat: -1 });
     Scene.anims.create({ key: 'FarmLaborCarryD.A', frames: Scene.anims.generateFrameNumbers('FarmLaborCarryD'), frameRate: 6, repeat: -1 });
-    
+
     Scene.anims.create({ key: 'noCarryWorkerD.A', frames: Scene.anims.generateFrameNumbers('noCarryWorkerD'), frameRate: 6, repeat: -1 });
     Scene.anims.create({ key: 'noCarryWorkerR.A', frames: Scene.anims.generateFrameNumbers('noCarryWorkerR'), frameRate: 6, repeat: -1 });
-    
+
     Scene.anims.create({ key: 'StoneLabor.A', frames: Scene.anims.generateFrameNumbers('StoneLabor'), frameRate: 6, repeat: -1 });
     Scene.anims.create({ key: 'StoneLaborCarryL.A', frames: Scene.anims.generateFrameNumbers('StoneLaborCarryL'), frameRate: 6, repeat: -1 });
-    
+
     Scene.anims.create({ key: 'IronLabor.A', frames: Scene.anims.generateFrameNumbers('IronLabor'), frameRate: 6, repeat: -1 });
     Scene.anims.create({ key: 'WoodLabor.A', frames: Scene.anims.generateFrameNumbers('WoodLabor'), frameRate: 6, repeat: -1 });
     Scene.anims.create({ key: 'WoodTool.A', frames: Scene.anims.generateFrameNumbers('WoodTool'), frameRate: 6, repeat: -1 });
-    
-    
+
+
     Scene.anims.create({ key: 'Horse.A', frames: Scene.anims.generateFrameNumbers('Horse'), frameRate: 6, repeat: -1 });
     Scene.anims.create({ key: 'Fountain.A', frames: Scene.anims.generateFrameNumbers('Fountain'), frameRate: 6, repeat: -1 });
-    Scene.anims.create({ key: 'WomanFace.A', frames: Scene.anims.generateFrameNumbers('Woman', {frames: [0,1,2,3,4,5,6,7,8,9]}), frameRate: 6, repeat: -1 });
-    Scene.anims.create({ key: 'WomanBack.A', frames: Scene.anims.generateFrameNumbers('Woman', {frames: [10,11,12,13,14,15,16,17,18,19]}), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'WomanFace.A', frames: Scene.anims.generateFrameNumbers('Woman', { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }), frameRate: 6, repeat: -1 });
+    Scene.anims.create({ key: 'WomanBack.A', frames: Scene.anims.generateFrameNumbers('Woman', { frames: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19] }), frameRate: 6, repeat: -1 });
     Scene.anims.create({ key: 'Woman.A', frames: Scene.anims.generateFrameNumbers('Woman'), frameRate: 6, repeat: -1 });
-    
+
     Scene.anims.create({ key: 'UpgradingHammer.A', frames: Scene.anims.generateFrameNumbers('UpgradingHammer'), frameRate: 10, repeat: -1 });
     Scene.anims.create({ key: 'UpgradingLaborL.A', frames: Scene.anims.generateFrameNumbers('UpgradingLaborL'), frameRate: 6, repeat: -1 });
     Scene.anims.create({ key: 'UpgradingLaborR.A', frames: Scene.anims.generateFrameNumbers('UpgradingLaborR'), frameRate: 6, repeat: -1 });
-    
+
     Animation.FixedCityAnimation();
 };
 
 Elkaisar.GE.ConfigAnims = function () {
-    
+
     var Scene = Elkaisar.GE.WorldScene;
     Elkaisar.GE.WorldScene.anims.create({
         key: 'Forest.1',
@@ -1588,37 +1688,37 @@ Elkaisar.GE.ConfigAnims = function () {
     });
     Elkaisar.GE.WorldScene.anims.create({
         key: 'CityFlag.Nut',
-        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [0, 6, 12, 18, 24, 30]}),
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', { frames: [0, 6, 12, 18, 24, 30] }),
         frameRate: 6, repeat: -1
     });
     Elkaisar.GE.WorldScene.anims.create({
         key: 'CityFlag.Fri',
-        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [1, 7, 13, 19, 25, 31]}),
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', { frames: [1, 7, 13, 19, 25, 31] }),
         frameRate: 6, repeat: -1
     });
     Elkaisar.GE.WorldScene.anims.create({
         key: 'CityFlag.All',
-        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [2, 8, 14, 20, 26, 32]}),
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', { frames: [2, 8, 14, 20, 26, 32] }),
         frameRate: 6, repeat: -1
     });
     Elkaisar.GE.WorldScene.anims.create({
         key: 'CityFlag.Min',
-        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [3, 9, 15, 21, 27, 33]}),
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', { frames: [3, 9, 15, 21, 27, 33] }),
         frameRate: 6, repeat: -1
     });
     Elkaisar.GE.WorldScene.anims.create({
         key: 'CityFlag.Ene',
-        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [4, 10, 16, 22, 28, 34]}),
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', { frames: [4, 10, 16, 22, 28, 34] }),
         frameRate: 6, repeat: -1
     });
     Elkaisar.GE.WorldScene.anims.create({
         key: 'CityFlag.Dea',
-        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', {frames: [5, 11, 17, 23, 29, 35]}),
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('flagOverCity', { frames: [5, 11, 17, 23, 29, 35] }),
         frameRate: 6, repeat: -1
     });
     Elkaisar.GE.WorldScene.anims.create({
         key: 'WorldUnitFire.Ani',
-        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('WorldUnitFire', {frames: [0, 1, 2, 3, 4, 5, 6, 7]}),
+        frames: Elkaisar.GE.WorldScene.anims.generateFrameNumbers('WorldUnitFire', { frames: [0, 1, 2, 3, 4, 5, 6, 7] }),
         frameRate: 6, repeat: -1
     });
 };
@@ -1626,17 +1726,17 @@ Elkaisar.GE.ConfigAnims = function () {
 
 Elkaisar.GE.Loading = function (percent) {
     $("#load-percent").html(Math.floor(percent) + "%");
-    $("#load-bar div").css({width: percent + "%"});
+    $("#load-bar div").css({ width: percent + "%" });
 };
 
 
 Elkaisar.GE.CLoadingScene = new Phaser.Class({
     Extends: Phaser.Scene,
     initialize: function () {
-        Phaser.Scene.call(this, {"key": "LoadingScene"});
+        Phaser.Scene.call(this, { "key": "LoadingScene" });
         Elkaisar.GE.LoadingScene = this;
     },
-    init: function () {},
+    init: function () { },
     preload: function () {
 
         Elkaisar.GE.LPreLoad();
@@ -1662,13 +1762,13 @@ Elkaisar.GE.CLoadingScene = new Phaser.Class({
                     }
                     var JsonData = JSON['parse'](data);
                     JsonData['state'] !== 'ok' && console['log'](JsonData);
-                    Elkaisar['Config']['WsPort'] = JsonData['WsPort'];
-                    Elkaisar['Config']['WsHost'] = JsonData['WsHost'];
-                    Elkaisar['DPlayer']['Player'] = JsonData['Player'];
-                    Elkaisar['ServerData'] = JsonData['Server'];
+                    Elkaisar['Config']['WsPort']    = JsonData['WsPort'];
+                    Elkaisar['Config']['WsHost']    = JsonData['WsHost'];
+                    Elkaisar['DPlayer']['Player']   = JsonData['Player'];
+                    Elkaisar['ServerData']          = JsonData.Server;
                     Elkaisar['Config']['OuthToken'] = TOKEN;
-                    Elkaisar['Config']['idServer'] = JsonData['idServer'];
-                    Elkaisar['Config']['idCities'] = JsonData['idCities'];
+                    Elkaisar['Config']['idServer']  = JsonData['idServer'];
+                    Elkaisar['Config']['idCities']  = JsonData['idCities'];
                     Elkaisar['Config']['JsVersion'] = JsonData['JsVersion'];
 
                     if (Elkaisar['DPlayer']['Player']['panned'] >= $['now']() / 1000) {
@@ -1704,7 +1804,7 @@ Elkaisar.GE.CLoadingScene = new Phaser.Class({
     create: function () {
         Elkaisar.GE.LoadingScene.events.on('transitionout', function (targetScene, duration) { });
     },
-    update: function () {}
+    update: function () { }
 });
 
 
@@ -1716,18 +1816,18 @@ var friction = 0.99;
 Elkaisar.GE.CCityScene = new Phaser.Class({
     Extends: Phaser.Scene,
     initialize: function () {
-        Phaser.Scene.call(this, {"key": "City"});
+        Phaser.Scene.call(this, { "key": "City" });
         Elkaisar.GE.CityScene = this;
     },
-    init: function () {},
-    preload: function () {},
+    init: function () { },
+    preload: function () { },
     create: function () {
 
-        this.events.on('transitionstart', function (fromScene, duration) {});
+        this.events.on('transitionstart', function (fromScene, duration) { });
         var floor_width = 2500;
         var floor_height = 1400;
+        this.ConstructingHammer = {};
 
-        
         Elkaisar.GE.ConfigCityAnims();
         fillCityWithBuilding();
         this.input.mousePointer.motionFactor = 0.5;
@@ -1746,13 +1846,13 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
 
         });
         this.input.on('gameobjectup', function (P, Obj, E) {
-            
+
             if (P.downElement !== Elkaisar.GE.Game.canvas || P.getDuration() > 250)
                 return;
             Obj.emit("click", Obj, P, E);
             E.stopPropagation();
         });
-        
+
         this.input.on('pointerdown', function (p) {
             console.log(p.worldX, p.worldY)
             This.Scrolling.movingSpeed = 0;
@@ -1775,6 +1875,33 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
             cam.scrollY -= (p.y - p.prevPosition.y) / cam.zoom;
         });
 
+        this.input.on('gameobjectover', function (Pointer, GameObject, Event) {
+            console.log(arguments)
+            if (Pointer.isDown)
+                return;
+
+            if (This.ConstructingHammer.destroy)
+                This.ConstructingHammer.destroy();
+
+                if(GameObject.data){
+                    console.log("dasdasdasdadsadsadsad")
+                    const BuildingPlace = GameObject.data.get("BuildingPlace")
+                    if(Elkaisar.City.getCity().BuildingType[BuildingPlace] == BUILDING_TYPS.SPACE){
+                        This.ConstructingHammer =  This.add.image(GameObject.x + 18, GameObject.y + 18, "ConstructingHammer").setDepth(100).setOrigin(0, 0);
+                    }
+                }
+           
+
+
+        });
+
+
+
+        this.input.on('gameobjectout', function (Pointer, GameObject, Event) {
+            if (This.ConstructingHammer.destroy)
+                This.ConstructingHammer.destroy();
+        });
+
 
 
         this.input.on('wheel', function (pointer, gameObjects, deltaX, deltaY, deltaZ) {
@@ -1783,8 +1910,8 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
                 if (cam.zoom >= 2)
                     return cam.zoom = 2;
                 cam.zoom += 0.1;
-            }else{
-                 if (cam.zoom <= 1)
+            } else {
+                if (cam.zoom <= 1)
                     return cam.zoom = 1;
                 cam.zoom -= 0.1;
             }
@@ -1817,11 +1944,11 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
 Elkaisar.GE.CWorldScene = new Phaser.Class({
     Extends: Phaser.Scene,
     initialize: function () {
-        Phaser.Scene.call(this, {"key": "World"});
+        Phaser.Scene.call(this, { "key": "World" });
         Elkaisar.GE.WorldScene = this;
     },
-    init: function () {},
-    preload: function () {},
+    init: function () { },
+    preload: function () { },
     create: function () {
 
         Elkaisar.GE.ConfigAnims();
@@ -1830,7 +1957,7 @@ Elkaisar.GE.CWorldScene = new Phaser.Class({
         cam.scrollY = Elkaisar.World.Map.posY(Number(Elkaisar.CurrentCity.City.x), Number(Elkaisar.CurrentCity.City.y)) - Elkaisar.MAX_SCREEN_HEIGHT / 2 + 128;
         Animation.currentUnitArrow.add();
         cam.on("camerapancomplete", function () {
-            
+
             Elkaisar.World.MapBattel.AddBattels();
             Elkaisar.World.Map.RefreshWorld();
         });
@@ -1849,7 +1976,7 @@ Elkaisar.GE.CWorldScene = new Phaser.Class({
 
         });
         this.input.on('gameobjectup', function (P, Obj, E) {
-            
+
             if (P.downElement !== Elkaisar.GE.Game.canvas || P.getDuration() > 250)
                 return;
             Obj.emit("click", Obj, P, E);
@@ -1886,13 +2013,12 @@ Elkaisar.GE.CWorldScene = new Phaser.Class({
 
         for (var iii in Elkaisar.World.MapBattel.BattelList) {
             let OneBattel = Elkaisar.World.MapBattel.BattelList[iii];
-          
+
             if (OneBattel && OneBattel.Line)
                 OneBattel.Line.tilePositionX -= 0.25;
         }
 
-        if (this.cursors.up.isDown)
-        {
+        if (this.cursors.up.isDown) {
             this.isMapDraging = true;
             this.cameras.main.scrollY -= this.KeySpeed;
             this.KeySpeed = Math.min(this.KeySpeed + 0.5, 20);
@@ -1917,8 +2043,7 @@ Elkaisar.GE.CWorldScene = new Phaser.Class({
 
         }
 
-        if (this.cursors.left.isDown)
-        {
+        if (this.cursors.left.isDown) {
             this.isMapDraging = true;
             this.cameras.main.scrollX -= this.KeySpeed;
             this.KeySpeed = Math.min(this.KeySpeed + 0.5, 20);
@@ -5977,6 +6102,7 @@ Elkaisar.World.UnitData = {
 
 
 };
+const NODE_URL = `http://${WS_HOST}:${WS_PORT}`;
 
 function isJson(str) {
     try {
@@ -6388,7 +6514,7 @@ var Extract = {
             return;
         return txt.replace(/\[\s*\d{1,3}\s*\,\s*\d{1,3}\s*\]/g, function (match) {
             var coords = Extract.digits(match);
-            return `<label class="clickable-coords font-2" data-x-coord="${coords[1]}" data-y-coord="${coords[0]}"><i>${match}</i></label>`;
+            return `<label class="clickable-coords font-2" data-x-coord="${coords[0]}" data-y-coord="${coords[1]}"><i>${match}</i></label>`;
 
         });
     },
@@ -6639,86 +6765,7 @@ $(document).on("click", "#Box-mid .nav-bar ul li", function (){
     else if(navTag === "god-gate-4")
         GodGate.rank("gate_4", 0);
     
-});var Rank = {};
-
-Rank.playerRow = function (offset, json_data) {
-    var _return = "";
-
-    _return += `<div class="th">
-                       <div class="td_1 ellipsis" style="width: 14.5%">${Translate.Title.TH.Ranking[UserLag.language]}</div>
-                       <div class="td_2 ellipsis" style="width: 14.5%">${Translate.Title.TH.Lord[UserLag.language]}</div>
-                       <div class="td_3 ellipsis" style="width: 14.5%">${Translate.Title.TH.League[UserLag.language]}</div>
-                       <div class="td_4 ellipsis" style="width: 14.5%">${Translate.Title.TH.NobleRank[UserLag.language]}</div>
-                       <div class="td_5 ellipsis" style="width: 14.5%">${Translate.Title.TH.Honor[UserLag.language]}</div>
-                       <div class="td_6 ellipsis" style="width: 14.5%">${Translate.Title.TH.Prestige[UserLag.language]}</div>
-                       <div class="td_7 ellipsis" style="width: 13.0%">${Translate.Button.General.Action[UserLag.language]}</div>
-                   </div>`;
-
-    if (json_data.length > 0) {
-        
-        var title_count = 0;
-        var p_name = "";
-        var name = "";
-        
-        for (var iii in json_data) {
-            
-            name = "";
-            p_name = "";
-            title_count = 0;
-
-            if(json_data[iii].title_1){
-                p_name +=  `<div class="rank-title rank-title_1" style="width: 75px;">${json_data[iii].title_1}</div>`;
-                title_count++;
-            }
-            if(json_data[iii].title_2){
-                p_name +=  `<div class="rank-title rank-title_2" style="width: 75px; margin-right: -65px;">${json_data[iii].title_2}</div>`;
-                title_count++;
-            }
-            if(json_data[iii].title_3){
-                p_name +=  `<div class="rank-title rank-title_3" style="width: 75px; margin-right: -65px;">${json_data[iii].title_3}</div>`;
-                title_count++;
-            }
-            if(json_data[iii].title_4){
-                p_name +=  `<div class="rank-title rank-title_4" style="width: 75px; margin-right: -65px;">${json_data[iii].title_4}</div>`;
-                title_count++;
-            }
-            if(json_data[iii].title_5){
-                p_name +=  `<div class="rank-title rank-title_5" style="width: 75px; margin-right: -65px;">${json_data[iii].title_5}</div>`;
-                title_count++;
-            }
-            if(json_data[iii].title_6){
-                p_name +=  `<div class="rank-title rank-title_6" style="width: 75px; margin-right: -65px;">${json_data[iii].title_6}</div>`;
-                title_count++;
-            }
-                
-            if(title_count === 0){
-                name = json_data[iii].name;
-            }else{
-                name = `<div class="name">${json_data[iii].name}</div>`;
-            }
-
-            _return += `<div class="tr" rank="${offset + Number(iii) + 1}">
-                            <div class="td_1" style="width: 14.5%">${getArabicNumbers(offset +  Number(iii) + 1)}</div>
-                            <div class="td_1" style="width: 14.5%">${name + p_name}</div>
-                            <div class="td_1" style="width: 14.5%"> ${json_data[iii].guild || "-----"}</div>
-                            <div class="td_1" style="width: 14.5%">${Elkaisar.BaseData.Promotion[json_data[iii].porm].Title}</div>
-                            <div class="td_1" style="width: 14.5%">${getArabicNumbers(json_data[iii].honor)}</div>
-                            <div class="td_1" style="width: 14.5%">${getArabicNumbers(json_data[iii].prestige)}</div>
-                            <div class="td_7" style="width: 13%"  >
-                                <button class="full-btn full-btn-1x show-player-profile ellipsis" data-id-player="${json_data[iii].id_player}">${Translate.Button.MenuList.View[UserLag.language]}</buton>
-                            </div>
-                        </div>`;
-
-        }
-
-        $(".for_Ranks .left-content").html(_return);
-        $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
-
-    } else {
-        _return = false;
-    }
-    return _return;
-};var Player_profile = {
+});var Player_profile = {
     
     
     refresh_view:function (){
@@ -6976,18 +7023,18 @@ Elkaisar.World.Province.getTitle = function (x, y) {
 
 $(document)['on']('click', '#relocate-city-now', function () {
     var province = $('#move-city-to .select-list')['attr']('data-value');
-    return $['ajax']({
-        'url': API_URL + '/api/AItemUse/useRandomMove',
+    return $.ajax({
+        'url': NODE_URL + '/api/AItemUse/useRandomMove',
         'type': 'POST',
         'data': {
             'Item': 'random_move',
             'amount': 1,
             'idCity': Elkaisar['CurrentCity']['City']['id_city'],
-            'token': Elkaisar['Config']['OuthToken'],
-            'server': Elkaisar['Config']['idServer'],
+            token: Elkaisar['Config']['OuthToken'],
+            server: Elkaisar['Config']['idServer'],
             'province': province
         },
-        'success': function (data, _0x3fd769, _0x4d0cb6) {
+        success: function (data, _0x3fd769, _0x4d0cb6) {
             if (!Elkaisar['LBase']['isJson'](data))
                 return Elkaisar['LBase']['Error'](data);
             var JsonData = JSON['parse'](data);
@@ -8480,39 +8527,20 @@ function fillCityWithBuilding()
     Elkaisar.GE.AddCityBuilding(1457, 923, "under_palace_12");
 
 
-
-
-
-    //start_animation() 
-
-
-
-
-    if (Number(Elkaisar.CurrentCity.City.lvl) > 0) {
+    if (Number(Elkaisar.CurrentCity.City.lvl) > 0) 
         fillCityLvl_1();
-    }
-
-
-
-
-
-
-    if (Number(Elkaisar.CurrentCity.City.lvl) > 1) {
+    if (Number(Elkaisar.CurrentCity.City.lvl) > 1) 
         fillCityLvl_2();
-    }
-
-
-
-
-
-
-    if (Number(Elkaisar.CurrentCity.City.lvl) > 2) {
+    if (Number(Elkaisar.CurrentCity.City.lvl) > 2) 
         fillCityLvl_3();
-    }
-
-    if (Elkaisar.CurrentCity.City.food) {
+    if (Elkaisar.CurrentCity.City.food) 
         Animation.cityProductionRate();
+
+    for (var BuildingPlace in BuildingOnFloor) {
+        BuildingOnFloor[BuildingPlace].setDataEnabled();
+        BuildingOnFloor[BuildingPlace].data.set("BuildingPlace", BuildingPlace);
     }
+    
 }
 
 
@@ -8629,7 +8657,7 @@ var alert_box = {
         
         var army_content =  `   <div id="alert_box" class="F_E-list">
                                     <div class="row-1"> 
-                                        <input type="text" data-id-guild="null" class="input">
+                                        <input id="GuildEneFriInput" type="text" data-id-guild="null" class="input">
                                         <label class="th ellipsis">${Translate.Title.TH.LeagueName[UserLag.language]}</label>
                                         <div id="g-search_result"class="search_res">
                                             <ul> 
@@ -8641,17 +8669,17 @@ var alert_box = {
                                     <div class="row-2">
                                         <ul>
                                             <li>    
-                                                <input id="trigger_1" type="radio" name="guild_relation" value="enemy" >
+                                                <input id="trigger_1" type="radio" name="guild_relation" value="${Elkaisar.BaseData.GuildRelation.RelationEnemy}" >
                                                 <label for="trigger_1" class="checker"></label>
                                                 <span> عدو</span>
                                             </li>
                                             <li>    
-                                                <input id="trigger_2" type="radio" name="guild_relation" value="friend">
+                                                <input id="trigger_2" type="radio" name="guild_relation" value="${Elkaisar.BaseData.GuildRelation.RelationFriend}">
                                                 <label for="trigger_2" class="checker"></label>
                                                 <span>صديق</span>
                                             </li>
                                             <li>    
-                                                <input id="trigger_3" type="radio" name="guild_relation"  checked value="ally">
+                                                <input id="trigger_3" type="radio" name="guild_relation"  checked value="${Elkaisar.BaseData.GuildRelation.RelationAllay}">
                                                 <label for="trigger_3" class="checker" ></label>
                                                 <span> محايد</span>
                                             </li>
@@ -9509,16 +9537,16 @@ var city_profile = {
                 continue;
             
             var state = '<img src="images/icons/h_s_incity.png" >';
-            if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.console) === 1){
+            if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.id_hero) === Elkaisar.CurrentCity.City.console){
 
                 state = '<img src="images/icons/h_s_console.png">';
-            }else if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.in_city) === 0){
+            }else if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL){
 
                 state = '<img src="images/icons/h_s_attack_2.png" >';
 
-            }else if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.in_city) === -1){
+            }else if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON){
 
-                state = '<img src="images/icons/h_s_support.png" >';
+                state = '<img src="images/icons/h_s_support.png">';
 
             }
 
@@ -10315,8 +10343,7 @@ var ArabicNumber =
             "9": "&\#1641;",
             "-": "-"
         };
-function getArabicNumbers(str)
-{
+function getArabicNumbers(str) {
     /* var newStr = "";
      
      str = String(str);
@@ -10329,8 +10356,7 @@ function getArabicNumbers(str)
     return str;
 }
 
-function getServerData()
-{
+function getServerData() {
 
     $.ajax({
         url: "api/player.php",
@@ -10405,28 +10431,27 @@ const paragraph_for_fa3lia = "الفاعلية ممتدة حتى هاية مار
 
 
 
-function calPageNumber(type, isMall)
-{
+function calPageNumber(type, isMall) {
     var content_keys = Object.keys(Matrial.listOf(type));
-    
-    
+
+
     var mat_counter = 0;
-    
-    if(isMall){
-       
-       for (var iii = 0; iii < content_keys.length; iii++) {
+
+    if (isMall) {
+
+        for (var iii = 0; iii < content_keys.length; iii++) {
 
             if (Elkaisar.BaseData.Items[content_keys[iii]].gold > 0) {
                 // console.log(content_keys[iii])
                 mat_counter++;
             }
         }
-        
+
         return Math.ceil(mat_counter / 12);
-   }
-       
-       
-    
+    }
+
+
+
 
 
     for (var iii = 0; iii < content_keys.length; iii++) {
@@ -10482,7 +10507,7 @@ function content_unit(image, name, req, player_amount, matrial_type, for_) {
                         </div>
                         <div class="matrial">
                             <ul>
-                            ${for_ === "mall" ? "" : `<button class="full-btn-3x sell-matrial" data-matrial="${matrial_type}"> عرض المادة للبيع</button>`   }
+                            ${for_ === "mall" ? "" : `<button class="full-btn-3x sell-matrial" data-matrial="${matrial_type}"> عرض المادة للبيع</button>`}
                             `;
 
 
@@ -10648,8 +10673,7 @@ function dialogBoxClose() {
     }
 }
 
-function dialogBoxShow(dialog_box, callBack)
-{
+function dialogBoxShow(dialog_box, callBack) {
 
     if ($("#dialg_box").length > 0) {
         $("#dialg_box").animate({top: "-800px"}, 200, "linear", function () {
@@ -10677,10 +10701,9 @@ var menu_bar = {
     dialogBox: function (title, nav_bar, content, page_num) {
 
         var nav_list = "";
-        nav_bar.forEach(function (one, index)
-        {
+        nav_bar.forEach(function (one, index) {
             nav_list += ` <li head_title = "${one["title"]}" class="${index === 0 ? "selected" : ""}" >
-                                   ${one[("title_" + UserLag.language)] }
+                                   ${one[("title_" + UserLag.language)]}
                                </li>`;
         });
 
@@ -10696,6 +10719,7 @@ var menu_bar = {
                             <div class="left-nav">
                                 <ul>${nav_list}</ul>
                             </div>
+                            <div id="NavSelectList" class="flex"></div>
                             <div class="right-nav">
                                 <div class="nav_icon">
                                     <img  class ="close_dialog" src="images/btns/close_b.png">
@@ -10779,291 +10803,70 @@ var menu_bar = {
     },
 
     dialogBoxcontent_Ranks: function (union = "") {
-        var output = `  <div class="box_content for_Ranks ">  
-                                   <div class="left-content full">  
-                                         
-                                        
-                                   </div>  
-                                   <div class="right-content-footer" rank_for="${ union === true ? "unuions" : "players"}">  
-                                      <div class="buttons">  
-                                          <ul class="flex">  
-                                              <li id="show-my-rank">  
-                                                    <button class="full-btn full-btn-2x full">${Translate.Button.General.ViewRank[UserLag.language]}</button>  
-                                              </li> 
-                                              <li>
-                                                    <div class="nav_icon flex">
-                                                        <div data-move="most-left" src="images/style/left.jpg" class="left move_p_rank pull-L most-left-btn"></div>
-                                                        <div data-move="left" src="images/style/left.jpg" class="left move_p_rank  pull-L left-btn"></div>
-                                                        <h1>  <span  id="current_page_num">1</span>/${union ? getArabicNumbers(Math.ceil(SERVER_DATA.guild_num / 10)) : getArabicNumbers(Math.ceil(SERVER_DATA.player_num / 10)) }</h1>
-                                                        <div data-move="most-right" src="images/style/right.jpg" class="right move_p_rank pull-R most-right-btn"></div>        
-                                                        <div data-move="right" src="images/style/right.jpg" class="right move_p_rank pull-R right-btn"></div>
-                                                  </div>
-                                              </li>
-                                              
-                                              <li id="nav_input" class="flex">  
-                                                    <input type="text"  class="only_num input"/>
-                                                    <button class="full-btn full-btn-1x ellipsis">  
-                                                        ${Translate.Button.General.GoTo[UserLag.language]}    
-                                                    </button>
-                                              </li>
-        
-                                              <li id="search_select" style=" float: left; width: 85px;">  
-                                                    <select>
-                                                        <option value="name" selected>الاسم</option>
-                                                    </select>
-                                              </li>
-                                              <li id="nav_search" class="flex">  
-                                                    <input type="text" class="input"/>
-                                                    <button class="full-btn full-btn-1x ellipsis">  
-                                                     ${Translate.Button.General.Search[UserLag.language]}
-                                                   </button>
-                                              </li>
-                                              
-                                          </ul>  
-                                      </div>  
-                                       
-                                  </div>  
-                               </div>`;
-        return output;
+        return Elkaisar.Rank.EmptyBox();
+
     },
     getContentForRanks: function (rank_for, offset) {
-        var _return = "";
+        $("#DialBoxFooter").attr("data-rank-for", rank_for);
         switch (rank_for) {
 
-            case "players":
+            case Elkaisar.Rank.RankFor.Player:
+                $("#NavSelectList").html(Elkaisar.Ui.Select.make(
+                        [
+                            {value: "ByName", title: "عام"},
+                            {value: "ByName", title: "برستيج"},
+                            {value: "ByName", title: "شرف"}
+                        ],
+                        0, {
+                            width: 158,
+                            height: 200
+                        }));
+                return  Elkaisar.Rank.PlayerGeneralRank(offset);
 
-                $.ajax({
-                    url: "api/player.php",
-                    data: {
-                        get_rank_player: true,
-                        offset: offset,
-                        id_player: ID_PLAYER,
-                        token: TOKEN
-                    },
-                    type: 'GET',
-                    beforeSend: function (xhr) {
+            case Elkaisar.Rank.RankFor.Guild:
+                 $("#NavSelectList").html(Elkaisar.Ui.Select.make(
+                        [
+                            {value: "ByName", title: "عام"},
+                            {value: "ByName", title: "برستيج"},
+                            {value: "ByName", title: "شرف"},
+                            {value: "ByName", title: "عدد الأعضاء"}
+                        ],
+                        0, {
+                            width: 158,
+                            height: 200
+                        }));
+                return  Elkaisar.Rank.GuildGeneralRank(offset);
 
-                    },
-                    success: function (data, textStatus, jqXHR) {
-
-                        if (isJson(data)) {
-                            Rank.playerRow(offset, JSON.parse(data));
-                        } else {
-                            alert(data);
-                        }
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-
-                    }
-                });
-
-
-                return _return;
-                break;
-
-
-
-            case "unuions":
-                $.ajax({
-                    url: "api/guild.php",
-                    data: {
-                        get_rank_union: true,
-                        offset: offset,
-                        id_player: ID_PLAYER,
-                        token: TOKEN
-                    },
-                    type: 'GET',
-                    beforeSend: function (xhr) {
-
-                    },
-                    success: function (data, textStatus, jqXHR) {
-
-                        /*
-                         * 
-                         *   @type Array|Object
-                         *   @property {number} honor 
-                         *   @property {number} lvl 
-                         *   @property {number} honor 
-                         *   @property {string} name 
-                         *   @property {string} p_name 
-                         *   @property {number} id_guild 
-                         *   @property {number} prestige 
-                         */
-                        if (isJson(data)) {
-                            var json_data = JSON.parse(data);
-                        } else {
-                            alert(data);
-                        }
-
-
-                        _return += `<div class="th">
-                                                <div class="td_1 ellipsis" style="width: 14.5%">${Translate.Title.MenuList.Ranking[UserLag.language]}</div>
-                                                <div class="td_2 ellipsis" style="width: 14.5%">${Translate.Title.MenuList.League[UserLag.language]}</div>
-                                                <div class="td_3 ellipsis" style="width: 14.5%">${Translate.Title.TH.Host[UserLag.language]}</div>
-                                                <div class="td_4 ellipsis" style="width: 14.5%">${Translate.Title.TH.Members[UserLag.language]}</div>
-                                                <div class="td_5 ellipsis" style="width: 14.5%">${Translate.Title.TH.Honor[UserLag.language]}</div>
-                                                <div class="td_6 ellipsis" style="width: 14.5%">${Translate.Title.TH.Prestige[UserLag.language]}</div>
-                                                <div class="td_7 ellipsis" style="width: 13.0%">${Translate.Button.General.Action[UserLag.language]}</div>
-                                            </div>`;
-
-                        if (json_data.length > 0) {
-                            for (var iii = 0; iii < json_data.length; iii++) {
-
-
-                                _return += `<div class="tr" rank="${offset + iii + 1}"  data-id_guild = "${json_data[iii].id_guild}">
-                                                    <div class="td_1 ellipsis" style="width: 14.5%">${getArabicNumbers(offset + iii + 1)}</div>
-                                                    <div class="td_2 ellipsis" style="width: 14.5%">${json_data[iii].name}</div>
-                                                    <div class="td_3 ellipsis" style="width: 14.5%"> ${json_data[iii].p_name }</div>
-                                                    <div class="td_4 ellipsis" style="width: 14.5%">${json_data[iii].mem_num }</div>
-                                                    <div class="td_5 ellipsis" style="width: 14.5%">${getArabicNumbers(json_data[iii].honor)}</div>
-                                                    <div class="td_6 ellipsis" style="width: 14.5%">${getArabicNumbers(json_data[iii].prestige)}</div>
-                                                    <div class="td_7 ellipsis" style="width: 13%"  ><button class="full-btn full-btn-1x show-guild-prev ellipsis"> ${Translate.Button.MenuList.View[UserLag.language]}</buton></div>
-                                                </div>`;
-
-                            }
-
-                            $(".for_Ranks .left-content").html(_return);
-                            $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
-
-                        } else {
-
-                            _return = false;
-
-                        }
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-
-                    }
-                });
-
-
-                return _return;
-                break;
-
-            case "heros":
-                $.ajax({
-                    url: "api/hero.php",
-                    data: {
-                        get_rank_hero: true,
-                        offset: offset,
-                        id_player: ID_PLAYER,
-                        token: TOKEN
-                    },
-                    type: 'GET',
-                    beforeSend: function (xhr) {
-
-                    },
-                    success: function (data, textStatus, jqXHR) {
-
-                        var json_data = JSON.parse(data);
-                        _return += `<div class="th">
-                                                <div class="td_1 ellipsis" style="width: 14.25%;">${Translate.Title.MenuList.Ranking[UserLag.language]}</div>
-                                                <div class="td_2 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Hero[UserLag.language]}</div>
-                                                <div class="td_3 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Lord[UserLag.language]}</div>
-                                                <div class="td_5 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Lvl[UserLag.language]}</div>
-                                                <div class="td_6 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Sway[UserLag.language]}</div>
-                                                <div class="td_7 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Bravery[UserLag.language]}</div>
-                                                <div class="td_8 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Parry[UserLag.language]}</div>
-                                            </div>`;
-
-                        if (json_data.length > 0) {
-                            for (var iii = 0; iii < json_data.length; iii++) {
-
-
-                                _return += `<div class="tr" rank="${offset + iii + 1}">
-                                                    <div class="td_1 ellipsis" style="width: 14.25%;">${getArabicNumbers(offset + iii + 1)}</div>
-                                                    <div class="td_2 ellipsis" style="width: 14.25%;">${json_data[iii].name}</div>
-                                                    <div class="td_3 ellipsis" style="width: 14.25%;"> ${json_data[iii].p_name}</div>
-                                                    <div class="td_4 ellipsis" style="width: 14.25%;">${getArabicNumbers(json_data[iii].lvl)}</div>
-                                                    <div class="td_5 ellipsis" style="width: 14.25%;">${getArabicNumbers(json_data[iii].point_a)}</div>
-                                                    <div class="td_7 ellipsis" style="width: 14.25%;">${getArabicNumbers(json_data[iii].point_b)}</div>
-                                                    <div class="td_8 ellipsis" style="width: 14.25%;">${getArabicNumbers(json_data[iii].point_c)}</div>
-                                                </div>`;
-
-                            }
-
-                            $(".for_Ranks .left-content").html(_return);
-                            $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
-
-                        } else {
-
-                            _return = false;
-
-                        }
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-
-                    }
-                });
-
-
-                return _return;
-                break;
-
-            case "cities":
-                $.ajax({
-                    url: "api/city.php",
-                    data: {
-                        get_rank_city: true,
-                        offset: offset,
-                        id_player: ID_PLAYER,
-                        token: TOKEN
-                    },
-                    type: 'GET',
-                    beforeSend: function (xhr) {
-
-                    },
-                    success: function (data, textStatus, jqXHR) {
-
-                        var json_data = JSON.parse(data);
-                        _return += `<div class="th">
-                                                <div class="td_1 ellipsis">${Translate.Title.MenuList.Ranking[UserLag.language]}</div>
-                                                <div class="td_2 ellipsis">${Translate.Title.TH.Name[UserLag.language]}</div>
-                                                <div class="td_3 ellipsis">${Translate.Title.TH.Lvl[UserLag.language]}</div>
-                                                <div class="td_5 ellipsis">${Translate.Title.TH.Lord[UserLag.language]}</div>
-                                                <div class="td_6 ellipsis">${Translate.Title.MenuList.League[UserLag.language]}</div>
-                                                <div class="td_7 ellipsis">${Translate.Title.TH.Population[UserLag.language]}</div>
-                                            </div>`;
-
-                        if (json_data.length > 0) {
-
-                            for (var iii = 0; iii < json_data.length; iii++) {
-
-
-                                _return += `<div class="tr" rank="${offset + iii + 1}">
-                                                    <div class="td_1 ellipsis">${getArabicNumbers(offset + iii + 1)}</div>
-                                                    <div class="td_2 ellipsis">${json_data[iii].name}</div>
-                                                    <div class="td_3 ellipsis">${getArabicNumbers(json_data[iii].lvl)}</div>
-                                                    <div class="td_4 ellipsis">${json_data[iii].p_name}</div>
-                                                    <div class="td_5 ellipsis">${json_data[iii].guild || ""}</div>
-                                                    <div class="td_7 ellipsis">${getArabicNumbers(json_data[iii].pop)}</div>
-                                                </div>`;
-
-                            }
-
-                            $(".for_Ranks .left-content").html(_return);
-                            $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
-
-                        } else {
-
-                            _return = false;
-
-                        }
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-
-                    }
-                });
-
-
-                return _return;
-                break;
+            case Elkaisar.Rank.RankFor.Hero:
+                 $("#NavSelectList").html(Elkaisar.Ui.Select.make(
+                        [
+                            {value: "ByName", title: "عام"},
+                            {value: "ByName", title: "مستوى"},
+                            {value: "ByName", title: "قوة السيطرة"},
+                            {value: "ByName", title: "الشجاعة"},
+                            {value: "ByName", title: "الدفاع"}
+                        ],
+                        0, {
+                            width: 158,
+                            height: 200
+                        }));
+                return Elkaisar.Rank.HeroGeneralRank(offset);
+            case Elkaisar.Rank.RankFor.City:
+                $("#NavSelectList").html(Elkaisar.Ui.Select.make(
+                        [
+                            {value: "ByName", title: "عام"},
+                            {value: "ByName", title: "مستوى"},
+                            {value: "ByName", title: "عدد السكان"}
+                        ],
+                        0, {
+                            width: 158,
+                            height: 200
+                        }));
+                return Elkaisar.Rank.CityGeneralRank(offset);
 
         }
+
+
 
 
     }
@@ -11111,7 +10914,7 @@ $(document).on("click", ".menu-list", function (e) {
 
             break;
 
-        case "reports" :
+        case "reports":
 
             playerBattels();
 
@@ -11152,10 +10955,8 @@ $(document).on("click", ".menu-list", function (e) {
             var content = menu_bar.dialogBoxcontent_Ranks();
             var dialog_box = menu_bar.dialogBox(Translate.Title.MenuList.Ranking[UserLag.language], NavBar.Ranking, content, 0);
             dialogBoxShow(dialog_box, function () {
-
                 $("#dialg_box").attr("type", "messages");
-                menu_bar.getContentForRanks("players", 0);
-
+                menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Player, 0);
             });
 
 
@@ -11360,35 +11161,19 @@ $(document).on("click", ".left-nav ul  li", function () {
 
 
         case "rank_player":
-            var new_rows = menu_bar.getContentForRanks("players", 0);
-            $(".for_Ranks .left-content").html(new_rows);
-            $(".right-content-footer").attr("rank_for", "players");
-            $(".nav_icon h1").html(` <span id="current_page_num">1</span>/${getArabicNumbers(Math.ceil(SERVER_DATA.player_num / 10))}`);
-
+            menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Player, 0);
             break;
 
 
         case "rank_union":
-            var new_rows = menu_bar.getContentForRanks("unuions", 0);
-            $(".for_Ranks .left-content").html(new_rows);
-            $(".right-content-footer").attr("rank_for", "unuions");
-            $(".nav_icon h1").html(` <span id="current_page_num">1</span>/${getArabicNumbers(Math.ceil(SERVER_DATA.guild_num / 10))}`);
-
+            menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Guild, 0);
             break;
         case "rank_hero":
-            var new_rows = menu_bar.getContentForRanks("heros", 0);
-            $(".for_Ranks .left-content").html(new_rows);
-            $(".right-content-footer").attr("rank_for", "heros");
-            $(".nav_icon h1").html(` <span id="current_page_num">1</span>/${getArabicNumbers(Math.ceil(SERVER_DATA.hero_num / 10))}`);
-
+            var new_rows = menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Hero, 0);
             break;
 
         case "rank_city":
-            var new_rows = menu_bar.getContentForRanks("cities", 0);
-            $(".for_Ranks .left-content").html(new_rows);
-            $(".right-content-footer").attr("rank_for", "cities");
-            $(".nav_icon h1").html(` <span id="current_page_num">1</span>/${getArabicNumbers(Math.ceil(SERVER_DATA.city_num / 10))}`);
-
+            var new_rows = menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.City, 0);
             break;
 
 
@@ -11480,7 +11265,7 @@ $("#matrial-box button").click(function () {
     dialogBoxShow(dialog_box, function () {
         $("#dialg_box").attr("type", "box");
     });
-    
+
     Elkaisar.Item.useItemFunc();
     Elkaisar.Item.useItemBoxFunc();
     Elkaisar.Item.useArmyBackFunc();
@@ -11533,20 +11318,20 @@ $(document)['on']('click', '#matrial-player .matrial_unit', function () {
     var idItem = $(this)['attr']('matrial_type');
     var Item = Elkaisar['BaseData']['Items'][idItem];
     var PlayerAmount = Matrial['getPlayerAmount'](idItem);
-    
+
     $('#alert_container')['remove']();
     var ExtraString = '';
     switch (idItem) {
-    case 'certain_move':
-        ExtraString = `  <div class="extra_html">
+        case 'certain_move':
+            ExtraString = `  <div class="extra_html">
                             ادخل الاحداثيات 
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                                 X <input id="new-city-y-coord" type="text" class="only_num input" min="0" max="499">
                                 Y <input id="new-city-x-coord" type="text" class="only_num input" min="0" max="499">
                             </div>`;
-        break;
-    case 'random_move':
-        break;
+            break;
+        case 'random_move':
+            break;
     }
     var Box = ` <div id="matral-box-use" class="bg-general"> 
                             <div id="alert_head">    
@@ -11566,17 +11351,17 @@ $(document)['on']('click', '#matrial-player .matrial_unit', function () {
                                             ${Item['name']} 
                                         </div>
                                         <div class="amount">
-                                            ${Translate['Title']['TH']['YouHave'][UserLag['language']] } ${ PlayerAmount }
+                                            ${Translate['Title']['TH']['YouHave'][UserLag['language']]} ${PlayerAmount}
                                         </div>
                                     </div>
                                 </div>  
                                 <div class="mat_desc">
-                                    ${ Item['desc'] }
+                                    ${ Item['desc']}
                                 </div>
                                 ${ExtraString}
                                 <div class="row-3">       
                                     <div class="confim-btn">            
-                                        ${ Item['use'] === 'none' ? '' : `<button class="full-btn full-btn-3x  pull-R enter" data-item-name="${idItem}" id="${Item['use'] == 'Box' ? 'openPlayerItemBox' : 'usePlayerItemBox'}">${(Item['use'] == 'Box' ? 'فتح' : 'تأكيد') }</button>  ` }  
+                                        ${ Item['use'] === 'none' ? '' : `<button class="full-btn full-btn-3x  pull-R enter" data-item-name="${idItem}" id="${Item['use'] == 'Box' ? 'openPlayerItemBox' : 'usePlayerItemBox'}">${(Item['use'] == 'Box' ? 'فتح' : 'تأكيد')}</button>  `}  
                                         ${ Item['use'] === 'many' ? `<input type="text" max="${PlayerAmount}" min="0" step="1" class="pull-L only_num input" id="amount_to_use">
                                                                         <div class="number-arrow-wrapper pull-L">
                                                                             <label class="number-arrow up"></label>
@@ -11587,7 +11372,7 @@ $(document)['on']('click', '#matrial-player .matrial_unit', function () {
                                 </div>
                             </div>    
                         </div>`;
-            
+
     $('body')['append'](Box);
 });
 
@@ -11689,64 +11474,14 @@ function refreshArmy_view() {
 /*    navigate in rank page */
 
 
-$(document).on("click", ".move_p_rank", function () {
 
-    var move = $(this).data("move");
-    var rank_for = $(this).parents(".right-content-footer").attr("rank_for");
-
-    var offset = (Math.ceil($(".for_Ranks  .left-content .tr:last-child").attr("rank") / 10)) * 10;
-
-    if (move === "right") {
-
-        menu_bar.getContentForRanks(rank_for, offset);
-
-
-
-
-    } else if (move === "left" && offset > 10) {
-        offset -= 20;
-
-        menu_bar.getContentForRanks(rank_for, offset);
-
-
-
-
-
-
-    } else if (move === "most-left") {
-
-        menu_bar.getContentForRanks(rank_for, 0);
-
-
-    } else if (move === "most-right") {
-
-        menu_bar.getContentForRanks(rank_for, Math.floor(SERVER_DATA.player_num / 10) * 10);
-
-    }
-
-
-
-
-});
 
 
 
 /*____________________________________________________________________________*/
 /*__________________________GO TO BUTTON______________________________________*/
 
-$(document).on("click", ".for_Ranks  #nav_input button", function () {
 
-    var page_number = $("#nav_input input").val() - 1;
-
-    var rank_for = $(this).parents(".right-content-footer").attr("rank_for");
-    var new_rows = menu_bar.getContentForRanks(rank_for, page_number * 10);
-
-    if (new_rows) {
-        $(".for_Ranks .left-content").html(new_rows);
-        $("#current_page_num").html(getArabicNumbers(page_number));
-
-    }
-});
 
 
 
@@ -11861,8 +11596,8 @@ $(document).on("click", "#nav_search button", function () {
                             _return += `<div class="tr" rank="${json_data[iii].rank_g}" data-id_guild = "${json_data[iii].id_guild}">
                                                     <div class="td_1 ellipsis" style="width: 14.5%">${getArabicNumbers(json_data[iii].rank_g)}</div>
                                                     <div class="td_2 ellipsis" style="width: 14.5%">${json_data[iii].name}</div>
-                                                    <div class="td_3 ellipsis" style="width: 14.5%"> ${json_data[iii].p_name }</div>
-                                                    <div class="td_4 ellipsis" style="width: 14.5%">${json_data[iii].mem_num }</div>
+                                                    <div class="td_3 ellipsis" style="width: 14.5%"> ${json_data[iii].p_name}</div>
+                                                    <div class="td_4 ellipsis" style="width: 14.5%">${json_data[iii].mem_num}</div>
                                                     <div class="td_5 ellipsis" style="width: 14.5%">${json_data[iii].honor}</div>
                                                     <div class="td_6 ellipsis" style="width: 14.5%">${json_data[iii].prestige}</div>
                                                     <div class="td_7 ellipsis" style="width: 13%"  ><button class="full-btn show-guild-prev"> ${Translate.Button.MenuList.View[UserLag.language]}</buton></div>
@@ -12068,10 +11803,7 @@ $(document).on("click", "#usePlayerItemBox", function () {
     useMatrialBox(item);
 });
 //<button class="full-btn full-btn-3x pull-R enter" id="buyNewItem" data-item-name="${matrial_name}"  onClick="buyMatrial('${matrial_name}')" >${Translate.Button.MenuList.Buy[UserLag.language]}</button>  
-$(document).on("click", "#buyNewItem", function () {
-    var item = $(this).attr("data-item-name");
-    buyMatrial(item);
-});
+
 
 window.addEventListener("orientationchange", function () {
     // Announce the new orientation number
@@ -12080,20 +11812,19 @@ window.addEventListener("orientationchange", function () {
 
 }, false);
 
-$(document)['on']('click', '#openPlayerItemBox', function () {
-    var idItem = $(this)['attr']('data-item-name');
-    $['ajax']({
-        'url': API_URL + '/api/AItem/openItemBox',
+$(document).on('click', '#openPlayerItemBox', function () {
+    var idItem = $(this).attr('data-item-name');
+    $.ajax({
+        'url': `${NODE_URL}/api/AItem/openItemBox`,
         'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken'],
+            token: Elkaisar['Config']['OuthToken'],
             'idItem': idItem
         },
         'type': 'POST',
-        'success': function (data, _0x106300, _0x509fc4) {
-            if (!Elkaisar['LBase']['isJson'](data))
-                Elkaisar['LBase']['Error'](data);
-            var JsonObject = JSON['parse'](data);
+        success: function (data, _0x106300, _0x509fc4) {
+            if (!Elkaisar.LBase.isJson(data))
+                Elkaisar.LBase.Error(data);
+            var JsonObject = JSON.parse(data);
             if (JsonObject['state'] === 'ok') {
                 showMatrialGiftList(JsonObject['Item']);
                 for (var ii in JsonObject['Item']) {
@@ -12104,11 +11835,15 @@ $(document)['on']('click', '#openPlayerItemBox', function () {
                     }
 
                 }
-                Elkaisar['Item']['ItemBox']('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
-                Player_profile['refreshMatrialBox']()['done'](function () {
+                Elkaisar.Item.ItemBox('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
+                Player_profile.refreshMatrialBox().done(function () {
                     Elkaisar['Item']['ItemBox']('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
+                    $(".matrial_unit").each(function (el) {
+                        var Mat = $(this).attr("matrial_type");
+                        $(this).children(".img-inside-box").children(".player_amount").children("p").html(Matrial.getPlayerAmount(Mat))
+                    });
                 });
-            } else if(JsonObject['state'] === 'error_1'){
+            } else if (JsonObject['state'] === 'error_1') {
                 alert_box['failMessage']('ليس لديك مواد كافية');
             }
         }
@@ -12497,32 +12232,44 @@ Elkaisar.WsLib.TimedTask.Building = function (data) {
     if ($("#dialg_box .box_header").attr("place") === data.Task.place && Number(Elkaisar.CurrentCity.City.id_city) === Number(data.Task.id_city)) {
         buildingClick(data.Task.place, true);
     }
+    
+    var id_console = Elkaisar.CurrentCity.City.console;
+    
+    var hero = getHeroById(id_console);
+    if(hero){
+        hero.exp = Number(hero.exp) + Number(data.prestige) * 2;
+        $("#dialg_box[type='hero'] .middle-content").replaceWith(army.middle_content(hero));
+    }
 
 };
 
 
 Elkaisar.WsLib.TimedTask.Jop = function (data) {
 
-    //Crafty.audio.play("upgrade_done");
+
 
     Elkaisar.DPlayer.Player.prestige = Number(Elkaisar.DPlayer.Player.prestige) + data.prestige;
 
-    Elkaisar.City.getCity(data.City.id_city).City = data.City;
-    Elkaisar.City.getCity(data.CityJop).Jop = data.CityJop;
 
-    var id_console = Elkaisar.CurrentCity.City.console;
-    if (id_console) {
-        var hero = getHeroById(id_console);
-        hero.exp = Number(hero.exp) + Number(data.prestige) * 2;
-        $("#dialg_box[type='hero'] .middle-content").replaceWith(army.middle_content(hero));
-    }
-
+   
+ 
 
     $("#job-typs .selected").click();
     city_profile.refresh_city_resources();
     delete(Elkaisar.TimedTask.TaskList.Jop[data.Task.id]);
     Elkaisar.TimedTask.refreshListView();
     Player_profile.refresh_view();
+    Elkaisar.City.getCityBase();
+    Elkaisar.City.getCityJop();
+    
+    var id_console = Elkaisar.CurrentCity.City.console;
+    
+    var hero = getHeroById(id_console);
+    if(hero){
+        hero.exp = Number(hero.exp) + Number(data.prestige) * 2;
+        $("#dialg_box[type='hero'] .middle-content").replaceWith(army.middle_content(hero));
+    }
+
     
 };
 
@@ -12533,28 +12280,26 @@ Elkaisar.WsLib.TimedTask.Study = function (data){
             
     //Crafty.audio.play("upgrade_done");
     Elkaisar.DPlayer.Player.prestige = Number(Elkaisar.DPlayer.Player.prestige) + data.prestige;
-    Player_profile.getPlayerEdu();
+    Player_profile.getPlayerEdu().done(function (){
+        $(".uni_tech .left-content .total").replaceWith(edu.getUniTech());
+        $(".acad_tech .left-content .total").replaceWith(edu.getAcadTech());
+    });
     
-    var id_console = Elkaisar.CurrentCity.City.console;
+   
 
-    if (id_console) {
-        var hero = getHeroById(id_console);
-        hero.exp = Number(hero.exp) + Number(data.prestige) * 2;
-        $("#dialg_box[type='hero'] .middle-content").replaceWith(army.middle_content(hero));
-    }
-
-
-    $(".uni_tech .left-content .total").replaceWith(edu.getUniTech());
-    $(".acad_tech .left-content .total").replaceWith(edu.getAcadTech());
-
-            
-
+   
 
     city_profile.refresh_city_resources();
     delete(Elkaisar.TimedTask.TaskList.Study[data.Task.id]);
     Elkaisar.TimedTask.refreshListView();
     Player_profile.refresh_view();
-
+    
+    var id_console = Elkaisar.CurrentCity.City.console;
+    var hero = getHeroById(id_console);
+    if(hero){
+        hero.exp = Number(hero.exp) + Number(data.prestige) * 2;
+        $("#dialg_box[type='hero'] .middle-content").replaceWith(army.middle_content(hero));
+    }
 };
 
 
@@ -14418,44 +14163,6 @@ var Building = {
 
             return lvl < 30 ? BUILDING_JSON_DATA[type]["lvl_req"][lvl]["metal"] : "--";
         }
-    },
-    getHeroTheater: function () {
-        var all_heros = "";
-        var left_content = "";
-
-        return  $.ajax({
-                    url: "api/hero.php",
-                    data: {
-                        get_theater_hero: true,
-                        id_city: Elkaisar.CurrentCity.City.id_city,
-                        theater_place: cityHasType(6),
-                        id_player: ID_PLAYER,
-                        token: TOKEN
-                    },
-                    type: 'GET',
-                    beforeSend: function (xhr) {
-
-                    },
-                    success: function (data, textStatus, jqXHR) {
-
-                        if (isJson(data)) {
-                            var json_data = JSON.parse(data);
-                        } else {
-
-                            console.log(data);
-                            alert(data);
-                            return;
-
-                        }
-
-                        HERO_IN_THEATER = json_data;
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus);
-                    }
-                });
-
     }
 
 };
@@ -14815,14 +14522,12 @@ $(document).on("click", "#confirmChoose button", function () {
     var helper = $(this).attr("helper-type");
     $.ajax({
 
-        url: "api/city.php",
+        url: `${API_URL}/api/ACity/changeCityHelper`,
         data: {
-            SET_CITY_HELPER: true,
-            id_city: Elkaisar.CurrentCity.City.id_city,
-            helper: helper,
-            id_player: ID_PLAYER,
-            helper_place: cityHasType(BUILDING_TYPS.WORSHIP),
-            token: TOKEN
+            idCity: Elkaisar.CurrentCity.City.id_city,
+            newHelper: helper,
+            token: Elkaisar.Config.OuthToken,
+            server : Elkaisar.Config.idServer
         },
         type: 'POST',
         beforeSend: function (xhr) {
@@ -14839,12 +14544,7 @@ $(document).on("click", "#confirmChoose button", function () {
 
             if (json_data.state === "ok")
             {
-                Elkaisar.CurrentCity.City.helper = helper;
-
-                if (Number(helper) === 2) {
-                    Elkaisar.CurrentCity.City.pop_cap = json_data.data.pop_cap;
-                }
-
+                Elkaisar.CurrentCity.City = json_data.City;
                 $(".box_content").replaceWith(Building.dialogBoxContnet_forworship());
                 alert_box.succesMessage("تم تعديل المساعد بنجاح");
 
@@ -16955,11 +16655,11 @@ var army = {
 
                 state = '<img src="images/icons/h_s_console.png">';
 
-            } else if (Number(Hero.Hero.in_city) === 0) {
+            } else if (Number(Hero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL) {
 
                 state = '<img src="images/icons/h_s_attack_2.png">';
 
-            } else if (Number(Hero.Hero.in_city) === -1) {
+            } else if (Number(Hero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON) {
 
                 state = '<img src="images/icons/h_s_support.png">';
 
@@ -17021,17 +16721,17 @@ var army = {
         var state = '<img src="images/icons/h_s_incity.png" class="img-sml pull-R" >';
         var state_ar_title = "فى المدينة";
 
-        if (Number(Elkaisar.CurrentHero.Hero.console) === 1) {
+        if (Number(Elkaisar.CurrentHero.Hero.id_hero) == Elkaisar.CurrentCity.City.console) {
 
             state = '<img src="images/icons/h_s_console.png"  class="pull-R">';
             state_ar_title = "قنصل المدينة";
 
-        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === 0) {
+        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL) {
 
             state = '<img src="images/icons/h_s_attack_2.png"  class="img-sml pull-R">';
             state_ar_title = "يهاجم";
 
-        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === -1) {
+        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON) {
 
             state = '<img src="images/icons/h_s_support.png" class="img-sml pull-R">';
             state_ar_title = "حراسة";
@@ -17544,17 +17244,17 @@ var army = {
         Elkaisar.NextHero = sec_hero;
         var state = '<img src="images/icons/h_s_incity.png" class="img-sml pull-R " >';
         var state_ar_title = "فى المدينة";
-        if (parseInt(sec_hero.Hero.console) === 1) {
+        if (parseInt(sec_hero.Hero.id_hero) === Elkaisar.CurrentCity.City.console) {
 
             state = '<img src="images/icons/h_s_console.png"  class="pull-R">';
             state_ar_title = "قنصل المدينة";
 
-        } else if (parseInt(sec_hero.Hero.in_city) === 0) {
+        } else if (parseInt(sec_hero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL) {
 
             state = '<img src="images/icons/h_s_attack_2.png"  class="img-sml pull-R">';
             state_ar_title = "يهاجم";
 
-        } else if (Number(sec_hero.Hero.in_city) === -1) {
+        } else if (Number(sec_hero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON) {
 
             state = '<img src="images/icons/h_s_support.png" class="img-sml pull-R">';
             state_ar_title = "حراسة";
@@ -17631,17 +17331,17 @@ var army = {
 
         var state = '<img src="images/icons/h_s_incity.png" class="img-sml pull-R" >';
         var state_ar_title = "فى المدينة";
-        if (parseInt(Elkaisar.CurrentHero.Hero.console) === 1) {
+        if (parseInt(Elkaisar.CurrentHero.Hero.id_hero) === Elkaisar.CurrentCity.City.console) {
 
             state = '<img src="images/icons/h_s_console.png"  class="pull-R">';
             state_ar_title = "قنصل المدينة";
 
-        } else if (parseInt(Elkaisar.CurrentHero.Hero.in_city) === 0) {
+        } else if (parseInt(Elkaisar.CurrentHero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL) {
 
             state = '<img src="images/icons/h_s_attack_2.png"  class="img-sml pull-R">';
             state_ar_title = "يهاجم";
 
-        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === -1) {
+        } else if (Number(Elkaisar.CurrentHero.Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON) {
 
             state = '<img src="images/icons/h_s_support.png" class="img-sml pull-R">';
             state_ar_title = "حراسة";
@@ -18119,150 +17819,11 @@ $(document).on("click", ".left-nav ul  li", function () {
 
 });
 
-$(document).on("click", "#left-down , #right-down", function () {
 
-    // get id_hero
-    var id_hero = $(this).attr("id_hero");
-
-    if (!heroAvailableForTask(id_hero)) {
-        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات </br> البطل فى مهمة"));
-        return false;
-
-    }
-
-    if ($(this).attr("id") === "left-down") {
-        if (getHeroCapById(Elkaisar.CurrentHero.Hero.id_hero) <= 0) {
-            return;
-        }
-    } else {
-        if (getHeroCapById(Elkaisar.NextHero.Hero.id_hero) <= 0) {
-            return;
-        }
-    }
-
-    var id_city = Elkaisar.CurrentCity.City.id_city;
-    var this_ = $(this);
-
-    $.ajax({
-        url: `${API_URL}/api/AHeroArmy/clearHeroArmy`,
-        data: {
-            idHero: id_hero,
-            token: Elkaisar.Config.OuthToken,
-            server: Elkaisar.Config.idServer
-        },
-        type: 'POST',
-        beforeSend: function (xhr) {
-            waitCursor();
-            $("#left-down , #right-down").attr("disabled", "disabled");
-        },
-        success: function (data, textStatus, jqXHR) {
-            unwaitCursor();
-            $("#left-down , #right-down").removeAttr("disabled");
-            if (isJson(data)) {
-                var json_data = JSON.parse(data);
-            } else {
-                alert(data);
-                return;
-            }
-
-            if (json_data.state === "ok")
-            {
-                Elkaisar.City.getCity(id_city).City = json_data.City;
-
-                Elkaisar.Hero.getHero(id_hero).Army = json_data.HeroArmy;
-
-            } else if (json_data.state === "error_1") {
-                alert_box.failMessage("البطل ليس فى المدينة");
-            }
-
-
-            city_profile.refresh_army_view();
-            army.refreshArmy_leftTrade();
-            army.refreshArmy_rightTrade();
-            $("#down-trade-army").html(army.downTradeArmy());
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
-        }
-    });
-
-});
 
 
 // to  swap  army brtween heros
-$(document).on("click", "#swap_army", function () {
 
-
-
-    var right_hero_id = $(".right-content").children(".army_container").attr("id_hero");
-    var left_hero_id = $(".middle-content").children(".army_container").attr("id_hero");
-    var id_city = Elkaisar.CurrentCity.City.id_city;
-    var temp_ol = $("#hero-right-ol").html();
-    var temp_o_l = $("#hero-left-ol").html();
-
-
-    var first_cap = getHeroCap(Elkaisar.CurrentHero.Army);
-    var sec_cap = getHeroCap(Elkaisar.NextHero.Army);
-    var first_max = getHeroMaxCap(Elkaisar.CurrentHero);
-    var sec_max = getHeroMaxCap(Elkaisar.NextHero);
-
-    if (first_cap === 0 && sec_cap === 0) {
-        return;
-    }
-
-    if (!heroAvailableForTask(right_hero_id) || !heroAvailableForTask(left_hero_id)) {
-        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات </br> البطل فى مهمة"));
-        return false;
-    }
-
-    if (first_cap > sec_max || sec_cap > first_max) {
-
-        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات"));
-        return;
-    }
-
-    $.ajax({
-        url: `${API_URL}/api/AHeroArmy/swapHeroArmy`,
-        data: {
-            idHeroRight: right_hero_id,
-            idHeroLeft: left_hero_id,
-            token: Elkaisar.Config.OuthToken,
-            server: Elkaisar.Config.idServer
-        },
-        type: 'POST',
-        beforeSend: function (xhr) {
-            $("#swap_army").attr("disabled", "disabled");
-            waitCursor();
-        },
-        success: function (data, textStatus, jqXHR) {
-            unwaitCursor();
-
-            if (!Elkaisar.LBase.isJson(data))
-                return Elkaisar.LBase.Error(data);
-
-            var JsonObject = JSON.parse(data);
-
-            if (JsonObject.state === 'ok') {
-
-                Elkaisar.NextHero.Army = JsonObject.HeroArmyRight;
-                Elkaisar.CurrentHero.Army = JsonObject.HeroArmyLeft;
-                $("#swap_army").removeAttr("disabled");
-                $("#hero-left-ol").html(temp_ol);
-                $("#hero-right-ol").html(temp_o_l);
-                $(".hero-1  ol li:nth-child(2) .header-2:nth-child(2)").html(sec_cap + "/" + first_max);
-                $(".hero-2  ol li:nth-child(2) .header-2:nth-child(2)").html(first_cap + "/" + sec_max);
-            } else if (JsonObject.state === "error_1")
-                alert_box.failMessage("البطل لايستوعب العدد الحالى");
-            else if (JsonObject.state === "error_2")
-                alert_box.failMessage("البطل ليس فى المدينة");
-
-
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-
-        }
-    });
-});
 
 
 
@@ -19202,17 +18763,17 @@ $(document).on("click", "#selected_hero", function () {
 
             var state = '<img src="images/icons/h_s_incity.png" class="img-sml" >';
 
-            if (parseInt(el.console) === 1) {
+            if (parseInt(el.id_hero) === Elkaisar.CurrentCity.City.console) {
 
                 state = '<img src="images/icons/h_s_console.png">';
 
 
-            } else if (parseInt(el.in_city) === 0) {
+            } else if (parseInt(el.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL) {
 
                 state = '<img src="images/icons/h_s_attack_2.png"  class="img-sml">';
 
 
-            } else if (Number(el.in_city) === -1) {
+            } else if (Number(el.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON) {
 
                 state = '<img src="images/icons/h_s_support.png" class="img-sml">';
             }
@@ -19645,8 +19206,6 @@ var Hero = {
     heroAttackProc: function (){
         Elkaisar.CurrentHero.Hero.in_city  = 0;
         Elkaisar.CurrentHero.Hero.attack   = 1;
-        Elkaisar.CurrentHero.Hero.power   -= Hero.getPowerRequired(battel_data.x_coord, battel_data.y_coord);
-        Elkaisar.CurrentHero.Hero.power_ls = Math.floor($.now()/1000);
     },
     // get hero equip
     getHeroEquip: function (id_hero){
@@ -20070,13 +19629,18 @@ $(document).on("mouseenter" ,  "#city-profile .page_content ul .hero_profile" , 
     var hero_effect = Hero.getEquipEffectsForHero(hero);
     
     
-    if(Number(hero.Hero.console) === 1){
+    if(Number(hero.Hero.id_hero) === Elkaisar.CurrentCity.City.console){
         image_state = "images/icons/h_s_console.png";
         state_title = 'قنصل المدينة';
     }
     
-    if(Number(hero.Hero.in_city) !== 1){
+    if(Number(hero.Hero.in_city) == Elkaisar.Hero.HeroState.HERO_IN_BATTEL){
         image_state = "images/icons/h_s_attack_2.png";
+        state_title = 'خارج المدينة';
+    }
+
+    if(Number(hero.Hero.in_city) == Elkaisar.Hero.HeroState.HERO_IN_GARISON){
+        image_state = "images/icons/h_s_support.png";
         state_title = 'خارج المدينة';
     }
     
@@ -20538,18 +20102,18 @@ $(document).on("dblclick" , ".putable-equi" , function (){
 
 
 Elkaisar.Hero.getEquipOffHero = function (idEquip) {
-    return $['ajax']({
+    return $.ajax({
         'url': API_URL + '/api/AHeroEquip/putEquipOffHero',
         'data': {
             'idEquip': idEquip,
-            'token': Elkaisar['Config']['OuthToken'],
-            'server': Elkaisar['Config']['idServer']
+            token: Elkaisar['Config']['OuthToken'],
+            server: Elkaisar['Config']['idServer']
         },
         'type': 'POST',
-        'beforeSend': function (_0x357aa2) {
+        beforeSend: function (_0x357aa2) {
             waitCursor();
         },
-        'success': function (_0x1b8d26, _0x56a04b, _0x499453) {
+        success: function (_0x1b8d26, _0x56a04b, _0x499453) {
             unwaitCursor();
             if (!Elkaisar['LBase']['isJson'](_0x1b8d26)) return Elkaisar['Error'](_0x1b8d26);
             var _0x29c7b2 = JSON['parse'](_0x1b8d26);
@@ -20750,7 +20314,7 @@ Elkaisar.HeroArmy.dragArmy = function (e, el) {
     }
 
     if (Amount <= 0)
-        return  ev.preventDefault();
+        return ev.preventDefault();
 
 
     var hold_type = dragPlace.attr("army-type");
@@ -20920,7 +20484,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
     var amount = Math.floor($("#input-army-move").val());
     $("#confirmTransArmy").attr("disabled", "disabled");
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromHeroToHero`,
+        url: `${NODE_URL}/api/AHeroArmy/transArmyFromHeroToHero`,
         data: {
             amount: amount,
             idCity: Elkaisar.CurrentCity.City.id_city,
@@ -20991,7 +20555,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
     var idCity = Elkaisar.CurrentCity.City.id_city;
 
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromHeroToCity`,
+        url: `${NODE_URL}/api/AHeroArmy/transArmyFromHeroToCity`,
         data: {
             amount: amount,
             idHero: idHero,
@@ -21063,9 +20627,9 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
     var ArmyHeroPlace = $("#confirmTransArmy").attr("data-drop-army-place");
     var ArmyCityPlace = $("#confirmTransArmy").attr("data-drag-army-place");
     $("#confirmTransArmy").attr("disabled", "disabled");
-    
+
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/AHeroArmy/transArmyFromCityToHero`,
+        url: `${NODE_URL}/api/AHeroArmy/transArmyFromCityToHero`,
         data: {
             idHero: idHero,
             amount: amount,
@@ -21081,7 +20645,7 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
         beforeSend: function (xhr) {
         },
         success: function (data, textStatus, jqXHR) {
-            
+
             $("#confirmTransArmy").removeAttr("disabled");
             $("#over_lay_alert").remove();
             if (isJson(data)) {
@@ -21175,6 +20739,156 @@ $(document).on("click", "#confirmTransArmy", function () {
     } else {
         alert("Droplace Error");
     }
+
+});
+
+
+
+$(document).on("click", "#swap_army", function () {
+
+
+
+    var right_hero_id = $(".right-content").children(".army_container").attr("id_hero");
+    var left_hero_id = $(".middle-content").children(".army_container").attr("id_hero");
+    var id_city = Elkaisar.CurrentCity.City.id_city;
+    var temp_ol = $("#hero-right-ol").html();
+    var temp_o_l = $("#hero-left-ol").html();
+
+
+    var first_cap = getHeroCap(Elkaisar.CurrentHero.Army);
+    var sec_cap = getHeroCap(Elkaisar.NextHero.Army);
+    var first_max = getHeroMaxCap(Elkaisar.CurrentHero);
+    var sec_max = getHeroMaxCap(Elkaisar.NextHero);
+
+    if (first_cap === 0 && sec_cap === 0) {
+        return;
+    }
+
+    if (!heroAvailableForTask(right_hero_id) || !heroAvailableForTask(left_hero_id)) {
+        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات </br> البطل فى مهمة"));
+        return false;
+    }
+
+    if (first_cap > sec_max || sec_cap > first_max) {
+
+        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات"));
+        return;
+    }
+
+    $.ajax({
+        url: `${NODE_URL}/api/AHeroArmy/swapHeroArmy`,
+        data: {
+            idHeroRight: right_hero_id,
+            idHeroLeft: left_hero_id,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+            $("#swap_army").attr("disabled", "disabled");
+            waitCursor();
+        },
+        success: function (data, textStatus, jqXHR) {
+            unwaitCursor();
+
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonObject = JSON.parse(data);
+
+            if (JsonObject.state === 'ok') {
+
+                Elkaisar.NextHero.Army = JsonObject.HeroArmyRight;
+                Elkaisar.CurrentHero.Army = JsonObject.HeroArmyLeft;
+                $("#swap_army").removeAttr("disabled");
+                $("#hero-left-ol").html(temp_ol);
+                $("#hero-right-ol").html(temp_o_l);
+                $(".hero-1  ol li:nth-child(2) .header-2:nth-child(2)").html(sec_cap + "/" + first_max);
+                $(".hero-2  ol li:nth-child(2) .header-2:nth-child(2)").html(first_cap + "/" + sec_max);
+            } else if (JsonObject.state === "error_1")
+                alert_box.failMessage("البطل لايستوعب العدد الحالى");
+            else if (JsonObject.state === "error_2")
+                alert_box.failMessage("البطل ليس فى المدينة");
+            else if (JsonObject.state == "SysBusy")
+                alert_box.confirmMessage("النظام مشغول الان حاول فى وقت لاحق");
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+});
+
+
+
+$(document).on("click", "#left-down , #right-down", function () {
+
+    // get id_hero
+    var id_hero = $(this).attr("id_hero");
+
+    if (!heroAvailableForTask(id_hero)) {
+        $("body").append(alert_box.confirmMessage("لا يمكن نقل القوات </br> البطل فى مهمة"));
+        return false;
+
+    }
+
+    if ($(this).attr("id") === "left-down") {
+        if (getHeroCapById(Elkaisar.CurrentHero.Hero.id_hero) <= 0) {
+            return;
+        }
+    } else {
+        if (getHeroCapById(Elkaisar.NextHero.Hero.id_hero) <= 0) {
+            return;
+        }
+    }
+
+    var id_city = Elkaisar.CurrentCity.City.id_city;
+    var this_ = $(this);
+
+    $.ajax({
+        url: `${NODE_URL}/api/AHeroArmy/clearHeroArmy`,
+        data: {
+            idHero: id_hero,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+            waitCursor();
+            $("#left-down , #right-down").attr("disabled", "disabled");
+        },
+        success: function (data, textStatus, jqXHR) {
+            unwaitCursor();
+            $("#left-down , #right-down").removeAttr("disabled");
+            if (isJson(data)) {
+                var json_data = JSON.parse(data);
+            } else {
+                alert(data);
+                return;
+            }
+
+            if (json_data.state === "ok") {
+                Elkaisar.City.getCity(id_city).City = json_data.City;
+
+                Elkaisar.Hero.getHero(id_hero).Army = json_data.HeroArmy;
+
+            } else if (json_data.state === "error_1") {
+                alert_box.failMessage("البطل ليس فى المدينة");
+            }
+            else if (JsonObject.state == "SysBusy")
+                alert_box.confirmMessage("النظام مشغول الان حاول فى وقت لاحق");
+
+
+            city_profile.refresh_army_view();
+            army.refreshArmy_leftTrade();
+            army.refreshArmy_rightTrade();
+            $("#down-trade-army").html(army.downTradeArmy());
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR);
+        }
+    });
 
 });/*
  * 
@@ -21616,8 +21330,8 @@ function useMatrial(user_for, matrial, other)
                     for (var iii in Elkaisar.TimedTask.TaskList.Study)
                         if (Number(Elkaisar.TimedTask.TaskList.Study[iii].id_city) === Number(idCity))
                             delete(Elkaisar.TimedTask.TaskList.Study[iii]);
-                    for (var iii in JsonObject.JopTaskList)
-                        Elkaisar.TimedTask.TaskList.Study[JsonObject.JopTaskList[iii].id] = JsonObject.JopTaskList[iii];
+                    for (var iii in JsonObject.list)
+                        Elkaisar.TimedTask.TaskList.Study[JsonObject.list[iii].id] = JsonObject.list[iii];
                     Elkaisar.TimedTask.refreshListView();
                     buildingClick($("#dialg_box .box_header").attr("place"), true);
                 } else if (JsonObject.state === "error_0") {
@@ -21731,7 +21445,7 @@ function useMatrial(user_for, matrial, other)
         useMatrialBox(matrial);
         $("#over_lay_alert").remove();
         $("#over_lay").remove();
-    }
+    } 
 
 
 
@@ -22009,10 +21723,13 @@ function useMatrial(user_for, matrial, other)
     /*____________________________GOD_GATE____________________________________*/
 
     else if (user_for === "add-god-points") {
-
         GodGate.useBoxPoint(matrial);
     } else if (user_for === "open-fourth-cell") {
         GodGate.OpenFourthCell(other);
+    }else if(user_for == "addArenaExp"){  
+        Elkaisar.ArenaChallange.addExpByBox(matrial);
+    }else if(user_for == "addArenaAtt"){  
+        Elkaisar.ArenaChallange.addAttByBox(matrial);
     }
 
 }
@@ -22143,7 +21860,7 @@ function buyMatrial(matrial, amount)
 
     $.ajax({
 
-        url: `${API_URL}/api/AItem/buyItem`,
+        url: `${NODE_URL}/api/AItem/buyItem`,
         data: {
             item: matrial,
             amount: amount,
@@ -22151,7 +21868,7 @@ function buyMatrial(matrial, amount)
             server: Elkaisar.Config.idServer
 
         },
-        type: 'POST',
+        type: 'GET',
         success: function (data, textStatus, jqXHR) {
 
             if (!Elkaisar.LBase.isJson(data))
@@ -22175,6 +21892,8 @@ function buyMatrial(matrial, amount)
                 });
                 $(".close-alert_container").click();
                 alert_box.succesMessage("تمت عملية الشراء بنجاح");
+            }else{
+                alert(data);
             }
 
         },
@@ -22268,18 +21987,31 @@ function showMatrialGiftList(list) {
 
     var list_item = "";
     for (var iii in list) {
-        list_item += `<li>
-                        <div class="image">
-                            <img  src="${Elkaisar.BaseData.Items[list[iii].Item].image}"/>
-                        </div>
-                        <div class="amount stroke">
-                            ${list[iii].amount} X
-                        </div>
-                    </li>`;
+
+        if(list[iii].prizeType == "E"){
+            const Equip = list[iii].Item.split("_");
+            list_item += `<li>
+                            <div class="image">
+                                <img  src="${Equipment.getImage(Equip[0], Equip[1], Equip[2])}"/>
+                            </div>
+                            <div class="amount stroke">
+                                ${list[iii].amount} X
+                            </div>
+                        </li>`;
+        }else{
+            list_item += `<li>
+                <div class="image">
+                    <img  src="${Matrial.image(list[iii].Item)}"/>
+                </div>
+                <div class="amount stroke">
+                    ${list[iii].amount} X
+                </div>
+            </li>`;
+        }
+        
     }
 
-
-
+    
     var mat_list = `<div id="over_lay">
                         <div id="select_from">
                             <div class="head_bar">
@@ -22359,12 +22091,12 @@ var Matrial = {
     }
 
 };
-Matrial.prizeToString = function (data) {
+Matrial.prizeToString = function (PrizeList) {
 
     var stringArray = [];
-    for (var jjj in data.WinPrize) {
+    for (var jjj in PrizeList) {
 
-        stringArray.push(` x ${data.WinPrize[jjj].amount} ${this.getMatrialName(data.WinPrize[jjj].Item)}`);
+        stringArray.push(` x ${PrizeList[jjj].amount} ${this.getMatrialName(PrizeList[jjj].Item)}`);
     }
 
 
@@ -22416,14 +22148,16 @@ Matrial.itemUnitWidget = function (Item, isMall = false)
     return list + tail + "";
 };
 
-Elkaisar.Item.useItemFunc = function ()
-{
 
-    Elkaisar.BaseData.Items[`motiv_60`][`UseFunc`] = function (amount)
-    {
+$(document).on("click", "#buyNewItem", function () {
+    var item = $(this).attr("data-item-name");
+    buyMatrial(item);
+});Elkaisar.Item.useItemFunc = function () {
+
+    Elkaisar.BaseData.Items[`motiv_60`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMotivSpeech`,
+            url: `${NODE_URL}/api/AItemUse/useMotivSpeech`,
             type: 'POST',
             data: {
                 Item: "motiv_60",
@@ -22435,8 +22169,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                     Elkaisar.Building.refreshView();
                 }
@@ -22445,11 +22178,10 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`motiv_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`motiv_7`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMotivSpeech`,
+            url: `${NODE_URL}/api/AItemUse/useMotivSpeech`,
             type: 'POST',
             data: {
                 Item: "motiv_7",
@@ -22461,8 +22193,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Fixed.refresePlayerStateList();
                     Elkaisar.Building.refreshView();
                 }
@@ -22471,11 +22202,10 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`prot_pop`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`prot_pop`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useProtPop`,
+            url: `${NODE_URL}/api/AItemUse/useProtPop`,
             type: 'POST',
             data: {
                 Item: "prot_pop",
@@ -22488,8 +22218,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.CurrentCity.City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -22498,11 +22227,10 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`peace`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`peace`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useCeaseFire`,
+            url: `${NODE_URL}/api/AItemUse/useCeaseFire`,
             type: 'POST',
             data: {
                 Item: "peace",
@@ -22514,23 +22242,22 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
         });
 
     };
-    Elkaisar.BaseData.Items[`a_play`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`a_play`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useTheatrics`,
+            url: `${NODE_URL}/api/AItemUse/useTheatrics`,
             type: 'POST',
             data: {
                 Item: "a_play",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22538,8 +22265,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.CurrentCity.City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -22548,11 +22274,10 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`medical_moun`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`medical_moun`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMedicalStatue`,
+            url: `${NODE_URL}/api/AItemUse/useMedicalStatue`,
             type: 'POST',
             data: {
                 Item: "medical_moun",
@@ -22564,8 +22289,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22573,11 +22297,10 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`mediacl_statue`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`mediacl_statue`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMedicalStatue`,
+            url: `${NODE_URL}/api/AItemUse/useMedicalStatue`,
             type: 'POST',
             data: {
                 Item: "mediacl_statue",
@@ -22589,8 +22312,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22598,11 +22320,10 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`sparta_stab`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`sparta_stab`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useAttackAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useAttackAdvancer`,
             type: 'POST',
             data: {
                 Item: "sparta_stab",
@@ -22614,8 +22335,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22623,11 +22343,10 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`qulinds_shaft`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`qulinds_shaft`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useAttackAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useAttackAdvancer`,
             type: 'POST',
             data: {
                 Item: "qulinds_shaft",
@@ -22639,8 +22358,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22648,11 +22366,10 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`marmlo_helmet`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`marmlo_helmet`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useDefenceAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useDefenceAdvancer`,
             type: 'POST',
             data: {
                 Item: "marmlo_helmet",
@@ -22664,8 +22381,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22673,11 +22389,10 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`march_prot`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`march_prot`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useDefenceAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useDefenceAdvancer`,
             type: 'POST',
             data: {
                 Item: "march_prot",
@@ -22689,8 +22404,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22702,18 +22416,18 @@ Elkaisar.Item.useItemFunc = function ()
         Elkaisar['BaseData']['Items']['random_move']['UseFunc'] = function (amount) {
             return alert_box['randomMove'](function () {
                 var Province = $('#move-city-to .select-list')['attr']('data-value');
-                return $['ajax']({
-                    'url': API_URL + '/api/AItemUse/useRandomMove',
+                return $.ajax({
+                    'url': NODE_URL + '/api/AItemUse/useRandomMove',
                     'type': 'POST',
                     'data': {
                         'Item': 'random_move',
                         'amount': 1,
                         'idCity': Elkaisar['CurrentCity']['City']['id_city'],
-                        'token': Elkaisar['Config']['OuthToken'],
-                        'server': Elkaisar['Config']['idServer'],
+                        token: Elkaisar['Config']['OuthToken'],
+                        server: Elkaisar['Config']['idServer'],
                         'province': Province
                     },
-                    'success': function (_0x73e02b, _0x3bf26e, _0x2783a1) {
+                    success: function (_0x73e02b, _0x3bf26e, _0x2783a1) {
                         if (!Elkaisar['LBase']['isJson'](_0x73e02b))
                             return Elkaisar['LBase']['Error'](_0x73e02b);
                         var JsonData = JSON['parse'](_0x73e02b);
@@ -22721,11 +22435,16 @@ Elkaisar.Item.useItemFunc = function ()
                             Elkaisar['City']['getCityBase']()['done'](function (_0x1f81a0) {
                                 $('#city-data .coords')['html']('[ ' + Elkaisar['CurrentCity']['City']['y'] + ' , ' + Elkaisar['CurrentCity']['City']['x'] + ' ]');
                                 alert_box['succesMessage']('قد تم نقل مدينتك بنجاح الى الاحداثيات الاتية <br/>' + '[ ' + Elkaisar['CurrentCity']['City']['x'] + ' , ' + Elkaisar['CurrentCity']['City']['y'] + ' ]');
-                                if ($('#WorldCity')['attr']('data-view') === 'world') {
-                                    $('#x_coord-input input')['val'](Elkaisar['CurrentCity']['City']['x']);
-                                    $('#y_coord-input input')['val'](Elkaisar['CurrentCity']['City']['y']);
-                                    $('#nav-btn button')['click']();
-                                }
+
+                                Elkaisar.World.Map.getWorldCity().done(function () {
+                                    if ($('#WorldCity')['attr']('data-view') === 'world') {
+                                        $('#x_coord-input input')['val'](Elkaisar['CurrentCity']['City']['x']);
+                                        $('#y_coord-input input')['val'](Elkaisar['CurrentCity']['City']['y']);
+                                        $('#nav-btn button')['click']();
+                                    }
+                                    $(".close-alert_container").click();
+                                    $(".close_dialog").click();
+                                });
                             });
                         else if (JsonData['state'] === 'error_no_place_empty') {
                             setTimeout(function () {
@@ -22740,11 +22459,10 @@ Elkaisar.Item.useItemFunc = function ()
             });
         };
 
-    Elkaisar.BaseData.Items[`certain_move`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`certain_move`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useCertainMove`,
+            url: `${NODE_URL}/api/AItemUse/useCertainMove`,
             type: 'POST',
             data: {
                 Item: "certain_move",
@@ -22760,19 +22478,22 @@ Elkaisar.Item.useItemFunc = function ()
                     return Elkaisar.LBase.Error(data);
 
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     alert_box.succesMessage("قد تم نقل مدينتك بنجاح الى الاحداثيات الاتية <br/>" + "[ " + Elkaisar.CurrentCity.City.x + " , " + Elkaisar.CurrentCity.City.y + " ]");
                     Elkaisar.City.getCityBase().done(function (data) {
 
                         $("#city-data .coords").html("[ " + Elkaisar.CurrentCity.City.y + " , " + Elkaisar.CurrentCity.City.x + " ]");
 
-                        if ($("#WorldCity").attr("data-view") === "world") {
-                            $("#x_coord-input input").val(Elkaisar.CurrentCity.City.x);
-                            $("#y_coord-input input").val(Elkaisar.CurrentCity.City.y);
-                            $("#nav-btn button").click();
-                        }
+                        Elkaisar.World.Map.getWorldCity().done(function () {
+                            if ($('#WorldCity')['attr']('data-view') === 'world') {
+                                $('#x_coord-input input')['val'](Elkaisar['CurrentCity']['City']['x']);
+                                $('#y_coord-input input')['val'](Elkaisar['CurrentCity']['City']['y']);
+                                $('#nav-btn button')['click']();
+                            }
 
+                            $(".close-alert_container").click();
+                            $(".close_dialog").click();
+                        });
                     });
 
                 } else if (JsonObject.state === "error_no_place_empty") {
@@ -22788,16 +22509,16 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`wheat_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wheat_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useWheat`,
+            url: `${NODE_URL}/api/AItemUse/useWheat`,
             type: 'POST',
             data: {
                 Item: "wheat_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22805,8 +22526,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22816,16 +22536,16 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`wheat_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wheat_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useWheat`,
+            url: `${NODE_URL}/api/AItemUse/useWheat`,
             type: 'POST',
             data: {
                 Item: "wheat_7",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22833,8 +22553,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22844,16 +22563,16 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`stone_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useStone`,
+            url: `${NODE_URL}/api/AItemUse/useStone`,
             type: 'POST',
             data: {
                 Item: "stone_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22861,8 +22580,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22872,16 +22590,16 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`stone_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useStone`,
+            url: `${NODE_URL}/api/AItemUse/useStone`,
             type: 'POST',
             data: {
                 Item: "stone_7",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22889,8 +22607,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22900,16 +22617,16 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`wood_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useWood`,
+            url: `${NODE_URL}/api/AItemUse/useWood`,
             type: 'POST',
             data: {
                 Item: "wood_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22917,8 +22634,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22928,16 +22644,16 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`wood_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useWood`,
+            url: `${NODE_URL}/api/AItemUse/useWood`,
             type: 'POST',
             data: {
                 Item: "wood_7",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22945,8 +22661,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22956,16 +22671,16 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`metal_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMetal`,
+            url: `${NODE_URL}/api/AItemUse/useMetal`,
             type: 'POST',
             data: {
                 Item: "metal_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22973,8 +22688,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22984,16 +22698,16 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`metal_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMetal`,
+            url: `${NODE_URL}/api/AItemUse/useMetal`,
             type: 'POST',
             data: {
                 Item: "metal_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -23001,8 +22715,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -23012,16 +22725,16 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`coin_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useCoin`,
+            url: `${NODE_URL}/api/AItemUse/useCoin`,
             type: 'POST',
             data: {
                 Item: "coin_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -23029,8 +22742,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -23040,16 +22752,16 @@ Elkaisar.Item.useItemFunc = function ()
 
     };
 
-    Elkaisar.BaseData.Items[`coin_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useCoin`,
+            url: `${NODE_URL}/api/AItemUse/useCoin`,
             type: 'POST',
             data: {
                 Item: "coin_7",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -23057,8 +22769,7 @@ Elkaisar.Item.useItemFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -23072,17 +22783,40 @@ Elkaisar.Item.useItemFunc = function ()
     if (Elkaisar['BaseData']['Items']['gold_5'])
         Elkaisar['BaseData']['Items']['gold_5']['UseFunc'] = function (_0x4813fb) {
             var _0x329520 = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_5',
                     'amount': _0x4813fb,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0xf94588, _0x53adc7, _0xd22101) {
+                success: function (_0xf94588, _0x53adc7, _0xd22101) {
+                    if (!Elkaisar['LBase']['isJson'](_0xf94588))
+                        Elkaisar['LBase']['Error'](_0xf94588);
+                    var _0x13126a = JSON['parse'](_0xf94588);
+                    _0x13126a['state'] === 'ok' && Player_profile['getPlayerBaseData']();
+                }
+            });
+        };
+
+
+    if (Elkaisar['BaseData']['Items']['gold_1'])
+        Elkaisar['BaseData']['Items']['gold_1']['UseFunc'] = function (_0x4813fb) {
+            var _0x329520 = Elkaisar['CurrentCity']['City']['id_city'];
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
+                'type': 'POST',
+                'data': {
+                    'Item': 'gold_1',
+                    'amount': _0x4813fb,
+                    'idCity': Elkaisar['CurrentCity']['idCity'],
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
+                },
+                success: function (_0xf94588, _0x53adc7, _0xd22101) {
                     if (!Elkaisar['LBase']['isJson'](_0xf94588))
                         Elkaisar['LBase']['Error'](_0xf94588);
                     var _0x13126a = JSON['parse'](_0xf94588);
@@ -23093,17 +22827,17 @@ Elkaisar.Item.useItemFunc = function ()
     if (Elkaisar['BaseData']['Items']['gold_10'])
         Elkaisar['BaseData']['Items']['gold_10']['UseFunc'] = function (_0x3fb720) {
             var _0x1f1a2e = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_10',
                     'amount': _0x3fb720,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x334d3d, _0x108d44, _0x23e97a) {
+                success: function (_0x334d3d, _0x108d44, _0x23e97a) {
                     if (!Elkaisar['LBase']['isJson'](_0x334d3d))
                         Elkaisar['LBase']['Error'](_0x334d3d);
                     var _0x5dcd18 = JSON['parse'](_0x334d3d);
@@ -23114,17 +22848,17 @@ Elkaisar.Item.useItemFunc = function ()
     if (Elkaisar['BaseData']['Items']['gold_25'])
         Elkaisar['BaseData']['Items']['gold_25']['UseFunc'] = function (_0x575893) {
             var _0x34c16d = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_25',
                     'amount': _0x575893,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x5b9d65, _0x4c2bb7, _0x2c385f) {
+                success: function (_0x5b9d65, _0x4c2bb7, _0x2c385f) {
                     if (!Elkaisar['LBase']['isJson'](_0x5b9d65))
                         Elkaisar['LBase']['Error'](_0x5b9d65);
                     var _0x1c3177 = JSON['parse'](_0x5b9d65);
@@ -23135,17 +22869,17 @@ Elkaisar.Item.useItemFunc = function ()
     if (Elkaisar['BaseData']['Items']['gold_75'])
         Elkaisar['BaseData']['Items']['gold_75']['UseFunc'] = function (_0x147f7f) {
             var _0x5a71c2 = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_75',
                     'amount': _0x147f7f,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x78da2e, _0x297788, _0x5cd0f8) {
+                success: function (_0x78da2e, _0x297788, _0x5cd0f8) {
                     if (!Elkaisar['LBase']['isJson'](_0x78da2e))
                         Elkaisar['LBase']['Error'](_0x78da2e);
                     var _0x1aaf85 = JSON['parse'](_0x78da2e);
@@ -23156,17 +22890,17 @@ Elkaisar.Item.useItemFunc = function ()
     if (Elkaisar['BaseData']['Items']['gold_100'])
         Elkaisar['BaseData']['Items']['gold_100']['UseFunc'] = function (_0x11914b) {
             var _0x291633 = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_100',
                     'amount': _0x11914b,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x3f1d5f, _0x1d71cb, _0x1498d4) {
+                success: function (_0x3f1d5f, _0x1d71cb, _0x1498d4) {
                     if (!Elkaisar['LBase']['isJson'](_0x3f1d5f))
                         Elkaisar['LBase']['Error'](_0x3f1d5f);
                     var _0x4f2b43 = JSON['parse'](_0x3f1d5f);
@@ -23177,17 +22911,17 @@ Elkaisar.Item.useItemFunc = function ()
     if (Elkaisar['BaseData']['Items']['gold_500'])
         Elkaisar['BaseData']['Items']['gold_500']['UseFunc'] = function (_0x197e5c) {
             var _0x10da0d = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_500',
                     'amount': _0x197e5c,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x4f6b0f, _0x543f59, _0x4dfda6) {
+                success: function (_0x4f6b0f, _0x543f59, _0x4dfda6) {
                     if (!Elkaisar['LBase']['isJson'](_0x4f6b0f))
                         Elkaisar['LBase']['Error'](_0x4f6b0f);
                     var _0x4c1ef8 = JSON['parse'](_0x4f6b0f);
@@ -23198,17 +22932,17 @@ Elkaisar.Item.useItemFunc = function ()
     if (Elkaisar['BaseData']['Items']['gold_1000'])
         Elkaisar['BaseData']['Items']['gold_1000']['UseFunc'] = function (_0x560420) {
             var _0x32a8fd = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_1000',
                     'amount': _0x560420,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x3ecc5d, _0x5eceef, _0x456d9b) {
+                success: function (_0x3ecc5d, _0x5eceef, _0x456d9b) {
                     if (!Elkaisar['LBase']['isJson'](_0x3ecc5d))
                         Elkaisar['LBase']['Error'](_0x3ecc5d);
                     var _0x1912f1 = JSON['parse'](_0x3ecc5d);
@@ -23217,6 +22951,199 @@ Elkaisar.Item.useItemFunc = function ()
             });
         };
 
+
+        Elkaisar.BaseData.Items[`arena_attempt_1`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
+                type: 'POST',
+                data: {
+                    Item: "arena_attempt_1",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaField").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 1 محاولة للميدان");
+                    }
+                }
+            });
+    
+        };
+
+        Elkaisar.BaseData.Items[`arena_attempt_5`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
+                type: 'POST',
+                data: {
+                    Item: "arena_attempt_5",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaField").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 5 محاولة للميدان");
+                    }
+                }
+            });
+    
+        };
+
+        Elkaisar.BaseData.Items[`arena_attempt_10`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
+                type: 'POST',
+                data: {
+                    Item: "arena_attempt_10",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaField").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 10 محاولة للميدان");
+                    }
+                }
+            });
+    
+        };
+
+
+        Elkaisar.BaseData.Items[`arena_exp_1`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                type: 'POST',
+                data: {
+                    Item: "arena_exp_1",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaTroops").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 1 خبرة للميدان");
+                        
+                    }
+                }
+            });
+    
+        };
+
+        Elkaisar.BaseData.Items[`arena_exp_5`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                type: 'POST',
+                data: {
+                    Item: "arena_exp_5",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaTroops").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 5 خبرة للميدان");
+                        
+                    }
+                }
+            });
+    
+        };
+
+        
+        Elkaisar.BaseData.Items[`arena_exp_10`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                type: 'POST',
+                data: {
+                    Item: "arena_exp_10",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaTroops").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 10 خبرة للميدان");
+                    }
+                }
+            });
+    
+        };
+
+        Elkaisar.BaseData.Items[`arena_exp_25`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                type: 'POST',
+                data: {
+                    Item: "arena_exp_25",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaTroops").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 25 خبرة للميدان");
+                    }
+                }
+            });
+    
+        };
 };
 
 
@@ -23225,12 +23152,11 @@ Elkaisar.Item.useItemFunc = function ()
 Elkaisar.Item.useItemBoxFunc = function () {
 
 
-    Elkaisar.BaseData.Items[`gift_box`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`gift_box`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useGiftBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useGiftBox`,
             type: 'POST',
             data: {
                 Item: "gift_box",
@@ -23242,8 +23168,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23253,12 +23178,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`wood_box`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_box`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useWoodBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useWoodBox`,
             type: 'POST',
             data: {
                 Item: "wood_box",
@@ -23270,8 +23194,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23281,12 +23204,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`golden_box`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`golden_box`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useGoldenBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useGoldenBox`,
             type: 'POST',
             data: {
                 Item: "golden_box",
@@ -23298,8 +23220,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23309,12 +23230,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`beginner_back_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_1",
@@ -23326,8 +23246,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23336,12 +23255,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_2`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_2`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_2",
@@ -23353,8 +23271,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23363,12 +23280,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_3`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_3`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_3",
@@ -23380,8 +23296,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23390,12 +23305,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_4`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_4`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_4",
@@ -23407,8 +23321,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23417,12 +23330,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_5`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_5`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_5",
@@ -23434,8 +23346,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23444,12 +23355,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_6`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_6`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_6",
@@ -23461,8 +23371,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23471,12 +23380,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_7",
@@ -23488,8 +23396,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23498,12 +23405,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_8`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_8`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_8",
@@ -23515,8 +23421,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23525,12 +23430,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_9`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_9`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_9",
@@ -23542,8 +23446,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23553,12 +23456,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`beginner_back_10`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_10`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_10",
@@ -23570,8 +23472,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23581,12 +23482,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`army_box`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_box`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useArmyBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useArmyBox`,
             type: 'POST',
             data: {
                 Item: "army_box",
@@ -23599,8 +23499,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_army_view();
                     city_profile.refresh_resource_view();
@@ -23609,12 +23508,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_3p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_3p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_3p",
@@ -23628,8 +23526,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23640,12 +23537,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_4p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_4p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_4p",
@@ -23658,8 +23554,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23670,12 +23565,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_5p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_5p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_5p",
@@ -23688,8 +23582,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23700,12 +23593,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_6p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_6p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_6p",
@@ -23718,8 +23610,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23730,12 +23621,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_7p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_7p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_7p",
@@ -23748,8 +23638,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23760,12 +23649,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_8p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_8p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_8p",
@@ -23778,8 +23666,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23790,12 +23677,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`coin_a`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_a`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_a",
@@ -23808,8 +23694,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23817,12 +23702,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`coin_b`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_b`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_b",
@@ -23835,8 +23719,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23844,12 +23727,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`coin_c`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_c`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_c",
@@ -23862,8 +23744,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23871,12 +23752,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`coin_d`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_d`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_d",
@@ -23889,8 +23769,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23898,12 +23777,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`food_a`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`food_a`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_a",
@@ -23916,8 +23794,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23925,12 +23802,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`food_b`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`food_b`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_b",
@@ -23943,8 +23819,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23952,12 +23827,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`food_c`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`food_c`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_c",
@@ -23970,8 +23844,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23979,12 +23852,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`food_d`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`food_d`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_d",
@@ -23997,8 +23869,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24006,12 +23877,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`wood_a`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_a`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_a",
@@ -24024,8 +23894,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24033,12 +23902,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`wood_b`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_b`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_b",
@@ -24051,8 +23919,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24060,12 +23927,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`wood_c`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_c`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_c",
@@ -24078,8 +23944,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24087,12 +23952,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`wood_d`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_d`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_d",
@@ -24105,8 +23969,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24114,12 +23977,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`stone_a`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_a`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_a",
@@ -24132,8 +23994,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24141,12 +24002,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`stone_b`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_b`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_b",
@@ -24159,8 +24019,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24168,12 +24027,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`stone_c`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_c`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_c",
@@ -24186,8 +24044,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24195,12 +24052,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`stone_d`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_d`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_d",
@@ -24213,8 +24069,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24222,12 +24077,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`metal_a`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_a`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_a",
@@ -24240,8 +24094,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24251,12 +24104,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
 
 
 
-    Elkaisar.BaseData.Items[`metal_b`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_b`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_b",
@@ -24269,8 +24121,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24278,12 +24129,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`metal_c`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_c`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_c",
@@ -24296,8 +24146,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24305,12 +24154,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`metal_d`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_d`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_d",
@@ -24323,8 +24171,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -24334,14 +24181,12 @@ Elkaisar.Item.useItemBoxFunc = function () {
 
 };
 
-Elkaisar.Item.useArmyBackFunc = function ()
-{
-    Elkaisar.BaseData.Items[`army_all_1`][`UseFunc`] = function (amount)
-    {
+Elkaisar.Item.useArmyBackFunc = function () {
+    Elkaisar.BaseData.Items[`army_all_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackMini`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackMini`,
             type: 'POST',
             data: {
                 Item: "army_all_1",
@@ -24354,8 +24199,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24364,12 +24208,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_all_2`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_all_2`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackMedium`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackMedium`,
             type: 'POST',
             data: {
                 Item: "army_all_2",
@@ -24382,8 +24225,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24392,12 +24234,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_all_3`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_all_3`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackLarge`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackLarge`,
             type: 'POST',
             data: {
                 Item: "army_all_3",
@@ -24410,8 +24251,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24420,12 +24260,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_a_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_a_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackA100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackA100`,
             type: 'POST',
             data: {
                 Item: "army_a_100",
@@ -24438,8 +24277,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24447,12 +24285,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
             }
         });
     };
-    Elkaisar.BaseData.Items[`army_b_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_b_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackB100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackB100`,
             type: 'POST',
             data: {
                 Item: "army_b_100",
@@ -24465,8 +24302,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24475,12 +24311,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_c_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_c_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackC100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackC100`,
             type: 'POST',
             data: {
                 Item: "army_c_100",
@@ -24493,8 +24328,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24503,12 +24337,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_d_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_d_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackD100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackD100`,
             type: 'POST',
             data: {
                 Item: "army_d_100",
@@ -24521,8 +24354,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24531,12 +24363,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_e_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_e_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackE100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackE100`,
             type: 'POST',
             data: {
                 Item: "army_e_100",
@@ -24549,8 +24380,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24559,12 +24389,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_f_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_f_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackF100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackF100`,
             type: 'POST',
             data: {
                 Item: "army_f_100",
@@ -24577,8 +24406,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24587,12 +24415,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_a_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_a_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackA1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackA1000`,
             type: 'POST',
             data: {
                 Item: "army_a_1000",
@@ -24605,8 +24432,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24614,12 +24440,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
             }
         });
     };
-    Elkaisar.BaseData.Items[`army_b_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_b_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackB1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackB1000`,
             type: 'POST',
             data: {
                 Item: "army_b_1000",
@@ -24632,8 +24457,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24642,12 +24466,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_c_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_c_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackC1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackC1000`,
             type: 'POST',
             data: {
                 Item: "army_c_100",
@@ -24660,8 +24483,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24670,12 +24492,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_d_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_d_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackD1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackD1000`,
             type: 'POST',
             data: {
                 Item: "army_d_1000",
@@ -24688,8 +24509,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24698,12 +24518,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_e_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_e_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackE1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackE1000`,
             type: 'POST',
             data: {
                 Item: "army_e_1000",
@@ -24716,8 +24535,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24726,12 +24544,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_f_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_f_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackF1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackF1000`,
             type: 'POST',
             data: {
                 Item: "army_f_1000",
@@ -24744,8 +24561,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -25625,6 +25441,8 @@ var Trading = {
                   
                 }else if(req[iii].type === "matrial"){
                     image = Matrial.image(req[iii].matrial) ;
+                }else if(req[iii].type === "equip"){
+                    image = Equipment.getImage(req[iii].Equip, req[iii].Part, req[iii].lvl);
                 }
                 
                 req_list += `<li class="pull-L">
@@ -25648,9 +25466,9 @@ var Trading = {
                 player_amount = Matrial.getPlayerAmount(reword.matrial);
                
             } else if(reword.type === "equip"){
-                prize_image = Equipment.getImage(reword.equip , reword.part, reword.lvl);
-                prize_name  = Equipment.getName(reword.equip , reword.part, reword.lvl);
-                player_amount = Equipment.getPlayerAmount(reword.equip , reword.part, reword.lvl);
+                prize_image = Equipment.getImage(reword.Equip , reword.Part, reword.lvl);
+                prize_name  = Equipment.getName(reword.Equip , reword.Part, reword.lvl);
+                player_amount = Equipment.getPlayerAmount(reword.Equip , reword.Part, reword.lvl);
             }
 
          
@@ -26804,172 +26622,164 @@ $(document).on("click", ".fireColonizer", function () {
             }
         });
     });
-});Elkaisar.Item.ItemBox = function(Box, pageOffset = 1)
-{
-    var ListString    = "";
-    var ListOfItem    = Matrial.listOf(Box);
-    var FilteredList  = {};
+});Elkaisar.Item.ItemBox = function (Box, pageOffset = 1) {
+    var ListString = "";
+    var ListOfItem = Matrial.listOf(Box);
+    var FilteredList = {};
     var currentOffset = 0;
-    
-    var maxPageCount = Math.ceil(Object.keys(ListOfItem).filter(It => Matrial.getPlayerAmount(It) > 0).length/12);
-    
-    if(pageOffset > maxPageCount)
+
+    var maxPageCount = Math.ceil(Object.keys(ListOfItem).filter(It => Matrial.getPlayerAmount(It) > 0).length / 12);
+
+    if (pageOffset > maxPageCount)
         return "";
-    if(pageOffset < 1)
+    if (pageOffset < 1)
         return "";
-   
-    
-    
-    
-    $("#page-nav-holder").html(`${pageOffset}/${Math.ceil(Object.keys(ListOfItem).filter(It => Matrial.getPlayerAmount(It) > 0).length/12)}`);
+
+
+
+
+    $("#page-nav-holder").html(`${pageOffset}/${Math.ceil(Object.keys(ListOfItem).filter(It => Matrial.getPlayerAmount(It) > 0).length / 12)}`);
     $("#nav-item-box-right").attr("data-current-offset", pageOffset);
     $("#nav-item-box-left").attr("data-current-offset", pageOffset);
     $("#dialg_box .right-content .total").attr("mat_table", Box);
     $(".box_content").attr("data-page-for", "box-item");
-    for(var iii in ListOfItem)
-    {
-        
-        if(Matrial.getPlayerAmount(iii) <= 0)
+    for (var iii in ListOfItem) {
+
+        if (Matrial.getPlayerAmount(iii) <= 0)
             continue;
         currentOffset++;
-        
-        if(currentOffset >  pageOffset*12)
+
+        if (currentOffset > pageOffset * 12)
             break;
-        if(currentOffset <= (pageOffset - 1) *12)
+        if (currentOffset <= (pageOffset - 1) * 12)
             continue;
-        
+
         FilteredList[iii] = ListOfItem[iii];
     }
-    
+
     for (var iii in FilteredList)
         ListString += Matrial.itemUnitWidget(iii, false);
-    
+
     return ListString;
-    
+
 };
 
 
-Elkaisar.Item.ItemMallBox = function(Box, pageOffset = 1)
-{
-    
-    var ListString    = "";
-    var ListOfItem    = Matrial.listOf(Box);
-    var FilteredList  = {};
+Elkaisar.Item.ItemMallBox = function (Box, pageOffset = 1) {
+
+    var ListString = "";
+    var ListOfItem = Matrial.listOf(Box);
+    var FilteredList = {};
     var currentOffset = 0;
-    
-    var maxPageCount = Math.ceil(Object.keys(ListOfItem).filter(It =>ListOfItem[It].gold > 0).length/12);
-    
-    if(pageOffset > maxPageCount)
-        return ;
-    if(pageOffset < 1)
-        return ;
-    
-    $("#page-nav-holder").html(`${pageOffset}/${Math.ceil(Object.keys(ListOfItem).filter(It =>ListOfItem[It].gold > 0).length/12)}`);
+
+    var maxPageCount = Math.ceil(Object.keys(ListOfItem).filter(It => ListOfItem[It].gold > 0).length / 12);
+
+    if (pageOffset > maxPageCount)
+        return;
+    if (pageOffset < 1)
+        return;
+
+    $("#page-nav-holder").html(`${pageOffset}/${Math.ceil(Object.keys(ListOfItem).filter(It => ListOfItem[It].gold > 0).length / 12)}`);
     $("#nav-item-box-right").attr("data-current-offset", pageOffset);
     $("#nav-item-box-left").attr("data-current-offset", pageOffset);
     $("#dialg_box .right-content .total").attr("mat_table", Box);
     $(".box_content").attr("data-page-for", "mall");
-    for(var iii in ListOfItem)
-    {
-        
-        if(ListOfItem[iii].gold <= 0)
+    for (var iii in ListOfItem) {
+
+        if (ListOfItem[iii].gold <= 0)
             continue;
         currentOffset++;
-        
-        if(currentOffset >  pageOffset*12)
+
+        if (currentOffset > pageOffset * 12)
             break;
-        if(currentOffset <= (pageOffset - 1) *12)
+        if (currentOffset <= (pageOffset - 1) * 12)
             continue;
-        
+
         FilteredList[iii] = ListOfItem[iii];
     }
-    
+
     for (var iii in FilteredList)
         ListString += Matrial.itemUnitWidget(iii, true);
-    
+
     return ListString;
-    
+
 };
 
-Elkaisar.Item.ItemExchangeBox = function(Box, pageOffset = 1)
-{
-    
-    var ListString    = "";
-    var FilteredList  = [];
+Elkaisar.Item.ItemExchangeBox = function (Box, pageOffset = 1) {
+
+    var ListString = "";
+    var FilteredList = [];
     var currentOffset = 0;
-    
-    var maxPageCount = Math.ceil(EXCHANGE_ITEM.filter(It => It.cat  === Box || Box === "trade-all").length/9);
-    
-    if(pageOffset > maxPageCount)
+
+    var maxPageCount = Math.ceil(EXCHANGE_ITEM.filter(It => It.cat === Box || Box === "trade-all").length / 9);
+
+    if (pageOffset > maxPageCount)
         return "";
-    if(pageOffset < 1)
+    if (pageOffset < 1)
         return "";
-    
+
     $("#page-nav-holder").html(`${pageOffset}/${maxPageCount}`);
     $("#nav-item-box-right").attr("data-current-offset", pageOffset);
     $("#nav-item-box-left").attr("data-current-offset", pageOffset);
     $("#dialg_box .right-content .total").attr("mat_table", Box);
     $(".box_content").attr("data-page-for", "exchange");
-    
-   
-            
-    for(var iii in EXCHANGE_ITEM)
-    {
+
+
+
+    for (var iii in EXCHANGE_ITEM) {
         currentOffset++;
-        
-        if(currentOffset >  pageOffset*9)
+
+        if (currentOffset > pageOffset * 9)
             break;
-        if(currentOffset <= (pageOffset - 1) *9)
+        if (currentOffset <= (pageOffset - 1) * 9)
             continue;
-        
+
         FilteredList.push(EXCHANGE_ITEM[iii]);
     }
-    
+
     for (var iii in FilteredList)
         ListString += Trading.content_unit(FilteredList[iii]);
-    
-    
+
+
     return ListString;
-    
+
 };
 
-Elkaisar.Item.EquipBox = function(pageOffset = 1)
-{
+Elkaisar.Item.EquipBox = function (pageOffset = 1) {
 
     var all_equip = "";
-    var FilteredList  = [];
+    var FilteredList = [];
     var currentOffset = 0;
-    
-    var maxPageCount = Math.ceil(Elkaisar.DPlayer.Equip.filter(It => !It.id_hero).length/12);
-    
-    if(pageOffset > maxPageCount)
-        return ;
-    if(pageOffset < 1)
-        return ;
-    
+
+    var maxPageCount = Math.ceil(Elkaisar.DPlayer.Equip.filter(It => !It.id_hero).length / 12);
+
+    if (pageOffset > maxPageCount)
+        return;
+    if (pageOffset < 1)
+        return;
+
     $("#page-nav-holder").html(`${pageOffset}/${maxPageCount}`);
     $("#nav-item-box-right").attr("data-current-offset", pageOffset);
     $("#nav-item-box-left").attr("data-current-offset", pageOffset);
     $("#dialg_box .right-content .total").attr("mat_table", "equip");
     $(".box_content").attr("data-page-for", "equip");
-    
-     for(var iii in Elkaisar.DPlayer.Equip)
-    {
-        
-        if(Elkaisar.DPlayer.Equip[iii].id_hero)
+
+    for (var iii in Elkaisar.DPlayer.Equip) {
+
+        if (Elkaisar.DPlayer.Equip[iii].id_hero)
             continue;
         currentOffset++;
-        
-        if(currentOffset >  pageOffset*12)
+
+        if (currentOffset > pageOffset * 12)
             break;
-        if(currentOffset <= (pageOffset - 1) *12)
+        if (currentOffset <= (pageOffset - 1) * 12)
             continue;
-        
+
         FilteredList.push(Elkaisar.DPlayer.Equip[iii]);
     }
-    
+
     for (var iii in FilteredList)
-         all_equip += `  <li class="matrial_unit" data-id-equip="${FilteredList[iii].id_equip}">
+        all_equip += `  <li class="matrial_unit" data-id-equip="${FilteredList[iii].id_equip}">
                             <img src=" images/style/Border-up.png" class="border_up"/>
                             <div class="img-inside-box">
                                  <img src="${Equipment.getImage(FilteredList[iii].type, FilteredList[iii].part, FilteredList[iii].lvl)}" class="big-img equip-unit" data-equi-part="${FilteredList[iii].part}" data-equi-type="${FilteredList[iii].type}" data-equi-lvl="${FilteredList[iii].lvl}">
@@ -26978,43 +26788,550 @@ Elkaisar.Item.EquipBox = function(pageOffset = 1)
                                  <h2>${Equipment.getName(FilteredList[iii].type, FilteredList[iii].part, FilteredList[iii].lvl)}</h2>
                              </div>
                          </li>`;
-    
+
     return all_equip;
-    
+
 };
 
 
-$(document).on("click", "#nav-item-box-right", function (){
-    
+$(document).on("click", "#nav-item-box-right", function () {
+
     var currentOffset = Number($(this).attr("data-current-offset"));
-    var PageFor       = $(".box_content").attr("data-page-for");
-    
-    if(PageFor === "mall")
+    var PageFor = $(".box_content").attr("data-page-for");
+
+    if (PageFor === "mall")
         return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemMallBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset + 1));
-    if(PageFor === "box-item")
-        return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemBox    ($("#dialg_box .right-content .total").attr("mat_table"), currentOffset + 1));
-    if(PageFor === "equip")
-        return $("#dialg_box .right-content .total").html(Elkaisar.Item.EquipBox    (currentOffset + 1));
-    if(PageFor === "exchange")
+    if (PageFor === "box-item") {
+        let Cont = Elkaisar.Item.ItemBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset + 1);
+        if (Cont == "")
+            return;
+        return $("#dialg_box .right-content .total").html(Cont);
+    }
+
+    if (PageFor === "equip")
+        return $("#dialg_box .right-content .total").html(Elkaisar.Item.EquipBox(currentOffset + 1));
+    if (PageFor === "exchange")
         return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemExchangeBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset + 1));
-    
+
 });
 
 
-$(document).on("click", "#nav-item-box-left", function (){
-    
+$(document).on("click", "#nav-item-box-left", function () {
+
     var currentOffset = Number($(this).attr("data-current-offset"));
-    var PageFor       = $(".box_content").attr("data-page-for");
-    
-    if(PageFor === "mall")
-        return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemMallBox ($("#dialg_box .right-content .total").attr("mat_table"), currentOffset - 1));
-    if(PageFor === "box-item")
-        return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemBox     ($("#dialg_box .right-content .total").attr("mat_table"), currentOffset - 1));
-    if(PageFor === "equip")
-        return $("#dialg_box .right-content .total").html(Elkaisar.Item.EquipBox    (currentOffset - 1));
-    if(PageFor === "exchange")
+    var PageFor = $(".box_content").attr("data-page-for");
+
+    if (PageFor === "mall")
+        return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemMallBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset - 1));
+    if (PageFor === "box-item")
+        return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset - 1));
+    if (PageFor === "equip")
+        return $("#dialg_box .right-content .total").html(Elkaisar.Item.EquipBox(currentOffset - 1));
+    if (PageFor === "exchange")
         return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemExchangeBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset - 1));
-    
+
+});Elkaisar.Rank = {};
+
+
+Elkaisar.Rank.RankFor = {
+
+    Player: "Players",
+    Guild: "unuions",
+    Hero: "heros",
+    City: "cities",
+
+};
+
+Elkaisar.Rank.RankLastCount = {
+
+    [Elkaisar.Rank.RankFor.Player]: "player_num",
+    [Elkaisar.Rank.RankFor.Guild]: "guild_num",
+    [Elkaisar.Rank.RankFor.Hero]: "hero_num",
+    [Elkaisar.Rank.RankFor.City]: "city_num"
+
+};
+
+Elkaisar.Rank.EmptyBox = function () {
+    return ` <div class="box_content">
+                <div id="TeamBox">
+                    <div id="RankList" class="RankPage">
+                        <div class="List">
+                            <div class="Body">
+                                <div class="RankRows"> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="DialBoxFooter" data-rank-for="">
+                <div id="BesideNavBtns">
+                    <div class="NavContBtns">
+                        <div class="nav-arrows flex">
+                            <div data-move="most-left" class="most-left-btn move_p_rank"></div>
+                            <div data-move="left"      class="left-btn move_p_rank"></div>
+                            <div class="page-count flex stroke"><span id="current_page_num"></span>/<span id="TotalPageNumber"></span></div>
+                            <div data-move="right" class="right-btn move_p_rank"></div>
+                            <div data-move="most-right" class="most-right-btn move_p_rank"></div>
+                        </div>
+                        <div id="goToBtnRankCo">
+                            <div class="flex">
+                                <input type="text" class="only_num input">
+                                <button class="goBtn btn full-btn full-btn-1x ellipsis">
+                                    اذهب الى
+                                </button>
+                            </div>
+                        </div>
+                        <div id="RankSearchSelect">
+                            ${Elkaisar.Ui.Select.make([{value: "ByName", title: "الأسم"}], 0, {
+                                width : 150,
+                                height: 238
+                            })}
+                        </div>
+                        <div id="SearchByInput">
+                            <div id="nav_search" class="flex">
+                                <input type="text" class="input">
+                                <button class="full-btn full-btn-1x ellipsis">
+                                    بحث
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+};
+
+
+Elkaisar.Rank.PlayerGeneralRank = function (offset) {
+    $.ajax({
+        url: `${API_URL}/api/ARankingPlayer/generalRank`,
+        data: {
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer,
+            offset: offset
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+           
+            if (isJson(data)) {
+                Elkaisar.Rank.playerRow(offset, JSON.parse(data));
+            } else {
+                alert(data);
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+}
+
+
+Elkaisar.Rank.playerRow = function (offset, PlayerList) {
+    var _return = "";
+
+    _return += `<div class="Header HeaderEnemyFrie flex">
+                    <div class="tc-rank">${Translate.Title.TH.Ranking[UserLag.language]}</div>
+                    <div class="tc-leader">${Translate.Title.TH.Lord[UserLag.language]}</div>
+                    <div class="tc-team">${Translate.Title.TH.League[UserLag.language]}</div>
+                    <div class="tc-pres">${Translate.Title.TH.Prestige[UserLag.language]}</div>
+                    <div class="tc-honor">${Translate.Title.TH.Honor[UserLag.language]}</div>
+                    <div class="tc-memNum">${Translate.Title.TH.NobleRank[UserLag.language]}</div>
+                    <div class="tc-show">${Translate.Button.General.Action[UserLag.language]}</div>
+                </div>`;
+
+
+
+    var title_count = 0;
+    var p_name = "";
+    var name = "";
+
+    for (var iii = 0; iii < 10; iii++) {
+
+        if (!PlayerList[iii]) {
+
+            _return += `<div class="tr" data-rank="${offset + iii + 1}"></div>`
+            continue;
+        }
+
+        name = "";
+        p_name = "";
+        title_count = 0;
+
+        if (PlayerList[iii].title_1) {
+            p_name += `<div class="rank-title rank-title_1" style="width: 75px;">${PlayerList[iii].title_1}</div>`;
+            title_count++;
+        }
+        if (PlayerList[iii].title_2) {
+            p_name += `<div class="rank-title rank-title_2" style="width: 75px; margin-right: -65px;">${PlayerList[iii].title_2}</div>`;
+            title_count++;
+        }
+        if (PlayerList[iii].title_3) {
+            p_name += `<div class="rank-title rank-title_3" style="width: 75px; margin-right: -65px;">${PlayerList[iii].title_3}</div>`;
+            title_count++;
+        }
+        if (PlayerList[iii].title_4) {
+            p_name += `<div class="rank-title rank-title_4" style="width: 75px; margin-right: -65px;">${PlayerList[iii].title_4}</div>`;
+            title_count++;
+        }
+        if (PlayerList[iii].title_5) {
+            p_name += `<div class="rank-title rank-title_5" style="width: 75px; margin-right: -65px;">${PlayerList[iii].title_5}</div>`;
+            title_count++;
+        }
+        if (PlayerList[iii].title_6) {
+            p_name += `<div class="rank-title rank-title_6" style="width: 75px; margin-right: -65px;">${PlayerList[iii].title_6}</div>`;
+            title_count++;
+        }
+
+
+        name = `<div class="name">${PlayerList[iii].name}</div>`;
+
+
+        _return += `<div class="tr" data-rank="${offset + iii + 1}">
+                            <div class="tc-rank" data-rank="${offset + Number(iii) + 1}">${offset + Number(iii) + 1}</div>
+                            <div class="tc-leader flex">
+                                <div class="image" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerList[iii].avatar]});">
+                                    <div class="border"></div>
+                                </div>
+                                ${name + p_name}
+                            </div>
+                            <div class="tc-team flex">
+                            ${PlayerList[iii].id_guild ? `
+                                <div class="team-slog">
+                                    <div class="slog" style="background-image: url(images/style/bottom-${PlayerList[iii].slog_btm}.png);">
+                                    </div>
+                                    <div class="slog"
+                                        style="background-image: url(images/style/central-${PlayerList[iii].slog_cnt}.png); margin-top: -37px;">
+                                    </div>
+                                    <div class="slog"
+                                        style="background-image: url(images/style/top-${PlayerList[iii].slog_top}.png); margin-top: -37px;">
+                                    </div>
+                                </div>` : ""}
+                                
+                                <div class="team-name">${PlayerList[iii].guild || "-----"}</div>
+                            </div>
+                            
+                            <div class="tc-pres flex">${getArabicNumbers(PlayerList[iii].prestige)}</div>
+                            <div class="tc-honor flex">${getArabicNumbers(PlayerList[iii].honor)}</div>
+                            <div class="tc-memNum flex">${Elkaisar.BaseData.Promotion[PlayerList[iii].porm].Title}</div>
+                            <div class="tc-show">
+                                <button class="full-btn-3x btn show-player-profile"  data-id-player="${PlayerList[iii].id_player}">${Translate.Button.MenuList.View[UserLag.language]}</button>
+                            </div>
+                        </div>`;
+
+    }
+
+    $("#RankList .RankRows").html(_return);
+    $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
+    $("#TotalPageNumber").html(Math.ceil(SERVER_DATA.player_num / 10));
+};
+Elkaisar.Rank.GuildGeneralRank = function (offset) {
+
+    $.ajax({
+        url: `${API_URL}/api/ARankingGuild/generalRank`,
+        data: {
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer,
+            offset: offset
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+
+            if (isJson(data)) {
+                var json_data = JSON.parse(data);
+            } else {
+                alert(data);
+            }
+            Elkaisar.Rank.GuildRow(offset, JSON.parse(data))
+
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
+}
+Elkaisar.Rank.GuildRow = function (offset, GuildList) {
+    var _return = "";
+
+    _return += `<div class="Header HeaderEnemyFrie flex">
+                    <div class="tc-rank">${Translate.Title.TH.Ranking[UserLag.language]}</div>
+                    <div class="tc-team">${Translate.Title.TH.League[UserLag.language]}</div>
+                    <div class="tc-leader">${Translate.Title.TH.Host[UserLag.language]}</div>
+                    <div class="tc-pres">${Translate.Title.TH.Prestige[UserLag.language]}</div>
+                    <div class="tc-honor">${Translate.Title.TH.Honor[UserLag.language]}</div>
+                    <div class="tc-memNum">${Translate.Title.TH.Members[UserLag.language]}</div>
+                    <div class="tc-show">${Translate.Button.General.Action[UserLag.language]}</div>
+                </div>`;
+
+
+    for (var iii = 0; iii < 10; iii++) {
+
+        if (!GuildList[iii]) {
+            _return += `<div class="tr" data-rank="${offset + iii + 1}"></div>`
+            continue;
+        }
+        _return += `<div class="tr" data-rank="${offset + iii + 1}">
+                            <div class="tc-rank" data-rank="${offset + Number(iii) + 1}">${offset + Number(iii) + 1}</div>
+                            <div class="tc-team flex">
+                            ${GuildList[iii].id_guild ? `
+                                <div class="team-slog">
+                                    <div class="slog" style="background-image: url(images/style/bottom-${GuildList[iii].slog_btm}.png);">
+                                    </div>
+                                    <div class="slog"
+                                        style="background-image: url(images/style/central-${GuildList[iii].slog_cnt}.png); margin-top: -37px;">
+                                    </div>
+                                    <div class="slog"
+                                        style="background-image: url(images/style/top-${GuildList[iii].slog_top}.png); margin-top: -37px;">
+                                    </div>
+                                </div>` : ""}
+                                
+                                <div class="team-name">${GuildList[iii].GuildName || "-----"}</div>
+                            </div>
+                            <div class="tc-leader flex">
+                                <div class="image" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[GuildList[iii].avatar]});">
+                                    <div class="border"></div>
+                                </div>
+                                <div class="name">${GuildList[iii].lord_name}</div>
+                            </div>
+                            <div class="tc-pres flex">${getArabicNumbers(GuildList[iii].prestige)}</div>
+                            <div class="tc-honor flex">${getArabicNumbers(GuildList[iii].honor)}</div>
+                            <div class="tc-memNum flex">${GuildList[iii].mem_num}</div>
+                            <div class="tc-show">
+                                <button class="full-btn-3x btn show-guild-prev"  data-id-guild="${GuildList[iii].id_guild}">${Translate.Button.MenuList.View[UserLag.language]}</button>
+                            </div>
+                        </div>`;
+
+    }
+
+    $("#RankList .RankRows").html(_return);
+    $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
+    $("#TotalPageNumber").html(Math.ceil(SERVER_DATA.guild_num / 10));
+
+}
+Elkaisar.Rank.HeroGeneralRank = function (offset) {
+    $.ajax({
+        url: `${API_URL}/api/ARankingHero/generalRank`,
+        data: {
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer,
+            offset: offset
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+
+            Elkaisar.Rank.HeroRow(offset, JSON.parse(data));
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
+}
+Elkaisar.Rank.HeroRow = function (offset, HeroList) {
+
+    var List = "";
+
+
+    List += `<div class="Header HeaderEnemyFrie flex">
+                <div class="tc-rank">${Translate.Title.MenuList.Ranking[UserLag.language]}</div>
+                <div class="tc-leader">${Translate.Title.TH.Hero[UserLag.language]}</div>
+                <div class="tc-leader">${Translate.Title.TH.Lord[UserLag.language]}</div>
+                <div class="tc-hero-lvl">${Translate.Title.TH.Lvl[UserLag.language]}</div>
+                <div class="tc-hero-point_a">${Translate.Title.TH.Sway[UserLag.language]}</div>
+                <div class="tc-hero-point_b">${Translate.Title.TH.Bravery[UserLag.language]}</div>
+                <div class="tc-hero-point_c">${Translate.Title.TH.Parry[UserLag.language]}</div>
+                <div class="tc-show">${Translate.Button.General.Action[UserLag.language]}</div>
+            </div>`;
+
+
+    for (var iii = 0; iii < 10; iii++) {
+
+        if (!HeroList[iii]) {
+            List += `<div class="tr" data-rank="${offset + iii + 1}"></div>`;
+            continue;
+        }
+        List += `<div class="tr" data-rank="${offset + iii + 1}">
+                            <div class="tc-rank" data-rank="${offset + Number(iii) + 1}">${offset + Number(iii) + 1}</div>
+                            <div class="tc-leader flex">
+                                <div class="image" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[HeroList[iii].heroAvatar]});">
+                                    <div class="border"></div>
+                                </div>
+                                <div class="name">${HeroList[iii].name}</div>
+                            </div>
+                            <div class="tc-leader flex">
+                                <div class="image" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[HeroList[iii].avatar]});">
+                                    <div class="border"></div>
+                                </div>
+                                <div class="name">${HeroList[iii].lord_name}</div>
+                            </div>
+                            <div class="tc-hero-lvl stroke flex">${HeroList[iii].lvl}</div>
+                            <div class="tc-hero-point_a flex">${HeroList[iii].point_a}</div>
+                            <div class="tc-hero-point_b flex">${HeroList[iii].point_b}</div>
+                            <div class="tc-hero-point_c flex">${HeroList[iii].point_c}</div>
+                            <div class="tc-show">
+                                <button class="full-btn-3x btn show-guild-prev"  data-id-guild="${HeroList[iii].id_guild}">${Translate.Button.MenuList.View[UserLag.language]}</button>
+                            </div>
+                        </div>`;
+
+    }
+
+    $("#RankList .RankRows").html(List);
+    $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
+    $("#TotalPageNumber").html(Math.ceil(SERVER_DATA.hero_num / 10));
+
+}
+Elkaisar.Rank.CityGeneralRank = function (offset) {
+
+    $.ajax({
+        url: `${API_URL}/api/ARankingCity/generalRank`,
+        data: {
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer,
+            offset: offset
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+
+            Elkaisar.Rank.CityRow(offset, JSON.parse(data));
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
+
+}
+Elkaisar.Rank.CityRow = function (offset, CityList) {
+
+    var List = "";
+    List += `<div class="th">
+                <div class="tc-rank">${Translate.Title.TH.Ranking[UserLag.language]}</div>
+                <div class="tc-memNum">${Translate.Title.TH.Name[UserLag.language]}</div>
+                <div class="tc-pres">${Translate.Title.TH.Lvl[UserLag.language]}</div>
+                <div class="tc-leader">${Translate.Title.TH.Lord[UserLag.language]}</div>
+                <div class="tc-team">${Translate.Title.MenuList.League[UserLag.language]}</div>
+                <div class="tc-honor">${Translate.Title.TH.Population[UserLag.language]}</div>
+                <div class="tc-show">${Translate.Button.General.Action[UserLag.language]}</div>
+            </div>`;
+
+
+
+    for (var iii = 0; iii < 10; iii++) {
+
+        if (!CityList[iii]) {
+            List += `<div class="tr" data-rank="${offset + iii + 1}"></div>`;
+            continue;
+        }
+
+
+        List += `<div class="tr" data-rank="${offset + iii + 1}">
+                            <div class="tc-rank" data-rank="${offset + Number(iii) + 1}">${offset + Number(iii) + 1}</div>
+                            <div class="tc-memNum flex">${CityList[iii].name}</div>
+                            <div class="tc-pres flex">${getArabicNumbers(CityList[iii].lvl)}</div>
+                            <div class="tc-leader flex">
+                                <div class="image" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[CityList[iii].avatar]});">
+                                    <div class="border"></div>
+                                </div>
+                                <div class="name">${CityList[iii].lord_name}</div>
+                            </div>
+                            <div class="tc-team flex">
+                            ${CityList[iii].id_guild ? `
+                                <div class="team-slog">
+                                    <div class="slog" style="background-image: url(images/style/bottom-${CityList[iii].slog_btm}.png);">
+                                    </div>
+                                    <div class="slog"
+                                        style="background-image: url(images/style/central-${CityList[iii].slog_cnt}.png); margin-top: -37px;">
+                                    </div>
+                                    <div class="slog"
+                                        style="background-image: url(images/style/top-${CityList[iii].slog_top}.png); margin-top: -37px;">
+                                    </div>
+                                </div>` : ""}
+                                
+                                <div class="team-name">${CityList[iii].GuildName || "-----"}</div>
+                            </div>
+                            <div class="tc-honor flex">${getArabicNumbers(CityList[iii].pop)}</div>
+                            <div class="tc-show">
+                                <button class="full-btn-3x btn" >${Translate.Button.MenuList.View[UserLag.language]}</button>
+                            </div>
+                        </div>`;
+
+    }
+
+    $("#RankList .RankRows").html(List);
+    $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
+    $("#TotalPageNumber").html(Math.ceil(SERVER_DATA.city_num / 10));
+
+
+}
+
+$(document).on("click", ".move_p_rank", function () {
+
+    var move = $(this).attr("data-move");
+    var rank_for = $("#DialBoxFooter").attr("data-rank-for");
+
+    var offset = (Math.ceil($("#RankList .tr:last-child").attr("data-rank") / 10)) * 10;
+
+    if (move === "right" && SERVER_DATA[Elkaisar.Rank.RankLastCount[rank_for]] > offset) {
+
+
+        menu_bar.getContentForRanks(rank_for, offset);
+
+
+
+
+    } else if (move === "left") {
+        offset = Math.max(0, offset - 20);
+
+        menu_bar.getContentForRanks(rank_for, offset);
+
+
+
+
+
+
+    } else if (move === "most-left") {
+
+        menu_bar.getContentForRanks(rank_for, 0);
+
+
+    } else if (move === "most-right") {
+
+        menu_bar.getContentForRanks(rank_for, Math.floor(SERVER_DATA[Elkaisar.Rank.RankLastCount[rank_for]] / 10) * 10);
+
+    }
+
+});
+
+
+$(document).on("click", "#goToBtnRankCo  .goBtn", function () {
+
+
+
+    const page_number = $("#goToBtnRankCo .input").val() - 1;
+    const rank_for = $("#DialBoxFooter").attr("data-rank-for");
+    let Offset = page_number * 10;
+    if (page_number * 10 > SERVER_DATA[Elkaisar.Rank.RankLastCount[rank_for]])
+        Offset = Math.floor(SERVER_DATA[Elkaisar.Rank.RankLastCount[rank_for]] / 10) * 10;
+
+
+    menu_bar.getContentForRanks(rank_for, Offset);
 });var WS_utile = {};
 var ws;
 WS_utile.failsConTime = 0;
@@ -27029,7 +27346,9 @@ WS_utile.onopen = function () {
             idPlayer: ID_PLAYER
         }
     }));
-    Elkaisar.World.Map.getWorldCity();
+    Elkaisar.World.Map.getWorldCity().done(function (){
+        Elkaisar.Team.getPlayerTeam();
+    });
     Elkaisar.World.Map.getWorldCityColonized();
     Elkaisar.World.Map.getWorldFiredUnit();
     Elkaisar.World.MapBattel.getAllBattels();
@@ -27307,7 +27626,7 @@ WsBattel.endedAnnounce = function (data) {
     var msg = `<div class="battel-f-ann">
                         قام <span class="red">${data.Attacker.name}</span> بهزيمة بطل النظام ${playerNames.enemyList} فى <span class="red">${Elkaisar.World.UnitTypeData[data.WorldUnit.t].Title}</span> مستوى <span class="red">${data.WorldUnit.l}</span>.
                         ${playerNames.allaylist},
-                        وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data)}</span> 
+                        وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data.WinPrize)}</span> 
                         وايضا <span class="red">${data.honor}</span> شرف
                  </div>`;
     Chat.append(msg);
@@ -27422,66 +27741,8 @@ Elkaisar.WsLib.Chat.PrizeSent = function (data){
     Chat.append(msg);
 };Elkaisar.WsLib.Battel = {};
 
-Elkaisar.WsLib.World = {};
-Elkaisar.WsLib.World.Fire = {};
-Elkaisar.WsLib.World.Battel = {};
-
-Elkaisar.WsLib.World.ResetLvl = function (data){
-    for (var ii in Elkaisar['worldAllUnits']) {
-        if (Elkaisar['worldAllUnits'][ii]['ut'] === 0x0) continue;
-        if (Elkaisar['worldAllUnits'][ii]['ut'] < WUT_MONAWRAT) continue;
-        if (!data['UnitList']['includes'](Elkaisar['worldAllUnits'][ii]['ut'])) continue;
-        Elkaisar['worldAllUnits'][ii]['l'] = 0x1;
-    }
-    alert_box['systemChatMessage']('تم اعادة التعين');
-}
 
 
-
-Elkaisar.WsLib.World.Battel.Started = function (data)
-{
-    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
-    world_unit.s = 1;
-    Animation.fireWorldUnit(data.xCoord, data.yCoord);
-    Elkaisar.World.MapBattel.newBattel(data);
-    
-}
-
-
-Elkaisar.WsLib.World.Battel.Ended = function (data)
-{
-    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
-    Elkaisar.World.MapBattel.removeBattel(data);
-    
-}
-
-Elkaisar.WsLib.World.Fire.On = function (data)
-{
-    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
-    world_unit.s = 1;
-    Animation.fireWorldUnit(data.xCoord, data.yCoord);
-    
-}
-
-Elkaisar.WsLib.World.Fire.Off = function (data)
-{
-    var Unit = WorldUnit['getWorldUnit'](data['xCoord'], data['yCoord']);
-    Unit['s'] = 0;
-    WorldUnit.refreshUnitView(data.xCoord , data.yCoord);
-}
-
-Elkaisar.WsLib.World.RefereshWorldUnit = function (data){
-    var WorldUnits = data['WorldUnits'];
-    for (var ii in WorldUnits) {
-        var Unit   = Elkaisar['worldAllUnits'][WorldUnits[ii]['x'] * 500 + WorldUnits[ii]['y']];
-        Unit['t']  = WorldUnits[ii]['t'];
-        Unit['ut'] = WorldUnits[ii]['ut'];
-        Unit['l']  = WorldUnits[ii]['l'];
-        WorldUnit.refreshUnitView(WorldUnits[ii]['x'], WorldUnits[ii]['y']);
-    }
-    Elkaisar.World.Map.getWorldCityColonized();
-    Elkaisar.World.Map.getWorldCity();
-}
 Elkaisar.WsLib.Battel.battel = function (data) {
     
     if (data.task === "finish") {
@@ -27605,40 +27866,236 @@ Elkaisar.WsLib.Battel.garrisonCityAdded = function (data){
         alert_box.systemChatMessage("تم استقبال حراس الى مدينتك");
     });
 };Elkaisar.WsLib.Guild = {};
+Elkaisar.WsLib.Team = {};
 
 
-Elkaisar.WsLib.Guild.joinReqAccepted = function (data){
-    
-    alert_box.systemChatMessage(` تم قبولك فى حلف ${data.guild_name} بواسطة ${data.accepter_name}`);
+
+Elkaisar.WsLib.Guild.GuildInvSent = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                تم إرسال دعوة إلى الملك <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span>
+                 بواسطة الملك <span class="ann-red">&nbsp;${data.InvByName}&nbsp;</span> قائد حلف <span class="ann-red">&nbsp;${data.GuildName}&nbsp;</span> 
+                </div>`;
+    Chat.append(msg);
     Guild.getGuildData();
-    Player_profile.refresh_player_data();
+    
+};
+
+Elkaisar.WsLib.Guild.PlayerInvRejected = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                    تم رفض دعوة إنضمام اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> إلى حلف <span class="ann-red">&nbsp;${data.GuildName}&nbsp;</span> !
+                </div>`;
+    Chat.append(msg);
+    Guild.getGuildData();
+};
+
+
+Elkaisar.WsLib.Guild.PlayerInvAccepted = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                    تم قبول دعوة إنضمام اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> إلى حلف <span class="ann-red">&nbsp;${data.GuildName}&nbsp;</span> !
+                </div>`;
+    Chat.append(msg);
+    Guild.getGuildData();
+};
+
+
+Elkaisar.WsLib.Guild.PlayerInvCanceled = function (data) {
+
+     var msg = ` <div class="msg-unit team-ann">
+                تم إلغاء  دعوة  الملك <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span>
+                 بواسطة الملك <span class="ann-red">&nbsp;${data.CancelledBy}&nbsp;</span> قائد حلف <span class="ann-red">&nbsp;${data.GuildName}&nbsp;</span> 
+                </div>`;
+    Chat.append(msg);
+    Guild.getGuildData();
+    
+};
+
+Elkaisar.WsLib.Guild.joinReqSent = function (data) {
+
+     var msg = ` <div class="msg-unit team-ann">
+                    قام اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> بإرسال طلب إنضمام لحلف <span class="ann-red">&nbsp;${data.GuildName}&nbsp;</span>
+                </div>`;
+    Chat.append(msg);
+    Guild.getGuildData();
+    
+};
+
+Elkaisar.WsLib.Guild.joinReqCanceled = function (data) {
+
+     var msg = ` <div class="msg-unit team-ann">
+                    قام اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> بإلغاء طلب الإنضمام لحلف <span class="ann-red">&nbsp;${data.GuildName}&nbsp;</span>
+                </div>`;
+    Chat.append(msg);
+    Guild.getGuildData();
     
 };
 
 
 
-Elkaisar.WsLib.Guild.announceRelation = function (data){
+Elkaisar.WsLib.Guild.joinReqAccepted = function (data) {
+
+     var msg = ` <div class="msg-unit team-ann">
+                    قام اللاعب <span class="ann-red">&nbsp;${data.AcceptBy}&nbsp;</span> بقبول طلب إنضمام <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> إلى حلف <span class="ann-red">&nbsp;${data.GuildName}&nbsp;</span>
+                </div>`;
+    Chat.append(msg);
+    Guild.getGuildData();
     
-    var relation_title = {
-        ally:"محايدة",
-        friend:"صداقة",
-        enemy:"عداوة"
+};
 
-    };
 
-    var msg = `تم تغير العلاقة بين حلف ${data.guild_one} وحلف ${data.guild_two} الى -${relation_title[data.relation]}- بواسطة  ${data.player_name}`;
+Elkaisar.WsLib.Guild.joinReqRejected= function (data) {
+
+     var msg = ` <div class="msg-unit team-ann">
+                    قام اللاعب <span class="ann-red">&nbsp;${data.RejectedBy}&nbsp;</span> برفض طلب إنضمام <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> إلى حلف <span class="ann-red">&nbsp;${data.GuildName}&nbsp;</span>
+                </div>`;
+    Chat.append(msg);
+    Guild.getGuildData();
+    
+};
+
+
+
+
+Elkaisar.WsLib.Guild.announceRelation = function (data) {
+
+    var relation_title = Elkaisar.BaseData.GuildRelationTitle;
+
+    var msg = `تم تغير العلاقة بين حلف ${data.GuildNameOne} وحلف ${data.GuildNameTwo} الى -${relation_title[data.relation]}- بواسطة  ${data.PlayerName}`;
     alert_box.systemChatMessage(msg);
-    if(Number(data.id_guild_one) === Number(Elkaisar.DPlayer.Player.id_guild) || Number(data.id_guild_two) === Number(Elkaisar.DPlayer.Player.id_guild)){
+    if (Number(data.idGuildOne) === Number(Elkaisar.DPlayer.Player.id_guild) || Number(data.idGuildTwo) === Number(Elkaisar.DPlayer.Player.id_guild)) {
         Guild.getGuildData();
     }
+
+};
+
+
+
+
+Elkaisar.WsLib.Guild.msgSent = function (data) {
+
+    PLAYER_NOTIF.msg_in = Number(PLAYER_NOTIF.msg_in) + 1;
+    Fixed.refreshPlayerNotif();
+
+};
+
+
+Elkaisar.WsLib.Guild.PrizeSent = function (data) {
+    alert_box.systemChatMessage(`تم إرسال هدايا إلى جميع أعضاء حلف ${data.GuildName} الأن !`);
+}
+
+
+Elkaisar.WsLib.Team.announceRelation = function (data) {
+
+    var relation_title = Elkaisar.BaseData.GuildRelationTitle;
+
+    var msg = `<div class="msg-unit team-ann">تم تغير العلاقة بين الفريق ${data.TeamNameOne} و الفريق ${data.TeamNameTwo} الى -${relation_title[data.relation]}- بواسطة  ${data.PlayerName}</div>`;
+    alert_box.systemChatMessage(msg);
+    if (!Elkaisar.Team.PlayerTeam.Team)
+        return;
+
+    if (Number(data.idTeamOne) === Number(Elkaisar.Team.PlayerTeam.Team.id_team))
+        Elkaisar.Team.getPlayerTeam();
+    if (Number(data.idTeamTwo) === Number(Elkaisar.Team.PlayerTeam.Team.id_team))
+        Elkaisar.Team.getPlayerTeam();
+
+};
+
+
+Elkaisar.WsLib.Team.TeamInvSent = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                تم إرسال دعوة إلى الملك <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span>
+                 بواسطة الملك <span class="ann-red">&nbsp;${data.InvByName}&nbsp;</span> قائد فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span> 
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
     
 };
 
-Elkaisar.WsLib.Guild.msgSent = function (data){
-    
-    PLAYER_NOTIF.msg_in = Number(PLAYER_NOTIF.msg_in) + 1;
-    Fixed.refreshPlayerNotif();
-    
+Elkaisar.WsLib.Team.TeamReqSent = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                تم إرسال طلب للإنضمام إلى فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span> من اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span>
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
+};
+
+Elkaisar.WsLib.Team.PlayerInvRejected = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                    تم رفض دعوة إنضمام اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> إلى فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span> !
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
+};
+
+
+Elkaisar.WsLib.Team.PlayerAcceptInv = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                    تم قبول دعوة إنضمام اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> إلى فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span> !
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
+};
+
+Elkaisar.WsLib.Team.playerTeamLeave = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                    غادر اللاعب<span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span>  فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span> !
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
+};
+
+Elkaisar.WsLib.Team.playerTeamResign = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                    إستقال اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span>  من منصبة فى فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span> !
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
+};
+
+Elkaisar.WsLib.Team.TeamReqCanceled = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                   تم ألغاء طلب أنضمام اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> إلى فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span>! 
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
+};
+
+
+Elkaisar.WsLib.Team.TeamReqAccepted = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                   تم قبول طلب أنضمام اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> إلى فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span>! 
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
+};
+
+
+Elkaisar.WsLib.Team.TeamReqRejected = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                   تم رفض طلب أنضمام اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> إلى فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span>! 
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
+};
+
+Elkaisar.WsLib.Team.TeamInvCanceled = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                   تم إلغاء دعوة أنضمام اللاعب <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> إلى فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span>! 
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
 };Elkaisar.WsLib.Mail = {};
 
 
@@ -27678,7 +28135,7 @@ Elkaisar.WsLib.Hero.Back = function (data) {
 
     var HeroName = '';
     var CityName = 'المدينة';
-    var Hero = Elkaisar['Hero']['getHero'](data['idHero']);
+    var Hero = Elkaisar.Hero.getHero(data['idHero']);
     var City = Elkaisar['City']['getCityByCoord'](data['xTo'], data['yTo']);
 
     if (Hero && Hero['Hero'] && Hero['Hero']['name'])
@@ -27742,7 +28199,7 @@ Elkaisar.WsLib.ServerAnnounce.capitalLock = function (data) {
 
     var WorldUnit = data.WorldUnit;
 
-    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coordDirect(WorldUnit.x,WorldUnit.y)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
+    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
     Chat.append(msg);
 };
 
@@ -27760,7 +28217,7 @@ Elkaisar.WsLib.ServerAnnounce.QueenCityOpened = function (data) {
 Elkaisar.WsLib.ServerAnnounce.QueenCityClosed = function (data) {
 
     var WorldUnit = data.WorldUnit;
-    var msg = ` <div class="msg-unit  battel-f-ann">تم إغلاق &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x ,WorldUnit.y)} &nbsp;
+    var msg = ` <div class="msg-unit  battel-f-ann">تم إغلاق &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} &nbsp;
                     وكان الفوز من نصيب حلف <span class="ann-red">&nbsp;${data.WinnerGuild.GuildName || " ---"}&nbsp;</span>
                 </div>`;
     Chat.append(msg);
@@ -27773,11 +28230,11 @@ Elkaisar.WsLib.ServerAnnounce.RepleCastleOpened = function (data) {
     var GuildDef = "---";
     var WorldUnit = data.WorldUnit;
 
-    if (data.GuildDef && data.GuildAtt && data.GuildDef.GuildName)
+    if (data.GuildDef)
         var msg = ` <div class="msg-unit  battel-f-ann">
                     تم فتح 
                     <span class="ann-red">&nbsp;${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}&nbsp;</span>
-                     للإستقبال معركة حلف <span class="ann-red">&nbsp;${data.GuildAtt.GuildName} (هجوم)&nbsp;</span> ضد حلف <span class="ann-red">&nbsp;${data.GuildDef.GuildName} (دفاع)&nbsp;</span> الأن!
+                     للإستقبال معركة حلف <span class="ann-red">&nbsp;${data.GuildAtt ? data.GuildAtt.GuildName : "----" } (هجوم)&nbsp;</span> ضد حلف <span class="ann-red">&nbsp;${data.GuildDef ? data.GuildAtt.GuildName : "===="} (دفاع)&nbsp;</span> الأن!
                 </div>`;
     else
         var msg = ` <div class="msg-unit announce battel-f-ann">تم فتح &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} &nbsp;
@@ -27838,7 +28295,7 @@ Elkaisar.WsLib.ServerAnnounce.Battel.Win = function (data) {
     var msg = `<div class="battel-f-ann">
                         قام <span class="red">${data.Attacker.name}</span> بهزيمة بطل النظام ${playerNames.enemyList} فى <span class="red">${Elkaisar.World.UnitTypeData[data.WorldUnit.ut].Title}</span> مستوى <span class="red">${data.WorldUnit.l}</span>.
                         ${playerNames.allaylist},
-                        وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data)}</span> 
+                        وفى المقابل  حصل على  <span class="red">${Matrial.prizeToString(data.WinPrize)}</span> 
                         وايضا <span class="red">${data.honor}</span> شرف
                  </div>`;
     Chat.append(msg);
@@ -27904,18 +28361,65 @@ Elkaisar.WsLib.ServerAnnounce.ArenachallangeLvlUp = function (data) {
         });
 };
 
-Elkaisar.WsLib.ServerAnnounce.KingOfArenaChallange = function (data) {
-    var Msg = `<div class="battel-f-ann">تهانينا! اصبح الملك   (<span class="red">  ${data['Player']['PlayerName']}  </span>)   ملك ميدان التحدى الاول!}</div>`;
-    Chat['append'](Msg);
-    if (Elkaisar['DPlayer']['Player']['id_player'] == _0x363f73['Player']['id_player']) {
-        Elkaisar['ArenaChallange']['getArenaData']()['done'](function () {
-            $('#SArenaField')['click']();
-        });
-    }
+Elkaisar.WsLib.ServerAnnounce.ArenachallangeTeamLvlUp = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! تم ترقية ميدان الفريق  
+                (<span class="red"> ${data.Team.TeamName}</span>)
+              الى مستوى   (<span class="red">  ${(Number(data.ArenaData.lvl) + 0x1)}  </span>)  
+                </div>'`;
+    Chat.append(Msg);
+
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
 };
 
- Elkaisar.WsLib.ServerAnnounce.ArenaChallangeRoundEnd = function (data) {
+Elkaisar.WsLib.ServerAnnounce.ArenachallangeGuildLvlUp = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! تم ترقية ميدان حلف  
+                (<span class="red"> ${data.Guild.GuildName}</span>)
+              الى مستوى   (<span class="red">  ${(Number(data.ArenaData.lvl) + 0x1)}  </span>)  
+                </div>'`;
+    Chat.append(Msg);
+
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
+};
+
+Elkaisar.WsLib.ServerAnnounce.KingOfArenaChallange = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! اصبح الملك   (<span class="red">  ${data['Player']['PlayerName']}  </span>)   ملك ميدان التحدى الاول!}</div>`;
+    Chat.append(Msg);
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
+};
+
+Elkaisar.WsLib.ServerAnnounce.KingOfArenaTeamChallange = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! اصبح الفريق   (<span class="red">  ${data.Team.TeamName}  </span>)   ملك ميدان تحدى الفرق الاول!}</div>`;
+    Chat.append(Msg);
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
+};
+
+
+Elkaisar.WsLib.ServerAnnounce.KingOfArenaGuildChallange = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! اصبح حلف   (<span class="red">  ${data.Guild.GuildName}  </span>)   ملك ميدان تحدى الأحلاف الاول!}</div>`;
+    Chat.append(Msg);
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField').click();
+    });
+};
+
+Elkaisar.WsLib.ServerAnnounce.ArenaChallangeRoundEnd = function (data) {
     var Msg = `<div class="battel-f-ann">تم انهاء جولة ميدان التحدى و فاز الملك   (<span class="red">  ${data['PlayerName']}  </span>)   !</div>`;
+    Chat['append'](Msg);
+};
+Elkaisar.WsLib.ServerAnnounce.ArenaChallangeTeamRoundEnd = function (data) {
+    var Msg = `<div class="battel-f-ann">تم انهاء جولة ميدان التحدى و فاز الفريق   (<span class="red">  ${data['TeamName']}  </span>)   !</div>`;
+    Chat['append'](Msg);
+};
+Elkaisar.WsLib.ServerAnnounce.ArenaChallangeGuildRoundEnd = function (data) {
+    var Msg = `<div class="battel-f-ann">تم انهاء جولة ميدان التحدى و فاز الحلف   (<span class="red">  ${data['GuildName']}  </span>)   !</div>`;
     Chat['append'](Msg);
 };
 
@@ -28109,7 +28613,151 @@ Elkaisar.WsLib.Base.refreshWorldCitiesForPlayers = function (data){
 
 Elkaisar['WsLib']['Base']['DailyRest'] = function () {
     alert_box['systemChatMessage']('تمت اعادة التعيين اليومية.');
-};const WUT_EMPTY = 0;
+};
+Elkaisar.WsLib.Base.PrizeSent = function () {
+    PLAYER_NOTIF.msg_diff = Number(PLAYER_NOTIF.msg_diff) + 1;
+    Fixed.refreshPlayerNotif();
+    alert_box['systemChatMessage']('وصلك جوائز فى صندوقك إفحص البريد');
+};Elkaisar.WsLib.World = {};
+Elkaisar.WsLib.World.Fire = {};
+Elkaisar.WsLib.World.Battel = {};
+
+Elkaisar.WsLib.World.ResetLvl = function (data){
+    for (var ii in Elkaisar['worldAllUnits']) {
+        if (Elkaisar['worldAllUnits'][ii]['ut'] === 0x0) continue;
+        if (Elkaisar['worldAllUnits'][ii]['ut'] < WUT_MONAWRAT) continue;
+        if (!data['UnitList']['includes'](Elkaisar['worldAllUnits'][ii]['ut'])) continue;
+        Elkaisar['worldAllUnits'][ii]['l'] = 0x1;
+    }
+    alert_box['systemChatMessage']('تم اعادة التعين');
+}
+
+
+
+Elkaisar.WsLib.World.Battel.Started = function (data)
+{
+    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
+    world_unit.s = 1;
+    Animation.fireWorldUnit(data.xCoord, data.yCoord);
+    Elkaisar.World.MapBattel.newBattel(data);
+    
+}
+
+
+Elkaisar.WsLib.World.Battel.Ended = function (data)
+{
+    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
+    Elkaisar.World.MapBattel.removeBattel(data);
+    
+}
+
+Elkaisar.WsLib.World.Fire.On = function (data)
+{
+    var world_unit = WorldUnit.getWorldUnit(data.xCoord , data.yCoord);
+    world_unit.s = 1;
+    Animation.fireWorldUnit(data.xCoord, data.yCoord);
+    
+}
+
+Elkaisar.WsLib.World.Fire.Off = function (data)
+{
+    var Unit = WorldUnit['getWorldUnit'](data['xCoord'], data['yCoord']);
+    Unit['s'] = 0;
+    WorldUnit.refreshUnitView(data.xCoord , data.yCoord);
+}
+
+Elkaisar.WsLib.World.RefereshWorldUnit = function (data){
+    var WorldUnits = data['WorldUnits'];
+    for (var ii in WorldUnits) {
+        var Unit   = Elkaisar['worldAllUnits'][WorldUnits[ii]['x'] * 500 + WorldUnits[ii]['y']];
+        Unit['t']  = WorldUnits[ii]['t'];
+        Unit['ut'] = WorldUnits[ii]['ut'];
+        Unit['l']  = WorldUnits[ii]['l'];
+        WorldUnit.refreshUnitView(WorldUnits[ii]['x'], WorldUnits[ii]['y']);
+    }
+    Elkaisar.World.Map.getWorldCityColonized();
+    Elkaisar.World.Map.getWorldCity();
+}
+
+
+Elkaisar.WsLib.World.LvlChangedByGM = function (data) {
+
+    var Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
+    Unit.l = data.lvlTo;
+    var msg = `<div class="msg-unit ann-red announce">
+        تم تعديل مستوى ${WorldUnit.getUnitData(Unit.ut).Title} ${Extract.coordDirect(data.xCoord, data.yCoord)} حتى يصبح المستوى الحالى ${data.lvlTo}
+    </div>`;
+    Chat.append(msg);
+    
+};
+
+
+Elkaisar.WsLib.World.UnitLockedByGM = function (data) {
+
+    var Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
+    Unit.lo = 1;
+    var msg = `<div class="msg-unit ann-red announce">
+        تم إغلاق ${WorldUnit.getUnitData(Unit.ut).Title} ${Extract.coordDirect(data.xCoord, data.yCoord)} 
+    </div>`;
+    Chat.append(msg);
+
+};
+
+Elkaisar.WsLib.World.UnitLockedByGM = function (data) {
+
+    var Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
+    Unit.lo = 0;
+    var msg = `<div class="msg-unit ann-red announce">
+        تم فتح ${WorldUnit.getUnitData(Unit.ut).Title} ${Extract.coordDirect(data.xCoord, data.yCoord)} 
+    </div>`;
+    Chat.append(msg);
+
+};
+
+Elkaisar.WsLib.World.UnitRoundFinishedByGM = function (data) {
+
+    var Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
+    var msg = `<div class="msg-unit ann-red announce">
+        تم إنهاء الجولة الحالية لـ ${WorldUnit.getUnitData(Unit.ut).Title} ${Extract.coordDirect(data.xCoord, data.yCoord)} 
+    </div>`;
+    Chat.append(msg);
+
+};
+
+Elkaisar.WsLib.World.UnitRoundStartedByGM = function (data) {
+
+    var Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
+    var msg = `<div class="msg-unit ann-red announce">
+        تم بدء الجولة الحالية لـ ${WorldUnit.getUnitData(Unit.ut).Title} ${Extract.coordDirect(data.xCoord, data.yCoord)} 
+    </div>`;
+    Chat.append(msg);
+
+};
+
+Elkaisar.WsLib.World.UnitTypeLvlChange = function (data) {
+    var Titles = [];
+    for(var iii in data.UnitType){
+        
+        Titles.push(WorldUnit.getUnitData(data.UnitType[iii]).Title)
+    }
+    
+    var msg = `<div class="msg-unit ann-red announce"> تم تعديل مستوى جميع (${Titles.join(" - ")}) حتى يصبح المستوى الحالى ${data.lvlTo} !</div>`;
+    Chat.append(msg);
+
+};
+
+
+Elkaisar.WsLib.World.newBarrColonized = function(data){
+
+    const Unit = WorldUnit.getWorldUnit(data.xCoord, data.yCoord);
+    const UnitData = WorldUnit.getUnitData(Unit.ut);
+    alert_box.systemChatMessage(`تم إضافة ${UnitData.Title} مستوى ${Unit.l}  ${Extract.coordDirect(data.xCoord, data.yCoord)} إلى مستعمراتك فى المدينة ${Elkaisar.City.getCity(data.idCity).City.name} بنجاح !`)
+    Elkaisar.City.getCityBarray(data.idCity);
+    WorldUnit.refreshUnitView(data.xCoord , data.yCoord);
+};
+
+
+const WUT_EMPTY = 0;
 
 const WUT_RIVER_LVL_1 = 1;
 const WUT_RIVER_LVL_2 = 2;
@@ -28559,6 +29207,9 @@ var WorldUnit = {
 
     getWorldUnit: function (x, y) {
         return Elkaisar.worldAllUnits[x * 500 + Number(y)];
+    },
+    getUnitData: function(unitType){
+        return Elkaisar.World.UnitTypeData[unitType];
     },
 
     refreshUnitData: function (x, y) {
@@ -29284,17 +29935,17 @@ $(document).on("click", "#new-city-confirm button", function () {
     },
     'getDominaterName'(xCoord, yCoord) {
         var Unit = WorldUnit['getWorldUnit'](xCoord, yCoord);
-        $['ajax']({
+        $.ajax({
             'url': API_URL + '/api/AWorldUnit/getWorldUnitDominator',
             'type': 'GET',
             'data': {
                 'xCoord': xCoord,
                 'yCoord': yCoord,
                 'unitType': Unit.ut,
-                'server': Elkaisar.Config.idServer,
-                'token': Elkaisar.Config.OuthToken
+                server: Elkaisar.Config.idServer,
+                token: Elkaisar.Config.OuthToken
             },
-            'success': function (data, _0x2bf316, _0x1a4707) {
+            success: function (data, _0x2bf316, _0x1a4707) {
                 if (!Elkaisar['LBase']['isJson'](data)) 
                     return Elkaisar['LBase']['Error'](data);
                 var JsonData = JSON['parse'](data);
@@ -31215,11 +31866,11 @@ var reviewBox = {
         {
 
             var CCity = Elkaisar.DPlayer.City[ii];
-            if (Number(CCity.City.x) !== Number(xCoord))
+            
+            if (Number(CCity.City.x) != Number(xCoord))
                 continue;
-            if (Number(CCity.City.y) !== Number(xCoord))
+            if (Number(CCity.City.y) != Number(yCoord))
                 continue;
-
             return ` <ul id="footer_bar">
                         <li data-type="${Elkaisar.BaseData.BattelTasks.BATTEL_TASK_ENTER_CITY}">
                             <img src="images/icons/war-icon/enter-city.png" /> 
@@ -32060,14 +32711,14 @@ WorldUnit.prize.prizes = {};
 
 
 WorldUnit.prize.getAllPrize = function () {
-    $['ajax']({
+    $.ajax({
         'url': API_URL + '/api/AWorld/getWorldUnitPrize',
         'data': {
-            'token': Elkaisar['Config']['OuthToken'],
-            'server': Elkaisar['Config']['idServer']
+            token: Elkaisar['Config']['OuthToken'],
+            server: Elkaisar['Config']['idServer']
         },
         'type': 'GET',
-        'success': function (data, _0x45a054, _0x31b37d) {
+        success: function (data, _0x45a054, _0x31b37d) {
             if (isJson(data))
                 WorldUnit['prize']['prizes'] = JSON['parse'](data);
             else
@@ -32093,7 +32744,7 @@ WorldUnit['prize']['getUnitPrize'] = function (unitType, lvl, PrizeFor = 'Win') 
     for (var iii in WorldUnit['prize']['prizes'][PrizeFor]) {
         if (WorldUnit['prize']['prizes'][PrizeFor][iii]['unitType'] === unitType
                 && WorldUnit['prize']['prizes'][PrizeFor][iii]['lvl'] === lvl)
-            PrizeList['push'](WorldUnit['prize']['prizes'][PrizeFor][iii]);
+            PrizeList.push(WorldUnit['prize']['prizes'][PrizeFor][iii]);
     }
     return PrizeList;
 };
@@ -32103,7 +32754,7 @@ WorldUnit['prize']['getUnitAllLvlsPrize'] = function (unitType, PrizeFor = 'Win'
     var PrizeList = [];
     for (var iii in WorldUnit['prize']['prizes'][PrizeFor]) {
         if (WorldUnit['prize']['prizes'][PrizeFor][iii]['unitType'] === unitType)
-            PrizeList['push'](WorldUnit['prize']['prizes'][PrizeFor][iii]);
+            PrizeList.push(WorldUnit['prize']['prizes'][PrizeFor][iii]);
     }
     return PrizeList;
 };
@@ -32143,7 +32794,7 @@ WorldUnit['prize']['prizeAllLvlsList'] = function (xCoord, yCoord, prizeFor = 'W
             List = '';
     for (var iii in PrizeList) {
         if (PList['indexOf'](PrizeList[iii]['prize']) === -0x1)
-            PList['push'](PrizeList[iii]['prize']);
+            PList.push(PrizeList[iii]['prize']);
         else
             continue;
         if (PList['length'] > 0x10)
@@ -32496,7 +33147,7 @@ Elkaisar.World.Map.CityFound = false;
 Elkaisar.World.Map.getWorldCity = function () {
     
     return $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/AWorld/getWorldCity`,
+        url: `${NODE_URL}/api/AWorld/getWorldCity`,
         type: 'GET',
         crossDomain: true,
         data:{
@@ -32504,35 +33155,31 @@ Elkaisar.World.Map.getWorldCity = function () {
             idPlayer: Elkaisar.DPlayer.Player.id_player
         },
         success: function (data, textStatus, jqXHR) {
-
+            
             if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
-
             var JsonObject = JSON.parse(data);
-
             var Unit;
-
             for (var iii in JsonObject)
             {
 
                 Unit = WorldUnit.getWorldUnit(JsonObject[iii].x, JsonObject[iii].y);
                 if (!Unit)
                     continue;
-
-
-                Unit.idGuild = JsonObject[iii].ig;
-                Unit.CityLvl = JsonObject[iii].l;
-                Unit.idCity = JsonObject[iii].ic;
-                Unit.idPlayer = JsonObject[iii].ip;
+                Unit.idGuild  = JsonObject[iii].ig;
+                Unit.CityLvl  = JsonObject[iii].l;
+                Unit.idCity   = JsonObject[iii].ic;
+                Unit.idPlayer = Number(JsonObject[iii].ip);
                 Unit.CityFlag = JsonObject[iii].f;
-                Unit.ut = Number(JsonObject[iii].l) + WUT_CITY_LVL_0;
-                Unit.l = JsonObject[iii].l;
-                Unit.t = Number(JsonObject[iii].l) + 17;
+                Unit.ut       = Number(JsonObject[iii].l) + WUT_CITY_LVL_0;
+                Unit.l        = JsonObject[iii].l;
+                Unit.t        = Number(JsonObject[iii].l) + 17;
+                Elkaisar.World.Map.CityFound = true;
             }
-            Elkaisar.World.Map.CityFound = true;
+            
         },
         error: function (jqXHR, textStatus, errorThrown) {
-
+            console.log(arguments)
         }
     });
 
@@ -33153,10 +33800,10 @@ const BATTEL_JOIN_ATTACK = 2;
 const BATTEL_JOIN_DEFENCE = 3;
 
 
-Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
-   
-   var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
-   
+Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask) {
+
+    var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+
     if (Number(BattelTask) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SUPPLY) {
 
         buildingClick("market");
@@ -33167,16 +33814,16 @@ Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
 
         return;
     }
-/*
-    if (Number(Elkaisar.DPlayer.PlayerState.peace) - 12 * 60 * 60 > ($.now() / 1000)) {
-        alert_box.failMessage("لا  يمكنك الهجوم و انت  فى حالة هدنة");
-        return;
-    } else if (world_unit.__peace && world_unit.__peace > $.now() / 1000) {
-        alert_box.succesMessage("لا يمكنك الهجوم على هذه المدينة  </br> ( ملك المدينة قام بتفعيل هدنة)");
-
-        return;
-    }
-*/
+    /*
+     if (Number(Elkaisar.DPlayer.PlayerState.peace) - 12 * 60 * 60 > ($.now() / 1000)) {
+     alert_box.failMessage("لا  يمكنك الهجوم و انت  فى حالة هدنة");
+     return;
+     } else if (world_unit.__peace && world_unit.__peace > $.now() / 1000) {
+     alert_box.succesMessage("لا يمكنك الهجوم على هذه المدينة  </br> ( ملك المدينة قام بتفعيل هدنة)");
+     
+     return;
+     }
+     */
 
     if (Number(BattelTask) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_SPY) {
 
@@ -33196,8 +33843,7 @@ Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
     // get hero id 
     var hero_object;
 
-    for (var iii in Elkaisar.DPlayer.Heros)
-    {
+    for (var iii in Elkaisar.DPlayer.Heros) {
         if (Elkaisar.DPlayer.Heros[iii].Hero.id_city != Elkaisar.CurrentCity.City.id_city)
             continue;
         if (Elkaisar.DPlayer.Heros[iii].Hero.in_city != Elkaisar.Hero.HeroState.HERO_IN_CITY)
@@ -33226,9 +33872,9 @@ Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
         ar_title: WorldUtil.tooltipHeader(xCoord, yCoord),
         task: BattelTask,
         task_title: "غزو",
-        time : 60,
-        type : Unit.ut,
-        lvl  : Unit.l
+        time: 60,
+        type: Unit.ut,
+        lvl: Unit.l
     };
 
     var content = army.dialogBoxContent_forCamp(Elkaisar.CurrentHero, battel);
@@ -33250,7 +33896,7 @@ Elkaisar.World.WorldMapIcon.Clicked = function (xCoord, yCoord, BattelTask){
 
     // close  samll box
     $(".close_RB img").trigger("click");
-    
+
 };
 
 $(document).on("click", "#footer_bar li", function () {
@@ -33261,14 +33907,13 @@ $(document).on("click", "#footer_bar li", function () {
 
     Elkaisar.World.WorldMapIcon.Clicked(xCoord, yCoord, BattelTask);
 
-    
+
 
 });
 
 
 
-function getUnitTitle(type)
-{
+function getUnitTitle(type) {
     if (Elkaisar.World.UnitTypeData[type])
         return Elkaisar.World.UnitTypeData[type].Title;
     return "---";
@@ -33320,12 +33965,14 @@ function isMyBarr(_0x22de03, _0x4dcc19) {
 
 
 function battelStart() {
-    if (Number(Elkaisar['CurrentHero']['Hero']['in_city']) !== Elkaisar['Hero']['HeroState']['HERO_IN_CITY']) {
-        $('.close-alert')['click'](), alert_box['failMessage']('لا يمكنك ارسال بطل الى بعثة و هو فى ليس داخل المدينة');
+    if (Number(Elkaisar.CurrentHero.Hero.in_city) !== Elkaisar.Hero.HeroState.HERO_IN_CITY) {
+        $('.close-alert').click();
+        alert_box.failMessage('لا يمكنك ارسال بطل الى بعثة و هو فى ليس داخل المدينة');
         return;
     }
-    if (Number(Elkaisar['CurrentHero']['Hero']['id_hero']) === Number(Elkaisar['CurrentCity']['City']['console'])) {
-        $('.close-alert')['click'](), alert_box['failMessage']('لا يمكنك ارسال بطل الى بعثة و هو قنصل');
+    if (Number(Elkaisar.CurrentHero.Hero.id_hero) === Number(Elkaisar['CurrentCity']['City']['console'])) {
+        $('.close-alert').click();
+        alert_box['failMessage']('لا يمكنك ارسال بطل الى بعثة و هو قنصل');
         return;
     }
     var _0x2d501c = WorldUnit['getWorldUnit'](battel_data['x_coord'], battel_data['y_coord']);
@@ -33354,8 +34001,10 @@ function battelStart() {
         alert_box['failMessage']('لا يمكنك الهجوم بالبطل الحالى! ');
         return;
     }
-    if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPLY']) {
-        Battel['millertySupply'](battel_data['x_coord'], battel_data['y_coord']), Elkaisar['CurrentHero']['Hero']['in_city'] = 0x1, city_profile['refresh_hero_view']();
+    if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPORT']) {
+        Battel['millertySupply'](battel_data['x_coord'], battel_data['y_coord']);
+        Elkaisar['CurrentHero']['Hero']['in_city'] = 0;
+        city_profile['refresh_hero_view']();
         return;
     }
     if (isMyBarr(_0x2d501c['x'], _0x2d501c['y'])) {
@@ -33367,49 +34016,64 @@ function battelStart() {
             alert_box['failMessage']('لا يوجد لديك مواد كافية للانضمام');
             return;
         }
-        $['ajax']({
-            'url': API_URL + '/api/ABattelRunning/joinBattel',
+        $.ajax({
+            'url': `${NODE_URL}/api/ABattel/joinBattel`,
             'data': {
-                'idBattel': battel_data['id_battel'],
-                'idHero': Elkaisar['CurrentHero']['Hero']['id_hero'],
-                'side': battel_data['side'],
-                'token': Elkaisar['Config']['OuthToken'],
-                'server': Elkaisar['Config']['idServer']
+                idBattel: battel_data.id_battel,
+                idHero: Elkaisar.CurrentHero.Hero.id_hero,
+                side: battel_data.side,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             'type': 'POST',
-            'success': function (_0x311475, _0x4f103d, _0x3e9120) {
-                if (isJson(_0x311475))
-                    var _0x12bab5 = JSON['parse'](_0x311475);
+            success: function (data, _0x4f103d, _0x3e9120) {
+                if (isJson(data))
+                    var JsonObject = JSON['parse'](data);
                 else
-                    alert(_0x311475);
-                if (_0x12bab5['state'] === 'ok') {
-                    $('.close_dialog')['trigger']('click'), Elkaisar['CurrentHero']['Hero']['in_city'] = 0x0, $('.close-alert')['trigger']('click'), battel_data['type'] = _0x12bab5['unit_type'], battel_data['lvl'] = _0x12bab5['unit_lvl'], Hero['heroAttackProc'](), PLAYER_NOTIF['hero_in_battel'] = Number(PLAYER_NOTIF['hero_in_battel']) + 0x1, city_profile['refresh_hero_view']();
-                    var _0x4cad5b = _0x12bab5['Battel'],
-                            _0xf08408 = ![];
-                    for (var _0x5f08e9 in Elkaisar['Battel']['Battels']) {
-                        Number(Elkaisar['Battel']['Battels'][_0x5f08e9]['id_battel']) === Number(battel_data['id_battel']) && (_0xf08408 = !![], Elkaisar['Battel']['Battels'][_0x5f08e9] = _0x4cad5b);
-                    }
-                    !_0xf08408 && (PLAYER_NOTIF['battel_number'] = Number(PLAYER_NOTIF['battel_number']) + 0x1, !Elkaisar['Battel']['Battels'] ? Elkaisar['Battel']['Battels'] = [_0x4cad5b] : Elkaisar['Battel']['Battels']['push'](_0x4cad5b)), Fixed['refreshPlayerNotif'](), Battel['afterJoin'](battel_data['x_coord'], battel_data['y_coord']);
-                } else {
-                    if (_0x12bab5['state'] === 'error_1')
-                        alert_box['confirmMessage']('البطل ليس فى المدينة');
-                    else {
-                        if (_0x12bab5['state'] === 'error_2')
-                            alert_box['confirmMessage']('انتهت المعركة لا يمكنك الانضمام');
-                        else {
-                            if (_0x12bab5['state'] === 'error_3')
-                                alert_box['confirmMessage']('لا يمكنك الانضمام للدفاع </br> (وصل عدد المنضمين الى الحد الاقصى)');
-                            else {
-                                if (_0x12bab5['state'] === 'error_5')
-                                    alert_box['confirmMessage']('لا يمكنك الدفاع ضد هذا الحلف');
-                                else
-                                    _0x12bab5['state'] === 'error_6' ? alert_box['confirmMessage']('المواد غير كافية') : alert_box['confirmMessage']('لا يمكنك الانضمام');
-                            }
+                    alert(data);
+                if (JsonObject.state === 'ok') {
+
+                    $('.close_dialog').trigger('click');
+                    Elkaisar.CurrentHero.Hero.in_city = Elkaisar.Hero.HeroState.HERO_IN_BATTEL;
+                    $('.close-alert').trigger('click');
+                    Hero.heroAttackProc();
+                    PLAYER_NOTIF.hero_in_battel = Number(PLAYER_NOTIF.hero_in_battel) + 1;
+                    city_profile.refresh_hero_view();
+                    var Battel = JsonObject.Battel;
+                    var found = false;
+                    for (var iii in Elkaisar.Battel.Battels) {
+                        if (Number(Elkaisar.Battel.Battels[iii].id_battel) === Number(battel_data['id_battel'])) {
+                            found = true;
+                            Elkaisar.Battel.Battels[iii] = Battel;
                         }
+                        ;
                     }
+
+                    if (!found) {
+                        PLAYER_NOTIF.battel_number = Number(PLAYER_NOTIF.battel_number) + 1;
+                        if (!Elkaisar['Battel']['Battels']) {
+                            Elkaisar['Battel']['Battels'] = [];
+                        }
+                        Elkaisar['Battel']['Battels'].push(Battel);
+                        
+                        Battel.afterJoin(battel_data['x_coord'], battel_data['y_coord'])
+                    }
+                    Fixed.refreshPlayerNotif();
+                } else if (JsonObject['state'] === 'error_1') {
+                    alert_box['confirmMessage']('البطل ليس فى المدينة');
+                } else if (JsonObject['state'] === 'error_2') {
+                    alert_box['confirmMessage']('انتهت المعركة لا يمكنك الانضمام');
+                } else if (JsonObject['state'] === 'error_3') {
+                    alert_box['confirmMessage']('لا يمكنك الانضمام للدفاع </br> (وصل عدد المنضمين الى الحد الاقصى)');
+                } else if (JsonObject['state'] === 'error_5') {
+                    alert_box['confirmMessage']('لا يمكنك الدفاع ضد هذا الحلف');
+                } else if (JsonObject.state == "error_6") {
+                    alert_box['confirmMessage'](`متطلبات الإنضمام غير مكتملة`);
+                } else if (JsonObject.state == "error_7") {
+                    alert_box['confirmMessage'](`البطل ليس لدية لياقة كافية`);
                 }
             },
-            'error': function (_0x9c1e15, _0x370e1e, _0x58f5ad) {}
+            'error': function (_0x9c1e15, _0x370e1e, _0x58f5ad) { }
         });
     } else {
         if (Number(battel_data['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPORT'])
@@ -33429,21 +34093,19 @@ function battelStart() {
 
 
 
-function getReportTitle(type, lvl, x_coord, y_coord)
-{
+function getReportTitle(type, lvl, x_coord, y_coord) {
 
     var Unit = WorldUnit.getWorldUnit(x_coord, y_coord);
     if (WorldUnit.isArmyCapital(Unit.ut) || WorldUnit.isArena(Unit.ut)) {
-        return `تقرير المعركة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${getArabicNumbers(y_coord) } ,${getArabicNumbers(x_coord)}] `;
+        return `تقرير المعركة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${getArabicNumbers(y_coord)} ,${getArabicNumbers(x_coord)}] `;
     } else {
-        return `تقرير المعركة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${getArabicNumbers(y_coord) } ,${getArabicNumbers(x_coord)}] مستوى ${lvl}`;
+        return `تقرير المعركة على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${getArabicNumbers(y_coord)} ,${getArabicNumbers(x_coord)}] مستوى ${lvl}`;
     }
 
 }
-function getSpyReportTitle(type, lvl, x_coord, y_coord)
-{
+function getSpyReportTitle(type, lvl, x_coord, y_coord) {
     var Unit = WorldUnit.getWorldUnit(x_coord, y_coord);
-    return  `تقرير التجسس على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${(y_coord) } ,${(x_coord)}] مستوى ${(lvl)}`;
+    return `تقرير التجسس على ${Elkaisar.World.UnitTypeData[Unit.ut].Title} [${(y_coord)} ,${(x_coord)}] مستوى ${(lvl)}`;
 }
 
 $(document).on("click", ".battel-con", function () {
@@ -33501,8 +34163,7 @@ $(document).on("PlayerReady", "html", function () {
 
 
 
-Elkaisar.Battel.supportByHero = function (idHero)
-{
+Elkaisar.Battel.supportByHero = function (idHero) {
     if (!idHero)
         idHero = Elkaisar.CurrentHero.Hero.id_hero;
 
@@ -33523,13 +34184,12 @@ Elkaisar.Battel.supportByHero = function (idHero)
 
             var JsonObject = JSON.parse(data);
 
-            if (JsonObject.state === "ok")
-            {
-                
+            if (JsonObject.state === "ok") {
+
                 alert_box.succesMessage("تم ارسال البطل الى البعثة");
                 PLAYER_NOTIF.hero_in_battel = Number(PLAYER_NOTIF.hero_in_battel) + 1;
                 Fixed.refreshPlayerNotif();
-                Elkaisar.Hero.getHero(idHero).Hero.in_city =  Elkaisar.Hero.HeroState.HERO_IN_BATTEL;
+                Elkaisar.Hero.getHero(idHero).Hero.in_city = Elkaisar.Hero.HeroState.HERO_IN_BATTEL;
                 city_profile.refresh_hero_view();
                 $(".nav_icon .close_dialog").click();
 
@@ -33549,8 +34209,7 @@ Elkaisar.Battel.supportByHero = function (idHero)
 
 };
 
-Elkaisar.Battel.TransHero = function (idHero)
-{
+Elkaisar.Battel.TransHero = function (idHero) {
 
     if (!idHero)
         idHero = Elkaisar.CurrentHero.Hero.id_hero;
@@ -33573,8 +34232,7 @@ Elkaisar.Battel.TransHero = function (idHero)
 
             var JsonObject = JSON.parse(data);
 
-            if (JsonObject.state === "ok")
-            {
+            if (JsonObject.state === "ok") {
                 Elkaisar.Hero.getHero(idHero).in_city = Elkaisar.Hero.HeroState.HERO_IN_BATTEL;
                 alert_box.succesMessage("تم ارسال البطل الى البعثة");
                 PLAYER_NOTIF.hero_in_battel = Number(PLAYER_NOTIF.hero_in_battel) + 1;
@@ -33598,18 +34256,11 @@ Elkaisar.Battel.TransHero = function (idHero)
 
 
 
-
-
-
-
-/*
- *   REFRESH BATTEL DATA 
- */
 $(document).on("click", "#REFRESH_BATTEL_DATA", function () {
 
-    var id_battel = parseInt($(this).attr("data-id-battel"));
+    var idBattel = parseInt($(this).attr("data-id-battel"));
 
-    if (!id_battel) {
+    if (!idBattel) {
 
         alert_box.confirmMessage("برجاء اختيار المعركة");
 
@@ -33617,25 +34268,24 @@ $(document).on("click", "#REFRESH_BATTEL_DATA", function () {
 
         $.ajax({
 
-            url: "api/battel.php",
+            url: `${NODE_URL}/api/ABattelRuning/refreshBattelData`,
             data: {
-
-                REFRESH_BATTEL_DATA: true,
-                id_battel: id_battel,
-                id_player: ID_PLAYER,
-                token: TOKEN
-
+                token: Elkaisar.Config.OuthToken,
+                idBattel: idBattel
             },
             type: 'GET',
             beforeSend: function (xhr) {
                 console.log(this.data)
             },
             success: function (data, textStatus, jqXHR) {
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+                var JsonObject = JSON.parse(data);
 
-                var json_data = JSON.parse(data);
-                // refresh attack num
-                $(".attack-side .joined-num").html(getArabicNumbers(json_data.attack_num));
-                $(".defense-side .joined-num").html(getArabicNumbers(json_data.defence_num)); // refresh defence num
+
+
+                $(".attack-side .joined-num").html(JsonObject.attackNum || 0);
+                $(".defense-side .joined-num").html(JsonObject.defenceNum || 0); // refresh defence num
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -33657,16 +34307,13 @@ Battel = {
 
 
         $.ajax({
-            url: "api/battel.php",
+            url: `${API_URL}/api/AWorldUnit/supportByHero`,
             data: {
-                SUPPLY_WORLD_UNIT_HERO: true,
-                x_to: x_coord,
-                y_to: y_coord,
-                x_from: Elkaisar.CurrentCity.City.x,
-                y_from: Elkaisar.CurrentCity.City.y,
-                id_hero: Elkaisar.CurrentHero.Hero.id_hero,
-                id_player: ID_PLAYER,
-                token: TOKEN
+                xTo: x_coord,
+                yTo: y_coord,
+                idHero: Elkaisar.CurrentHero.Hero.id_hero,
+                token: TOKEN,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             beforeSend: function (xhr) {
@@ -33711,8 +34358,7 @@ Battel = {
         Elkaisar.DPlayer.Player.honor = Number(Elkaisar.DPlayer.Player.honor) + Number(Battel.Player.Honor);
 
 
-        if (Number(Battel.Battel.task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_DOMINATE)
-        {
+        if (Number(Battel.Battel.task) === Elkaisar.BaseData.BattelTasks.BATTEL_TASK_DOMINATE) {
             Elkaisar.City.getCityBarray();
         }
 
@@ -33783,26 +34429,25 @@ Battel.heroArmiesAre = function (idHero, armyType) {
 
     armyType = Number(armyType);
 
-    if (Number(hero.army.f_1_type) > 0 && Number(hero.army.f_1_type) !== armyType)
+    if (Number(hero.Army.f_1_type) > 0 && Number(hero.Army.f_1_type) !== armyType)
         return false;
-    if (Number(hero.army.f_2_type) > 0 && Number(hero.army.f_2_type) !== armyType)
+    if (Number(hero.Army.f_2_type) > 0 && Number(hero.Army.f_2_type) !== armyType)
         return false;
-    if (Number(hero.army.f_3_type) > 0 && Number(hero.army.f_3_type) !== armyType)
+    if (Number(hero.Army.f_3_type) > 0 && Number(hero.Army.f_3_type) !== armyType)
         return false;
 
-    if (Number(hero.army.b_1_type) > 0 && Number(hero.army.b_1_type) !== armyType)
+    if (Number(hero.Army.b_1_type) > 0 && Number(hero.Army.b_1_type) !== armyType)
         return false;
-    if (Number(hero.army.b_2_type) > 0 && Number(hero.army.b_2_type) !== armyType)
+    if (Number(hero.Army.b_2_type) > 0 && Number(hero.Army.b_2_type) !== armyType)
         return false;
-    if (Number(hero.army.b_3_type) > 0 && Number(hero.army.b_3_type) !== armyType)
+    if (Number(hero.Army.b_3_type) > 0 && Number(hero.Army.b_3_type) !== armyType)
         return false;
 
 
     return true;
 };var guild_Detail;
 
-function showInVitedMembers()
-{
+function showInVitedMembers() {
 
     $.ajax({
 
@@ -33919,7 +34564,7 @@ $(document).on("click", ".accept-guild-req", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/acceptGuildReq`,
+        url: `${NODE_URL}/api/AGuildInvReq/acceptGuildReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -33939,11 +34584,19 @@ $(document).on("click", ".accept-guild-req", function () {
 
                 alert_box.succesMessage("تم اضافة الملك بنجاح");
                 self_.remove();
-                Elkaisar.Guild.Invetaions = JsonObject.GuildReqInvList.GuildInv;
-                Elkaisar.Guild.Requests = JsonObject.GuildReqInvList.GuildReq;
-                $("#dialg_box .left-nav li[head_title='g_relation']").click();
-            } else {
-                alert(data);
+                
+                Guild.getGuildData().done(function (){
+                    $("#dialg_box .left-nav li[head_title='g_relation']").click();
+                });
+                
+            } else if(JsonObject.state == "error_0") {
+                alert_box.failMessage("اللاعب منضم فى حلف بالفعل");
+            } else if(JsonObject.state == "error_1") {
+                alert_box.failMessage("لست منضم فى أى حلف");
+            } else if(JsonObject.state == "error_2") {
+                alert_box.failMessage("رتبتك فى الحلف لا تسمح");
+            } else if(JsonObject.state == "error_3") {
+                alert_box.failMessage("طلب الانضمام ليس لهذا الحلف");
             }
 
         },
@@ -33963,7 +34616,7 @@ $(document).on("click", ".cansel-guild-req", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/rejectGuildJoinReq`,
+        url: `${NODE_URL}/api/AGuildInvReq/rejectGuildJoinReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -33980,14 +34633,20 @@ $(document).on("click", ".cansel-guild-req", function () {
             if (JsonObject.state === "ok") {
 
                 alert_box.succesMessage("تم الغاء الطلب بنجاح");
-                Elkaisar.Guild.Invetaions = JsonObject.GuildReqInvList.GuildInv;
-                Elkaisar.Guild.Requests = JsonObject.GuildReqInvList.GuildReq;
-
                 self_.remove();
-                $("#dialg_box .left-nav li[head_title='g_relation']").click();
+                Guild.getGuildData().done(function (){
+                    $("#dialg_box .left-nav li[head_title='g_relation']").click();
+                });
+                
 
-            } else {
-                alert(data);
+            } else if(JsonObject.state == "error_0") {
+                alert_box.failMessage("اللاعب منضم فى حلف بالفعل");
+            } else if(JsonObject.state == "error_1") {
+                alert_box.failMessage("لست منضم فى أى حلف");
+            } else if(JsonObject.state == "error_2") {
+                alert_box.failMessage("رتبتك فى الحلف لا تسمح");
+            } else if(JsonObject.state == "error_3") {
+                alert_box.failMessage("طلب الانضمام ليس لهذا الحلف");
             }
 
         },
@@ -34009,7 +34668,7 @@ $(document).on("click", ".cansel-inv-action", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/cancelGuildInv`,
+        url: `${NODE_URL}/api/AGuildInvReq/cancelGuildInv`,
         data: {
             idPlayerToInvite: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -34028,13 +34687,12 @@ $(document).on("click", ".cansel-inv-action", function () {
 
                 alert_box.succesMessage("تم الغاء الطلب بنجاح");
                 self_.remove();
-                Elkaisar.Guild.Invetaions = JsonObject.GuildReqInvList.GuildInv;
-                Elkaisar.Guild.Requests = JsonObject.GuildReqInvList.GuildReq;
                 showInVitedMembers();
 
-            } else {
-                alert(data);
-            }
+            }else if(jsonObject.state == "error_0")
+                alert_box.failMessage("لست عضو فى أى حلف");
+            else if(jsonObject.state == "error_1")
+                alert_box.failMessage("رتبتك فى الحلف لا تسمح");
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -34057,19 +34715,19 @@ $(document).on("click", "#show_avail_guild", function () {
     var content = menu_bar.dialogBoxcontent_Ranks(true);
     var dialog_box = menu_bar.dialogBox(Translate.Title.MenuList.Ranking[UserLag.language], NavBar.Ranking, content, 0);
     if ($("#dialg_box").length > 0) {
-        $("#dialg_box").animate({top: "-800px"}, 200, "linear", function () {
+        $("#dialg_box").animate({ top: "-800px" }, 200, "linear", function () {
             $(this).remove();
             $("body").append(dialog_box);
-            menu_bar.getContentForRanks("unuions", 0);
+            menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Guild, 0);
             $("#dialg_box").attr("type", "messages");
-            $("#dialg_box").animate({top: "125"}, 200);
+            $("#dialg_box").animate({ top: "125" }, 200);
 
         });
     } else {
         $("body").append(dialog_box);
-        menu_bar.getContentForRanks("unuions", 0);
+        menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Guild, 0);
         $("#dialg_box").attr("type", "messages");
-        $("#dialg_box").animate({top: "125"}, 200);
+        $("#dialg_box").animate({ top: "125" }, 200);
 
     }
 
@@ -34087,7 +34745,7 @@ $(document).on("click", "#show_avail_guild", function () {
  */
 $(document).on("click", ".show-guild-prev", function () {
 
-    var id_guild = $(this).parents(".tr").data("id_guild");
+    var id_guild = $(this).attr("data-id-guild");
 
 
     $.ajax({
@@ -34202,10 +34860,9 @@ var Guild = {
     dialogBox: function (title, nav_bar, content) {
 
         var nav_list = "";
-        nav_bar.forEach(function (one, index)
-        {
+        nav_bar.forEach(function (one, index) {
             nav_list += ` <li head_title = "${one["title"]}" class="${index === 0 ? "selected" : ""}" >
-                               ${one[("title_" + UserLag.language)] }
+                               ${one[("title_" + UserLag.language)]}
                            </li>`;
         });
 
@@ -34355,15 +35012,15 @@ var Guild = {
                     alert(data);
                     return;
                 }
-                
-                
+
+
                 console.log(json_data)
 
                 if (json_data.guild_req.length > 0) {
 
-                    var guild = `<div class="td_1" style="width: 70%;">${json_data.guild_req.name}</div>
+                    var guild = `<div class="td_1" style="width: 70%;">${json_data.guild_req[0].name}</div>
                                 <div class="td_2" style="width: 30%;">
-                                    <button  class="full-btn full-btn-1x ellipsis" style="width: 80%; margin: auto" id="cansel-guild_req" data-id-guild="${json_data.guild_req.id_guild}">${Translate.Button.General.Cancel[UserLag.language]}</button>
+                                    <button  class="full-btn full-btn-1x ellipsis" style="width: 80%; margin: auto" id="cansel-guild_req" data-id-guild="${json_data.guild_req[0].id_guild}">${Translate.Button.General.Cancel[UserLag.language]}</button>
                                 </div>`;
                     $("#A-A-guild_req-list").html(guild);
 
@@ -34379,7 +35036,7 @@ var Guild = {
                                             <div class="td_1" style="width: 50%;">${json_data.guild_inv[iii].name}</div>
                                             <div class="td_2" style="width: 48%; margin-right: 2%">
                                                 <button  class="full-btn full-btn-1x pull-R ellipsis" style="width: 30%;" id="cansel-guild_inv" data-id-guild="${json_data.guild_inv[iii].id_guild}">الغاء</button>
-                                                <button  class="full-btn full-btn-1x ellipsis" style="width: 30%; display: inline-block; " id="accept-guild-inv" data-id-guild="${json_data.guild_inv[iii].id_guild}" >قبول</button>
+                                                <button  class="full-btn full-btn-1x ellipsis" style="width: 30%; display: inline-block; " class="accept-guild-inv" data-id-guild="${json_data.guild_inv[iii].id_guild}" >قبول</button>
                                                 <button  class="full-btn full-btn-1x pull-R show-guild-prev ellipsis" style="width: 30%; margin-right:3%" >${Translate.Button.MenuList.View[UserLag.language]}</button>
                                             </div>
                                         </div>`;
@@ -34452,7 +35109,16 @@ var Guild = {
                         Player_profile.refresh_player_data();
                         alert_box.succesMessage(`تم انشاء حلف ${JsonObject.GuildData.GuildData.name} بنجاح`);
 
-                    } else {
+                    } else if (JsonObject.state == "error_0")
+                        return alert_box.confirmMessage("لا يوجد إسم للحلف");
+                    else if (JsonObject.state == "error_1")
+                        return alert_box.confirmMessage("يوجد حلف يحمل نفس الأسم");
+                    else if (JsonObject.state == "error_2")
+                        return alert_box.confirmMessage("أنت بالفعل على قوة حلف أخر");
+                    else if (JsonObject.state == "error_3")
+                        return alert_box.confirmMessage("لا يوجد لديك موارد كافية لإنشاء حلف");
+                    else if (JsonObject.state == "error_4")
+                        return alert_box.confirmMessage("حدث خطاء ما اثناء إنشاء حلف"); else {
 
                         alert(data);
 
@@ -35356,10 +36022,10 @@ $(document).on("click", "#show_allay", function () {
 
 $(document).on("click", "#up_with_mat", function () {
     BoxOfMatrialToUse(
-            ["union_slogan", "union_declar", "union_era"],
-            "upgrade_guild",
-            1
-            );
+        ["union_slogan", "union_declar", "union_era"],
+        "upgrade_guild",
+        1
+    );
 });
 
 
@@ -35398,6 +36064,9 @@ $(document).on("click", "#guild_lead", function () {
     $(this).next(".drop-list").slideToggle();
 
 });
+
+
+
 
 
 /*   CHANGE GUILD WORD   */
@@ -35465,7 +36134,7 @@ $(document).on("click", "#chang-g-word", function () {
                                     <div class="down">
                                         <div class="th ellipsis">${Translate.Title.TH.Intro[UserLag.language]}</div>
                                         <p>
-                                            <textarea value="${Elkaisar.Guild.GuildData.word}">${Elkaisar.Guild.GuildData.word}</textarea>
+                                            <textarea value="${Elkaisar.Guild.GuildData.word}" class="input">${Elkaisar.Guild.GuildData.word}</textarea>
                                             <button class="full-btn full-btn-2x " id="save-g-intro" > تعديل</button>
                                         </p>
                                     </div>
@@ -35526,6 +36195,12 @@ $(document).on("click", "#save-g-intro", function () {
                 self_.parents("p").html(new_intro);
                 Elkaisar.Guild.GuildData.word = new_intro;
                 alert_box.succesMessage("تم تعديل المقدمة بنجاح");
+            } else if(JsonObject.state == "error_0"){
+                alert_box.failMessage("لست عضواً بهذا الحلف");
+            } else if(JsonObject.state == "error_1"){
+                alert_box.failMessage("لا يمكن تعديل المقدمة إلا بواسطة قائد الحلف");
+            } else if(JsonObject.state == "error_2"){
+                alert_box.failMessage("لا يمكن أن تكون المقدمة أكثر من 512 حرف");
             }
         }
 
@@ -35553,7 +36228,7 @@ $(document).on("click", "#change-g-F_E-list", function () {
 
 });
 
-$(document).on("keyup", ".F_E-list .row-1 input", function () {
+$(document).on("keyup", "#GuildEneFriInput", function () {
 
     var search_val = $(this).val();
 
@@ -35590,7 +36265,7 @@ $(document).on("keyup", ".F_E-list .row-1 input", function () {
 
             for (var iii = 0; iii < json_data.length; iii++) {
 
-                list += `   <li data-id-guild="${json_data[iii].id_guild}" data-g-name = "${json_data[iii].name}"> 
+                list += `   <li class="SearchGuildUnitRes" data-id-guild="${json_data[iii].id_guild}" data-g-name = "${json_data[iii].name}"> 
                                 <div class="pull-L image">
                                     <img src="images/style/bottom-${json_data[iii].slog_btm}.png">
                                     <img src="images/style/central-${json_data[iii].slog_cnt}.png">
@@ -35622,13 +36297,7 @@ $(document).on("keyup", ".F_E-list .row-1 input", function () {
 });
 
 
-
-
-
-/*
- * SELECT GUILD FOR RELATION 
- */
-$(document).on("click", "#g-search_result li", function () {
+$(document).on("click", "#g-search_result .SearchGuildUnitRes", function () {
 
     var id_guild = parseInt($(this).attr("data-id-guild"));
     var guild_name = $(this).attr("data-g-name");
@@ -35645,45 +36314,48 @@ $(document).on("click", "#g-search_result li", function () {
 
 
 $(document)['on']('click', '#submit-guild-relation', function () {
-    var _0x3e3f99 = $('.F_E-list input[name=guild_relation]:checked')['val'](),
-            _0x1b5257 = parseInt($('.F_E-list .row-1 input')['attr']('data-id-guild')),
-            _0x3f0b1a = $('.F_E-list .row-1 input')['attr']('data-g-name');
-    if (!_0x1b5257) {
-        alert_box['confirmMessage']('عليك اختيار الحلف اولا');
+    var GuildRel = $('.F_E-list input[name=guild_relation]:checked')['val']();
+    var idGuild = parseInt($('.F_E-list .row-1 input')['attr']('data-id-guild'));
+    if (!idGuild) {
+        alert_box.confirmMessage('عليك اختيار الحلف اولا');
         return;
-    } else if (!_0x3e3f99['length']) {
-        alert_box['confirmMessage']('اختار العلاقة بين الحلفين');
+    } else if (!GuildRel['length']) {
+        alert_box.confirmMessage('اختار العلاقة بين الحلفين');
         return;
     }
-    $['ajax']({
+    $.ajax({
         'url': API_URL + '/api/AGuild/changeGuildRelation',
         'data': {
-            'idGuild': _0x1b5257,
-            'relation': _0x3e3f99,
-            'token': Elkaisar['Config']['OuthToken'],
-            'server': Elkaisar['Config']['idServer']
+            'idGuild': idGuild,
+            'relation': GuildRel,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
         'type': 'POST',
-        'success': function (_0x1ba7ed, _0x5b5eee, _0x5af2f1) {
-            if (!Elkaisar['LBase']['isJson'](_0x1ba7ed))
-                return Elkaisar['LBase']['Error'](_0x1ba7ed);
-            var _0x5d4425 = JSON['parse'](_0x1ba7ed);
-            if (_0x5d4425['state'] == 'ok')
-                $('.close-alert')['click'](), alert_box['succesMessage']('تم اضافة العلاقة بين الحلفين بنجاح'), Guild['getGuildData']()['done'](function () {
-                    $('.left-nav .selected')['attr']('head_title') === 'guild_data' && $('.left-nav .selected')['click'](), Elkaisar['World']['Map']['RefreshWorld']();
+        success: function (data, _0x5b5eee, _0x5af2f1) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            var JsonData = JSON.parse(data);
+            if (JsonData.state == 'ok') {
+                $('.close-alert').click();
+                alert_box.succesMessage('تم اضافة العلاقة بين الحلفين بنجاح');
+                Guild.getGuildData().done(function () {
+                    if ($('.left-nav .selected')['attr']('head_title') === 'guild_data') {
+                        $('.left-nav .selected').click();
+                        Elkaisar.World.Map.RefreshWorld();
+                    }
                 });
-            else {
-                if (_0x5d4425['state'] == 'error_0')
-                    alert_box['failMessage']('لست عضو فى الحلف');
-                else {
-                    if (_0x5d4425['state'] == 'error_1')
-                        alert_box['failMessage']('رتيتك فى الحلف لا تسمح');
-                    else
-                        _0x5d4425['state'] == 'error_2' ? alert_box['failMessage']('نوع العلاقة غير صالحة') : alert(_0x1ba7ed);
-                }
-            }
+            } else if (JsonData['state'] == 'error_0')
+                alert_box['failMessage']('لست عضو فى الحلف');
+            else if (JsonData['state'] == 'error_1')
+                alert_box['failMessage']('رتيتك فى الحلف لا تسمح');
+            else if (JsonData['state'] == 'error_2')
+                alert_box['failMessage']('نوع العلاقة غير صالحة')
+            else
+                alert(data);
+
         },
-        'error': function (_0xf6addd, _0x324ef9, _0x45d39a) {}
+        'error': function (_0xf6addd, _0x324ef9, _0x45d39a) { }
     });
 });
 
@@ -35745,32 +36417,33 @@ $(document).on("click", "#submit-guild-invite", function () {
 
     $.ajax({
 
-        url: "api/guild.php",
+        url: `${NODE_URL}/api/AGuildInvReq/sendGuildJoinInv`,
         data: {
-
-            INVITE_GUILD_MEMBER: true,
-            id_player: id_player,
-            id_admin: ID_PLAYER,
-            token: TOKEN
-
+            idPlayerToInvite: id_player,
+            token: Elkaisar.Config.OuthToken
         },
         type: 'POST',
-        beforeSend: function (xhr) {
-
-        },
+        beforeSend: function (xhr) {},
         success: function (data, textStatus, jqXHR) {
-
-            if (data === "added") {
-
+            if(!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            
+            var JsonObject = JSON.parse(data);
+            
+            if(JsonObject.state == "ok"){
                 $(".close-alert").click();
                 if ($("#guild-g_relation").length > 0) {
                     showInVitedMembers();
                 }
                 alert_box.succesMessage('تم ارسال الدعوة بنجح');
-            } else {
-                alert(data);
-                console.log(data);
-            }
+                Guild.getGuildData();
+            }else if(JsonObject.state == "error_0")
+                alert_box.failMessage("اللاعب منضم فى حلف بالفعل");
+            else if(JsonObject.state == "error_1")
+                alert_box.failMessage("لست عضو فى أى حلف");
+            else if(JsonObject.state == "error_3")
+                alert_box.failMessage("رتبتك فى الحلف لا تسمح");
+            
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -35860,15 +36533,10 @@ $(document).on("click", "#change-g-slog", function () {
 $(document).on("click", "#send-guild-req button", function () {
 
     var id_guild = parseInt($(this).attr("data-id-guild"));
-
-    if (typeof id_guild !== 'number') {
-
-        return;
-
-    }
+    
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/sendGuildRequest`,
+        url: `${NODE_URL}/api/AGuildInvReq/sendGuildRequest`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken,
@@ -35876,8 +36544,7 @@ $(document).on("click", "#send-guild-req button", function () {
         },
         type: 'POST',
         success: function (data, textStatus, jqXHR) {
-
-
+            
             if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
@@ -35887,7 +36554,9 @@ $(document).on("click", "#send-guild-req button", function () {
 
                 alert_box.succesMessage("تم ارسال الدعوة الى المسؤلين للانضمام للحلف");
                 $(".close_use_menu").click();
-            }
+            }else if(JsonObject.state == "error_0")
+                alert_box.failMessage("لست منضم فى أى حلف");
+            
 
 
         },
@@ -35905,16 +36574,14 @@ $(document).on("click", "#send-guild-req button", function () {
  * 
  */
 
-function canselGuildInvetation(id_player, id_guild)
-{
+function canselGuildInvetation(id_player, id_guild) {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/rejectGuildInv`,
+        url: `${NODE_URL}/api/AGuildInvReq/rejectGuildInv`,
         data: {
             idGuild: id_guild,
-            token: Elkaisar.Config.OuthToken,
-            server: Elkaisar.Config.idServer
+            token: Elkaisar.Config.OuthToken
         },
         type: 'POST',
         beforeSend: function (xhr) {
@@ -35930,6 +36597,7 @@ function canselGuildInvetation(id_player, id_guild)
 
                 alert_box.succesMessage("تم الغاء  دعوة الانضمام بنجاح");
                 $(".close_use_menu").click();
+                Guild.getGuildData();
             }
 
 
@@ -35948,12 +36616,11 @@ function canselGuildInvetation(id_player, id_guild)
  * 
  */
 
-function canselGuildJoinRequest(id_player, id_guild)
-{
+function canselGuildJoinRequest(id_player, id_guild) {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/cancelGuildRequest`,
+        url: `${NODE_URL}/api/AGuildInvReq/cancelGuildRequest`,
         data: {
             idGuild: id_guild,
             server: Elkaisar.Config.idServer,
@@ -36013,16 +36680,15 @@ $(document).on("click", "#cansel-guild_req", function () {
  * accept guild invetation
  * 
  */
-$(document).on("click", "#accept-guild-inv", function () {
+$(document).on("click", ".accept-guild-inv", function () {
 
     var id_guild = parseInt($(this).attr("data-id-guild"));
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuildInvReq/cancelGuildRequest`,
+        url: `${NODE_URL}/api/AGuildInvReq/acceptGuildInv`,
         data: {
             idGuild: id_guild,
-            server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken
         },
         type: 'POST',
@@ -36301,8 +36967,7 @@ $(document).on("click", ".mem-prize-percent", function () {
 
         var newVal = Number($("#modfie-prize-share-input").val());
         if (newVal > Math.max(100 - Number(Elkaisar.Guild.GuildData.total_prize_share) + prize_share, 0)
-                || newVal < 0)
-        {
+            || newVal < 0) {
             alert_box.failMessage("نسبة الجوائز غير مسموح بيها");
             return;
         }
@@ -37531,7 +38196,7 @@ function searchByName(segmant , condtion)
                 search_by_name: true,
                 name: segmant,
                 id_guild_no: false,
-                id_guild: playerElkaisar.DPlayer.Player.id_guild,
+                id_guild: Elkaisar.DPlayer.Player.id_guild,
                 id_player:ID_PLAYER,
                 token:TOKEN
                 
@@ -37598,6 +38263,7 @@ $(document).on("click" , "#search_result ul li" , function (){
     $("#search_by_name").attr("id_player" , id_player); 
     $("#search_by_name").val(p_name);
     $("#search_by_name_forGuild").attr("id_player" , id_player); 
+    $("#SearchByNameForTeam").attr("data-id-player" , id_player); 
     $("#search_by_name_forGuild").val(p_name);
     $("#search_result").hide();
     
@@ -43762,74 +44428,81 @@ $("#nav-btn .full-btn").click(function () {
 
 
 });Animation = {};
-Animation.RATES = [];
+Animation.ProductioRats = [];
+Animation.ProductionTweens = [];
+Animation.PluseProFontStyle = {
+    fixedHeight: 20,
+    fontStyle: "bold",
+    fontSize: 14,
+    stroke: '#000000',
+    strokeThickness: 3,
+    color: "#a7e328"
+};
+Animation.MinusProFontStyle = {
+    fixedHeight: 20,
+    fontStyle: "bold",
+    fontSize: 14,
+    stroke: '#000000',
+    strokeThickness: 3,
+    color: "#a7e328"
+};
 Animation.cityProductionRate = function () {
-    return;
-    for (var iii in Animation.RATES) {
-        Animation.RATES[iii].destroy();
-        Animation.RATES.splice(iii, 1);
-    }
-    /* resource  in city animation*/
-    var coin_in_ratio = parseFloat(Math.round(((Elkaisar.CurrentCity.City.coin_in - Elkaisar.CurrentCity.City.coin_out) / (30 * 60)) * 100) / 100);
-    var temp;
-    temp = Crafty.e(`2D, DOM , stroke , iso_text_right , UPFADE ${coin_in_ratio >= 0 ? 'OVER_ZERO' : "BELOW_ZERO"} , city_ani , Text`)
-            .attr({x: BuildingOnFloor.palace._x + 0.6 * X_GRID, y: BuildingOnFloor.palace._y + 1.85 * Y_GRID - 30, h: 30, w: 30, avoidCss3dTransforms: true, z: 100})
-            .text(coin_in_ratio >= 0 ? "+" + coin_in_ratio : '-' + coin_in_ratio)
-            .textFont({size: '12px', weight: 'bold', lineHeight: "32px"})
-            .textAlign("center");
 
-    $(temp._element).attr("data-ratio-for", "coin");
-    Animation.RATES.push(temp);
-
+    Animation.ProductioRats.forEach(function(OneRate){
+        OneRate.destroy();
+    });
+    Animation.ProductionTweens.forEach(function(OneTween){
+        OneTween.remove();
+    });
+    Animation.ProductioRats = [];
+    Animation.ProductionTweens = [];
 
     /* resource  in city animation*/
-    var food_in_ratio = parseFloat(Math.round(((Elkaisar.CurrentCity.City.food_in - Elkaisar.CurrentCity.City.food_out) / (30 * 60)) * 100) / 100);
-    var temp;
-    temp = Crafty.e(`2D, DOM , stroke , iso_text_right , UPFADE ${food_in_ratio > 0 ? 'OVER_ZERO' : "BELOW_ZERO"}, city_ani , Text`)
-            .attr({x: BuildingOnFloor.farm._x + 0.6 * X_GRID, y: BuildingOnFloor.farm._y + 1.85 * Y_GRID - 30, h: 30, w: 30, avoidCss3dTransforms: true, z: 100})
-            .text(food_in_ratio > 0 ? "+" + food_in_ratio : '-' + food_in_ratio)
-            .textFont({size: '12px', weight: 'bold', lineHeight: "32px"})
-            .textAlign("center");
+    const coin_in_ratio = parseFloat(Math.round(((Elkaisar.CurrentCity.City.coin_in - Elkaisar.CurrentCity.City.coin_out) / (30 * 60)) * 100) / 100);
+    Animation.ProductioRats.push(Elkaisar.GE.CityScene.add.text(
+        BuildingOnFloor.palace.x + 0.6 * X_GRID,
+        BuildingOnFloor.palace.y + 1.85 * Y_GRID ,
+        coin_in_ratio >= 0 ? "+" + coin_in_ratio : '-' + coin_in_ratio,
+        coin_in_ratio >= 0 ? Animation.PluseProFontStyle : Animation.MinusProFontStyle ).setDepth(1000).setOrigin(0, 0));
 
-    $(temp._element).attr("data-ratio-for", "food");
-    Animation.RATES.push(temp);
+    const food_in_ratio = parseFloat(Math.round(((Elkaisar.CurrentCity.City.food_in - Elkaisar.CurrentCity.City.food_out) / (30 * 60)) * 100) / 100);
+    Animation.ProductioRats.push(Elkaisar.GE.CityScene.add.text(
+        BuildingOnFloor.farm.x + 0.6 * X_GRID,
+        BuildingOnFloor.farm.y + 1.85 * Y_GRID,
+        food_in_ratio >= 0 ? "+" + food_in_ratio : '-' + food_in_ratio,
+        food_in_ratio >= 0 ? Animation.PluseProFontStyle : Animation.MinusProFontStyle ).setDepth(1000).setOrigin(0, 0));
 
-
-    /* resource  in city animation*/
     var wood_in_ratio = parseFloat(Math.round(((Elkaisar.CurrentCity.City.wood_in - Elkaisar.CurrentCity.City.wood_out) / (30 * 60)) * 100) / 100);
-    var temp;
-    temp = Crafty.e(`2D, DOM , stroke , iso_text_right , UPFADE ${wood_in_ratio > 0 ? 'OVER_ZERO' : "BELOW_ZERO"}, city_ani , Text`)
-            .attr({x: BuildingOnFloor.wood._x + 0.6 * X_GRID, y: BuildingOnFloor.wood._y + 1.85 * Y_GRID - 30, h: 30, w: 30, avoidCss3dTransforms: true, z: 100})
-            .text(Elkaisar.CurrentCity.City.wood_in > 0 ? "+" + wood_in_ratio : '-' + wood_in_ratio)
-            .textFont({size: '12px', weight: 'bold', lineHeight: "32px"})
-            .textAlign("center");
+    Animation.ProductioRats.push(Elkaisar.GE.CityScene.add.text(
+        BuildingOnFloor.wood.x + 0.6 * X_GRID,
+        BuildingOnFloor.wood.y + 1.85 * Y_GRID,
+        wood_in_ratio >= 0 ? "+" + wood_in_ratio : '-' + wood_in_ratio,
+        wood_in_ratio >= 0 ? Animation.PluseProFontStyle : Animation.MinusProFontStyle ).setDepth(1000).setOrigin(0, 0));
 
-    $(temp._element).attr("data-ratio-for", "wood");
-    Animation.RATES.push(temp);
 
-    /* resource  in city animation*/
     var stone_in_ratio = parseFloat(Math.round((Elkaisar.CurrentCity.City.stone_in / (30 * 60)) * 100) / 100);
-    var temp;
-    temp = Crafty.e(`2D, DOM , stroke , iso_text_right , UPFADE ${stone_in_ratio > 0 ? 'OVER_ZERO' : "BELOW_ZERO"} , city_ani , Text`)
-            .attr({x: BuildingOnFloor.stone._x + 0.6 * X_GRID, y: BuildingOnFloor.stone._y + 1.85 * Y_GRID - 30, h: 30, w: 30, avoidCss3dTransforms: true, z: 100})
-            .text(Elkaisar.CurrentCity.City.stone_in > 0 ? "+" + stone_in_ratio : '-' + stone_in_ratio)
-            .textFont({size: '12px', weight: 'bold', lineHeight: "32px"})
-            .textAlign("center");
+    Animation.ProductioRats.push(Elkaisar.GE.CityScene.add.text(
+        BuildingOnFloor.stone.x + 0.6 * X_GRID,
+        BuildingOnFloor.stone.y + 1.85 * Y_GRID,
+        stone_in_ratio >= 0 ? "+" + stone_in_ratio : '-' + stone_in_ratio,
+        stone_in_ratio >= 0 ? Animation.PluseProFontStyle : Animation.MinusProFontStyle ).setDepth(1000).setOrigin(0, 0));
 
-    $(temp._element).attr("data-ratio-for", "stone");
-    Animation.RATES.push(temp);
-
-    /* resource  in city animation*/
     var metal_in_ratio = parseFloat(Math.round((Elkaisar.CurrentCity.City.metal_in / (30 * 60)) * 100) / 100);
-    var temp;
-    temp = Crafty.e(`2D, DOM , stroke , iso_text_right , UPFADE ${metal_in_ratio > 0 ? 'OVER_ZERO' : "BELOW_ZERO"}, city_ani , Text`)
-            .attr({x: BuildingOnFloor.mine._x + 1.6 * X_GRID, y: BuildingOnFloor.mine._y + 2.25 * Y_GRID - 30, h: 30, w: 30, avoidCss3dTransforms: true, z: 100})
-            .text(Elkaisar.CurrentCity.City.stone_in > 0 ? "+" + metal_in_ratio : '-' + metal_in_ratio)
-            .textFont({size: '12px', weight: 'bold', lineHeight: "32px"})
-            .textAlign("center");
+    Animation.ProductioRats.push(Elkaisar.GE.CityScene.add.text(
+        BuildingOnFloor.mine.x + 1.6 * X_GRID,
+        BuildingOnFloor.mine.y + 2.25 * Y_GRID,
+        metal_in_ratio >= 0 ? "+" + metal_in_ratio : '-' + metal_in_ratio,
+        metal_in_ratio >= 0 ? Animation.PluseProFontStyle : Animation.MinusProFontStyle ).setDepth(1000).setOrigin(0, 0));
 
-    $(temp._element).attr("data-ratio-for", "metal");
-    Animation.RATES.push(temp);
+
+
+    Animation.ProductioRats.forEach(function (El, Ind) {
+        Animation.ProductionTweens.push(Elkaisar.GE.CityScene.tweens.add({
+            targets: El, y: "-=50", alpha: 0.2 ,ease: 'Linear',
+            repeat: -1, duration: 3000
+        }));
+    });
+    return;
 
 };
 
@@ -44052,8 +44725,7 @@ Animation.FixedCityAnimation = function () {
 
 
 
-function building_hammer_animate(BuildingPlace)
-{
+function building_hammer_animate(BuildingPlace) {
 
     if (!isUpgradingNow(BuildingPlace))
         return;
@@ -44131,17 +44803,16 @@ function building_hammer_animate(BuildingPlace)
 
 }
 
-function fire_attack_animation()
-{
+function fire_attack_animation() {
     return;
     Crafty.e('2D, Canvas, fire_start, SpriteAnimation, worldEnt')
-            .reel("walking", 650, [
-                [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
-                [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1],
-                [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
-            ])
-            .animate("walking", -1)
-            .attr({x: 800 + 100, y: 600 + 50, z: 50});
+        .reel("walking", 650, [
+            [0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
+            [0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1],
+            [0, 2], [1, 2], [2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2]
+        ])
+        .animate("walking", -1)
+        .attr({ x: 800 + 100, y: 600 + 50, z: 50 });
 
 
 }
@@ -44205,6 +44876,15 @@ Animation.fireWorldUnit = function (xCoord, yCoord) {
         Unit.UnitFire[1] = Scene.add.sprite(x + 88, y + 12, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
         Unit.UnitFire[2] = Scene.add.sprite(x + 8, y + 8, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
         Unit.UnitFire[3] = Scene.add.sprite(x + 60, y + 32, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+
+    } else if (WorldUnit.isSeaCity(type)) {
+
+        Unit.UnitFire[0] = Scene.add.sprite(x + 240, y + 70, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[1] = Scene.add.sprite(x + 150, y + 75, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[2] = Scene.add.sprite(x + 275, y + 150, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[3] = Scene.add.sprite(x + 175, y + 190, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[4] = Scene.add.sprite(x + 60, y + 175, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
+        Unit.UnitFire[5] = Scene.add.sprite(x + 175, y + 260, "WorldUnitFire").setDepth(z).setOrigin(0, 0).play("WorldUnitFire.Ani");
 
     } else {
 
@@ -44274,15 +44954,15 @@ Animation.cityFlag = function () {
             }
         }
 
-        let Pos = {x: 0, y: 0};
+        let Pos = { x: 0, y: 0 };
         if (Number(Unit.ut) === WUT_CITY_LVL_0)
-            Pos = {x: x + 36, y: y + 50, z: z + 10};
+            Pos = { x: x + 36, y: y + 50, z: z + 10 };
         else if (Number(Unit.ut) === WUT_CITY_LVL_1)
-            Pos = {x: x + 36, y: y + 50, z: z + 10};
+            Pos = { x: x + 36, y: y + 50, z: z + 10 };
         else if (Number(Unit.ut) === WUT_CITY_LVL_2)
-            Pos = {x: x + 36, y: y + 50, z: z + 10};
+            Pos = { x: x + 36, y: y + 50, z: z + 10 };
         else if (Number(Unit.ut) === WUT_CITY_LVL_3)
-            Pos = {x: x + 30, y: y + 45, z: z + 10};
+            Pos = { x: x + 30, y: y + 45, z: z + 10 };
 
         Unit.CityFlagEntite = Elkaisar.GE.WorldScene.add.sprite(Pos.x, Pos.y, 'flagOverCity').setOrigin(0, 0).play(FramName).setDepth(Pos.z);
 
@@ -44346,59 +45026,59 @@ Animation.cityColonizerFlag = function () {
         if (Number(world_unit.ut) === WUT_CITY_LVL_0) {
 
             world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
+                Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
                     .reel("city_flag", 650, flag_array)
                     .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
+                    .attr({ x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y })
                     .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 38, w: 35, h: 20, avoidCss3dTransforms: true, z: 9 ** 9})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
+                        .attr({ x: x + 34, y: y + 38, w: 35, h: 20, avoidCss3dTransforms: true, z: 9 ** 9 })
+                        .text("")
+                        .textColor('white')
+                        .textFont({ size: '12px', lineHeight: "20px" })
+                        .textAlign("center"));
 
 
         } else if (Number(world_unit.ut) === WUT_CITY_LVL_1) {
 
             world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
+                Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
                     .reel("city_flag", 650, flag_array)
                     .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
+                    .attr({ x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y })
                     .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e15})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
+                        .attr({ x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e15 })
+                        .text("")
+                        .textColor('white')
+                        .textFont({ size: '12px', lineHeight: "20px" })
+                        .textAlign("center"));
 
         } else if (Number(world_unit.ut) === WUT_CITY_LVL_2) {
 
             world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
+                Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
                     .reel("city_flag", 650, flag_array)
                     .animate("city_flag", -1)
-                    .attr({x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
+                    .attr({ x: x + 36, y: y + 35, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y })
                     .attach(Crafty.e('2D, Canvas, Text, stroke')
-                            .attr({x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29})
-                            .text("")
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
+                        .attr({ x: x + 34, y: y + 48, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29 })
+                        .text("")
+                        .textColor('white')
+                        .textFont({ size: '12px', lineHeight: "20px" })
+                        .textAlign("center"));
 
         } else if (Number(world_unit.ut) === WUT_CITY_LVL_3) {
 
             world_unit.CityFlagEntite =
-                    Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
+                Crafty.e('2D, Canvas, flag_over_city, SpriteAnimation, worldEnt')
                     .reel("city_flag", 650, flag_array)
                     .animate("city_flag", -1)
-                    .attr({x: x + 30, y: y + 30, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y})
+                    .attr({ x: x + 30, y: y + 30, z: z + 10, coord_x: world_unit.x, coord_y: world_unit.y })
                     .attach(Crafty.e('2D, Canvas, Text, stroke, worldEnt')
-                            .attr({x: x + 34, y: y + 60, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29})
-                            .text("" + world_unit.CityFlag)
-                            .textColor('white')
-                            .textFont({size: '12px', lineHeight: "20px"})
-                            .textAlign("center"));
+                        .attr({ x: x + 34, y: y + 60, w: 35, h: 20, avoidCss3dTransforms: true, z: 9e29 })
+                        .text("" + world_unit.CityFlag)
+                        .textColor('white')
+                        .textFont({ size: '12px', lineHeight: "20px" })
+                        .textAlign("center"));
 
         } else {
             console.log(world_unit)
@@ -44446,8 +45126,8 @@ Animation.currentUnitArrow.put = function (x, y) {
         repeat: -1,
         duration: 1000,
         yoyo: true,
-        onYoyo: function () {},
-        onRepeat: function () {}
+        onYoyo: function () { },
+        onRepeat: function () { }
     });
 
 
@@ -44457,19 +45137,19 @@ Animation.currentUnitArrow.put = function (x, y) {
     } else {
 
         Animation.currentUnitArrow.arrow =
-                Elkaisar.GE.WorldScene.add.image(Animation.currentUnitArrow.x, Animation.currentUnitArrow.y).setDepth(Animation.currentUnitArrow.z);
+            Elkaisar.GE.WorldScene.add.image(Animation.currentUnitArrow.x, Animation.currentUnitArrow.y).setDepth(Animation.currentUnitArrow.z);
 
         Crafty.e("2D, Canvas, Tween, arrow")
-                .attr({
-                    x: Animation.currentUnitArrow.x,
-                    y: Animation.currentUnitArrow.y,
-                    z: Animation.currentUnitArrow.z
-                })
-                .tween({y: Animation.currentUnitArrow.y + 30}, 1000, "easeInOutQuad")
-                .bind("TweenEnd", function () {
-                    this.tween({y: Animation.currentUnitArrow.y + (dir ? 30 : 0)}, 1000, "easeInOutQuad");
-                    dir = 1 - dir;
-                });
+            .attr({
+                x: Animation.currentUnitArrow.x,
+                y: Animation.currentUnitArrow.y,
+                z: Animation.currentUnitArrow.z
+            })
+            .tween({ y: Animation.currentUnitArrow.y + 30 }, 1000, "easeInOutQuad")
+            .bind("TweenEnd", function () {
+                this.tween({ y: Animation.currentUnitArrow.y + (dir ? 30 : 0) }, 1000, "easeInOutQuad");
+                dir = 1 - dir;
+            });
 
     }
 
@@ -44559,17 +45239,17 @@ Elkaisar.Equip.getEquipUnit = function(idEquip)
 
 Elkaisar.Equip.EquipList = {},
 Elkaisar.Equip.getEquipData = function () {
-    $['ajax']({
+    $.ajax({
         'url': API_URL + '/js' + Elkaisar['Config']['JsVersion'] + '/json/equipment/' + UserLag['language'] + '.json',
-        'success': function (data, _0x18a598, _0x1ed6f5) {
+        success: function (data, _0x18a598, _0x1ed6f5) {
             Elkaisar['Equip']['EquipList'] = data;
-            $['ajax']({
+            $.ajax({
                 'url': API_URL + '/api/APlayerEquip/getEquipPower',
                 'data': {
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (DataI, _0x23bbdc, _0x2945f2) {
+                success: function (DataI, _0x23bbdc, _0x2945f2) {
                     if (!Elkaisar['LBase']['isJson'](DataI))
                         return Elkaisar['LBase']['Error'](DataI);
                     var JsonData = JSON['parse'](DataI);
@@ -45815,7 +46495,7 @@ $(document).on("click", "#PLUNDE_PRIZE", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AWorldUnit/plundePrize`,
+        url: `${NODE_URL}/api/AWorldUnit/plundePrize`,
         data: {
             xCoord: xCoord,
             yCoord: yCoord,
@@ -45824,7 +46504,7 @@ $(document).on("click", "#PLUNDE_PRIZE", function () {
         },
         type: 'POST',
         success: function (data, textStatus, jqXHR) {
-            console.log(data)
+            
             if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
             console.log(data)
@@ -46212,7 +46892,7 @@ $(document).on("click" , "#AllBattelLists .has_battel" , function (){
 
 
 BattelField.addToWatchList = function (x_coord , y_coord){
-    
+    return;
     ws.send(
             JSON.stringify(
                 {
@@ -46232,7 +46912,7 @@ BattelField.addToWatchList = function (x_coord , y_coord){
 
 BattelField.removeFromWatchList = function (x_coord , y_coord){
     
-    ws.send(
+   /* ws.send(
         JSON.stringify(
             {
                 url:"WS_BattelWatchList/removePlayer",
@@ -46245,7 +46925,7 @@ BattelField.removeFromWatchList = function (x_coord , y_coord){
                 
             }
         )
-    );
+    );*/
     
 };
 
@@ -46272,71 +46952,71 @@ BattelField.getBattel = function (id_battel){
 };var GodGate = {};
 
 GodGate.pointTotxt = {
-    
-    "attack":"هجوم",
-    "def":"دفاع",
-    "dam":"انجراح",
-    "vit":"حيوية",
+
+    "attack": "هجوم",
+    "def": "دفاع",
+    "dam": "انجراح",
+    "vit": "حيوية",
     "break": "إجتياح",
     "anti_break": "تصدى",
     "strike": "تدمير",
     "immunity": "حصانة"
-    
+
 };
 
-GodGate.navBar =  [{
+GodGate.navBar = [{
         "txt": "أمون رع",
-        "title":"god-gate-1"
-        },{
-        "txt":"خنوم",
-        "title":"god-gate-2"
-        },{
+        "title": "god-gate-1"
+    }, {
+        "txt": "خنوم",
+        "title": "god-gate-2"
+    }, {
         "txt": "انوبيس",
-        "title":"god-gate-3"
-        },{
+        "title": "god-gate-3"
+    }, {
         "txt": "حورس",
-        "title":"god-gate-4"
-        }
+        "title": "god-gate-4"
+    }
 ];
 
 
 GodGate.playerGate = {};
 
 GodGate.closed = 0;
-GodGate.open   = 1;
+GodGate.open = 1;
 
 GodGate.data = {
-    
-    point:{
-        attack:{
+
+    point: {
+        attack: {
             ar_title: "هجوم",
             max: 50
         },
-        defence:{
+        defence: {
             ar_title: "دفاع",
             max: 50
         },
-        vit:{
+        vit: {
             ar_title: "حيوية",
             max: 100
         },
-        damage:{
+        damage: {
             ar_title: "انجراح",
             max: 50
         },
-        "break":{
+        "break": {
             ar_title: "إجتياح",
             max: 15
         },
-        anti_break:{
+        anti_break: {
             ar_title: "تصدى",
             max: 15
         },
-        strike:{
+        strike: {
             ar_title: "تدمير",
             max: 15
         },
-        immunity:{
+        immunity: {
             ar_title: "حصانة",
             max: 15
         }
@@ -46347,73 +47027,111 @@ GodGate.data = {
         gate_3: "أنوبيس",
         gate_4: "حورس"
     }
-    
+
 };
 
 
-GodGate.matrialUse = ["god_point_5","god_point_30","god_point_75","god_point_175","god_point_750", "god_point_1k", "god_point_2k", "god_point_5k", "god_point_10k", "god_point_50k"];
-GodGate.gateRequireMents = 
-{
-    gate_1:{
-        points:500,
-        porm: 4,
-        godName:"امون رع"
-    },
-    gate_2:{
-        points:1500,
-        porm: 10,
-        godName:"خنوم"
-    },
-    gate_3:{
-        points:2500,
-        porm: 18,
-        godName:"انوبيس"
-    },
-    gate_4:{
-        points:4000,
-        porm: 28,
-        godName:"حورس"
-    }
-};
+GodGate.matrialUse = ["god_point_5", "god_point_30", "god_point_75", "god_point_175", "god_point_750", "god_point_1k", "god_point_2k", "god_point_5k", "god_point_10k", "god_point_50k"];
+GodGate.gateRequireMents =
+        {
+            gate_1: {
+                points: 500,
+                porm: 4,
+                godName: "امون رع"
+            },
+            gate_2: {
+                points: 1500,
+                porm: 10,
+                godName: "خنوم"
+            },
+            gate_3: {
+                points: 2500,
+                porm: 18,
+                godName: "انوبيس"
+            },
+            gate_4: {
+                points: 4000,
+                porm: 28,
+                godName: "حورس"
+            }
+        };
 
 
-GodGate.getPlayerGates = function() {
-    
+GodGate.getPlayerGates = function () {
+
     return  $.ajax({
-        
+
         url: `${API_URL}/api/AGodGate/getGodGateData`,
-        data:{
+        data: {
             token: Elkaisar.Config.OuthToken,
-            server : Elkaisar.Config.idServer
+            server: Elkaisar.Config.idServer
         },
         beforeSend: function (xhr) {
-            
+
         },
         success: function (data, textStatus, jqXHR) {
-            
-            if(!Elkaisar.LBase.isJson(data))
+
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
-            
-                GodGate.playerGate = JSON.parse(data);
-            
+
+            GodGate.playerGate = JSON.parse(data);
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            
+
         }
-        
+
     });
-    
+
 };
 
-$(document).on("PlayerReady", "html", function (){
+$(document).on("PlayerReady", "html", function () {
+    $.ajax({
+
+        url: `${NODE_URL}/api/AGodGate/getRankEffect`,
+        data: {
+            token: Elkaisar.Config.OuthToken
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+            GodGate.rankEffect = JSON.parse(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+
+    });
+    $.ajax({
+
+        url: "api/godGate.php",
+        data: {
+
+            GLOBAL_GATE_DATA: true
+
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+            GodGate.globalData = JSON.parse(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+
+    });
     GodGate.getPlayerGates();
 });
 
 
 
-GodGate.godGateContent = function (){
-    
-    
+GodGate.godGateContent = function () {
+
+
     var content = `  
                     <div id="god-gate" class="box_content">
                         <div class="content-wrapper">
@@ -46445,120 +47163,120 @@ GodGate.godGateContent = function (){
                             </div>
                         </div>
                     </div>`;
-    
+
     return content;
-    
+
 };
 
 
 
-GodGate.askToOpenGate = function (gate){
-  
-    
+GodGate.askToOpenGate = function (gate) {
+
+
     var Needs = GodGate.gateRequireMents["gate_" + gate];
-    
-    if(!Needs)
-        return ;
-    
-    if(Number(Elkaisar.DPlayer.Player.porm) < Needs.porm){
-        
+
+    if (!Needs)
+        return;
+
+    if (Number(Elkaisar.DPlayer.Player.porm) < Needs.porm) {
+
         alert_box.failMessage(`لا يمكنك فتح البوابة و رتبتك اقل من ${Elkaisar.BaseData.Promotion[Needs.porm].Title}`);
-        return ;
-        
+        return;
+
     }
-    
-    if(Number(GodGate.playerGate.GodGateData.points) < Needs.points){
+
+    if (Number(GodGate.playerGate.GodGateData.points) < Needs.points) {
         alert_box.failMessage(`ليس لديك (${Needs.points}) نقطة لفتح البوابة`);
-        return ;
+        return;
     }
-    
-    
-    alert_box.confirmDialog(`تأكيد فتح بوبة التسليح ${GodGate.data.godName["gate_" +gate]}` , function (){
-       
-        
+
+
+    alert_box.confirmDialog(`تأكيد فتح بوبة التسليح ${GodGate.data.godName["gate_" + gate]}`, function () {
+
+
         $.ajax({
-           
+
             url: `${API_URL}/api/AGodGate/openGate`,
-            data:{
-                gateIndex : gate,
-                token     : Elkaisar.Config.OuthToken,
-                server    : Elkaisar.Config.idServer
+            data: {
+                gateIndex: gate,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'POST',
             beforeSend: function (xhr) {
-                
+
             },
             success: function (data, textStatus, jqXHR) {
-                
-                
-                if(!Elkaisar.LBase.isJson(data))
+
+
+                if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
-                
+
                 var jsonData = JSON.parse(data);
-                
-                if(jsonData.state === "error_2"){
-                    
+
+                if (jsonData.state === "error_2") {
+
                     alert_box.confirmMessage(`لا يمكنك فتح البوابة و رتبتك اقل من ${Elkaisar.BaseData.Promotion[Needs.porm].Title}`);
-                    
-                }else if(jsonData.state === "error_3"){
-                    
+
+                } else if (jsonData.state === "error_3") {
+
                     alert_box.confirmMessage(`ليس لديك (${Needs.points}) نقطة لفتح البوابة`);
-                    
-                }else if(jsonData.state === "ok"){
-                    
+
+                } else if (jsonData.state === "ok") {
+
                     GodGate.playerGate.GodGateData = jsonData.PlayerGate;
-                    GodGate.playerGate[("GodGate"+gate)] = jsonData.Gate;
-                    
+                    GodGate.playerGate[("GodGate" + gate)] = jsonData.Gate;
+
                     $("#god-gate").replaceWith(GodGate.godGateContent());
                     alert_box.succesMessage("تم فتح البوابة بنجاح");
-                    
+
                 }
-                
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                
+
             }
-            
+
         });
-        
+
     });
-    
-    
-    
+
+
+
 };
 
 
 
-GodGate.BoxContent = function (gate){
-    
-    var godGate = this.playerGate[("GodGate"+gate)];
-    if(!godGate)
-        return ;
-    
-    
+GodGate.BoxContent = function (gate) {
+
+    var godGate = this.playerGate[("GodGate" + gate)];
+    if (!godGate)
+        return;
+
+
     var totalLocks = 0;
-    
+
     var listItem = "";
-    
-    for(var iii = 1 ; iii <= 4 ; iii++){
-        
-        var state = "c_"+iii+"_s";
-        var score = "cell_"+iii+"_score";
-        var type  = "cell_"+iii+"_type";
-        if(!GodGate.data.point[godGate[type]]){
-             console.log(godGate[type])
+
+    for (var iii = 1; iii <= 4; iii++) {
+
+        var state = "c_" + iii + "_s";
+        var score = "cell_" + iii + "_score";
+        var type = "cell_" + iii + "_type";
+        if (!GodGate.data.point[godGate[type]]) {
+            console.log(godGate[type])
             console.log(type)
             console.log(godGate)
         }
-           
+
         listItem += `<li class="${Number(godGate[state]) == 2 ? "gray-filter" : ""}" data-index="${iii}" data-score="${score}">
                         <div class="lock">
                             ${Number(godGate[state]) === 0 ? '<label class="chackable"></label>' : ""}
                         </div>
-                        <div class="effect score-${GodGate.scoreColor(godGate[type] ,godGate[score] )}">
+                        <div class="effect score-${GodGate.scoreColor(godGate[type], godGate[score])}">
                             <div class="effct-type font-2 ">${godGate[type] == "" ? "---" : (GodGate.data.point[godGate[type]].ar_title)}</div>
-                            <div class="effct-renge font-2">(${Math.floor(Math.max(godGate[score] - godGate[score]*0.2 , 1))})</div>
-                            <div class="effct-score font-2">${Number(godGate[state]) == 2 ? "(0%)" : `(${Math.floor((godGate[score]/GodGate.data.point[godGate[type]].max)*100)}%)`}</div>
+                            <div class="effct-renge font-2">(${Math.floor(Math.max(godGate[score] - godGate[score] * 0.2, 1))})</div>
+                            <div class="effct-score font-2">${Number(godGate[state]) == 2 ? "(0%)" : `(${Math.floor((godGate[score] / GodGate.data.point[godGate[type]].max) * 100)}%)`}</div>
                         </div>
                         <div class="checkBox">
                             <input type="checkbox" checked="checked">
@@ -46570,11 +47288,11 @@ GodGate.BoxContent = function (gate){
                                                     </div>` : (Number(godGate[state]) != 1 ? "مغلق" : "") }
                         </div>
                     </li>`;
-        
+
         totalLocks += Number(godGate[state]) === 0 ? 1 : 0;
-        
+
     }
-    
+
     var box = ` <div id="godGateBox" data-gate="${gate}">
                     <div class="content-wrapper">
                         <div class="close-godGateBox">
@@ -46595,76 +47313,76 @@ GodGate.BoxContent = function (gate){
                     </div>
                     <div class="btn-wrapper">
                         <div class="btns-group">
-                            <button id="change-gate-cell" ${Number(this.playerGate.GodGateData.points) < 50 + totalLocks*50 ? 'disabled = "disabled"' : ""} class="btn-red-2x">تغير</button>
+                            <button id="change-gate-cell" ${Number(this.playerGate.GodGateData.points) < 50 + totalLocks * 50 ? 'disabled = "disabled"' : ""} class="btn-red-2x">تغير</button>
                             <button class="pluse add-god-points"></button>
                         </div>
                         <div class="text-group">
-                            <label>التكلفة : <span >${50 + totalLocks*50}</span> نقطة</label>
+                            <label>التكلفة : <span >${50 + totalLocks * 50}</span> نقطة</label>
                             <label>لدبك : <span >${this.playerGate.GodGateData.points}</span>  نقطة </label>
                         </div>
                     </div>
                 </div>`;
-    
+
     return box;
-    
+
 };
 
 
 
-GodGate.changeGateCells = function (gate){
-  
+GodGate.changeGateCells = function (gate) {
+
     return $.ajax({
-                
-                url: `${API_URL}/api/AGodGate/changeGateUnlockedCells`,
-                data:{
-                    gateIndex : gate,
-                    token     : Elkaisar.Config.OuthToken,
-                    server    : Elkaisar.Config.idServer
-                },
-                type: 'POST',
-                beforeSend: function (xhr) {
-                    waitCursor();
-                    $("#change-gate-cell").attr("disabled" ,'disabled');
-                },
-                success: function (data, textStatus, jqXHR) {
-                    unwaitCursor();
-                    
-                    $("#change-gate-cell").removeAttr("disabled");
-                    
-                    if(isJson(data)){
-                        
-                        GodGate.getPlayerGates().done(function (data){
-                            $("#godGateBox").replaceWith(GodGate.BoxContent(gate));
-                        });
-                                
 
-                    }else {
-                        alert(data); 
-                    }
-                   
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
+        url: `${API_URL}/api/AGodGate/changeGateUnlockedCells`,
+        data: {
+            gateIndex: gate,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
+        },
+        type: 'POST',
+        beforeSend: function (xhr) {
+            waitCursor();
+            $("#change-gate-cell").attr("disabled", 'disabled');
+        },
+        success: function (data, textStatus, jqXHR) {
+            unwaitCursor();
 
-                }
-            
-            });
-    
+            $("#change-gate-cell").removeAttr("disabled");
+
+            if (isJson(data)) {
+
+                GodGate.getPlayerGates().done(function (data) {
+                    $("#godGateBox").replaceWith(GodGate.BoxContent(gate));
+                });
+
+
+            } else {
+                alert(data);
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+
+    });
+
 };
 
-GodGate.useBoxPoint = function (box , amount){
-    
-    if(!amount){
+GodGate.useBoxPoint = function (box, amount) {
+
+    if (!amount) {
         amount = 1;
     }
-    
+
     $.ajax({
-            
+
         url: `${API_URL}/api/AGodGate/addGatePoints`,
-        data:{
-            Item   : box,
-            amount : amount,
-            token  : Elkaisar.Config.OuthToken,
-            server : Elkaisar.Config.idServer
+        data: {
+            Item: box,
+            amount: amount,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
 
         },
         type: 'POST',
@@ -46672,18 +47390,18 @@ GodGate.useBoxPoint = function (box , amount){
 
         },
         success: function (data, textStatus, jqXHR) {
-            
-            if(!isJson(data)){
+
+            if (!isJson(data)) {
                 alert(data);
-                return ;
+                return;
             }
-            
+
             var jsonData = JSON.parse(data);
-            
-            GodGate.getPlayerGates().done(function (data){
-                
+
+            GodGate.getPlayerGates().done(function (data) {
+
                 $("#godGateBox").replaceWith(GodGate.BoxContent(gate));
-                if($("#godGateBox").length > 0){
+                if ($("#godGateBox").length > 0) {
                     var gate = $("#godGateBox").attr("data-gate");
                     $("#godGateBox").replaceWith(GodGate.BoxContent(gate));
                 }
@@ -46694,10 +47412,10 @@ GodGate.useBoxPoint = function (box , amount){
             });
             $(".close_select_menu").trigger("click");
             $("#alert_container .close-alert").trigger("click");
-            
-            Matrial.takeFrom(box , amount);
-            
-            
+
+            Matrial.takeFrom(box, amount);
+
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
 
@@ -46707,128 +47425,128 @@ GodGate.useBoxPoint = function (box , amount){
 
 
 
-GodGate.OpenFourthCell = function (Gate){
-    
+GodGate.OpenFourthCell = function (Gate) {
+
     var Mat = "skill_book";
-    
-    if(Matrial.getPlayerAmount(Mat) <= Gate*5){
-        
+
+    if (Matrial.getPlayerAmount(Mat) <= Gate * 5) {
+
         $("#over_lay_alert").remove();
-        alert_box.confirmMessage(`لا يوجد لديك عدد (${Gate*10}) من ${Matrial.getMatrialName(Mat)}  فى صندوق الموارد خاصتك`);
-        return ;
-        
+        alert_box.confirmMessage(`لا يوجد لديك عدد (${Gate * 10}) من ${Matrial.getMatrialName(Mat)}  فى صندوق الموارد خاصتك`);
+        return;
+
     }
-    if(GodGate.playerGate.GodGateData.points < Gate*5000){
+    if (GodGate.playerGate.GodGateData.points < Gate * 5000) {
         $("#over_lay_alert").remove();
-        alert_box.confirmMessage(`يجب ان تمتلك اكثر من ${Gate*5000} نقطة من نقاط التسليح`);
-        return ;
+        alert_box.confirmMessage(`يجب ان تمتلك اكثر من ${Gate * 5000} نقطة من نقاط التسليح`);
+        return;
     }
-    
+
     $.ajax({
         url: `${API_URL}/api/AGodGate/OpenFourthCell`,
-        data:{
+        data: {
             GateIndex: Gate,
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer
         },
         type: 'POST',
         beforeSend: function (xhr) {
-            
+
         },
         success: function (data, textStatus, jqXHR) {
-            
-            
-            if(!Elkaisar.LBase.isJson(data))
+
+
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
             var JsonData = JSON.parse(data);
-            
-            
-            if(JsonData.state == "ok"){
-                GodGate.getPlayerGates().done(function (data){
+
+
+            if (JsonData.state == "ok") {
+                GodGate.getPlayerGates().done(function (data) {
                     $("#godGateBox").replaceWith(GodGate.BoxContent(Gate));
                 });
                 $(".close_select_menu").trigger("click");
                 $("#alert_container .close-alert").trigger("click");
-            }else if(JsonData.state == "error_0"){
+            } else if (JsonData.state == "error_0") {
                 alert_box.failMessage(`خطاء نوع البوبة`);
-            }else if(JsonData.state == "error_1"){
+            } else if (JsonData.state == "error_1") {
                 alert_box.failMessage(`خطاء نوع البوبة`);
-            }else if(JsonData.state == "error_2"){
+            } else if (JsonData.state == "error_2") {
                 alert_box.failMessage(`البوابة مغلقة`);
-            }else if(JsonData.state == "error_3"){
+            } else if (JsonData.state == "error_3") {
                 alert_box.failMessage(`ليس لديك نقاط كافية`);
-            }else if(JsonData.state == "error_4"){
+            } else if (JsonData.state == "error_4") {
                 alert_box.failMessage(`ليس لديك مواد كافية`);
             }
-            
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            
+
         }
     });
-    
+
 };
 
-GodGate.scoreColor = function (pointFor, score){
-    
-    
-    if(GodGate.data.point[pointFor]){
-        return Math.floor((score/GodGate.data.point[pointFor].max)*5);
+GodGate.scoreColor = function (pointFor, score) {
+
+
+    if (GodGate.data.point[pointFor]) {
+        return Math.floor((score / GodGate.data.point[pointFor].max) * 5);
     }
-    
-    
+
+
 };
 
 
 
-GodGate.rank = function (gate, offset){
-    
-  offset = offset || 0;
-  
-  $.ajax({
-     
+GodGate.rank = function (gate, offset) {
+
+    offset = offset || 0;
+
+    $.ajax({
+
         url: "api/godGate.php",
-        data:{
-            
-            GET_RANK_GATE:true,
+        data: {
+
+            GET_RANK_GATE: true,
             gate: gate,
             offset: offset
-            
+
         },
         type: 'GET',
         beforeSend: function (xhr) {
-            
+
         },
         success: function (data, textStatus, jqXHR) {
-            if(!isJson(data)){
+            if (!isJson(data)) {
                 alert(data);
-                return ;
+                return;
             }
-            
+
             var jsonData = JSON.parse(data);
-            
+
             var list = "";
-            for(var iii = 0; iii < 10; iii ++){
-                
-                if(jsonData[iii]){
-                    
+            for (var iii = 0; iii < 10; iii++) {
+
+                if (jsonData[iii]) {
+
                     list += `
                             <div class="tr" data-rank="1">
-                                 <div class="td_1" style="width: 18%">${Number(offset)+iii+1}</div>
+                                 <div class="td_1" style="width: 18%">${Number(offset) + iii + 1}</div>
                                 <div class="td_2" style="width: 28%">${jsonData[iii].name}</div>
                                 <div class="td_3" style="width: 18%">${Number(jsonData[iii].score)}</div>
                                 <div class="td_4" style="width: 18%">${GodGate.rankEffect[gate][Object.keys(GodGate.rankEffect[gate])[0]][(Number(jsonData[iii].score) === 300 ? 0 : offset + iii)] || 0}</div>
                                 <div class="td_5" style="width: 18%">---</div>
                             </div>`;
-                    
-                }else{
-                    
+
+                } else {
+
                     list += `<div class="tr" rank="1"></div>`;
-                    
+
                 }
-                
+
             }
-            
+
             var content = ` <div class="content rank-list">
                                 <div class="th">
                                     <div class="td_1 ellipsis" style="width: 18%">${Translate.Title.TH.Ranking[UserLag.language]}</div>
@@ -46847,7 +47565,7 @@ GodGate.rank = function (gate, offset){
                                         <div data-move="most-left"  class="pull-L most-left-btn"></div>
                                         <div data-move="left"       class="pull-L left-btn"></div>
                                         <h1 class="pull-L">  
-                                            <span>${Number(offset)/10 + 1}</span>/${Math.ceil(GodGate.globalData[(gate+"_count")]/10)}
+                                            <span>${Number(offset) / 10 + 1}</span>/${Math.ceil(GodGate.globalData[(gate + "_count")] / 10)}
                                         </h1>
                                         <div data-move="most-right" class="pull-R most-right-btn"></div>        
                                         <div data-move="right"      class="pull-R right-btn"></div>
@@ -46858,121 +47576,82 @@ GodGate.rank = function (gate, offset){
                                     <button class="show-my-rank btn-yellow-2x font-2"> تصنيفى</button>
                                 </div>
                             </div>`;
-            
+
             $("#Box-mid .content-wrapper").html(content);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            
+
         }
-        
-  });
-    
+
+    });
+
 };
 
 
-$.ajax({
-     
-    url: "api/godGate.php",
-    data:{
 
-        RANK_EFFECT:true
-
-    },
-    type: 'GET',
-    beforeSend: function (xhr) {
-
-    },
-    success: function (data, textStatus, jqXHR) {
-        GodGate.rankEffect = JSON.parse(data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-
-    }
-
-});
-$.ajax({
-     
-    url: "api/godGate.php",
-    data:{
-
-        GLOBAL_GATE_DATA:true
-
-    },
-    type: 'GET',
-    beforeSend: function (xhr) {
-
-    },
-    success: function (data, textStatus, jqXHR) {
-        GodGate.globalData = JSON.parse(data);
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-
-    }
-
-});
 
 /*  show gode gate*/
-$(document).on("click" , "#godGateBtnWrapper button" , function (){
-    
-    
-    var dialog= menu_bar.dialogBox(Translate.Title.MenuList.GodGate[UserLag.language] ,[],  GodGate.godGateContent() , 0 );
-    
+$(document).on("click", "#godGateBtnWrapper button", function () {
+
+
+    var dialog = menu_bar.dialogBox(Translate.Title.MenuList.GodGate[UserLag.language], [], GodGate.godGateContent(), 0);
+
     dialogBoxShow(dialog);
-    
+
 });
 
 
 
 
-$(document).on("click" , "#god-gate .content-wrapper .god-container" , function (){
-    
+$(document).on("click", "#god-gate .content-wrapper .god-container", function () {
+
     var gate = $(this).attr("data-gate");
-    
-    if(!GodGate.playerGate.GodGateData["gate_"+gate]){
-        
+
+    if (!GodGate.playerGate.GodGateData["gate_" + gate]) {
+
         GodGate.askToOpenGate(gate);
-        
-    }else{
-        
+
+    } else {
+
         var over_lay = `<div id="over_lay">${GodGate.BoxContent(gate)}</div>`;
         $("body").append(over_lay);
-        
+
     }
-    
-    
-    
-    
-    
+
+
+
+
+
 });
 
 
-$(document).on("click" , "#godGateBox  .content-wrapper .close-godGateBox", function (){
-    
+$(document).on("click", "#godGateBox  .content-wrapper .close-godGateBox", function () {
+
     $("#over_lay").remove();
-    
+
 });
 
 
-$(document).on("click" ,"#godGateBox .content-wrapper ul li .chackable" , function (){
-    
+$(document).on("click", "#godGateBox .content-wrapper ul li .chackable", function () {
+
     var gate = $("#godGateBox").attr("data-gate");
     var index = $(this).parents("li").attr("data-index");
-    
-    var godGate =  GodGate.playerGate[("GodGate"+gate)];
-    
-    godGate[("c_"+index+"_s")] = 1 - godGate[("c_"+index+"_s")];
-    
+
+    var godGate = GodGate.playerGate[("GodGate" + gate)];
+
+    godGate[("c_" + index + "_s")] = 1 - godGate[("c_" + index + "_s")];
+
     $("#godGateBox").replaceWith(GodGate.BoxContent(gate));
-    
-    
+
+
     $.ajax({
         url: `${API_URL}/api/AGodGate/changeGateCellState`,
-        data:{
-            cellIndex : index,
-            gateIndex : gate,
-            state     : godGate[("c_"+index+"_s")],
-            token     : Elkaisar.Config.OuthToken,
-            server    : Elkaisar.Config.idServer
+        data: {
+            cellIndex: index,
+            gateIndex: gate,
+            state: godGate[("c_" + index + "_s")],
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
         type: 'POST',
         beforeSend: function (xhr) {
@@ -46980,137 +47659,137 @@ $(document).on("click" ,"#godGateBox .content-wrapper ul li .chackable" , functi
         },
         success: function (data, textStatus, jqXHR) {
             unwaitCursor();
-            if(!Elkaisar.LBase.isJson(data))
+            if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
-            
-            
+
+
             var JsonObject = JSON.parse(data);
-            
-            if(JsonObject.state === "ok")
+
+            if (JsonObject.state === "ok")
             {
-                 GodGate.playerGate[("GodGate"+gate)] = JsonObject.Gate;
-                
+                GodGate.playerGate[("GodGate" + gate)] = JsonObject.Gate;
+
             }
-            
-            
-           $("#godGateBox").replaceWith(GodGate.BoxContent(gate));
+
+
+            $("#godGateBox").replaceWith(GodGate.BoxContent(gate));
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            
+
         }
     });
-    
+
 });
 
 
-$(document).on("click" , "#change-gate-cell" ,function (){
-   
+$(document).on("click", "#change-gate-cell", function () {
+
     var gate = $("#godGateBox").attr("data-gate");
-    
-    if(!gate)
-        return ;
-    
-    var godGate =  GodGate.playerGate[("GodGate"+gate)];
+
+    if (!gate)
+        return;
+
+    var godGate = GodGate.playerGate[("GodGate" + gate)];
     var itemHeigh = false;
-    
-    for(var iii = 1 ; iii <= 3 ; iii++){
-        
-        var state = "c_"+iii+"_s";
-        var score = "cell_"+iii+"_score";
-        var type  = "cell_"+iii+"_type";
-        
+
+    for (var iii = 1; iii <= 3; iii++) {
+
+        var state = "c_" + iii + "_s";
+        var score = "cell_" + iii + "_score";
+        var type = "cell_" + iii + "_type";
+
         console.log(type)
-        
-        var score_precent = (godGate[score]/GodGate.data.point[godGate[type]].max) *100;
-        
-        if(Number(godGate[state]) === GodGate.open && score_precent >= 90){
-           itemHeigh = true;
+
+        var score_precent = (godGate[score] / GodGate.data.point[godGate[type]].max) * 100;
+
+        if (Number(godGate[state]) === GodGate.open && score_precent >= 90) {
+            itemHeigh = true;
         }
-        
+
     }
-    
-    if(itemHeigh){
-        
-        alert_box.confirmDialog("تأكيد تغير نقاط البوابة! <br>  (قد تكون بعض النقاط الحالية عالية ويصعب الحصول عليها مرة اخرى)", function (){
+
+    if (itemHeigh) {
+
+        alert_box.confirmDialog("تأكيد تغير نقاط البوابة! <br>  (قد تكون بعض النقاط الحالية عالية ويصعب الحصول عليها مرة اخرى)", function () {
             GodGate.changeGateCells(gate);
         });
-        
-    }else{
-        
+
+    } else {
+
         GodGate.changeGateCells(gate);
-        
+
     }
-    
-    
-    
-    
+
+
+
+
 });
 
 
 
-$(document).on("click" , ".add-god-points" , function (){
-    
+$(document).on("click", ".add-god-points", function () {
+
     var matrial = GodGate.matrialUse;
-    BoxOfMatrialToUse(matrial , "add-god-points");
-    
+    BoxOfMatrialToUse(matrial, "add-god-points");
+
 });
 
 
 
-$(document).on("click", "#godGate-rank", function (){
+$(document).on("click", "#godGate-rank", function () {
     BoxMid.box("تصنيف", GodGate.navBar, "");
     GodGate.rank("gate_1", 0);
     $("#Box-mid .nav-bar ul li:first").addClass("selected")
 });
 
 
-$(document).on("click" , "#nav-gate-rank div", function (){
-    
+$(document).on("click", "#nav-gate-rank div", function () {
+
     var direction = $(this).attr("data-move");
-    var offset    = Number($(this).parents("#nav-gate-rank").attr("data-offset"));
-    var gate      = $(this).parents("#nav-gate-rank").attr("data-gate");
+    var offset = Number($(this).parents("#nav-gate-rank").attr("data-offset"));
+    var gate = $(this).parents("#nav-gate-rank").attr("data-gate");
     var newOffset = 0;
-    
-    var maxOffset = Number(GodGate.globalData[(gate+"_count")]);
-    
-    if(direction === "left"){
-        
-        if(offset <= 0)
-            return ;
-        
-        newOffset = Math.max(0 , offset - 10);
-        
-    }else if(direction ===  "most-left"){
-        
+
+    var maxOffset = Number(GodGate.globalData[(gate + "_count")]);
+
+    if (direction === "left") {
+
+        if (offset <= 0)
+            return;
+
+        newOffset = Math.max(0, offset - 10);
+
+    } else if (direction === "most-left") {
+
         newOffset = 0;
-        
-    }else if(direction === "right" ){
-        
+
+    } else if (direction === "right") {
+
         newOffset = offset + 10;
-        if(newOffset >= maxOffset)
-            return ;
-        
-    }else if(direction === "most-right"){
-        
-        newOffset = Math.floor(maxOffset/10)*10;
-        
+        if (newOffset >= maxOffset)
+            return;
+
+    } else if (direction === "most-right") {
+
+        newOffset = Math.floor(maxOffset / 10) * 10;
+
     }
-    
-    
-    GodGate.rank(gate , newOffset);
+
+
+    GodGate.rank(gate, newOffset);
 });
 
 
 
-$(document).on("click", "#OpenForthCellGG", function (){
+$(document).on("click", "#OpenForthCellGG", function () {
     var matrial = ["skill_book"];
     var Gate = $(this).attr("data-gate");
-    
-    alert_box.confirmDialog(`تأكيد إستعمال عدد(${Gate*10}) من ${Matrial.getMatrialName(matrial[0])} + ${Gate * 5000} نقطة تسليح لفتح المهارة الرابعة للبوابة`, function (){
-        BoxOfMatrialToUse(matrial , "open-fourth-cell", Gate, Gate);
+
+    alert_box.confirmDialog(`تأكيد إستعمال عدد(${Gate * 10}) من ${Matrial.getMatrialName(matrial[0])} + ${Gate * 5000} نقطة تسليح لفتح المهارة الرابعة للبوابة`, function () {
+        BoxOfMatrialToUse(matrial, "open-fourth-cell", Gate, Gate);
     });
-    
-    
+
+
 });$(document).on("click" , "#change-player-password" , function (){
     
     var msg = ` <div>
@@ -47691,16 +48370,30 @@ $(document).on("click",".select-list", function (){
         
         $(this).attr("data-active", "false");
         $(this).children(".option").children("ul").hide();
-        $(this).children(".option").animate({"height" :  0})
+        $(this).children(".option").animate({"height" :  0});
         
     }else{
         $(this).attr("data-active", "true");
-        $(this).children(".option").animate({"height" :  "266px"}, function () {
+        $(this).children(".option").animate({"height" :  $(this).attr("data-height") + "px"}, function () {
             $(this).children("ul").show();
         });
     }
     
-});Elkaisar.Contribute.For = {
+});
+/*
+
+Chat.openMediaDevices = async (constraints) => {
+    return await navigator.mediaDevices.getUserMedia(constraints);
+};
+
+try {
+    const stream = Chat.openMediaDevices({'video':false,'audio':true});
+    console.log('Got MediaStream:', stream);
+} catch(error) {
+    console.error('Error accessing media devices.', error);
+}*/
+
+Elkaisar.Contribute.For = {
     'Contribute': 'contribute',
     'EquipUpgrade': 'upgrade'
 };
@@ -47708,9 +48401,9 @@ $(document).on("click",".select-list", function (){
 Elkaisar.Contribute.List = {};
 
 Elkaisar.Contribute.getList = function () {
-    $['ajax']({
+    $.ajax({
         'url': `${API_URL }/js${ Elkaisar['Config']['JsVersion'] }/json/contribute.json`,
-        'success': function (data, _0x5852fa, _0x1a4a01) {
+        success: function (data, _0x5852fa, _0x1a4a01) {
             Elkaisar['Contribute']['List'] = data;
         }
     });
@@ -48196,11 +48889,11 @@ $(document)['on']('click', '#helpGateBtnWrapper', function () {
 
 
 $(document)['on']('click', '.ContributeForUp', function () {
-    $('#dialg_box')['replaceWith'](Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['EquipUpgrade']));
+    $('#dialg_box').replaceWith(Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['EquipUpgrade']));
 });
 
 $(document)['on']('click', '.ContributeForC', function () {
-    $('#dialg_box')['replaceWith'](Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['Contribute']));
+    $('#dialg_box').replaceWith(Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['Contribute']));
 });
 
 $(document)['on']('click', '.SelectContReq', function () {
@@ -48212,7 +48905,7 @@ $(document)['on']('click', '.SelectContReq', function () {
 $(document)['on']('click', '.downEquipFromHero', function () {
     var idEquip = $(this)['attr']('data-id-equip');
     var idHero = $(this)['attr']('data-id-hero');
-    var Hero = Elkaisar['Hero']['getHero'](idHero);
+    var Hero = Elkaisar.Hero.getHero(idHero);
     var idCont = $(this)['attr']('data-id-cont');
     var ReqIndex = $(this)['attr']('data-cont-req-index');
     if (!Hero) {
@@ -48265,7 +48958,7 @@ $(document)['on']('click', '.ConSelectReqItem', function () {
         Elkaisar['Contribute']['ReqSelectListContent'](idCont, ReqIndex);
         return;
     }
-    Cont['ListOfNeed'][ReqIndex]['SelectedList']['push'](idEquip);
+    Cont['ListOfNeed'][ReqIndex]['SelectedList'].push(idEquip);
     Elkaisar['Contribute']['ReqSelectListContent'](idCont, ReqIndex);
 });
 
@@ -48308,18 +49001,18 @@ $(document)['on']('click', '#ContributeUpStart', function () {
     if (!Cont['ListOfNeed'][0]['SelectedList'][0])
         return alert_box['failMessage']('عليك اختيار المعدة اولا');
 
-    $['ajax']({
+    $.ajax({
         'url': `${API_URL }/api/AContribute/upgradeEquip`,
         'data': {
             'idCont': idCont,
             'idEquip': Cont['ListOfNeed'][0]['SelectedList'][0],
             'idCity': Elkaisar['CurrentCity']['idCity'],
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+            server: Elkaisar['Config']['idServer'],
+            token: Elkaisar['Config']['OuthToken']
         },
         'type': 'POST',
-        'beforeSend': function (_0x138564) {},
-        'success': function (data, _0x555139, _0x357269) {
+        beforeSend: function (_0x138564) {},
+        success: function (data, _0x555139, _0x357269) {
 
             if (!Elkaisar['LBase']['isJson'](data))
                 return Elkaisar['LBase']['Error'](data);
@@ -48359,17 +49052,17 @@ $(document)['on']('click', '#ContributeStart', function () {
     var idCont = $(this)['attr']('data-id-cont');
     var Cont = Elkaisar['Contribute']['List'][idCont];
 
-    $['ajax']({
+    $.ajax({
         'url': `${API_URL}/api/AContribute/contribute`,
         'data': {
             'idCont': idCont,
             'idCity': Elkaisar['CurrentCity']['idCity'],
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+            server: Elkaisar['Config']['idServer'],
+            token: Elkaisar['Config']['OuthToken']
         },
         'type': 'POST',
-        'beforeSend': function (_0x489a69) {},
-        'success': function (data, _0xbb6f87, _0x319448) {
+        beforeSend: function (_0x489a69) {},
+        success: function (data, _0xbb6f87, _0x319448) {
 
             if (!Elkaisar['LBase']['isJson'](data))
                 return Elkaisar['LBase']['Error'](data);
@@ -48393,7 +49086,7 @@ $(document)['on']('click', '#ContributeStart', function () {
 });
 
 
-Elkaisar['ArenaChallange'] = {
+Elkaisar.ArenaChallange = {
     'DialogBox': function () {},
     'Arena': {}
 };
@@ -48403,20 +49096,32 @@ Elkaisar.ArenaChallange.Coords = {
     'yCoord': 246
 };
 
+Elkaisar.ArenaChallange.MaxHeroCountFactor = {
+    "Arena": 1,
+    "ArenaTeam": 3,
+    "ArenaGuild": 5
+};
 
-Elkaisar['ArenaChallange']['getArenaData'] = function (callBack) {
-    return $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/getArenaData',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+
+
+Elkaisar.ArenaChallange.getArenaData = function (callBack) {
+    return $.ajax({
+        url: `${NODE_URL}/api/AArenaChallange/getArenaData`,
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken
         },
-        'beforeSend': function (_0x202459) {},
-        'success': function (data, _0x4ce0b4, _0x58fd94) {
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
-            Elkaisar['ArenaChallange']['Arena'] = JSON['parse'](data);
-            Elkaisar['ArenaChallange']['getFightList']()['done'](function () {
+        beforeSend: function (_0x202459) {},
+        success: function (data, _0x4ce0b4, _0x58fd94) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            const JsonObject = JSON.parse(data);
+            Elkaisar.ArenaChallange.Arena = JsonObject.King;
+            Elkaisar.ArenaChallange.ArenaTeam = JsonObject.Team;
+            Elkaisar.ArenaChallange.ArenaGuild = JsonObject.Guild;
+
+            Elkaisar.ArenaChallange.getFightList().done(function () {
                 if (callBack)
                     callBack();
             });
@@ -48426,25 +49131,28 @@ Elkaisar['ArenaChallange']['getArenaData'] = function (callBack) {
 
 
 
-Elkaisar['ArenaChallange']['getFightList'] = function () {
-    return $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/getFightList',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+Elkaisar.ArenaChallange.getFightList = function () {
+    return $.ajax({
+        url: `${NODE_URL}/api/AArenaChallange/getFightList`,
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken
         },
-        'beforeSend': function (_0x4b6272) {},
-        'success': function (data, _0x2cd76c, _0x561f87) {
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
-            Elkaisar['ArenaChallange']['Arena']['PlayerList'] = JSON['parse'](data)['reverse']();
+        beforeSend: function (_0x4b6272) {},
+        success: function (data, _0x2cd76c, _0x561f87) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            const JsonObject = JSON.parse(data);
+            Elkaisar.ArenaChallange.Arena.FightList = JsonObject.King.reverse();
+            Elkaisar.ArenaChallange.ArenaTeam.FightList = JsonObject.Team.reverse();
+            Elkaisar.ArenaChallange.ArenaGuild.FightList = JsonObject.Guild.reverse();
         }
     });
 };
 
 
 
-Elkaisar['ArenaChallange']['DialogBox'] = function () {
+Elkaisar.ArenaChallange.DialogBox = function () {
     return `  <div id="dialg_box" class="fullBoxContent" style="top: 125px;">
                         <div class="head_bar">
                             <img src="images/style/head_bar.png">
@@ -48464,6 +49172,7 @@ Elkaisar['ArenaChallange']['DialogBox'] = function () {
                                     </li>
                                 </ul>
                             </div>
+                            <div id="NavSelectList" class="flex SelectArenaFor"></div>
                             <div class="right-nav">
                                 <div class="nav_icon">
                                     <img class="close_dialog" src="images/btns/close_b.png">
@@ -48477,7 +49186,22 @@ Elkaisar['ArenaChallange']['DialogBox'] = function () {
 };
 
 
-Elkaisar['ArenaChallange']['ArenaProfile'] = function () {
+
+
+Elkaisar.ArenaChallange.ArenaProfile = function () {
+
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+
+    var Avatar = `<img ondragstart="return false;" src="${ Elkaisar.BaseData.HeroAvatar[Elkaisar.DPlayer.Player['avatar']] }">`;
+    if (ArenaFor != "Arena") {
+        Avatar = `  <div id="ArenaChallangeSlog">
+                        <div class="slog" style="background-image: url(images/style/bottom-${Elkaisar.ArenaChallange[ArenaFor].Arena.slog_btm}.png);"></div>
+                        <div class="slog" style="background-image: url(images/style/central-${Elkaisar.ArenaChallange[ArenaFor].Arena.slog_cnt}.png); margin-top: -78px;"></div>
+                        <div class="slog" style="background-image: url(images/style/top-${Elkaisar.ArenaChallange[ArenaFor].Arena.slog_top}.png); margin-top: -82px;"></div>
+                    </div>`;
+    }
 
     var Box = `<div id="ArenaChallangeHome" class="fullBoxContent flex">
                         <div id="heroArenaSelectList">
@@ -48533,24 +49257,24 @@ Elkaisar['ArenaChallange']['ArenaProfile'] = function () {
                                     <div class="playerProfileImage">
                                         <div class="avatar">
                                             <div class="avatar-img">
-                                                <img ondragstart="return false;" src="${ Elkaisar['BaseData']['HeroAvatar'][Elkaisar['DPlayer']['Player']['avatar']] }">
+                                               ${Avatar}
                                             </div>
                                         </div>
                                         <div class="avatar-name">
-                                            <h2>${ Elkaisar['DPlayer']['Player']['name'] }</h2>
+                                            <h2>${ Elkaisar.ArenaChallange[ArenaFor].Arena.ArenaName || "-----"}</h2>
                                         </div>
                                     </div>
                                     <div class="arenaChallangeProfile">
                                         <ul>
-                                            <li>مستوى الميدان: ${ Elkaisar['ArenaChallange']['Arena']['Arena']['lvl'] }</li>
+                                            <li>مستوى الميدان: ${ Elkaisar.ArenaChallange[ArenaFor].Arena['lvl'] || 0}</li>
                                             <li>
                                                 <button id="useArenaExpBox" class="pluse"></button>
-                                               خبرة: ${ Elkaisar['ArenaChallange']['Arena']['Arena']['exp'] }
+                                               خبرة: ${ Elkaisar.ArenaChallange[ArenaFor].Arena.exp || 0}
                                             </li>
-                                            <li>فوز: ${ Elkaisar['ArenaChallange']['Arena']['Arena']['win'] }</li>
-                                            <li>خسارة: ${ Elkaisar['ArenaChallange']['Arena']['Arena']['lose'] }</li>
-                                            <li>يطل: ${ Elkaisar['ArenaChallange']['Arena']['Arena']['champion'] }</li>
-                                            <li>تصنيف(الجولة): ${ Elkaisar['ArenaChallange']['Arena']['Arena']['rank'] }</li>
+                                            <li>فوز: ${ Elkaisar.ArenaChallange[ArenaFor].Arena.win || 0}</li>
+                                            <li>خسارة: ${ Elkaisar.ArenaChallange[ArenaFor].Arena.lose || 0}</li>
+                                            <li>يطل: ${ Elkaisar.ArenaChallange[ArenaFor].Arena.champion || 0}</li>
+                                            <li>تصنيف(الجولة): ${ Elkaisar.ArenaChallange[ArenaFor].Arena.rank || 0}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -48558,29 +49282,29 @@ Elkaisar['ArenaChallange']['ArenaProfile'] = function () {
                                     جوائز &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الملك
                                 </div>
                                 <div class="arenaKingPrize">
-                                    <div class="bg prizeList"><ul>${ Elkaisar['ArenaChallange']['PrizeList'](WorldUnit['prize']['PrizFor']['Sp']) }</ul></div>
+                                    <div class="bg prizeList"><ul>${ Elkaisar.ArenaChallange.PrizeList(WorldUnit.prize.PrizFor.Sp) }</ul></div>
                                 </div>
                             </div>
                         </div>
                     </div>`;
-    $('#ArenaChallangeHome')['replaceWith'](Box);
-    Elkaisar['ArenaChallange']['HeroList']();
-    Elkaisar['ArenaChallange']['ArenaHeroList']();
+    $('#ArenaChallangeHome').replaceWith(Box);
+    Elkaisar.ArenaChallange.HeroList(Elkaisar.CurrentCity.City.id_city);
+    Elkaisar.ArenaChallange.ArenaHeroList();
     var CityList = [];
-    for (var idCity in Elkaisar['DPlayer']['City'])
-        CityList['push']({
-            'title': Elkaisar['DPlayer']['City'][idCity]["City"]['name'],
-            'value': Elkaisar['DPlayer']['City'][idCity]["City"]['id_city']
+    for (var idCity in Elkaisar.DPlayer.City)
+        CityList.push({
+            'title': Elkaisar.DPlayer.City[idCity].City['name'],
+            'value': Elkaisar.DPlayer.City[idCity].City['id_city']
         });
-    $('#selectHeroCity')['html'](Elkaisar['Ui']['Select']['make'](CityList));
-    Elkaisar['Ui']['Select']['height'] = 150;
-    $('#heroArenaSelectList .heroCityList ol')['niceScroll'](SCROLL_BAR_PROP);
+    $('#selectHeroCity').html(Elkaisar.Ui.Select.make(CityList));
+    Elkaisar.Ui.Select.height = 150;
+    $('#heroArenaSelectList .heroCityList ol').niceScroll(SCROLL_BAR_PROP);
 };
 
 
-Elkaisar['ArenaChallange']['HeroList'] = function (idCity) {
+Elkaisar.ArenaChallange.HeroList = function (idCity) {
     if (!idCity)
-        idCity = Object['keys'](Elkaisar['DPlayer']['City'])[0];
+        idCity = Object['keys'](Elkaisar.DPlayer.City)[0];
 
     var HeroListHt = '';
     var Count = 0;
@@ -48601,7 +49325,7 @@ Elkaisar['ArenaChallange']['HeroList'] = function (idCity) {
                     <li class="tr" data-id-hero="${ Elkaisar['DPlayer']['Heros'][Index]['Hero']['id_hero'] }">
                         <div class="td" style="width: 25%">
                             <div class="wrapper">
-                                <div class="image" style="background-image: url(${ Elkaisar['BaseData']['HeroAvatar'][Elkaisar['DPlayer']['Heros'][Index]['Hero']['avatar']] })">
+                                <div class="image" style="background-image: url(${ Elkaisar.BaseData.HeroAvatar[Elkaisar['DPlayer']['Heros'][Index]['Hero']['avatar']] })">
 
                                 </div>
                             </div>
@@ -48626,31 +49350,36 @@ Elkaisar['ArenaChallange']['HeroList'] = function (idCity) {
         for (var iii = 0x0; iii < 11 - Count; iii++)
             HeroListHt += '<li class="tr"></li>';
     }
-    $('#heroArenaSelectList .heroCityList ol')['html']('' + HeroListHt);
+    $('#heroArenaSelectList .heroCityList ol').html('' + HeroListHt);
 };
 
 
-Elkaisar['ArenaChallange']['ArenaHeroList'] = function () {
+Elkaisar.ArenaChallange.ArenaHeroList = function () {
+
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+
     var HeroListHtm = '';
     var Count = 0;
-    for (var HIndex in Elkaisar['ArenaChallange']['Arena']['HeroList']) {
-        var Hero = Elkaisar['Hero']['getHero'](Elkaisar['ArenaChallange']['Arena']['HeroList'][HIndex]['id_hero']);
-        HeroListHtm += `<li class="tr" data-id-hero="${ Elkaisar['ArenaChallange']['Arena']['HeroList'][HIndex]['id_hero'] }" data-index="${ HIndex }">
+    for (var HIndex in Elkaisar.ArenaChallange[ArenaFor].HeroList) {
+        const Hero = Elkaisar.ArenaChallange[ArenaFor].HeroList[HIndex];
+        HeroListHtm += `<li class="tr" data-id-hero="${Hero.id_hero }" data-index="${ HIndex }">
                         <div class="td" style="width: 25%">
                             <div class="wrapper">
-                                <div class="image" style="background-image: url(${ Elkaisar['BaseData']['HeroAvatar'][Hero['Hero']['avatar']] })">
+                                <div class="image" style="background-image: url(${ Elkaisar.BaseData.HeroAvatar[Hero['avatar']] })">
 
                                 </div>
                             </div>
                         </div>
                         <div class="td" style="width: 40%">
-                            <div class="name${ (Hero['Hero']['ultra_p'] > 0 ? ' POT-HERO' : '') }" style="width: 100%">${ Hero['Hero']['name'] }</div>
+                            <div class="name${ (Hero['ultra_p'] > 0 ? ' POT-HERO' : '') }" style="width: 100%">${ Hero.HeroName } (${Hero.PlayerName})</div>
                         </div>
                         <div class="td flex" style="width: 16%">
-                            <button class="full-btn-3x showCityHero flex" data-id-hero="${ Elkaisar['ArenaChallange']['Arena']['HeroList'][HIndex]['id_hero'] }"><img src="images/icons/showIcon.png"/></button>
+                            <button class="full-btn-3x showCityHero flex" data-id-hero="${ Hero['id_hero'] }"><img src="images/icons/showIcon.png"/></button>
                         </div>
                         <div class="td" style="width: 20%">
-                            <div class="lvl">${ Hero['Hero']['lvl'] }</div>
+                            <div class="lvl">${ Hero.lvl }</div>
                         </div>
                     </li>`;
         Count++;
@@ -48659,11 +49388,18 @@ Elkaisar['ArenaChallange']['ArenaHeroList'] = function () {
         for (var iii = 0x0; iii < 11 - Count; iii++)
             HeroListHtm += '<li class="tr"></li>';
     }
-    $('#ArenaChallangeHome .arenaHeroList .hero-select-list ol')['html']('' + HeroListHtm);
+    $('#ArenaChallangeHome .arenaHeroList .hero-select-list ol').html('' + HeroListHtm);
 };
 
-Elkaisar['ArenaChallange']['PrizeList'] = function (PrizeFor) {
-    var Prize = WorldUnit['prize']['getUnitAllLvlsPrize'](WUT_CHALLAGE_FIELD_PLAYER, PrizeFor);
+Elkaisar.ArenaChallange.PrizeList = function (PrizeFor) {
+
+    var Prize = WorldUnit['prize'].getUnitAllLvlsPrize(WUT_CHALLAGE_FIELD_PLAYER, PrizeFor);
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (ArenaFor == 'ArenaTeam')
+        Prize = WorldUnit['prize'].getUnitAllLvlsPrize(WUT_CHALLAGE_FIELD_TEAM, PrizeFor);
+    if (ArenaFor == 'ArenaGuild')
+        Prize = WorldUnit['prize'].getUnitAllLvlsPrize(WUT_CHALLAGE_FIELD_GUILD, PrizeFor);
+
 
     var PrizeListHt = '';
     for (var ii in Prize)
@@ -48677,114 +49413,134 @@ Elkaisar['ArenaChallange']['PrizeList'] = function (PrizeFor) {
     return PrizeListHt;
 };
 
-Elkaisar['ArenaChallange']['getRankList'] = function () {
+Elkaisar.ArenaChallange.getRankList = function () {
     var RankListHt = '';
-    for (var iii = 0x0; iii < 0xa; iii++) {
-        var Player = Elkaisar['ArenaChallange']['Arena']['PlayerList'][iii];
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+    for (var iii = 0; iii < 10; iii++) {
+        var Player = Elkaisar.ArenaChallange[ArenaFor].FightList[iii];
         if (Player)
             RankListHt += `<div class="tr" rank="1">
-                                <div class="td ellipsis" style="width: 11%">${ Player['rank'] }</div>
-                                <div class="td ellipsis" style="width: 20%">${ Player['PlayerName'] }</div>
+                                <div class="td ellipsis" style="width: 11%">${ Player.rank }</div>
+                                <div class="td ellipsis" style="width: 20%">${ Player.PlayerName || Player.TeamName || Player.GuildName}</div>
                                 <div class="td flex ellipsis" style="width: 25%">
                                     <div class="guildIcon">
-                                        ${ (Player['idGuild'] ? `<div class="image-slog" style="background-image: url(images/style/bottom-${ Player['slog_btm'] }.png)"></div>
+                                        ${ (Player.idGuild || Player.idTeam ? `<div class="image-slog" style="background-image: url(images/style/bottom-${ Player['slog_btm'] }.png)"></div>
                                             <div class="image-slog" style="background-image: url(images/style/central-${ Player['slog_cnt'] }.png); margin-top: -100%" ></div>
                                             <div class="image-slog" style="background-image: url(images/style/top-${ Player['slog_top'] }.png);  margin-top: -100%"></div>` : '') }
                                         
                                     </div>
-                                    <h1 class="guildName">${ (Player['idGuild'] ? Player['GuildName'] : '---') }</h1>
+                                    <h1 class="guildName">
+                                        ${ArenaFor == "Arena" ? (Player['idGuild'] ? Player['GuildName'] : '---') : ""}
+                                        ${ArenaFor == "ArenaTeam" ? Player.LeaderName : ""}
+                                        ${ArenaFor == "ArenaGuild" ? Player.LeaderName : ""}
+                                    </h1>
                                 </div>
-                                <div class="td ellipsis" style="width: 20%">${ Elkaisar['BaseData']['Promotion'][Player['porm']]['Title'] }</div>
+                                <div class="td ellipsis" style="width: 20%">${ Player['porm'] ? Elkaisar['BaseData']['Promotion'][Player['porm']]['Title'] : Player.mem_num}</div>
                                 <div class="td ellipsis" style="width: 11%">${ Player['arenaLvl'] }</div>
                                 <div class="td ellipsis" style="width: 13%">
-                                    <button class="full-btn-3x ellipsis startFightPlayer" data-id-player="${ Player['idPlayer'] }" >اختر</button>
+                                    ${ArenaFor == "Arena" ? `<button class="full-btn-3x ellipsis startFightPlayer" data-id-player="${ Player['idPlayer'] }" >اختر</button>` : ""}
+                                    ${ArenaFor == "ArenaTeam" ? `<button class="full-btn-3x ellipsis startFightTeam" data-id-team="${ Player['idTeam'] }" >اختر</button>` : ""}
+                                    ${ArenaFor == "ArenaGuild" ? `<button class="full-btn-3x ellipsis startFightGuild" data-id-guild="${ Player['idGuild'] }" >اختر</button>` : ""}
                                 </div>
                             </div>`;
         else
             RankListHt += `<div class="tr" rank="1"></div>`;
     }
-    $('#arenaChallangeFightList')['html'](`<div class="th">
+    $('#arenaChallangeFightList').html(`<div class="th">
                                             <div class="td_1 ellipsis" style="width: 11%">تصنيف</div>
-                                            <div class="td_2 ellipsis" style="width: 20%">الملك</div>
-                                            <div class="td_3 ellipsis" style="width: 25%">الحلف</div>
-                                            <div class="td_4 ellipsis" style="width: 20%">الرتبة</div>
+                                            <div class="td_2 ellipsis" style="width: 20%">${ArenaFor == "Arena" ? "الملك" : (ArenaFor == "ArenaTeam" ? "الفريق" : "الحلف")}</div>
+                                            <div class="td_3 ellipsis" style="width: 25%">${ArenaFor == "Arena" || ArenaFor == "ArenaGuild" ? "الحلف" : "الفريق"}</div>
+                                            <div class="td_4 ellipsis" style="width: 20%">${ArenaFor == "ArenaTeam" || ArenaFor == "ArenaGuild" ? "عدد الأعضاء" : "الرتب"}</div>
                                             <div class="td_4 ellipsis" style="width: 11%">مستوى</div>
                                             <div class="td_7 ellipsis" style="width: 13%">اختر</div>
                                         </div> 
                                     ${RankListHt}`);
 };
 
-Elkaisar['ArenaChallange']['ArenaField'] = function () {
-    var FileldList = `<div id="ArenaChallangeHome" class="fullBoxContent flex">
-                    <div class="col-i">
-                        <div id="arenaChallangeFightList" class="RankList"></div>
-                    </div>
-                    <div class="col-ii">
-                        <div class="row-i solidBg flex">
-                            <div class="arenaChallangePrief">
-                                <div>
-                                    <div class="li">
-                                        <label class="lable">وقت الانتهاء: </label>
-                                        <label class="time_counter value green" time-start="${ Math['floor'](Date['now']() / 0x3e8) }" time-end="${ (Math['floor'](new Date(TimeRest['restEvery12']())['getTime']() / 0x3e8) - 0x3c) }">${ changeTimeFormat(Math['floor'](new Date(TimeRest['restEvery12']())['getTime']() / 0x3e8) - 0x3c - Math['floor'](Date['now']() / 0x3e8)) }</label>
-                                    </div>
-                                    <div class="li flex">
-                                        <div class="lable">وقت الانتظار: </div>
-                                        ${ Date['now']() / 1000 - Elkaisar['ArenaChallange']['Arena']['Arena']['lastAttackTime'] < 0xa * 0x3c ?
-            `<div class="time_counter value red" time-start="${ Math['floor'](Date['now']() / 0x3e8) }" 
-                                            time-end="${ (Math['floor'](Date['now']() / 1000) + (Elkaisar['ArenaChallange']['Arena']['Arena']['lastAttackTime'] + 60 * 10 - Date['now']() / 1000)) }">
-                                            ${ changeTimeFormat(Math['floor'](Date['now']() / 1000) + (Elkaisar['ArenaChallange']['Arena']['Arena']['lastAttackTime'] + 60 * 10 - Date['now']() / 1000) - Math['floor'](Date['now']() / 0x3e8)) }
-                                        </div>
+
+
+Elkaisar.ArenaChallange.ArenaField = function () {
+
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+
+    var FileldList = `  <div id="ArenaChallangeHome" class="fullBoxContent flex">
+                            <div class="col-i">
+                                <div id="arenaChallangeFightList" class="RankList"></div>
+                            </div>
+                            <div class="col-ii">
+                                <div class="row-i solidBg flex">
+                                    <div class="arenaChallangePrief">
                                         <div>
-                                            <button id="SpeedUpArenaAtt" class="smallAcce" style="width: 20px; height: 20px; vertical-align: top; margin-right: 10px;"></button></div>` : '' }
-                                        
-                                    </div>
-                                    <div class="li">
-                                        <label class="lable"> عدد الجولات: </label>
-                                        <label class="value"> ${ Elkaisar['ArenaChallange']['Arena']['Arena']['attempt'] }/10</label>
-                                        <label><button id="useAttemptBox" class="pluse"></button></label>
-                                    </div>
-                                    <div class="li flex">
-                                        <label class="lable"> شراء جولات: </label>
-                                        <div id="buyArenaChallangeAtt" class="value flex"> 
-                                            <button class="full-btn-3x buyBtn" data-amount="10">+ 10</button>
-                                            <button class="full-btn-3x buyBtn" data-amount="25">+ 25</button>
+                                            <div class="li">
+                                                <label class="lable">وقت الانتهاء: </label>
+                                                <label class="time_counter value green"
+                                                    time-start="${ Math.floor(Date.now() / 0x3e8) }" 
+                                                    time-end="${ (Math.floor(new Date(TimeRest.restEvery12()).getTime() / 0x3e8) - 0x3c) }">
+                                                    ${ changeTimeFormat(Math.floor(new Date(TimeRest.restEvery12()).getTime() / 0x3e8) - 0x3c - Math.floor(Date.now() / 0x3e8)) }
+                                                </label>
+                                            </div>
+                                            <div class="li flex">
+                                                <div class="lable">وقت الانتظار: </div>
+                                                ${ Date.now() / 1000 - Elkaisar.ArenaChallange[ArenaFor].Arena['lastAttackTime'] < 0xa * 0x3c ?
+            `<div class="time_counter value red" time-start="${ Math.floor(Date.now() / 0x3e8) }" 
+                                                    time-end="${ (Math.floor(Date.now() / 1000) + (Elkaisar.ArenaChallange[ArenaFor].Arena['lastAttackTime'] + 60 * 10 - Date.now() / 1000)) }">
+                                                    ${ changeTimeFormat(Math.floor(Date.now() / 1000) + (Elkaisar.ArenaChallange[ArenaFor].Arena['lastAttackTime'] + 60 * 10 - Date.now() / 1000) - Math.floor(Date.now() / 0x3e8)) }
+                                                </div>
+                                                <div>
+                                                    <button id="SpeedUpArenaAtt" class="smallAcce" style="width: 20px; height: 20px; vertical-align: top; margin-right: 10px;"></button></div>` : '' }
+
+                                            </div>
+                                            <div class="li">
+                                                <label class="lable"> عدد الجولات: </label>
+                                                <label class="value"> ${ Elkaisar.ArenaChallange[ArenaFor].Arena['attempt'] }/10</label>
+                                                <label><button id="useAttemptBox" class="pluse"></button></label>
+                                            </div>
+                                            <div class="li flex">
+                                                <label class="lable"> شراء جولات: </label>
+                                                <div id="buyArenaChallangeAtt" class="value flex"> 
+                                                    <button class="full-btn-3x buyBtn" data-amount="10">+ 10</button>
+                                                    <button class="full-btn-3x buyBtn" data-amount="25">+ 25</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row-ii flex">
+                                    <div class="prizeListWrapper">
+                                        <h1 class="header-2 banner-red">جوائز الفوز</h1>
+                                        <ul> ${ Elkaisar.ArenaChallange.PrizeList(WorldUnit['prize']['PrizFor']['Win']) }</ul>
+                                    </div>
+                                    <div class="prizeListWrapper">
+                                        <h1 class="header-2 banner-red">جوائز الخسارة</h1>
+                                        <ul> ${ Elkaisar.ArenaChallange.PrizeList(WorldUnit['prize']['PrizFor']['Lose']) }</ul>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row-ii flex">
-                            <div class="prizeListWrapper">
-                                <h1 class="header-2 banner-red">جوائز الفوز</h1>
-                                <ul> ${ Elkaisar['ArenaChallange']['PrizeList'](WorldUnit['prize']['PrizFor']['Win']) }</ul>
-                            </div>
-                            <div class="prizeListWrapper">
-                                <h1 class="header-2 banner-red">جوائز الخسارة</h1>
-                                <ul> ${ Elkaisar['ArenaChallange']['PrizeList'](WorldUnit['prize']['PrizFor']['Lose']) }</ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-    $('#ArenaChallangeHome')['replaceWith'](FileldList);
-    Elkaisar['ArenaChallange']['getRankList']();
+                        </div>`;
+    $('#ArenaChallangeHome').replaceWith(FileldList);
+    Elkaisar.ArenaChallange['getRankList']();
 };
 
 
-Elkaisar['ArenaChallange']['ArenaRankingList'] = function (offset, OrderBy = 0) {
-    return $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/getRankList',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken'],
-            'offset': offset,
-            'orderBy': OrderBy
+Elkaisar.ArenaChallange.ArenaRankingList = function (offset, OrderBy = 0) {
+    return $.ajax({
+        url: API_URL + '/api/AArenaChallange/getRankList',
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            offset: offset,
+            orderBy: OrderBy
         },
-        'beforeSend': function (_0x16cf12) {},
-        'success': function (data, _0x51715d, _0x54c172) {
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
+        beforeSend: function (_0x16cf12) {},
+        success: function (data, _0x51715d, _0x54c172) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
 
-            var JsonData = JSON['parse'](data);
+            var JsonData = JSON.parse(data);
             var RankList = '';
 
             for (var ii = 0; ii < 10; ii++) {
@@ -48806,15 +49562,15 @@ Elkaisar['ArenaChallange']['ArenaRankingList'] = function (offset, OrderBy = 0) 
                                     <div class="td ellipsis" style="width: 10%">${ Elkaisar['BaseData']['Promotion'][JsonData[ii]['porm']]['Title'] }</div>
                                     <div class="td ellipsis" style="width: 10%">${ JsonData[ii]['lvl'] }</div>
                                     <div class="td ellipsis" style="width: 10%">${ JsonData[ii]['exp'] }</div>
-                                    <div class="td ellipsis" style="width: 10%">${ JsonData[ii]['lose'] }/${ JsonData[ii]['win'] }</div>
-                                    <div class="td ellipsis" style="width: 10%">${ JsonData[ii]['champion'] }</div>
+                                    <div class="td ellipsis" style="width: 10%">${ JsonData[ii].lose }/${ JsonData[ii]['win'] }</div>
+                                    <div class="td ellipsis" style="width: 10%">${ JsonData[ii].champion }</div>
                                 </div>`;
                 } else {
                     RankList += '<div class="tr" rank="1"></div>';
 
                 }
             }
-            $('#ArenaChallangeRankList')['html'](`<div class="th">
+            $('#ArenaChallangeRankList').html(`<div class="th">
                                                     <div class="td ellipsis" style="width: 10%">تصنيف</div>
                                                     <div class="td ellipsis" style="width: 20%">الملك</div>
                                                     <div class="td ellipsis" style="width: 20%">الحلف</div>
@@ -48825,15 +49581,15 @@ Elkaisar['ArenaChallange']['ArenaRankingList'] = function (offset, OrderBy = 0) 
                                                     <div class="td ellipsis" style="width: 10%">بطل</div>
                                                 </div>
                                             ${RankList} `);
-            $('#ArenaChallangeRankCPage')['attr']('data-offset', offset);
-            $('#ArenaChallangeRankCPage')['html'](Math['floor'](offset / 10) + 1);
+            $('#ArenaChallangeRankCPage').attr('data-offset', offset);
+            $('#ArenaChallangeRankCPage').html(Math.floor(offset / 10) + 1);
         }
     });
 };
 
 
 
-Elkaisar['ArenaChallange']['ArenaRanking'] = function () {
+Elkaisar.ArenaChallange.ArenaRanking = function () {
     var Box = `
                     <div id="ArenaChallangeHome" class="fullBoxContent">
                         <div id ="ArenaChallangeRankList" class="RankList">
@@ -48896,203 +49652,309 @@ Elkaisar['ArenaChallange']['ArenaRanking'] = function () {
                             </div>  
                         </div>
                     </div>`;
-    $('#ArenaChallangeHome')['replaceWith'](Box);
-    Elkaisar['ArenaChallange']['ArenaRankingList'](0);
+    $('#ArenaChallangeHome').replaceWith(Box);
+    Elkaisar.ArenaChallange['ArenaRankingList'](0);
 };
 
-$(document)['on']('click', '#ArenaChallangeBtnWrapper button', function () {
-    dialogBoxShow(Elkaisar['ArenaChallange']['DialogBox'](), function () {
-        Elkaisar['ArenaChallange']['ArenaProfile']();
+$(document).on('click', '#ArenaChallangeBtnWrapper button', function () {
+    dialogBoxShow(Elkaisar.ArenaChallange['DialogBox'](), function () {
+        $("#NavSelectList").html(Elkaisar.Ui.Select.make(
+                [
+                    {value: "Arena", title: "ميدان تحدى الملك"},
+                    {value: "ArenaTeam", title: "ميدان تحدى الفريق"},
+                    {value: "ArenaGuild", title: "ميدان تحدى الحلف"}
+                ],
+                0, {
+                    width: 158,
+                    height: 200
+                }));
+        Elkaisar.ArenaChallange.ArenaProfile();
     });
 });
 
-$(document)['on']('click', '#SArenaTroops', function () {
-    Elkaisar['ArenaChallange']['ArenaProfile']();
-    Elkaisar['ArenaChallange']['getArenaData']()['done'](function () {
-        Elkaisar['ArenaChallange']['ArenaProfile']();
+
+$(document).on("click", "#NavSelectList.SelectArenaFor .unit-option", function () {
+    setTimeout(function () {
+        $(".left-nav .selected").click();
+    }, 150);
+});
+
+
+$(document).on('click', '#SArenaTroops', function () {
+    Elkaisar.ArenaChallange.ArenaProfile();
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        Elkaisar.ArenaChallange.ArenaProfile();
     });
 });
 
-$(document)['on']('click', '#SArenaField', function () {
-    Elkaisar['ArenaChallange']['ArenaField']();
-    Elkaisar['ArenaChallange']['getFightList']()['done'](function () {
-        Elkaisar['ArenaChallange']['ArenaField']();
+$(document).on('click', '#SArenaField', function () {
+    Elkaisar.ArenaChallange.ArenaField();
+    Elkaisar.ArenaChallange.getFightList().done(function () {
+        Elkaisar.ArenaChallange.ArenaField();
     });
 });
 
-$(document)['on']('click', '#SArenaRanking', function () {
-    Elkaisar['ArenaChallange']['ArenaRanking']();
+$(document).on('click', '#SArenaRanking', function () {
+    Elkaisar.ArenaChallange['ArenaRanking']();
 });
 
-$(document)['on']('click', '#selectHeroCity .unit-option', function () {
-    var idCity = $(this)['attr']('data-value');
-    Elkaisar['ArenaChallange']['HeroList'](idCity);
+$(document).on('click', '#selectHeroCity .unit-option', function () {
+    var idCity = $(this).attr('data-value');
+    Elkaisar.ArenaChallange.HeroList(idCity);
 });
 
 
-$(document)['on']('click', '#heroArenaSelectList .heroCityList .tr', function () {
-    if (!$('#refreshArenaHero')['is'](':disabled'))
-        return alert_box['failMessage']('عليك تفعيل زر التعديل اولا');
-    var idHero = $(this)['attr']('data-id-hero');
+$(document).on('click', '#heroArenaSelectList .heroCityList .tr', function () {
+    if (!$('#refreshArenaHero').is(':disabled'))
+        return alert_box.failMessage('عليك تفعيل زر التعديل اولا');
+    var idHero = $(this).attr('data-id-hero');
     if (!idHero)
         return;
-    $('#heroArenaSelectList .heroCityList .selected')['removeClass']('selected');
+    $('#heroArenaSelectList .heroCityList .selected').removeClass('selected');
     $(this)['addClass']('selected');
-    $('#cpGoRight')['removeAttr']('disabled');
-    $('#cpGoLeft')['attr']('disabled', 'disabled');
-    $('#cpGoUp')['attr']('disabled', 'disabled');
-    $('#cpGoDown')['attr']('disabled', 'disabled');
+    $('#cpGoRight').removeAttr('disabled');
+    $('#cpGoLeft').attr('disabled', 'disabled');
+    $('#cpGoUp').attr('disabled', 'disabled');
+    $('#cpGoDown').attr('disabled', 'disabled');
 
-    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr')['each'](function () {
-        var idHeroI = $(this)['attr']('data-id-hero');
+    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr').each(function () {
+        var idHeroI = $(this).attr('data-id-hero');
         if (!idHeroI)
             return;
         if (idHeroI == idHero) {
-            $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['removeClass']('selected');
+            $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').removeClass('selected');
             $(this)['addClass']('selected');
-            $('#cpGoLeft')['removeAttr']('disabled');
-            $('#cpGoUp')['removeAttr']('disabled');
-            $('#cpGoDown')['removeAttr']('disabled');
-            $('#cpGoRight')['attr']('disabled', 'disabled');
+            $('#cpGoLeft').removeAttr('disabled');
+            $('#cpGoUp').removeAttr('disabled');
+            $('#cpGoDown').removeAttr('disabled');
+            $('#cpGoRight').attr('disabled', 'disabled');
         }
     });
 });
 
 
-$(document)['on']('click', '#ArenaChallangeHome .arenaHeroList .hero-select-list .tr', function () {
-    if (!$('#refreshArenaHero')['is'](':disabled'))
-        return alert_box['failMessage']('عليك تفعيل زر التعديل اولا');
-    var idHero = $(this)['attr']('data-id-hero');
+$(document).on('click', '#ArenaChallangeHome .arenaHeroList .hero-select-list .tr', function () {
+    if (!$('#refreshArenaHero').is(':disabled'))
+        return alert_box.failMessage('عليك تفعيل زر التعديل اولا');
+    var idHero = $(this).attr('data-id-hero');
     if (!idHero)
         return;
-    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['removeClass']('selected');
+    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').removeClass('selected');
     $(this)['addClass']('selected');
-    $('#cpGoUp')['removeAttr']('disabled');
-    $('#cpGoDown')['removeAttr']('disabled');
-    $('#cpGoLeft')['removeAttr']('disabled');
-    $('#cpGoRight')['attr']('disabled', 'disabled');
+    $('#cpGoUp').removeAttr('disabled');
+    $('#cpGoDown').removeAttr('disabled');
+    $('#cpGoLeft').removeAttr('disabled');
+    $('#cpGoRight').attr('disabled', 'disabled');
 
-    var Hero = Elkaisar['Hero']['getHero'](idHero);
-    Elkaisar['ArenaChallange']['HeroList'](Hero['Hero']['id_city']);
+    var Hero = Elkaisar.Hero.getHero(idHero);
+    if (Hero)
+        Elkaisar.ArenaChallange.HeroList(Hero['Hero']['id_city']);
 
-    $('#heroArenaSelectList .heroCityList .tr')['each'](function () {
-        var idHeroI = $(this)['attr']('data-id-hero');
+    $('#heroArenaSelectList .heroCityList .tr').each(function () {
+        var idHeroI = $(this).attr('data-id-hero');
         if (!idHeroI)
             return;
         if (idHeroI == idHero) {
-            $('#heroArenaSelectList .heroCityList .selected')['removeClass']('selected');
+            $('#heroArenaSelectList .heroCityList .selected').removeClass('selected');
             $(this)['addClass']('selected');
-            $('#cpGoLeft')['removeAttr']('disabled');
-            $('#cpGoUp')['removeAttr']('disabled');
-            $('#cpGoDown')['removeAttr']('disabled');
-            $('#cpGoRight')['attr']('disabled', 'disabled');
+            $('#cpGoLeft').removeAttr('disabled');
+            $('#cpGoUp').removeAttr('disabled');
+            $('#cpGoDown').removeAttr('disabled');
+            $('#cpGoRight').attr('disabled', 'disabled');
         }
     });
 });
 
 
-$(document)['on']('click', '#cpGoRight', function () {
+$(document).on('click', '#cpGoRight', function () {
 
-    var idHero = $('#heroArenaSelectList .heroCityList .selected')['attr']('data-id-hero');
+    var idHero = $('#heroArenaSelectList .heroCityList .selected').attr('data-id-hero');
     if (!idHero)
         return;
-    if (Elkaisar['ArenaChallange']['Arena']['HeroList']['length'] >= Elkaisar['ArenaChallange']['Arena']['Arena']['lvl'])
-        return alert_box['failMessage']('وصل الميدان للحد الاقصى من الابطال');
+    const AllHeros = [].concat(Elkaisar.ArenaChallange.Arena.HeroList, Elkaisar.ArenaChallange.ArenaGuild.HeroList, Elkaisar.ArenaChallange.ArenaTeam.HeroList);
+    for (var ii in AllHeros) {
+        if (AllHeros[ii].id_hero == idHero)
+            return alert_box.failMessage("البطل موجود فى ميدان أخر لا يمكنك إضافة هذا البطل");
+    }
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
 
-    Elkaisar['ArenaChallange']['Arena']['HeroList']['push']({
-        'id_hero': idHero
+    if (Elkaisar.ArenaChallange[ArenaFor].HeroList.length >= Elkaisar.ArenaChallange[ArenaFor].Arena['lvl'] * Elkaisar.ArenaChallange.MaxHeroCountFactor[ArenaFor])
+        return alert_box.failMessage('وصل الميدان للحد الاقصى من الابطال');
+    const CuHero = Elkaisar.Hero.getHero(idHero);
+    Elkaisar.ArenaChallange[ArenaFor].HeroList.push({
+        'id_hero': idHero,
+        HeroName: CuHero.Hero.name,
+        PlayerName: Elkaisar.DPlayer.Player.name,
+        avatar: CuHero.Hero.avatar,
+        ultra_p: CuHero.Hero.ultra_p,
+        lvl: CuHero.Hero.lvl
+
     });
-    Elkaisar['ArenaChallange']['ArenaHeroList']();
+    Elkaisar.ArenaChallange.ArenaHeroList();
 });
 
 
-$(document)['on']('click', '#cpGoLeft', function () {
-    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['attr']('data-id-hero');
+$(document).on('click', '#cpGoLeft', function () {
+    
+    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').attr('data-id-hero');
     if (!idHero)
         return;
-    Elkaisar['ArenaChallange']['Arena']['HeroList']['forEach'](function (Hero, Index) {
-        if (Hero['id_hero'] == idHero)
-            Elkaisar['ArenaChallange']['Arena']['HeroList']['splice'](Index, 1);
-    }), Elkaisar['ArenaChallange']['ArenaHeroList']();
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+
+
+
+    if (!Elkaisar.Hero.getHero(idHero)) {
+        if (ArenaFor == 'ArenaTeam') {
+            if (!Elkaisar.Team.PlayerTeam || !Elkaisar.Team.PlayerTeam.Player)
+                return alert_box.failMessage("لست عضو فى أى فريق!");
+            if (Elkaisar.Team.PlayerTeam.Player.rank < Elkaisar.Team.RANK_DATA.LEADER)
+                return alert_box.confirmDialog("فقط قائد الفريق هو القادر على حذف أبطال اللاعبين الأخرين \n يمكنك فقط حذف أبطالك من الميدان!");
+        } else if (ArenaFor == 'ArenaGuild') {
+
+            if (!Elkaisar.DPlayer.GuildData)
+                return alert_box.failMessage("لست عضو فى أى حلف!");
+            if (Elkaisar.DPlayer.GuildData.rank < Guild.RANK_DATA.MENSTER)
+                return alert_box.confirmDialog("فقط رتبة وزير أو أعلى يمكنها حذف أبطال اللاعبين الأخرين \n يمكنك فقط حذف أبطالك من الميدان!");
+
+        }
+    }
+
+
+
+    Elkaisar.ArenaChallange[ArenaFor].HeroList.forEach(function (Hero, Index) {
+        if (Hero.id_hero == idHero)
+            Elkaisar.ArenaChallange[ArenaFor].HeroList.splice(Index, 1);
+    });
+
+    Elkaisar.ArenaChallange.ArenaHeroList();
 });
 
 
 
-$(document)['on']('click', '#cpGoUp', function () {
-    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['attr']('data-id-hero');
-    var Index = Number($('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['attr']('data-index'));
+$(document).on('click', '#cpGoUp', function () {
+
+    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').attr('data-id-hero');
+    var Index = Number($('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').attr('data-index'));
     if (!idHero)
         return;
     if (!Index || Index <= 0x0)
         return;
-    [Elkaisar['ArenaChallange']['Arena']['HeroList'][Index - 0x1], Elkaisar['ArenaChallange']['Arena']['HeroList'][Index]]
-            =
-            [Elkaisar['ArenaChallange']['Arena']['HeroList'][Index], Elkaisar['ArenaChallange']['Arena']['HeroList'][Index - 0x1]];
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
 
-    Elkaisar['ArenaChallange']['ArenaHeroList']();
-    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr')['each'](function () {
-        var idHeroI = $(this)['attr']('data-id-hero');
+    if (ArenaFor == 'ArenaTeam') {
+        if (!Elkaisar.Team.PlayerTeam || !Elkaisar.Team.PlayerTeam.Player)
+            return alert_box.failMessage("لست عضو فى أى فريق!");
+        if (Elkaisar.Team.PlayerTeam.Player.rank < Elkaisar.Team.RANK_DATA.LEADER)
+            return alert_box.confirmDialog("فقط قائد الفريق هو القادر على إعادة ترتيب الأبطال داخل الميدان!");
+    } else if (ArenaFor == 'ArenaGuild') {
+
+        if (!Elkaisar.DPlayer.GuildData)
+            return alert_box.failMessage("لست عضو فى أى حلف!");
+        if (Elkaisar.DPlayer.GuildData.rank < Guild.RANK_DATA.MENSTER)
+            return alert_box.confirmDialog("فقط رتبة وزير أو أعلى يمكنها إعادة ترتيب الأبطال داخل الميدان !");
+
+    }
+
+    [Elkaisar.ArenaChallange[ArenaFor].HeroList[Index - 0x1], Elkaisar.ArenaChallange[ArenaFor].HeroList[Index]]
+            =
+            [Elkaisar.ArenaChallange[ArenaFor].HeroList[Index], Elkaisar.ArenaChallange[ArenaFor].HeroList[Index - 0x1]];
+
+    Elkaisar.ArenaChallange.ArenaHeroList();
+    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr').each(function () {
+        var idHeroI = $(this).attr('data-id-hero');
         if (!idHeroI)
             return;
         if (idHeroI == idHero)
-            $(this)['trigger']('click');
+            $(this).trigger('click');
     });
 });
 
 
-$(document)['on']('click', '#cpGoDown', function () {
-    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['attr']('data-id-hero');
-    var Index = Number($('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['attr']('data-index'));
+$(document).on('click', '#cpGoDown', function () {
+    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').attr('data-id-hero');
+    var Index = Number($('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').attr('data-index'));
     if (!idHero)
         return;
-    if (Index + 0x1 >= Elkaisar['ArenaChallange']['Arena']['HeroList']['length'])
+    if (Index + 0x1 >= Elkaisar.ArenaChallange.Arena.HeroList['length'])
         return;
-    [Elkaisar['ArenaChallange']['Arena']['HeroList'][Index], Elkaisar['ArenaChallange']['Arena']['HeroList'][Index + 1]]
-            =
-            [Elkaisar['ArenaChallange']['Arena']['HeroList'][Index + 1], Elkaisar['ArenaChallange']['Arena']['HeroList'][Index]];
-    Elkaisar['ArenaChallange']['ArenaHeroList']();
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
 
-    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr')['each'](function () {
-        var idHeroI = $(this)['attr']('data-id-hero');
+    if (ArenaFor == 'ArenaTeam') {
+        if (!Elkaisar.Team.PlayerTeam || !Elkaisar.Team.PlayerTeam.Player)
+            return alert_box.failMessage("لست عضو فى أى فريق!");
+        if (Elkaisar.Team.PlayerTeam.Player.rank < Elkaisar.Team.RANK_DATA.LEADER)
+            return alert_box.confirmDialog("فقط قائد الفريق هو القادر على إعادة ترتيب الأبطال داخل الميدان!");
+    } else if (ArenaFor == 'ArenaGuild') {
+
+        if (!Elkaisar.DPlayer.GuildData)
+            return alert_box.failMessage("لست عضو فى أى حلف!");
+        if (Elkaisar.DPlayer.GuildData.rank < Guild.RANK_DATA.MENSTER)
+            return alert_box.confirmDialog("فقط رتبة وزير أو أعلى يمكنها إعادة ترتيب الأبطال داخل الميدان !");
+
+    }
+    [Elkaisar.ArenaChallange[ArenaFor].HeroList[Index], Elkaisar.ArenaChallange[ArenaFor].HeroList[Index + 1]]
+            =
+            [Elkaisar.ArenaChallange[ArenaFor].HeroList[Index + 1], Elkaisar.ArenaChallange[ArenaFor].HeroList[Index]];
+    Elkaisar.ArenaChallange.ArenaHeroList();
+
+    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr').each(function () {
+        var idHeroI = $(this).attr('data-id-hero');
         if (!idHeroI)
             return;
         if (idHeroI == idHero)
-            $(this)['trigger']('click');
+            $(this).trigger('click');
     });
 });
 
 
-$(document)['on']('click', '#refreshArenaHero', function () {
+$(document).on('click', '#refreshArenaHero', function () {
     alert_box['confirmDialog']('تاكيد تعديل ابطال الميدان', function () {
-        $('#saveArenaHero')['removeAttr']('disabled');
-        $('#refreshArenaHero')['attr']('disabled', 'disabled');
+        $('#saveArenaHero').removeAttr('disabled');
+        $('#refreshArenaHero').attr('disabled', 'disabled');
     });
 });
 
 
-$(document)['on']('click', '#saveArenaHero', function () {
-    alert_box['confirmDialog']('تأكيد حفظ التعديلات على البطل', function () {
+
+$(document).on('click', '#saveArenaHero', function () {
+
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+
+    alert_box.confirmDialog('تأكيد حفظ التعديلات على البطل', function () {
         var idHeros = [];
-        for (var ii in Elkaisar['ArenaChallange']['Arena']['HeroList'])
-            idHeros['push'](Elkaisar.ArenaChallange.Arena.HeroList[ii]['id_hero']);
-        $['ajax']({
-            'url': API_URL + '/api/AArenaChallange/saveHeroList',
-            'data': {
-                'server': Elkaisar['Config']['idServer'],
-                'token': Elkaisar['Config']['OuthToken'],
-                'HeroList': idHeros['join']('-')
+        for (var ii in Elkaisar.ArenaChallange[ArenaFor].HeroList)
+            idHeros.push(Elkaisar.ArenaChallange[ArenaFor].HeroList[ii]['id_hero']);
+        $.ajax({
+            url: `${NODE_URL}/api/AArenaChallange/saveHeroList`,
+            data: {
+                server: Elkaisar.Config.idServer,
+                token: Elkaisar.Config.OuthToken,
+                HeroList: idHeros.join('-'),
+                ArenaFor: ArenaFor
             },
             'type': 'POST',
-            'beforeSend': function (_0x5880cf) {},
-            'success': function (data, _0x5bc68d, _0x31f760) {
-                if (!Elkaisar['LBase']['isJson'](data))
-                    return Elkaisar['LBase']['Error'](data);
-                var JsonData = JSON['parse'](data);
+            beforeSend: function (_0x5880cf) {},
+            success: function (data, _0x5bc68d, _0x31f760) {
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+                var JsonData = JSON.parse(data);
                 if (JsonData['state'] == 'error_1')
-                    alert_box['failMessage']('عدد الابطال اكبر من مستوى الميدان');
+                    alert_box.failMessage('عدد الابطال اكبر من مستوى الميدان');
 
-                Elkaisar['ArenaChallange']['getArenaData']()['done'](function () {
-                    Elkaisar['ArenaChallange']['ArenaProfile']();
+                if (JsonData.state == "ok")
+                    alert_box.succesMessage("تم حفظ الأبطال بالميدان");
+                Elkaisar.ArenaChallange.getArenaData().done(function () {
+                    Elkaisar.ArenaChallange.ArenaProfile();
                 });
             }
         });
@@ -49100,38 +49962,122 @@ $(document)['on']('click', '#saveArenaHero', function () {
 });
 
 
-$(document)['on']('click', '.startFightPlayer', function () {
-    var idPlayerToFight = $(this)['attr']('data-id-player');
-    $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/fightSomeOne',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken'],
-            'idPlayerToFight': idPlayerToFight
+$(document).on('click', '.startFightPlayer', function () {
+    var idPlayerToFight = $(this).attr('data-id-player');
+    $.ajax({
+        url: `${NODE_URL}/api/AArenaChallange/fightSomeOne`,
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            idPlayerToFight: idPlayerToFight
         },
         'type': 'POST',
-        'beforeSend': function (_0x151a84) {},
-        'success': function (data, _0x142eb5, _0x5a508d) {
+        beforeSend: function (_0x151a84) {},
+        success: function (data, _0x142eb5, _0x5a508d) {
 
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
 
-            var JsonData = JSON['parse'](data);
+            var JsonData = JSON.parse(data);
 
             if (JsonData['state'] == 'ok')
-                Elkaisar['ArenaChallange']['getArenaData'](function () {
-                    Elkaisar['ArenaChallange']['ArenaField']();
+                Elkaisar.ArenaChallange.getArenaData(function () {
+                    Elkaisar.ArenaChallange.ArenaField();
                 });
             else if (JsonData['state'] == 'error_1') {
-                alert_box['failMessage']('لا يمكنك قتال لاعب فى هذا المستوى');
+                alert_box.failMessage('لا يمكنك قتال لاعب فى هذا المستوى');
             } else if (JsonData['state'] == 'error_2') {
-                alert_box['failMessage']('لا يمكنك قتال لاعب فى هذا المستوى');
+                alert_box.failMessage('لا يمكنك قتال لاعب فى هذا المستوى');
             } else if (JsonData['state'] == 'error_3') {
-                alert_box['failMessage']('عدد الابطال غير كافى للقتال');
+                alert_box.failMessage('عدد الابطال غير كافى للقتال');
             } else if (JsonData['state'] == 'error_4') {
-                alert_box['failMessage']('وقت الانتظار لم ينتهى');
+                alert_box.failMessage('وقت الانتظار لم ينتهى');
             } else if (JsonData['state'] == 'error_5') {
-                alert_box['failMessage']('لا يوجد محاولات كافية');
+                alert_box.failMessage('لا يوجد محاولات كافية');
+            }
+
+
+
+
+        }
+    });
+});
+
+$(document).on('click', '.startFightTeam', function () {
+
+    var idTeamToFight = $(this).attr('data-id-team');
+    $.ajax({
+        url: `${NODE_URL}/api/AArenaChallange/fightSomeTeam`,
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            idTeamToFight: idTeamToFight
+        },
+        'type': 'POST',
+        beforeSend: function (_0x151a84) {},
+        success: function (data, _0x142eb5, _0x5a508d) {
+
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonData = JSON.parse(data);
+
+            if (JsonData['state'] == 'ok')
+                Elkaisar.ArenaChallange.getArenaData(function () {
+                    Elkaisar.ArenaChallange.ArenaField();
+                });
+            else if (JsonData['state'] == 'error_1') {
+                alert_box.failMessage('لا يمكنك قتال فريق فى هذا المستوى');
+            } else if (JsonData['state'] == 'error_2') {
+                alert_box.failMessage('لا يمكنك قتال فريق فى هذا المستوى');
+            } else if (JsonData['state'] == 'error_3') {
+                alert_box.failMessage('عدد الابطال غير كافى للقتال');
+            } else if (JsonData['state'] == 'error_4') {
+                alert_box.failMessage('وقت الانتظار لم ينتهى');
+            } else if (JsonData['state'] == 'error_5') {
+                alert_box.failMessage('لا يوجد محاولات كافية');
+            }
+
+
+
+
+        }
+    });
+});
+
+$(document).on('click', '.startFightGuild', function () {
+
+    var idGuildToFight = $(this).attr('data-id-guild');
+    $.ajax({
+        url: `${NODE_URL}/api/AArenaChallange/fightSomeGuild`,
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            idGuildToFight: idGuildToFight
+        },
+        'type': 'POST',
+        beforeSend: function (_0x151a84) {},
+        success: function (data, _0x142eb5, _0x5a508d) {
+
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonData = JSON.parse(data);
+
+            if (JsonData['state'] == 'ok')
+                Elkaisar.ArenaChallange.getArenaData(function () {
+                    Elkaisar.ArenaChallange.ArenaField();
+                });
+            else if (JsonData['state'] == 'error_1') {
+                alert_box.failMessage('لا يمكنك قتال حلف فى هذا المستوى');
+            } else if (JsonData['state'] == 'error_2') {
+                alert_box.failMessage('لا يمكنك قتال حلف فى هذا المستوى');
+            } else if (JsonData['state'] == 'error_3') {
+                alert_box.failMessage('عدد الابطال غير كافى للقتال');
+            } else if (JsonData['state'] == 'error_4') {
+                alert_box.failMessage('وقت الانتظار لم ينتهى');
+            } else if (JsonData['state'] == 'error_5') {
+                alert_box.failMessage('لا يوجد محاولات كافية');
             }
 
 
@@ -49144,45 +50090,50 @@ $(document)['on']('click', '.startFightPlayer', function () {
 
 
 
-$(document)['on']('click', '#ArenaChallangeRankNav .right-btn', function () {
-    var offset = Number($('#ArenaChallangeRankCPage')['attr']('data-offset')) || 0x0;
-    Elkaisar['ArenaChallange']['ArenaRankingList'](Math['min'](offset + 10, Elkaisar['ServerData']['player_num'] - Elkaisar['ServerData']['player_num'] % 10));
+$(document).on('click', '#ArenaChallangeRankNav .right-btn', function () {
+    var offset = Number($('#ArenaChallangeRankCPage').attr('data-offset')) || 0x0;
+    Elkaisar.ArenaChallange.ArenaRankingList(Math['min'](offset + 10, Elkaisar['ServerData']['player_num'] - Elkaisar['ServerData']['player_num'] % 10));
 });
 
-$(document)['on']('click', '#ArenaChallangeRankNav .left-btn', function () {
-    var offset = Number($('#ArenaChallangeRankCPage')['attr']('data-offset')) || 0x0;
-    Elkaisar['ArenaChallange']['ArenaRankingList'](Math['max'](offset - 0xa, 0));
+$(document).on('click', '#ArenaChallangeRankNav .left-btn', function () {
+    var offset = Number($('#ArenaChallangeRankCPage').attr('data-offset')) || 0x0;
+    Elkaisar.ArenaChallange.ArenaRankingList(Math['max'](offset - 0xa, 0));
 });
 
-$(document)['on']('click', '#ArenaChallangeRankNav .most-left-btn', function () {
-    Elkaisar['ArenaChallange']['ArenaRankingList'](0);
+$(document).on('click', '#ArenaChallangeRankNav .most-left-btn', function () {
+    Elkaisar.ArenaChallange.ArenaRankingList(0);
 });
 
-$(document)['on']('click', '#ArenaChallangeRankNav .most-right-btn', function () {
-    Elkaisar['ArenaChallange']['ArenaRankingList'](Elkaisar['ServerData']['player_num'] - Elkaisar['ServerData']['player_num'] % 10);
+$(document).on('click', '#ArenaChallangeRankNav .most-right-btn', function () {
+    Elkaisar.ArenaChallange.ArenaRankingList(Elkaisar['ServerData']['player_num'] - Elkaisar['ServerData']['player_num'] % 10);
 });
 
-$(document)['on']('click', '#buyArenaChallangeAtt .buyBtn', function () {
 
-    var amount = $(this)['attr']('data-amount');
-    $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/buyBattelAttempt',
-        'data': {
-            'amount': amount,
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+$(document).on('click', '#buyArenaChallangeAtt .buyBtn', function () {
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+    var amount = $(this).attr('data-amount');
+    $.ajax({
+        url: API_URL + '/api/AArenaChallange/buyBattelAttempt',
+        data: {
+            amount: amount,
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            ArenaFor: ArenaFor
         },
         'type': 'POST',
-        'success': function (data, _0x1cb305, _0x54b6b2) {
+        success: function (data, _0x1cb305, _0x54b6b2) {
 
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
-            var JsonData = JSON['parse'](data);
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            var JsonData = JSON.parse(data);
 
             if (JsonData['state'] === 'ok') {
 
-                Elkaisar['ArenaChallange']['Arena']['Arena'] = JsonData['Arena'];
-                Elkaisar['ArenaChallange']['ArenaField']();
+                Elkaisar.ArenaChallange.getArenaData(function () {
+                    Elkaisar.ArenaChallange.ArenaField();
+                });
                 Player_profile['getPlayerBaseData']();
                 alert_box['succesMessage']('+' + amount + ' محاولة');
 
@@ -49197,24 +50148,31 @@ $(document)['on']('click', '#buyArenaChallangeAtt .buyBtn', function () {
 });
 
 
-$(document)['on']('click', '#SpeedUpArenaAtt', function () {
-    alert_box['confirmDialog']('تأكيد  تسريع انتظار الجولة مقابل 2 ذهبة', function () {
-        $['ajax']({
-            'url': API_URL + '/api/AArenaChallange/speedUpAtte',
-            'data': {
-                'token': Elkaisar['Config']['OuthToken'],
-                'server': Elkaisar['Config']['idServer']
+$(document).on('click', '#SpeedUpArenaAtt', function () {
+
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+    alert_box.confirmDialog('تأكيد  تسريع انتظار الجولة مقابل 2 ذهبة', function () {
+        $.ajax({
+            url: API_URL + '/api/AArenaChallange/speedUpAtte',
+            data: {
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer,
+                ArenaFor: ArenaFor
             },
-            'success': function (data, _0x2b9276, _0x41a972) {
-                if (!Elkaisar['LBase']['isJson'](data))
-                    return Elkaisar['LBase']['Error'](data);
-                var JsonData = JSON['parse'](data);
+            type: 'POST',
+            success: function (data, _0x2b9276, _0x41a972) {
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+                var JsonData = JSON.parse(data);
                 if (JsonData['state'] === 'ok') {
 
-                    Elkaisar['ArenaChallange']['Arena']['Arena'] = JsonData['Arena'];
-                    Elkaisar['ArenaChallange']['ArenaField']();
-                    Player_profile['getPlayerBaseData']();
-                    alert_box['succesMessage']('تسريع المحاولة');
+                    Elkaisar.ArenaChallange.getArenaData(function () {
+                        Elkaisar.ArenaChallange.ArenaField();
+                    });
+                    Player_profile.getPlayerBaseData();
+                    alert_box.succesMessage('تسريع المحاولة');
 
                 }
             }
@@ -49222,32 +50180,36 @@ $(document)['on']('click', '#SpeedUpArenaAtt', function () {
     });
 });
 
-Elkaisar['ArenaChallange']['addExpByBox'] = function (idItem) {
-    $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/addExpByBox',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken'],
-            'Item': idItem
+Elkaisar.ArenaChallange.addExpByBox = function (idItem) {
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+    $.ajax({
+        url: API_URL + '/api/AArenaChallange/addExpByBox',
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            Item: idItem,
+            ArenaFor: ArenaFor
         },
         'type': 'POST',
-        'success': function (data, _0x4a90e5, _0x47cebb) {
+        success: function (data, _0x4a90e5, _0x47cebb) {
 
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
 
             $('.close-alert')['click']();
             $('.close_select_menu')['click']();
 
-            var JsonData = JSON['parse'](data);
+            var JsonData = JSON.parse(data);
             if (JsonData['state'] == 'ok') {
                 alert_box['succesMessage']('خبرة +' + JsonData['Exp']);
-                Elkaisar['ArenaChallange']['getArenaData']()['done'](function () {
-                    Elkaisar['ArenaChallange']['ArenaProfile']();
+                Elkaisar.ArenaChallange.getArenaData().done(function () {
+                    Elkaisar.ArenaChallange.ArenaProfile();
                 });
                 Matrial['takeFrom'](idItem, 1);
             } else if (JsonData['state'] == 'error_0') {
-                alert_box['failMessage']('لا توجد مواد كافية');
+                alert_box.failMessage('لا توجد مواد كافية');
             }
 
         }
@@ -49255,65 +50217,70 @@ Elkaisar['ArenaChallange']['addExpByBox'] = function (idItem) {
 };
 
 
-Elkaisar['ArenaChallange']['addAttByBox'] = function (idItem) {
-    $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/addAttByBox',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken'],
-            'Item': idItem
+Elkaisar.ArenaChallange.addAttByBox = function (idItem) {
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+    
+    $.ajax({
+        url: API_URL + '/api/AArenaChallange/addAttByBox',
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            'Item': idItem,
+            ArenaFor : ArenaFor
         },
         'type': 'POST',
-        'success': function (data, _0x326d67, _0x2f42d6) {
+        success: function (data, _0x326d67, _0x2f42d6) {
 
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
 
             $('.close-alert')['click']();
             $('.close_select_menu')['click']();
 
-            var JsonData = JSON['parse'](data);
+            var JsonData = JSON.parse(data);
             if (JsonData['state'] == 'ok') {
                 alert_box['succesMessage']('محاولة +' + JsonData['Att']);
                 Matrial['takeFrom'](idItem, 0x1);
-                Elkaisar['ArenaChallange']['getArenaData'](function () {
-                    Elkaisar['ArenaChallange']['ArenaField']();
+                Elkaisar.ArenaChallange.getArenaData(function () {
+                    Elkaisar.ArenaChallange.ArenaField();
                 });
-            } else if(JsonData['state'] == 'error_0'){
-                alert_box['failMessage']('لا توجد مواد كافية');
+            } else if (JsonData['state'] == 'error_0') {
+                alert_box.failMessage('لا توجد مواد كافية');
             }
-                
+
         }
     });
 };
 
 
-$(document)['on']('click', '#useArenaExpBox', function () {
+$(document).on('click', '#useArenaExpBox', function () {
     var Items = ['arena_exp_1', 'arena_exp_5', 'arena_exp_10', 'arena_exp_25'];
     BoxOfMatrialToUse(Items, 'addArenaExp');
 });
 
-$(document)['on']('click', '#useAttemptBox', function () {
+$(document).on('click', '#useAttemptBox', function () {
     var Items = ['arena_attempt_1', 'arena_attempt_5', 'arena_attempt_10'];
     BoxOfMatrialToUse(Items, 'addArenaAtt');
 });
 
-$(document)['on']('click', '#heroArenaSelectList .showCityHero', function (e) {
+$(document).on('click', '#heroArenaSelectList .showCityHero', function (e) {
     e['stopPropagation']();
-    var idHero = $(this)['attr']('data-id-hero');
-    Elkaisar['Hero']['showHeroDetail'](Elkaisar['Hero']['getHero'](idHero));
+    var idHero = $(this).attr('data-id-hero');
+    Elkaisar['Hero']['showHeroDetail'](Elkaisar.Hero.getHero(idHero));
 });
 
 
-$(document)['on']('click', '#arenaHeroList .showCityHero', function (e) {
+$(document).on('click', '#arenaHeroList .showCityHero', function (e) {
     e['stopPropagation']();
-    var idHero = $(this)['attr']('data-id-hero');
-    var Hero = Elkaisar['Hero']['getHero'](idHero);
+    var idHero = $(this).attr('data-id-hero');
+    var Hero = Elkaisar.Hero.getHero(idHero);
     var HeroArmy = Hero['Army'];
-    
-    for (var Index in Elkaisar['ArenaChallange']['Arena']['HeroList']) {
-        if (Elkaisar['ArenaChallange']['Arena']['HeroList'][Index]['id_hero'] == idHero)
-            HeroArmy = Elkaisar['ArenaChallange']['Arena']['HeroList'][Index];
+
+    for (var Index in Elkaisar.ArenaChallange.Arena.HeroList) {
+        if (Elkaisar.ArenaChallange.Arena.HeroList[Index]['id_hero'] == idHero)
+            HeroArmy = Elkaisar.ArenaChallange.Arena.HeroList[Index];
     }
     var HeroRev = {
         'Hero': Hero['Hero'],
@@ -49325,51 +50292,1807 @@ $(document)['on']('click', '#arenaHeroList .showCityHero', function (e) {
 });
 
 
-Elkaisar.Ui.Select.menuList = function (list, selectedIndex){
+Elkaisar.Team = {};
+
+Elkaisar.Team.Relations = {
+    'RelationAllay': 0,
+    'RelationEnemy': 1,
+    'RelationFriend': 2
+};
+
+
+Elkaisar.Team.RANK_DATA = {
+    NORMAL_MEM: 0,
+    SENIOR_MEM: 1,
+    OLD_MEM: 2,
+    SUPERVISOR: 3,
+    MENSTER: 4,
+    DEPUTY: 5,
+    LEADER: 6
+
+};
+
+
+Elkaisar.Team.getPlayerTeam = function () {
+
+    return $.ajax({
+        url: `${NODE_URL}/api/ATeam/getPlayerTeam`,
+        data: {
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
+        },
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+            console.log(data);
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            Elkaisar.Team.PlayerTeam = JSON.parse(data);
+
+            if (Elkaisar.Team.PlayerTeam.Team) {
+                for (var ii in Elkaisar.Team.PlayerTeam.TeamMember) {
+                    if (Elkaisar.Team.PlayerTeam.TeamMember[ii].id_player == Elkaisar.DPlayer.Player.id_player)
+                        Elkaisar.Team.PlayerTeam.Player = Elkaisar.Team.PlayerTeam.TeamMember[ii];
+                }
+                
+                $("#PlayerTeamWrapper").html(
+                        `<button class="">
+                            <div class="slog slogBtm" style="background-image: url(images/style/bottom-${Elkaisar.Team.PlayerTeam.Team.slog_btm}.png)"></div>
+                            <div class="slog slogMid" style="background-image: url(images/style/central-${Elkaisar.Team.PlayerTeam.Team.slog_cnt}.png); margin-top: -64px;" ></div>
+                            <div class="slog slogTop" style="background-image: url(images/style/top-${Elkaisar.Team.PlayerTeam.Team.slog_top}.png); margin-top: -64px;"></div>
+                        </button>`);
+                
+                
+            }else{
+                $("#PlayerTeamWrapper").html(`<button class="NoTeamIcon"></button>`);
+            }
+            
+            
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+
+    });
+
+};
+
+
+Elkaisar.Team.showTeamReview = function (idTeam) {
+
+    $.ajax({
+
+        url: `${NODE_URL}/api/ATeam/showTeamReview`,
+        data: {
+            token: Elkaisar.Config.OuthToken,
+            idTeam: idTeam
+        },
+
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            const JsonObject = JSON.parse(data);
+            if (!JsonObject.id_team)
+                return alert_box.failMessage("هذا الفريق غير موجود");
+
+            console.log(JsonObject)
+
+            const OverLay = `  <div id="over_lay">
+                                        <div id="select_from">
+                                            <div class="head_bar">
+                                                <img src="images/style/head_bar.png" class="banner">
+                                                <div class="title">${Translate.Button.Chat.League[UserLag.language]}</div>
+                                                <img class="close close_use_menu" src="images/btns/close_b.png">
+                                            </div>
+                                            <p style="clear: both"></p>
+                                            <div id="rank-review">
+                                                <div class="upper" style="height: 185px;">
+                                                    <div class="table flex">
+                                                        <div class="left">
+                                                            <img src="images/style/bottom-${JsonObject.slog_btm}.png" style="position: absolute">
+                                                            <img src="images/style/central-${JsonObject.slog_cnt}.png" style="position: absolute">
+                                                            <img src="images/style/top-${JsonObject.slog_top}.png" style="position: absolute">
+                                                        </div>
+                                                        <div class="right">
+                                                            <div class="t-r">
+                                                                <label>${JsonObject.LeaderName}</label>
+                                                                <label>: القائد</label>
+                                                            </div>
+                                                            <div class="t-r">
+                                                                <label>${getArabicNumbers(JsonObject.rank)}</label>
+                                                                <label>: تصنيف</label>
+                                                            </div>
+                                                            <div class="t-r">
+                                                                <label>${getArabicNumbers(JsonObject.mem_num)}</label>
+                                                                <label>: الاعضاء</label>
+                                                            </div>
+                                                            <div class="t-r">
+                                                                <label>${getArabicNumbers(JsonObject.lvl)}</label>
+                                                                <label>: مستوى</label>
+                                                            </div>
+                                                            <div class="t-r">
+                                                                <label>${getArabicNumbers(JsonObject.prestige)}</label>
+                                                                <label>: برستيج</label>
+                                                            </div>
+                                                            <div class="t-r">
+                                                                <label>${getArabicNumbers(JsonObject.honor)}</label>
+                                                                <label>: شرف</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <table>
+                                                        <tbody>
     
+                                                            <tr>
+                                                                <td colspan="3" style="text-align: center; line-height: 34px;">
+                                                                    <h1 style="background-image: url(&quot;images/background/profile_name.png&quot;);
+                                                                        background-size: 75% 100%;
+                                                                        background-repeat: no-repeat;
+                                                                        background-position: center;">${JsonObject.name}</h1>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="down">
+                                                    <div class="th ellipsis">${Translate.Title.TH.Intro[UserLag.language]}</div>
+                                                    <p>
+                                                        ${JsonObject.word || "لا توجد مقدمة"}
+                                                    </p>
+                                                    ${!Elkaisar.Team.PlayerTeam.Team ? `<div class="flexCenter" id="send-team-req" >
+                                                                                            <button id="SendTeamJoinReq" class="full-btn full-btn-3x" data-id-team="${JsonObject.id_team}">ارسال دعوة انضمام</button>
+                                                                                        </div>` : ""}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+
+            $("body").append(OverLay);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+
+
+    });
+
+}
+
+$(document).on("click", ".show-team-review", function () {
+    const idTeam = $(this).attr("data-id-team");
+    Elkaisar.Team.showTeamReview(idTeam);
+});
+
+
+
+Elkaisar.Team.noTeamJoin = function () {
+
+    var InvList = "";
+    var TeamInv;
+    for (var ii = 0; ii < 5; ii++) {
+        TeamInv = Elkaisar.Team.PlayerTeam.TeamInv[ii];
+        if (TeamInv) {
+            InvList += `<div class="tr" data-id-team="${TeamInv.id_team}">
+                            <div class="td_1" style="width: 50%;">${TeamInv.name}</div>
+                            <div class="td_2 flex btnList">
+                                <button  class="btn full-btn-3x ellipsis rejectTeamInv" data-id-team="${TeamInv.id_team}">الغاء</button>
+                                <button  class="btn full-btn-3x ellipsis acceptTeamInv" data-id-team="${TeamInv.id_team}">قبول</button>
+                                <button  class="btn full-btn-3x ellipsis show-team-review" data-id-team="${TeamInv.id_team}">عرض</button>
+                            </div>
+                        </div>`;
+        } else {
+            InvList += `<div class="tr">
+                            <div class="td_1"></div>
+                            <div class="td_2"></div>
+                        </div>`;
+        }
+
+    }
+    var TeamReq = "";
+    if(Elkaisar.Team.PlayerTeam.TeamReq.length){
+        TeamReq = `<div id="PlayerTeamReqList" class="tr" data-id-team="${Elkaisar.Team.PlayerTeam.TeamReq[0].id_team}">
+                        <div style="width: 70%;">${Elkaisar.Team.PlayerTeam.TeamReq[0].name}</div>
+                        <div class="flexCenter btnList">
+                            <button id="CancelTeamJoinReq" class="btn full-btn-3x ellipsis" data-id-team="${Elkaisar.Team.PlayerTeam.TeamReq[0].id_team}">الغاء</button>
+                            <button  class="btn full-btn-3x ellipsis show-team-review" data-id-team="${Elkaisar.Team.PlayerTeam.TeamReq[0].id_team}">عرض</button>
+                        </div>
+                    </div>`
+    }else{
+        TeamReq = `<div class="tr"></div>`;
+    }
+    return `   <div id="select_from">
+                        <div class="head_bar">
+                            <img src="images/style/head_bar.png" class="banner">
+                            <div class="title">الفريق</div>
+                            <img class="close close_use_menu" id="closeGuildSelFrom" src="images/btns/close_b.png">
+                        </div>
+                        <p style="clear: both"></p>
+                        <div class="container">
+                            <div id="two_buttons">
+                                <button class="full-btn full-btn-3x pull-R" id="ShowAvailableTeams"> اعرض الفريق المتاح</button>
+                                <button class="full-btn full-btn-3x pull-L" id="CreatNewTeam"> انشاء فريق </button>
+                            </div>
+                            <div id="sent_to">
+                                <div class="th">
+                                    <div class="td_2 ellipsis">الطلبات المقدمة</div>
+                                    <div class="td_1 ellipsis">اختر</div>
+                                </div>
+                                ${TeamReq}
+                            </div>
+                            <div id="sent_from">
+                                <div class="th">
+                                    <div class="td_2 ellipsis">الدعوات من الفرق الأخرى</div>
+                                    <div class="td_1 ellipsis">اختر</div>
+
+                                </div>
+
+                                <div id="PlayerTeamInvList">
+                                    ${InvList}
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+};
+
+
+Elkaisar.Team.DialogBox = function () {
+
+    return `<div id="dialg_box" class="" style="top: 125px;">
+                        <div class="head_bar">
+                            <img src="images/style/head_bar.png">
+                            <div class="title">الفريق</div>
+                        </div>
+                        <div class="nav_bar">
+                            <div id="TeamHeaderNavBar" class="left-nav">
+                                <ul>
+                                    <li data-nav-to="TeamHomePage"    class="selected">الفريق</li>
+                                    <li data-nav-to="TeamFriendPage"  class="">أصدقاء</li>
+                                    <li data-nav-to="TeamEnemyPage"   class="">أعداء</li>
+                                    <li data-nav-to="TeamRankingPage" class="TeamRankPageCl">تصنيف</li>
+                                    <li data-nav-to="TeamHistoryPage" class="">تاريخ الفريق</li>
+                                    <li data-nav-to="TeamUpgradePage" class="">تطوير</li>
+                                </ul>
+                            </div>
+                            <div id="TeamNavBarList" class="right-nav">
+                                ${Elkaisar.Team.PlayerTeam.Team ? `
+                                <div class="btn full-btn-3x ellipsis" id="TeamAdmins">
+                                    إدارة الفريق
+                                </div>
+                                <div class="drop-list">
+                                    <ul>
+                                        ${Elkaisar.Team.PlayerTeam.Player.rank >= Elkaisar.Team.RANK_DATA.DEPUTY ? `<li id="chang-t-word"> تعديل المقدمة</li>` : ""}
+                                        ${Elkaisar.Team.PlayerTeam.Player.rank >= Elkaisar.Team.RANK_DATA.DEPUTY ? `<li id="change-t-F_E-list">الاصدقاء والاعداء</li>` : ""}
+                                        ${Elkaisar.Team.PlayerTeam.Player.rank >= Elkaisar.Team.RANK_DATA.SUPERVISOR ? ` <li id="invite-t">دعوة ملك</li>` : ""}
+                                        ${Elkaisar.Team.PlayerTeam.Player.rank >= Elkaisar.Team.RANK_DATA.MENSTER ? ` <li id="change-t-slog"> تغير الشعار</li>` : ""}
+                                        ${Elkaisar.Team.PlayerTeam.Player.rank >= Elkaisar.Team.RANK_DATA.SENIOR_MEM ? ` <li id="resignation-t"> استقالة</li>` : ""}
+                                        <li id="PlayerTeamLeave">
+                                            الخروج
+                                        </li>
+                                        ${Elkaisar.Team.PlayerTeam.Player.rank == Elkaisar.Team.RANK_DATA.LEADER ? ` <li id="destroy-t">تفكيك</li>` : ""}
+
+                                    </ul>
+                                </div>` : ""}
+                                <div class="nav_icon">
+                                    <img class="close_dialog" src="images/btns/close_b.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box_content"></div>
+                    </div>`;
+};
+
+
+
+Elkaisar.Team.TeamHomePage = function () {
+    const PlayerTeam = Elkaisar.Team.PlayerTeam;
+    const Page = ` <div id="TeamBox">
+                        <div id="TeamBoxLeft">
+                            <div id="TeamProfileBox">
+                                <div class="ProfileData">
+                                    <div class="TeamSlog">
+                                        <div class="SlogContainer">
+                                            <div class="slog slogBtm" style="background-image: url(images/style/bottom-${PlayerTeam.Team.slog_btm}.png);"></div>
+                                            <div class="slog slogMid" style="background-image: url(images/style/central-${PlayerTeam.Team.slog_cnt}.png); margin-top: -150px;"></div>
+                                            <div class="slog slogTop" style="background-image: url(images/style/top-${PlayerTeam.Team.slog_top}.png); margin-top: -150px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="TeamListData">
+                                        <ul>
+                                            <li>
+                                                <div class="icon" style="background-image: url(images/icons/prestige.png);"></div>
+                                                <div class="title stroke">${PlayerTeam.Team.prestige}</div>
+                                            </li>
+                                            <li>
+                                                <div class="icon" style="background-image: url(images/icons/rank-player.png);"></div>
+                                                <div class="title stroke">${PlayerTeam.Team.rank}</div>
+                                            </li>
+                                            <li>
+                                                <div class="icon" style="background-image: url(images/icons/honor.png);"></div>
+                                                <div class="title stroke">${PlayerTeam.Team.honor}</div>
+                                            </li>
+                                            <li>
+                                                <div class="icon" style="background-image: url(images/icons/stat_streak.png);"></div>
+                                                <div class="title stroke">${PlayerTeam.Team.mem_num}</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="TeamName">
+                                    <button class="name stroke">  <div>${PlayerTeam.Team.name}</div> </button>
+                                </div>
+                            </div>
+                            <div id="TeamIntroBox">
+                                <div class="Header">
+                                    <h1>نبذة  عن الفريق</h1>
+                                </div>
+                                <div class="Body">
+                                ${PlayerTeam.Team.word}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="TeamBoxRight">
+                            <div class="PlayerList">
+                                <div class="Header">
+                                    قائمة اللاعبين
+                                </div>
+                                <div class="Body">
+                                    <ul class="LeaderLi">
+                                        <li>
+                                            <div class="LPlayerAvaterBg">
+                                                <div class="LPlayerAvater" style="background-image: url(${PLAYER_FACES[PlayerTeam.TeamMember[0].avatar]});"></div>
+                                                <div class="LPlayerTitle stroke">قائد الفريق</div>
+                                            </div>
+                                            <div class="LPlayerName stroke">
+                                                ${PlayerTeam.TeamMember[0].PlayerName}
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ol class="TeamMateLi flex">
+                                        ${PlayerTeam.TeamMember[1] ? `
+                                            <li>
+                                                <div class="PlayerAvater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamMember[1].avatar]});">
+                                                    <div class="PlayerAvaterBg"></div>
+                                                    <div class="PlayerTitle stroke" style="background-position-y: -48px;">مساعد القائد</div>
+                                                </div>
+                                                <div class="PlayerName stroke">
+                                                    ${PlayerTeam.TeamMember[1].PlayerName}
+                                                </div>
+                                            </li>` : ``}
+                                        
+                                        ${PlayerTeam.TeamMember[2] ? `
+                                            <li>
+                                                <div class="PlayerAvater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamMember[2].avatar]});">
+                                                    <div class="PlayerAvaterBg"></div>
+                                                    <div class="PlayerTitle stroke" style="background-position-y: -72px;">مستشار القائد</div>
+                                                </div>
+                                                <div class="PlayerName stroke">
+                                                    ${PlayerTeam.TeamMember[2].PlayerName}
+                                                </div>
+                                            </li>` : ``}
+                                        
+                                        ${PlayerTeam.TeamMember[3] ? `
+                                            <li>
+                                                <div class="PlayerAvater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamMember[2].avatar]});">
+                                                    <div class="PlayerAvaterBg"></div>
+                                                    <div class="PlayerTitle stroke" style="background-position-y: -96px;">مقاتل الفريق</div>
+                                                </div>
+                                                <div class="PlayerName stroke">
+                                                ${PlayerTeam.TeamMember[3].PlayerName}
+                                                </div>
+                                            </li>` : ``}
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+    $("#dialg_box .box_content").html(Page);
+};
+
+Elkaisar.Team.InvList = function () {
+    const PlayerTeam = Elkaisar.Team.PlayerTeam;
+};
+
+Elkaisar.Team.TeamReqList = function () {
+
+    const PlayerTeam = Elkaisar.Team.PlayerTeam;
+    let List = "";
+    const ListCount = Math.max(PlayerTeam.TeamReq.length, 5);
+    for (var iii = 0; iii < ListCount; iii++) {
+
+        if (PlayerTeam.TeamReq[iii]) {
+            List += `   <div class="tr flex">
+                            <div class="tc-player-avater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamReq[iii].avatar]});"></div>
+                            <div class="tc-player-name">${PlayerTeam.TeamReq[iii].PlayerName}</div>
+                            <div class="tc-edit-req">
+                                <button class="full-btn-3x btn acceptTeamJoinReq" data-id-player="${PlayerTeam.TeamReq[iii].id_player}">قبول</button>
+                                <button class="full-btn-3x btn rejectTeamJoinReq" data-id-player="${PlayerTeam.TeamReq[iii].id_player}">رفض</button>
+                                <button class="full-btn-3x btn show-player-profile" data-id-player="${PlayerTeam.TeamReq[iii].id_player}">عرض</button>
+                            </div>
+                        </div>`;
+        } else {
+            List += `<div class="tr"></div>`;
+        }
+
+    }
+
+    return ` <div class="Header">
+                <h1>طلبات الإنضمام</h1>
+            </div>
+            <div class="Body">
+                ${List}
+            </div>`;
+};
+
+Elkaisar.Team.TeamInvList = function () {
+
+    const PlayerTeam = Elkaisar.Team.PlayerTeam;
+    let List = "";
+    const ListCount = Math.max(PlayerTeam.TeamInv.length, 5);
+    for (var iii = 0; iii < ListCount; iii++) {
+
+        if (PlayerTeam.TeamInv[iii]) {
+            List += `   <div class="tr flex">
+                            <div class="tc-player-avater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamInv[iii].avatar]});"></div>
+                            <div class="tc-player-name">${PlayerTeam.TeamInv[iii].PlayerName}</div>
+                            <div class="tc-edit-req">
+                                <button class="full-btn-3x btn cancelTeamInv" data-id-idPlayer="${PlayerTeam.TeamInv[iii].id_player}">حذف</button>
+                                <button class="full-btn-3x btn show-player-profile" data-id-player="${PlayerTeam.TeamInv[iii].id_player}">عرض</button>
+                            </div>
+                        </div> `;
+        } else {
+            List += `<div class="tr"></div>`;
+        }
+
+    }
+
+    return `    <div class="Header">
+                    <h1>الدعوات</h1>
+                </div>
+                <div class="Body">
+                    ${List}
+                </div>`;
+};
+
+Elkaisar.Team.TeamRelationList = function (Relation) {
+    const PlayerTeam = Elkaisar.Team.PlayerTeam;
+    let List = "";
+    var ListArr = [];
+    for (var ii in PlayerTeam.TeamRelation)
+        if (PlayerTeam.TeamRelation[ii].relation == Relation)
+            ListArr.push(PlayerTeam.TeamRelation[ii]);
+
+    const ListCount = Math.max(ListArr.length, 9);
+    for (var iii = 0; iii < ListCount; iii++) {
+
+        if (ListArr[iii]) {
+            List += `   <div class="tr">
+                            <div class="tc-team flex">
+                                <div class="team-slog">
+                                    <div class="slog" style="background-image: url(images/style/bottom-${ListArr[iii].slog_btm}.png);"></div>
+                                    <div class="slog" style="background-image: url(images/style/central-${ListArr[iii].slog_cnt}.png); margin-top: -40px;"></div>
+                                    <div class="slog" style="background-image: url(images/style/top-${ListArr[iii].slog_top}.png); margin-top: -40px;"></div>
+                                </div>
+                                <div class="team-name">${ListArr[iii].name}</div>
+                            </div>
+                            <div class="tc-leader flex">
+                                <div class="image" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[ListArr[iii].avater]});"></div>
+                                <div class="name"> ${ListArr[iii].PlayerName} </div>
+                            </div>
+                            <div class="tc-pres flex">${ListArr[iii].prestige}</div>
+                            <div class="tc-memNum flex">${ListArr[iii].mem_num}</div>
+                            <div class="tc-show">
+                                <button class="full-btn-3x btn">عرض</button>
+                                <button class="full-btn-3x btn">تعديل</button>
+                            </div>
+                        </div>`;
+        } else {
+            List += `<div class="tr"></div>`;
+        }
+    }
+    return `    <div class="Body">
+                    <div class="TeamEneFrieList">
+                        ${List}
+                    </div>
+                </div>`
+}
+
+Elkaisar.Team.TeamFriendPage = function () {
+    const PlayerTeam = Elkaisar.Team.PlayerTeam;
+    const Page = ` <div id="TeamBox">
+                        <div id="TeamBoxLeft">
+                            <div id="TeamJoinReqBox" class="TeamInvJoinBox">
+                                ${Elkaisar.Team.TeamReqList()}
+                            </div>
+                            <div id="TeamInevReqBox" class="TeamInvJoinBox">
+                                ${Elkaisar.Team.TeamInvList()}
+                            </div>
+                        </div>
+                        <div id="TeamBoxRight">
+                            <div class="PlayerList">
+                                <div class="Header HeaderEnemyFrie flex">
+                                    <div class="tc-team">فريق</div>
+                                    <div class="tc-leader">القائد</div>
+                                    <div class="tc-pres">برستيج</div>
+                                    <div class="tc-memNum">عضو</div>
+                                    <div class="tc-show">إختر</div>
+                                </div>
+                                ${Elkaisar.Team.TeamRelationList(Elkaisar.Team.Relations.RelationFriend)}
+                            </div>
+                        </div>
+                    </div>`;
+    $("#dialg_box .box_content").html(Page);
+};
+
+Elkaisar.Team.TeamEnemyPage = function () {
+    const PlayerTeam = Elkaisar.Team.PlayerTeam;
+    const Page = ` <div id="TeamBox">
+                        <div id="TeamBoxLeft">
+                            <div id="TeamJoinReqBox" class="TeamInvJoinBox">
+                                ${Elkaisar.Team.TeamReqList()}
+                            </div>
+                            <div id="TeamInevReqBox" class="TeamInvJoinBox">
+                                ${Elkaisar.Team.TeamInvList()}
+                            </div>
+                        </div>
+                        <div id="TeamBoxRight">
+                            <div class="PlayerList">
+                                <div class="Header HeaderEnemyFrie flex">
+                                    <div class="tc-team">فريق</div>
+                                    <div class="tc-leader">القائد</div>
+                                    <div class="tc-pres">برستيج</div>
+                                    <div class="tc-memNum">عضو</div>
+                                    <div class="tc-show">إختر</div>
+                                </div>
+                                ${Elkaisar.Team.TeamRelationList(Elkaisar.Team.Relations.RelationEnemy)}
+                            </div>
+                        </div>
+                    </div>`;
+    $("#dialg_box .box_content").html(Page);
+
+};
+
+Elkaisar.Team.getTeamRank = function (offset) {
+
+    return $.ajax({
+        url: `${NODE_URL}/api/ATeam/getTeamRank`,
+        data: {
+            token: Elkaisar.Config.OuthToken,
+            offset: offset
+        },
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            var List = "";
+            Elkaisar.Team.RankList = JSON.parse(data);
+            for (var iii = 0; iii < 10; iii++) {
+                if (Elkaisar.Team.RankList[iii]) {
+                    List += ` <div class="tr">
+                                <div class="tc-rank">${iii + offset + 1}</div>
+                                <div class="tc-team flex">
+                                    <div class="team-slog">
+                                        <div class="slog" style="background-image: url(images/style/bottom-${Elkaisar.Team.RankList[iii].slog_btm}.png);">
+                                        </div>
+                                        <div class="slog" style="background-image: url(images/style/central-${Elkaisar.Team.RankList[iii].slog_cnt}.png); margin-top: -37px;">
+                                        </div>
+                                        <div class="slog" style="background-image: url(images/style/top-${Elkaisar.Team.RankList[iii].slog_top}.png); margin-top: -37px;">
+                                        </div>
+                                    </div>
+                                    <div class="team-name">${Elkaisar.Team.RankList[iii].name}</div>
+                                </div>
+                                <div class="tc-leader flex">
+                                    <div class="image" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[Elkaisar.Team.RankList[iii].avatar]});">
+                                        <div class="border"></div>
+                                    </div>
+                                    <div class="name"> ${Elkaisar.Team.RankList[iii].PlayerName} </div>
+                                </div>
+                                <div class="tc-pres flex">${Elkaisar.Team.RankList[iii].prestige}</div>
+                                <div class="tc-honor flex">${Elkaisar.Team.RankList[iii].honor}</div>
+                                <div class="tc-memNum flex">${Elkaisar.Team.RankList[iii].mem_num}</div>
+                                <div class="tc-show">
+                                    <button class="full-btn-3x btn showTeamReview" data-id-team="${Elkaisar.Team.RankList[iii].id_team}">عرض</button>
+                                </div>
+                            </div>`;
+                } else {
+                    List += `<div class="tr"></div>`
+                }
+
+                $("#RankList .Body").html(List)
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+
+    });
+
+};
+
+$(document).on("click", ".showTeamReview", function () {
+
+    const idTeam = $(this).attr("data-id-team");
+    Elkaisar.Team.showTeamReview(idTeam);
+
+});
+
+Elkaisar.Team.RankPage = function (offset) {
+
+
+    const Box = `<div class="box_content">
+                    <div id="TeamBox">
+                    <div id="RankList" class="RankPage">
+                        <div class="">
+                            <div class="Header HeaderEnemyFrie flex">
+                                <div class="tc-rank">تصنيف</div>
+                                <div class="tc-team">فريق</div>
+                                <div class="tc-leader">القائد</div>
+                                <div class="tc-pres">برستيج</div>
+                                <div class="tc-honor">شرف</div>
+                                <div class="tc-memNum">عضو</div>
+                                <div class="tc-show">إختر</div>
+                            </div>
+                            <div class="Body">
+                                <div class="">
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div id="DialBoxFooter" data-rank-for="">
+                    <div id="BesideNavBtns">
+                        <div class="NavContBtns">
+                            <div class="nav-arrows flex">
+                                <div data-move="most-left" class="most-left-btn move_p_rank"></div>
+                                <div data-move="left"      class="left-btn move_p_rank"></div>
+                                <div class="page-count flex stroke"><span id="current_page_num"></span>/<span id="TotalPageNumber"></span></div>
+                                <div data-move="right" class="right-btn move_p_rank"></div>
+                                <div data-move="most-right" class="most-right-btn move_p_rank"></div>
+                            </div>
+                            <div id="goToBtnRankCo">
+                                <div class="flex">
+                                    <input type="text" class="only_num input">
+                                    <button class="goBtn btn full-btn full-btn-1x ellipsis">
+                                        اذهب الى
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="RankSearchSelect">
+                                ${Elkaisar.Ui.Select.make([{value: "ByName", title: "الأسم"}])}
+                            </div>
+                            <div id="SearchByInput">
+                                <div id="nav_search" class="flex">
+                                    <input type="text" class="input">
+                                    <button class="full-btn full-btn-1x ellipsis">
+                                        بحث
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+    $("#dialg_box .box_content").replaceWith(Box);
+    Elkaisar.Team.getTeamRank(offset);
+};
+
+Elkaisar.Team.HistoryPage = function (offset) {
+
+
+    const Box = `<div id="TeamBox">
+                    <div id="RankList">
+                        <div class="">
+                            <div class="Header HeaderEnemyFrie flex">
+                                <div class="tc-rank">تصنيف</div>
+                                <div class="tc-team">فريق</div>
+                                <div class="tc-leader">القائد</div>
+                                <div class="tc-pres">برستيج</div>
+                                <div class="tc-honor">شرف</div>
+                                <div class="tc-memNum">عضو</div>
+                                <div class="tc-show">إختر</div>
+                            </div>
+                            <div class="Body">
+                                <div class="">
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                    <div class="tr"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+    $("#dialg_box .box_content").html(Box);
+};
+
+Elkaisar.Team.changeTeamRelationBox = function () {
+    var army_content = `   <div id="alert_box" class="F_E-list">
+                                    <div class="row-1"> 
+                                        <input id="TeamEneFriInput" type="text" data-id-team="null" class="input">
+                                        <label class="th ellipsis">إسم الفريق</label>
+                                        <div id="g-search_result"class="search_res">
+                                            <ul> 
+                                                
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                    <div class="row-2">
+                                        <ul>
+                                            <li>    
+                                                <input id="trigger_1" type="radio" name="guild_relation" value="${Elkaisar.Team.Relations.RelationEnemy}" >
+                                                <label for="trigger_1" class="checker"></label>
+                                                <span> عدو</span>
+                                            </li>
+                                            <li>    
+                                                <input id="trigger_2" type="radio" name="guild_relation" value="${Elkaisar.Team.Relations.RelationFriend}">
+                                                <label for="trigger_2" class="checker"></label>
+                                                <span>صديق</span>
+                                            </li>
+                                            <li>    
+                                                <input id="trigger_3" type="radio" name="guild_relation"  checked value="${Elkaisar.Team.Relations.RelationAllay}">
+                                                <label for="trigger_3" class="checker" ></label>
+                                                <span> محايد</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row-3">
+                                        <div class="confim-btn">
+
+                                            <button class="full-btn  full-btn-3x"   id="submit-team-relation">
+                                                تأكيد
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+                                </div> `;
+
+    return army_content;
+};
+
+$(document).on("click", "#PlayerTeamWrapper button", function () {
+    $("#select_from").remove();
+    if (Elkaisar.Team.PlayerTeam.Team)
+        dialogBoxShow(Elkaisar.Team.DialogBox(), function () {
+            Elkaisar.Team.TeamHomePage();
+        });
+    else {
+        dialogBoxShow(Elkaisar.Team.noTeamJoin());
+        Elkaisar.Team.getPlayerTeam().done(function () {
+            $("#select_from").replaceWith(Elkaisar.Team.noTeamJoin());
+        });
+    }
+});
+
+$(document).on("click", "#CreatNewTeam", function () {
+
+    var box = `  <div id="alert_container" class="bg-general" style=" position:fixed; width: 560px; 
+                        z-index:1000;left: 50%;margin-left: -280px; top: 150px; 
+                        height:318px"> 
+                    <div id="alert_head">    
+                        <div>        
+                            <img src="images/panner/king_name.png">    
+                        </div>       
+                        <div id="alert-title">
+                             انشاء فريق
+                        </div>            
+                        <img src="images/btns/close_b.png" class="img-sml close-alert_container">       
+                    </div>
+                    <div id="alert_box" class="guild_creat" >        
+                        <div class="row-one">
+                            <div class="pull-L left">
+                                <div class="guild_slogan" >
+                                    <img src="images/style/bottom-1.png" data-place="bottom" data-cur_image="1">
+                                    <img src="images/style/central-1.png" data-place="middle" data-cur_image="1">
+                                    <img src="images/style/top-1.png" data-place="top" data-cur_image="1">
+                                        
+                                </div>
+                            </div>
+                            <div class="pull-R right">
+                                <div class="nav_icon">
+                                    <div class="pull-L loop-guild-slogan left-btn" data-direction="left" data-place="top"></div>
+                                    <h1>1/21</h1>
+                                    <div class="pull-R loop-guild-slogan right-btn" data-direction="right" data-place="top"></div>
+                                </div>
+                                <div class="nav_icon">
+                                    <div class="pull-L loop-guild-slogan left-btn" data-direction="left"  data-place="middle"></div>
+                                    <h1>1/4</h1>
+                                    <div class="pull-R loop-guild-slogan right-btn"  data-direction="right"  data-place="middle"></div>
+
+                                </div>
+                                <div class="nav_icon">
+                                    <div class="pull-L loop-guild-slogan left-btn" data-direction="left"  data-place="bottom"></div>
+                                    <h1>1/5</h1>
+                                    <div class="pull-R loop-guild-slogan right-btn" data-direction="right" data-place="bottom"></div>
+
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="row-two bg-btn-blu" style="background-size: 105% 123%;
+                                            background-position: center;
+                                            background-repeat: no-repeat;
+                                            background-position-y: 0px;">
+                            <input type="text" class="input" placeholder="اسم الحلف" id="guild-name"/>
+                        </div>
+                        <div class="row-three">        
+                            <div class="confim-btn">            
+                                <button id="ConfCreateTeam" class="full-btn full-btn-2x  enter"  >تاكيد وانشاء</button>    
+
+                            </div>    
+                        </div>
+                    </div>    
+                </div>`;
+
+    $("body").append(box);
+    $("#select_from").remove();
+});
+
+$(document).on("click", "#ConfCreateTeam", function () {
+
+    if ($("#guild-name").val() === "") {
+        alert_box.confirmMessage(" لا يمكن ان يكون اسم الفريق خالى");
+        return;
+    } else if (Elkaisar.Team.PlayerTeam.Team != false) {
+        alert_box.confirmMessage("أنت بالفعل قائد فريق");
+        return;
+    } else if ($("#guild-name").val().length < 5) {
+
+        alert_box.confirmMessage("اسم الفريق اقل من 5 حروف");
+        return;
+
+    } else if ($("#guild-name").val().length > 20) {
+
+        alert_box.confirmMessage("يجب ان لا يتعدى اسم الفريق عن 20 حرف");
+        return;
+
+    } else {
+        var idCity = Elkaisar.CurrentCity.City.id_city;
+        $.ajax({
+            url: `${NODE_URL}/api/ATeam/create`,
+            data: {
+                guildName: $("#guild-name").val(),
+                slogBottom: $(".guild_slogan img:first").attr("data-cur_image"),
+                slogTop: $(".guild_slogan img:last").attr("data-cur_image"),
+                slogMiddle: $(".guild_slogan img:nth-child(2)").attr("data-cur_image"),
+                idCity: idCity,
+                token: Elkaisar.Config.OuthToken
+            },
+            type: 'GET',
+            success: function (data, textStatus, jqXHR) {
+
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+
+                var JsonObject = JSON.parse(data);
+
+                if (JsonObject.state === "ok") {
+
+                    $(".close-alert_container").trigger("click");
+                    Elkaisar.Team.getPlayerTeam();
+                    alert_box.succesMessage(`تم انشاء فريق ${JsonObject.Team.name} بنجاح`);
+
+                } else if (JsonObject.state == "error_0")
+                    return alert_box.confirmMessage("لا يوجد إسم للفريق");
+                else if (JsonObject.state == "error_1")
+                    return alert_box.confirmMessage("يوجد فريق يحمل نفس الأسم");
+                else if (JsonObject.state == "error_2")
+                    return alert_box.confirmMessage("أنت بالفعل على قوة فريق أخر");
+                else if (JsonObject.state == "error_3")
+                    return alert_box.confirmMessage("لا يوجد لديك موارد كافية لإنشاء فريق");
+                else if (JsonObject.state == "error_4")
+                    return alert_box.confirmMessage("حدث خطاء ما اثناء إنشاء الفريق");
+                else
+                    alert(data);
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+    }
+});
+
+$(document).on("click", "#TeamHeaderNavBar li", function () {
+
+    const NavTo = $(this).attr("data-nav-to");
+
+   
+
+    if (!Elkaisar.Team.PlayerTeam.Team && NavTo != "TeamRankingPage") {
+        alert_box.failMessage("لست منضم فى أى فريق !");
+        $("#TeamHeaderNavBar li").removeClass("selected");
+        $("#TeamHeaderNavBar .TeamRankPageCl").addClass("selected");
+        return;
+    }
+    
+    $("#DialBoxFooter").remove();
+
+
+    if (NavTo == "TeamHomePage") {
+        Elkaisar.Team.TeamHomePage();
+    } else if (NavTo == "TeamFriendPage") {
+        Elkaisar.Team.TeamFriendPage();
+    } else if (NavTo == "TeamEnemyPage") {
+        Elkaisar.Team.TeamEnemyPage();
+    } else if (NavTo == "TeamRankingPage") {
+        Elkaisar.Team.RankPage(0);
+    } else if (NavTo == "TeamHistoryPage") {
+        Elkaisar.Team.HistoryPage(0);
+    } else if (NavTo == "TeamUpgradePage") {
+
+    } else {
+        alert("sadsad " + NavTo);
+    }
+
+});
+
+$(document).on("click", "#TeamAdmins", function () {
+
+    $(this).next(".drop-list").slideToggle();
+
+});
+
+$(document).on("click", "#chang-t-word", function () {
+
+    $("#over_lay").remove();
+
+    var current_guild = `<div id="over_lay">
+                            <div id="select_from">
+                                <div class="head_bar">
+                                    <img src="images/style/head_bar.png" class="banner">
+                                    <div class="title">المقدمة</div>
+                                    <img class="close close_use_menu" src="images/btns/close_b.png">
+                                </div>
+                                <p style="clear: both"></p>
+                                <div id="rank-review">
+                                    <div class="upper">
+                                        <div class="upper" style="height: 185px;">
+                                            <div class="table flex">
+                                                <div class="left">
+                                                    <img src="images/style/bottom-${Elkaisar.Team.PlayerTeam.Team.slog_btm}.png" style="position: absolute">
+                                                    <img src="images/style/central-${Elkaisar.Team.PlayerTeam.Team.slog_cnt}.png" style="position: absolute">
+                                                    <img src="images/style/top-${Elkaisar.Team.PlayerTeam.Team.slog_top}.png" style="position: absolute">
+                                                </div>
+                                                <div class="right">
+                                                    <div class="t-r">
+                                                        <label>${Elkaisar.Team.PlayerTeam.TeamMember[0].PlayerName}</label>
+                                                        <label>: القائد</label>
+                                                    </div>
+                                                    <div class="t-r">
+                                                        <label>${getArabicNumbers(Elkaisar.Team.PlayerTeam.Team.rank)}</label>
+                                                        <label>: تصنيف</label>
+                                                    </div>
+                                                    <div class="t-r">
+                                                        <label>${getArabicNumbers(Elkaisar.Team.PlayerTeam.Team.mem_num)}</label>
+                                                        <label>: الاعضاء</label>
+                                                    </div>
+                                                    <div class="t-r">
+                                                        <label>${getArabicNumbers(Elkaisar.Team.PlayerTeam.Team.lvl)}</label>
+                                                        <label>: مستوى</label>
+                                                    </div>
+                                                    <div class="t-r">
+                                                        <label>${getArabicNumbers(Elkaisar.Team.PlayerTeam.Team.prestige)}</label>
+                                                        <label>: برستيج</label>
+                                                    </div>
+                                                    <div class="t-r">
+                                                        <label>${getArabicNumbers(Elkaisar.Team.PlayerTeam.Team.honor)}</label>
+                                                        <label>: شرف</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table>
+                                                <tbody>
+
+                                                    <tr>
+                                                        <td colspan="3" style="text-align: center; line-height: 34px;">
+                                                            <h1 style="background-image: url(&quot;images/background/profile_name.png&quot;);
+                                                                background-size: 75% 100%;
+                                                                background-repeat: no-repeat;
+                                                                background-position: center;"> ${Elkaisar.Team.PlayerTeam.Team.name}</h1>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="down">
+                                        <div class="th ellipsis">${Translate.Title.TH.Intro[UserLag.language]}</div>
+                                        <p>
+                                            <textarea value="${Elkaisar.Team.PlayerTeam.Team.word}" class="input">${Elkaisar.Team.PlayerTeam.Team.word}</textarea>
+                                            <button class="full-btn full-btn-3x " id="save-t-intro" > تعديل</button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+
+
+    $("body").append(current_guild);
+
+
+});
+
+$(document).on("click", "#save-t-intro", function () {
+
+    var self_ = $(this);
+    var new_intro = $(this).prev("textarea").val();
+
+    if (new_intro.length === 0) {
+        alert_box.failMessage("مقدمة غير مسموح بها ");
+        return;
+
+    }
+    if (Elkaisar.Team.PlayerTeam.Player.rank < Elkaisar.Team.RANK_DATA.LEADER) {
+        alert_box.failMessage("غير مسموح بتغير المقدمة  الا بواسطة القائد");
+        return;
+    }
+    if (new_intro == Elkaisar.Team.PlayerTeam.Team.word) {
+        alert_box.confirmMessage("لم يتم تغير المقدمة");
+        return;
+    }
+
+    $.ajax({
+        url: `${NODE_URL}/api/ATeam/modifyTeamWord`,
+
+        data: {
+            newWord: new_intro,
+            token: Elkaisar.Config.OuthToken
+        },
+        type: 'GET',
+        success: function (data, textStatus, jqXHR) {
+
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonObject = JSON.parse(data);
+
+            if (JsonObject.state === "ok") {
+
+                $("#chang-t-word").click();
+                self_.parents("p").html(new_intro);
+                alert_box.succesMessage("تم تعديل المقدمة بنجاح");
+                Elkaisar.Team.PlayerTeam.Team = JsonObject.Team;
+                $("#TeamHeaderNavBar .selected").click();
+
+            } else if (JsonObject.state == "error_0") {
+                alert_box.failMessage("لست عضواً بهذا الفريق");
+            } else if (JsonObject.state == "error_1") {
+                alert_box.failMessage("لا يمكن تعديل المقدمة إلا بواسطة قائد الفريق");
+            } else if (JsonObject.state == "error_2") {
+                alert_box.failMessage("لا يمكن أن تكون المقدمة أكثر من 512 حرف");
+            }
+        }
+    });
+
+});
+
+$(document).on("click", "#change-t-F_E-list", function () {
+
+
+    const box = `   <div id="over_lay_alert">   
+                            <div id="guild-alert-box">    
+                                <div id="alert_head">          
+                                    <div>               
+                                        <img src="images/panner/king_name.png">       
+                                    </div>       
+                                    <div id="alert-title">الاصدقاء و الاعداء        
+                                    </div>           
+                                    <img src="images/btns/close_b.png" class="img-sml close-alert">  
+                                </div>  
+                                   ${Elkaisar.Team.changeTeamRelationBox()}
+                            </div>
+                        </div>`;
+    $("body").append(box);
+
+});
+
+$(document).on("keyup", "#TeamEneFriInput", function () {
+
+    var search_val = $(this).val();
+
+    if (search_val === "") {
+
+        $("#g-search_result ul").html("");
+        $("#g-search_result").hide();
+        return;
+    }
+
+
+    $.ajax({
+
+        url: `${NODE_URL}/api/ATeam/searchTeamByName`,
+        data: {
+            token: Elkaisar.Config.OuthToken,
+            SearchVal: search_val
+        },
+        type: 'GET',
+
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+
+            if (!isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var json_data = JSON.parse(data);
+            console.log(data);
+
+            var list = "";
+
+            for (var iii = 0; iii < json_data.length; iii++) {
+
+                list += `   <li class="SearchTeamUnitRes" data-id-team="${json_data[iii].id_team}" data-t-name = "${json_data[iii].name}"> 
+                                <div class="pull-L image">
+                                    <img src="images/style/bottom-${json_data[iii].slog_btm}.png">
+                                    <img src="images/style/central-${json_data[iii].slog_cnt}.png">
+                                    <img src="images/style/top-${json_data[iii].slog_top}.png" >
+                                </div>
+                                <h1 class="pull-L">${json_data[iii].name}</h1>
+                                <h2 class="pull-L">(${getArabicNumbers(json_data[iii].lvl)})</h2>
+                            </li>`;
+
+            }
+
+            if (json_data.length) {
+
+                $("#g-search_result").show();
+                $("#g-search_result ul").html(list);
+
+            } else {
+
+                $("#g-search_result").hide();
+                $("#g-search_result ul").html("");
+
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+
+    });
+});
+
+$(document).on("click", "#g-search_result .SearchTeamUnitRes", function () {
+
+    var id_guild = parseInt($(this).attr("data-id-team"));
+    var guild_name = $(this).attr("data-t-name");
+
+    $(".F_E-list .row-1 input").val(guild_name);
+    $(".F_E-list .row-1 input").attr("data-id-team", id_guild);
+    $(".F_E-list .row-1 input").attr("data-t-name", guild_name);
+
+
+    $("#g-search_result").hide();
+    $("#g-search_result ul").html("");
+
+});
+
+$(document).on('click', '#submit-team-relation', function () {
+    var TeamREl = $('.F_E-list input[name=guild_relation]:checked').val();
+    var idTeam = parseInt($('.F_E-list .row-1 input')['attr']('data-id-team'));
+    if (!idTeam)
+        return alert_box.confirmMessage('عليك اختيار الفريق اولا');
+    else if (!TeamREl['length'])
+        return alert_box.confirmMessage('اختار العلاقة بين الفريقين');
+
+    $.ajax({
+        'url': `${NODE_URL}/api/ATeam/changeTeamRelation`,
+        'data': {
+            'idTeam': idTeam,
+            'relation': TeamREl,
+            token: Elkaisar.Config.OuthToken
+        },
+        'type': 'GET',
+        success: function (data, _0x5b5eee, _0x5af2f1) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            var JsonData = JSON.parse(data);
+            if (JsonData.state == 'ok') {
+                $('.close-alert').click();
+                alert_box.succesMessage('تم اضافة العلاقة بين الفريقين بنجاح');
+                $("#TeamHeaderNavBar .selected").click();
+            } else if (JsonData['state'] == 'error_0')
+                alert_box['failMessage']('لست عضو فى الفريق');
+            else if (JsonData['state'] == 'error_1')
+                alert_box['failMessage']('رتيتك فى الفريق لا تسمح');
+            else if (JsonData['state'] == 'error_2')
+                alert_box['failMessage']('نوع العلاقة غير صالحة')
+            else
+                alert(data);
+
+        },
+        'error': function (_0xf6addd, _0x324ef9, _0x45d39a) { }
+    });
+});
+
+$(document).on("click", "#invite-t", function () {
+
+    var content = alert_box.alert_content_Guild_Invite();
+    var box = `   <div id="over_lay_alert">   
+                        <div id="guild-alert-box">    
+                            <div id="alert_head">          
+                                <div>               
+                                    <img src="images/panner/king_name.png">       
+                                </div>       
+                                <div id="alert-title">دعوة املك
+                                </div>           
+                                <img src="images/btns/close_b.png" class="img-sml close-alert">  
+                            </div>  
+                            <div id="alert_box" class="F_E-list">
+                                <div class="row-1"> 
+                                    <input type="text"  id="SearchByNameForTeam" class="input">
+                                    <label class="th ellipsis">${Translate.Title.TH.LordName[UserLag.language]}</label>
+                                    <div id="search_result"  class="search_res">
+                                        <ul id="SearchTeamRes"> 
+                                            
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                
+                                <div class="row-3">
+                                    <div class="confim-btn">
+                                        <button class="full-btn full-btn-3x" id="submit-team-invite">
+                                            ارسال دعوة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>`;
+    $("body").append(box);
+
+});
+
+$(document).on("keyup", "#SearchByNameForTeam", function () {
+
+    var segmant = $(this).val();
+
+    if ($.trim(segmant) !== "") {
+
+        searchByName(segmant, true);
+
+    } else {
+        $("#search_result ul").empty();
+        $("#search_result ").hide();
+    }
+
+
+});
+
+$(document).on("click", "#submit-team-invite", function () {
+
+    var idPlayer = parseInt($("#SearchByNameForTeam").attr("data-id-player"));
+
+    if (!idPlayer)
+        return alert_box.confirmMessage("يجب عليك اختيار ملك");
+
+
+    $.ajax({
+
+        url: `${NODE_URL}/api/ATeamInvReq/SendPlayerInv`,
+        data: {
+            token: Elkaisar.Config.OuthToken,
+            idPlayer: idPlayer
+
+        },
+        type: 'GET',
+        beforeSend: function (xhr) {
+
+        },
+        success: function (data, textStatus, jqXHR) {
+
+
+
+            $(".close-alert").click();
+            if ($("#guild-g_relation").length > 0) {
+                showInVitedMembers();
+            }
+            alert_box.succesMessage('تم ارسال الدعوة بنجح');
+            Elkaisar.Team.getPlayerTeam().done(function () {
+                $("#TeamHeaderNavBar .selected").click();
+            });
+
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+
+    });
+
+});
+
+$(document).on("click", "#change-t-slog", function () {
+
+
+    if (!Elkaisar.Team.PlayerTeam.Team)
+        return alert_box.confirmMessage("لا يمكن عرض هذا العنصر");
+    $("#alert_container").remove();
+
+    var new_slogan_co = `<div id="alert_container" class="bg-general" style=" position:fixed; width: 560px; 
+                                z-index:1000;left: 50%;margin-left: -280px; top: 150px; height: auto;
+                                "> 
+                            <div id="alert_head">    
+                                <div>        
+                                    <img src="images/panner/king_name.png">    
+                                </div>       
+                                <div id="alert-title">
+                                    تعديل شعار
+                                </div>            
+                                <img src="images/btns/close_b.png" class="img-sml close-alert_container">       
+                            </div>
+                            <div id="alert_box" class="guild_creat">        
+                                <div class="row-one">
+                                    <div class="pull-L left">
+                                        <div class="guild_slogan">
+                                            <img src="images/style/bottom-${Elkaisar.Team.PlayerTeam.Team.slog_btm}.png" data-place="bottom" data-cur_image="1">
+                                            <img src="images/style/central-${Elkaisar.Team.PlayerTeam.Team.slog_cnt}.png" data-place="middle" data-cur_image="1">
+                                            <img src="images/style/top-${Elkaisar.Team.PlayerTeam.Team.slog_top}.png" data-place="top" data-cur_image="1">
+
+                                        </div>
+                                    </div>
+                                    <div class="pull-R right">
+                                        <div class="nav_icon">
+                                            <div class="pull-L loop-guild-slogan left-btn" data-direction="left" data-place="top"></div>
+                                            <h1>${getArabicNumbers(Elkaisar.Team.PlayerTeam.Team.slog_top)}/21</h1>
+                                            <div class="pull-R loop-guild-slogan right-btn" data-direction="right" data-place="top"></div>
+                                        </div>
+                                        <div class="nav_icon">
+                                            <div class="pull-L loop-guild-slogan left-btn" data-direction="left" data-place="middle"></div>
+                                            <h1>${getArabicNumbers(Elkaisar.Team.PlayerTeam.Team.slog_cnt)}/4</h1>
+                                            <div class="pull-R loop-guild-slogan right-btn" data-direction="right" data-place="middle"></div>
+
+                                        </div>
+                                        <div class="nav_icon">
+                                            <div class="pull-L loop-guild-slogan left-btn" data-direction="left" data-place="bottom"></div>
+                                            <h1>${getArabicNumbers(Elkaisar.Team.PlayerTeam.Team.slog_top)}/5</h1>
+                                            <div class="pull-R loop-guild-slogan right-btn" data-direction="right" data-place="bottom"></div>
+
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="row-two bg-btn-blu" style="background-size: 105% 123%;
+                                                    background-position: center;
+                                                    background-repeat: no-repeat;
+                                                    background-position-y: 0px;">
+                                    <h1 style="color: white; font-size: 16px; line-height: 36px; text-align: center" >${Elkaisar.Team.PlayerTeam.Team.name}</h1>
+                                </div>
+                                <div class="row-three">        
+                                    <div class="confim-btn">            
+                                        <button  class="full-btn full-btn-3x  enter" id="updateTeamSlog"> تعديل الشعار</button>    
+
+                                    </div>    
+                                </div>
+                            </div>    
+                        </div>`;
+    $("body").append(new_slogan_co);
+
+});
+
+$(document).on("click", "#updateTeamSlog", function () {
+    BoxOfMatrialToUse(['family_slogan'], 'change_g_slog');
+});
+
+$(document).on("click", "#SendTeamJoinReq", function () {
+
+    var idTeam = parseInt($(this).attr("data-id-team"));
+
+    $.ajax({
+
+        url: `${NODE_URL}/api/ATeamInvReq/sendTeamJoinRequest`,
+        data: {
+            idTeam: idTeam,
+            token: Elkaisar.Config.OuthToken
+        },
+        type: 'GET',
+        success: function (data, textStatus, jqXHR) {
+
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonObject = JSON.parse(data);
+
+            if (JsonObject.state === "ok") {
+                alert_box.succesMessage("تم ارسال الدعوة الى المسؤلين للانضمام للفريق");
+                $(".close_use_menu").click();
+                Elkaisar.Team.getPlayerTeam();
+            }
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+
+    });
+
+});
+
+$(document).on("click", ".rejectTeamInv", function () {
+
+    const idTeam = $(this).attr("data-id-team");
+    $.ajax({
+        url: `${NODE_URL}/api/ATeamInvReq/rejectTeamInv`,
+        data: {
+            idTeam: idTeam,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
+        },
+        type: 'POST',
+        beforeSend: function (xhr) {},
+        success: function (data, textStatus, jqXHR) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonObject = JSON.parse(data);
+
+            console.log(JsonObject)
+
+            if (JsonObject.state == "ok") {
+                alert_box.succesMessage("تم الغاء  دعوة الانضمام بنجاح");
+                Elkaisar.Team.PlayerTeam.TeamInv = JsonObject.TeamInv;
+                $("#select_from").replaceWith(Elkaisar.Team.noTeamJoin());
+
+            }
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {}
+    });
+});
+
+$(document).on("click", ".acceptTeamInv", function () {
+    const idTeam = $(this).attr("data-id-team");
+    $.ajax({
+        url: `${NODE_URL}/api/ATeamInvReq/acceptTeamInv`,
+        data: {
+            idTeam: idTeam,
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
+        },
+        type: 'POST',
+        beforeSend: function (xhr) {},
+        success: function (data, textStatus, jqXHR) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonObject = JSON.parse(data);
+
+            console.log(JsonObject)
+
+            if (JsonObject.state == "ok") {
+                alert_box.succesMessage("تم قبول دعوة الانضمام بنجاح");
+                $("#closeGuildSelFrom").click();
+                Elkaisar.Team.getPlayerTeam();
+            } else if (JsonObject.state == "error_0") {
+                alert_box.failMessage("لا يوجد دعوة لك لدخول الفريق");
+            }
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {}
+    });
+});
+
+$(document).on('click', "#resignation-t", function (){
+     if (Elkaisar.Team.PlayerTeam.Player.rank > Elkaisar.Team.RANK_DATA.LEADER) 
+        return alert_box.confirmMessage("لا يمكن للقائد الإستقالة");
+
+    
+
+    alert_box.confirmDialog("تاكيد الإستقالة من المنصب", function () {
+
+        $.ajax({
+            url: `${NODE_URL}/api/ATeam/playerTeamResign`,
+            data: {
+                token: Elkaisar.Config.OuthToken,
+                idTeam: Elkaisar.Team.PlayerTeam.Team.id_team
+            },
+            type: 'POST',
+            beforeSend: function (xhr) { },
+            success: function (data, textStatus, jqXHR) {
+
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+
+                var JsonObject = JSON.parse(data);
+
+                if (JsonObject.state === "ok") {
+
+                    $(".close_dialog").click();
+                    Elkaisar.Team.getPlayerTeam();
+                    alert_box.succesMessage("تم الإستقالة من الفريق بنجاح!");
+                    
+                } else if(JsonObject.state == "error_0"){
+                    alert_box.failMessage("لست عضوا فى هذا الفريق!");
+                } else if(JsonObject.state == "error_1"){
+                    alert_box.failMessage("لا يمكنك الإستقالة من المنصب و أنت مدير !")
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) { }
+
+        });
+
+    });
+});
+
+$(document).on("click", "#PlayerTeamLeave", function () {
+
+    if (Elkaisar.Team.PlayerTeam.Player.rank > Elkaisar.Team.RANK_DATA.NORMAL_MEM) 
+        return alert_box.confirmMessage("لا يمكنك الخروج من الفريق عليك التخلى عن منصبك اولا ");
+
+    
+
+    alert_box.confirmDialog("تاكيد الخروج من الفريق", function () {
+
+        $.ajax({
+            url: `${NODE_URL}/api/ATeam/playerTeamLeave`,
+            data: {
+                token: Elkaisar.Config.OuthToken,
+                idTeam: Elkaisar.Team.PlayerTeam.Team.id_team
+            },
+            type: 'POST',
+            beforeSend: function (xhr) { },
+            success: function (data, textStatus, jqXHR) {
+
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+
+                var JsonObject = JSON.parse(data);
+
+                if (JsonObject.state === "ok") {
+
+                    $(".close_dialog").click();
+                    Elkaisar.Team.getPlayerTeam();
+                    alert_box.succesMessage("تم الخروج من الفريق بنجاح!");
+                    
+                } else if(JsonObject.state == "error_0"){
+                    alert_box.failMessage("لست عضوا فى هذا الفريق!");
+                } else if(JsonObject.state == "error_1"){
+                    alert_box.failMessage("لا يمكنك الخروج من الفريق إلا و انت عضو عادى !")
+                } else if(JsonObject.state == "error_2"){
+                    alert_box.failMessage("لا يمكنك ترك الفريق فارغ من الأعضاء!");
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) { }
+
+        });
+
+    });
+
+});
+
+
+$(document).on("click", "#ShowAvailableTeams", function (){
+   $("#select_from").remove();
+    dialogBoxShow(Elkaisar.Team.DialogBox(), function () {
+        $("#TeamHeaderNavBar li").removeClass("selected");
+        $("#TeamHeaderNavBar .TeamRankPageCl").addClass("selected");
+        Elkaisar.Team.RankPage(0);
+    });
+});
+
+$(document).on("click", "#CancelTeamJoinReq", function (){
+   
+     alert_box.confirmDialog("تأكيد إلغاء طلب الإنضمام", function () {
+        $.ajax({
+            url: `${NODE_URL}/api/ATeamInvReq/cancelTeamJoinReq`,
+            data: {
+                token: Elkaisar.Config.OuthToken
+            },
+            type: 'POST',
+            beforeSend: function (xhr) { },
+            success: function (data, textStatus, jqXHR) {
+
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+
+                var JsonObject = JSON.parse(data);
+
+                if (JsonObject.state === "ok") {
+
+                    alert_box.succesMessage("تم الغاء طلب الانضمام بنجاح");
+                    Elkaisar.Team.getPlayerTeam().done(function (){
+                        $("#select_from").replaceWith(Elkaisar.Team.noTeamJoin());
+                    });
+                    
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+
+        });
+
+    });
+    
+});
+
+/* <button class="full-btn-3x btn acceptTeamJoinReq" data-id-player="${PlayerTeam.TeamReq[iii].id_req}">قبول</button>
+                                <button class="full-btn-3x btn rejectTeamJoinReq" */
+
+$(document).on("click", ".acceptTeamJoinReq", function (){
+   
+    const idPlayer = $(this).attr("data-id-player");
+    
+    alert_box.confirmDialog("تأكيد قبول طلب الإنضمام", function () {
+        $.ajax({
+            url: `${NODE_URL}/api/ATeamInvReq/acceptTeamJoinReq`,
+            data: {
+                token: Elkaisar.Config.OuthToken,
+                idPlayer: idPlayer
+            },
+            type: 'POST',
+            beforeSend: function (xhr) { },
+            success: function (data, textStatus, jqXHR) {
+
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+
+                var JsonObject = JSON.parse(data);
+
+                if (JsonObject.state === "ok") {
+
+                    alert_box.succesMessage("تم قبول طلب الانضمام بنجاح");
+                    $("#TeamHeaderNavBar .selected").click();
+                    Elkaisar.Team.getPlayerTeam().done(function (){
+                        $("#TeamHeaderNavBar .selected").click();
+                    });
+                    
+                } else if(JsonObject.state == "error_0"){
+                    alert_box.failMessage("لست منضم فى فريق");
+                } else if(JsonObject.state == "error_1"){
+                    alert_box.failMessage("لا يوجد طلب لهذا اللاعب");
+                } else if(JsonObject.state == "error_2"){
+                    alert_box.failMessage("رتبتك فى الفريق لا تسمح");
+                } else if(JsonObject.state == "error_3"){
+                    alert_box.failMessage("اللاعب فى فريق أخر");
+                } else if(JsonObject.state == "error_4"){
+                    alert_box.failMessage("طلب الإنضمام ليس لنفس الفريق");
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+
+        });
+
+    });
+    
+});
+
+$(document).on("click", ".cancelTeamInv", function (){
+   
+    const idPlayer = $(this).attr("data-id-player");
+    
+    alert_box.confirmDialog("تأكيد رفض طلب الإنضمام", function () {
+        $.ajax({
+            url: `${NODE_URL}/api/ATeamInvReq/cancelTeamInv`,
+            data: {
+                token: Elkaisar.Config.OuthToken,
+                idPlayer: idPlayer
+            },
+            type: 'POST',
+            beforeSend: function (xhr) { },
+            success: function (data, textStatus, jqXHR) {
+
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+
+                var JsonObject = JSON.parse(data);
+
+                if (JsonObject.state === "ok") {
+
+                    alert_box.succesMessage("تم إلغاء دعوة الانضمام بنجاح");
+                    $("#TeamHeaderNavBar .selected").click();
+                    Elkaisar.Team.getPlayerTeam().done(function (){
+                        $("#TeamHeaderNavBar .selected").click();
+                    });
+                    
+                } else if(JsonObject.state == "error_0"){
+                   alert_box.failMessage("لا يوجد طلب لهذا اللاعب");
+                } else if(JsonObject.state == "error_1"){
+                     alert_box.failMessage("لست منضم فى فريق");
+                } else if(JsonObject.state == "error_2"){
+                    alert_box.failMessage("رتبتك فى الفريق لا تسمح");
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+
+        });
+
+    });
+    
+});
+
+Elkaisar.Ui.Select.menuList = function (list, selectedIndex) {
+
     var optionList = "";
-    
-    for(var iii in list){
-        if(Number(iii) === Number(selectedIndex)){
+
+    for (var iii in list) {
+        if (Number(iii) === Number(selectedIndex)) {
             optionList += `<li class="unit-option selected-op" data-title="${list[iii].title}" data-value="${list[iii].value}">${list[iii].title}</li>`;
-        }else{
+        } else {
             optionList += `<li class="unit-option" data-title="${list[iii].title}" data-value="${list[iii].value}" data-index="${iii}">${list[iii].title}</li>`;
         }
     }
-    
-    return `<ul>${optionList}</ul>`;
+
+    return `<ul style="display : none">${optionList}</ul>`;
 };
 
 
-Elkaisar.Ui.Select.make = function (list , selectedIndex){
-    
-    selectedIndex = selectedIndex || 0;
-    
-    
-    
+Elkaisar.Ui.Select.make = function (list, selectedIndex, Style) {
+
+    if (typeof selectedIndex != "number")
+        selectedIndex = 0;
+    var Height = 266;
+    var Width   = 160;
+    if(typeof Style == "object"){
+        Height = Style.height || 266;
+        Width  = Style.width  || 160;
+    }
+        
+
+
     return `
-            <div class="select-list" data-value="${list[selectedIndex].value}" data-active="false">
+            <div class="select-list" data-value="${list[selectedIndex].value}" data-active="false" data-height="${Height}" data-width="${Width}">
                 <div class="select select-input">
                     <div class="value">${list[selectedIndex].title}</div>
                 </div>
-                <div class="option">${this.menuList(list, selectedIndex)}</div>
+                <div class="option" style="width: ${Width}px;" >${this.menuList(list, selectedIndex)}</div>
             </div>`;
-    
+
 };
 
 
-$(document).on("click", ".select-list .unit-option", function (){
-    
+$(document).on("click", ".select-list .unit-option", function () {
+
     var title = $(this).attr("data-title");
     var value = $(this).attr("data-value");
-    
-    $(".select-list .unit-option").removeClass("selected-op");
+    $(this).parents(".select-list").children('.option').children("ul").children().removeClass("selected-op");
     $(this).addClass("selected-op");
-    
-   $(".select-list").attr("data-value", value);
-   $(".select-list .value").html(title);
-    
-    
+    $(this).parents(".select-list").attr("data-value", value);
+    $(this).parents(".select-list").children('.select-input').children('.value').html(title);
+    //$(".select-list .value").html(title);
+
+
 });
 
 $(document)['on']('click', '.uiCheckedBox', function () {

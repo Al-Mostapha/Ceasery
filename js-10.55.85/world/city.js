@@ -1461,39 +1461,20 @@ function fillCityWithBuilding()
     Elkaisar.GE.AddCityBuilding(1457, 923, "under_palace_12");
 
 
-
-
-
-    //start_animation() 
-
-
-
-
-    if (Number(Elkaisar.CurrentCity.City.lvl) > 0) {
+    if (Number(Elkaisar.CurrentCity.City.lvl) > 0) 
         fillCityLvl_1();
-    }
-
-
-
-
-
-
-    if (Number(Elkaisar.CurrentCity.City.lvl) > 1) {
+    if (Number(Elkaisar.CurrentCity.City.lvl) > 1) 
         fillCityLvl_2();
-    }
-
-
-
-
-
-
-    if (Number(Elkaisar.CurrentCity.City.lvl) > 2) {
+    if (Number(Elkaisar.CurrentCity.City.lvl) > 2) 
         fillCityLvl_3();
-    }
-
-    if (Elkaisar.CurrentCity.City.food) {
+    if (Elkaisar.CurrentCity.City.food) 
         Animation.cityProductionRate();
+
+    for (var BuildingPlace in BuildingOnFloor) {
+        BuildingOnFloor[BuildingPlace].setDataEnabled();
+        BuildingOnFloor[BuildingPlace].data.set("BuildingPlace", BuildingPlace);
     }
+    
 }
 
 

@@ -4,14 +4,14 @@ WorldUnit.prize.prizes = {};
 
 
 WorldUnit.prize.getAllPrize = function () {
-    $['ajax']({
+    $.ajax({
         'url': API_URL + '/api/AWorld/getWorldUnitPrize',
         'data': {
-            'token': Elkaisar['Config']['OuthToken'],
-            'server': Elkaisar['Config']['idServer']
+            token: Elkaisar['Config']['OuthToken'],
+            server: Elkaisar['Config']['idServer']
         },
         'type': 'GET',
-        'success': function (data, _0x45a054, _0x31b37d) {
+        success: function (data, _0x45a054, _0x31b37d) {
             if (isJson(data))
                 WorldUnit['prize']['prizes'] = JSON['parse'](data);
             else
@@ -37,7 +37,7 @@ WorldUnit['prize']['getUnitPrize'] = function (unitType, lvl, PrizeFor = 'Win') 
     for (var iii in WorldUnit['prize']['prizes'][PrizeFor]) {
         if (WorldUnit['prize']['prizes'][PrizeFor][iii]['unitType'] === unitType
                 && WorldUnit['prize']['prizes'][PrizeFor][iii]['lvl'] === lvl)
-            PrizeList['push'](WorldUnit['prize']['prizes'][PrizeFor][iii]);
+            PrizeList.push(WorldUnit['prize']['prizes'][PrizeFor][iii]);
     }
     return PrizeList;
 };
@@ -47,7 +47,7 @@ WorldUnit['prize']['getUnitAllLvlsPrize'] = function (unitType, PrizeFor = 'Win'
     var PrizeList = [];
     for (var iii in WorldUnit['prize']['prizes'][PrizeFor]) {
         if (WorldUnit['prize']['prizes'][PrizeFor][iii]['unitType'] === unitType)
-            PrizeList['push'](WorldUnit['prize']['prizes'][PrizeFor][iii]);
+            PrizeList.push(WorldUnit['prize']['prizes'][PrizeFor][iii]);
     }
     return PrizeList;
 };
@@ -87,7 +87,7 @@ WorldUnit['prize']['prizeAllLvlsList'] = function (xCoord, yCoord, prizeFor = 'W
             List = '';
     for (var iii in PrizeList) {
         if (PList['indexOf'](PrizeList[iii]['prize']) === -0x1)
-            PList['push'](PrizeList[iii]['prize']);
+            PList.push(PrizeList[iii]['prize']);
         else
             continue;
         if (PList['length'] > 0x10)

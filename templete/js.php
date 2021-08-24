@@ -8,6 +8,8 @@ if(!defined("DEV_MODE")){
         <script type="text/javascript" src="js<?=JS_VERSION?>/lib/jquery.nicescroll.min.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/lib/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/lib/phaser.min.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/lib/Peer.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/feature/VoiceChat.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/base/translate.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/base/userLan.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/base/navBar.js"></script>
@@ -39,6 +41,7 @@ if(!defined("DEV_MODE")){
         <script type="text/javascript" src="js<?=JS_VERSION?>/menu-list/battelReport.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/menu-list/dominant.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/menu-list/LItem.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/menu-list/Rank.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/ws/server.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/ws/wsBattel.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/ws/lib/chat.js"></script>
@@ -50,6 +53,7 @@ if(!defined("DEV_MODE")){
         <script type="text/javascript" src="js<?=JS_VERSION?>/ws/lib/serverAnnounce.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/ws/lib/city.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/ws/lib/Base.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/ws/lib/wsWorld.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/worldUnit.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/worldCampBox.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/WorldUnitIcon.js"></script>
@@ -80,6 +84,7 @@ if(!defined("DEV_MODE")){
         <script type="text/javascript" src="js<?=JS_VERSION?>/feature/emjoi.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/feature/contribute.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/feature/arenaChallange.js"></script>
+        <script type="text/javascript" src="js<?=JS_VERSION?>/feature/team.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/ui/ui.js"></script>
 
 <?php
@@ -89,7 +94,10 @@ if(!defined("DEV_MODE")){
             <script type="text/javascript" src="js'.JS_VERSION.'/lib/jquery.nicescroll.min.js"></script>
             <script type="text/javascript" src="js'.JS_VERSION.'/lib/jquery-ui.min.js"></script>
             <script type="text/javascript" src="js'.JS_VERSION.'/lib/phaser.min.js"></script>
-            <script type="text/javascript" src="js'.JS_VERSION.'/obfuscated.js"></script>';
+            <script type="text/javascript" src="js'.JS_VERSION.'/obfuscated.js"></script>
+            <script type="text/javascript" src="js'.JS_VERSION.'/lib/Peer.js"></script>
+            ';
+    
 }
 
 ?>

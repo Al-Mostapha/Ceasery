@@ -70,8 +70,7 @@ var ArabicNumber =
             "9": "&\#1641;",
             "-": "-"
         };
-function getArabicNumbers(str)
-{
+function getArabicNumbers(str) {
     /* var newStr = "";
      
      str = String(str);
@@ -84,8 +83,7 @@ function getArabicNumbers(str)
     return str;
 }
 
-function getServerData()
-{
+function getServerData() {
 
     $.ajax({
         url: "api/player.php",
@@ -160,28 +158,27 @@ const paragraph_for_fa3lia = "الفاعلية ممتدة حتى هاية مار
 
 
 
-function calPageNumber(type, isMall)
-{
+function calPageNumber(type, isMall) {
     var content_keys = Object.keys(Matrial.listOf(type));
-    
-    
+
+
     var mat_counter = 0;
-    
-    if(isMall){
-       
-       for (var iii = 0; iii < content_keys.length; iii++) {
+
+    if (isMall) {
+
+        for (var iii = 0; iii < content_keys.length; iii++) {
 
             if (Elkaisar.BaseData.Items[content_keys[iii]].gold > 0) {
                 // console.log(content_keys[iii])
                 mat_counter++;
             }
         }
-        
+
         return Math.ceil(mat_counter / 12);
-   }
-       
-       
-    
+    }
+
+
+
 
 
     for (var iii = 0; iii < content_keys.length; iii++) {
@@ -237,7 +234,7 @@ function content_unit(image, name, req, player_amount, matrial_type, for_) {
                         </div>
                         <div class="matrial">
                             <ul>
-                            ${for_ === "mall" ? "" : `<button class="full-btn-3x sell-matrial" data-matrial="${matrial_type}"> عرض المادة للبيع</button>`   }
+                            ${for_ === "mall" ? "" : `<button class="full-btn-3x sell-matrial" data-matrial="${matrial_type}"> عرض المادة للبيع</button>`}
                             `;
 
 
@@ -403,8 +400,7 @@ function dialogBoxClose() {
     }
 }
 
-function dialogBoxShow(dialog_box, callBack)
-{
+function dialogBoxShow(dialog_box, callBack) {
 
     if ($("#dialg_box").length > 0) {
         $("#dialg_box").animate({top: "-800px"}, 200, "linear", function () {
@@ -432,10 +428,9 @@ var menu_bar = {
     dialogBox: function (title, nav_bar, content, page_num) {
 
         var nav_list = "";
-        nav_bar.forEach(function (one, index)
-        {
+        nav_bar.forEach(function (one, index) {
             nav_list += ` <li head_title = "${one["title"]}" class="${index === 0 ? "selected" : ""}" >
-                                   ${one[("title_" + UserLag.language)] }
+                                   ${one[("title_" + UserLag.language)]}
                                </li>`;
         });
 
@@ -451,6 +446,7 @@ var menu_bar = {
                             <div class="left-nav">
                                 <ul>${nav_list}</ul>
                             </div>
+                            <div id="NavSelectList" class="flex"></div>
                             <div class="right-nav">
                                 <div class="nav_icon">
                                     <img  class ="close_dialog" src="images/btns/close_b.png">
@@ -534,291 +530,70 @@ var menu_bar = {
     },
 
     dialogBoxcontent_Ranks: function (union = "") {
-        var output = `  <div class="box_content for_Ranks ">  
-                                   <div class="left-content full">  
-                                         
-                                        
-                                   </div>  
-                                   <div class="right-content-footer" rank_for="${ union === true ? "unuions" : "players"}">  
-                                      <div class="buttons">  
-                                          <ul class="flex">  
-                                              <li id="show-my-rank">  
-                                                    <button class="full-btn full-btn-2x full">${Translate.Button.General.ViewRank[UserLag.language]}</button>  
-                                              </li> 
-                                              <li>
-                                                    <div class="nav_icon flex">
-                                                        <div data-move="most-left" src="images/style/left.jpg" class="left move_p_rank pull-L most-left-btn"></div>
-                                                        <div data-move="left" src="images/style/left.jpg" class="left move_p_rank  pull-L left-btn"></div>
-                                                        <h1>  <span  id="current_page_num">1</span>/${union ? getArabicNumbers(Math.ceil(SERVER_DATA.guild_num / 10)) : getArabicNumbers(Math.ceil(SERVER_DATA.player_num / 10)) }</h1>
-                                                        <div data-move="most-right" src="images/style/right.jpg" class="right move_p_rank pull-R most-right-btn"></div>        
-                                                        <div data-move="right" src="images/style/right.jpg" class="right move_p_rank pull-R right-btn"></div>
-                                                  </div>
-                                              </li>
-                                              
-                                              <li id="nav_input" class="flex">  
-                                                    <input type="text"  class="only_num input"/>
-                                                    <button class="full-btn full-btn-1x ellipsis">  
-                                                        ${Translate.Button.General.GoTo[UserLag.language]}    
-                                                    </button>
-                                              </li>
-        
-                                              <li id="search_select" style=" float: left; width: 85px;">  
-                                                    <select>
-                                                        <option value="name" selected>الاسم</option>
-                                                    </select>
-                                              </li>
-                                              <li id="nav_search" class="flex">  
-                                                    <input type="text" class="input"/>
-                                                    <button class="full-btn full-btn-1x ellipsis">  
-                                                     ${Translate.Button.General.Search[UserLag.language]}
-                                                   </button>
-                                              </li>
-                                              
-                                          </ul>  
-                                      </div>  
-                                       
-                                  </div>  
-                               </div>`;
-        return output;
+        return Elkaisar.Rank.EmptyBox();
+
     },
     getContentForRanks: function (rank_for, offset) {
-        var _return = "";
+        $("#DialBoxFooter").attr("data-rank-for", rank_for);
         switch (rank_for) {
 
-            case "players":
+            case Elkaisar.Rank.RankFor.Player:
+                $("#NavSelectList").html(Elkaisar.Ui.Select.make(
+                        [
+                            {value: "ByName", title: "عام"},
+                            {value: "ByName", title: "برستيج"},
+                            {value: "ByName", title: "شرف"}
+                        ],
+                        0, {
+                            width: 158,
+                            height: 200
+                        }));
+                return  Elkaisar.Rank.PlayerGeneralRank(offset);
 
-                $.ajax({
-                    url: "api/player.php",
-                    data: {
-                        get_rank_player: true,
-                        offset: offset,
-                        id_player: ID_PLAYER,
-                        token: TOKEN
-                    },
-                    type: 'GET',
-                    beforeSend: function (xhr) {
+            case Elkaisar.Rank.RankFor.Guild:
+                 $("#NavSelectList").html(Elkaisar.Ui.Select.make(
+                        [
+                            {value: "ByName", title: "عام"},
+                            {value: "ByName", title: "برستيج"},
+                            {value: "ByName", title: "شرف"},
+                            {value: "ByName", title: "عدد الأعضاء"}
+                        ],
+                        0, {
+                            width: 158,
+                            height: 200
+                        }));
+                return  Elkaisar.Rank.GuildGeneralRank(offset);
 
-                    },
-                    success: function (data, textStatus, jqXHR) {
-
-                        if (isJson(data)) {
-                            Rank.playerRow(offset, JSON.parse(data));
-                        } else {
-                            alert(data);
-                        }
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-
-                    }
-                });
-
-
-                return _return;
-                break;
-
-
-
-            case "unuions":
-                $.ajax({
-                    url: "api/guild.php",
-                    data: {
-                        get_rank_union: true,
-                        offset: offset,
-                        id_player: ID_PLAYER,
-                        token: TOKEN
-                    },
-                    type: 'GET',
-                    beforeSend: function (xhr) {
-
-                    },
-                    success: function (data, textStatus, jqXHR) {
-
-                        /*
-                         * 
-                         *   @type Array|Object
-                         *   @property {number} honor 
-                         *   @property {number} lvl 
-                         *   @property {number} honor 
-                         *   @property {string} name 
-                         *   @property {string} p_name 
-                         *   @property {number} id_guild 
-                         *   @property {number} prestige 
-                         */
-                        if (isJson(data)) {
-                            var json_data = JSON.parse(data);
-                        } else {
-                            alert(data);
-                        }
-
-
-                        _return += `<div class="th">
-                                                <div class="td_1 ellipsis" style="width: 14.5%">${Translate.Title.MenuList.Ranking[UserLag.language]}</div>
-                                                <div class="td_2 ellipsis" style="width: 14.5%">${Translate.Title.MenuList.League[UserLag.language]}</div>
-                                                <div class="td_3 ellipsis" style="width: 14.5%">${Translate.Title.TH.Host[UserLag.language]}</div>
-                                                <div class="td_4 ellipsis" style="width: 14.5%">${Translate.Title.TH.Members[UserLag.language]}</div>
-                                                <div class="td_5 ellipsis" style="width: 14.5%">${Translate.Title.TH.Honor[UserLag.language]}</div>
-                                                <div class="td_6 ellipsis" style="width: 14.5%">${Translate.Title.TH.Prestige[UserLag.language]}</div>
-                                                <div class="td_7 ellipsis" style="width: 13.0%">${Translate.Button.General.Action[UserLag.language]}</div>
-                                            </div>`;
-
-                        if (json_data.length > 0) {
-                            for (var iii = 0; iii < json_data.length; iii++) {
-
-
-                                _return += `<div class="tr" rank="${offset + iii + 1}"  data-id_guild = "${json_data[iii].id_guild}">
-                                                    <div class="td_1 ellipsis" style="width: 14.5%">${getArabicNumbers(offset + iii + 1)}</div>
-                                                    <div class="td_2 ellipsis" style="width: 14.5%">${json_data[iii].name}</div>
-                                                    <div class="td_3 ellipsis" style="width: 14.5%"> ${json_data[iii].p_name }</div>
-                                                    <div class="td_4 ellipsis" style="width: 14.5%">${json_data[iii].mem_num }</div>
-                                                    <div class="td_5 ellipsis" style="width: 14.5%">${getArabicNumbers(json_data[iii].honor)}</div>
-                                                    <div class="td_6 ellipsis" style="width: 14.5%">${getArabicNumbers(json_data[iii].prestige)}</div>
-                                                    <div class="td_7 ellipsis" style="width: 13%"  ><button class="full-btn full-btn-1x show-guild-prev ellipsis"> ${Translate.Button.MenuList.View[UserLag.language]}</buton></div>
-                                                </div>`;
-
-                            }
-
-                            $(".for_Ranks .left-content").html(_return);
-                            $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
-
-                        } else {
-
-                            _return = false;
-
-                        }
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-
-                    }
-                });
-
-
-                return _return;
-                break;
-
-            case "heros":
-                $.ajax({
-                    url: "api/hero.php",
-                    data: {
-                        get_rank_hero: true,
-                        offset: offset,
-                        id_player: ID_PLAYER,
-                        token: TOKEN
-                    },
-                    type: 'GET',
-                    beforeSend: function (xhr) {
-
-                    },
-                    success: function (data, textStatus, jqXHR) {
-
-                        var json_data = JSON.parse(data);
-                        _return += `<div class="th">
-                                                <div class="td_1 ellipsis" style="width: 14.25%;">${Translate.Title.MenuList.Ranking[UserLag.language]}</div>
-                                                <div class="td_2 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Hero[UserLag.language]}</div>
-                                                <div class="td_3 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Lord[UserLag.language]}</div>
-                                                <div class="td_5 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Lvl[UserLag.language]}</div>
-                                                <div class="td_6 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Sway[UserLag.language]}</div>
-                                                <div class="td_7 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Bravery[UserLag.language]}</div>
-                                                <div class="td_8 ellipsis" style="width: 14.25%;">${Translate.Title.TH.Parry[UserLag.language]}</div>
-                                            </div>`;
-
-                        if (json_data.length > 0) {
-                            for (var iii = 0; iii < json_data.length; iii++) {
-
-
-                                _return += `<div class="tr" rank="${offset + iii + 1}">
-                                                    <div class="td_1 ellipsis" style="width: 14.25%;">${getArabicNumbers(offset + iii + 1)}</div>
-                                                    <div class="td_2 ellipsis" style="width: 14.25%;">${json_data[iii].name}</div>
-                                                    <div class="td_3 ellipsis" style="width: 14.25%;"> ${json_data[iii].p_name}</div>
-                                                    <div class="td_4 ellipsis" style="width: 14.25%;">${getArabicNumbers(json_data[iii].lvl)}</div>
-                                                    <div class="td_5 ellipsis" style="width: 14.25%;">${getArabicNumbers(json_data[iii].point_a)}</div>
-                                                    <div class="td_7 ellipsis" style="width: 14.25%;">${getArabicNumbers(json_data[iii].point_b)}</div>
-                                                    <div class="td_8 ellipsis" style="width: 14.25%;">${getArabicNumbers(json_data[iii].point_c)}</div>
-                                                </div>`;
-
-                            }
-
-                            $(".for_Ranks .left-content").html(_return);
-                            $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
-
-                        } else {
-
-                            _return = false;
-
-                        }
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-
-                    }
-                });
-
-
-                return _return;
-                break;
-
-            case "cities":
-                $.ajax({
-                    url: "api/city.php",
-                    data: {
-                        get_rank_city: true,
-                        offset: offset,
-                        id_player: ID_PLAYER,
-                        token: TOKEN
-                    },
-                    type: 'GET',
-                    beforeSend: function (xhr) {
-
-                    },
-                    success: function (data, textStatus, jqXHR) {
-
-                        var json_data = JSON.parse(data);
-                        _return += `<div class="th">
-                                                <div class="td_1 ellipsis">${Translate.Title.MenuList.Ranking[UserLag.language]}</div>
-                                                <div class="td_2 ellipsis">${Translate.Title.TH.Name[UserLag.language]}</div>
-                                                <div class="td_3 ellipsis">${Translate.Title.TH.Lvl[UserLag.language]}</div>
-                                                <div class="td_5 ellipsis">${Translate.Title.TH.Lord[UserLag.language]}</div>
-                                                <div class="td_6 ellipsis">${Translate.Title.MenuList.League[UserLag.language]}</div>
-                                                <div class="td_7 ellipsis">${Translate.Title.TH.Population[UserLag.language]}</div>
-                                            </div>`;
-
-                        if (json_data.length > 0) {
-
-                            for (var iii = 0; iii < json_data.length; iii++) {
-
-
-                                _return += `<div class="tr" rank="${offset + iii + 1}">
-                                                    <div class="td_1 ellipsis">${getArabicNumbers(offset + iii + 1)}</div>
-                                                    <div class="td_2 ellipsis">${json_data[iii].name}</div>
-                                                    <div class="td_3 ellipsis">${getArabicNumbers(json_data[iii].lvl)}</div>
-                                                    <div class="td_4 ellipsis">${json_data[iii].p_name}</div>
-                                                    <div class="td_5 ellipsis">${json_data[iii].guild || ""}</div>
-                                                    <div class="td_7 ellipsis">${getArabicNumbers(json_data[iii].pop)}</div>
-                                                </div>`;
-
-                            }
-
-                            $(".for_Ranks .left-content").html(_return);
-                            $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
-
-                        } else {
-
-                            _return = false;
-
-                        }
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-
-                    }
-                });
-
-
-                return _return;
-                break;
+            case Elkaisar.Rank.RankFor.Hero:
+                 $("#NavSelectList").html(Elkaisar.Ui.Select.make(
+                        [
+                            {value: "ByName", title: "عام"},
+                            {value: "ByName", title: "مستوى"},
+                            {value: "ByName", title: "قوة السيطرة"},
+                            {value: "ByName", title: "الشجاعة"},
+                            {value: "ByName", title: "الدفاع"}
+                        ],
+                        0, {
+                            width: 158,
+                            height: 200
+                        }));
+                return Elkaisar.Rank.HeroGeneralRank(offset);
+            case Elkaisar.Rank.RankFor.City:
+                $("#NavSelectList").html(Elkaisar.Ui.Select.make(
+                        [
+                            {value: "ByName", title: "عام"},
+                            {value: "ByName", title: "مستوى"},
+                            {value: "ByName", title: "عدد السكان"}
+                        ],
+                        0, {
+                            width: 158,
+                            height: 200
+                        }));
+                return Elkaisar.Rank.CityGeneralRank(offset);
 
         }
+
+
 
 
     }
@@ -866,7 +641,7 @@ $(document).on("click", ".menu-list", function (e) {
 
             break;
 
-        case "reports" :
+        case "reports":
 
             playerBattels();
 
@@ -907,10 +682,8 @@ $(document).on("click", ".menu-list", function (e) {
             var content = menu_bar.dialogBoxcontent_Ranks();
             var dialog_box = menu_bar.dialogBox(Translate.Title.MenuList.Ranking[UserLag.language], NavBar.Ranking, content, 0);
             dialogBoxShow(dialog_box, function () {
-
                 $("#dialg_box").attr("type", "messages");
-                menu_bar.getContentForRanks("players", 0);
-
+                menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Player, 0);
             });
 
 
@@ -1115,35 +888,19 @@ $(document).on("click", ".left-nav ul  li", function () {
 
 
         case "rank_player":
-            var new_rows = menu_bar.getContentForRanks("players", 0);
-            $(".for_Ranks .left-content").html(new_rows);
-            $(".right-content-footer").attr("rank_for", "players");
-            $(".nav_icon h1").html(` <span id="current_page_num">1</span>/${getArabicNumbers(Math.ceil(SERVER_DATA.player_num / 10))}`);
-
+            menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Player, 0);
             break;
 
 
         case "rank_union":
-            var new_rows = menu_bar.getContentForRanks("unuions", 0);
-            $(".for_Ranks .left-content").html(new_rows);
-            $(".right-content-footer").attr("rank_for", "unuions");
-            $(".nav_icon h1").html(` <span id="current_page_num">1</span>/${getArabicNumbers(Math.ceil(SERVER_DATA.guild_num / 10))}`);
-
+            menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Guild, 0);
             break;
         case "rank_hero":
-            var new_rows = menu_bar.getContentForRanks("heros", 0);
-            $(".for_Ranks .left-content").html(new_rows);
-            $(".right-content-footer").attr("rank_for", "heros");
-            $(".nav_icon h1").html(` <span id="current_page_num">1</span>/${getArabicNumbers(Math.ceil(SERVER_DATA.hero_num / 10))}`);
-
+            var new_rows = menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.Hero, 0);
             break;
 
         case "rank_city":
-            var new_rows = menu_bar.getContentForRanks("cities", 0);
-            $(".for_Ranks .left-content").html(new_rows);
-            $(".right-content-footer").attr("rank_for", "cities");
-            $(".nav_icon h1").html(` <span id="current_page_num">1</span>/${getArabicNumbers(Math.ceil(SERVER_DATA.city_num / 10))}`);
-
+            var new_rows = menu_bar.getContentForRanks(Elkaisar.Rank.RankFor.City, 0);
             break;
 
 
@@ -1235,7 +992,7 @@ $("#matrial-box button").click(function () {
     dialogBoxShow(dialog_box, function () {
         $("#dialg_box").attr("type", "box");
     });
-    
+
     Elkaisar.Item.useItemFunc();
     Elkaisar.Item.useItemBoxFunc();
     Elkaisar.Item.useArmyBackFunc();
@@ -1288,20 +1045,20 @@ $(document)['on']('click', '#matrial-player .matrial_unit', function () {
     var idItem = $(this)['attr']('matrial_type');
     var Item = Elkaisar['BaseData']['Items'][idItem];
     var PlayerAmount = Matrial['getPlayerAmount'](idItem);
-    
+
     $('#alert_container')['remove']();
     var ExtraString = '';
     switch (idItem) {
-    case 'certain_move':
-        ExtraString = `  <div class="extra_html">
+        case 'certain_move':
+            ExtraString = `  <div class="extra_html">
                             ادخل الاحداثيات 
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                                 X <input id="new-city-y-coord" type="text" class="only_num input" min="0" max="499">
                                 Y <input id="new-city-x-coord" type="text" class="only_num input" min="0" max="499">
                             </div>`;
-        break;
-    case 'random_move':
-        break;
+            break;
+        case 'random_move':
+            break;
     }
     var Box = ` <div id="matral-box-use" class="bg-general"> 
                             <div id="alert_head">    
@@ -1321,17 +1078,17 @@ $(document)['on']('click', '#matrial-player .matrial_unit', function () {
                                             ${Item['name']} 
                                         </div>
                                         <div class="amount">
-                                            ${Translate['Title']['TH']['YouHave'][UserLag['language']] } ${ PlayerAmount }
+                                            ${Translate['Title']['TH']['YouHave'][UserLag['language']]} ${PlayerAmount}
                                         </div>
                                     </div>
                                 </div>  
                                 <div class="mat_desc">
-                                    ${ Item['desc'] }
+                                    ${ Item['desc']}
                                 </div>
                                 ${ExtraString}
                                 <div class="row-3">       
                                     <div class="confim-btn">            
-                                        ${ Item['use'] === 'none' ? '' : `<button class="full-btn full-btn-3x  pull-R enter" data-item-name="${idItem}" id="${Item['use'] == 'Box' ? 'openPlayerItemBox' : 'usePlayerItemBox'}">${(Item['use'] == 'Box' ? 'فتح' : 'تأكيد') }</button>  ` }  
+                                        ${ Item['use'] === 'none' ? '' : `<button class="full-btn full-btn-3x  pull-R enter" data-item-name="${idItem}" id="${Item['use'] == 'Box' ? 'openPlayerItemBox' : 'usePlayerItemBox'}">${(Item['use'] == 'Box' ? 'فتح' : 'تأكيد')}</button>  `}  
                                         ${ Item['use'] === 'many' ? `<input type="text" max="${PlayerAmount}" min="0" step="1" class="pull-L only_num input" id="amount_to_use">
                                                                         <div class="number-arrow-wrapper pull-L">
                                                                             <label class="number-arrow up"></label>
@@ -1342,7 +1099,7 @@ $(document)['on']('click', '#matrial-player .matrial_unit', function () {
                                 </div>
                             </div>    
                         </div>`;
-            
+
     $('body')['append'](Box);
 });
 
@@ -1444,64 +1201,14 @@ function refreshArmy_view() {
 /*    navigate in rank page */
 
 
-$(document).on("click", ".move_p_rank", function () {
 
-    var move = $(this).data("move");
-    var rank_for = $(this).parents(".right-content-footer").attr("rank_for");
-
-    var offset = (Math.ceil($(".for_Ranks  .left-content .tr:last-child").attr("rank") / 10)) * 10;
-
-    if (move === "right") {
-
-        menu_bar.getContentForRanks(rank_for, offset);
-
-
-
-
-    } else if (move === "left" && offset > 10) {
-        offset -= 20;
-
-        menu_bar.getContentForRanks(rank_for, offset);
-
-
-
-
-
-
-    } else if (move === "most-left") {
-
-        menu_bar.getContentForRanks(rank_for, 0);
-
-
-    } else if (move === "most-right") {
-
-        menu_bar.getContentForRanks(rank_for, Math.floor(SERVER_DATA.player_num / 10) * 10);
-
-    }
-
-
-
-
-});
 
 
 
 /*____________________________________________________________________________*/
 /*__________________________GO TO BUTTON______________________________________*/
 
-$(document).on("click", ".for_Ranks  #nav_input button", function () {
 
-    var page_number = $("#nav_input input").val() - 1;
-
-    var rank_for = $(this).parents(".right-content-footer").attr("rank_for");
-    var new_rows = menu_bar.getContentForRanks(rank_for, page_number * 10);
-
-    if (new_rows) {
-        $(".for_Ranks .left-content").html(new_rows);
-        $("#current_page_num").html(getArabicNumbers(page_number));
-
-    }
-});
 
 
 
@@ -1616,8 +1323,8 @@ $(document).on("click", "#nav_search button", function () {
                             _return += `<div class="tr" rank="${json_data[iii].rank_g}" data-id_guild = "${json_data[iii].id_guild}">
                                                     <div class="td_1 ellipsis" style="width: 14.5%">${getArabicNumbers(json_data[iii].rank_g)}</div>
                                                     <div class="td_2 ellipsis" style="width: 14.5%">${json_data[iii].name}</div>
-                                                    <div class="td_3 ellipsis" style="width: 14.5%"> ${json_data[iii].p_name }</div>
-                                                    <div class="td_4 ellipsis" style="width: 14.5%">${json_data[iii].mem_num }</div>
+                                                    <div class="td_3 ellipsis" style="width: 14.5%"> ${json_data[iii].p_name}</div>
+                                                    <div class="td_4 ellipsis" style="width: 14.5%">${json_data[iii].mem_num}</div>
                                                     <div class="td_5 ellipsis" style="width: 14.5%">${json_data[iii].honor}</div>
                                                     <div class="td_6 ellipsis" style="width: 14.5%">${json_data[iii].prestige}</div>
                                                     <div class="td_7 ellipsis" style="width: 13%"  ><button class="full-btn show-guild-prev"> ${Translate.Button.MenuList.View[UserLag.language]}</buton></div>
@@ -1823,10 +1530,7 @@ $(document).on("click", "#usePlayerItemBox", function () {
     useMatrialBox(item);
 });
 //<button class="full-btn full-btn-3x pull-R enter" id="buyNewItem" data-item-name="${matrial_name}"  onClick="buyMatrial('${matrial_name}')" >${Translate.Button.MenuList.Buy[UserLag.language]}</button>  
-$(document).on("click", "#buyNewItem", function () {
-    var item = $(this).attr("data-item-name");
-    buyMatrial(item);
-});
+
 
 window.addEventListener("orientationchange", function () {
     // Announce the new orientation number
@@ -1835,20 +1539,19 @@ window.addEventListener("orientationchange", function () {
 
 }, false);
 
-$(document)['on']('click', '#openPlayerItemBox', function () {
-    var idItem = $(this)['attr']('data-item-name');
-    $['ajax']({
-        'url': API_URL + '/api/AItem/openItemBox',
+$(document).on('click', '#openPlayerItemBox', function () {
+    var idItem = $(this).attr('data-item-name');
+    $.ajax({
+        'url': `${NODE_URL}/api/AItem/openItemBox`,
         'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken'],
+            token: Elkaisar['Config']['OuthToken'],
             'idItem': idItem
         },
         'type': 'POST',
-        'success': function (data, _0x106300, _0x509fc4) {
-            if (!Elkaisar['LBase']['isJson'](data))
-                Elkaisar['LBase']['Error'](data);
-            var JsonObject = JSON['parse'](data);
+        success: function (data, _0x106300, _0x509fc4) {
+            if (!Elkaisar.LBase.isJson(data))
+                Elkaisar.LBase.Error(data);
+            var JsonObject = JSON.parse(data);
             if (JsonObject['state'] === 'ok') {
                 showMatrialGiftList(JsonObject['Item']);
                 for (var ii in JsonObject['Item']) {
@@ -1859,11 +1562,15 @@ $(document)['on']('click', '#openPlayerItemBox', function () {
                     }
 
                 }
-                Elkaisar['Item']['ItemBox']('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
-                Player_profile['refreshMatrialBox']()['done'](function () {
+                Elkaisar.Item.ItemBox('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
+                Player_profile.refreshMatrialBox().done(function () {
                     Elkaisar['Item']['ItemBox']('matrial_box', $('#nav-item-box-left')['attr']('data-current-offset'));
+                    $(".matrial_unit").each(function (el) {
+                        var Mat = $(this).attr("matrial_type");
+                        $(this).children(".img-inside-box").children(".player_amount").children("p").html(Matrial.getPlayerAmount(Mat))
+                    });
                 });
-            } else if(JsonObject['state'] === 'error_1'){
+            } else if (JsonObject['state'] === 'error_1') {
                 alert_box['failMessage']('ليس لديك مواد كافية');
             }
         }

@@ -55,18 +55,18 @@ Elkaisar.World.Province.getTitle = function (x, y) {
 
 $(document)['on']('click', '#relocate-city-now', function () {
     var province = $('#move-city-to .select-list')['attr']('data-value');
-    return $['ajax']({
-        'url': API_URL + '/api/AItemUse/useRandomMove',
+    return $.ajax({
+        'url': NODE_URL + '/api/AItemUse/useRandomMove',
         'type': 'POST',
         'data': {
             'Item': 'random_move',
             'amount': 1,
             'idCity': Elkaisar['CurrentCity']['City']['id_city'],
-            'token': Elkaisar['Config']['OuthToken'],
-            'server': Elkaisar['Config']['idServer'],
+            token: Elkaisar['Config']['OuthToken'],
+            server: Elkaisar['Config']['idServer'],
             'province': province
         },
-        'success': function (data, _0x3fd769, _0x4d0cb6) {
+        success: function (data, _0x3fd769, _0x4d0cb6) {
             if (!Elkaisar['LBase']['isJson'](data))
                 return Elkaisar['LBase']['Error'](data);
             var JsonData = JSON['parse'](data);

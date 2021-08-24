@@ -1,48 +1,54 @@
-Elkaisar.Ui.Select.menuList = function (list, selectedIndex){
-    
+Elkaisar.Ui.Select.menuList = function (list, selectedIndex) {
+
     var optionList = "";
-    
-    for(var iii in list){
-        if(Number(iii) === Number(selectedIndex)){
+
+    for (var iii in list) {
+        if (Number(iii) === Number(selectedIndex)) {
             optionList += `<li class="unit-option selected-op" data-title="${list[iii].title}" data-value="${list[iii].value}">${list[iii].title}</li>`;
-        }else{
+        } else {
             optionList += `<li class="unit-option" data-title="${list[iii].title}" data-value="${list[iii].value}" data-index="${iii}">${list[iii].title}</li>`;
         }
     }
-    
-    return `<ul>${optionList}</ul>`;
+
+    return `<ul style="display : none">${optionList}</ul>`;
 };
 
 
-Elkaisar.Ui.Select.make = function (list , selectedIndex){
-    
-    selectedIndex = selectedIndex || 0;
-    
-    
-    
+Elkaisar.Ui.Select.make = function (list, selectedIndex, Style) {
+
+    if (typeof selectedIndex != "number")
+        selectedIndex = 0;
+    var Height = 266;
+    var Width   = 160;
+    if(typeof Style == "object"){
+        Height = Style.height || 266;
+        Width  = Style.width  || 160;
+    }
+        
+
+
     return `
-            <div class="select-list" data-value="${list[selectedIndex].value}" data-active="false">
+            <div class="select-list" data-value="${list[selectedIndex].value}" data-active="false" data-height="${Height}" data-width="${Width}">
                 <div class="select select-input">
                     <div class="value">${list[selectedIndex].title}</div>
                 </div>
-                <div class="option">${this.menuList(list, selectedIndex)}</div>
+                <div class="option" style="width: ${Width}px;" >${this.menuList(list, selectedIndex)}</div>
             </div>`;
-    
+
 };
 
 
-$(document).on("click", ".select-list .unit-option", function (){
-    
+$(document).on("click", ".select-list .unit-option", function () {
+
     var title = $(this).attr("data-title");
     var value = $(this).attr("data-value");
-    
-    $(".select-list .unit-option").removeClass("selected-op");
+    $(this).parents(".select-list").children('.option').children("ul").children().removeClass("selected-op");
     $(this).addClass("selected-op");
-    
-   $(".select-list").attr("data-value", value);
-   $(".select-list .value").html(title);
-    
-    
+    $(this).parents(".select-list").attr("data-value", value);
+    $(this).parents(".select-list").children('.select-input').children('.value').html(title);
+    //$(".select-list .value").html(title);
+
+
 });
 
 $(document)['on']('click', '.uiCheckedBox', function () {
