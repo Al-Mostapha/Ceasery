@@ -9,13 +9,12 @@ Elkaisar.Rank.RankFor = {
     City: "cities",
 
 };
-
 Elkaisar.Rank.RankLastCount = {
 
     [Elkaisar.Rank.RankFor.Player]: "player_num",
     [Elkaisar.Rank.RankFor.Guild]: "guild_num",
     [Elkaisar.Rank.RankFor.Hero]: "hero_num",
-    [Elkaisar.Rank.RankFor.City]: "city_num"
+    [Elkaisar.Rank.RankFor.City]: "city_num",
 
 };
 
@@ -51,10 +50,7 @@ Elkaisar.Rank.EmptyBox = function () {
                             </div>
                         </div>
                         <div id="RankSearchSelect">
-                            ${Elkaisar.Ui.Select.make([{value: "ByName", title: "الأسم"}], 0, {
-                                width : 150,
-                                height: 238
-                            })}
+                        ${Elkaisar.Ui.Select.make([{value: "ByName", title: "الأسم"}])}
                         </div>
                         <div id="SearchByInput">
                             <div id="nav_search" class="flex">
@@ -68,8 +64,6 @@ Elkaisar.Rank.EmptyBox = function () {
                 </div>
             </div>`;
 };
-
-
 Elkaisar.Rank.PlayerGeneralRank = function (offset) {
     $.ajax({
         url: `${API_URL}/api/ARankingPlayer/generalRank`,
@@ -83,7 +77,7 @@ Elkaisar.Rank.PlayerGeneralRank = function (offset) {
 
         },
         success: function (data, textStatus, jqXHR) {
-           
+            console.log(data)
             if (isJson(data)) {
                 Elkaisar.Rank.playerRow(offset, JSON.parse(data));
             } else {
@@ -96,8 +90,6 @@ Elkaisar.Rank.PlayerGeneralRank = function (offset) {
         }
     });
 }
-
-
 Elkaisar.Rank.playerRow = function (offset, PlayerList) {
     var _return = "";
 
@@ -448,6 +440,7 @@ Elkaisar.Rank.CityRow = function (offset, CityList) {
 
 
 }
+
 
 $(document).on("click", ".move_p_rank", function () {
 

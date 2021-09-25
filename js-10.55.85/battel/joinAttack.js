@@ -68,7 +68,7 @@ $(document).on("click", "#PLUNDE_PRIZE", function () {
 
     $.ajax({
 
-        url: `${NODE_URL}/api/AWorldUnit/plundePrize`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AWorldUnit/plundePrize`,
         data: {
             xCoord: xCoord,
             yCoord: yCoord,

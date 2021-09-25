@@ -117,7 +117,7 @@ $(document).on("click", ".accept-guild-req", function () {
 
     $.ajax({
 
-        url: `${NODE_URL}/api/AGuildInvReq/acceptGuildReq`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/acceptGuildReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -169,7 +169,7 @@ $(document).on("click", ".cansel-guild-req", function () {
 
     $.ajax({
 
-        url: `${NODE_URL}/api/AGuildInvReq/rejectGuildJoinReq`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/rejectGuildJoinReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -221,7 +221,7 @@ $(document).on("click", ".cansel-inv-action", function () {
 
     $.ajax({
 
-        url: `${NODE_URL}/api/AGuildInvReq/cancelGuildInv`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/cancelGuildInv`,
         data: {
             idPlayerToInvite: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -1881,11 +1881,11 @@ $(document)['on']('click', '#submit-guild-relation', function () {
         'data': {
             'idGuild': idGuild,
             'relation': GuildRel,
-            token: Elkaisar.Config.OuthToken,
-            server: Elkaisar.Config.idServer
+            'token': Elkaisar.Config.OuthToken,
+            'server': Elkaisar.Config.idServer
         },
         'type': 'POST',
-        success: function (data, _0x5b5eee, _0x5af2f1) {
+        'success': function (data, _0x5b5eee, _0x5af2f1) {
             if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
             var JsonData = JSON.parse(data);
@@ -1970,7 +1970,7 @@ $(document).on("click", "#submit-guild-invite", function () {
 
     $.ajax({
 
-        url: `${NODE_URL}/api/AGuildInvReq/sendGuildJoinInv`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/sendGuildJoinInv`,
         data: {
             idPlayerToInvite: id_player,
             token: Elkaisar.Config.OuthToken
@@ -2089,7 +2089,7 @@ $(document).on("click", "#send-guild-req button", function () {
     
     $.ajax({
 
-        url: `${NODE_URL}/api/AGuildInvReq/sendGuildRequest`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/sendGuildRequest`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken,
@@ -2131,7 +2131,7 @@ function canselGuildInvetation(id_player, id_guild) {
 
     $.ajax({
 
-        url: `${NODE_URL}/api/AGuildInvReq/rejectGuildInv`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/rejectGuildInv`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken
@@ -2173,7 +2173,7 @@ function canselGuildJoinRequest(id_player, id_guild) {
 
     $.ajax({
 
-        url: `${NODE_URL}/api/AGuildInvReq/cancelGuildRequest`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/cancelGuildRequest`,
         data: {
             idGuild: id_guild,
             server: Elkaisar.Config.idServer,
@@ -2239,7 +2239,7 @@ $(document).on("click", ".accept-guild-inv", function () {
 
     $.ajax({
 
-        url: `${NODE_URL}/api/AGuildInvReq/acceptGuildInv`,
+        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/acceptGuildInv`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken

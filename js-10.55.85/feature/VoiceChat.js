@@ -1,5 +1,3 @@
-
-
 /*
 Elkaisar.Peer = {};
 Elkaisar.Peer.Conns = {};

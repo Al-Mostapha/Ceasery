@@ -1,0 +1,10400 @@
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => INSERT IGNORE INTO Array SET  id_item = :idi, gold = :g 
+)
+Array
+(
+)

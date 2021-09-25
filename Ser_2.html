@@ -29,320 +29,121 @@
 <body>
 
 
-    <div id="dialg_box" type="messages" style="top: 125px;">
+    <div id="dialg_box" class="" style="top: 125px;">
         <div class="head_bar">
             <img src="images/style/head_bar.png">
-            <div class="title">أكبر سجل </div>
+            <div class="title">الفريق</div>
         </div>
+
         <div class="nav_bar">
             <div class="left-nav">
                 <ul>
-                    <li head_title="rank_player" class="selected">
-                        لاعب
+                    <li head_title="guild_data" class="selected">
+                        معلومات الفريق
                     </li>
-                    <li head_title="rank_union" class="">
-                        تحالف
+                    <li head_title="g_relation" class="">
+                        علاقة
                     </li>
-                    <li head_title="rank_hero" class="">
-                        بطل
-                    </li>
-                    <li head_title="rank_city" class="">
-                        مدينة تابعة
+                    <li head_title="upgrade_guild" class="">
+                        تاريخ الفريق
                     </li>
                 </ul>
             </div>
             <div class="right-nav">
                 <div class="nav_icon">
                     <img class="close_dialog" src="images/btns/close_b.png">
-
-
                 </div>
             </div>
         </div>
         <div class="box_content">
             <div id="TeamBox">
-                <div id="RankList" class="RankPage">
-                    <div class="List">
+                <div id="TeamBoxLeft">
+                    <div id="TeamJoinReqBox" class="TeamInvJoinBox">
+                        <div class="Header">
+                            <h1>طلبات الإنضمام</h1>
+                        </div>
                         <div class="Body">
-                            <div class="RankRows">
-                                <div class="Header HeaderEnemyFrie flex">
-                                    <div class="tc-rank">أكبر سجل</div>
-                                    <div class="tc-leader">الملك</div>
-                                    <div class="tc-team">الحلف</div>
-                                    <div class="tc-pres">البرستيج</div>
-                                    <div class="tc-honor">شرف</div>
-                                    <div class="tc-memNum">تصنيف النبيل</div>
-                                    <div class="tc-show">اختر</div>
+                            <div class="tr flex">
+                                <div class="tc-player-avater" style="background-image: url(images/hero/faceA9.png);"></div>
+                                <div class="tc-player-name"> Mustapha</div>
+                                <div class="tc-edit-req">
+                                    <button class="full-btn-3x btn">قبول</button>
+                                    <button class="full-btn-3x btn">رفض</button>
+                                    <button class="full-btn-3x btn">عرض</button>
                                 </div>
-                                <div class="tr" data-rank="1">
-                                    <div class="tc-rank" data-rank="1">1</div>
-                                    <div class="tc-leader flex">
-                                        <div class="image" style="background-image: url(images/hero/faceA6.jpg);">
-                                            <div class="border"></div>
-                                        </div>
-                                        <div class="name">𝓢𝓐𝓕𝓐𝓗</div>
-                                    </div>
+                            </div>
+                            <div class="tr"></div>
+                            <div class="tr"></div>
+                            <div class="tr"></div>
+                            <div class="tr"></div>
+                        </div>
+                    </div>
+                    <div id="TeamInevReqBox" class="TeamInvJoinBox">
+                        <div class="Header">
+                            <h1>الدعوات</h1>
+                        </div>
+                        <div class="Body">
+                            <div class="tr flex">
+                                <div class="tc-player-avater" style="background-image: url(images/hero/faceA9.png);"></div>
+                                <div class="tc-player-name"> Mustapha</div>
+                                <div class="tc-edit-req">
+                                    <button class="full-btn-3x btn">حذف</button>
+                                    <button class="full-btn-3x btn">عرض</button>
+                                </div>
+                            </div>
+                            <div class="tr"></div>
+                            <div class="tr"></div>
+                            <div class="tr"></div>
+                            <div class="tr"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="TeamBoxRight">
+                    <div class="PlayerList">
+                        <div class="Header HeaderEnemyFrie flex">
+                            <div class="tc-team">فريق</div>
+                            <div class="tc-leader">القائد</div>
+                            <div class="tc-pres">برستيج</div>
+                            <div class="tc-memNum">عضو</div>
+                            <div class="tc-show">إختر</div>
+                        </div>
+                        <div class="Body">
+                            <div class="TeamEneFrieList">
+                                <div class="tr">
                                     <div class="tc-team flex">
-
-
-                                        <div class="team-name">-----</div>
-                                    </div>
-
-                                    <div class="tc-pres flex">2076768613</div>
-                                    <div class="tc-honor flex">2147483647</div>
-                                    <div class="tc-memNum flex">قيصر</div>
-                                    <div class="tc-show">
-                                        <button class="full-btn-3x btn show-player-profile"
-                                            data-id-player="3917">عرض</button>
-                                    </div>
-                                </div>
-                                <div class="tr" data-rank="2">
-                                    <div class="tc-rank" data-rank="2">2</div>
-                                    <div class="tc-leader flex">
-                                        <div class="image" style="background-image: url(images/hero/faceA9.jpg);">
-                                            <div class="border"></div>
+                                        <div class="team-slog">
+                                            
+                                                <div class="slog" style="background-image: url(images/style/bottom-1.png);"></div>
+                                                <div class="slog" style="background-image: url(images/style/central-1.png); margin-top: -40px;"></div>
+                                                <div class="slog" style="background-image: url(images/style/top-1.png); margin-top: -40px;"></div>
+                                            
                                         </div>
-                                        <div class="name">ÐỀџΊĽ⇜</div>
+                                        <div class="team-name">الأحلام</div>
                                     </div>
-                                    <div class="tc-team flex">
-
-
-                                        <div class="team-name">-----</div>
-                                    </div>
-
-                                    <div class="tc-pres flex">1717332303</div>
-                                    <div class="tc-honor flex">2147483647</div>
-                                    <div class="tc-memNum flex">قيصر</div>
-                                    <div class="tc-show">
-                                        <button class="full-btn-3x btn show-player-profile"
-                                            data-id-player="3603">عرض</button>
-                                    </div>
-                                </div>
-                                <div class="tr" data-rank="3">
-                                    <div class="tc-rank" data-rank="3">3</div>
                                     <div class="tc-leader flex">
-                                        <div class="image" style="background-image: url(images/hero/faceA10.jpg);">
-                                            <div class="border"></div>
-                                        </div>
-                                        <div class="name">𝒜ℬ𝒪 ℳℛℐℳ</div>
+                                        <div class="image" style="background-image: url(images/hero/faceA9.png);"></div>
+                                        <div class="name"> Test </div>
                                     </div>
-                                    <div class="tc-team flex">
-
-
-                                        <div class="team-name">-----</div>
-                                    </div>
-
-                                    <div class="tc-pres flex">1586521332</div>
-                                    <div class="tc-honor flex">2147483647</div>
-                                    <div class="tc-memNum flex">قيصر</div>
+                                    <div class="tc-pres flex">1500000</div>
+                                    <div class="tc-memNum flex">15</div>
                                     <div class="tc-show">
-                                        <button class="full-btn-3x btn show-player-profile"
-                                            data-id-player="1568">عرض</button>
+                                        <button class="full-btn-3x btn">عرض</button>
+                                        <button class="full-btn-3x btn">تعديل</button>
                                     </div>
                                 </div>
-                                <div class="tr" data-rank="4">
-                                    <div class="tc-rank" data-rank="4">4</div>
-                                    <div class="tc-leader flex">
-                                        <div class="image" style="background-image: url(images/hero/faceB7.jpg);">
-                                            <div class="border"></div>
-                                        </div>
-                                        <div class="name">M-Killer</div>
-                                    </div>
-                                    <div class="tc-team flex">
-
-
-                                        <div class="team-name">-----</div>
-                                    </div>
-
-                                    <div class="tc-pres flex">1554323261</div>
-                                    <div class="tc-honor flex">2147483647</div>
-                                    <div class="tc-memNum flex">قيصر</div>
-                                    <div class="tc-show">
-                                        <button class="full-btn-3x btn show-player-profile"
-                                            data-id-player="1897">عرض</button>
-                                    </div>
-                                </div>
-                                <div class="tr" data-rank="5">
-                                    <div class="tc-rank" data-rank="5">5</div>
-                                    <div class="tc-leader flex">
-                                        <div class="image" style="background-image: url(images/hero/faceA1.jpg);">
-                                            <div class="border"></div>
-                                        </div>
-                                        <div class="name">ABURA3ED</div>
-                                    </div>
-                                    <div class="tc-team flex">
-
-
-                                        <div class="team-name">-----</div>
-                                    </div>
-
-                                    <div class="tc-pres flex">1467610280</div>
-                                    <div class="tc-honor flex">2147483647</div>
-                                    <div class="tc-memNum flex">قيصر</div>
-                                    <div class="tc-show">
-                                        <button class="full-btn-3x btn show-player-profile"
-                                            data-id-player="3294">عرض</button>
-                                    </div>
-                                </div>
-                                <div class="tr" data-rank="6">
-                                    <div class="tc-rank" data-rank="6">6</div>
-                                    <div class="tc-leader flex">
-                                        <div class="image" style="background-image: url(images/hero/faceA8.jpg);">
-                                            <div class="border"></div>
-                                        </div>
-                                        <div class="name">♛؏رندس♛</div>
-                                    </div>
-                                    <div class="tc-team flex">
-
-
-                                        <div class="team-name">-----</div>
-                                    </div>
-
-                                    <div class="tc-pres flex">1371295134</div>
-                                    <div class="tc-honor flex">2147483647</div>
-                                    <div class="tc-memNum flex">قيصر</div>
-                                    <div class="tc-show">
-                                        <button class="full-btn-3x btn show-player-profile"
-                                            data-id-player="4358">عرض</button>
-                                    </div>
-                                </div>
-                                <div class="tr" data-rank="7">
-                                    <div class="tc-rank" data-rank="7">7</div>
-                                    <div class="tc-leader flex">
-                                        <div class="image" style="background-image: url(images/hero/faceA10.jpg);">
-                                            <div class="border"></div>
-                                        </div>
-                                        <div class="name">۩ابوغيداء۩</div>
-                                    </div>
-                                    <div class="tc-team flex">
-
-
-                                        <div class="team-name">-----</div>
-                                    </div>
-
-                                    <div class="tc-pres flex">1320813865</div>
-                                    <div class="tc-honor flex">2147483647</div>
-                                    <div class="tc-memNum flex">قيصر</div>
-                                    <div class="tc-show">
-                                        <button class="full-btn-3x btn show-player-profile"
-                                            data-id-player="4271">عرض</button>
-                                    </div>
-                                </div>
-                                <div class="tr" data-rank="8">
-                                    <div class="tc-rank" data-rank="8">8</div>
-                                    <div class="tc-leader flex">
-                                        <div class="image" style="background-image: url(images/hero/faceA10.jpg);">
-                                            <div class="border"></div>
-                                        </div>
-                                        <div class="name">ＢＡＤＢＯＹ</div>
-                                    </div>
-                                    <div class="tc-team flex">
-
-
-                                        <div class="team-name">-----</div>
-                                    </div>
-
-                                    <div class="tc-pres flex">1214254394</div>
-                                    <div class="tc-honor flex">2147483647</div>
-                                    <div class="tc-memNum flex">قيصر</div>
-                                    <div class="tc-show">
-                                        <button class="full-btn-3x btn show-player-profile"
-                                            data-id-player="3690">عرض</button>
-                                    </div>
-                                </div>
-                                <div class="tr" data-rank="9">
-                                    <div class="tc-rank" data-rank="9">9</div>
-                                    <div class="tc-leader flex">
-                                        <div class="image" style="background-image: url(images/hero/faceA8.jpg);">
-                                            <div class="border"></div>
-                                        </div>
-                                        <div class="name">☭ڪـٱ̍بــۄ๛</div>
-                                    </div>
-                                    <div class="tc-team flex">
-
-
-                                        <div class="team-name">-----</div>
-                                    </div>
-
-                                    <div class="tc-pres flex">1198213835</div>
-                                    <div class="tc-honor flex">2147483647</div>
-                                    <div class="tc-memNum flex">قيصر</div>
-                                    <div class="tc-show">
-                                        <button class="full-btn-3x btn show-player-profile"
-                                            data-id-player="3205">عرض</button>
-                                    </div>
-                                </div>
-                                <div class="tr" data-rank="10">
-                                    <div class="tc-rank" data-rank="10">10</div>
-                                    <div class="tc-leader flex">
-                                        <div class="image" style="background-image: url(images/hero/faceA5.jpg);">
-                                            <div class="border"></div>
-                                        </div>
-                                        <div class="name">ابواحمــد</div>
-                                    </div>
-                                    <div class="tc-team flex">
-
-
-                                        <div class="team-name">-----</div>
-                                    </div>
-
-                                    <div class="tc-pres flex">1130386284</div>
-                                    <div class="tc-honor flex">2147483647</div>
-                                    <div class="tc-memNum flex">قيصر</div>
-                                    <div class="tc-show">
-                                        <button class="full-btn-3x btn show-player-profile"
-                                            data-id-player="4278">عرض</button>
-                                    </div>
-                                </div>
+                                <div class="tr"></div>
+                                <div class="tr"></div>
+                                <div class="tr"></div>
+                                <div class="tr"></div>
+                                <div class="tr"></div>
+                                <div class="tr"></div>
+                                <div class="tr"></div>
+                                <div class="tr"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
-        </div>
-        <div id="DialBoxFooter" data-rank-for="Players">
-            <div id="BesideNavBtns">
-                <div class="NavContBtns">
-                    <div class="nav-arrows flex">
-                        <div data-move="most-left" class="most-left-btn move_p_rank"></div>
-                        <div data-move="left" class="left-btn move_p_rank"></div>
-                        <div class="page-count flex stroke"><span id="current_page_num">1</span>/<span
-                                id="TotalPageNumber">58</span></div>
-                        <div data-move="right" class="right-btn move_p_rank"></div>
-                        <div data-move="most-right" class="most-right-btn move_p_rank"></div>
-                    </div>
-                    <div id="goToBtnRankCo">
-                        <div class="flex">
-                            <input type="text" class="only_num input">
-                            <button class="goBtn btn full-btn full-btn-1x ellipsis">
-                                اذهب الى
-                            </button>
-                        </div>
-                    </div>
-                    <div id="RankSearchSelect">
-
-                        <div class="select-list" data-value="ByName" data-active="false">
-                            <div class="select select-input">
-                                <div class="value">الأسم</div>
-                            </div>
-                            <div class="option">
-                                <ul>
-                                    <li class="unit-option selected-op" data-title="الأسم" data-value="ByName">الأسم
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="SearchByInput">
-                        <div id="nav_search" class="flex">
-                            <input type="text" class="input">
-                            <button class="full-btn full-btn-1x ellipsis">
-                                بحث
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
