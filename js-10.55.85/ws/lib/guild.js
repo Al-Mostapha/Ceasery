@@ -184,6 +184,15 @@ Elkaisar.WsLib.Team.playerTeamLeave = function (data) {
     Elkaisar.Team.getPlayerTeam();
 };
 
+Elkaisar.WsLib.Team.TeamDisbanded = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                    تم تفكيك فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span>!
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
+};
+
 Elkaisar.WsLib.Team.playerTeamResign = function (data) {
 
     var msg = ` <div class="msg-unit team-ann">
@@ -191,6 +200,17 @@ Elkaisar.WsLib.Team.playerTeamResign = function (data) {
                 </div>`;
     Chat.append(msg);
     Elkaisar.Team.getPlayerTeam();
+};
+
+Elkaisar.WsLib.Team.TeamMemberFired = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                    تم طرد اللاعب <span class="ann-red">&nbsp;${data.FiredName}&nbsp;</span> من فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span>!
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam().done(function (){
+        $("#TeamHeaderNavBar .selected").click();
+    });
 };
 
 Elkaisar.WsLib.Team.TeamReqCanceled = function (data) {

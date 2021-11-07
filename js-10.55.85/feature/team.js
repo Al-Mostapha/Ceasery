@@ -31,7 +31,7 @@ Elkaisar.Team.getPlayerTeam = function () {
 
         },
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
+            
             if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
@@ -370,6 +370,16 @@ Elkaisar.Team.TeamHomePage = function () {
                                         ${PlayerTeam.TeamMember[1] ? `
                                             <li>
                                                 <div class="PlayerAvater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamMember[1].avatar]});">
+                                                    <div class="playerSettingIcon TeamMemberSettingIcon">
+                                                        <button class="btn"></button>
+                                                    </div>
+                                                    <div class="settingList">
+                                                        <ul>
+                                                            <li>ترقية    &nbsp;&nbsp;↪</li>
+                                                            <li>نسبة الجوائز</li>
+                                                            <li class="FireGuildMemeber" data-id-player="${PlayerTeam.TeamMember[1].id_player}">طرد</li>
+                                                        </ul>
+                                                    </div>
                                                     <div class="PlayerAvaterBg"></div>
                                                     <div class="PlayerTitle stroke" style="background-position-y: -48px;">مساعد القائد</div>
                                                 </div>
@@ -381,6 +391,16 @@ Elkaisar.Team.TeamHomePage = function () {
                                         ${PlayerTeam.TeamMember[2] ? `
                                             <li>
                                                 <div class="PlayerAvater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamMember[2].avatar]});">
+                                                    <div class="playerSettingIcon TeamMemberSettingIcon">
+                                                        <button class="btn"></button>
+                                                    </div>
+                                                    <div class="settingList">
+                                                        <ul>
+                                                            <li>ترقية    &nbsp;&nbsp;↪</li>
+                                                            <li>نسبة الجوائز</li>
+                                                            <li class="FireGuildMemeber" data-id-player="${PlayerTeam.TeamMember[2].id_player}">طرد</li>
+                                                        </ul>
+                                                    </div>
                                                     <div class="PlayerAvaterBg"></div>
                                                     <div class="PlayerTitle stroke" style="background-position-y: -72px;">مستشار القائد</div>
                                                 </div>
@@ -391,7 +411,17 @@ Elkaisar.Team.TeamHomePage = function () {
                                         
                                         ${PlayerTeam.TeamMember[3] ? `
                                             <li>
-                                                <div class="PlayerAvater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamMember[2].avatar]});">
+                                                <div class="PlayerAvater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamMember[3].avatar]});">
+                                                    <div class="playerSettingIcon TeamMemberSettingIcon">
+                                                        <button class="btn"></button>
+                                                    </div>
+                                                    <div class="settingList">
+                                                        <ul>
+                                                            <li>ترقية    &nbsp;&nbsp;↪</li>
+                                                            <li>نسبة الجوائز</li>
+                                                            <li class="FireGuildMemeber" data-id-player="${PlayerTeam.TeamMember[3].id_player}">طرد</li>
+                                                        </ul>
+                                                    </div>
                                                     <div class="PlayerAvaterBg"></div>
                                                     <div class="PlayerTitle stroke" style="background-position-y: -96px;">مقاتل الفريق</div>
                                                 </div>
@@ -1607,6 +1637,52 @@ $(document).on("click", "#PlayerTeamLeave", function () {
 
 });
 
+$(document).on("click", "#destroy-t", function () {
+
+    if (Elkaisar.Team.PlayerTeam.Player.rank != Elkaisar.Team.RANK_DATA.LEADER) 
+        return alert_box.confirmMessage("يجب انت تكون مدير الفريق   لتتمكن من تفكيك الفريق");
+    
+
+    alert_box.confirmDialog("تاكيد تفكيك الفريق! , اذا تم تاكيد تفكيك الفريق سيتم طرد جميع الاعضاء ولن تتمكن من  ارجاع الفريق ثانية", function () {
+
+        $.ajax({
+
+            url: `${NODE_URL}/api/ATeam/disbandTeam`,
+            data: {
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
+            },
+            type: 'POST',
+            beforeSend: function (xhr) {},
+            success: function (data, textStatus, jqXHR) {
+
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+
+                var JsonObject = JSON.parse(data);
+
+                if (JsonObject.state === "ok") {
+
+                    Elkaisar.Team.getPlayerTeam();
+                    alert_box.succesMessage("تم تفكيك الفريق بنجاح");
+                    $(".close_dialog").click();
+
+                } else {
+                    alert(data);
+                }
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+
+        });
+
+    });
+
+});
+
 
 $(document).on("click", "#ShowAvailableTeams", function (){
    $("#select_from").remove();
@@ -1755,3 +1831,50 @@ $(document).on("click", ".cancelTeamInv", function (){
     
 });
 
+
+
+$(document).on("click", ".TeamMemberSettingIcon", function (){
+    $(this).next().slideToggle(); 
+});
+
+$(document).on("click", ".FireGuildMemeber", function (){
+   
+    var idPlayer = $(this).attr("data-id-player");
+    $.ajax({
+        url: `${NODE_URL}/api/ATeam/fireTeamMember`,
+        data:{
+            idMember: idPlayer,
+            token: Elkaisar.Config.OuthToken
+        },
+        type: 'POST',
+        beforeSend: function (xhr) {
+            
+        },
+        success: function (data, textStatus, jqXHR) {
+            $("#TeamHeaderNavBar .selected").click();
+            
+            if(!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            
+            var JsonObject = JSON.parse(data);
+            
+            if(JsonObject.state == "ok"){
+                alert_box.succesMessage("تم طرد اللاعب بنجاح");
+            }else if(JsonObject.state == "error_0"){
+                alert_box.failMessage("اللاعب ليس من ضمن أعضاء الفريق");
+            }else if(JsonObject.state == "error_1"){
+                alert_box.failMessage("لست مدير الفريق");
+            }else if(JsonObject.state == "error_2"){
+                alert_box.failMessage("لست قائد الفريق");
+            }else if(JsonObject.state == "error_3"){
+                alert_box.failMessage("لا يمكنك طرد قائد الفريق");
+            }
+            
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            
+        }
+    });
+    
+});

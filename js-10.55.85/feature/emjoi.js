@@ -60,9 +60,9 @@ Chat.msgFrom = function (data){
                 <div class="name">[${data.fromName}]:</div> `;
     
     for(var iii in data.playerTitle){
-     
-        console.log(iii);
-        name += `<div class="rank-title rank-${iii}">${data.playerTitle[iii]}</div>`;
+        if(!data.playerTitle[iii])
+            continue;
+        name += `<div class="rank-title rank-title_${iii}">${data.playerTitle[iii]}</div>`;
     }
     return name;
 };
@@ -287,11 +287,7 @@ $(document).on("click" , "#expand-chat .send" , function (){
         return ;
         
     }
-    
-    if(Elkaisar.DPlayer.Player.porm < 2 && chat_to === "world"){
-        alert_box.confirmMessage("لا يمكنك استعمال الشات ورتبتك اقل من رقيب\n يمكنك استعمال الخاص او شات الحلف وطلب تفعيل الشات من الادارة ");
-        return ;
-    }
+ 
     
     
     if(chat_to === "world" && player.chat_panne > Date.now()/1000){

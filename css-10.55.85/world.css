@@ -878,7 +878,8 @@ body{
     margin-right: 10px;
     height: auto;
     display: flex;
-    overflow: auto
+    overflow: auto;
+    overflow-x: hidden;
 }
 .msg-from{
     font-size: 13px;

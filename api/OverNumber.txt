@@ -1,0 +1,174 @@
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\battelReport.php
+            [line] => 69
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => NaN
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 22
+    [spy_report_detail] => true
+    [id_report] => 513
+    [id_player] => 22
+    [spy_for] => barrary
+    [id_victim] => NaN
+    [token] => $2y$10$M7LXwl8cx13wgIygQedccu8UMZaUDnC77FyUzmB4BgAILHnUwjEbu
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\battelReport.php
+            [line] => 69
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => NaN
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 22
+    [spy_report_detail] => true
+    [id_report] => 514
+    [id_player] => 22
+    [spy_for] => barrary
+    [id_victim] => NaN
+    [token] => $2y$10$M7LXwl8cx13wgIygQedccu8UMZaUDnC77FyUzmB4BgAILHnUwjEbu
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\battelReport.php
+            [line] => 69
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => NaN
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 22
+    [spy_report_detail] => true
+    [id_report] => 515
+    [id_player] => 22
+    [spy_for] => barrary
+    [id_victim] => NaN
+    [token] => $2y$10$M7LXwl8cx13wgIygQedccu8UMZaUDnC77FyUzmB4BgAILHnUwjEbu
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\battelReport.php
+            [line] => 69
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => NaN
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 22
+    [spy_report_detail] => true
+    [id_report] => 515
+    [id_player] => 22
+    [spy_for] => barrary
+    [id_victim] => NaN
+    [token] => $2y$10$M7LXwl8cx13wgIygQedccu8UMZaUDnC77FyUzmB4BgAILHnUwjEbu
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\battelReport.php
+            [line] => 69
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => NaN
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 22
+    [spy_report_detail] => true
+    [id_report] => 515
+    [id_player] => 22
+    [spy_for] => barrary
+    [id_victim] => NaN
+    [token] => $2y$10$M7LXwl8cx13wgIygQedccu8UMZaUDnC77FyUzmB4BgAILHnUwjEbu
+)
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\xampp\htdocs\ceaserGame\api\battelReport.php
+            [line] => 69
+            [function] => validateId
+            [args] => Array
+                (
+                    [0] => NaN
+                )
+
+        )
+
+)
+Array
+(
+)
+Array
+(
+    [server] => 1
+    [idPlayerV] => 22
+    [spy_report_detail] => true
+    [id_report] => 515
+    [id_player] => 22
+    [spy_for] => barrary
+    [id_victim] => NaN
+    [token] => $2y$10$M7LXwl8cx13wgIygQedccu8UMZaUDnC77FyUzmB4BgAILHnUwjEbu
+)

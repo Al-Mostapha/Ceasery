@@ -9,6 +9,9 @@ Elkaisar.Rank.RankFor = {
     City: "cities",
 
 };
+
+
+
 Elkaisar.Rank.RankLastCount = {
 
     [Elkaisar.Rank.RankFor.Player]: "player_num",

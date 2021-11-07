@@ -102,3 +102,10 @@ Elkaisar.WsLib.Chat.PrizeSent = function (data){
     Player_profile.refreshPlayerNotif();
     Chat.append(msg);
 };
+
+
+Elkaisar.WsLib.Chat.PlayerTitleChanged = function (data){
+
+    var msg = ` <div class="msg-unit  battel-f-ann">حصل الملك <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> على لقب جديد !! </div>`;
+    Chat.append(msg);
+};

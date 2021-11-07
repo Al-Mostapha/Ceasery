@@ -424,7 +424,6 @@ Elkaisar.GE.CLoadingScene = new Phaser.Class({
         });
         this.load.on('complete', function () {
             $.ajax({
-
                 url: API_URL + "/home/HLogIn/playerEnterServerWeb",
                 type: 'POST',
                 data: {

@@ -793,14 +793,14 @@ $(document).on('click', "#confirm-deal button", function () {
 
 
                     if ($.isArray(json_data.buyers) && json_data.buyers.length > 0) {
-                        ws.send(JSON.stringify({
+                       /* ws.send(JSON.stringify({
                             url: "WS_Market/buyerDealDone",
                             data: {
                                 traders: json_data.buyers,
                                 idPlayer: ID_PLAYER,
                                 token: TOKEN
                             }
-                        }));
+                        }));*/
                     }
 
 
@@ -880,7 +880,7 @@ $(document).on('click', "#confirm-deal button", function () {
 
 
                     if ($.isArray(json_data.seller) && json_data.seller.length > 0) {
-                        ws.send(JSON.stringify({
+                      /*  ws.send(JSON.stringify({
                             url: "WS_Market/sellerDealDone",
                             data: {
                                 traders: json_data.seller,
@@ -888,7 +888,7 @@ $(document).on('click', "#confirm-deal button", function () {
                                 token: TOKEN
                             }
 
-                        }));
+                        }));*/
                     }
 
 

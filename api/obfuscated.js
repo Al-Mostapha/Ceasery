@@ -1,3 +1,97 @@
+/*
+Elkaisar.Peer = {};
+Elkaisar.Peer.Conns = {};
+
+Elkaisar.Peer.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+Elkaisar.Peer.Peer = new Peer(undefined, {
+    host: 'localhost',
+    port: 8080,
+    path: '/VoiceChat'
+});
+
+
+Elkaisar.Peer.Peer.on("open", function (idPeer) {
+    $.ajax({
+        url: `http://${WS_HOST}:${WS_PORT}/api/ATeam/playerOnline`,
+        data: {
+            token: Elkaisar.Config.OuthToken,
+            idPeer : idPeer
+        },
+        type: 'POST',
+        beforeSend: function (xhr) {
+            
+        },
+        success: function (data, textStatus, jqXHR) {
+            if(!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            
+            var JsonObject = JSON.parse(data);
+            
+            if(JsonObject.state == "ok"){
+                JsonObject.TeamPeers.forEach(function (onePeer){
+                    Elkaisar.Peer.Call(onePeer.id_peer);
+                });
+            }
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            
+            
+        }
+    });
+});
+
+
+
+Elkaisar.Peer.RecievConn = function (conn) {
+    conn.on("data", function (data) {
+        console.log(data);
+        var JsonObject = JSON.parse(data);
+        if (JsonObject.classPath == "Player.newConn") {
+            Elkaisar.Peer.Conns[JsonObject.idPlayer] = conn;
+        }
+    });
+};
+
+
+Elkaisar.Peer.Peer.on('connection', Elkaisar.Peer.RecievConn);
+
+Elkaisar.Peer.Call = function (PeerId) {
+    Elkaisar.Peer.getUserMedia({video: false, audio: true}, function (stream) {
+        var call = Elkaisar.Peer.Peer.call(PeerId, stream);
+        const video = document.createElement('video');
+        call.on('stream', function (remoteStream) {
+            addVideoStream(video, remoteStream);
+        });
+    }, function (err) {
+        console.log('Failed to get local stream', err);
+    });
+};
+
+Elkaisar.Peer.Peer.on('call', function (call) {
+    Elkaisar.Peer.getUserMedia({video: false, audio: true}, function (stream) {
+        call.answer(stream); // Answer the call with an A/V stream.
+        const video = document.createElement('video');
+        call.on('stream', function (remoteStream) {
+            console.log(remoteStream)
+            addVideoStream(video, remoteStream);
+        });
+    }, function (err) {
+        console.log('Failed to get local stream', err);
+    });
+});
+
+function addVideoStream(video, stream) {
+    video.srcObject = stream;
+    video.addEventListener('loadedmetadata', () => {
+        video.play();
+    });
+
+    document.getElementById("dialg_box").append(video);
+}
+*/
+
+
 Translate = {};
 
 Translate.Text   = {};
@@ -1649,7 +1743,6 @@ Elkaisar.GE.CLoadingScene = new Phaser.Class({
         });
         this.load.on('complete', function () {
             $.ajax({
-
                 url: API_URL + "/home/HLogIn/playerEnterServerWeb",
                 type: 'POST',
                 data: {
@@ -1666,13 +1759,13 @@ Elkaisar.GE.CLoadingScene = new Phaser.Class({
                     }
                     var JsonData = JSON['parse'](data);
                     JsonData['state'] !== 'ok' && console['log'](JsonData);
-                    Elkaisar['Config']['WsPort'] = JsonData['WsPort'];
-                    Elkaisar['Config']['WsHost'] = JsonData['WsHost'];
-                    Elkaisar['DPlayer']['Player'] = JsonData['Player'];
-                    Elkaisar['ServerData'] = JsonData['Server'];
+                    Elkaisar['Config']['WsPort']    = JsonData['WsPort'];
+                    Elkaisar['Config']['WsHost']    = JsonData['WsHost'];
+                    Elkaisar['DPlayer']['Player']   = JsonData['Player'];
+                    Elkaisar['ServerData']          = JsonData.Server;
                     Elkaisar['Config']['OuthToken'] = TOKEN;
-                    Elkaisar['Config']['idServer'] = JsonData['idServer'];
-                    Elkaisar['Config']['idCities'] = JsonData['idCities'];
+                    Elkaisar['Config']['idServer']  = JsonData['idServer'];
+                    Elkaisar['Config']['idCities']  = JsonData['idCities'];
                     Elkaisar['Config']['JsVersion'] = JsonData['JsVersion'];
 
                     if (Elkaisar['DPlayer']['Player']['panned'] >= $['now']() / 1000) {
@@ -6006,6 +6099,7 @@ Elkaisar.World.UnitData = {
 
 
 };
+const NODE_URL = `http://${WS_HOST}:${WS_PORT}`;
 
 function isJson(str) {
     try {
@@ -6926,18 +7020,18 @@ Elkaisar.World.Province.getTitle = function (x, y) {
 
 $(document)['on']('click', '#relocate-city-now', function () {
     var province = $('#move-city-to .select-list')['attr']('data-value');
-    return $['ajax']({
-        'url': API_URL + '/api/AItemUse/useRandomMove',
+    return $.ajax({
+        'url': NODE_URL + '/api/AItemUse/useRandomMove',
         'type': 'POST',
         'data': {
             'Item': 'random_move',
             'amount': 1,
             'idCity': Elkaisar['CurrentCity']['City']['id_city'],
-            'token': Elkaisar['Config']['OuthToken'],
-            'server': Elkaisar['Config']['idServer'],
+            token: Elkaisar['Config']['OuthToken'],
+            server: Elkaisar['Config']['idServer'],
             'province': province
         },
-        'success': function (data, _0x3fd769, _0x4d0cb6) {
+        success: function (data, _0x3fd769, _0x4d0cb6) {
             if (!Elkaisar['LBase']['isJson'](data))
                 return Elkaisar['LBase']['Error'](data);
             var JsonData = JSON['parse'](data);
@@ -20006,18 +20100,18 @@ $(document).on("dblclick" , ".putable-equi" , function (){
 
 
 Elkaisar.Hero.getEquipOffHero = function (idEquip) {
-    return $['ajax']({
+    return $.ajax({
         'url': API_URL + '/api/AHeroEquip/putEquipOffHero',
         'data': {
             'idEquip': idEquip,
-            'token': Elkaisar['Config']['OuthToken'],
-            'server': Elkaisar['Config']['idServer']
+            token: Elkaisar['Config']['OuthToken'],
+            server: Elkaisar['Config']['idServer']
         },
         'type': 'POST',
-        'beforeSend': function (_0x357aa2) {
+        beforeSend: function (_0x357aa2) {
             waitCursor();
         },
-        'success': function (_0x1b8d26, _0x56a04b, _0x499453) {
+        success: function (_0x1b8d26, _0x56a04b, _0x499453) {
             unwaitCursor();
             if (!Elkaisar['LBase']['isJson'](_0x1b8d26)) return Elkaisar['Error'](_0x1b8d26);
             var _0x29c7b2 = JSON['parse'](_0x1b8d26);
@@ -21793,6 +21887,8 @@ function buyMatrial(matrial, amount)
                 });
                 $(".close-alert_container").click();
                 alert_box.succesMessage("تمت عملية الشراء بنجاح");
+            }else{
+                alert(data);
             }
 
         },
@@ -22038,14 +22134,12 @@ Matrial.itemUnitWidget = function (Item, isMall = false)
 $(document).on("click", "#buyNewItem", function () {
     var item = $(this).attr("data-item-name");
     buyMatrial(item);
-});Elkaisar.Item.useItemFunc = function ()
-{
+});Elkaisar.Item.useItemFunc = function () {
 
-    Elkaisar.BaseData.Items[`motiv_60`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`motiv_60`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMotivSpeech`,
+            url: `${NODE_URL}/api/AItemUse/useMotivSpeech`,
             type: 'POST',
             data: {
                 Item: "motiv_60",
@@ -22057,8 +22151,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                     Elkaisar.Building.refreshView();
                 }
@@ -22067,11 +22160,10 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`motiv_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`motiv_7`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMotivSpeech`,
+            url: `${NODE_URL}/api/AItemUse/useMotivSpeech`,
             type: 'POST',
             data: {
                 Item: "motiv_7",
@@ -22083,8 +22175,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Fixed.refresePlayerStateList();
                     Elkaisar.Building.refreshView();
                 }
@@ -22093,11 +22184,10 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`prot_pop`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`prot_pop`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useProtPop`,
+            url: `${NODE_URL}/api/AItemUse/useProtPop`,
             type: 'POST',
             data: {
                 Item: "prot_pop",
@@ -22110,8 +22200,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.CurrentCity.City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -22120,11 +22209,10 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`peace`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`peace`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useCeaseFire`,
+            url: `${NODE_URL}/api/AItemUse/useCeaseFire`,
             type: 'POST',
             data: {
                 Item: "peace",
@@ -22136,23 +22224,22 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
         });
 
     };
-    Elkaisar.BaseData.Items[`a_play`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`a_play`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useTheatrics`,
+            url: `${NODE_URL}/api/AItemUse/useTheatrics`,
             type: 'POST',
             data: {
                 Item: "a_play",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22160,8 +22247,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.CurrentCity.City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -22170,11 +22256,10 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`medical_moun`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`medical_moun`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMedicalStatue`,
+            url: `${NODE_URL}/api/AItemUse/useMedicalStatue`,
             type: 'POST',
             data: {
                 Item: "medical_moun",
@@ -22186,8 +22271,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22195,11 +22279,10 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`mediacl_statue`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`mediacl_statue`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMedicalStatue`,
+            url: `${NODE_URL}/api/AItemUse/useMedicalStatue`,
             type: 'POST',
             data: {
                 Item: "mediacl_statue",
@@ -22211,8 +22294,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22220,11 +22302,10 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`sparta_stab`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`sparta_stab`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useAttackAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useAttackAdvancer`,
             type: 'POST',
             data: {
                 Item: "sparta_stab",
@@ -22236,8 +22317,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22245,11 +22325,10 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`qulinds_shaft`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`qulinds_shaft`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useAttackAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useAttackAdvancer`,
             type: 'POST',
             data: {
                 Item: "qulinds_shaft",
@@ -22261,8 +22340,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22270,11 +22348,10 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`marmlo_helmet`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`marmlo_helmet`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useDefenceAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useDefenceAdvancer`,
             type: 'POST',
             data: {
                 Item: "marmlo_helmet",
@@ -22286,8 +22363,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22295,11 +22371,10 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`march_prot`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`march_prot`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useDefenceAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useDefenceAdvancer`,
             type: 'POST',
             data: {
                 Item: "march_prot",
@@ -22311,8 +22386,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Player_profile.getPlayerStateData();
                 }
             }
@@ -22324,18 +22398,18 @@ $(document).on("click", "#buyNewItem", function () {
         Elkaisar['BaseData']['Items']['random_move']['UseFunc'] = function (amount) {
             return alert_box['randomMove'](function () {
                 var Province = $('#move-city-to .select-list')['attr']('data-value');
-                return $['ajax']({
-                    'url': API_URL + '/api/AItemUse/useRandomMove',
+                return $.ajax({
+                    'url': NODE_URL + '/api/AItemUse/useRandomMove',
                     'type': 'POST',
                     'data': {
                         'Item': 'random_move',
                         'amount': 1,
                         'idCity': Elkaisar['CurrentCity']['City']['id_city'],
-                        'token': Elkaisar['Config']['OuthToken'],
-                        'server': Elkaisar['Config']['idServer'],
+                        token: Elkaisar['Config']['OuthToken'],
+                        server: Elkaisar['Config']['idServer'],
                         'province': Province
                     },
-                    'success': function (_0x73e02b, _0x3bf26e, _0x2783a1) {
+                    success: function (_0x73e02b, _0x3bf26e, _0x2783a1) {
                         if (!Elkaisar['LBase']['isJson'](_0x73e02b))
                             return Elkaisar['LBase']['Error'](_0x73e02b);
                         var JsonData = JSON['parse'](_0x73e02b);
@@ -22343,11 +22417,16 @@ $(document).on("click", "#buyNewItem", function () {
                             Elkaisar['City']['getCityBase']()['done'](function (_0x1f81a0) {
                                 $('#city-data .coords')['html']('[ ' + Elkaisar['CurrentCity']['City']['y'] + ' , ' + Elkaisar['CurrentCity']['City']['x'] + ' ]');
                                 alert_box['succesMessage']('قد تم نقل مدينتك بنجاح الى الاحداثيات الاتية <br/>' + '[ ' + Elkaisar['CurrentCity']['City']['x'] + ' , ' + Elkaisar['CurrentCity']['City']['y'] + ' ]');
-                                if ($('#WorldCity')['attr']('data-view') === 'world') {
-                                    $('#x_coord-input input')['val'](Elkaisar['CurrentCity']['City']['x']);
-                                    $('#y_coord-input input')['val'](Elkaisar['CurrentCity']['City']['y']);
-                                    $('#nav-btn button')['click']();
-                                }
+
+                                Elkaisar.World.Map.getWorldCity().done(function () {
+                                    if ($('#WorldCity')['attr']('data-view') === 'world') {
+                                        $('#x_coord-input input')['val'](Elkaisar['CurrentCity']['City']['x']);
+                                        $('#y_coord-input input')['val'](Elkaisar['CurrentCity']['City']['y']);
+                                        $('#nav-btn button')['click']();
+                                    }
+                                    $(".close-alert_container").click();
+                                    $(".close_dialog").click();
+                                });
                             });
                         else if (JsonData['state'] === 'error_no_place_empty') {
                             setTimeout(function () {
@@ -22362,11 +22441,10 @@ $(document).on("click", "#buyNewItem", function () {
             });
         };
 
-    Elkaisar.BaseData.Items[`certain_move`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`certain_move`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useCertainMove`,
+            url: `${NODE_URL}/api/AItemUse/useCertainMove`,
             type: 'POST',
             data: {
                 Item: "certain_move",
@@ -22382,19 +22460,22 @@ $(document).on("click", "#buyNewItem", function () {
                     return Elkaisar.LBase.Error(data);
 
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     alert_box.succesMessage("قد تم نقل مدينتك بنجاح الى الاحداثيات الاتية <br/>" + "[ " + Elkaisar.CurrentCity.City.x + " , " + Elkaisar.CurrentCity.City.y + " ]");
                     Elkaisar.City.getCityBase().done(function (data) {
 
                         $("#city-data .coords").html("[ " + Elkaisar.CurrentCity.City.y + " , " + Elkaisar.CurrentCity.City.x + " ]");
 
-                        if ($("#WorldCity").attr("data-view") === "world") {
-                            $("#x_coord-input input").val(Elkaisar.CurrentCity.City.x);
-                            $("#y_coord-input input").val(Elkaisar.CurrentCity.City.y);
-                            $("#nav-btn button").click();
-                        }
+                        Elkaisar.World.Map.getWorldCity().done(function () {
+                            if ($('#WorldCity')['attr']('data-view') === 'world') {
+                                $('#x_coord-input input')['val'](Elkaisar['CurrentCity']['City']['x']);
+                                $('#y_coord-input input')['val'](Elkaisar['CurrentCity']['City']['y']);
+                                $('#nav-btn button')['click']();
+                            }
 
+                            $(".close-alert_container").click();
+                            $(".close_dialog").click();
+                        });
                     });
 
                 } else if (JsonObject.state === "error_no_place_empty") {
@@ -22410,16 +22491,16 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`wheat_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wheat_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useWheat`,
+            url: `${NODE_URL}/api/AItemUse/useWheat`,
             type: 'POST',
             data: {
                 Item: "wheat_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22427,8 +22508,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22438,16 +22518,16 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`wheat_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wheat_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useWheat`,
+            url: `${NODE_URL}/api/AItemUse/useWheat`,
             type: 'POST',
             data: {
                 Item: "wheat_7",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22455,8 +22535,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22466,16 +22545,16 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`stone_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useStone`,
+            url: `${NODE_URL}/api/AItemUse/useStone`,
             type: 'POST',
             data: {
                 Item: "stone_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22483,8 +22562,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22494,16 +22572,16 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`stone_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useStone`,
+            url: `${NODE_URL}/api/AItemUse/useStone`,
             type: 'POST',
             data: {
                 Item: "stone_7",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22511,8 +22589,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22522,16 +22599,16 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`wood_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useWood`,
+            url: `${NODE_URL}/api/AItemUse/useWood`,
             type: 'POST',
             data: {
                 Item: "wood_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22539,8 +22616,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22550,16 +22626,16 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`wood_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useWood`,
+            url: `${NODE_URL}/api/AItemUse/useWood`,
             type: 'POST',
             data: {
                 Item: "wood_7",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22567,8 +22643,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22578,16 +22653,16 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`metal_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMetal`,
+            url: `${NODE_URL}/api/AItemUse/useMetal`,
             type: 'POST',
             data: {
                 Item: "metal_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22595,8 +22670,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22606,16 +22680,16 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`metal_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useMetal`,
+            url: `${NODE_URL}/api/AItemUse/useMetal`,
             type: 'POST',
             data: {
                 Item: "metal_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22623,8 +22697,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22634,16 +22707,16 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`coin_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useCoin`,
+            url: `${NODE_URL}/api/AItemUse/useCoin`,
             type: 'POST',
             data: {
                 Item: "coin_1",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22651,8 +22724,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22662,16 +22734,16 @@ $(document).on("click", "#buyNewItem", function () {
 
     };
 
-    Elkaisar.BaseData.Items[`coin_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemUse/useCoin`,
+            url: `${NODE_URL}/api/AItemUse/useCoin`,
             type: 'POST',
             data: {
                 Item: "coin_7",
                 amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
@@ -22679,8 +22751,7 @@ $(document).on("click", "#buyNewItem", function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     Player_profile.getPlayerStateData();
@@ -22694,17 +22765,40 @@ $(document).on("click", "#buyNewItem", function () {
     if (Elkaisar['BaseData']['Items']['gold_5'])
         Elkaisar['BaseData']['Items']['gold_5']['UseFunc'] = function (_0x4813fb) {
             var _0x329520 = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_5',
                     'amount': _0x4813fb,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0xf94588, _0x53adc7, _0xd22101) {
+                success: function (_0xf94588, _0x53adc7, _0xd22101) {
+                    if (!Elkaisar['LBase']['isJson'](_0xf94588))
+                        Elkaisar['LBase']['Error'](_0xf94588);
+                    var _0x13126a = JSON['parse'](_0xf94588);
+                    _0x13126a['state'] === 'ok' && Player_profile['getPlayerBaseData']();
+                }
+            });
+        };
+
+
+    if (Elkaisar['BaseData']['Items']['gold_1'])
+        Elkaisar['BaseData']['Items']['gold_1']['UseFunc'] = function (_0x4813fb) {
+            var _0x329520 = Elkaisar['CurrentCity']['City']['id_city'];
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
+                'type': 'POST',
+                'data': {
+                    'Item': 'gold_1',
+                    'amount': _0x4813fb,
+                    'idCity': Elkaisar['CurrentCity']['idCity'],
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
+                },
+                success: function (_0xf94588, _0x53adc7, _0xd22101) {
                     if (!Elkaisar['LBase']['isJson'](_0xf94588))
                         Elkaisar['LBase']['Error'](_0xf94588);
                     var _0x13126a = JSON['parse'](_0xf94588);
@@ -22715,17 +22809,17 @@ $(document).on("click", "#buyNewItem", function () {
     if (Elkaisar['BaseData']['Items']['gold_10'])
         Elkaisar['BaseData']['Items']['gold_10']['UseFunc'] = function (_0x3fb720) {
             var _0x1f1a2e = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_10',
                     'amount': _0x3fb720,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x334d3d, _0x108d44, _0x23e97a) {
+                success: function (_0x334d3d, _0x108d44, _0x23e97a) {
                     if (!Elkaisar['LBase']['isJson'](_0x334d3d))
                         Elkaisar['LBase']['Error'](_0x334d3d);
                     var _0x5dcd18 = JSON['parse'](_0x334d3d);
@@ -22736,17 +22830,17 @@ $(document).on("click", "#buyNewItem", function () {
     if (Elkaisar['BaseData']['Items']['gold_25'])
         Elkaisar['BaseData']['Items']['gold_25']['UseFunc'] = function (_0x575893) {
             var _0x34c16d = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_25',
                     'amount': _0x575893,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x5b9d65, _0x4c2bb7, _0x2c385f) {
+                success: function (_0x5b9d65, _0x4c2bb7, _0x2c385f) {
                     if (!Elkaisar['LBase']['isJson'](_0x5b9d65))
                         Elkaisar['LBase']['Error'](_0x5b9d65);
                     var _0x1c3177 = JSON['parse'](_0x5b9d65);
@@ -22757,17 +22851,17 @@ $(document).on("click", "#buyNewItem", function () {
     if (Elkaisar['BaseData']['Items']['gold_75'])
         Elkaisar['BaseData']['Items']['gold_75']['UseFunc'] = function (_0x147f7f) {
             var _0x5a71c2 = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_75',
                     'amount': _0x147f7f,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x78da2e, _0x297788, _0x5cd0f8) {
+                success: function (_0x78da2e, _0x297788, _0x5cd0f8) {
                     if (!Elkaisar['LBase']['isJson'](_0x78da2e))
                         Elkaisar['LBase']['Error'](_0x78da2e);
                     var _0x1aaf85 = JSON['parse'](_0x78da2e);
@@ -22778,17 +22872,17 @@ $(document).on("click", "#buyNewItem", function () {
     if (Elkaisar['BaseData']['Items']['gold_100'])
         Elkaisar['BaseData']['Items']['gold_100']['UseFunc'] = function (_0x11914b) {
             var _0x291633 = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_100',
                     'amount': _0x11914b,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x3f1d5f, _0x1d71cb, _0x1498d4) {
+                success: function (_0x3f1d5f, _0x1d71cb, _0x1498d4) {
                     if (!Elkaisar['LBase']['isJson'](_0x3f1d5f))
                         Elkaisar['LBase']['Error'](_0x3f1d5f);
                     var _0x4f2b43 = JSON['parse'](_0x3f1d5f);
@@ -22799,17 +22893,17 @@ $(document).on("click", "#buyNewItem", function () {
     if (Elkaisar['BaseData']['Items']['gold_500'])
         Elkaisar['BaseData']['Items']['gold_500']['UseFunc'] = function (_0x197e5c) {
             var _0x10da0d = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_500',
                     'amount': _0x197e5c,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x4f6b0f, _0x543f59, _0x4dfda6) {
+                success: function (_0x4f6b0f, _0x543f59, _0x4dfda6) {
                     if (!Elkaisar['LBase']['isJson'](_0x4f6b0f))
                         Elkaisar['LBase']['Error'](_0x4f6b0f);
                     var _0x4c1ef8 = JSON['parse'](_0x4f6b0f);
@@ -22820,17 +22914,17 @@ $(document).on("click", "#buyNewItem", function () {
     if (Elkaisar['BaseData']['Items']['gold_1000'])
         Elkaisar['BaseData']['Items']['gold_1000']['UseFunc'] = function (_0x560420) {
             var _0x32a8fd = Elkaisar['CurrentCity']['City']['id_city'];
-            return $['ajax']({
-                'url': API_URL + '/api/AItemUse/useGoldPack',
+            return $.ajax({
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_1000',
                     'amount': _0x560420,
                     'idCity': Elkaisar['CurrentCity']['idCity'],
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (_0x3ecc5d, _0x5eceef, _0x456d9b) {
+                success: function (_0x3ecc5d, _0x5eceef, _0x456d9b) {
                     if (!Elkaisar['LBase']['isJson'](_0x3ecc5d))
                         Elkaisar['LBase']['Error'](_0x3ecc5d);
                     var _0x1912f1 = JSON['parse'](_0x3ecc5d);
@@ -22839,6 +22933,199 @@ $(document).on("click", "#buyNewItem", function () {
             });
         };
 
+
+        Elkaisar.BaseData.Items[`arena_attempt_1`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
+                type: 'POST',
+                data: {
+                    Item: "arena_attempt_1",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaField").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 1 محاولة للميدان");
+                    }
+                }
+            });
+    
+        };
+
+        Elkaisar.BaseData.Items[`arena_attempt_5`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
+                type: 'POST',
+                data: {
+                    Item: "arena_attempt_5",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaField").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 5 محاولة للميدان");
+                    }
+                }
+            });
+    
+        };
+
+        Elkaisar.BaseData.Items[`arena_attempt_10`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
+                type: 'POST',
+                data: {
+                    Item: "arena_attempt_10",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaField").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 10 محاولة للميدان");
+                    }
+                }
+            });
+    
+        };
+
+
+        Elkaisar.BaseData.Items[`arena_exp_1`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                type: 'POST',
+                data: {
+                    Item: "arena_exp_1",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaTroops").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 1 خبرة للميدان");
+                        
+                    }
+                }
+            });
+    
+        };
+
+        Elkaisar.BaseData.Items[`arena_exp_5`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                type: 'POST',
+                data: {
+                    Item: "arena_exp_5",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaTroops").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 5 خبرة للميدان");
+                        
+                    }
+                }
+            });
+    
+        };
+
+        
+        Elkaisar.BaseData.Items[`arena_exp_10`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                type: 'POST',
+                data: {
+                    Item: "arena_exp_10",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaTroops").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 10 خبرة للميدان");
+                    }
+                }
+            });
+    
+        };
+
+        Elkaisar.BaseData.Items[`arena_exp_25`][`UseFunc`] = function (amount) {
+            return $.ajax({
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                type: 'POST',
+                data: {
+                    Item: "arena_exp_25",
+                    amount: amount,
+                    idCity: Elkaisar.CurrentCity.City.id_city,
+                    token: Elkaisar.Config.OuthToken,
+                    server: Elkaisar.Config.idServer
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (!Elkaisar.LBase.isJson(data))
+                        Elkaisar.LBase.Error(data);
+                    var JsonObject = JSON.parse(data);
+                    if (JsonObject.state === "ok") {
+                        Elkaisar.ArenaChallange.getArenaData().done(function(){
+                            $("#SArenaTroops").click();
+                        });
+                        $(".close-alert").click();
+                        alert_box.succesMessage("تم إضافة 25 خبرة للميدان");
+                    }
+                }
+            });
+    
+        };
 };
 
 
@@ -22847,12 +23134,11 @@ $(document).on("click", "#buyNewItem", function () {
 Elkaisar.Item.useItemBoxFunc = function () {
 
 
-    Elkaisar.BaseData.Items[`gift_box`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`gift_box`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useGiftBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useGiftBox`,
             type: 'POST',
             data: {
                 Item: "gift_box",
@@ -22864,8 +23150,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -22875,12 +23160,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`wood_box`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_box`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useWoodBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useWoodBox`,
             type: 'POST',
             data: {
                 Item: "wood_box",
@@ -22892,8 +23176,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -22903,12 +23186,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`golden_box`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`golden_box`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useGoldenBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useGoldenBox`,
             type: 'POST',
             data: {
                 Item: "golden_box",
@@ -22920,8 +23202,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -22931,12 +23212,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`beginner_back_1`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_1",
@@ -22948,8 +23228,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -22958,12 +23237,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_2`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_2`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_2",
@@ -22975,8 +23253,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -22985,12 +23262,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_3`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_3`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_3",
@@ -23002,8 +23278,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23012,12 +23287,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_4`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_4`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_4",
@@ -23029,8 +23303,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23039,12 +23312,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_5`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_5`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_5",
@@ -23056,8 +23328,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23066,12 +23337,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_6`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_6`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_6",
@@ -23083,8 +23353,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23093,12 +23362,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_7`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_7`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_7",
@@ -23110,8 +23378,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23120,12 +23387,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_8`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_8`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_8",
@@ -23137,8 +23403,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23147,12 +23412,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
             }
         });
     };
-    Elkaisar.BaseData.Items[`beginner_back_9`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_9`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_9",
@@ -23164,8 +23428,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23175,12 +23438,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`beginner_back_10`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`beginner_back_10`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_10",
@@ -23192,8 +23454,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     showMatrialGiftList(JsonObject.Item);
                     for (var iii in JsonObject.Item) {
                         Matrial.givePlayer(JsonObject.Item[iii].Item, JsonObject.Item[iii].amount)
@@ -23203,12 +23464,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`army_box`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_box`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useArmyBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useArmyBox`,
             type: 'POST',
             data: {
                 Item: "army_box",
@@ -23221,8 +23481,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_army_view();
                     city_profile.refresh_resource_view();
@@ -23231,12 +23490,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_3p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_3p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_3p",
@@ -23250,8 +23508,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23262,12 +23519,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_4p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_4p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_4p",
@@ -23280,8 +23536,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23292,12 +23547,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_5p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_5p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_5p",
@@ -23310,8 +23564,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23322,12 +23575,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_6p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_6p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_6p",
@@ -23340,8 +23592,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23352,12 +23603,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_7p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_7p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_7p",
@@ -23370,8 +23620,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23382,12 +23631,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`tagned_8p`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`tagned_8p`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_8p",
@@ -23400,8 +23648,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCityHero(idCity);
                     Elkaisar.City.getCityHeroMedal(idCity);
                     Elkaisar.City.getCityBase(idCity);
@@ -23412,12 +23659,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`coin_a`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_a`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_a",
@@ -23430,8 +23676,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23439,12 +23684,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`coin_b`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_b`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_b",
@@ -23457,8 +23701,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23466,12 +23709,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`coin_c`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_c`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_c",
@@ -23484,8 +23726,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23493,12 +23734,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`coin_d`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`coin_d`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_d",
@@ -23511,8 +23751,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23520,12 +23759,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`food_a`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`food_a`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_a",
@@ -23538,8 +23776,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23547,12 +23784,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`food_b`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`food_b`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_b",
@@ -23565,8 +23801,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23574,12 +23809,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`food_c`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`food_c`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_c",
@@ -23592,8 +23826,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23601,12 +23834,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`food_d`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`food_d`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_d",
@@ -23619,8 +23851,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23628,12 +23859,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`wood_a`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_a`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_a",
@@ -23646,8 +23876,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23655,12 +23884,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`wood_b`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_b`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_b",
@@ -23673,8 +23901,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23682,12 +23909,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`wood_c`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_c`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_c",
@@ -23700,8 +23926,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23709,12 +23934,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`wood_d`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`wood_d`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_d",
@@ -23727,8 +23951,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23736,12 +23959,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`stone_a`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_a`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_a",
@@ -23754,8 +23976,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23763,12 +23984,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`stone_b`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_b`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_b",
@@ -23781,8 +24001,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23790,12 +24009,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`stone_c`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_c`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_c",
@@ -23808,8 +24026,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23817,12 +24034,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`stone_d`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`stone_d`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_d",
@@ -23835,8 +24051,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23844,12 +24059,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`metal_a`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_a`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_a",
@@ -23862,8 +24076,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23873,12 +24086,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
 
 
 
-    Elkaisar.BaseData.Items[`metal_b`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_b`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_b",
@@ -23891,8 +24103,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23900,12 +24111,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`metal_c`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_c`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_c",
@@ -23918,8 +24128,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23927,12 +24136,11 @@ Elkaisar.Item.useItemBoxFunc = function () {
         });
     };
 
-    Elkaisar.BaseData.Items[`metal_d`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`metal_d`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_d",
@@ -23945,8 +24153,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
@@ -23956,14 +24163,12 @@ Elkaisar.Item.useItemBoxFunc = function () {
 
 };
 
-Elkaisar.Item.useArmyBackFunc = function ()
-{
-    Elkaisar.BaseData.Items[`army_all_1`][`UseFunc`] = function (amount)
-    {
+Elkaisar.Item.useArmyBackFunc = function () {
+    Elkaisar.BaseData.Items[`army_all_1`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackMini`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackMini`,
             type: 'POST',
             data: {
                 Item: "army_all_1",
@@ -23976,8 +24181,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -23986,12 +24190,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_all_2`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_all_2`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackMedium`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackMedium`,
             type: 'POST',
             data: {
                 Item: "army_all_2",
@@ -24004,8 +24207,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24014,12 +24216,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_all_3`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_all_3`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackLarge`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackLarge`,
             type: 'POST',
             data: {
                 Item: "army_all_3",
@@ -24032,8 +24233,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24042,12 +24242,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_a_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_a_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackA100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackA100`,
             type: 'POST',
             data: {
                 Item: "army_a_100",
@@ -24060,8 +24259,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24069,12 +24267,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
             }
         });
     };
-    Elkaisar.BaseData.Items[`army_b_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_b_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackB100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackB100`,
             type: 'POST',
             data: {
                 Item: "army_b_100",
@@ -24087,8 +24284,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24097,12 +24293,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_c_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_c_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackC100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackC100`,
             type: 'POST',
             data: {
                 Item: "army_c_100",
@@ -24115,8 +24310,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24125,12 +24319,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_d_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_d_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackD100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackD100`,
             type: 'POST',
             data: {
                 Item: "army_d_100",
@@ -24143,8 +24336,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24153,12 +24345,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_e_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_e_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackE100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackE100`,
             type: 'POST',
             data: {
                 Item: "army_e_100",
@@ -24171,8 +24362,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24181,12 +24371,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_f_100`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_f_100`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackF100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackF100`,
             type: 'POST',
             data: {
                 Item: "army_f_100",
@@ -24199,8 +24388,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24209,12 +24397,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_a_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_a_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackA1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackA1000`,
             type: 'POST',
             data: {
                 Item: "army_a_1000",
@@ -24227,8 +24414,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24236,12 +24422,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
             }
         });
     };
-    Elkaisar.BaseData.Items[`army_b_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_b_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackB1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackB1000`,
             type: 'POST',
             data: {
                 Item: "army_b_1000",
@@ -24254,8 +24439,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24264,12 +24448,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_c_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_c_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackC1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackC1000`,
             type: 'POST',
             data: {
                 Item: "army_c_100",
@@ -24282,8 +24465,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24292,12 +24474,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_d_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_d_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackD1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackD1000`,
             type: 'POST',
             data: {
                 Item: "army_d_1000",
@@ -24310,8 +24491,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24320,12 +24500,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_e_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_e_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackE1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackE1000`,
             type: 'POST',
             data: {
                 Item: "army_e_1000",
@@ -24338,8 +24517,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -24348,12 +24526,11 @@ Elkaisar.Item.useArmyBackFunc = function ()
         });
     };
 
-    Elkaisar.BaseData.Items[`army_f_1000`][`UseFunc`] = function (amount)
-    {
+    Elkaisar.BaseData.Items[`army_f_1000`][`UseFunc`] = function (amount) {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${API_URL}/api/AItemArmyPack/useArmyPackF1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackF1000`,
             type: 'POST',
             data: {
                 Item: "army_f_1000",
@@ -24366,8 +24543,7 @@ Elkaisar.Item.useArmyBackFunc = function ()
                 if (!Elkaisar.LBase.isJson(data))
                     Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
-                if (JsonObject.state === "ok")
-                {
+                if (JsonObject.state === "ok") {
                     Elkaisar.City.getCity(idCity).City = JsonObject.City;
                     city_profile.refresh_resource_view();
                     city_profile.refresh_army_view();
@@ -26428,172 +26604,164 @@ $(document).on("click", ".fireColonizer", function () {
             }
         });
     });
-});Elkaisar.Item.ItemBox = function(Box, pageOffset = 1)
-{
-    var ListString    = "";
-    var ListOfItem    = Matrial.listOf(Box);
-    var FilteredList  = {};
+});Elkaisar.Item.ItemBox = function (Box, pageOffset = 1) {
+    var ListString = "";
+    var ListOfItem = Matrial.listOf(Box);
+    var FilteredList = {};
     var currentOffset = 0;
-    
-    var maxPageCount = Math.ceil(Object.keys(ListOfItem).filter(It => Matrial.getPlayerAmount(It) > 0).length/12);
-    
-    if(pageOffset > maxPageCount)
+
+    var maxPageCount = Math.ceil(Object.keys(ListOfItem).filter(It => Matrial.getPlayerAmount(It) > 0).length / 12);
+
+    if (pageOffset > maxPageCount)
         return "";
-    if(pageOffset < 1)
+    if (pageOffset < 1)
         return "";
-   
-    
-    
-    
-    $("#page-nav-holder").html(`${pageOffset}/${Math.ceil(Object.keys(ListOfItem).filter(It => Matrial.getPlayerAmount(It) > 0).length/12)}`);
+
+
+
+
+    $("#page-nav-holder").html(`${pageOffset}/${Math.ceil(Object.keys(ListOfItem).filter(It => Matrial.getPlayerAmount(It) > 0).length / 12)}`);
     $("#nav-item-box-right").attr("data-current-offset", pageOffset);
     $("#nav-item-box-left").attr("data-current-offset", pageOffset);
     $("#dialg_box .right-content .total").attr("mat_table", Box);
     $(".box_content").attr("data-page-for", "box-item");
-    for(var iii in ListOfItem)
-    {
-        
-        if(Matrial.getPlayerAmount(iii) <= 0)
+    for (var iii in ListOfItem) {
+
+        if (Matrial.getPlayerAmount(iii) <= 0)
             continue;
         currentOffset++;
-        
-        if(currentOffset >  pageOffset*12)
+
+        if (currentOffset > pageOffset * 12)
             break;
-        if(currentOffset <= (pageOffset - 1) *12)
+        if (currentOffset <= (pageOffset - 1) * 12)
             continue;
-        
+
         FilteredList[iii] = ListOfItem[iii];
     }
-    
+
     for (var iii in FilteredList)
         ListString += Matrial.itemUnitWidget(iii, false);
-    
+
     return ListString;
-    
+
 };
 
 
-Elkaisar.Item.ItemMallBox = function(Box, pageOffset = 1)
-{
-    
-    var ListString    = "";
-    var ListOfItem    = Matrial.listOf(Box);
-    var FilteredList  = {};
+Elkaisar.Item.ItemMallBox = function (Box, pageOffset = 1) {
+
+    var ListString = "";
+    var ListOfItem = Matrial.listOf(Box);
+    var FilteredList = {};
     var currentOffset = 0;
-    
-    var maxPageCount = Math.ceil(Object.keys(ListOfItem).filter(It =>ListOfItem[It].gold > 0).length/12);
-    
-    if(pageOffset > maxPageCount)
-        return ;
-    if(pageOffset < 1)
-        return ;
-    
-    $("#page-nav-holder").html(`${pageOffset}/${Math.ceil(Object.keys(ListOfItem).filter(It =>ListOfItem[It].gold > 0).length/12)}`);
+
+    var maxPageCount = Math.ceil(Object.keys(ListOfItem).filter(It => ListOfItem[It].gold > 0).length / 12);
+
+    if (pageOffset > maxPageCount)
+        return;
+    if (pageOffset < 1)
+        return;
+
+    $("#page-nav-holder").html(`${pageOffset}/${Math.ceil(Object.keys(ListOfItem).filter(It => ListOfItem[It].gold > 0).length / 12)}`);
     $("#nav-item-box-right").attr("data-current-offset", pageOffset);
     $("#nav-item-box-left").attr("data-current-offset", pageOffset);
     $("#dialg_box .right-content .total").attr("mat_table", Box);
     $(".box_content").attr("data-page-for", "mall");
-    for(var iii in ListOfItem)
-    {
-        
-        if(ListOfItem[iii].gold <= 0)
+    for (var iii in ListOfItem) {
+
+        if (ListOfItem[iii].gold <= 0)
             continue;
         currentOffset++;
-        
-        if(currentOffset >  pageOffset*12)
+
+        if (currentOffset > pageOffset * 12)
             break;
-        if(currentOffset <= (pageOffset - 1) *12)
+        if (currentOffset <= (pageOffset - 1) * 12)
             continue;
-        
+
         FilteredList[iii] = ListOfItem[iii];
     }
-    
+
     for (var iii in FilteredList)
         ListString += Matrial.itemUnitWidget(iii, true);
-    
+
     return ListString;
-    
+
 };
 
-Elkaisar.Item.ItemExchangeBox = function(Box, pageOffset = 1)
-{
-    
-    var ListString    = "";
-    var FilteredList  = [];
+Elkaisar.Item.ItemExchangeBox = function (Box, pageOffset = 1) {
+
+    var ListString = "";
+    var FilteredList = [];
     var currentOffset = 0;
-    
-    var maxPageCount = Math.ceil(EXCHANGE_ITEM.filter(It => It.cat  === Box || Box === "trade-all").length/9);
-    
-    if(pageOffset > maxPageCount)
+
+    var maxPageCount = Math.ceil(EXCHANGE_ITEM.filter(It => It.cat === Box || Box === "trade-all").length / 9);
+
+    if (pageOffset > maxPageCount)
         return "";
-    if(pageOffset < 1)
+    if (pageOffset < 1)
         return "";
-    
+
     $("#page-nav-holder").html(`${pageOffset}/${maxPageCount}`);
     $("#nav-item-box-right").attr("data-current-offset", pageOffset);
     $("#nav-item-box-left").attr("data-current-offset", pageOffset);
     $("#dialg_box .right-content .total").attr("mat_table", Box);
     $(".box_content").attr("data-page-for", "exchange");
-    
-   
-            
-    for(var iii in EXCHANGE_ITEM)
-    {
+
+
+
+    for (var iii in EXCHANGE_ITEM) {
         currentOffset++;
-        
-        if(currentOffset >  pageOffset*9)
+
+        if (currentOffset > pageOffset * 9)
             break;
-        if(currentOffset <= (pageOffset - 1) *9)
+        if (currentOffset <= (pageOffset - 1) * 9)
             continue;
-        
+
         FilteredList.push(EXCHANGE_ITEM[iii]);
     }
-    
+
     for (var iii in FilteredList)
         ListString += Trading.content_unit(FilteredList[iii]);
-    
-    
+
+
     return ListString;
-    
+
 };
 
-Elkaisar.Item.EquipBox = function(pageOffset = 1)
-{
+Elkaisar.Item.EquipBox = function (pageOffset = 1) {
 
     var all_equip = "";
-    var FilteredList  = [];
+    var FilteredList = [];
     var currentOffset = 0;
-    
-    var maxPageCount = Math.ceil(Elkaisar.DPlayer.Equip.filter(It => !It.id_hero).length/12);
-    
-    if(pageOffset > maxPageCount)
-        return ;
-    if(pageOffset < 1)
-        return ;
-    
+
+    var maxPageCount = Math.ceil(Elkaisar.DPlayer.Equip.filter(It => !It.id_hero).length / 12);
+
+    if (pageOffset > maxPageCount)
+        return;
+    if (pageOffset < 1)
+        return;
+
     $("#page-nav-holder").html(`${pageOffset}/${maxPageCount}`);
     $("#nav-item-box-right").attr("data-current-offset", pageOffset);
     $("#nav-item-box-left").attr("data-current-offset", pageOffset);
     $("#dialg_box .right-content .total").attr("mat_table", "equip");
     $(".box_content").attr("data-page-for", "equip");
-    
-     for(var iii in Elkaisar.DPlayer.Equip)
-    {
-        
-        if(Elkaisar.DPlayer.Equip[iii].id_hero)
+
+    for (var iii in Elkaisar.DPlayer.Equip) {
+
+        if (Elkaisar.DPlayer.Equip[iii].id_hero)
             continue;
         currentOffset++;
-        
-        if(currentOffset >  pageOffset*12)
+
+        if (currentOffset > pageOffset * 12)
             break;
-        if(currentOffset <= (pageOffset - 1) *12)
+        if (currentOffset <= (pageOffset - 1) * 12)
             continue;
-        
+
         FilteredList.push(Elkaisar.DPlayer.Equip[iii]);
     }
-    
+
     for (var iii in FilteredList)
-         all_equip += `  <li class="matrial_unit" data-id-equip="${FilteredList[iii].id_equip}">
+        all_equip += `  <li class="matrial_unit" data-id-equip="${FilteredList[iii].id_equip}">
                             <img src=" images/style/Border-up.png" class="border_up"/>
                             <div class="img-inside-box">
                                  <img src="${Equipment.getImage(FilteredList[iii].type, FilteredList[iii].part, FilteredList[iii].lvl)}" class="big-img equip-unit" data-equi-part="${FilteredList[iii].part}" data-equi-type="${FilteredList[iii].type}" data-equi-lvl="${FilteredList[iii].lvl}">
@@ -26602,43 +26770,48 @@ Elkaisar.Item.EquipBox = function(pageOffset = 1)
                                  <h2>${Equipment.getName(FilteredList[iii].type, FilteredList[iii].part, FilteredList[iii].lvl)}</h2>
                              </div>
                          </li>`;
-    
+
     return all_equip;
-    
+
 };
 
 
-$(document).on("click", "#nav-item-box-right", function (){
-    
+$(document).on("click", "#nav-item-box-right", function () {
+
     var currentOffset = Number($(this).attr("data-current-offset"));
-    var PageFor       = $(".box_content").attr("data-page-for");
-    
-    if(PageFor === "mall")
+    var PageFor = $(".box_content").attr("data-page-for");
+
+    if (PageFor === "mall")
         return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemMallBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset + 1));
-    if(PageFor === "box-item")
-        return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemBox    ($("#dialg_box .right-content .total").attr("mat_table"), currentOffset + 1));
-    if(PageFor === "equip")
-        return $("#dialg_box .right-content .total").html(Elkaisar.Item.EquipBox    (currentOffset + 1));
-    if(PageFor === "exchange")
+    if (PageFor === "box-item") {
+        let Cont = Elkaisar.Item.ItemBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset + 1);
+        if (Cont == "")
+            return;
+        return $("#dialg_box .right-content .total").html(Cont);
+    }
+
+    if (PageFor === "equip")
+        return $("#dialg_box .right-content .total").html(Elkaisar.Item.EquipBox(currentOffset + 1));
+    if (PageFor === "exchange")
         return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemExchangeBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset + 1));
-    
+
 });
 
 
-$(document).on("click", "#nav-item-box-left", function (){
-    
+$(document).on("click", "#nav-item-box-left", function () {
+
     var currentOffset = Number($(this).attr("data-current-offset"));
-    var PageFor       = $(".box_content").attr("data-page-for");
-    
-    if(PageFor === "mall")
-        return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemMallBox ($("#dialg_box .right-content .total").attr("mat_table"), currentOffset - 1));
-    if(PageFor === "box-item")
-        return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemBox     ($("#dialg_box .right-content .total").attr("mat_table"), currentOffset - 1));
-    if(PageFor === "equip")
-        return $("#dialg_box .right-content .total").html(Elkaisar.Item.EquipBox    (currentOffset - 1));
-    if(PageFor === "exchange")
+    var PageFor = $(".box_content").attr("data-page-for");
+
+    if (PageFor === "mall")
+        return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemMallBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset - 1));
+    if (PageFor === "box-item")
+        return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset - 1));
+    if (PageFor === "equip")
+        return $("#dialg_box .right-content .total").html(Elkaisar.Item.EquipBox(currentOffset - 1));
+    if (PageFor === "exchange")
         return $("#dialg_box .right-content .total").html(Elkaisar.Item.ItemExchangeBox($("#dialg_box .right-content .total").attr("mat_table"), currentOffset - 1));
-    
+
 });Elkaisar.Rank = {};
 
 
@@ -26650,6 +26823,9 @@ Elkaisar.Rank.RankFor = {
     City: "cities",
 
 };
+
+
+
 Elkaisar.Rank.RankLastCount = {
 
     [Elkaisar.Rank.RankFor.Player]: "player_num",
@@ -27148,7 +27324,9 @@ WS_utile.onopen = function () {
             idPlayer: ID_PLAYER
         }
     }));
-    Elkaisar.World.Map.getWorldCity();
+    Elkaisar.World.Map.getWorldCity().done(function (){
+        Elkaisar.Team.getPlayerTeam();
+    });
     Elkaisar.World.Map.getWorldCityColonized();
     Elkaisar.World.Map.getWorldFiredUnit();
     Elkaisar.World.MapBattel.getAllBattels();
@@ -27539,6 +27717,13 @@ Elkaisar.WsLib.Chat.PrizeSent = function (data){
                 </div>`;
     Player_profile.refreshPlayerNotif();
     Chat.append(msg);
+};
+
+
+Elkaisar.WsLib.Chat.PlayerTitleChanged = function (data){
+
+    var msg = ` <div class="msg-unit  battel-f-ann">حصل الملك <span class="ann-red">&nbsp;${data.PlayerName}&nbsp;</span> على لقب جديد !! </div>`;
+    Chat.append(msg);
 };Elkaisar.WsLib.Battel = {};
 
 
@@ -27851,6 +28036,15 @@ Elkaisar.WsLib.Team.playerTeamLeave = function (data) {
     Elkaisar.Team.getPlayerTeam();
 };
 
+Elkaisar.WsLib.Team.TeamDisbanded = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                    تم تفكيك فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span>!
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam();
+};
+
 Elkaisar.WsLib.Team.playerTeamResign = function (data) {
 
     var msg = ` <div class="msg-unit team-ann">
@@ -27858,6 +28052,17 @@ Elkaisar.WsLib.Team.playerTeamResign = function (data) {
                 </div>`;
     Chat.append(msg);
     Elkaisar.Team.getPlayerTeam();
+};
+
+Elkaisar.WsLib.Team.TeamMemberFired = function (data) {
+
+    var msg = ` <div class="msg-unit team-ann">
+                    تم طرد اللاعب <span class="ann-red">&nbsp;${data.FiredName}&nbsp;</span> من فريق <span class="ann-red">&nbsp;${data.TeamName}&nbsp;</span>!
+                </div>`;
+    Chat.append(msg);
+    Elkaisar.Team.getPlayerTeam().done(function (){
+        $("#TeamHeaderNavBar .selected").click();
+    });
 };
 
 Elkaisar.WsLib.Team.TeamReqCanceled = function (data) {
@@ -27935,7 +28140,7 @@ Elkaisar.WsLib.Hero.Back = function (data) {
 
     var HeroName = '';
     var CityName = 'المدينة';
-    var Hero = Elkaisar['Hero']['getHero'](data['idHero']);
+    var Hero = Elkaisar.Hero.getHero(data['idHero']);
     var City = Elkaisar['City']['getCityByCoord'](data['xTo'], data['yTo']);
 
     if (Hero && Hero['Hero'] && Hero['Hero']['name'])
@@ -27999,7 +28204,7 @@ Elkaisar.WsLib.ServerAnnounce.capitalLock = function (data) {
 
     var WorldUnit = data.WorldUnit;
 
-    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coordDirect(WorldUnit.x,WorldUnit.y)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
+    var msg = `<div class="msg-unit announce user-group-5">تم اغلاق ${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title} ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} و كان الفوز بالمركز الاول من  نصيب&nbsp;<span class="ann-red"> ${playerName} </span> </div>`;
     Chat.append(msg);
 };
 
@@ -28017,7 +28222,7 @@ Elkaisar.WsLib.ServerAnnounce.QueenCityOpened = function (data) {
 Elkaisar.WsLib.ServerAnnounce.QueenCityClosed = function (data) {
 
     var WorldUnit = data.WorldUnit;
-    var msg = ` <div class="msg-unit  battel-f-ann">تم إغلاق &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x ,WorldUnit.y)} &nbsp;
+    var msg = ` <div class="msg-unit  battel-f-ann">تم إغلاق &nbsp;<span class="ann-red">${Elkaisar.World.UnitTypeData[WorldUnit.ut].Title}</span> ${Extract.coordDirect(WorldUnit.x, WorldUnit.y)} &nbsp;
                     وكان الفوز من نصيب حلف <span class="ann-red">&nbsp;${data.WinnerGuild.GuildName || " ---"}&nbsp;</span>
                 </div>`;
     Chat.append(msg);
@@ -28161,18 +28366,65 @@ Elkaisar.WsLib.ServerAnnounce.ArenachallangeLvlUp = function (data) {
         });
 };
 
-Elkaisar.WsLib.ServerAnnounce.KingOfArenaChallange = function (data) {
-    var Msg = `<div class="battel-f-ann">تهانينا! اصبح الملك   (<span class="red">  ${data['Player']['PlayerName']}  </span>)   ملك ميدان التحدى الاول!}</div>`;
-    Chat['append'](Msg);
-    if (Elkaisar['DPlayer']['Player']['id_player'] == _0x363f73['Player']['id_player']) {
-        Elkaisar['ArenaChallange']['getArenaData']()['done'](function () {
-            $('#SArenaField')['click']();
-        });
-    }
+Elkaisar.WsLib.ServerAnnounce.ArenachallangeTeamLvlUp = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! تم ترقية ميدان الفريق  
+                (<span class="red"> ${data.Team.TeamName}</span>)
+              الى مستوى   (<span class="red">  ${(Number(data.ArenaData.lvl) + 0x1)}  </span>)  
+                </div>'`;
+    Chat.append(Msg);
+
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
 };
 
- Elkaisar.WsLib.ServerAnnounce.ArenaChallangeRoundEnd = function (data) {
+Elkaisar.WsLib.ServerAnnounce.ArenachallangeGuildLvlUp = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! تم ترقية ميدان حلف  
+                (<span class="red"> ${data.Guild.GuildName}</span>)
+              الى مستوى   (<span class="red">  ${(Number(data.ArenaData.lvl) + 0x1)}  </span>)  
+                </div>'`;
+    Chat.append(Msg);
+
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
+};
+
+Elkaisar.WsLib.ServerAnnounce.KingOfArenaChallange = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! اصبح الملك   (<span class="red">  ${data['Player']['PlayerName']}  </span>)   ملك ميدان التحدى الاول!}</div>`;
+    Chat.append(Msg);
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
+};
+
+Elkaisar.WsLib.ServerAnnounce.KingOfArenaTeamChallange = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! اصبح الفريق   (<span class="red">  ${data.Team.TeamName}  </span>)   ملك ميدان تحدى الفرق الاول!}</div>`;
+    Chat.append(Msg);
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField')['click']();
+    });
+};
+
+
+Elkaisar.WsLib.ServerAnnounce.KingOfArenaGuildChallange = function (data) {
+    var Msg = `<div class="battel-f-ann">تهانينا! اصبح حلف   (<span class="red">  ${data.Guild.GuildName}  </span>)   ملك ميدان تحدى الأحلاف الاول!}</div>`;
+    Chat.append(Msg);
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        $('#SArenaField').click();
+    });
+};
+
+Elkaisar.WsLib.ServerAnnounce.ArenaChallangeRoundEnd = function (data) {
     var Msg = `<div class="battel-f-ann">تم انهاء جولة ميدان التحدى و فاز الملك   (<span class="red">  ${data['PlayerName']}  </span>)   !</div>`;
+    Chat['append'](Msg);
+};
+Elkaisar.WsLib.ServerAnnounce.ArenaChallangeTeamRoundEnd = function (data) {
+    var Msg = `<div class="battel-f-ann">تم انهاء جولة ميدان التحدى و فاز الفريق   (<span class="red">  ${data['TeamName']}  </span>)   !</div>`;
+    Chat['append'](Msg);
+};
+Elkaisar.WsLib.ServerAnnounce.ArenaChallangeGuildRoundEnd = function (data) {
+    var Msg = `<div class="battel-f-ann">تم انهاء جولة ميدان التحدى و فاز الحلف   (<span class="red">  ${data['GuildName']}  </span>)   !</div>`;
     Chat['append'](Msg);
 };
 
@@ -29688,17 +29940,17 @@ $(document).on("click", "#new-city-confirm button", function () {
     },
     'getDominaterName'(xCoord, yCoord) {
         var Unit = WorldUnit['getWorldUnit'](xCoord, yCoord);
-        $['ajax']({
+        $.ajax({
             'url': API_URL + '/api/AWorldUnit/getWorldUnitDominator',
             'type': 'GET',
             'data': {
                 'xCoord': xCoord,
                 'yCoord': yCoord,
                 'unitType': Unit.ut,
-                'server': Elkaisar.Config.idServer,
-                'token': Elkaisar.Config.OuthToken
+                server: Elkaisar.Config.idServer,
+                token: Elkaisar.Config.OuthToken
             },
-            'success': function (data, _0x2bf316, _0x1a4707) {
+            success: function (data, _0x2bf316, _0x1a4707) {
                 if (!Elkaisar['LBase']['isJson'](data)) 
                     return Elkaisar['LBase']['Error'](data);
                 var JsonData = JSON['parse'](data);
@@ -32464,14 +32716,14 @@ WorldUnit.prize.prizes = {};
 
 
 WorldUnit.prize.getAllPrize = function () {
-    $['ajax']({
+    $.ajax({
         'url': API_URL + '/api/AWorld/getWorldUnitPrize',
         'data': {
-            'token': Elkaisar['Config']['OuthToken'],
-            'server': Elkaisar['Config']['idServer']
+            token: Elkaisar['Config']['OuthToken'],
+            server: Elkaisar['Config']['idServer']
         },
         'type': 'GET',
-        'success': function (data, _0x45a054, _0x31b37d) {
+        success: function (data, _0x45a054, _0x31b37d) {
             if (isJson(data))
                 WorldUnit['prize']['prizes'] = JSON['parse'](data);
             else
@@ -32497,7 +32749,7 @@ WorldUnit['prize']['getUnitPrize'] = function (unitType, lvl, PrizeFor = 'Win') 
     for (var iii in WorldUnit['prize']['prizes'][PrizeFor]) {
         if (WorldUnit['prize']['prizes'][PrizeFor][iii]['unitType'] === unitType
                 && WorldUnit['prize']['prizes'][PrizeFor][iii]['lvl'] === lvl)
-            PrizeList['push'](WorldUnit['prize']['prizes'][PrizeFor][iii]);
+            PrizeList.push(WorldUnit['prize']['prizes'][PrizeFor][iii]);
     }
     return PrizeList;
 };
@@ -32507,7 +32759,7 @@ WorldUnit['prize']['getUnitAllLvlsPrize'] = function (unitType, PrizeFor = 'Win'
     var PrizeList = [];
     for (var iii in WorldUnit['prize']['prizes'][PrizeFor]) {
         if (WorldUnit['prize']['prizes'][PrizeFor][iii]['unitType'] === unitType)
-            PrizeList['push'](WorldUnit['prize']['prizes'][PrizeFor][iii]);
+            PrizeList.push(WorldUnit['prize']['prizes'][PrizeFor][iii]);
     }
     return PrizeList;
 };
@@ -32547,7 +32799,7 @@ WorldUnit['prize']['prizeAllLvlsList'] = function (xCoord, yCoord, prizeFor = 'W
             List = '';
     for (var iii in PrizeList) {
         if (PList['indexOf'](PrizeList[iii]['prize']) === -0x1)
-            PList['push'](PrizeList[iii]['prize']);
+            PList.push(PrizeList[iii]['prize']);
         else
             continue;
         if (PList['length'] > 0x10)
@@ -42410,14 +42662,14 @@ $(document).on('click', "#confirm-deal button", function () {
 
 
                     if ($.isArray(json_data.buyers) && json_data.buyers.length > 0) {
-                        ws.send(JSON.stringify({
+                       /* ws.send(JSON.stringify({
                             url: "WS_Market/buyerDealDone",
                             data: {
                                 traders: json_data.buyers,
                                 idPlayer: ID_PLAYER,
                                 token: TOKEN
                             }
-                        }));
+                        }));*/
                     }
 
 
@@ -42497,7 +42749,7 @@ $(document).on('click', "#confirm-deal button", function () {
 
 
                     if ($.isArray(json_data.seller) && json_data.seller.length > 0) {
-                        ws.send(JSON.stringify({
+                      /*  ws.send(JSON.stringify({
                             url: "WS_Market/sellerDealDone",
                             data: {
                                 traders: json_data.seller,
@@ -42505,7 +42757,7 @@ $(document).on('click', "#confirm-deal button", function () {
                                 token: TOKEN
                             }
 
-                        }));
+                        }));*/
                     }
 
 
@@ -44996,17 +45248,17 @@ Elkaisar.Equip.getEquipUnit = function(idEquip)
 
 Elkaisar.Equip.EquipList = {},
 Elkaisar.Equip.getEquipData = function () {
-    $['ajax']({
+    $.ajax({
         'url': API_URL + '/js' + Elkaisar['Config']['JsVersion'] + '/json/equipment/' + UserLag['language'] + '.json',
-        'success': function (data, _0x18a598, _0x1ed6f5) {
+        success: function (data, _0x18a598, _0x1ed6f5) {
             Elkaisar['Equip']['EquipList'] = data;
-            $['ajax']({
+            $.ajax({
                 'url': API_URL + '/api/APlayerEquip/getEquipPower',
                 'data': {
-                    'token': Elkaisar['Config']['OuthToken'],
-                    'server': Elkaisar['Config']['idServer']
+                    token: Elkaisar['Config']['OuthToken'],
+                    server: Elkaisar['Config']['idServer']
                 },
-                'success': function (DataI, _0x23bbdc, _0x2945f2) {
+                success: function (DataI, _0x23bbdc, _0x2945f2) {
                     if (!Elkaisar['LBase']['isJson'](DataI))
                         return Elkaisar['LBase']['Error'](DataI);
                     var JsonData = JSON['parse'](DataI);
@@ -47833,9 +48085,9 @@ Chat.msgFrom = function (data){
                 <div class="name">[${data.fromName}]:</div> `;
     
     for(var iii in data.playerTitle){
-     
-        console.log(iii);
-        name += `<div class="rank-title rank-${iii}">${data.playerTitle[iii]}</div>`;
+        if(!data.playerTitle[iii])
+            continue;
+        name += `<div class="rank-title rank-title_${iii}">${data.playerTitle[iii]}</div>`;
     }
     return name;
 };
@@ -48060,11 +48312,7 @@ $(document).on("click" , "#expand-chat .send" , function (){
         return ;
         
     }
-    
-    if(Elkaisar.DPlayer.Player.porm < 2 && chat_to === "world"){
-        alert_box.confirmMessage("لا يمكنك استعمال الشات ورتبتك اقل من رقيب\n يمكنك استعمال الخاص او شات الحلف وطلب تفعيل الشات من الادارة ");
-        return ;
-    }
+ 
     
     
     if(chat_to === "world" && player.chat_panne > Date.now()/1000){
@@ -48127,11 +48375,11 @@ $(document).on("click",".select-list", function (){
         
         $(this).attr("data-active", "false");
         $(this).children(".option").children("ul").hide();
-        $(this).children(".option").animate({"height" :  0})
+        $(this).children(".option").animate({"height" :  0});
         
     }else{
         $(this).attr("data-active", "true");
-        $(this).children(".option").animate({"height" :  "266px"}, function () {
+        $(this).children(".option").animate({"height" :  $(this).attr("data-height") + "px"}, function () {
             $(this).children("ul").show();
         });
     }
@@ -48158,9 +48406,9 @@ Elkaisar.Contribute.For = {
 Elkaisar.Contribute.List = {};
 
 Elkaisar.Contribute.getList = function () {
-    $['ajax']({
+    $.ajax({
         'url': `${API_URL }/js${ Elkaisar['Config']['JsVersion'] }/json/contribute.json`,
-        'success': function (data, _0x5852fa, _0x1a4a01) {
+        success: function (data, _0x5852fa, _0x1a4a01) {
             Elkaisar['Contribute']['List'] = data;
         }
     });
@@ -48646,11 +48894,11 @@ $(document)['on']('click', '#helpGateBtnWrapper', function () {
 
 
 $(document)['on']('click', '.ContributeForUp', function () {
-    $('#dialg_box')['replaceWith'](Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['EquipUpgrade']));
+    $('#dialg_box').replaceWith(Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['EquipUpgrade']));
 });
 
 $(document)['on']('click', '.ContributeForC', function () {
-    $('#dialg_box')['replaceWith'](Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['Contribute']));
+    $('#dialg_box').replaceWith(Elkaisar['Contribute']['DialogBox'](Elkaisar['Contribute']['For']['Contribute']));
 });
 
 $(document)['on']('click', '.SelectContReq', function () {
@@ -48662,7 +48910,7 @@ $(document)['on']('click', '.SelectContReq', function () {
 $(document)['on']('click', '.downEquipFromHero', function () {
     var idEquip = $(this)['attr']('data-id-equip');
     var idHero = $(this)['attr']('data-id-hero');
-    var Hero = Elkaisar['Hero']['getHero'](idHero);
+    var Hero = Elkaisar.Hero.getHero(idHero);
     var idCont = $(this)['attr']('data-id-cont');
     var ReqIndex = $(this)['attr']('data-cont-req-index');
     if (!Hero) {
@@ -48715,7 +48963,7 @@ $(document)['on']('click', '.ConSelectReqItem', function () {
         Elkaisar['Contribute']['ReqSelectListContent'](idCont, ReqIndex);
         return;
     }
-    Cont['ListOfNeed'][ReqIndex]['SelectedList']['push'](idEquip);
+    Cont['ListOfNeed'][ReqIndex]['SelectedList'].push(idEquip);
     Elkaisar['Contribute']['ReqSelectListContent'](idCont, ReqIndex);
 });
 
@@ -48758,18 +49006,18 @@ $(document)['on']('click', '#ContributeUpStart', function () {
     if (!Cont['ListOfNeed'][0]['SelectedList'][0])
         return alert_box['failMessage']('عليك اختيار المعدة اولا');
 
-    $['ajax']({
+    $.ajax({
         'url': `${API_URL }/api/AContribute/upgradeEquip`,
         'data': {
             'idCont': idCont,
             'idEquip': Cont['ListOfNeed'][0]['SelectedList'][0],
             'idCity': Elkaisar['CurrentCity']['idCity'],
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+            server: Elkaisar['Config']['idServer'],
+            token: Elkaisar['Config']['OuthToken']
         },
         'type': 'POST',
-        'beforeSend': function (_0x138564) {},
-        'success': function (data, _0x555139, _0x357269) {
+        beforeSend: function (_0x138564) {},
+        success: function (data, _0x555139, _0x357269) {
 
             if (!Elkaisar['LBase']['isJson'](data))
                 return Elkaisar['LBase']['Error'](data);
@@ -48809,17 +49057,17 @@ $(document)['on']('click', '#ContributeStart', function () {
     var idCont = $(this)['attr']('data-id-cont');
     var Cont = Elkaisar['Contribute']['List'][idCont];
 
-    $['ajax']({
+    $.ajax({
         'url': `${API_URL}/api/AContribute/contribute`,
         'data': {
             'idCont': idCont,
             'idCity': Elkaisar['CurrentCity']['idCity'],
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+            server: Elkaisar['Config']['idServer'],
+            token: Elkaisar['Config']['OuthToken']
         },
         'type': 'POST',
-        'beforeSend': function (_0x489a69) {},
-        'success': function (data, _0xbb6f87, _0x319448) {
+        beforeSend: function (_0x489a69) {},
+        success: function (data, _0xbb6f87, _0x319448) {
 
             if (!Elkaisar['LBase']['isJson'](data))
                 return Elkaisar['LBase']['Error'](data);
@@ -48843,7 +49091,7 @@ $(document)['on']('click', '#ContributeStart', function () {
 });
 
 
-Elkaisar['ArenaChallange'] = {
+Elkaisar.ArenaChallange = {
     'DialogBox': function () {},
     'Arena': {}
 };
@@ -48853,20 +49101,32 @@ Elkaisar.ArenaChallange.Coords = {
     'yCoord': 246
 };
 
+Elkaisar.ArenaChallange.MaxHeroCountFactor = {
+    "Arena": 1,
+    "ArenaTeam": 3,
+    "ArenaGuild": 5
+};
 
-Elkaisar['ArenaChallange']['getArenaData'] = function (callBack) {
-    return $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/getArenaData',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+
+
+Elkaisar.ArenaChallange.getArenaData = function (callBack) {
+    return $.ajax({
+        url: `${NODE_URL}/api/AArenaChallange/getArenaData`,
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken
         },
-        'beforeSend': function (_0x202459) {},
-        'success': function (data, _0x4ce0b4, _0x58fd94) {
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
-            Elkaisar['ArenaChallange']['Arena'] = JSON['parse'](data);
-            Elkaisar['ArenaChallange']['getFightList']()['done'](function () {
+        beforeSend: function (_0x202459) {},
+        success: function (data, _0x4ce0b4, _0x58fd94) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            const JsonObject = JSON.parse(data);
+            Elkaisar.ArenaChallange.Arena = JsonObject.King;
+            Elkaisar.ArenaChallange.ArenaTeam = JsonObject.Team;
+            Elkaisar.ArenaChallange.ArenaGuild = JsonObject.Guild;
+
+            Elkaisar.ArenaChallange.getFightList().done(function () {
                 if (callBack)
                     callBack();
             });
@@ -48876,25 +49136,28 @@ Elkaisar['ArenaChallange']['getArenaData'] = function (callBack) {
 
 
 
-Elkaisar['ArenaChallange']['getFightList'] = function () {
-    return $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/getFightList',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+Elkaisar.ArenaChallange.getFightList = function () {
+    return $.ajax({
+        url: `${NODE_URL}/api/AArenaChallange/getFightList`,
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken
         },
-        'beforeSend': function (_0x4b6272) {},
-        'success': function (data, _0x2cd76c, _0x561f87) {
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
-            Elkaisar['ArenaChallange']['Arena']['PlayerList'] = JSON['parse'](data)['reverse']();
+        beforeSend: function (_0x4b6272) {},
+        success: function (data, _0x2cd76c, _0x561f87) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            const JsonObject = JSON.parse(data);
+            Elkaisar.ArenaChallange.Arena.FightList = JsonObject.King.reverse();
+            Elkaisar.ArenaChallange.ArenaTeam.FightList = JsonObject.Team.reverse();
+            Elkaisar.ArenaChallange.ArenaGuild.FightList = JsonObject.Guild.reverse();
         }
     });
 };
 
 
 
-Elkaisar['ArenaChallange']['DialogBox'] = function () {
+Elkaisar.ArenaChallange.DialogBox = function () {
     return `  <div id="dialg_box" class="fullBoxContent" style="top: 125px;">
                         <div class="head_bar">
                             <img src="images/style/head_bar.png">
@@ -48914,6 +49177,7 @@ Elkaisar['ArenaChallange']['DialogBox'] = function () {
                                     </li>
                                 </ul>
                             </div>
+                            <div id="NavSelectList" class="flex SelectArenaFor"></div>
                             <div class="right-nav">
                                 <div class="nav_icon">
                                     <img class="close_dialog" src="images/btns/close_b.png">
@@ -48927,7 +49191,22 @@ Elkaisar['ArenaChallange']['DialogBox'] = function () {
 };
 
 
-Elkaisar['ArenaChallange']['ArenaProfile'] = function () {
+
+
+Elkaisar.ArenaChallange.ArenaProfile = function () {
+
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+
+    var Avatar = `<img ondragstart="return false;" src="${ Elkaisar.BaseData.HeroAvatar[Elkaisar.DPlayer.Player['avatar']] }">`;
+    if (ArenaFor != "Arena") {
+        Avatar = `  <div id="ArenaChallangeSlog">
+                        <div class="slog" style="background-image: url(images/style/bottom-${Elkaisar.ArenaChallange[ArenaFor].Arena.slog_btm}.png);"></div>
+                        <div class="slog" style="background-image: url(images/style/central-${Elkaisar.ArenaChallange[ArenaFor].Arena.slog_cnt}.png); margin-top: -78px;"></div>
+                        <div class="slog" style="background-image: url(images/style/top-${Elkaisar.ArenaChallange[ArenaFor].Arena.slog_top}.png); margin-top: -82px;"></div>
+                    </div>`;
+    }
 
     var Box = `<div id="ArenaChallangeHome" class="fullBoxContent flex">
                         <div id="heroArenaSelectList">
@@ -48983,24 +49262,24 @@ Elkaisar['ArenaChallange']['ArenaProfile'] = function () {
                                     <div class="playerProfileImage">
                                         <div class="avatar">
                                             <div class="avatar-img">
-                                                <img ondragstart="return false;" src="${ Elkaisar['BaseData']['HeroAvatar'][Elkaisar['DPlayer']['Player']['avatar']] }">
+                                               ${Avatar}
                                             </div>
                                         </div>
                                         <div class="avatar-name">
-                                            <h2>${ Elkaisar['DPlayer']['Player']['name'] }</h2>
+                                            <h2>${ Elkaisar.ArenaChallange[ArenaFor].Arena.ArenaName || "-----"}</h2>
                                         </div>
                                     </div>
                                     <div class="arenaChallangeProfile">
                                         <ul>
-                                            <li>مستوى الميدان: ${ Elkaisar['ArenaChallange']['Arena']['Arena']['lvl'] }</li>
+                                            <li>مستوى الميدان: ${ Elkaisar.ArenaChallange[ArenaFor].Arena['lvl'] || 0}</li>
                                             <li>
                                                 <button id="useArenaExpBox" class="pluse"></button>
-                                               خبرة: ${ Elkaisar['ArenaChallange']['Arena']['Arena']['exp'] }
+                                               خبرة: ${ Elkaisar.ArenaChallange[ArenaFor].Arena.exp || 0}
                                             </li>
-                                            <li>فوز: ${ Elkaisar['ArenaChallange']['Arena']['Arena']['win'] }</li>
-                                            <li>خسارة: ${ Elkaisar['ArenaChallange']['Arena']['Arena']['lose'] }</li>
-                                            <li>يطل: ${ Elkaisar['ArenaChallange']['Arena']['Arena']['champion'] }</li>
-                                            <li>تصنيف(الجولة): ${ Elkaisar['ArenaChallange']['Arena']['Arena']['rank'] }</li>
+                                            <li>فوز: ${ Elkaisar.ArenaChallange[ArenaFor].Arena.win || 0}</li>
+                                            <li>خسارة: ${ Elkaisar.ArenaChallange[ArenaFor].Arena.lose || 0}</li>
+                                            <li>يطل: ${ Elkaisar.ArenaChallange[ArenaFor].Arena.champion || 0}</li>
+                                            <li>تصنيف(الجولة): ${ Elkaisar.ArenaChallange[ArenaFor].Arena.rank || 0}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -49008,29 +49287,29 @@ Elkaisar['ArenaChallange']['ArenaProfile'] = function () {
                                     جوائز &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; الملك
                                 </div>
                                 <div class="arenaKingPrize">
-                                    <div class="bg prizeList"><ul>${ Elkaisar['ArenaChallange']['PrizeList'](WorldUnit['prize']['PrizFor']['Sp']) }</ul></div>
+                                    <div class="bg prizeList"><ul>${ Elkaisar.ArenaChallange.PrizeList(WorldUnit.prize.PrizFor.Sp) }</ul></div>
                                 </div>
                             </div>
                         </div>
                     </div>`;
-    $('#ArenaChallangeHome')['replaceWith'](Box);
-    Elkaisar['ArenaChallange']['HeroList']();
-    Elkaisar['ArenaChallange']['ArenaHeroList']();
+    $('#ArenaChallangeHome').replaceWith(Box);
+    Elkaisar.ArenaChallange.HeroList(Elkaisar.CurrentCity.City.id_city);
+    Elkaisar.ArenaChallange.ArenaHeroList();
     var CityList = [];
-    for (var idCity in Elkaisar['DPlayer']['City'])
-        CityList['push']({
-            'title': Elkaisar['DPlayer']['City'][idCity]["City"]['name'],
-            'value': Elkaisar['DPlayer']['City'][idCity]["City"]['id_city']
+    for (var idCity in Elkaisar.DPlayer.City)
+        CityList.push({
+            'title': Elkaisar.DPlayer.City[idCity].City['name'],
+            'value': Elkaisar.DPlayer.City[idCity].City['id_city']
         });
-    $('#selectHeroCity')['html'](Elkaisar['Ui']['Select']['make'](CityList));
-    Elkaisar['Ui']['Select']['height'] = 150;
-    $('#heroArenaSelectList .heroCityList ol')['niceScroll'](SCROLL_BAR_PROP);
+    $('#selectHeroCity').html(Elkaisar.Ui.Select.make(CityList));
+    Elkaisar.Ui.Select.height = 150;
+    $('#heroArenaSelectList .heroCityList ol').niceScroll(SCROLL_BAR_PROP);
 };
 
 
-Elkaisar['ArenaChallange']['HeroList'] = function (idCity) {
+Elkaisar.ArenaChallange.HeroList = function (idCity) {
     if (!idCity)
-        idCity = Object['keys'](Elkaisar['DPlayer']['City'])[0];
+        idCity = Object['keys'](Elkaisar.DPlayer.City)[0];
 
     var HeroListHt = '';
     var Count = 0;
@@ -49051,7 +49330,7 @@ Elkaisar['ArenaChallange']['HeroList'] = function (idCity) {
                     <li class="tr" data-id-hero="${ Elkaisar['DPlayer']['Heros'][Index]['Hero']['id_hero'] }">
                         <div class="td" style="width: 25%">
                             <div class="wrapper">
-                                <div class="image" style="background-image: url(${ Elkaisar['BaseData']['HeroAvatar'][Elkaisar['DPlayer']['Heros'][Index]['Hero']['avatar']] })">
+                                <div class="image" style="background-image: url(${ Elkaisar.BaseData.HeroAvatar[Elkaisar['DPlayer']['Heros'][Index]['Hero']['avatar']] })">
 
                                 </div>
                             </div>
@@ -49076,31 +49355,36 @@ Elkaisar['ArenaChallange']['HeroList'] = function (idCity) {
         for (var iii = 0x0; iii < 11 - Count; iii++)
             HeroListHt += '<li class="tr"></li>';
     }
-    $('#heroArenaSelectList .heroCityList ol')['html']('' + HeroListHt);
+    $('#heroArenaSelectList .heroCityList ol').html('' + HeroListHt);
 };
 
 
-Elkaisar['ArenaChallange']['ArenaHeroList'] = function () {
+Elkaisar.ArenaChallange.ArenaHeroList = function () {
+
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+
     var HeroListHtm = '';
     var Count = 0;
-    for (var HIndex in Elkaisar['ArenaChallange']['Arena']['HeroList']) {
-        var Hero = Elkaisar['Hero']['getHero'](Elkaisar['ArenaChallange']['Arena']['HeroList'][HIndex]['id_hero']);
-        HeroListHtm += `<li class="tr" data-id-hero="${ Elkaisar['ArenaChallange']['Arena']['HeroList'][HIndex]['id_hero'] }" data-index="${ HIndex }">
+    for (var HIndex in Elkaisar.ArenaChallange[ArenaFor].HeroList) {
+        const Hero = Elkaisar.ArenaChallange[ArenaFor].HeroList[HIndex];
+        HeroListHtm += `<li class="tr" data-id-hero="${Hero.id_hero }" data-index="${ HIndex }">
                         <div class="td" style="width: 25%">
                             <div class="wrapper">
-                                <div class="image" style="background-image: url(${ Elkaisar['BaseData']['HeroAvatar'][Hero['Hero']['avatar']] })">
+                                <div class="image" style="background-image: url(${ Elkaisar.BaseData.HeroAvatar[Hero['avatar']] })">
 
                                 </div>
                             </div>
                         </div>
                         <div class="td" style="width: 40%">
-                            <div class="name${ (Hero['Hero']['ultra_p'] > 0 ? ' POT-HERO' : '') }" style="width: 100%">${ Hero['Hero']['name'] }</div>
+                            <div class="name${ (Hero['ultra_p'] > 0 ? ' POT-HERO' : '') }" style="width: 100%">${ Hero.HeroName } (${Hero.PlayerName})</div>
                         </div>
                         <div class="td flex" style="width: 16%">
-                            <button class="full-btn-3x showCityHero flex" data-id-hero="${ Elkaisar['ArenaChallange']['Arena']['HeroList'][HIndex]['id_hero'] }"><img src="images/icons/showIcon.png"/></button>
+                            <button class="full-btn-3x showCityHero flex" data-id-hero="${ Hero['id_hero'] }"><img src="images/icons/showIcon.png"/></button>
                         </div>
                         <div class="td" style="width: 20%">
-                            <div class="lvl">${ Hero['Hero']['lvl'] }</div>
+                            <div class="lvl">${ Hero.lvl }</div>
                         </div>
                     </li>`;
         Count++;
@@ -49109,11 +49393,18 @@ Elkaisar['ArenaChallange']['ArenaHeroList'] = function () {
         for (var iii = 0x0; iii < 11 - Count; iii++)
             HeroListHtm += '<li class="tr"></li>';
     }
-    $('#ArenaChallangeHome .arenaHeroList .hero-select-list ol')['html']('' + HeroListHtm);
+    $('#ArenaChallangeHome .arenaHeroList .hero-select-list ol').html('' + HeroListHtm);
 };
 
-Elkaisar['ArenaChallange']['PrizeList'] = function (PrizeFor) {
-    var Prize = WorldUnit['prize']['getUnitAllLvlsPrize'](WUT_CHALLAGE_FIELD_PLAYER, PrizeFor);
+Elkaisar.ArenaChallange.PrizeList = function (PrizeFor) {
+
+    var Prize = WorldUnit['prize'].getUnitAllLvlsPrize(WUT_CHALLAGE_FIELD_PLAYER, PrizeFor);
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (ArenaFor == 'ArenaTeam')
+        Prize = WorldUnit['prize'].getUnitAllLvlsPrize(WUT_CHALLAGE_FIELD_TEAM, PrizeFor);
+    if (ArenaFor == 'ArenaGuild')
+        Prize = WorldUnit['prize'].getUnitAllLvlsPrize(WUT_CHALLAGE_FIELD_GUILD, PrizeFor);
+
 
     var PrizeListHt = '';
     for (var ii in Prize)
@@ -49127,114 +49418,134 @@ Elkaisar['ArenaChallange']['PrizeList'] = function (PrizeFor) {
     return PrizeListHt;
 };
 
-Elkaisar['ArenaChallange']['getRankList'] = function () {
+Elkaisar.ArenaChallange.getRankList = function () {
     var RankListHt = '';
-    for (var iii = 0x0; iii < 0xa; iii++) {
-        var Player = Elkaisar['ArenaChallange']['Arena']['PlayerList'][iii];
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+    for (var iii = 0; iii < 10; iii++) {
+        var Player = Elkaisar.ArenaChallange[ArenaFor].FightList[iii];
         if (Player)
             RankListHt += `<div class="tr" rank="1">
-                                <div class="td ellipsis" style="width: 11%">${ Player['rank'] }</div>
-                                <div class="td ellipsis" style="width: 20%">${ Player['PlayerName'] }</div>
+                                <div class="td ellipsis" style="width: 11%">${ Player.rank }</div>
+                                <div class="td ellipsis" style="width: 20%">${ Player.PlayerName || Player.TeamName || Player.GuildName}</div>
                                 <div class="td flex ellipsis" style="width: 25%">
                                     <div class="guildIcon">
-                                        ${ (Player['idGuild'] ? `<div class="image-slog" style="background-image: url(images/style/bottom-${ Player['slog_btm'] }.png)"></div>
+                                        ${ (Player.idGuild || Player.idTeam ? `<div class="image-slog" style="background-image: url(images/style/bottom-${ Player['slog_btm'] }.png)"></div>
                                             <div class="image-slog" style="background-image: url(images/style/central-${ Player['slog_cnt'] }.png); margin-top: -100%" ></div>
                                             <div class="image-slog" style="background-image: url(images/style/top-${ Player['slog_top'] }.png);  margin-top: -100%"></div>` : '') }
                                         
                                     </div>
-                                    <h1 class="guildName">${ (Player['idGuild'] ? Player['GuildName'] : '---') }</h1>
+                                    <h1 class="guildName">
+                                        ${ArenaFor == "Arena" ? (Player['idGuild'] ? Player['GuildName'] : '---') : ""}
+                                        ${ArenaFor == "ArenaTeam" ? Player.LeaderName : ""}
+                                        ${ArenaFor == "ArenaGuild" ? Player.LeaderName : ""}
+                                    </h1>
                                 </div>
-                                <div class="td ellipsis" style="width: 20%">${ Elkaisar['BaseData']['Promotion'][Player['porm']]['Title'] }</div>
+                                <div class="td ellipsis" style="width: 20%">${ Player['porm'] ? Elkaisar['BaseData']['Promotion'][Player['porm']]['Title'] : Player.mem_num}</div>
                                 <div class="td ellipsis" style="width: 11%">${ Player['arenaLvl'] }</div>
                                 <div class="td ellipsis" style="width: 13%">
-                                    <button class="full-btn-3x ellipsis startFightPlayer" data-id-player="${ Player['idPlayer'] }" >اختر</button>
+                                    ${ArenaFor == "Arena" ? `<button class="full-btn-3x ellipsis startFightPlayer" data-id-player="${ Player['idPlayer'] }" >اختر</button>` : ""}
+                                    ${ArenaFor == "ArenaTeam" ? `<button class="full-btn-3x ellipsis startFightTeam" data-id-team="${ Player['idTeam'] }" >اختر</button>` : ""}
+                                    ${ArenaFor == "ArenaGuild" ? `<button class="full-btn-3x ellipsis startFightGuild" data-id-guild="${ Player['idGuild'] }" >اختر</button>` : ""}
                                 </div>
                             </div>`;
         else
             RankListHt += `<div class="tr" rank="1"></div>`;
     }
-    $('#arenaChallangeFightList')['html'](`<div class="th">
+    $('#arenaChallangeFightList').html(`<div class="th">
                                             <div class="td_1 ellipsis" style="width: 11%">تصنيف</div>
-                                            <div class="td_2 ellipsis" style="width: 20%">الملك</div>
-                                            <div class="td_3 ellipsis" style="width: 25%">الحلف</div>
-                                            <div class="td_4 ellipsis" style="width: 20%">الرتبة</div>
+                                            <div class="td_2 ellipsis" style="width: 20%">${ArenaFor == "Arena" ? "الملك" : (ArenaFor == "ArenaTeam" ? "الفريق" : "الحلف")}</div>
+                                            <div class="td_3 ellipsis" style="width: 25%">${ArenaFor == "Arena" || ArenaFor == "ArenaGuild" ? "الحلف" : "الفريق"}</div>
+                                            <div class="td_4 ellipsis" style="width: 20%">${ArenaFor == "ArenaTeam" || ArenaFor == "ArenaGuild" ? "عدد الأعضاء" : "الرتب"}</div>
                                             <div class="td_4 ellipsis" style="width: 11%">مستوى</div>
                                             <div class="td_7 ellipsis" style="width: 13%">اختر</div>
                                         </div> 
                                     ${RankListHt}`);
 };
 
-Elkaisar['ArenaChallange']['ArenaField'] = function () {
-    var FileldList = `<div id="ArenaChallangeHome" class="fullBoxContent flex">
-                    <div class="col-i">
-                        <div id="arenaChallangeFightList" class="RankList"></div>
-                    </div>
-                    <div class="col-ii">
-                        <div class="row-i solidBg flex">
-                            <div class="arenaChallangePrief">
-                                <div>
-                                    <div class="li">
-                                        <label class="lable">وقت الانتهاء: </label>
-                                        <label class="time_counter value green" time-start="${ Math['floor'](Date['now']() / 0x3e8) }" time-end="${ (Math['floor'](new Date(TimeRest['restEvery12']())['getTime']() / 0x3e8) - 0x3c) }">${ changeTimeFormat(Math['floor'](new Date(TimeRest['restEvery12']())['getTime']() / 0x3e8) - 0x3c - Math['floor'](Date['now']() / 0x3e8)) }</label>
-                                    </div>
-                                    <div class="li flex">
-                                        <div class="lable">وقت الانتظار: </div>
-                                        ${ Date['now']() / 1000 - Elkaisar['ArenaChallange']['Arena']['Arena']['lastAttackTime'] < 0xa * 0x3c ?
-            `<div class="time_counter value red" time-start="${ Math['floor'](Date['now']() / 0x3e8) }" 
-                                            time-end="${ (Math['floor'](Date['now']() / 1000) + (Elkaisar['ArenaChallange']['Arena']['Arena']['lastAttackTime'] + 60 * 10 - Date['now']() / 1000)) }">
-                                            ${ changeTimeFormat(Math['floor'](Date['now']() / 1000) + (Elkaisar['ArenaChallange']['Arena']['Arena']['lastAttackTime'] + 60 * 10 - Date['now']() / 1000) - Math['floor'](Date['now']() / 0x3e8)) }
-                                        </div>
+
+
+Elkaisar.ArenaChallange.ArenaField = function () {
+
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+
+    var FileldList = `  <div id="ArenaChallangeHome" class="fullBoxContent flex">
+                            <div class="col-i">
+                                <div id="arenaChallangeFightList" class="RankList"></div>
+                            </div>
+                            <div class="col-ii">
+                                <div class="row-i solidBg flex">
+                                    <div class="arenaChallangePrief">
                                         <div>
-                                            <button id="SpeedUpArenaAtt" class="smallAcce" style="width: 20px; height: 20px; vertical-align: top; margin-right: 10px;"></button></div>` : '' }
-                                        
-                                    </div>
-                                    <div class="li">
-                                        <label class="lable"> عدد الجولات: </label>
-                                        <label class="value"> ${ Elkaisar['ArenaChallange']['Arena']['Arena']['attempt'] }/10</label>
-                                        <label><button id="useAttemptBox" class="pluse"></button></label>
-                                    </div>
-                                    <div class="li flex">
-                                        <label class="lable"> شراء جولات: </label>
-                                        <div id="buyArenaChallangeAtt" class="value flex"> 
-                                            <button class="full-btn-3x buyBtn" data-amount="10">+ 10</button>
-                                            <button class="full-btn-3x buyBtn" data-amount="25">+ 25</button>
+                                            <div class="li">
+                                                <label class="lable">وقت الانتهاء: </label>
+                                                <label class="time_counter value green"
+                                                    time-start="${ Math.floor(Date.now() / 0x3e8) }" 
+                                                    time-end="${ (Math.floor(new Date(TimeRest.restEvery12()).getTime() / 0x3e8) - 0x3c) }">
+                                                    ${ changeTimeFormat(Math.floor(new Date(TimeRest.restEvery12()).getTime() / 0x3e8) - 0x3c - Math.floor(Date.now() / 0x3e8)) }
+                                                </label>
+                                            </div>
+                                            <div class="li flex">
+                                                <div class="lable">وقت الانتظار: </div>
+                                                ${ Date.now() / 1000 - Elkaisar.ArenaChallange[ArenaFor].Arena['lastAttackTime'] < 0xa * 0x3c ?
+            `<div class="time_counter value red" time-start="${ Math.floor(Date.now() / 0x3e8) }" 
+                                                    time-end="${ (Math.floor(Date.now() / 1000) + (Elkaisar.ArenaChallange[ArenaFor].Arena['lastAttackTime'] + 60 * 10 - Date.now() / 1000)) }">
+                                                    ${ changeTimeFormat(Math.floor(Date.now() / 1000) + (Elkaisar.ArenaChallange[ArenaFor].Arena['lastAttackTime'] + 60 * 10 - Date.now() / 1000) - Math.floor(Date.now() / 0x3e8)) }
+                                                </div>
+                                                <div>
+                                                    <button id="SpeedUpArenaAtt" class="smallAcce" style="width: 20px; height: 20px; vertical-align: top; margin-right: 10px;"></button></div>` : '' }
+
+                                            </div>
+                                            <div class="li">
+                                                <label class="lable"> عدد الجولات: </label>
+                                                <label class="value"> ${ Elkaisar.ArenaChallange[ArenaFor].Arena['attempt'] }/10</label>
+                                                <label><button id="useAttemptBox" class="pluse"></button></label>
+                                            </div>
+                                            <div class="li flex">
+                                                <label class="lable"> شراء جولات: </label>
+                                                <div id="buyArenaChallangeAtt" class="value flex"> 
+                                                    <button class="full-btn-3x buyBtn" data-amount="10">+ 10</button>
+                                                    <button class="full-btn-3x buyBtn" data-amount="25">+ 25</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row-ii flex">
+                                    <div class="prizeListWrapper">
+                                        <h1 class="header-2 banner-red">جوائز الفوز</h1>
+                                        <ul> ${ Elkaisar.ArenaChallange.PrizeList(WorldUnit['prize']['PrizFor']['Win']) }</ul>
+                                    </div>
+                                    <div class="prizeListWrapper">
+                                        <h1 class="header-2 banner-red">جوائز الخسارة</h1>
+                                        <ul> ${ Elkaisar.ArenaChallange.PrizeList(WorldUnit['prize']['PrizFor']['Lose']) }</ul>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row-ii flex">
-                            <div class="prizeListWrapper">
-                                <h1 class="header-2 banner-red">جوائز الفوز</h1>
-                                <ul> ${ Elkaisar['ArenaChallange']['PrizeList'](WorldUnit['prize']['PrizFor']['Win']) }</ul>
-                            </div>
-                            <div class="prizeListWrapper">
-                                <h1 class="header-2 banner-red">جوائز الخسارة</h1>
-                                <ul> ${ Elkaisar['ArenaChallange']['PrizeList'](WorldUnit['prize']['PrizFor']['Lose']) }</ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-    $('#ArenaChallangeHome')['replaceWith'](FileldList);
-    Elkaisar['ArenaChallange']['getRankList']();
+                        </div>`;
+    $('#ArenaChallangeHome').replaceWith(FileldList);
+    Elkaisar.ArenaChallange['getRankList']();
 };
 
 
-Elkaisar['ArenaChallange']['ArenaRankingList'] = function (offset, OrderBy = 0) {
-    return $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/getRankList',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken'],
-            'offset': offset,
-            'orderBy': OrderBy
+Elkaisar.ArenaChallange.ArenaRankingList = function (offset, OrderBy = 0) {
+    return $.ajax({
+        url: API_URL + '/api/AArenaChallange/getRankList',
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            offset: offset,
+            orderBy: OrderBy
         },
-        'beforeSend': function (_0x16cf12) {},
-        'success': function (data, _0x51715d, _0x54c172) {
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
+        beforeSend: function (_0x16cf12) {},
+        success: function (data, _0x51715d, _0x54c172) {
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
 
-            var JsonData = JSON['parse'](data);
+            var JsonData = JSON.parse(data);
             var RankList = '';
 
             for (var ii = 0; ii < 10; ii++) {
@@ -49256,15 +49567,15 @@ Elkaisar['ArenaChallange']['ArenaRankingList'] = function (offset, OrderBy = 0) 
                                     <div class="td ellipsis" style="width: 10%">${ Elkaisar['BaseData']['Promotion'][JsonData[ii]['porm']]['Title'] }</div>
                                     <div class="td ellipsis" style="width: 10%">${ JsonData[ii]['lvl'] }</div>
                                     <div class="td ellipsis" style="width: 10%">${ JsonData[ii]['exp'] }</div>
-                                    <div class="td ellipsis" style="width: 10%">${ JsonData[ii]['lose'] }/${ JsonData[ii]['win'] }</div>
-                                    <div class="td ellipsis" style="width: 10%">${ JsonData[ii]['champion'] }</div>
+                                    <div class="td ellipsis" style="width: 10%">${ JsonData[ii].lose }/${ JsonData[ii]['win'] }</div>
+                                    <div class="td ellipsis" style="width: 10%">${ JsonData[ii].champion }</div>
                                 </div>`;
                 } else {
                     RankList += '<div class="tr" rank="1"></div>';
 
                 }
             }
-            $('#ArenaChallangeRankList')['html'](`<div class="th">
+            $('#ArenaChallangeRankList').html(`<div class="th">
                                                     <div class="td ellipsis" style="width: 10%">تصنيف</div>
                                                     <div class="td ellipsis" style="width: 20%">الملك</div>
                                                     <div class="td ellipsis" style="width: 20%">الحلف</div>
@@ -49275,15 +49586,15 @@ Elkaisar['ArenaChallange']['ArenaRankingList'] = function (offset, OrderBy = 0) 
                                                     <div class="td ellipsis" style="width: 10%">بطل</div>
                                                 </div>
                                             ${RankList} `);
-            $('#ArenaChallangeRankCPage')['attr']('data-offset', offset);
-            $('#ArenaChallangeRankCPage')['html'](Math['floor'](offset / 10) + 1);
+            $('#ArenaChallangeRankCPage').attr('data-offset', offset);
+            $('#ArenaChallangeRankCPage').html(Math.floor(offset / 10) + 1);
         }
     });
 };
 
 
 
-Elkaisar['ArenaChallange']['ArenaRanking'] = function () {
+Elkaisar.ArenaChallange.ArenaRanking = function () {
     var Box = `
                     <div id="ArenaChallangeHome" class="fullBoxContent">
                         <div id ="ArenaChallangeRankList" class="RankList">
@@ -49346,203 +49657,309 @@ Elkaisar['ArenaChallange']['ArenaRanking'] = function () {
                             </div>  
                         </div>
                     </div>`;
-    $('#ArenaChallangeHome')['replaceWith'](Box);
-    Elkaisar['ArenaChallange']['ArenaRankingList'](0);
+    $('#ArenaChallangeHome').replaceWith(Box);
+    Elkaisar.ArenaChallange['ArenaRankingList'](0);
 };
 
-$(document)['on']('click', '#ArenaChallangeBtnWrapper button', function () {
-    dialogBoxShow(Elkaisar['ArenaChallange']['DialogBox'](), function () {
-        Elkaisar['ArenaChallange']['ArenaProfile']();
+$(document).on('click', '#ArenaChallangeBtnWrapper button', function () {
+    dialogBoxShow(Elkaisar.ArenaChallange['DialogBox'](), function () {
+        $("#NavSelectList").html(Elkaisar.Ui.Select.make(
+                [
+                    {value: "Arena", title: "ميدان تحدى الملك"},
+                    {value: "ArenaTeam", title: "ميدان تحدى الفريق"},
+                    {value: "ArenaGuild", title: "ميدان تحدى الحلف"}
+                ],
+                0, {
+                    width: 158,
+                    height: 200
+                }));
+        Elkaisar.ArenaChallange.ArenaProfile();
     });
 });
 
-$(document)['on']('click', '#SArenaTroops', function () {
-    Elkaisar['ArenaChallange']['ArenaProfile']();
-    Elkaisar['ArenaChallange']['getArenaData']()['done'](function () {
-        Elkaisar['ArenaChallange']['ArenaProfile']();
+
+$(document).on("click", "#NavSelectList.SelectArenaFor .unit-option", function () {
+    setTimeout(function () {
+        $(".left-nav .selected").click();
+    }, 150);
+});
+
+
+$(document).on('click', '#SArenaTroops', function () {
+    Elkaisar.ArenaChallange.ArenaProfile();
+    Elkaisar.ArenaChallange.getArenaData().done(function () {
+        Elkaisar.ArenaChallange.ArenaProfile();
     });
 });
 
-$(document)['on']('click', '#SArenaField', function () {
-    Elkaisar['ArenaChallange']['ArenaField']();
-    Elkaisar['ArenaChallange']['getFightList']()['done'](function () {
-        Elkaisar['ArenaChallange']['ArenaField']();
+$(document).on('click', '#SArenaField', function () {
+    Elkaisar.ArenaChallange.ArenaField();
+    Elkaisar.ArenaChallange.getFightList().done(function () {
+        Elkaisar.ArenaChallange.ArenaField();
     });
 });
 
-$(document)['on']('click', '#SArenaRanking', function () {
-    Elkaisar['ArenaChallange']['ArenaRanking']();
+$(document).on('click', '#SArenaRanking', function () {
+    Elkaisar.ArenaChallange['ArenaRanking']();
 });
 
-$(document)['on']('click', '#selectHeroCity .unit-option', function () {
-    var idCity = $(this)['attr']('data-value');
-    Elkaisar['ArenaChallange']['HeroList'](idCity);
+$(document).on('click', '#selectHeroCity .unit-option', function () {
+    var idCity = $(this).attr('data-value');
+    Elkaisar.ArenaChallange.HeroList(idCity);
 });
 
 
-$(document)['on']('click', '#heroArenaSelectList .heroCityList .tr', function () {
-    if (!$('#refreshArenaHero')['is'](':disabled'))
-        return alert_box['failMessage']('عليك تفعيل زر التعديل اولا');
-    var idHero = $(this)['attr']('data-id-hero');
+$(document).on('click', '#heroArenaSelectList .heroCityList .tr', function () {
+    if (!$('#refreshArenaHero').is(':disabled'))
+        return alert_box.failMessage('عليك تفعيل زر التعديل اولا');
+    var idHero = $(this).attr('data-id-hero');
     if (!idHero)
         return;
-    $('#heroArenaSelectList .heroCityList .selected')['removeClass']('selected');
+    $('#heroArenaSelectList .heroCityList .selected').removeClass('selected');
     $(this)['addClass']('selected');
-    $('#cpGoRight')['removeAttr']('disabled');
-    $('#cpGoLeft')['attr']('disabled', 'disabled');
-    $('#cpGoUp')['attr']('disabled', 'disabled');
-    $('#cpGoDown')['attr']('disabled', 'disabled');
+    $('#cpGoRight').removeAttr('disabled');
+    $('#cpGoLeft').attr('disabled', 'disabled');
+    $('#cpGoUp').attr('disabled', 'disabled');
+    $('#cpGoDown').attr('disabled', 'disabled');
 
-    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr')['each'](function () {
-        var idHeroI = $(this)['attr']('data-id-hero');
+    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr').each(function () {
+        var idHeroI = $(this).attr('data-id-hero');
         if (!idHeroI)
             return;
         if (idHeroI == idHero) {
-            $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['removeClass']('selected');
+            $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').removeClass('selected');
             $(this)['addClass']('selected');
-            $('#cpGoLeft')['removeAttr']('disabled');
-            $('#cpGoUp')['removeAttr']('disabled');
-            $('#cpGoDown')['removeAttr']('disabled');
-            $('#cpGoRight')['attr']('disabled', 'disabled');
+            $('#cpGoLeft').removeAttr('disabled');
+            $('#cpGoUp').removeAttr('disabled');
+            $('#cpGoDown').removeAttr('disabled');
+            $('#cpGoRight').attr('disabled', 'disabled');
         }
     });
 });
 
 
-$(document)['on']('click', '#ArenaChallangeHome .arenaHeroList .hero-select-list .tr', function () {
-    if (!$('#refreshArenaHero')['is'](':disabled'))
-        return alert_box['failMessage']('عليك تفعيل زر التعديل اولا');
-    var idHero = $(this)['attr']('data-id-hero');
+$(document).on('click', '#ArenaChallangeHome .arenaHeroList .hero-select-list .tr', function () {
+    if (!$('#refreshArenaHero').is(':disabled'))
+        return alert_box.failMessage('عليك تفعيل زر التعديل اولا');
+    var idHero = $(this).attr('data-id-hero');
     if (!idHero)
         return;
-    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['removeClass']('selected');
+    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').removeClass('selected');
     $(this)['addClass']('selected');
-    $('#cpGoUp')['removeAttr']('disabled');
-    $('#cpGoDown')['removeAttr']('disabled');
-    $('#cpGoLeft')['removeAttr']('disabled');
-    $('#cpGoRight')['attr']('disabled', 'disabled');
+    $('#cpGoUp').removeAttr('disabled');
+    $('#cpGoDown').removeAttr('disabled');
+    $('#cpGoLeft').removeAttr('disabled');
+    $('#cpGoRight').attr('disabled', 'disabled');
 
-    var Hero = Elkaisar['Hero']['getHero'](idHero);
-    Elkaisar['ArenaChallange']['HeroList'](Hero['Hero']['id_city']);
+    var Hero = Elkaisar.Hero.getHero(idHero);
+    if (Hero)
+        Elkaisar.ArenaChallange.HeroList(Hero['Hero']['id_city']);
 
-    $('#heroArenaSelectList .heroCityList .tr')['each'](function () {
-        var idHeroI = $(this)['attr']('data-id-hero');
+    $('#heroArenaSelectList .heroCityList .tr').each(function () {
+        var idHeroI = $(this).attr('data-id-hero');
         if (!idHeroI)
             return;
         if (idHeroI == idHero) {
-            $('#heroArenaSelectList .heroCityList .selected')['removeClass']('selected');
+            $('#heroArenaSelectList .heroCityList .selected').removeClass('selected');
             $(this)['addClass']('selected');
-            $('#cpGoLeft')['removeAttr']('disabled');
-            $('#cpGoUp')['removeAttr']('disabled');
-            $('#cpGoDown')['removeAttr']('disabled');
-            $('#cpGoRight')['attr']('disabled', 'disabled');
+            $('#cpGoLeft').removeAttr('disabled');
+            $('#cpGoUp').removeAttr('disabled');
+            $('#cpGoDown').removeAttr('disabled');
+            $('#cpGoRight').attr('disabled', 'disabled');
         }
     });
 });
 
 
-$(document)['on']('click', '#cpGoRight', function () {
+$(document).on('click', '#cpGoRight', function () {
 
-    var idHero = $('#heroArenaSelectList .heroCityList .selected')['attr']('data-id-hero');
+    var idHero = $('#heroArenaSelectList .heroCityList .selected').attr('data-id-hero');
     if (!idHero)
         return;
-    if (Elkaisar['ArenaChallange']['Arena']['HeroList']['length'] >= Elkaisar['ArenaChallange']['Arena']['Arena']['lvl'])
-        return alert_box['failMessage']('وصل الميدان للحد الاقصى من الابطال');
+    const AllHeros = [].concat(Elkaisar.ArenaChallange.Arena.HeroList, Elkaisar.ArenaChallange.ArenaGuild.HeroList, Elkaisar.ArenaChallange.ArenaTeam.HeroList);
+    for (var ii in AllHeros) {
+        if (AllHeros[ii].id_hero == idHero)
+            return alert_box.failMessage("البطل موجود فى ميدان أخر لا يمكنك إضافة هذا البطل");
+    }
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
 
-    Elkaisar['ArenaChallange']['Arena']['HeroList']['push']({
-        'id_hero': idHero
+    if (Elkaisar.ArenaChallange[ArenaFor].HeroList.length >= Elkaisar.ArenaChallange[ArenaFor].Arena['lvl'] * Elkaisar.ArenaChallange.MaxHeroCountFactor[ArenaFor])
+        return alert_box.failMessage('وصل الميدان للحد الاقصى من الابطال');
+    const CuHero = Elkaisar.Hero.getHero(idHero);
+    Elkaisar.ArenaChallange[ArenaFor].HeroList.push({
+        'id_hero': idHero,
+        HeroName: CuHero.Hero.name,
+        PlayerName: Elkaisar.DPlayer.Player.name,
+        avatar: CuHero.Hero.avatar,
+        ultra_p: CuHero.Hero.ultra_p,
+        lvl: CuHero.Hero.lvl
+
     });
-    Elkaisar['ArenaChallange']['ArenaHeroList']();
+    Elkaisar.ArenaChallange.ArenaHeroList();
 });
 
 
-$(document)['on']('click', '#cpGoLeft', function () {
-    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['attr']('data-id-hero');
+$(document).on('click', '#cpGoLeft', function () {
+    
+    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').attr('data-id-hero');
     if (!idHero)
         return;
-    Elkaisar['ArenaChallange']['Arena']['HeroList']['forEach'](function (Hero, Index) {
-        if (Hero['id_hero'] == idHero)
-            Elkaisar['ArenaChallange']['Arena']['HeroList']['splice'](Index, 1);
-    }), Elkaisar['ArenaChallange']['ArenaHeroList']();
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+
+
+
+    if (!Elkaisar.Hero.getHero(idHero)) {
+        if (ArenaFor == 'ArenaTeam') {
+            if (!Elkaisar.Team.PlayerTeam || !Elkaisar.Team.PlayerTeam.Player)
+                return alert_box.failMessage("لست عضو فى أى فريق!");
+            if (Elkaisar.Team.PlayerTeam.Player.rank < Elkaisar.Team.RANK_DATA.LEADER)
+                return alert_box.confirmDialog("فقط قائد الفريق هو القادر على حذف أبطال اللاعبين الأخرين \n يمكنك فقط حذف أبطالك من الميدان!");
+        } else if (ArenaFor == 'ArenaGuild') {
+
+            if (!Elkaisar.DPlayer.GuildData)
+                return alert_box.failMessage("لست عضو فى أى حلف!");
+            if (Elkaisar.DPlayer.GuildData.rank < Guild.RANK_DATA.MENSTER)
+                return alert_box.confirmDialog("فقط رتبة وزير أو أعلى يمكنها حذف أبطال اللاعبين الأخرين \n يمكنك فقط حذف أبطالك من الميدان!");
+
+        }
+    }
+
+
+
+    Elkaisar.ArenaChallange[ArenaFor].HeroList.forEach(function (Hero, Index) {
+        if (Hero.id_hero == idHero)
+            Elkaisar.ArenaChallange[ArenaFor].HeroList.splice(Index, 1);
+    });
+
+    Elkaisar.ArenaChallange.ArenaHeroList();
 });
 
 
 
-$(document)['on']('click', '#cpGoUp', function () {
-    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['attr']('data-id-hero');
-    var Index = Number($('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['attr']('data-index'));
+$(document).on('click', '#cpGoUp', function () {
+
+    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').attr('data-id-hero');
+    var Index = Number($('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').attr('data-index'));
     if (!idHero)
         return;
     if (!Index || Index <= 0x0)
         return;
-    [Elkaisar['ArenaChallange']['Arena']['HeroList'][Index - 0x1], Elkaisar['ArenaChallange']['Arena']['HeroList'][Index]]
-            =
-            [Elkaisar['ArenaChallange']['Arena']['HeroList'][Index], Elkaisar['ArenaChallange']['Arena']['HeroList'][Index - 0x1]];
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
 
-    Elkaisar['ArenaChallange']['ArenaHeroList']();
-    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr')['each'](function () {
-        var idHeroI = $(this)['attr']('data-id-hero');
+    if (ArenaFor == 'ArenaTeam') {
+        if (!Elkaisar.Team.PlayerTeam || !Elkaisar.Team.PlayerTeam.Player)
+            return alert_box.failMessage("لست عضو فى أى فريق!");
+        if (Elkaisar.Team.PlayerTeam.Player.rank < Elkaisar.Team.RANK_DATA.LEADER)
+            return alert_box.confirmDialog("فقط قائد الفريق هو القادر على إعادة ترتيب الأبطال داخل الميدان!");
+    } else if (ArenaFor == 'ArenaGuild') {
+
+        if (!Elkaisar.DPlayer.GuildData)
+            return alert_box.failMessage("لست عضو فى أى حلف!");
+        if (Elkaisar.DPlayer.GuildData.rank < Guild.RANK_DATA.MENSTER)
+            return alert_box.confirmDialog("فقط رتبة وزير أو أعلى يمكنها إعادة ترتيب الأبطال داخل الميدان !");
+
+    }
+
+    [Elkaisar.ArenaChallange[ArenaFor].HeroList[Index - 0x1], Elkaisar.ArenaChallange[ArenaFor].HeroList[Index]]
+            =
+            [Elkaisar.ArenaChallange[ArenaFor].HeroList[Index], Elkaisar.ArenaChallange[ArenaFor].HeroList[Index - 0x1]];
+
+    Elkaisar.ArenaChallange.ArenaHeroList();
+    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr').each(function () {
+        var idHeroI = $(this).attr('data-id-hero');
         if (!idHeroI)
             return;
         if (idHeroI == idHero)
-            $(this)['trigger']('click');
+            $(this).trigger('click');
     });
 });
 
 
-$(document)['on']('click', '#cpGoDown', function () {
-    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['attr']('data-id-hero');
-    var Index = Number($('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected')['attr']('data-index'));
+$(document).on('click', '#cpGoDown', function () {
+    var idHero = $('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').attr('data-id-hero');
+    var Index = Number($('#ArenaChallangeHome .arenaHeroList .hero-select-list .selected').attr('data-index'));
     if (!idHero)
         return;
-    if (Index + 0x1 >= Elkaisar['ArenaChallange']['Arena']['HeroList']['length'])
+    if (Index + 0x1 >= Elkaisar.ArenaChallange.Arena.HeroList['length'])
         return;
-    [Elkaisar['ArenaChallange']['Arena']['HeroList'][Index], Elkaisar['ArenaChallange']['Arena']['HeroList'][Index + 1]]
-            =
-            [Elkaisar['ArenaChallange']['Arena']['HeroList'][Index + 1], Elkaisar['ArenaChallange']['Arena']['HeroList'][Index]];
-    Elkaisar['ArenaChallange']['ArenaHeroList']();
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
 
-    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr')['each'](function () {
-        var idHeroI = $(this)['attr']('data-id-hero');
+    if (ArenaFor == 'ArenaTeam') {
+        if (!Elkaisar.Team.PlayerTeam || !Elkaisar.Team.PlayerTeam.Player)
+            return alert_box.failMessage("لست عضو فى أى فريق!");
+        if (Elkaisar.Team.PlayerTeam.Player.rank < Elkaisar.Team.RANK_DATA.LEADER)
+            return alert_box.confirmDialog("فقط قائد الفريق هو القادر على إعادة ترتيب الأبطال داخل الميدان!");
+    } else if (ArenaFor == 'ArenaGuild') {
+
+        if (!Elkaisar.DPlayer.GuildData)
+            return alert_box.failMessage("لست عضو فى أى حلف!");
+        if (Elkaisar.DPlayer.GuildData.rank < Guild.RANK_DATA.MENSTER)
+            return alert_box.confirmDialog("فقط رتبة وزير أو أعلى يمكنها إعادة ترتيب الأبطال داخل الميدان !");
+
+    }
+    [Elkaisar.ArenaChallange[ArenaFor].HeroList[Index], Elkaisar.ArenaChallange[ArenaFor].HeroList[Index + 1]]
+            =
+            [Elkaisar.ArenaChallange[ArenaFor].HeroList[Index + 1], Elkaisar.ArenaChallange[ArenaFor].HeroList[Index]];
+    Elkaisar.ArenaChallange.ArenaHeroList();
+
+    $('#ArenaChallangeHome .arenaHeroList .hero-select-list .tr').each(function () {
+        var idHeroI = $(this).attr('data-id-hero');
         if (!idHeroI)
             return;
         if (idHeroI == idHero)
-            $(this)['trigger']('click');
+            $(this).trigger('click');
     });
 });
 
 
-$(document)['on']('click', '#refreshArenaHero', function () {
+$(document).on('click', '#refreshArenaHero', function () {
     alert_box['confirmDialog']('تاكيد تعديل ابطال الميدان', function () {
-        $('#saveArenaHero')['removeAttr']('disabled');
-        $('#refreshArenaHero')['attr']('disabled', 'disabled');
+        $('#saveArenaHero').removeAttr('disabled');
+        $('#refreshArenaHero').attr('disabled', 'disabled');
     });
 });
 
 
-$(document)['on']('click', '#saveArenaHero', function () {
-    alert_box['confirmDialog']('تأكيد حفظ التعديلات على البطل', function () {
+
+$(document).on('click', '#saveArenaHero', function () {
+
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+
+    alert_box.confirmDialog('تأكيد حفظ التعديلات على البطل', function () {
         var idHeros = [];
-        for (var ii in Elkaisar['ArenaChallange']['Arena']['HeroList'])
-            idHeros['push'](Elkaisar.ArenaChallange.Arena.HeroList[ii]['id_hero']);
-        $['ajax']({
-            'url': API_URL + '/api/AArenaChallange/saveHeroList',
-            'data': {
-                'server': Elkaisar['Config']['idServer'],
-                'token': Elkaisar['Config']['OuthToken'],
-                'HeroList': idHeros['join']('-')
+        for (var ii in Elkaisar.ArenaChallange[ArenaFor].HeroList)
+            idHeros.push(Elkaisar.ArenaChallange[ArenaFor].HeroList[ii]['id_hero']);
+        $.ajax({
+            url: `${NODE_URL}/api/AArenaChallange/saveHeroList`,
+            data: {
+                server: Elkaisar.Config.idServer,
+                token: Elkaisar.Config.OuthToken,
+                HeroList: idHeros.join('-'),
+                ArenaFor: ArenaFor
             },
             'type': 'POST',
-            'beforeSend': function (_0x5880cf) {},
-            'success': function (data, _0x5bc68d, _0x31f760) {
-                if (!Elkaisar['LBase']['isJson'](data))
-                    return Elkaisar['LBase']['Error'](data);
-                var JsonData = JSON['parse'](data);
+            beforeSend: function (_0x5880cf) {},
+            success: function (data, _0x5bc68d, _0x31f760) {
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+                var JsonData = JSON.parse(data);
                 if (JsonData['state'] == 'error_1')
-                    alert_box['failMessage']('عدد الابطال اكبر من مستوى الميدان');
+                    alert_box.failMessage('عدد الابطال اكبر من مستوى الميدان');
 
-                Elkaisar['ArenaChallange']['getArenaData']()['done'](function () {
-                    Elkaisar['ArenaChallange']['ArenaProfile']();
+                if (JsonData.state == "ok")
+                    alert_box.succesMessage("تم حفظ الأبطال بالميدان");
+                Elkaisar.ArenaChallange.getArenaData().done(function () {
+                    Elkaisar.ArenaChallange.ArenaProfile();
                 });
             }
         });
@@ -49550,38 +49967,122 @@ $(document)['on']('click', '#saveArenaHero', function () {
 });
 
 
-$(document)['on']('click', '.startFightPlayer', function () {
-    var idPlayerToFight = $(this)['attr']('data-id-player');
-    $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/fightSomeOne',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken'],
-            'idPlayerToFight': idPlayerToFight
+$(document).on('click', '.startFightPlayer', function () {
+    var idPlayerToFight = $(this).attr('data-id-player');
+    $.ajax({
+        url: `${NODE_URL}/api/AArenaChallange/fightSomeOne`,
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            idPlayerToFight: idPlayerToFight
         },
         'type': 'POST',
-        'beforeSend': function (_0x151a84) {},
-        'success': function (data, _0x142eb5, _0x5a508d) {
+        beforeSend: function (_0x151a84) {},
+        success: function (data, _0x142eb5, _0x5a508d) {
 
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
 
-            var JsonData = JSON['parse'](data);
+            var JsonData = JSON.parse(data);
 
             if (JsonData['state'] == 'ok')
-                Elkaisar['ArenaChallange']['getArenaData'](function () {
-                    Elkaisar['ArenaChallange']['ArenaField']();
+                Elkaisar.ArenaChallange.getArenaData(function () {
+                    Elkaisar.ArenaChallange.ArenaField();
                 });
             else if (JsonData['state'] == 'error_1') {
-                alert_box['failMessage']('لا يمكنك قتال لاعب فى هذا المستوى');
+                alert_box.failMessage('لا يمكنك قتال لاعب فى هذا المستوى');
             } else if (JsonData['state'] == 'error_2') {
-                alert_box['failMessage']('لا يمكنك قتال لاعب فى هذا المستوى');
+                alert_box.failMessage('لا يمكنك قتال لاعب فى هذا المستوى');
             } else if (JsonData['state'] == 'error_3') {
-                alert_box['failMessage']('عدد الابطال غير كافى للقتال');
+                alert_box.failMessage('عدد الابطال غير كافى للقتال');
             } else if (JsonData['state'] == 'error_4') {
-                alert_box['failMessage']('وقت الانتظار لم ينتهى');
+                alert_box.failMessage('وقت الانتظار لم ينتهى');
             } else if (JsonData['state'] == 'error_5') {
-                alert_box['failMessage']('لا يوجد محاولات كافية');
+                alert_box.failMessage('لا يوجد محاولات كافية');
+            }
+
+
+
+
+        }
+    });
+});
+
+$(document).on('click', '.startFightTeam', function () {
+
+    var idTeamToFight = $(this).attr('data-id-team');
+    $.ajax({
+        url: `${NODE_URL}/api/AArenaChallange/fightSomeTeam`,
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            idTeamToFight: idTeamToFight
+        },
+        'type': 'POST',
+        beforeSend: function (_0x151a84) {},
+        success: function (data, _0x142eb5, _0x5a508d) {
+
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonData = JSON.parse(data);
+
+            if (JsonData['state'] == 'ok')
+                Elkaisar.ArenaChallange.getArenaData(function () {
+                    Elkaisar.ArenaChallange.ArenaField();
+                });
+            else if (JsonData['state'] == 'error_1') {
+                alert_box.failMessage('لا يمكنك قتال فريق فى هذا المستوى');
+            } else if (JsonData['state'] == 'error_2') {
+                alert_box.failMessage('لا يمكنك قتال فريق فى هذا المستوى');
+            } else if (JsonData['state'] == 'error_3') {
+                alert_box.failMessage('عدد الابطال غير كافى للقتال');
+            } else if (JsonData['state'] == 'error_4') {
+                alert_box.failMessage('وقت الانتظار لم ينتهى');
+            } else if (JsonData['state'] == 'error_5') {
+                alert_box.failMessage('لا يوجد محاولات كافية');
+            }
+
+
+
+
+        }
+    });
+});
+
+$(document).on('click', '.startFightGuild', function () {
+
+    var idGuildToFight = $(this).attr('data-id-guild');
+    $.ajax({
+        url: `${NODE_URL}/api/AArenaChallange/fightSomeGuild`,
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            idGuildToFight: idGuildToFight
+        },
+        'type': 'POST',
+        beforeSend: function (_0x151a84) {},
+        success: function (data, _0x142eb5, _0x5a508d) {
+
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+
+            var JsonData = JSON.parse(data);
+
+            if (JsonData['state'] == 'ok')
+                Elkaisar.ArenaChallange.getArenaData(function () {
+                    Elkaisar.ArenaChallange.ArenaField();
+                });
+            else if (JsonData['state'] == 'error_1') {
+                alert_box.failMessage('لا يمكنك قتال حلف فى هذا المستوى');
+            } else if (JsonData['state'] == 'error_2') {
+                alert_box.failMessage('لا يمكنك قتال حلف فى هذا المستوى');
+            } else if (JsonData['state'] == 'error_3') {
+                alert_box.failMessage('عدد الابطال غير كافى للقتال');
+            } else if (JsonData['state'] == 'error_4') {
+                alert_box.failMessage('وقت الانتظار لم ينتهى');
+            } else if (JsonData['state'] == 'error_5') {
+                alert_box.failMessage('لا يوجد محاولات كافية');
             }
 
 
@@ -49594,45 +50095,50 @@ $(document)['on']('click', '.startFightPlayer', function () {
 
 
 
-$(document)['on']('click', '#ArenaChallangeRankNav .right-btn', function () {
-    var offset = Number($('#ArenaChallangeRankCPage')['attr']('data-offset')) || 0x0;
-    Elkaisar['ArenaChallange']['ArenaRankingList'](Math['min'](offset + 10, Elkaisar['ServerData']['player_num'] - Elkaisar['ServerData']['player_num'] % 10));
+$(document).on('click', '#ArenaChallangeRankNav .right-btn', function () {
+    var offset = Number($('#ArenaChallangeRankCPage').attr('data-offset')) || 0x0;
+    Elkaisar.ArenaChallange.ArenaRankingList(Math['min'](offset + 10, Elkaisar['ServerData']['player_num'] - Elkaisar['ServerData']['player_num'] % 10));
 });
 
-$(document)['on']('click', '#ArenaChallangeRankNav .left-btn', function () {
-    var offset = Number($('#ArenaChallangeRankCPage')['attr']('data-offset')) || 0x0;
-    Elkaisar['ArenaChallange']['ArenaRankingList'](Math['max'](offset - 0xa, 0));
+$(document).on('click', '#ArenaChallangeRankNav .left-btn', function () {
+    var offset = Number($('#ArenaChallangeRankCPage').attr('data-offset')) || 0x0;
+    Elkaisar.ArenaChallange.ArenaRankingList(Math['max'](offset - 0xa, 0));
 });
 
-$(document)['on']('click', '#ArenaChallangeRankNav .most-left-btn', function () {
-    Elkaisar['ArenaChallange']['ArenaRankingList'](0);
+$(document).on('click', '#ArenaChallangeRankNav .most-left-btn', function () {
+    Elkaisar.ArenaChallange.ArenaRankingList(0);
 });
 
-$(document)['on']('click', '#ArenaChallangeRankNav .most-right-btn', function () {
-    Elkaisar['ArenaChallange']['ArenaRankingList'](Elkaisar['ServerData']['player_num'] - Elkaisar['ServerData']['player_num'] % 10);
+$(document).on('click', '#ArenaChallangeRankNav .most-right-btn', function () {
+    Elkaisar.ArenaChallange.ArenaRankingList(Elkaisar['ServerData']['player_num'] - Elkaisar['ServerData']['player_num'] % 10);
 });
 
-$(document)['on']('click', '#buyArenaChallangeAtt .buyBtn', function () {
 
-    var amount = $(this)['attr']('data-amount');
-    $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/buyBattelAttempt',
-        'data': {
-            'amount': amount,
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken']
+$(document).on('click', '#buyArenaChallangeAtt .buyBtn', function () {
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+    var amount = $(this).attr('data-amount');
+    $.ajax({
+        url: API_URL + '/api/AArenaChallange/buyBattelAttempt',
+        data: {
+            amount: amount,
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            ArenaFor: ArenaFor
         },
         'type': 'POST',
-        'success': function (data, _0x1cb305, _0x54b6b2) {
+        success: function (data, _0x1cb305, _0x54b6b2) {
 
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
-            var JsonData = JSON['parse'](data);
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            var JsonData = JSON.parse(data);
 
             if (JsonData['state'] === 'ok') {
 
-                Elkaisar['ArenaChallange']['Arena']['Arena'] = JsonData['Arena'];
-                Elkaisar['ArenaChallange']['ArenaField']();
+                Elkaisar.ArenaChallange.getArenaData(function () {
+                    Elkaisar.ArenaChallange.ArenaField();
+                });
                 Player_profile['getPlayerBaseData']();
                 alert_box['succesMessage']('+' + amount + ' محاولة');
 
@@ -49647,24 +50153,31 @@ $(document)['on']('click', '#buyArenaChallangeAtt .buyBtn', function () {
 });
 
 
-$(document)['on']('click', '#SpeedUpArenaAtt', function () {
-    alert_box['confirmDialog']('تأكيد  تسريع انتظار الجولة مقابل 2 ذهبة', function () {
-        $['ajax']({
-            'url': API_URL + '/api/AArenaChallange/speedUpAtte',
-            'data': {
-                'token': Elkaisar['Config']['OuthToken'],
-                'server': Elkaisar['Config']['idServer']
+$(document).on('click', '#SpeedUpArenaAtt', function () {
+
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+    alert_box.confirmDialog('تأكيد  تسريع انتظار الجولة مقابل 2 ذهبة', function () {
+        $.ajax({
+            url: API_URL + '/api/AArenaChallange/speedUpAtte',
+            data: {
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer,
+                ArenaFor: ArenaFor
             },
-            'success': function (data, _0x2b9276, _0x41a972) {
-                if (!Elkaisar['LBase']['isJson'](data))
-                    return Elkaisar['LBase']['Error'](data);
-                var JsonData = JSON['parse'](data);
+            type: 'POST',
+            success: function (data, _0x2b9276, _0x41a972) {
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+                var JsonData = JSON.parse(data);
                 if (JsonData['state'] === 'ok') {
 
-                    Elkaisar['ArenaChallange']['Arena']['Arena'] = JsonData['Arena'];
-                    Elkaisar['ArenaChallange']['ArenaField']();
-                    Player_profile['getPlayerBaseData']();
-                    alert_box['succesMessage']('تسريع المحاولة');
+                    Elkaisar.ArenaChallange.getArenaData(function () {
+                        Elkaisar.ArenaChallange.ArenaField();
+                    });
+                    Player_profile.getPlayerBaseData();
+                    alert_box.succesMessage('تسريع المحاولة');
 
                 }
             }
@@ -49672,32 +50185,36 @@ $(document)['on']('click', '#SpeedUpArenaAtt', function () {
     });
 });
 
-Elkaisar['ArenaChallange']['addExpByBox'] = function (idItem) {
-    $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/addExpByBox',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken'],
-            'Item': idItem
+Elkaisar.ArenaChallange.addExpByBox = function (idItem) {
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+    $.ajax({
+        url: API_URL + '/api/AArenaChallange/addExpByBox',
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            Item: idItem,
+            ArenaFor: ArenaFor
         },
         'type': 'POST',
-        'success': function (data, _0x4a90e5, _0x47cebb) {
+        success: function (data, _0x4a90e5, _0x47cebb) {
 
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
 
             $('.close-alert')['click']();
             $('.close_select_menu')['click']();
 
-            var JsonData = JSON['parse'](data);
+            var JsonData = JSON.parse(data);
             if (JsonData['state'] == 'ok') {
                 alert_box['succesMessage']('خبرة +' + JsonData['Exp']);
-                Elkaisar['ArenaChallange']['getArenaData']()['done'](function () {
-                    Elkaisar['ArenaChallange']['ArenaProfile']();
+                Elkaisar.ArenaChallange.getArenaData().done(function () {
+                    Elkaisar.ArenaChallange.ArenaProfile();
                 });
                 Matrial['takeFrom'](idItem, 1);
             } else if (JsonData['state'] == 'error_0') {
-                alert_box['failMessage']('لا توجد مواد كافية');
+                alert_box.failMessage('لا توجد مواد كافية');
             }
 
         }
@@ -49705,65 +50222,70 @@ Elkaisar['ArenaChallange']['addExpByBox'] = function (idItem) {
 };
 
 
-Elkaisar['ArenaChallange']['addAttByBox'] = function (idItem) {
-    $['ajax']({
-        'url': API_URL + '/api/AArenaChallange/addAttByBox',
-        'data': {
-            'server': Elkaisar['Config']['idServer'],
-            'token': Elkaisar['Config']['OuthToken'],
-            'Item': idItem
+Elkaisar.ArenaChallange.addAttByBox = function (idItem) {
+    var ArenaFor = $("#NavSelectList .select-list").attr("data-value");
+    if (!ArenaFor)
+        ArenaFor = "Arena";
+    
+    $.ajax({
+        url: API_URL + '/api/AArenaChallange/addAttByBox',
+        data: {
+            server: Elkaisar.Config.idServer,
+            token: Elkaisar.Config.OuthToken,
+            'Item': idItem,
+            ArenaFor : ArenaFor
         },
         'type': 'POST',
-        'success': function (data, _0x326d67, _0x2f42d6) {
+        success: function (data, _0x326d67, _0x2f42d6) {
 
-            if (!Elkaisar['LBase']['isJson'](data))
-                return Elkaisar['LBase']['Error'](data);
+            if (!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
 
             $('.close-alert')['click']();
             $('.close_select_menu')['click']();
 
-            var JsonData = JSON['parse'](data);
+            var JsonData = JSON.parse(data);
             if (JsonData['state'] == 'ok') {
                 alert_box['succesMessage']('محاولة +' + JsonData['Att']);
                 Matrial['takeFrom'](idItem, 0x1);
-                Elkaisar['ArenaChallange']['getArenaData'](function () {
-                    Elkaisar['ArenaChallange']['ArenaField']();
+                Elkaisar.ArenaChallange.getArenaData(function () {
+                    Elkaisar.ArenaChallange.ArenaField();
                 });
-            } else if(JsonData['state'] == 'error_0'){
-                alert_box['failMessage']('لا توجد مواد كافية');
+            } else if (JsonData['state'] == 'error_0') {
+                alert_box.failMessage('لا توجد مواد كافية');
             }
-                
+
         }
     });
 };
 
 
-$(document)['on']('click', '#useArenaExpBox', function () {
+$(document).on('click', '#useArenaExpBox', function () {
     var Items = ['arena_exp_1', 'arena_exp_5', 'arena_exp_10', 'arena_exp_25'];
     BoxOfMatrialToUse(Items, 'addArenaExp');
 });
 
-$(document)['on']('click', '#useAttemptBox', function () {
+$(document).on('click', '#useAttemptBox', function () {
     var Items = ['arena_attempt_1', 'arena_attempt_5', 'arena_attempt_10'];
     BoxOfMatrialToUse(Items, 'addArenaAtt');
 });
 
-$(document)['on']('click', '#heroArenaSelectList .showCityHero', function (e) {
+$(document).on('click', '#heroArenaSelectList .showCityHero', function (e) {
     e['stopPropagation']();
-    var idHero = $(this)['attr']('data-id-hero');
-    Elkaisar['Hero']['showHeroDetail'](Elkaisar['Hero']['getHero'](idHero));
+    var idHero = $(this).attr('data-id-hero');
+    Elkaisar['Hero']['showHeroDetail'](Elkaisar.Hero.getHero(idHero));
 });
 
 
-$(document)['on']('click', '#arenaHeroList .showCityHero', function (e) {
+$(document).on('click', '#arenaHeroList .showCityHero', function (e) {
     e['stopPropagation']();
-    var idHero = $(this)['attr']('data-id-hero');
-    var Hero = Elkaisar['Hero']['getHero'](idHero);
+    var idHero = $(this).attr('data-id-hero');
+    var Hero = Elkaisar.Hero.getHero(idHero);
     var HeroArmy = Hero['Army'];
-    
-    for (var Index in Elkaisar['ArenaChallange']['Arena']['HeroList']) {
-        if (Elkaisar['ArenaChallange']['Arena']['HeroList'][Index]['id_hero'] == idHero)
-            HeroArmy = Elkaisar['ArenaChallange']['Arena']['HeroList'][Index];
+
+    for (var Index in Elkaisar.ArenaChallange.Arena.HeroList) {
+        if (Elkaisar.ArenaChallange.Arena.HeroList[Index]['id_hero'] == idHero)
+            HeroArmy = Elkaisar.ArenaChallange.Arena.HeroList[Index];
     }
     var HeroRev = {
         'Hero': Hero['Hero'],
@@ -49808,7 +50330,7 @@ Elkaisar.Team.getPlayerTeam = function () {
 
         },
         success: function (data, textStatus, jqXHR) {
-            console.log(data);
+            
             if (!Elkaisar.LBase.isJson(data))
                 return Elkaisar.LBase.Error(data);
 
@@ -50147,6 +50669,16 @@ Elkaisar.Team.TeamHomePage = function () {
                                         ${PlayerTeam.TeamMember[1] ? `
                                             <li>
                                                 <div class="PlayerAvater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamMember[1].avatar]});">
+                                                    <div class="playerSettingIcon TeamMemberSettingIcon">
+                                                        <button class="btn"></button>
+                                                    </div>
+                                                    <div class="settingList">
+                                                        <ul>
+                                                            <li>ترقية    &nbsp;&nbsp;↪</li>
+                                                            <li>نسبة الجوائز</li>
+                                                            <li class="FireGuildMemeber" data-id-player="${PlayerTeam.TeamMember[1].id_player}">طرد</li>
+                                                        </ul>
+                                                    </div>
                                                     <div class="PlayerAvaterBg"></div>
                                                     <div class="PlayerTitle stroke" style="background-position-y: -48px;">مساعد القائد</div>
                                                 </div>
@@ -50158,6 +50690,16 @@ Elkaisar.Team.TeamHomePage = function () {
                                         ${PlayerTeam.TeamMember[2] ? `
                                             <li>
                                                 <div class="PlayerAvater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamMember[2].avatar]});">
+                                                    <div class="playerSettingIcon TeamMemberSettingIcon">
+                                                        <button class="btn"></button>
+                                                    </div>
+                                                    <div class="settingList">
+                                                        <ul>
+                                                            <li>ترقية    &nbsp;&nbsp;↪</li>
+                                                            <li>نسبة الجوائز</li>
+                                                            <li class="FireGuildMemeber" data-id-player="${PlayerTeam.TeamMember[2].id_player}">طرد</li>
+                                                        </ul>
+                                                    </div>
                                                     <div class="PlayerAvaterBg"></div>
                                                     <div class="PlayerTitle stroke" style="background-position-y: -72px;">مستشار القائد</div>
                                                 </div>
@@ -50168,7 +50710,17 @@ Elkaisar.Team.TeamHomePage = function () {
                                         
                                         ${PlayerTeam.TeamMember[3] ? `
                                             <li>
-                                                <div class="PlayerAvater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamMember[2].avatar]});">
+                                                <div class="PlayerAvater" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[PlayerTeam.TeamMember[3].avatar]});">
+                                                    <div class="playerSettingIcon TeamMemberSettingIcon">
+                                                        <button class="btn"></button>
+                                                    </div>
+                                                    <div class="settingList">
+                                                        <ul>
+                                                            <li>ترقية    &nbsp;&nbsp;↪</li>
+                                                            <li>نسبة الجوائز</li>
+                                                            <li class="FireGuildMemeber" data-id-player="${PlayerTeam.TeamMember[3].id_player}">طرد</li>
+                                                        </ul>
+                                                    </div>
                                                     <div class="PlayerAvaterBg"></div>
                                                     <div class="PlayerTitle stroke" style="background-position-y: -96px;">مقاتل الفريق</div>
                                                 </div>
@@ -51384,6 +51936,52 @@ $(document).on("click", "#PlayerTeamLeave", function () {
 
 });
 
+$(document).on("click", "#destroy-t", function () {
+
+    if (Elkaisar.Team.PlayerTeam.Player.rank != Elkaisar.Team.RANK_DATA.LEADER) 
+        return alert_box.confirmMessage("يجب انت تكون مدير الفريق   لتتمكن من تفكيك الفريق");
+    
+
+    alert_box.confirmDialog("تاكيد تفكيك الفريق! , اذا تم تاكيد تفكيك الفريق سيتم طرد جميع الاعضاء ولن تتمكن من  ارجاع الفريق ثانية", function () {
+
+        $.ajax({
+
+            url: `${NODE_URL}/api/ATeam/disbandTeam`,
+            data: {
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
+            },
+            type: 'POST',
+            beforeSend: function (xhr) {},
+            success: function (data, textStatus, jqXHR) {
+
+                if (!Elkaisar.LBase.isJson(data))
+                    return Elkaisar.LBase.Error(data);
+
+                var JsonObject = JSON.parse(data);
+
+                if (JsonObject.state === "ok") {
+
+                    Elkaisar.Team.getPlayerTeam();
+                    alert_box.succesMessage("تم تفكيك الفريق بنجاح");
+                    $(".close_dialog").click();
+
+                } else {
+                    alert(data);
+                }
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+
+        });
+
+    });
+
+});
+
 
 $(document).on("click", "#ShowAvailableTeams", function (){
    $("#select_from").remove();
@@ -51532,51 +52130,103 @@ $(document).on("click", ".cancelTeamInv", function (){
     
 });
 
-Elkaisar.Ui.Select.menuList = function (list, selectedIndex){
+
+
+$(document).on("click", ".TeamMemberSettingIcon", function (){
+    $(this).next().slideToggle(); 
+});
+
+$(document).on("click", ".FireGuildMemeber", function (){
+   
+    var idPlayer = $(this).attr("data-id-player");
+    $.ajax({
+        url: `${NODE_URL}/api/ATeam/fireTeamMember`,
+        data:{
+            idMember: idPlayer,
+            token: Elkaisar.Config.OuthToken
+        },
+        type: 'POST',
+        beforeSend: function (xhr) {
+            
+        },
+        success: function (data, textStatus, jqXHR) {
+            $("#TeamHeaderNavBar .selected").click();
+            
+            if(!Elkaisar.LBase.isJson(data))
+                return Elkaisar.LBase.Error(data);
+            
+            var JsonObject = JSON.parse(data);
+            
+            if(JsonObject.state == "ok"){
+                alert_box.succesMessage("تم طرد اللاعب بنجاح");
+            }else if(JsonObject.state == "error_0"){
+                alert_box.failMessage("اللاعب ليس من ضمن أعضاء الفريق");
+            }else if(JsonObject.state == "error_1"){
+                alert_box.failMessage("لست مدير الفريق");
+            }else if(JsonObject.state == "error_2"){
+                alert_box.failMessage("لست قائد الفريق");
+            }else if(JsonObject.state == "error_3"){
+                alert_box.failMessage("لا يمكنك طرد قائد الفريق");
+            }
+            
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            
+        }
+    });
     
+});Elkaisar.Ui.Select.menuList = function (list, selectedIndex) {
+
     var optionList = "";
-    
-    for(var iii in list){
-        if(Number(iii) === Number(selectedIndex)){
+
+    for (var iii in list) {
+        if (Number(iii) === Number(selectedIndex)) {
             optionList += `<li class="unit-option selected-op" data-title="${list[iii].title}" data-value="${list[iii].value}">${list[iii].title}</li>`;
-        }else{
+        } else {
             optionList += `<li class="unit-option" data-title="${list[iii].title}" data-value="${list[iii].value}" data-index="${iii}">${list[iii].title}</li>`;
         }
     }
-    
-    return `<ul>${optionList}</ul>`;
+
+    return `<ul style="display : none">${optionList}</ul>`;
 };
 
 
-Elkaisar.Ui.Select.make = function (list , selectedIndex){
-    
-    selectedIndex = selectedIndex || 0;
-    
-    
-    
+Elkaisar.Ui.Select.make = function (list, selectedIndex, Style) {
+
+    if (typeof selectedIndex != "number")
+        selectedIndex = 0;
+    var Height = 266;
+    var Width   = 160;
+    if(typeof Style == "object"){
+        Height = Style.height || 266;
+        Width  = Style.width  || 160;
+    }
+        
+
+
     return `
-            <div class="select-list" data-value="${list[selectedIndex].value}" data-active="false">
+            <div class="select-list" data-value="${list[selectedIndex].value}" data-active="false" data-height="${Height}" data-width="${Width}">
                 <div class="select select-input">
                     <div class="value">${list[selectedIndex].title}</div>
                 </div>
-                <div class="option">${this.menuList(list, selectedIndex)}</div>
+                <div class="option" style="width: ${Width}px;" >${this.menuList(list, selectedIndex)}</div>
             </div>`;
-    
+
 };
 
 
-$(document).on("click", ".select-list .unit-option", function (){
-    
+$(document).on("click", ".select-list .unit-option", function () {
+
     var title = $(this).attr("data-title");
     var value = $(this).attr("data-value");
-    
-    $(".select-list .unit-option").removeClass("selected-op");
+    $(this).parents(".select-list").children('.option').children("ul").children().removeClass("selected-op");
     $(this).addClass("selected-op");
-    
-   $(".select-list").attr("data-value", value);
-   $(".select-list .value").html(title);
-    
-    
+    $(this).parents(".select-list").attr("data-value", value);
+    $(this).parents(".select-list").children('.select-input').children('.value').html(title);
+    //$(".select-list .value").html(title);
+
+
 });
 
 $(document)['on']('click', '.uiCheckedBox', function () {
