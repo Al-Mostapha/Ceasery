@@ -27,8 +27,6 @@
 ?>
 <!DOCTYPE html>
 <html>
-
-
     <title>قيصر الشرق</title>
     <link rel="icon" type="image/png" href="images/favicon.png" sizes="128×128">
     <meta charset="utf-8">

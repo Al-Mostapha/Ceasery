@@ -19,6 +19,12 @@ function cryptUserId($string, $action = 'e') {
            return 0;
        }
        
+       if($Player[0]["panned"] > time()){
+            file_put_contents("PannedPlayer4.txt", $string, FILE_APPEND);
+           exit();
+           return;
+       }
+       
        return $Player[0]["id_player"];
         
     }

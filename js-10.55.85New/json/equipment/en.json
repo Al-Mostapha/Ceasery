@@ -1,0 +1,2414 @@
+{
+    "loy": {
+        "sword": {
+            "image": "images/equip/equip0.jpg",
+            "orid": 4,
+            "name": "Loyal Sword",
+            "desc": "Increases offense and damage of the troop, Sagittarius(i) can learn Dispersion.\nDispersion: Enable to attack all enemy units at once but causing only 15% of the usual damage of the as when it's hitting just one particular unit.(Dispersion is only used against divisions if the damage to their HP is great than Sagittarii’ regular.)",
+            "long_desc": "A great sword, noble treasure from the Senate, its power will frighten the enemy."
+        },
+        "helmet": {
+            "image": "images/equip/equip1.jpg",
+            "orid": 1,
+            "name": "خوذة الولاء",
+            "desc": "معدات الولاء او الاخلاص كانت حجر الاساس عند القادة الرومان لانشاء الامبراطورية الخاصة بيهم",
+            "long_desc": "بعد انهزام الملوك القياصرة فى المعارك المخاضة يتم الاعتماد على بشكل كبير عى المعدات لمضاعفة قوة الجيوش وبث روح الحماس فى قلوبهم وبداية لذالك كانت اهم المعدات هى معدات الولاء "
+        },
+        "shield": {
+            "image": "images/equip/equip2.jpg",
+            "orid": 2,
+            "name": "Loyal Armour",
+            "desc": "Increases defense and HP of the troop.",
+            "long_desc": "A great armour, noble treasure from the Senate, it can increase the protection."
+        },
+        "armor": {
+            "image": "images/equip/equip3.jpg",
+            "orid": 5,
+            "name": "Loyal Shield",
+            "desc": "Increases defense and HP of the troop.",
+            "long_desc": "A great shield, noble treasure from the Senate, made of wood, fur and metal make it stronger."
+        },
+        "boot": {
+            "image": "images/equip/equip4.jpg",
+            "orid": 3,
+            "name": "Loyal Shoes",
+            "desc": "Increases offense and defense of the troop.",
+            "long_desc": "Great shoes, noble treasure from the Senate, made of fur, good in offense and defence."
+        },
+        "sec": {
+            "belt": [
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 55,
+                    "name": "Loyal Belt (Lv1)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Loyal Belt (Lv9), Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 56,
+                    "name": "Loyal Belt (Lv2)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Loyal Belt (Lv9), Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 57,
+                    "name": "Loyal Belt (Lv3)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Loyal Belt (Lv9), Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 70,
+                    "name": "Loyal Belt (Lv4)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Loyal Belt (Lv9), Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 71,
+                    "name": "Loyal Belt (Lv5)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Loyal Belt (Lv9), Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 72,
+                    "name": "Loyal Belt (Lv6)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Loyal Belt (Lv9), Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 73,
+                    "name": "Loyal Belt (Lv7)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Loyal Belt (Lv9), Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 74,
+                    "name": "Loyal Belt (Lv8)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Loyal Belt (Lv9), Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip5.jpg",
+                    "orid": 75,
+                    "name": "Loyal Belt (Lv9)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Loyal Belt (Lv9), Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "necklace": [
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 58,
+                    "name": "Loyal Necklace (Lv1)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 59,
+                    "name": "Loyal Necklace (Lv2)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 60,
+                    "name": "Loyal Necklace (Lv3)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 76,
+                    "name": "Loyal Necklace (Lv4)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 77,
+                    "name": "Loyal Necklace (Lv5)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 78,
+                    "name": "Loyal Necklace (Lv6)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 79,
+                    "name": "Loyal Necklace (Lv7)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 80,
+                    "name": "Loyal Necklace (Lv8)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip6.jpg",
+                    "orid": 81,
+                    "name": "Loyal Necklace (Lv9)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "pendant": [
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 61,
+                    "name": "Loyal Pendant (Lv1)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Pendant (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 62,
+                    "name": "Loyal Pendant (Lv2)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Pendant (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 63,
+                    "name": "Loyal Pendant (Lv3)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Pendant (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 82,
+                    "name": "Loyal Pendant (Lv4)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Pendant (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 83,
+                    "name": "Loyal Pendant (Lv5)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Pendant (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 84,
+                    "name": "Loyal Pendant (Lv6)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Pendant (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 85,
+                    "name": "Loyal Pendant (Lv7)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Pendant (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 86,
+                    "name": "Loyal Pendant (Lv8)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Pendant (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip7.jpg",
+                    "orid": 87,
+                    "name": "Loyal Pendant (Lv9)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Loyal Pendant (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "ring": [
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 64,
+                    "name": "Loyal Ring (Lv1)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Loyal Ring (Lv9), Offense +30.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 65,
+                    "name": "Loyal Ring (Lv2)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Loyal Ring (Lv9), Offense +30.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 66,
+                    "name": "Loyal Ring (Lv3)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Loyal Ring (Lv9), Offense +30.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 88,
+                    "name": "Loyal Ring (Lv4)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Loyal Ring (Lv9), Offense +30.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 89,
+                    "name": "Loyal Ring (Lv5)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Loyal Ring (Lv9), Offense +30.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 90,
+                    "name": "Loyal Ring (Lv6)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Loyal Ring (Lv9), Offense +30.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 91,
+                    "name": "Loyal Ring (Lv7)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Loyal Ring (Lv9), Offense +30.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 92,
+                    "name": "Loyal Ring (Lv8)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Loyal Ring (Lv9), Offense +30.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip8.jpg",
+                    "orid": 93,
+                    "name": "Loyal Ring (Lv9)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Loyal Ring (Lv9), Offense +30.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "steed": [
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 67,
+                    "name": "Loyal Steed (Lv1)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Loyal Steed (Lv9), Shortens troop arrival time by 27%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 68,
+                    "name": "Loyal Steed (Lv2)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Loyal Steed (Lv9), Shortens troop arrival time by 27%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 69,
+                    "name": "Loyal Steed (Lv3)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Loyal Steed (Lv9), Shortens troop arrival time by 27%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 94,
+                    "name": "Loyal Steed (Lv4)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Loyal Steed (Lv9), Shortens troop arrival time by 27%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 95,
+                    "name": "Loyal Steed (Lv5)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Loyal Steed (Lv9), Shortens troop arrival time by 27%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 96,
+                    "name": "Loyal Steed (Lv6)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Loyal Steed (Lv9), Shortens troop arrival time by 27%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 97,
+                    "name": "Loyal Steed (Lv7)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Loyal Steed (Lv9), Shortens troop arrival time by 27%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 98,
+                    "name": "Loyal Steed (Lv8)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Loyal Steed (Lv9), Shortens troop arrival time by 27%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip9.jpg",
+                    "orid": 99,
+                    "name": "Loyal Steed (Lv9)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Loyal Steed (Lv9), Shortens troop arrival time by 27%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                }
+            ]
+        }
+    },
+    "lion": {
+        "sword": {
+            "image": "images/equip/equip15.jpg",
+            "orid": 13,
+            "name": "Lion Sword",
+            "desc": "Slightly increases attack and damage of the troops led by hero.",
+            "long_desc": "Left by lion,a sword made of tusk can cut off any obstacles incomparably."
+        },
+        "helmet": {
+            "image": "images/equip/equip16.jpg",
+            "orid": 12,
+            "name": "Lion Helmet",
+            "desc": "Slightly increases attack,damage and life of the troops led by hero.",
+            "long_desc": "A delicate helmet with lion head shape,is glistening in the sunshine."
+        },
+        "shield": {
+            "image": "images/equip/equip17.jpg",
+            "orid": 10,
+            "name": "Lion Shield",
+            "desc": "Slightly increases life and defense of the troops led by hero.",
+            "long_desc": "A shield painted with lion, is full of courage from bravery, can easily defend heavy attacks."
+        },
+        "armor": {
+            "image": "images/equip/equip18.jpg",
+            "orid": 11,
+            "name": "Lion Armor",
+            "desc": "Increases life and defense of the troops led by hero,arms Principes with the skill Testudo.",
+            "long_desc": "A piece of armor beset with fur, owns exceptional defense."
+        },
+        "boot": {
+            "image": "images/equip/equip19.jpg",
+            "orid": 14,
+            "name": "Lion Boots",
+            "desc": "Slightly increases attack,defense and damage of the troops led by hero.",
+            "long_desc": "A pair of legendary boots is made of lion's fur posthumously."
+        }
+    },
+    "dark": {
+        "sword": {
+            "image": "images/equip/equip30.jpg",
+            "orid": 8,
+            "name": "Dark Blade",
+            "desc": "Slightly increases damage and attack of the troops led by hero.",
+            "long_desc": "Legendary sword of Lord of Dead with diamonds."
+        },
+        "helmet": {
+            "image": "images/equip/equip31.jpg",
+            "orid": 7,
+            "name": "Dark Helmet",
+            "desc": "Slightly increases damage and attack of the troops led by hero",
+            "long_desc": "An iron helmet bound with the hair from the Lord of Dead"
+        },
+        "shield": {
+            "image": "images/equip/equip32.jpg",
+            "orid": 1,
+            "name": "درع الظلام",
+            "desc": "يزيد مستوى الدفاع للقوات التي يقودها\n البطل تدريجيا",
+            "long_desc": "الدرع العظيم يزن 50 باوند مليء بالحقد والكرة\n من الجنود الموتى, يستطيع وبسهولة الحماية \nمن الهجمات الثقيلة"
+        },
+        "armor": {
+            "image": "images/equip/equip33.jpg",
+            "orid": 6,
+            "name": "Dark Armor",
+            "desc": "Slightly increases defense of the troops led by hero, when the special effect Block Annihilation Sweep is triggered, can defend great strikes with the lowest cost.",
+            "long_desc": "Armor attached with 999 harmful spirits."
+        },
+        "boot": {
+            "image": "images/equip/equip34.jpg",
+            "orid": 9,
+            "name": "Dark Shoes",
+            "desc": "Slightly increases defense, damage and attack of the troops led by hero",
+            "long_desc": "Made of furs from evil dragon killed by Lord of Dead."
+        },
+        "sec": {
+            "belt": [
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip35.jpg",
+                    "orid": 1,
+                    "name": "حزام الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                }
+            ],
+            "necklace": [
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip36.jpg",
+                    "orid": 1,
+                    "name": "قلادة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                }
+            ],
+            "pendant": [
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip37.jpg",
+                    "orid": 1,
+                    "name": "مشكاة الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                }
+            ],
+            "ring": [
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip38.jpg",
+                    "orid": 1,
+                    "name": "خاتم الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                }
+            ],
+            "steed": [
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                },
+                {
+                    "image": "images/equip/equip39.jpg",
+                    "orid": 1,
+                    "name": "حصان الظلام",
+                    "desc": "",
+                    "long_desc": ""
+                }
+            ]
+        }
+    },
+    "fearless": {
+        "sword": {
+            "image": "images/equip/equip45.jpg",
+            "orid": 18,
+            "name": "Fearlessness Sword",
+            "desc": "Increases attack and damage of the troops led by hero.",
+            "long_desc": "A used sword belonging to Mars, once killed demon."
+        },
+        "helmet": {
+            "image": "images/equip/equip46.jpg",
+            "orid": 17,
+            "name": "Fearlessness Helmet",
+            "desc": "Increases life,attack and damage of the troops led by hero.",
+            "long_desc": "A used helmet belonging to Mars with high solidity."
+        },
+        "shield": {
+            "image": "images/equip/equip47.jpg",
+            "orid": 15,
+            "name": "Fearlessness Shield",
+            "desc": "Increases life and defense of the troops led by hero.",
+            "long_desc": "A shield forged by Vulcan,owns exceptional defense."
+        },
+        "armor": {
+            "image": "images/equip/equip48.jpg",
+            "orid": 16,
+            "name": "Fearlessness Armor",
+            "desc": "Increases life and defense of the troops led by hero,arms Principes with the skill Testudo.",
+            "long_desc": "A piece of armor owns the thought of Mars."
+        },
+        "boot": {
+            "image": "images/equip/equip49.jpg",
+            "orid": 19,
+            "name": "Fearlessness Boots",
+            "desc": "Increases attack,defense and damage of the troops led by hero.",
+            "long_desc": "A used boots belonging to Mars, can let the world tremble."
+        }
+    },
+    "saton": {
+        "sword": {
+            "image": "images/equip/equip60.jpg",
+            "orid": 27,
+            "name": "Saturn Hoe",
+            "desc": "Increases life,attack and damage of the troops led by the hero",
+            "long_desc": "A gift from Saturn, which is sharp and heavy for Battle Hardened on farmland, having greater attack."
+        },
+        "helmet": {
+            "image": "images/equip/equip61.jpg",
+            "orid": 26,
+            "name": "Saturn Rain Hat",
+            "desc": "Increases life and attack of the troops led by the hero",
+            "long_desc": "A gift from Saturn,which is versatile, excellent for both attacker and defender, can effectively raise Life."
+        },
+        "shield": {
+            "image": "images/equip/equip62.jpg",
+            "orid": 28,
+            "name": "Saturn Fan",
+            "desc": "Increases life and damage of the troops led by the hero",
+            "long_desc": "A gift from Saturn, which is light and easy to use,  increasing life effectively."
+        },
+        "armor": {
+            "image": "images/equip/equip63.jpg",
+            "orid": 25,
+            "name": "Saturn Straw Raincoat",
+            "desc": "Increases life and defense of the troops led by the hero",
+            "long_desc": "A gift from Saturn is legerity, durable and have greater defense."
+        },
+        "boot": {
+            "image": "images/equip/equip64.jpg",
+            "orid": 29,
+            "name": "Saturn Shoes",
+            "desc": "Increases life of the troops led by the hero",
+            "long_desc": "A gift from Saturn, made of rare resources, increases life."
+        }
+    },
+    "holy": {
+        "sword": {
+            "image": "images/equip/equip75.jpg",
+            "orid": 21,
+            "name": "Holy Pike",
+            "desc": "Increases attack and damage of the troops led by the hero",
+            "long_desc": "The Holy Pike is made of Ironwood and silversteel, and emits a soft, radiant glow."
+        },
+        "helmet": {
+            "image": "images/equip/equip76.jpg",
+            "orid": 24,
+            "name": "Holy Helmet",
+            "desc": "Increases life, defense and damage of the troops led by the hero",
+            "long_desc": "Masterpiece of the Guild of Roman Blacksmith. This Holy Helmet is made of brass with the finest technique. The peacock feather on the top of the helmet indicates its elegance."
+        },
+        "shield": {
+            "image": "images/equip/equip77.jpg",
+            "orid": 20,
+            "name": "Holy Shield",
+            "desc": "Increases the life and defense of the troops led by the hero",
+            "long_desc": "This massive shield is engraved with the symbol of Mars, and is unparalleled in craftsmanship and quality."
+        },
+        "armor": {
+            "image": "images/equip/equip78.jpg",
+            "orid": 22,
+            "name": "Holy Armour",
+            "desc": "Increases life, damage and defense of the troops led by the hero",
+            "long_desc": "This silversteel armor was designed by the legendary blacksmith Catarin, whose daughter was slain by the Fearless Skullbearer."
+        },
+        "boot": {
+            "image": "images/equip/equip79.jpg",
+            "orid": 23,
+            "name": "Holy Boots",
+            "desc": "Increases defense of the troops led by the hero",
+            "long_desc": "These boots were crafted using blessed Ironwood and the hide of a giant."
+        },
+        "sec": {
+            "belt": [
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 119,
+                    "name": "Holy Belt (Lv1)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Holy Belt (Lv9), HP+15,Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 120,
+                    "name": "Holy Belt (Lv2)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Holy Belt (Lv9), HP+15,Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 121,
+                    "name": "Holy Belt (Lv3)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Holy Belt (Lv9), HP+15,Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 122,
+                    "name": "Holy Belt (Lv4)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Holy Belt (Lv9), HP+15,Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 123,
+                    "name": "Holy Belt (Lv5)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Holy Belt (Lv9), HP+15,Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 124,
+                    "name": "Holy Belt (Lv6)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Holy Belt (Lv9), HP+15,Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 125,
+                    "name": "Holy Belt (Lv7)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Holy Belt (Lv9), HP+15,Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 126,
+                    "name": "Holy Belt (Lv8)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Holy Belt (Lv9), HP+15,Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip80.jpg",
+                    "orid": 127,
+                    "name": "Holy Belt (Lv9)",
+                    "desc": "Increases Defense of the troop.\nThe highest level: Holy Belt (Lv9), HP+15,Defense +20.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "necklace": [
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 100,
+                    "name": "Holy Necklace (Lv1)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Holy Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 101,
+                    "name": "Holy Necklace (Lv2)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Holy Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 102,
+                    "name": "Holy Necklace (Lv3)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Holy Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 103,
+                    "name": "Holy Necklace (Lv4)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Holy Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 104,
+                    "name": "Holy Necklace (Lv5)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Holy Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 105,
+                    "name": "Holy Necklace (Lv6)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Holy Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 106,
+                    "name": "Holy Necklace (Lv7)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Holy Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 107,
+                    "name": "Holy Necklace (Lv8)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Holy Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip81.jpg",
+                    "orid": 108,
+                    "name": "Holy Necklace (Lv9)",
+                    "desc": "Increases HP of the troop.\nThe highest level: Holy Necklace (Lv9), HP +50.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "pendant": [
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 128,
+                    "name": "Holy Pendant (Lv1)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), HP+50, Offense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 129,
+                    "name": "Holy Pendant (Lv2)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), HP+50, Offense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 130,
+                    "name": "Holy Pendant (Lv3)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), HP+50, Offense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 131,
+                    "name": "Holy Pendant (Lv4)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), HP+50, Offense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 132,
+                    "name": "Holy Pendant (Lv5)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), HP+50, Offense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 133,
+                    "name": "Holy Pendant (Lv6)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), HP+50, Offense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 134,
+                    "name": "Holy Pendant (Lv7)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), HP+50, Offense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 135,
+                    "name": "Holy Pendant (Lv8)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), HP+50, Offense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip82.jpg",
+                    "orid": 136,
+                    "name": "Holy Pendant (Lv9)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), HP+50, Offense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "ring": [
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 109,
+                    "name": "Holy Ring (Lv1)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), Offense +30, Defense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 110,
+                    "name": "Holy Ring (Lv2)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), Offense +30, Defense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 111,
+                    "name": "Holy Ring (Lv3)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), Offense +30, Defense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 112,
+                    "name": "Holy Ring (Lv4)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), Offense +30, Defense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 113,
+                    "name": "Holy Ring (Lv5)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), Offense +30, Defense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 114,
+                    "name": "Holy Ring (Lv6)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), Offense +30, Defense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 115,
+                    "name": "Holy Ring (Lv7)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), Offense +30, Defense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 116,
+                    "name": "Holy Ring (Lv8)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), Offense +30, Defense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip83.jpg",
+                    "orid": 117,
+                    "name": "Holy Ring (Lv9)",
+                    "desc": "Increases Offense of the troop.\nThe highest level: Holy Ring (Lv9), Offense +30, Defense +9.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "steed": [
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 137,
+                    "name": "Holy Steed (Lv1)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Holy Steed (Lv9), Shortens troop arrival time by 36%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 138,
+                    "name": "Holy Steed (Lv2)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Holy Steed (Lv9), Shortens troop arrival time by 36%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 139,
+                    "name": "Holy Steed (Lv3)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Holy Steed (Lv9), Shortens troop arrival time by 36%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 140,
+                    "name": "Holy Steed (Lv4)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Holy Steed (Lv9), Shortens troop arrival time by 36%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 141,
+                    "name": "Holy Steed (Lv5)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Holy Steed (Lv9), Shortens troop arrival time by 36%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 142,
+                    "name": "Holy Steed (Lv6)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Holy Steed (Lv9), Shortens troop arrival time by 36%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 143,
+                    "name": "Holy Steed (Lv7)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Holy Steed (Lv9), Shortens troop arrival time by 36%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 144,
+                    "name": "Holy Steed (Lv8)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Holy Steed (Lv9), Shortens troop arrival time by 36%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip84.jpg",
+                    "orid": 145,
+                    "name": "Holy Steed (Lv9)",
+                    "desc": "Increases Tempo of the troop.\nThe highest level: Holy Steed (Lv9), Shortens troop arrival time by 36%.",
+                    "long_desc": "Equipment rewarded by the Senate, only lords who loyal to Rome can get it, upgrade it in the Temple and increase the performance."
+                }
+            ]
+        }
+    },
+    "sparta": {
+        "sword": {
+            "image": "images/equip/equip90.jpg",
+            "orid": 34,
+            "name": "Spartan Spear",
+            "desc": "Enhances the Offense of particular troop.",
+            "long_desc": "Penetrates any opposing force."
+        },
+        "helmet": {
+            "image": "images/equip/equip91.jpg",
+            "orid": 31,
+            "name": "Spartan Helmet",
+            "desc": "Enhances the Defense of particular troop.",
+            "long_desc": "Forged in old Roman fashion with a modern touch."
+        },
+        "shield": {
+            "image": "images/equip/equip92.jpg",
+            "orid": 30,
+            "name": "Spartan Shield",
+            "desc": "Enhances the HP of particular troop.",
+            "long_desc": "Uniquely designed for protection enhancement."
+        },
+        "armor": {
+            "image": "images/equip/equip93.jpg",
+            "orid": 32,
+            "name": "Spartan Cape",
+            "desc": "Slightly enhances the Defense of particular troop.",
+            "long_desc": "Brand new cape:  gives you life long protection."
+        },
+        "boot": {
+            "image": "images/equip/equip94.jpg",
+            "orid": 33,
+            "name": "Spartan Shinpads",
+            "desc": "Slightly enhances the HP of particular troop.",
+            "long_desc": "Ensures comfort and enhances mobility."
+        }
+    },
+    "volcan": {
+        "sword": {
+            "image": "images/equip/equip105.jpg",
+            "orid": 43,
+            "name": "Vulcan Sword",
+            "desc": "Increases Offense of the troop.",
+            "long_desc": "Sword made for honoring Vulcan, absorbing blessing from Vulcan."
+        },
+        "helmet": {
+            "image": "images/equip/equip106.jpg",
+            "orid": 40,
+            "name": "Vulcan Helmet",
+            "desc": "Increases HP of the troop.",
+            "long_desc": "Helmet made for honoring Vulcan, absorbing blessing from Vulcan."
+        },
+        "shield": {
+            "image": "images/equip/equip107.jpg",
+            "orid": 44,
+            "name": "Vulcan Shield",
+            "desc": "Increases  Defense of the troop.",
+            "long_desc": "Shield made for honoring Vulcan, absorbing blessing from Vulcan."
+        },
+        "armor": {
+            "image": "images/equip/equip108.jpg",
+            "orid": 41,
+            "name": "Vulcan Armor",
+            "desc": "Increases  Defense of the troop.",
+            "long_desc": "Armor made for honoring Vulcan, absorbing blessing from Vulcan."
+        },
+        "boot": {
+            "image": "images/equip/equip109.jpg",
+            "orid": 42,
+            "name": "Vulcan Boots",
+            "desc": "Increases HP of the troop.",
+            "long_desc": "Boots made for honoring Vulcan, absorbing blessing from Vulcan."
+        }
+    },
+    "mili": {
+        "sword": {
+            "image": "images/equip/equip120.jpg",
+            "orid": 35,
+            "name": "Hardcore Sword",
+            "desc": "Enhances the Damage to enemy of particular troop. You may get Black Ore from Carthage Revolt and Silver Ore from Carthage Revolt Main Force.",
+            "long_desc": "A sword forged by Vulcan, with high density, which is light and less likely to be rusting because it was forged with black ore and silver ore."
+        },
+        "helmet": {
+            "image": "images/equip/equip121.jpg",
+            "orid": 37,
+            "name": "Hardcore Helmet",
+            "desc": "Slightly enhances the Offense and Defense of particular troop.You may get Black Ore from Carthage Revolt and Silver Ore from Carthage Revolt Main Force.",
+            "long_desc": "A helmet forged by Vulcan, owns excellent defense. Because it was forged with black ore and silver ore."
+        },
+        "shield": {
+            "image": "images/equip/equip122.jpg",
+            "orid": 36,
+            "name": "Hardcore Shield",
+            "desc": "Slightly enhances the HP and Defense of particular troop.You may get Black Ore from Carthage Revolt and Silver Ore from Carthage Revolt Main Force.",
+            "long_desc": "A shield forged by Vulcan, can defend sharp piercing from the enemy. Because it was forged with black ore and silver ore."
+        },
+        "armor": {
+            "image": "images/equip/equip123.jpg",
+            "orid": 39,
+            "name": "Hardcore Armor",
+            "desc": "Enhances the HP and Defense of particular troop.You may get Black Ore from Carthage Revolt and Silver Ore from Carthage Revolt Main Force.",
+            "long_desc": "Forged by Vulcan, owns excellent defense without affecting hero's flexibility because it was forged with black ore."
+        },
+        "boot": {
+            "image": "images/equip/equip124.jpg",
+            "orid": 38,
+            "name": "Hardcore Boots",
+            "desc": "Enhances the Offense and the damage to enemy of particular troop. You may get Black Ore from Carthage Revolt and Silver Ore from Carthage Revolt Main Force.",
+            "long_desc": "A pair of boots made by Vulcan, owns excellent defense without affecting action of your hero because of the lightness of black ore and silver ore."
+        }
+    },
+    "fart": {
+        "sword": {
+            "image": "images/equip/equip135.jpg",
+            "orid": 45,
+            "name": "Vertumnus Staff",
+            "desc": "Increases Offense of the troop.",
+            "long_desc": "Wand Vertumnus ever used. Present by Vertumnus lover Punama, the weapon is full of miss."
+        },
+        "helmet": {
+            "image": "images/equip/equip136.jpg",
+            "orid": 48,
+            "name": "Vertumnus Garland",
+            "desc": "Increases HP and Offense of the troop.",
+            "long_desc": "Autumn wreath ever worn by Vertumnus. A pileum made with branch and petals, it can bring victory for whom wear."
+        },
+        "shield": {
+            "image": "images/equip/equip137.jpg",
+            "orid": 49,
+            "name": "Vertumnus Shield",
+            "desc": "Increases HP and Defense of the troop.",
+            "long_desc": "Giant shield created by Vertumus. Made by huge tree body, 1.7 meters high and 0.8 meter wide."
+        },
+        "armor": {
+            "image": "images/equip/equip138.jpg",
+            "orid": 47,
+            "name": "Vertumnus Robe",
+            "desc": "Increases HP and Defense of the troop.",
+            "long_desc": "Vertumnus' Summer robe. The Robe made with paper-thin silk and fantastic material."
+        },
+        "boot": {
+            "image": "images/equip/equip139.jpg",
+            "orid": 46,
+            "name": "Vertumnus Shoes",
+            "desc": "Increases HP, Offense and Defense of the troop.",
+            "long_desc": "Sprind straw sandals made by Vertumnus. Sandal made with green grass and leaves, so comfortable."
+        }
+    },
+    "peace": {
+        "sword": {
+            "image": "images/equip/equip150.jpg",
+            "orid": 52,
+            "name": "Javelin",
+            "desc": "Increases Offense of the troop.",
+            "long_desc": "The souvenirs is an imitation of the Olympic Games Javelin, presented to the outstanding heroes."
+        },
+        "helmet": {
+            "image": "images/equip/equip151.jpg",
+            "orid": 50,
+            "name": "Olive Wreath",
+            "desc": "Increases HP and Defense of the troop.",
+            "long_desc": "The Olive wreath is the only prize granted to Olympic Games champion and is considered as the highest honor prize."
+        },
+        "shield": {
+            "image": "images/equip/equip152.jpg",
+            "orid": 54,
+            "name": "Accoutre Race Shield",
+            "desc": "Increases HP and Defense of the troop.",
+            "long_desc": "The souvenirs is an imitation of the Olympic Games Accoutre Race Shield, presented to the outstanding heroes."
+        },
+        "armor": {
+            "image": "images/equip/equip153.jpg",
+            "orid": 51,
+            "name": "Fur Coat",
+            "desc": "Increases HP and Defense of the troop.",
+            "long_desc": "In the past, the Olympic Games participants wear Fur Coat."
+        },
+        "boot": {
+            "image": "images/equip/equip154.jpg",
+            "orid": 53,
+            "name": "Discus Throw",
+            "desc": "Increases Offense of the troop.",
+            "long_desc": "The souvenirs is an imitation of the Olympic Games Discus Throw, presented to the outstanding heroes."
+        }
+    },
+    "victory": {
+        "sword": {
+            "image": "images/equip/equip165.jpg",
+            "orid": 146,
+            "name": "Glory Sword",
+            "desc": "Increases Offense of the troop.",
+            "long_desc": "Pure iron weapons is very sharp, attack high, the symbol of warriors glory."
+        },
+        "helmet": {
+            "image": "images/equip/equip166.jpg",
+            "orid": 147,
+            "name": "Glory Helmet",
+            "desc": "Increases HP and Offense of the troop.",
+            "long_desc": "Pure iron helmet is very strong,  the symbol of warriors glory."
+        },
+        "shield": {
+            "image": "images/equip/equip167.jpg",
+            "orid": 148,
+            "name": "Glory Shield",
+            "desc": "Increases HP and Defense of the troop.",
+            "long_desc": "Pure iron  shield defense is very high, the symbol of warriors glory."
+        },
+        "armor": {
+            "image": "images/equip/equip168.jpg",
+            "orid": 149,
+            "name": "Glory Armor",
+            "desc": "Increases HP and Defense of the troop.",
+            "long_desc": "Pure iron armor are strong exception, the symbol of warriors glory."
+        },
+        "boot": {
+            "image": "images/equip/equip169.jpg",
+            "orid": 150,
+            "name": "Glory Boots",
+            "desc": "Increases HP of the troop.",
+            "long_desc": "Pure iron Boot are good in Defense and Offense, the symbol of warriors glory."
+        },
+        "sec": {
+            "belt": [
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 151,
+                    "name": "Glory Belt (Lv1)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Belt (Lv9), Defense +30, Offense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 152,
+                    "name": "Glory Belt (Lv2)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Belt (Lv9), Defense +30, Offense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 153,
+                    "name": "Glory Belt (Lv3)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Belt (Lv9), Defense +30, Offense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 154,
+                    "name": "Glory Belt (Lv4)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Belt (Lv9), Defense +30, Offense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 155,
+                    "name": "Glory Belt (Lv5)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Belt (Lv9), Defense +30, Offense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 156,
+                    "name": "Glory Belt (Lv6)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Belt (Lv9), Defense +30, Offense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 157,
+                    "name": "Glory Belt (Lv7)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Belt (Lv9), Defense +30, Offense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 158,
+                    "name": "Glory Belt (Lv8)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Belt (Lv9), Defense +30, Offense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip170.jpg",
+                    "orid": 159,
+                    "name": "Glory Belt (Lv9)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Belt (Lv9), Defense +30, Offense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "necklace": [
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 160,
+                    "name": "Glory Necklace (Lv1)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Necklace (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 161,
+                    "name": "Glory Necklace (Lv2)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Necklace (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 162,
+                    "name": "Glory Necklace (Lv3)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Necklace (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 163,
+                    "name": "Glory Necklace (Lv4)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Necklace (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 164,
+                    "name": "Glory Necklace (Lv5)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Necklace (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 165,
+                    "name": "Glory Necklace (Lv6)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Necklace (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 166,
+                    "name": "Glory Necklace (Lv7)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Necklace (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 167,
+                    "name": "Glory Necklace (Lv8)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Necklace (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip171.jpg",
+                    "orid": 168,
+                    "name": "Glory Necklace (Lv9)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Necklace (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "pendant": [
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 169,
+                    "name": "Glory Pendant (Lv1)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Pendant (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 170,
+                    "name": "Glory Pendant (Lv2)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Pendant (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 171,
+                    "name": "Glory Pendant (Lv3)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Pendant (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 172,
+                    "name": "Glory Pendant (Lv4)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Pendant (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 173,
+                    "name": "Glory Pendant (Lv5)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Pendant (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 174,
+                    "name": "Glory Pendant (Lv6)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Pendant (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 175,
+                    "name": "Glory Pendant (Lv7)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Pendant (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 176,
+                    "name": "Glory Pendant (Lv8)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Pendant (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip172.jpg",
+                    "orid": 177,
+                    "name": "Glory Pendant (Lv9)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Pendant (Lv9), HP +60, Defense +9.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "ring": [
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 178,
+                    "name": "Glory Ring (Lv1)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Ring (Lv9), Offense +40, HP +15.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 179,
+                    "name": "Glory Ring (Lv2)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Ring (Lv9), Offense +40, HP +15.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 180,
+                    "name": "Glory Ring (Lv3)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Ring (Lv9), Offense +40, HP +15.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 181,
+                    "name": "Glory Ring (Lv4)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Ring (Lv9), Offense +40, HP +15.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 182,
+                    "name": "Glory Ring (Lv5)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Ring (Lv9), Offense +40, HP +15.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 183,
+                    "name": "Glory Ring (Lv6)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Ring (Lv9), Offense +40, HP +15.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 184,
+                    "name": "Glory Ring (Lv7)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Ring (Lv9), Offense +40, HP +15.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 185,
+                    "name": "Glory Ring (Lv8)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Ring (Lv9), Offense +40, HP +15.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip173.jpg",
+                    "orid": 186,
+                    "name": "Glory Ring (Lv9)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Ring (Lv9), Offense +40, HP +15.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                }
+            ],
+            "steed": [
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 187,
+                    "name": "Glory Steed (Lv1)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Steed (Lv9), Shortens troop arrival time by 45%.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 188,
+                    "name": "Glory Steed (Lv2)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Steed (Lv9), Shortens troop arrival time by 45%.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 189,
+                    "name": "Glory Steed (Lv3)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Steed (Lv9), Shortens troop arrival time by 45%.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 190,
+                    "name": "Glory Steed (Lv4)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Steed (Lv9), Shortens troop arrival time by 45%.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 191,
+                    "name": "Glory Steed (Lv5)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Steed (Lv9), Shortens troop arrival time by 45%.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 192,
+                    "name": "Glory Steed (Lv6)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Steed (Lv9), Shortens troop arrival time by 45%.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 193,
+                    "name": "Glory Steed (Lv7)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Steed (Lv9), Shortens troop arrival time by 45%.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 194,
+                    "name": "Glory Steed (Lv8)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Steed (Lv9), Shortens troop arrival time by 45%.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                },
+                {
+                    "image": "images/equip/equip174.jpg",
+                    "orid": 195,
+                    "name": "Glory Steed (Lv9)",
+                    "desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance.\nThe highest level: Glory Steed (Lv9), Shortens troop arrival time by 45%.",
+                    "long_desc": "Roman warriors symbol of glory, only warriors who have outstanding exploit can get it, upgrade it in the Temple and increase the performance."
+                }
+            ]
+        }
+    },
+    "mars": {
+        "sword": {
+            "image": "images/equip/equip180.jpg",
+            "orid": 204,
+            "name": "Mars Sword",
+            "desc": "God of war Mars grant \"Son of Mars\" excellent equipments, warriors put it on can get blessing from Mars.",
+            "long_desc": "God of war Mars grant \"Son of Mars\" excellent equipment, which can add a mass of attack and damage."
+        },
+        "helmet": {
+            "image": "images/equip/equip181.jpg",
+            "orid": 201,
+            "name": "Mars Helmet",
+            "desc": "God of war Mars grant \"Son of Mars\" excellent equipments, warriors put it on can get blessing from Mars.",
+            "long_desc": "God of war Mars grant \"Son of Mars\" excellent equipments, put it on will enhance your Archer。"
+        },
+        "shield": {
+            "image": "images/equip/equip182.jpg",
+            "orid": 205,
+            "name": "Mars Shield",
+            "desc": "God of war Mars grant \"Son of Mars\" excellent equipments, warriors put it on can get blessing from Mars.",
+            "long_desc": "God of war Mars grant \"Son of Mars\" excellent equipment, can add HP and defensive power."
+        },
+        "armor": {
+            "image": "images/equip/equip183.jpg",
+            "orid": 202,
+            "name": "Mars Armor",
+            "desc": "God of war Mars grant \"Son of Mars\" excellent equipments, warriors put it on can get blessing from Mars.",
+            "long_desc": "God of war Mars grant \"Son of Mars\" excellent equipment, which will bring you high HP and  defensive power increase."
+        },
+        "boot": {
+            "image": "images/equip/equip184.jpg",
+            "orid": 203,
+            "name": "Mars Boots",
+            "desc": "God of war Mars grant \"Son of Mars\" excellent equipments, warriors put it on can get blessing from Mars.",
+            "long_desc": "God of war Mars grant \"Son of Mars\" excellent equipment, which can increase defense and damage power."
+        }
+    },
+    "bright": {
+        "sword": {
+            "image": "images/equip/equip195.jpg",
+            "orid": 259,
+            "name": "Bright Pike",
+            "desc": "Increases Offense and Damage of the troop.",
+            "long_desc": "Senate bestow, owne powerful strength, only powerful lords can get, status symbols."
+        },
+        "helmet": {
+            "image": "images/equip/equip196.jpg",
+            "orid": 256,
+            "name": "Bright Helmet",
+            "desc": "Increases HP and Offense of the troop.",
+            "long_desc": "Senate bestow, owne powerful strength, only powerful lords can get, status symbols."
+        },
+        "shield": {
+            "image": "images/equip/equip197.jpg",
+            "orid": 260,
+            "name": "Bright Shield",
+            "desc": "Increases HP and Defense of the troop.",
+            "long_desc": "Senate bestow, owne powerful strength, only powerful lords can get, status symbols."
+        },
+        "armor": {
+            "image": "images/equip/equip198.jpg",
+            "orid": 257,
+            "name": "Bright Armor",
+            "desc": "Increases HP and Defense of the troop.",
+            "long_desc": "Senate bestow, owne powerful strength, only powerful lords can get, status symbols."
+        },
+        "boot": {
+            "image": "images/equip/equip199.jpg",
+            "orid": 258,
+            "name": "Bright Boots",
+            "desc": "Increases Offense and Damage of the troop.",
+            "long_desc": "Senate bestow, owne powerful strength, only powerful lords can get, status symbols."
+        }
+    },
+    "khaled": {
+        "sword": {
+            "image": "images/equip/equip210.jpg",
+            "orid": 206,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "helmet": {
+            "image": "images/equip/equip211.jpg",
+            "orid": 207,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "shield": {
+            "image": "images/equip/equip212.jpg",
+            "orid": 208,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "armor": {
+            "image": "images/equip/equip213.jpg",
+            "orid": 209,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "boot": {
+            "image": "images/equip/equip214.jpg",
+            "orid": 210,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "sec": {
+            "belt": [
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 211,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 212,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 213,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 214,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 215,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 216,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 217,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 218,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip215.jpg",
+                    "orid": 219,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                }
+            ],
+            "necklace": [
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 220,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 221,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 222,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 223,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 224,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 225,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 226,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 227,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip216.jpg",
+                    "orid": 228,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                }
+            ],
+            "pendant": [
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 229,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 230,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 231,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 232,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 233,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 234,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 235,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 236,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip217.jpg",
+                    "orid": 237,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                }
+            ],
+            "ring": [
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 238,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 239,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 240,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 241,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 242,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 243,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 244,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 245,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip218.jpg",
+                    "orid": 246,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                }
+            ],
+            "steed": [
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 247,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 248,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 249,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 250,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 251,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 252,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 253,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 254,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                },
+                {
+                    "image": "images/equip/equip219.jpg",
+                    "orid": 255,
+                    "name": null,
+                    "desc": null,
+                    "long_desc": null
+                }
+            ]
+        }
+    },
+    "blue": {
+        "sword": {
+            "image": "images/equip/equip225.jpg",
+            "orid": 199,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "helmet": {
+            "image": "images/equip/equip226.jpg",
+            "orid": 196,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "shield": {
+            "image": "images/equip/equip227.jpg",
+            "orid": 200,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "armor": {
+            "image": "images/equip/equip228.jpg",
+            "orid": 197,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        },
+        "boot": {
+            "image": "images/equip/equip229.jpg",
+            "orid": 198,
+            "name": null,
+            "desc": null,
+            "long_desc": null
+        }
+    },
+    "worrior": {
+        "sword": {
+            "image": "images/equip/equip240.jpg",
+            "orid": 1,
+            "name": "سيف المحارب",
+            "desc": "",
+            "long_desc": ""
+        },
+        "helmet": {
+            "image": "images/equip/equip241.jpg",
+            "orid": 1,
+            "name": "خوذة المحارب",
+            "desc": "",
+            "long_desc": ""
+        },
+        "shield": {
+            "image": "images/equip/equip242.jpg",
+            "orid": 1,
+            "name": "درع المحارب",
+            "desc": "",
+            "long_desc": ""
+        },
+        "armor": {
+            "image": "images/equip/equip243.jpg",
+            "orid": 1,
+            "name": "مصفح المحارب",
+            "desc": "",
+            "long_desc": ""
+        },
+        "boot": {
+            "image": "images/equip/equip244.jpg",
+            "orid": 1,
+            "name": "حذاء المحارب",
+            "desc": "",
+            "long_desc": ""
+        }
+    },
+    "thunder": {
+        "sword": {
+            "image": "images/equip/equip255.jpg",
+            "orid": 1,
+            "name": "سيف الرعد",
+            "desc": "",
+            "long_desc": ""
+        },
+        "helmet": {
+            "image": "images/equip/equip256.jpg",
+            "orid": 1,
+            "name": "خوذة الرعد",
+            "desc": "",
+            "long_desc": ""
+        },
+        "shield": {
+            "image": "images/equip/equip257.jpg",
+            "orid": 1,
+            "name": "درع الرعد",
+            "desc": "",
+            "long_desc": ""
+        },
+        "armor": {
+            "image": "images/equip/equip258.jpg",
+            "orid": 1,
+            "name": "مصفح الرعد",
+            "desc": "",
+            "long_desc": ""
+        },
+        "boot": {
+            "image": "images/equip/equip259.jpg",
+            "orid": 1,
+            "name": "حذاء الرعد",
+            "desc": "",
+            "long_desc": ""
+        }
+    },
+    "neptune": {
+        "sword": {
+            "image": "images/equip/equip270.jpg",
+            "orid": 1,
+            "name": "سيف نيبتون",
+            "desc": "",
+            "long_desc": ""
+        },
+        "helmet": {
+            "image": "images/equip/equip271.jpg",
+            "orid": 1,
+            "name": "خوذة نيبتون",
+            "desc": "",
+            "long_desc": ""
+        },
+        "shield": {
+            "image": "images/equip/equip272.jpg",
+            "orid": 1,
+            "name": "درع نيبتون",
+            "desc": "",
+            "long_desc": ""
+        },
+        "armor": {
+            "image": "images/equip/equip273.jpg",
+            "orid": 1,
+            "name": "مصفح نيبتون",
+            "desc": "",
+            "long_desc": ""
+        },
+        "boot": {
+            "image": "images/equip/equip274.jpg",
+            "orid": 1,
+            "name": "حذاء نيبتون",
+            "desc": "",
+            "long_desc": ""
+        }
+    },
+    "thor": {
+        "sword": {
+            "image": "images/equip/equip285.jpg",
+            "orid": 1,
+            "name": "سيف ثور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "helmet": {
+            "image": "images/equip/equip286.jpg",
+            "orid": 1,
+            "name": "خوذة ثور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "shield": {
+            "image": "images/equip/equip287.jpg",
+            "orid": 1,
+            "name": "درع ثور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "armor": {
+            "image": "images/equip/equip288.jpg",
+            "orid": 1,
+            "name": "مصفح ثور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "boot": {
+            "image": "images/equip/equip289.jpg",
+            "orid": 1,
+            "name": "حذاء ثور",
+            "desc": "",
+            "long_desc": ""
+        }
+    },
+    "light": {
+        "sword": {
+            "image": "images/equip/equip300.jpg",
+            "orid": 1,
+            "name": "سيف النور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "helmet": {
+            "image": "images/equip/equip301.jpg",
+            "orid": 1,
+            "name": "خوذة النور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "shield": {
+            "image": "images/equip/equip302.jpg",
+            "orid": 1,
+            "name": "درع النور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "armor": {
+            "image": "images/equip/equip303.jpg",
+            "orid": 1,
+            "name": "مصفح النور",
+            "desc": "",
+            "long_desc": ""
+        },
+        "boot": {
+            "image": "images/equip/equip304.jpg",
+            "orid": 1,
+            "name": "حذاء النور",
+            "desc": "",
+            "long_desc": ""
+        }
+    }
+}

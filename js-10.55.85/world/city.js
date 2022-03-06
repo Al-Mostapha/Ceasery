@@ -1532,3 +1532,5 @@ function fillCityLvl_1() {
     Elkaisar.GE.AddCityBuilding(374, 732, "hill_11").setFlipX(true);
     Elkaisar.GE.AddCityBuilding(478, 680, "hill_12").setFlipX(true);
 }
+
+
