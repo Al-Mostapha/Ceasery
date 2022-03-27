@@ -260,10 +260,10 @@ function battelStart() {
             'url': `http://${WS_HOST}:${WS_PORT}/api/ABattel/joinBattel`,
             'data': {
                 'idBattel': battel_data['id_battel'],
-                'idHero': Elkaisar['CurrentHero']['Hero']['id_hero'],
-                'side': battel_data['side'],
-                'token': Elkaisar['Config']['OuthToken'],
-                'server': Elkaisar['Config']['idServer']
+                'idHero'  : Elkaisar.CurrentHero.Hero.id_hero,
+                'side'    : battel_data['side'],
+                'token'   : Elkaisar.Config.OuthToken,
+                'server'  : Elkaisar.Config.idServer
             },
             'type': 'POST',
             'success': function (data, _0x4f103d, _0x3e9120) {
@@ -313,6 +313,10 @@ function battelStart() {
                     alert_box['confirmMessage'](`البطل ليس لدية لياقة كافية`);
                 } else if(JsonObject.state == "error_9"){
                     alert_box['confirmMessage'](`وصل عدد الأبطال بالخارج للحد الأقصى`);
+                } else if(JsonObject.state == "error_8_1"){
+                    alert_box['confirmMessage'](`لا يمكنك الإنضمام`);
+                } else if(JsonObject.state == "error_8_2"){
+                    alert_box['confirmMessage'](`لا يمكنك الإنضمام`);
                 }
             },
             'error': function (_0x9c1e15, _0x370e1e, _0x58f5ad) { }

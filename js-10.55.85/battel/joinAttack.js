@@ -150,9 +150,13 @@ $(document).on("click", "#JOIN_ATTACK_SIDE , #JOIN_DEFENCE_SIDE", function () {
 
     for (var iii in Elkaisar.DPlayer.Heros)
     {
-        if (parseInt(Elkaisar.DPlayer.Heros[iii].Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_CITY && parseInt(Elkaisar.DPlayer.Heros[iii].Hero.console) === 0) {
-            Elkaisar.CurrentHero = Elkaisar.DPlayer.Heros[iii];
-            break;
+        if(parseInt(Elkaisar.DPlayer.Heros[iii].Hero.in_city) !== Elkaisar.Hero.HeroState.HERO_IN_CITY)
+            continue;
+        if(parseInt(Elkaisar.DPlayer.Heros[iii].Hero.console) !== 0)
+            continue;
+        if(Elkaisar.DPlayer.Heros[iii].Hero.id_city == Elkaisar.CurrentCity.idCity){
+             Elkaisar.CurrentHero = Elkaisar.DPlayer.Heros[iii];
+             break;
         }
     }
 

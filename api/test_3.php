@@ -84,6 +84,7 @@ $files = explode(",", $test);
 $file = "";
 
 foreach ($files as $one) {
+    if(file_exists("../js-10.55.85/" . trim($one)))
     $file .= file_get_contents("../js-10.55.85/" . trim($one));
 }
 

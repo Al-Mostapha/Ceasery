@@ -1658,85 +1658,9 @@ Elkaisar.GE.LPreLoad = function () {
     Elkaisar.GE.LoadingScene.load.atlas('MainCityBG_26', 'images/CityFloor/mainCityBGHall_26.png',  'images/CityFloor/mainCityBGHall_26.json');
     Elkaisar.GE.LoadingScene.load.atlas('MainCityBG_27', 'images/CityFloor/mainCityBGHall_27.png',  'images/CityFloor/mainCityBGHall_27.json');
     Elkaisar.GE.LoadingScene.load.atlas('MainCityBG_28', 'images/CityFloor/mainCityBGHall_28.png',  'images/CityFloor/mainCityBGHall_28.json');
-    
-    Elkaisar.GE.LoadingScene.load.image('BG_add_01',     BASE_ASSET_BATH + 'images/CityFloor/BG_add_01.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_add_02',     BASE_ASSET_BATH + 'images/CityFloor/BG_add_02.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_add_03',     BASE_ASSET_BATH + 'images/CityFloor/BG_add_03.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_add_04',     BASE_ASSET_BATH + 'images/CityFloor/BG_add_04.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_hall_far_1', BASE_ASSET_BATH + 'images/CityFloor/BG_hall_far_1.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_hall_far_2', BASE_ASSET_BATH + 'images/CityFloor/BG_hall_far_2.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_hall_far_3', BASE_ASSET_BATH + 'images/CityFloor/BG_hall_far_3.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_hall_far_4', BASE_ASSET_BATH + 'images/CityFloor/BG_hall_far_4.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_hall_far_5', BASE_ASSET_BATH + 'images/CityFloor/BG_hall_far_5.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_hall_far_6', BASE_ASSET_BATH + 'images/CityFloor/BG_hall_far_6.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_hall_far_7', BASE_ASSET_BATH + 'images/CityFloor/BG_hall_far_7.png');
-    
-    Elkaisar.GE.LoadingScene.load.image('chengmen_lv1', BASE_ASSET_BATH + 'images/CityWall/chengmen_lv1.png');
-    Elkaisar.GE.LoadingScene.load.image('chengmen_lv2', BASE_ASSET_BATH + 'images/CityWall/chengmen_lv2.png');
-    Elkaisar.GE.LoadingScene.load.image('chengmen_lv3', BASE_ASSET_BATH + 'images/CityWall/chengmen_lv3.png');
-    Elkaisar.GE.LoadingScene.load.image('chengmen_lv4', BASE_ASSET_BATH + 'images/CityWall/chengmen_lv4.png');
-    Elkaisar.GE.LoadingScene.load.image('chengmen_lv5', BASE_ASSET_BATH + 'images/CityWall/chengmen_lv5.png');
-    Elkaisar.GE.LoadingScene.load.image('chengqiang_lv1', BASE_ASSET_BATH + 'images/CityWall/chengqiang_lv1.png');
-    Elkaisar.GE.LoadingScene.load.image('chengqiang_lv2', BASE_ASSET_BATH + 'images/CityWall/chengqiang_lv2.png');
-    Elkaisar.GE.LoadingScene.load.image('chengqiang_lv3', BASE_ASSET_BATH + 'images/CityWall/chengqiang_lv3.png');
-    Elkaisar.GE.LoadingScene.load.image('chengqiang_lv4', BASE_ASSET_BATH + 'images/CityWall/chengqiang_lv4.png');
-    Elkaisar.GE.LoadingScene.load.image('chengqiang_lv5', BASE_ASSET_BATH + 'images/CityWall/chengqiang_lv5.png');
-    Elkaisar.GE.LoadingScene.load.image('jianta_lv1_base', BASE_ASSET_BATH + 'images/CityWall/jianta_lv1_base.png');
-    Elkaisar.GE.LoadingScene.load.image('jianta_lv2_base', BASE_ASSET_BATH + 'images/CityWall/jianta_lv2_base.png');
-    Elkaisar.GE.LoadingScene.load.image('jianta_lv3_base', BASE_ASSET_BATH + 'images/CityWall/jianta_lv3_base.png');
-    Elkaisar.GE.LoadingScene.load.image('jianta_lv4_base', BASE_ASSET_BATH + 'images/CityWall/jianta_lv4_base.png');
-    Elkaisar.GE.LoadingScene.load.image('jianta_lv5_base', BASE_ASSET_BATH + 'images/CityWall/jianta_lv5_base.png');
-    
+    Elkaisar.GE.LoadingScene.load.atlas('MainCityBG_top', 'images/CityFloor/mainCityBGHall_top.png', 'images/CityFloor/mainCityBGHall_top.json');
 
-    Elkaisar.GE.LoadingScene.load.image('BG_SPR', BASE_ASSET_BATH + 'images/CityBuildingInner/BG_SPR.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_miracle_01', BASE_ASSET_BATH + 'images/CityBuildingInner/BG_miracle_01.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_notice', BASE_ASSET_BATH + 'images/CityBuildingInner/BG_notice.png');
-    Elkaisar.GE.LoadingScene.load.image('BG_statue', BASE_ASSET_BATH + 'images/CityBuildingInner/BG_statue.png');
-    Elkaisar.GE.LoadingScene.load.image('altar', BASE_ASSET_BATH + 'images/CityBuildingInner/altar.png');
-    Elkaisar.GE.LoadingScene.load.image('baozangzhichi', BASE_ASSET_BATH + 'images/CityBuildingInner/baozangzhichi.png');
-    Elkaisar.GE.LoadingScene.load.image('bubingying', BASE_ASSET_BATH + 'images/CityBuildingInner/bubingying.png');
-    Elkaisar.GE.LoadingScene.load.image('bubingying_war', BASE_ASSET_BATH + 'images/CityBuildingInner/bubingying_war.png');
-    Elkaisar.GE.LoadingScene.load.image('cangku', BASE_ASSET_BATH + 'images/CityBuildingInner/cangku.png');
-    Elkaisar.GE.LoadingScene.load.image('chebingying', BASE_ASSET_BATH + 'images/CityBuildingInner/chebingying.png');
-    Elkaisar.GE.LoadingScene.load.image('chongwuguan', BASE_ASSET_BATH + 'images/CityBuildingInner/chongwuguan.png');
-    Elkaisar.GE.LoadingScene.load.image('dashiguan', BASE_ASSET_BATH + 'images/CityBuildingInner/dashiguan.png');
-    Elkaisar.GE.LoadingScene.load.image('fuhuoquanshui', BASE_ASSET_BATH + 'images/CityBuildingInner/fuhuoquanshui.png');
-    Elkaisar.GE.LoadingScene.load.image('gan', BASE_ASSET_BATH + 'images/CityBuildingInner/gan.png');
-    Elkaisar.GE.LoadingScene.load.image('gongbingying', BASE_ASSET_BATH + 'images/CityBuildingInner/gongbingying.png');
-    Elkaisar.GE.LoadingScene.load.image('gongbingying_war', BASE_ASSET_BATH + 'images/CityBuildingInner/gongbingying_war.png');
-    Elkaisar.GE.LoadingScene.load.image('gonggaolan', BASE_ASSET_BATH + 'images/CityBuildingInner/gonggaolan.png');
-    Elkaisar.GE.LoadingScene.load.image('huochuan', BASE_ASSET_BATH + 'images/CityBuildingInner/huochuan.png');
-    Elkaisar.GE.LoadingScene.load.image('huodong', BASE_ASSET_BATH + 'images/CityBuildingInner/huodong.png');
-    Elkaisar.GE.LoadingScene.load.image('inner_city_building_tile', BASE_ASSET_BATH + 'images/CityBuildingInner/inner_city_building_tile.png');
-    Elkaisar.GE.LoadingScene.load.image('jiaochang', BASE_ASSET_BATH + 'images/CityBuildingInner/jiaochang.png');
-    Elkaisar.GE.LoadingScene.load.image('jingyingdiantang', BASE_ASSET_BATH + 'images/CityBuildingInner/jingyingdiantang.png');
-    Elkaisar.GE.LoadingScene.load.image('liaowangta', BASE_ASSET_BATH + 'images/CityBuildingInner/liaowangta.png');
-    Elkaisar.GE.LoadingScene.load.image('lvxingshangren', BASE_ASSET_BATH + 'images/CityBuildingInner/lvxingshangren.png');
-    Elkaisar.GE.LoadingScene.load.image('map_build_history', BASE_ASSET_BATH + 'images/CityBuildingInner/map_build_history.png');
-    Elkaisar.GE.LoadingScene.load.image('matou', BASE_ASSET_BATH + 'images/CityBuildingInner/matou.png');
-    Elkaisar.GE.LoadingScene.load.image('prison', BASE_ASSET_BATH + 'images/CityBuildingInner/prison.png');
-    Elkaisar.GE.LoadingScene.load.image('qibingying', BASE_ASSET_BATH + 'images/CityBuildingInner/qibingying.png');
-    Elkaisar.GE.LoadingScene.load.image('qibingying_war', BASE_ASSET_BATH + 'images/CityBuildingInner/qibingying_war.png');
-    Elkaisar.GE.LoadingScene.load.image('shichang', BASE_ASSET_BATH + 'images/CityBuildingInner/shichang.png');
-    Elkaisar.GE.LoadingScene.load.image('tiejiangpu', BASE_ASSET_BATH + 'images/CityBuildingInner/tiejiangpu.png');
-    Elkaisar.GE.LoadingScene.load.image('train', BASE_ASSET_BATH + 'images/CityBuildingInner/train.png');
-    Elkaisar.GE.LoadingScene.load.image('xiangbingying_war',   BASE_ASSET_BATH + 'images/CityBuildingInner/xiangbingying_war.png');
-    Elkaisar.GE.LoadingScene.load.image('xueyuan',             BASE_ASSET_BATH + 'images/CityBuildingInner/xueyuan.png');
-    Elkaisar.GE.LoadingScene.load.image('yongzhediaoxiang_01', BASE_ASSET_BATH + 'images/CityBuildingInner/yongzhediaoxiang_01.png');
-    Elkaisar.GE.LoadingScene.load.image('yongzhediaoxiang_02', BASE_ASSET_BATH + 'images/CityBuildingInner/yongzhediaoxiang_02.png');
-    Elkaisar.GE.LoadingScene.load.image('yongzhediaoxiang_03', BASE_ASSET_BATH + 'images/CityBuildingInner/yongzhediaoxiang_03.png');
-    Elkaisar.GE.LoadingScene.load.image('yongzhediaoxiang_04', BASE_ASSET_BATH + 'images/CityBuildingInner/yongzhediaoxiang_04.png');
-    Elkaisar.GE.LoadingScene.load.image('yongzhediaoxiang_05', BASE_ASSET_BATH + 'images/CityBuildingInner/yongzhediaoxiang_05.png');
-    Elkaisar.GE.LoadingScene.load.image('yongzhediaoxiang_06', BASE_ASSET_BATH + 'images/CityBuildingInner/yongzhediaoxiang_06.png');
-    Elkaisar.GE.LoadingScene.load.image('yongzhediaoxiang_07', BASE_ASSET_BATH + 'images/CityBuildingInner/yongzhediaoxiang_07.png');
-    Elkaisar.GE.LoadingScene.load.image('yongzhediaoxiang_08', BASE_ASSET_BATH + 'images/CityBuildingInner/yongzhediaoxiang_08.png');
-    Elkaisar.GE.LoadingScene.load.image('yongzhediaoxiang_09', BASE_ASSET_BATH + 'images/CityBuildingInner/yongzhediaoxiang_09.png');
-    Elkaisar.GE.LoadingScene.load.image('yongzhediaoxiang_10', BASE_ASSET_BATH + 'images/CityBuildingInner/yongzhediaoxiang_10.png');
-    Elkaisar.GE.LoadingScene.load.image('zhanzhengbaolei',     BASE_ASSET_BATH + 'images/CityBuildingInner/zhanzhengbaolei.png');
-    Elkaisar.GE.LoadingScene.load.image('zhanzhengdating',     BASE_ASSET_BATH + 'images/CityBuildingInner/zhanzhengdating.png');
-    Elkaisar.GE.LoadingScene.load.image('zhucheng',            BASE_ASSET_BATH + 'images/CityBuildingInner/zhucheng.png');
 
-   
 };
 
 Elkaisar.GE.ConfigCityAnims = function () {
@@ -1918,7 +1842,6 @@ var game;
 var speedMult = 0.7;
 var friction = 0.99;
 
-var TCam = {};
 
 Elkaisar.GE.CCityScene = new Phaser.Class({
     Extends: Phaser.Scene,
@@ -1935,19 +1858,13 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
         var floor_height = 1400;
         this.ConstructingHammer = {};
 
-        //Elkaisar.GE.ConfigCityAnims();
-        Elkaisar.Castle.getFloorPostion().done(function () {
-            Elkaisar.Castle.addFloor();
-            Elkaisar.CityWall.addWall();
-        });
+        Elkaisar.GE.ConfigCityAnims();
         fillCityWithBuilding();
         this.input.mousePointer.motionFactor = 0.5;
         this.input.pointer1.motionFactor = 0.5;
 
-        var cam = this.cameras.main.setBounds(-100, -230, 5420, 3240);
-        //this.add.image(0, 0, "city_floor").setOrigin(0, 0);
-        TCam = this.cameras.main;
-        cam.zoom = 0.5;
+        var cam = this.cameras.main.setBounds(0, 0, floor_width, floor_height);
+        this.add.image(0, 0, "city_floor").setOrigin(0, 0);
         this.Scrolling = {};
         var This = this;
         var downObj;
@@ -1967,6 +1884,7 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
         });
 
         this.input.on('pointerdown', function (p) {
+            console.log(p.worldX, p.worldY)
             This.Scrolling.movingSpeed = 0;
 
         });
@@ -1988,7 +1906,7 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
         });
 
         this.input.on('gameobjectover', function (Pointer, GameObject, Event) {
-            
+            console.log(arguments)
             if (Pointer.isDown)
                 return;
 
@@ -1996,6 +1914,7 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
                 This.ConstructingHammer.destroy();
 
             if (GameObject.data) {
+                console.log("dasdasdasdadsadsadsad")
                 const BuildingPlace = GameObject.data.get("BuildingPlace")
                 if (Elkaisar.City.getCity().BuildingType[BuildingPlace] == BUILDING_TYPS.SPACE) {
                     This.ConstructingHammer = This.add.image(GameObject.x + 18, GameObject.y + 18, "ConstructingHammer").setDepth(100).setOrigin(0, 0);
@@ -2022,13 +1941,12 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
                     return cam.zoom = 2;
                 cam.zoom += 0.1;
             } else {
-                if (cam.zoom <= 0.5)
-                    return cam.zoom = 0.5;
+                if (cam.zoom <= 1)
+                    return cam.zoom = 1;
                 cam.zoom -= 0.1;
             }
 
         });
-        if(BuildingOnFloor.palace)
         cam.pan(BuildingOnFloor.palace.x, BuildingOnFloor.palace.y, 700);
 
 
@@ -7176,116 +7094,6 @@ $(document)['on']('click', '#relocate-city-now', function () {
     });
 });
 
-Elkaisar.Castle = {};
-Elkaisar.Castle.FloorPartPos;
-
-
-$("#city_col").hide();
-
-Elkaisar.Castle.getFloorPostion = function (){
-    
-   return $.getJSON(`js${JS_VERSION}/json/Castle/CastleFloorPos.json`, function (data){
-       Elkaisar.Castle.FloorPartPos = data;
-   });
-    
-};
-
-var Tttt = "";
-
-Elkaisar.Castle.addFloor = function (){
-    
-    var x= 0;
-   
-    for(let OnePart of Elkaisar.Castle.FloorPartPos ){
-        let Sprite = Elkaisar.GE.CityScene.add.sprite(OnePart.Pos.x, OnePart.Pos.y, OnePart.Image);
-        if(OnePart.Image == "BG_hall_far_1")
-            Tttt = Sprite;
-        Sprite.setRotation(((OnePart.Rot || 0) /180) *Math.PI);
-        Sprite.depth  = OnePart.Pos.z || 0;
-        
-        
-    }
-    
-     Elkaisar.GE.CityScene.add.sprite(1963,  848,   "zhucheng");
-     Elkaisar.GE.CityScene.add.sprite(2521,  981,   "bubingying_war");
-     Elkaisar.GE.CityScene.add.sprite(2715,  1157,  "bubingying");
-     Elkaisar.GE.CityScene.add.sprite(2888,  995,   "cangku");
-     Elkaisar.GE.CityScene.add.sprite(625,   1893,  "chebingying");
-     Elkaisar.GE.CityScene.add.sprite(302,   1737,  "chongwuguan");
-     Elkaisar.GE.CityScene.add.sprite(877,   1625,  "dashiguan");
-     Elkaisar.GE.CityScene.add.sprite(949,   1379,  "gongbingying");
-     Elkaisar.GE.CityScene.add.sprite(1432,  1944,  "gongbingying_war");
-     Elkaisar.GE.CityScene.add.sprite(2221,  1828,  "jiaochang");
-     Elkaisar.GE.CityScene.add.sprite(2031,  1550,  "map_build_history");
-     Elkaisar.GE.CityScene.add.sprite(2268,  1427,  "prison");
-     Elkaisar.GE.CityScene.add.sprite(2525,  1751,  "qibingying");
-     Elkaisar.GE.CityScene.add.sprite(2841,  1946,  "qibingying_war");
-     Elkaisar.GE.CityScene.add.sprite(2570,  2051,  "shichang");
-     Elkaisar.GE.CityScene.add.sprite(3600,  1508,  "tiejiangpu");
-     Elkaisar.GE.CityScene.add.sprite(3154,  1425,  "train");
-     Elkaisar.GE.CityScene.add.sprite(3375,  1283,  "xiangbingying_war");
-     Elkaisar.GE.CityScene.add.sprite(2489,  688,   "xueyuan");
-     Elkaisar.GE.CityScene.add.sprite(1675,  1557,   "zhanzhengbaolei");
-     Elkaisar.GE.CityScene.add.sprite(3399,  1608,   "zhanzhengdating");
-     Elkaisar.GE.CityScene.add.sprite(2812,  1322,   "BG_statue");
-    /*Elkaisar.GE.CityScene.add.image(x, y, BuildingConstData[Elkaisar.City.getCity().BuildingType[BuildingPlace]].sprit_name).setInteractive({
-        hitArea: new Phaser.Geom.Polygon(BuildingConstData[Elkaisar.City.getCity().BuildingType[BuildingPlace]].hitArea),
-        hitAreaCallback: Phaser.Geom.Polygon.Contains
-    }).setOrigin(0, 0).setDepth(2)
-            .on("click", function () {
-                buildingClick(BuildingPlace);
-            })
-            .on(Phaser.Input.Events.GAMEOBJECT_OVER, MouseOverBuilding)
-            .on(Phaser.Input.Events.GAMEOBJECT_OUT, MouseOutBuilding);
-    BuildingOnFloor[BuildingPlace].Lable = building_lvl_lable(x, y, BuildingPlace);
-    building_hammer_animate(BuildingPlace);
-    return BuildingOnFloor[BuildingPlace];*/
-};
-Elkaisar.CityWall = {};
-Elkaisar.CityWall.WallPartType = {
-    PartWall: 1, PartTower: 2, PartGate: 3
-};
-Elkaisar.CityWall.WallPostion = [
-    
-    {
-        Pos: {x: 3929, y: 1632, z: 1},
-        PartType: Elkaisar.CityWall.WallPartType.PartWall
-    },{
-        Pos: {x: 3811, y: 1636, z: 2},
-        PartType: Elkaisar.CityWall.WallPartType.PartTower
-    },{
-        Pos: {x: 3627, y: 1780, z: 3},
-        PartType: Elkaisar.CityWall.WallPartType.PartWall
-    },{
-        Pos: {x: 3435, y: 1829, z: 4},
-        PartType: Elkaisar.CityWall.WallPartType.PartGate
-    },{
-        Pos: {x: 3160, y: 2016, z: 5},
-        PartType: Elkaisar.CityWall.WallPartType.PartWall
-    },{
-        Pos: {x: 2983, y: 2052, z: 6},
-        PartType: Elkaisar.CityWall.WallPartType.PartTower
-    },{
-        Pos: {x: 2797, y: 2194, z: 7},
-        PartType: Elkaisar.CityWall.WallPartType.PartWall
-    }
-    
-];
-
-
-Elkaisar.CityWall.addWall = function (){
-    
-    for(let WallPart of Elkaisar.CityWall.WallPostion){
-        if(WallPart.PartType == Elkaisar.CityWall.WallPartType.PartWall)
-            Elkaisar.GE.CityScene.add.sprite(WallPart.Pos.x, WallPart.Pos.y, "chengqiang_lv4");
-        if(WallPart.PartType == Elkaisar.CityWall.WallPartType.PartTower)
-            Elkaisar.GE.CityScene.add.sprite(WallPart.Pos.x, WallPart.Pos.y, "jianta_lv4_base");
-        if(WallPart.PartType == Elkaisar.CityWall.WallPartType.PartGate)
-            Elkaisar.GE.CityScene.add.sprite(WallPart.Pos.x, WallPart.Pos.y, "chengmen_lv4");
-    }
-};
-
-
 var city_building;
 
 
@@ -8695,7 +8503,6 @@ Elkaisar.GE.TextConfig = {
 };
 function fillCityWithBuilding()
 {
-    return ;
     for (var prop in BuildingOnFloor) {
         BuildingOnFloor[prop].destroy();
         if (BuildingOnFloor[prop].LvlImage)
@@ -8723,7 +8530,6 @@ function fillCityWithBuilding()
 
 
     Elkaisar.GE.AddCityFixedBuilding();
-   
     Elkaisar.GE.AddCityBuilding(14 * X_GRID, 3.25 * Y_GRID, "market");
     Elkaisar.GE.AddCityBuilding(1780, 461, "light_house_1");
     Elkaisar.GE.AddCityBuilding(1685, 506, "light_house_2");
@@ -21548,20 +21354,22 @@ $("#useItemButton").removeAttr("disabled");
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-$("#useItemButton").removeAttr("disabled");
+                
+                $("#useItemButton").removeAttr("disabled");
                 if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
+                
                 if (JsonObject.state === "ok") {
-
                     $("#over_lay_alert").remove();
                     $("#over_lay").remove();
                     Matrial.takeFrom(matrial, 1);
                     for (var iii in Elkaisar.TimedTask.TaskList.Study)
                         if (Number(Elkaisar.TimedTask.TaskList.Study[iii].id_city) === Number(idCity))
                             delete(Elkaisar.TimedTask.TaskList.Study[iii]);
-                    for (var iii in JsonObject.JopTaskList)
-                        Elkaisar.TimedTask.TaskList.Study[JsonObject.JopTaskList[iii].id] = JsonObject.JopTaskList[iii];
+                    
+                    for (var iii in JsonObject.list)
+                        Elkaisar.TimedTask.TaskList.Study[JsonObject.list[iii].id] = JsonObject.list[iii];
                     Elkaisar.TimedTask.refreshListView();
                     buildingClick($("#dialg_box .box_header").attr("place"), true);
                 } else if (JsonObject.state === "error_0") {
@@ -22493,6 +22301,33 @@ $(document).on("click", "#buyNewItem", function () {
                     Elkaisar.CurrentCity.City = JsonObject.City;
                     city_profile.refresh_resource_view();
                 }
+            }
+        });
+    };
+    
+    Elkaisar.BaseData.Items[`freedom_help`][`UseFunc`] = function (amount) {
+
+        return $.ajax({
+            url: `${NODE_URL}/api/AItemUse/useFreedomHelp`,
+            type: 'POST',
+            data: {
+                Item: "freedom_help",
+                amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
+            },
+            success: function (data, textStatus, jqXHR) {
+                if (!Elkaisar.LBase.isJson(data))
+                    Elkaisar.LBase.Error(data);
+                var JsonObject = JSON.parse(data);
+                if (JsonObject.state === "ok") {
+                    Elkaisar.CurrentCity.City = JsonObject.City;
+                    city_profile.refresh_resource_view();
+                    alert_box.succesMessage("تم رفع الإستعمار بنجاح");
+                    Elkaisar.World.Map.getWorldCityColonized();
+                }
+               
             }
         });
 
@@ -34292,10 +34127,10 @@ function battelStart() {
             'url': `http://${WS_HOST}:${WS_PORT}/api/ABattel/joinBattel`,
             'data': {
                 'idBattel': battel_data['id_battel'],
-                'idHero': Elkaisar['CurrentHero']['Hero']['id_hero'],
-                'side': battel_data['side'],
-                'token': Elkaisar['Config']['OuthToken'],
-                'server': Elkaisar['Config']['idServer']
+                'idHero'  : Elkaisar.CurrentHero.Hero.id_hero,
+                'side'    : battel_data['side'],
+                'token'   : Elkaisar.Config.OuthToken,
+                'server'  : Elkaisar.Config.idServer
             },
             'type': 'POST',
             'success': function (data, _0x4f103d, _0x3e9120) {
@@ -34345,6 +34180,10 @@ function battelStart() {
                     alert_box['confirmMessage'](`البطل ليس لدية لياقة كافية`);
                 } else if(JsonObject.state == "error_9"){
                     alert_box['confirmMessage'](`وصل عدد الأبطال بالخارج للحد الأقصى`);
+                } else if(JsonObject.state == "error_8_1"){
+                    alert_box['confirmMessage'](`لا يمكنك الإنضمام`);
+                } else if(JsonObject.state == "error_8_2"){
+                    alert_box['confirmMessage'](`لا يمكنك الإنضمام`);
                 }
             },
             'error': function (_0x9c1e15, _0x370e1e, _0x58f5ad) { }
@@ -46842,9 +46681,13 @@ $(document).on("click", "#JOIN_ATTACK_SIDE , #JOIN_DEFENCE_SIDE", function () {
 
     for (var iii in Elkaisar.DPlayer.Heros)
     {
-        if (parseInt(Elkaisar.DPlayer.Heros[iii].Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_CITY && parseInt(Elkaisar.DPlayer.Heros[iii].Hero.console) === 0) {
-            Elkaisar.CurrentHero = Elkaisar.DPlayer.Heros[iii];
-            break;
+        if(parseInt(Elkaisar.DPlayer.Heros[iii].Hero.in_city) !== Elkaisar.Hero.HeroState.HERO_IN_CITY)
+            continue;
+        if(parseInt(Elkaisar.DPlayer.Heros[iii].Hero.console) !== 0)
+            continue;
+        if(Elkaisar.DPlayer.Heros[iii].Hero.id_city == Elkaisar.CurrentCity.idCity){
+             Elkaisar.CurrentHero = Elkaisar.DPlayer.Heros[iii];
+             break;
         }
     }
 

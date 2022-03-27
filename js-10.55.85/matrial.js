@@ -427,20 +427,22 @@ $("#useItemButton").removeAttr("disabled");
             },
             type: 'POST',
             success: function (data, textStatus, jqXHR) {
-$("#useItemButton").removeAttr("disabled");
+                
+                $("#useItemButton").removeAttr("disabled");
                 if (!Elkaisar.LBase.isJson(data))
                     return Elkaisar.LBase.Error(data);
                 var JsonObject = JSON.parse(data);
+                
                 if (JsonObject.state === "ok") {
-
                     $("#over_lay_alert").remove();
                     $("#over_lay").remove();
                     Matrial.takeFrom(matrial, 1);
                     for (var iii in Elkaisar.TimedTask.TaskList.Study)
                         if (Number(Elkaisar.TimedTask.TaskList.Study[iii].id_city) === Number(idCity))
                             delete(Elkaisar.TimedTask.TaskList.Study[iii]);
-                    for (var iii in JsonObject.JopTaskList)
-                        Elkaisar.TimedTask.TaskList.Study[JsonObject.JopTaskList[iii].id] = JsonObject.JopTaskList[iii];
+                    
+                    for (var iii in JsonObject.list)
+                        Elkaisar.TimedTask.TaskList.Study[JsonObject.list[iii].id] = JsonObject.list[iii];
                     Elkaisar.TimedTask.refreshListView();
                     buildingClick($("#dialg_box .box_header").attr("place"), true);
                 } else if (JsonObject.state === "error_0") {

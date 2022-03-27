@@ -117,6 +117,33 @@ Elkaisar.Item.useItemFunc = function () {
                 }
             }
         });
+    };
+    
+    Elkaisar.BaseData.Items[`freedom_help`][`UseFunc`] = function (amount) {
+
+        return $.ajax({
+            url: `${NODE_URL}/api/AItemUse/useFreedomHelp`,
+            type: 'POST',
+            data: {
+                Item: "freedom_help",
+                amount: amount,
+                idCity: Elkaisar.CurrentCity.City.id_city,
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
+            },
+            success: function (data, textStatus, jqXHR) {
+                if (!Elkaisar.LBase.isJson(data))
+                    Elkaisar.LBase.Error(data);
+                var JsonObject = JSON.parse(data);
+                if (JsonObject.state === "ok") {
+                    Elkaisar.CurrentCity.City = JsonObject.City;
+                    city_profile.refresh_resource_view();
+                    alert_box.succesMessage("تم رفع الإستعمار بنجاح");
+                    Elkaisar.World.Map.getWorldCityColonized();
+                }
+               
+            }
+        });
 
     };
 
