@@ -16,7 +16,7 @@ require_once 'base.php';
 
 
 
-$playerId = 6591;
+$playerId = 9973;
 $token = selectFromTable("auth_token", "player_auth", "id_player = :idp", ["idp" => $playerId]);
 if(!count($token))
 {

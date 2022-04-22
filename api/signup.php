@@ -4,6 +4,20 @@ require_once '../config_index.php';
 require_once '../base.php'; 
 
 
+function genRechCode($UserName){
+        $Encoded = base_convert($UserName++, 10, 36);
+        for ($i = 0; $i < strlen($Encoded); $i++){
+            if($Encoded[$i] == "=" || $Encoded[$i] == "+" || $Encoded[$i] == "/" ){
+                
+                $Encoded[$i] = random_int(0, 9);
+                
+                
+            }
+        }
+        
+        return $Encoded;
+    }
+
 function signUp($email , $username , $enc_pass)
 {
     global $dbhIndex;
@@ -13,7 +27,13 @@ function signUp($email , $username , $enc_pass)
         $sql->execute([
             "un" => $username, "em" => $email, "enc" => $enc_pass
         ]);
-        return  $dbhIndex->lastInsertId();
+        $idUser = $dbhIndex->lastInsertId();
+        
+        $sql2 = $dbhIndex->prepare("UPDATE game_user  SET rech_code = :rc WHERE id_user = :idu");
+        $sql2->execute([
+            "idu" => $idUser, "rc" => genRechCode($idUser)
+        ]);
+        return  $idUser;
     
 }
  
