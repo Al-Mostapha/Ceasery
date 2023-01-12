@@ -1,0 +1,28 @@
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => SELECT id_player FROM player WHERE id_user = :idu
+)
+Array
+(
+    [idu] => 1
+)
+Array
+(
+)
+Array
+(
+)
+PDOStatement Object
+(
+    [queryString] => SELECT id_player FROM player WHERE id_user = :idu
+)
+Array
+(
+    [idu] => 1
+)

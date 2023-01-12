@@ -13,8 +13,8 @@ if(isset($_POST["CHANGE_PLAYER_PASSWORD"])){
     $newPass  = (validateName($_POST["newPassword"]));
     $oldPass  = (validateName($_POST["oldPassword"]));
     
-    
-    $check = selectFromTableIndex("id_user, enc_pass", "game_user", "id_user = :idp", ["idp" => $idPlayer]);
+    $idUser = selectFromTable("id_user", "player", "id_player = :idp", ["idp" => $idPlayer])[0]["id_user"];
+    $check = selectFromTableIndex("id_user, enc_pass", "game_user", "id_user = :idp", ["idp" => $idUser]);
     
     if(!passCheck($oldPass, $check[0]["enc_pass"])){
         exit(json_encode([
@@ -26,7 +26,7 @@ if(isset($_POST["CHANGE_PLAYER_PASSWORD"])){
         ]));
     }
     $enc_pass = passEnc($newPass);
-    if(updateTableIndex("enc_pass = :pass", "game_user", "id_user = :idp", ["pass" => $enc_pass, "idp" => $idPlayer]) > 0){
+    if(updateTableIndex("enc_pass = :pass", "game_user", "id_user = :idp", ["pass" => $enc_pass, "idp" => $idUser]) > 0){
         session_destroy();
         exit(json_encode([
             "state"=>"ok"
