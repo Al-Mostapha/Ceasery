@@ -7,7 +7,7 @@ function refreshMsg(){
             url: "api/message.php",
             data:{
                 MSG_NUMBERS: true,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -39,7 +39,7 @@ function getReports(offset){
             data: {
                 get_report:true , 
                 offset: offset,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -287,7 +287,7 @@ var message = {
             data:{
                 get_income_msg_in_detail: true,
                 id_message: id_msg,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -365,7 +365,7 @@ var message = {
             data:{
                 get_msg_diff: true,
                 offset: offset || 0,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -421,7 +421,7 @@ var message = {
             data:{
                 get_diff_msg_in_detail: true,
                 id_message: id_msg,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                     token:TOKEN
             },
             type: 'GET',
@@ -501,7 +501,7 @@ var message = {
             data:{
                 get_msg_outcome: true,
                 offset: offset || 0,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -557,7 +557,7 @@ var message = {
             data:{
                 get_out_msg_in_detail: true,
                 id_message: id_msg,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -774,7 +774,7 @@ $(document).on("click" , "#del_selected" , function (){
         data: {
             delete_msg: true,
             msgs: JSON.stringify(total_msg),
-            id_player:ID_PLAYER,
+            id_player:Elkaisar.Config.idPlayer,
             token:TOKEN
         },
         type: 'POST',
@@ -822,7 +822,7 @@ $(document).on("click" , "#delete-all button" , function (){
             data: {
                 DELETE_ALL_UNREAD: true,
                 msgs: JSON.stringify(total_msg),
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'POST',
@@ -867,7 +867,7 @@ function searchByName(segmant , condtion)
         var data_send = {
                 search_by_name: true,
                 name: segmant,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             };
         
@@ -878,7 +878,7 @@ function searchByName(segmant , condtion)
                 name: segmant,
                 id_guild_no: false,
                 id_guild: Elkaisar.DPlayer.Player.id_guild,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
                 
             };
@@ -1364,7 +1364,7 @@ $(document).on("click" , ".show_battel_report" ,function (){
         data: {
             report_detail: true,
             id_report: id_report,
-            id_player:ID_PLAYER,
+            id_player:Elkaisar.Config.idPlayer,
             token:TOKEN
         },
         type: 'GET',
@@ -1888,7 +1888,7 @@ $(document).on("click" , ".show_spy_report" ,function (){
         data: {
             spy_report_detail: true,
             id_report: id_report,
-            id_player:ID_PLAYER,
+            id_player:Elkaisar.Config.idPlayer,
             spy_for: data_obj.spy_for,
             id_victim:id_victim,
                     token:TOKEN

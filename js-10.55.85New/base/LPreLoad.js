@@ -416,8 +416,7 @@ Elkaisar.GE.LPreLoad = function () {
     Elkaisar.GE.LoadingScene.load.image('zhanzhengbaolei',     BASE_ASSET_BATH + 'images/CityBuildingInner/zhanzhengbaolei.png');
     Elkaisar.GE.LoadingScene.load.image('zhanzhengdating',     BASE_ASSET_BATH + 'images/CityBuildingInner/zhanzhengdating.png');
     Elkaisar.GE.LoadingScene.load.image('zhucheng',            BASE_ASSET_BATH + 'images/CityBuildingInner/zhucheng.png');
-
-   
+  
 };
 
 Elkaisar.GE.ConfigCityAnims = function () {
@@ -513,6 +512,99 @@ Elkaisar.GE.Loading = function (percent) {
     $("#load-bar div").css({width: percent + "%"});
 };
 
+Elkaisar.GE.VerfiyPlayerToken = function(){
+  if(localStorage.getItem(UserToken)){
+    localStorage.clear();
+    window.location.href = window.location.origin;
+    return;
+  }
+  $.ajax({
+    url: `${window.location.origin}:8080/HomeApi/ALogin/VerifyPlayerToken`,
+    type: 'POST',
+    data: {
+      UserToken: UserToken,
+      LoginToken: LoginToken,
+    },
+    success: function (data) {
+      if(!isJson(data))
+        return Elkaisar.LBase.Error(data);
+      const JsonData = JSON.parse(data);
+      if(JsonData.state == "ok"){
+        Elkaisar.Config.idUser = JsonData.idUser; 
+        Elkaisar.Config.idServer = JsonData.idServer; 
+        Elkaisar.Config.ServerData = JsonData.ServerData;
+        Elkaisar.Config.WsPort = Elkaisar.Config.ServerData.port;
+        Elkaisar.Config.ApiPort = Elkaisar.Config.ServerData.port;
+        Elkaisar.Config.ApiUrl = Elkaisar.Config.ServerData.ApiUrl;
+        Elkaisar.GE.PlayerEnterServerWeb();
+        $(document).trigger("GameReady");
+      }else{
+        window.location.href = "http://www.elkaisar.com";
+        window.location.replace("http://www.elkaisar.com");
+      }
+    },
+  });
+}
+
+Elkaisar.GE.PlayerEnterServerWeb = function(){
+  Elkaisar.Config.NodeUrl = `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}`;
+  $.ajax({
+      url: `${NodeUrl}/api/ALogin/PlayerEnterServerWeb`,
+      type: 'POST',
+      data: {
+        UserToken: UserToken,
+      },
+      beforeSend: function (xhr) {
+
+      },
+      success: function (data, textStatus, jqXHR) {
+          if (!Elkaisar['LBase']['isJson'](data)) {
+              alert(data), console['log'](data);
+              return;
+          }
+          var JsonData = JSON['parse'](data);
+          if (JsonData['state'] !== 'ok')
+              console['log'](JsonData);
+          console.log(JsonData);
+          Elkaisar['Config']['WsPort'] = JsonData['WsPort'];
+          Elkaisar['Config']['WsHost'] = JsonData['WsHost'];
+          Elkaisar['DPlayer']['Player'] = JsonData['Player'];
+          Elkaisar['ServerData'] = JsonData.Server;
+          Elkaisar['Config']['OuthToken'] = TOKEN;
+          Elkaisar['Config']['idServer'] = JsonData['idServer'];
+          Elkaisar['Config']['idCities'] = JsonData['idCities'];
+          Elkaisar['Config']['JsVersion'] = JsonData['JsVersion'];
+          Elkaisar['Config']['PayLink'] = JsonData['PayLink'];
+          Elkaisar['Config']['RechCode'] = JsonData['RechCode'];
+
+          if (Elkaisar['DPlayer']['Player']['panned'] >= $['now']() / 1000) {
+              alert('هذا الحساب محظور');
+              return;
+          }
+
+          $['ajaxSetup']({
+              'data': {
+                  'idPlayerV': Elkaisar['DPlayer']['Player']['id_player']
+              }/*,
+               beforeSend(){
+               $("button").attr("disabled", "disabled");
+               $("button").prop("disabled", true);
+               },
+               complete(){
+               $("button").removeAttr("disabled");
+               $("button").prop("disabled", false);
+               }*/
+          });
+
+          $('html')['trigger']('PlayerReady');
+
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
+
+  });
+}
 
 Elkaisar.GE.CLoadingScene = new Phaser.Class({
     Extends: Phaser.Scene,
@@ -525,67 +617,10 @@ Elkaisar.GE.CLoadingScene = new Phaser.Class({
 
         Elkaisar.GE.LPreLoad();
         this.load.on('progress', function (value) {
-            Elkaisar.GE.Loading(value * 100);
+          Elkaisar.GE.Loading(value * 100);
         });
         this.load.on('complete', function () {
-            $.ajax({
-                url: API_URL + "/home/HLogIn/playerEnterServerWeb",
-                type: 'POST',
-                data: {
-                    server: SERVER_ID,
-                    outhToken: TOKEN
-                },
-                beforeSend: function (xhr) {
-
-                },
-                success: function (data, textStatus, jqXHR) {
-                    if (!Elkaisar['LBase']['isJson'](data)) {
-                        alert(data), console['log'](data);
-                        return;
-                    }
-                    var JsonData = JSON['parse'](data);
-                    if (JsonData['state'] !== 'ok')
-                        console['log'](JsonData);
-                    console.log(JsonData);
-                    Elkaisar['Config']['WsPort'] = JsonData['WsPort'];
-                    Elkaisar['Config']['WsHost'] = JsonData['WsHost'];
-                    Elkaisar['DPlayer']['Player'] = JsonData['Player'];
-                    Elkaisar['ServerData'] = JsonData.Server;
-                    Elkaisar['Config']['OuthToken'] = TOKEN;
-                    Elkaisar['Config']['idServer'] = JsonData['idServer'];
-                    Elkaisar['Config']['idCities'] = JsonData['idCities'];
-                    Elkaisar['Config']['JsVersion'] = JsonData['JsVersion'];
-                    Elkaisar['Config']['PayLink'] = JsonData['PayLink'];
-                    Elkaisar['Config']['RechCode'] = JsonData['RechCode'];
-
-                    if (Elkaisar['DPlayer']['Player']['panned'] >= $['now']() / 1000) {
-                        alert('هذا الحساب محظور');
-                        return;
-                    }
-
-                    $['ajaxSetup']({
-                        'data': {
-                            'idPlayerV': Elkaisar['DPlayer']['Player']['id_player']
-                        }/*,
-                         beforeSend(){
-                         $("button").attr("disabled", "disabled");
-                         $("button").prop("disabled", true);
-                         },
-                         complete(){
-                         $("button").removeAttr("disabled");
-                         $("button").prop("disabled", false);
-                         }*/
-                    });
-
-                    $('html')['trigger']('PlayerReady');
-
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-
-                }
-
-            });
-
+          Elkaisar.GE.VerfiyPlayerToken();
         });
     },
     create: function () {

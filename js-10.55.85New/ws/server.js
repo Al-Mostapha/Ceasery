@@ -10,7 +10,7 @@ WS_utile.onopen = function () {
         ws.send(JSON.stringify({
             url: "Player/addPlayer",
             data: {
-                idPlayer: ID_PLAYER
+                idPlayer: Elkaisar.Config.idPlayer
             }
         }));
     }
@@ -65,7 +65,7 @@ WS_utile.onclose = function (event) {
 
 WS_utile.connect = function () {
 
-    ws = new WebSocket(`ws://${WS_HOST}:${WS_PORT}?idPlayer=${ID_PLAYER}&server=${SERVER_ID}&token=${Elkaisar.Config.OuthToken}`);
+    ws = new WebSocket(`ws://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}?idPlayer=${Elkaisar.Config.idPlayer}&server=${SERVER_ID}&token=${Elkaisar.Config.OuthToken}`);
     ws.onopen = WS_utile.onopen;
     ws.onmessage = WS_utile.onmessage;
     ws.onclose = WS_utile.onclose;

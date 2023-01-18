@@ -571,7 +571,7 @@ $("#useItemButton").removeAttr("disabled");
         
         $.ajax({
 
-            url: `http://${WS_HOST}:${WS_PORT}/api/AGuild/changeGuildName`,
+            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuild/changeGuildName`,
             data: {
                 slog_top,
                 slog_cnt,
@@ -742,7 +742,7 @@ $("#useItemButton").removeAttr("disabled");
                 ACCELERATE_ARRIVING_DEALS: true,
                 id_deal: id_deal,
                 id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
             },
             type: 'POST',
@@ -981,7 +981,7 @@ function buyMatrial(matrial, amount)
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AItem/buyItem`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AItem/buyItem`,
         data: {
             item: matrial,
             amount: amount,

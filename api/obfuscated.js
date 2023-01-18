@@ -12,7 +12,7 @@ Elkaisar.Peer.Peer = new Peer(undefined, {
 
 Elkaisar.Peer.Peer.on("open", function (idPeer) {
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/ATeam/playerOnline`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/playerOnline`,
         data: {
             token: Elkaisar.Config.OuthToken,
             idPeer : idPeer
@@ -6132,7 +6132,7 @@ Elkaisar.World.UnitData = {
 
 
 };
-const NODE_URL = `http://${WS_HOST}:${WS_PORT}`;
+const Elkaisar.Config.NodeUrl = `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}`;
 
 function isJson(str) {
     try {
@@ -6495,7 +6495,7 @@ $(document).ready(function () {
                         url: "Chat/publicMsgImage",
                         data: {
                             image: event.target.result,
-                            idPlayer: ID_PLAYER,
+                            idPlayer: id_player:Elkaisar.Config.idPlayer,
                             token: TOKEN,
                             p_name: player.name,
                             p_avatar: player.avatar,
@@ -7054,7 +7054,7 @@ Elkaisar.World.Province.getTitle = function (x, y) {
 $(document)['on']('click', '#relocate-city-now', function () {
     var province = $('#move-city-to .select-list')['attr']('data-value');
     return $.ajax({
-        'url': NODE_URL + '/api/AItemUse/useRandomMove',
+        'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useRandomMove',
         'type': 'POST',
         'data': {
             'Item': 'random_move',
@@ -9813,7 +9813,7 @@ var city_profile = {
                 
                 GET_CITY_RESOURCES: true,
                 id_city:Elkaisar.CurrentCity.City.id_city,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
                 
             },
@@ -9874,7 +9874,7 @@ var city_profile = {
                 
                 GET_CITY_STORAGE:true,
                 id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
                 
             },
@@ -9932,7 +9932,7 @@ var city_profile = {
             url: "api/city.php",
             data:{
                 AFTER_BATTEL_FINISH_REFRESH:true,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 id_city:Elkaisar.CurrentCity.City.id_city,
                 token:TOKEN
             },
@@ -9965,7 +9965,7 @@ var city_profile = {
         
         $.ajax({
                 url: "api/player.php",
-                data: {get_city: true, id_player:ID_PLAYER, token:TOKEN},
+                data: {get_city: true, id_player:Elkaisar.Config.idPlayer, token:TOKEN},
                 type: 'POST',
                 beforeSend: function (xhr) {
 
@@ -11546,7 +11546,7 @@ $(document).on("click", "#nav_search button", function () {
                     get_rank_player_searsh: true,
                     searsh_By: searsh_By,
                     search_value: search_value,
-                    id_player: ID_PLAYER,
+                    id_player: Elkaisar.Config.idPlayer,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -11607,7 +11607,7 @@ $(document).on("click", "#nav_search button", function () {
                     get_rank_union_searsh: true,
                     searsh_By: searsh_By,
                     search_value: search_value,
-                    id_player: ID_PLAYER,
+                    id_player: Elkaisar.Config.idPlayer,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -11667,7 +11667,7 @@ $(document).on("click", "#nav_search button", function () {
                     get_rank_hero_searsh: true,
                     searsh_By: searsh_By,
                     search_value: search_value,
-                    id_player: ID_PLAYER,
+                    id_player: Elkaisar.Config.idPlayer,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -11728,7 +11728,7 @@ $(document).on("click", "#nav_search button", function () {
                     get_rank_city_searsh: true,
                     searsh_By: searsh_By,
                     search_value: search_value,
-                    id_player: ID_PLAYER,
+                    id_player: Elkaisar.Config.idPlayer,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -12466,7 +12466,7 @@ $.ajax({
     url: "js" + JS_VERSION + "/json/building.json",
     data: {
         get_matrial: true,
-        id_player: ID_PLAYER,
+        id_player: Elkaisar.Config.idPlayer,
         token: TOKEN
     },
     type: 'POST',
@@ -15369,7 +15369,7 @@ $(document).on("click", ".for_building .nav_bar .left-nav ul li", function () {
                 data: {
                     GET_CITY_BAR: true,
                     id_city: Elkaisar.CurrentCity.City.id_city,
-                    id_player: ID_PLAYER,
+                    id_player: Elkaisar.Config.idPlayer,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -19251,7 +19251,7 @@ var Hero = {
             data: {
                 get_hero_equip: true,
                 id_hero:id_hero,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -19619,7 +19619,7 @@ $(document).on("click" , "#confirm-change-hero-name" , function (){
                 UPDATE_HERO_NEW_NAME:true,
                 new_name:hero_name,
                 id_hero:Elkaisar.CurrentHero.Hero.id_hero,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
                 
             },
@@ -20065,7 +20065,7 @@ $(document).on("dblclick" , ".putable-equi" , function (){
     
     
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/AHeroEquip/putEquipOnHero`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroEquip/putEquipOnHero`,
         data: {
             idEquip : id_equip,
             idHero  : id_hero,
@@ -20138,7 +20138,7 @@ $(document).on("dblclick" , ".putable-equi" , function (){
 
 Elkaisar.Hero.getEquipOffHero = function (idEquip) {
     return $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/AHeroEquip/putEquipOffHero`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroEquip/putEquipOffHero`,
         'data': {
             'idEquip': idEquip,
             token: Elkaisar['Config']['OuthToken'],
@@ -20519,7 +20519,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
     var amount = Math.floor($("#input-army-move").val());
     $("#confirmTransArmy").attr("disabled", "disabled");
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/AHeroArmy/transArmyFromHeroToHero`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroArmy/transArmyFromHeroToHero`,
         data: {
             amount: amount,
             idCity: Elkaisar.CurrentCity.City.id_city,
@@ -20590,7 +20590,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
     var idCity = Elkaisar.CurrentCity.City.id_city;
 
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/AHeroArmy/transArmyFromHeroToCity`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroArmy/transArmyFromHeroToCity`,
         data: {
             amount: amount,
             idHero: idHero,
@@ -20664,7 +20664,7 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
     $("#confirmTransArmy").attr("disabled", "disabled");
 
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/AHeroArmy/transArmyFromCityToHero`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroArmy/transArmyFromCityToHero`,
         data: {
             idHero: idHero,
             amount: amount,
@@ -20811,7 +20811,7 @@ $(document).on("click", "#swap_army", function () {
     }
 
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/AHeroArmy/swapHeroArmy`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroArmy/swapHeroArmy`,
         data: {
             idHeroRight: right_hero_id,
             idHeroLeft: left_hero_id,
@@ -20882,7 +20882,7 @@ $(document).on("click", "#left-down , #right-down", function () {
     var this_ = $(this);
 
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/AHeroArmy/clearHeroArmy`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroArmy/clearHeroArmy`,
         data: {
             idHero: id_hero,
             token: Elkaisar.Config.OuthToken,
@@ -21500,7 +21500,7 @@ $("#useItemButton").removeAttr("disabled");
         
         $.ajax({
 
-            url: `http://${WS_HOST}:${WS_PORT}/api/AGuild/changeGuildName`,
+            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuild/changeGuildName`,
             data: {
                 slog_top,
                 slog_cnt,
@@ -21671,7 +21671,7 @@ $("#useItemButton").removeAttr("disabled");
                 ACCELERATE_ARRIVING_DEALS: true,
                 id_deal: id_deal,
                 id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
             },
             type: 'POST',
@@ -21910,7 +21910,7 @@ function buyMatrial(matrial, amount)
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AItem/buyItem`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AItem/buyItem`,
         data: {
             item: matrial,
             amount: amount,
@@ -22189,7 +22189,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`motiv_60`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useMotivSpeech`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMotivSpeech`,
             type: 'POST',
             data: {
                 Item: "motiv_60",
@@ -22213,7 +22213,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`motiv_7`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useMotivSpeech`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMotivSpeech`,
             type: 'POST',
             data: {
                 Item: "motiv_7",
@@ -22237,7 +22237,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`prot_pop`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useProtPop`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useProtPop`,
             type: 'POST',
             data: {
                 Item: "prot_pop",
@@ -22262,7 +22262,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`peace`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useCeaseFire`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useCeaseFire`,
             type: 'POST',
             data: {
                 Item: "peace",
@@ -22284,7 +22284,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`a_play`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useTheatrics`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useTheatrics`,
             type: 'POST',
             data: {
                 Item: "a_play",
@@ -22308,7 +22308,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`freedom_help`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useFreedomHelp`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useFreedomHelp`,
             type: 'POST',
             data: {
                 Item: "freedom_help",
@@ -22336,7 +22336,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`medical_moun`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useMedicalStatue`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMedicalStatue`,
             type: 'POST',
             data: {
                 Item: "medical_moun",
@@ -22359,7 +22359,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`mediacl_statue`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useMedicalStatue`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMedicalStatue`,
             type: 'POST',
             data: {
                 Item: "mediacl_statue",
@@ -22382,7 +22382,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`sparta_stab`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useAttackAdvancer`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useAttackAdvancer`,
             type: 'POST',
             data: {
                 Item: "sparta_stab",
@@ -22405,7 +22405,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`qulinds_shaft`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useAttackAdvancer`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useAttackAdvancer`,
             type: 'POST',
             data: {
                 Item: "qulinds_shaft",
@@ -22428,7 +22428,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`marmlo_helmet`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useDefenceAdvancer`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useDefenceAdvancer`,
             type: 'POST',
             data: {
                 Item: "marmlo_helmet",
@@ -22451,7 +22451,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`march_prot`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useDefenceAdvancer`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useDefenceAdvancer`,
             type: 'POST',
             data: {
                 Item: "march_prot",
@@ -22476,7 +22476,7 @@ $(document).on("click", "#buyNewItem", function () {
             return alert_box['randomMove'](function () {
                 var Province = $('#move-city-to .select-list')['attr']('data-value');
                 return $.ajax({
-                    'url': NODE_URL + '/api/AItemUse/useRandomMove',
+                    'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useRandomMove',
                     'type': 'POST',
                     'data': {
                         'Item': 'random_move',
@@ -22521,7 +22521,7 @@ $(document).on("click", "#buyNewItem", function () {
     Elkaisar.BaseData.Items[`certain_move`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useCertainMove`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useCertainMove`,
             type: 'POST',
             data: {
                 Item: "certain_move",
@@ -22572,7 +22572,7 @@ $(document).on("click", "#buyNewItem", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useWheat`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useWheat`,
             type: 'POST',
             data: {
                 Item: "wheat_1",
@@ -22599,7 +22599,7 @@ $(document).on("click", "#buyNewItem", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useWheat`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useWheat`,
             type: 'POST',
             data: {
                 Item: "wheat_7",
@@ -22626,7 +22626,7 @@ $(document).on("click", "#buyNewItem", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useStone`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useStone`,
             type: 'POST',
             data: {
                 Item: "stone_1",
@@ -22653,7 +22653,7 @@ $(document).on("click", "#buyNewItem", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useStone`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useStone`,
             type: 'POST',
             data: {
                 Item: "stone_7",
@@ -22680,7 +22680,7 @@ $(document).on("click", "#buyNewItem", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useWood`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useWood`,
             type: 'POST',
             data: {
                 Item: "wood_1",
@@ -22707,7 +22707,7 @@ $(document).on("click", "#buyNewItem", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useWood`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useWood`,
             type: 'POST',
             data: {
                 Item: "wood_7",
@@ -22734,7 +22734,7 @@ $(document).on("click", "#buyNewItem", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useMetal`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMetal`,
             type: 'POST',
             data: {
                 Item: "metal_1",
@@ -22761,7 +22761,7 @@ $(document).on("click", "#buyNewItem", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useMetal`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMetal`,
             type: 'POST',
             data: {
                 Item: "metal_1",
@@ -22788,7 +22788,7 @@ $(document).on("click", "#buyNewItem", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useCoin`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useCoin`,
             type: 'POST',
             data: {
                 Item: "coin_1",
@@ -22815,7 +22815,7 @@ $(document).on("click", "#buyNewItem", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemUse/useCoin`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useCoin`,
             type: 'POST',
             data: {
                 Item: "coin_7",
@@ -22843,7 +22843,7 @@ $(document).on("click", "#buyNewItem", function () {
         Elkaisar['BaseData']['Items']['gold_5']['UseFunc'] = function (_0x4813fb) {
             var _0x329520 = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': NODE_URL + '/api/AItemUse/useGoldPack',
+                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_5',
@@ -22866,7 +22866,7 @@ $(document).on("click", "#buyNewItem", function () {
         Elkaisar['BaseData']['Items']['gold_1']['UseFunc'] = function (_0x4813fb) {
             var _0x329520 = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': NODE_URL + '/api/AItemUse/useGoldPack',
+                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_1',
@@ -22887,7 +22887,7 @@ $(document).on("click", "#buyNewItem", function () {
         Elkaisar['BaseData']['Items']['gold_10']['UseFunc'] = function (_0x3fb720) {
             var _0x1f1a2e = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': NODE_URL + '/api/AItemUse/useGoldPack',
+                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_10',
@@ -22908,7 +22908,7 @@ $(document).on("click", "#buyNewItem", function () {
         Elkaisar['BaseData']['Items']['gold_25']['UseFunc'] = function (_0x575893) {
             var _0x34c16d = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': NODE_URL + '/api/AItemUse/useGoldPack',
+                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_25',
@@ -22929,7 +22929,7 @@ $(document).on("click", "#buyNewItem", function () {
         Elkaisar['BaseData']['Items']['gold_75']['UseFunc'] = function (_0x147f7f) {
             var _0x5a71c2 = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': NODE_URL + '/api/AItemUse/useGoldPack',
+                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_75',
@@ -22950,7 +22950,7 @@ $(document).on("click", "#buyNewItem", function () {
         Elkaisar['BaseData']['Items']['gold_100']['UseFunc'] = function (_0x11914b) {
             var _0x291633 = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': NODE_URL + '/api/AItemUse/useGoldPack',
+                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_100',
@@ -22971,7 +22971,7 @@ $(document).on("click", "#buyNewItem", function () {
         Elkaisar['BaseData']['Items']['gold_500']['UseFunc'] = function (_0x197e5c) {
             var _0x10da0d = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': NODE_URL + '/api/AItemUse/useGoldPack',
+                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_500',
@@ -22992,7 +22992,7 @@ $(document).on("click", "#buyNewItem", function () {
         Elkaisar['BaseData']['Items']['gold_1000']['UseFunc'] = function (_0x560420) {
             var _0x32a8fd = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': NODE_URL + '/api/AItemUse/useGoldPack',
+                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_1000',
@@ -23013,7 +23013,7 @@ $(document).on("click", "#buyNewItem", function () {
 
         Elkaisar.BaseData.Items[`arena_attempt_1`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
+                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaAttempt`,
                 type: 'POST',
                 data: {
                     Item: "arena_attempt_1",
@@ -23040,7 +23040,7 @@ $(document).on("click", "#buyNewItem", function () {
 
         Elkaisar.BaseData.Items[`arena_attempt_5`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
+                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaAttempt`,
                 type: 'POST',
                 data: {
                     Item: "arena_attempt_5",
@@ -23067,7 +23067,7 @@ $(document).on("click", "#buyNewItem", function () {
 
         Elkaisar.BaseData.Items[`arena_attempt_10`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
+                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaAttempt`,
                 type: 'POST',
                 data: {
                     Item: "arena_attempt_10",
@@ -23095,7 +23095,7 @@ $(document).on("click", "#buyNewItem", function () {
 
         Elkaisar.BaseData.Items[`arena_exp_1`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaExpPack`,
                 type: 'POST',
                 data: {
                     Item: "arena_exp_1",
@@ -23123,7 +23123,7 @@ $(document).on("click", "#buyNewItem", function () {
 
         Elkaisar.BaseData.Items[`arena_exp_5`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaExpPack`,
                 type: 'POST',
                 data: {
                     Item: "arena_exp_5",
@@ -23152,7 +23152,7 @@ $(document).on("click", "#buyNewItem", function () {
         
         Elkaisar.BaseData.Items[`arena_exp_10`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaExpPack`,
                 type: 'POST',
                 data: {
                     Item: "arena_exp_10",
@@ -23179,7 +23179,7 @@ $(document).on("click", "#buyNewItem", function () {
 
         Elkaisar.BaseData.Items[`arena_exp_25`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
+                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaExpPack`,
                 type: 'POST',
                 data: {
                     Item: "arena_exp_25",
@@ -23215,7 +23215,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useGiftBox`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useGiftBox`,
             type: 'POST',
             data: {
                 Item: "gift_box",
@@ -23241,7 +23241,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useWoodBox`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useWoodBox`,
             type: 'POST',
             data: {
                 Item: "wood_box",
@@ -23267,7 +23267,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useGoldenBox`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useGoldenBox`,
             type: 'POST',
             data: {
                 Item: "golden_box",
@@ -23293,7 +23293,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_1",
@@ -23318,7 +23318,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_2",
@@ -23343,7 +23343,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_3",
@@ -23368,7 +23368,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_4",
@@ -23393,7 +23393,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_5",
@@ -23418,7 +23418,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_6",
@@ -23443,7 +23443,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_7",
@@ -23468,7 +23468,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_8",
@@ -23493,7 +23493,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_9",
@@ -23519,7 +23519,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_10",
@@ -23545,7 +23545,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useArmyBox`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useArmyBox`,
             type: 'POST',
             data: {
                 Item: "army_box",
@@ -23571,7 +23571,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_3p",
@@ -23600,7 +23600,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_4p",
@@ -23628,7 +23628,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_5p",
@@ -23656,7 +23656,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_6p",
@@ -23684,7 +23684,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_7p",
@@ -23712,7 +23712,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_8p",
@@ -23740,7 +23740,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_a",
@@ -23765,7 +23765,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_b",
@@ -23790,7 +23790,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_c",
@@ -23815,7 +23815,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_d",
@@ -23840,7 +23840,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_a",
@@ -23865,7 +23865,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_b",
@@ -23890,7 +23890,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_c",
@@ -23915,7 +23915,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_d",
@@ -23940,7 +23940,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_a",
@@ -23965,7 +23965,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_b",
@@ -23990,7 +23990,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_c",
@@ -24015,7 +24015,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_d",
@@ -24040,7 +24040,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_a",
@@ -24065,7 +24065,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_b",
@@ -24090,7 +24090,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_c",
@@ -24115,7 +24115,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_d",
@@ -24140,7 +24140,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_a",
@@ -24167,7 +24167,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_b",
@@ -24192,7 +24192,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_c",
@@ -24217,7 +24217,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_d",
@@ -24245,7 +24245,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackMini`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackMini`,
             type: 'POST',
             data: {
                 Item: "army_all_1",
@@ -24271,7 +24271,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackMedium`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackMedium`,
             type: 'POST',
             data: {
                 Item: "army_all_2",
@@ -24297,7 +24297,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackLarge`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackLarge`,
             type: 'POST',
             data: {
                 Item: "army_all_3",
@@ -24323,7 +24323,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackA100`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackA100`,
             type: 'POST',
             data: {
                 Item: "army_a_100",
@@ -24348,7 +24348,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackB100`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackB100`,
             type: 'POST',
             data: {
                 Item: "army_b_100",
@@ -24374,7 +24374,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackC100`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackC100`,
             type: 'POST',
             data: {
                 Item: "army_c_100",
@@ -24400,7 +24400,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackD100`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackD100`,
             type: 'POST',
             data: {
                 Item: "army_d_100",
@@ -24426,7 +24426,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackE100`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackE100`,
             type: 'POST',
             data: {
                 Item: "army_e_100",
@@ -24452,7 +24452,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackF100`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackF100`,
             type: 'POST',
             data: {
                 Item: "army_f_100",
@@ -24478,7 +24478,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackA1000`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackA1000`,
             type: 'POST',
             data: {
                 Item: "army_a_1000",
@@ -24503,7 +24503,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackB1000`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackB1000`,
             type: 'POST',
             data: {
                 Item: "army_b_1000",
@@ -24529,7 +24529,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackC1000`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackC1000`,
             type: 'POST',
             data: {
                 Item: "army_c_100",
@@ -24555,7 +24555,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackD1000`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackD1000`,
             type: 'POST',
             data: {
                 Item: "army_d_1000",
@@ -24581,7 +24581,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackE1000`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackE1000`,
             type: 'POST',
             data: {
                 Item: "army_e_1000",
@@ -24607,7 +24607,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackF1000`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackF1000`,
             type: 'POST',
             data: {
                 Item: "army_f_1000",
@@ -27402,7 +27402,7 @@ WS_utile.onopen = function () {
         ws.send(JSON.stringify({
             url: "Player/addPlayer",
             data: {
-                idPlayer: ID_PLAYER
+                idPlayer: id_player:Elkaisar.Config.idPlayer
             }
         }));
     }
@@ -27457,7 +27457,7 @@ WS_utile.onclose = function (event) {
 
 WS_utile.connect = function () {
 
-    ws = new WebSocket(`ws://${WS_HOST}:${WS_PORT}?idPlayer=${ID_PLAYER}&server=${SERVER_ID}&token=${Elkaisar.Config.OuthToken}`);
+    ws = new WebSocket(`ws://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}?idPlayer=${id_player:Elkaisar.Config.idPlayer}&server=${SERVER_ID}&token=${Elkaisar.Config.OuthToken}`);
     ws.onopen = WS_utile.onopen;
     ws.onmessage = WS_utile.onmessage;
     ws.onclose = WS_utile.onclose;
@@ -31782,7 +31782,7 @@ var WorldUtil = {
                 get_data_by_coords: true,
                 x_coord: x_coord,
                 y_coord: y_coord,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
             },
             type: 'GET',
@@ -32137,7 +32137,7 @@ var reviewBox = {
                     GET_BATTEL_FIELD_DATA: true,
                     x_coord: x_coord,
                     y_coord: y_coord,
-                    id_player: ID_PLAYER,
+                    id_player: Elkaisar.Config.idPlayer,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -32214,7 +32214,7 @@ var reviewBox = {
             data: {
                 GET_BATTEL_FIELD_DETAIL: true,
                 id_battel: id_battel,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
             },
             type: 'GET',
@@ -32252,7 +32252,7 @@ var reviewBox = {
                     GET_BATTEL_FIXED_DATA: true,
                     x_coord: x_coord,
                     y_coord: y_coord,
-                    id_player: ID_PLAYER,
+                    id_player: Elkaisar.Config.idPlayer,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -32298,7 +32298,7 @@ var reviewBox = {
 
                     GET_BATTEL_FIXED_DATA: true,
                     id_battel: id_battel,
-                    id_player: ID_PLAYER,
+                    id_player: Elkaisar.Config.idPlayer,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -33249,7 +33249,7 @@ Elkaisar.World.Map.CityFound = false;
 Elkaisar.World.Map.getWorldCity = function () {
     
     return $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/AWorld/getWorldCity`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AWorld/getWorldCity`,
         type: 'GET',
         crossDomain: true,
         data:{
@@ -34124,7 +34124,7 @@ function battelStart() {
             return;
         }
         $.ajax({
-            'url': `http://${WS_HOST}:${WS_PORT}/api/ABattel/joinBattel`,
+            'url': `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ABattel/joinBattel`,
             'data': {
                 'idBattel': battel_data['id_battel'],
                 'idHero'  : Elkaisar.CurrentHero.Hero.id_hero,
@@ -34381,7 +34381,7 @@ $(document).on("click", "#REFRESH_BATTEL_DATA", function () {
 
         $.ajax({
 
-            url: `http://${WS_HOST}:${WS_PORT}/api/ABattelRuning/refreshBattelData`,
+            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ABattelRuning/refreshBattelData`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 idBattel: idBattel
@@ -34677,7 +34677,7 @@ $(document).on("click", ".accept-guild-req", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/acceptGuildReq`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/acceptGuildReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -34729,7 +34729,7 @@ $(document).on("click", ".cansel-guild-req", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/rejectGuildJoinReq`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/rejectGuildJoinReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -34781,7 +34781,7 @@ $(document).on("click", ".cansel-inv-action", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/cancelGuildInv`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/cancelGuildInv`,
         data: {
             idPlayerToInvite: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -34868,7 +34868,7 @@ $(document).on("click", ".show-guild-prev", function () {
 
             GET_GUILD_DETAIL: true,
             id_guild: id_guild,
-            id_player: ID_PLAYER,
+            id_player: Elkaisar.Config.idPlayer,
             token: TOKEN
 
         },
@@ -35104,7 +35104,7 @@ var Guild = {
             data: {
 
                 GET_UNJOINED_PLAYER_DATA: true,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
 
             },
@@ -35412,7 +35412,7 @@ var Guild = {
             data: {
                 get_guild_member: true,
                 id_guild: player.guild_data.id_guild,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 offset: offset,
                 token: TOKEN
             },
@@ -35456,14 +35456,14 @@ var Guild = {
                                                 
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 5 &&
                             parseInt(guild_data[iii].rank) < 6 &&
-                            parseInt(ID_PLAYER) !== parseInt(guild_data[iii].id_player) ?
+                            parseInt(id_player:Elkaisar.Config.idPlayer) !== parseInt(guild_data[iii].id_player) ?
                             `<div id="promote-guild-member">ترقية    &nbsp;&nbsp;&#8618;</div>` : ""}
                                                 
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) > parseInt(guild_data[iii].rank) ? `<div id="trade-guild-position">تبادل المناصب</div>` : ""}
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= Number(Guild.RANK_DATA.LEADER) ? `<div class="mem-prize-percent">نسبة الجوائز</div>` : ""}
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 4 && parseInt(guild_data[iii].rank) === 0 ? ` <div id="fire-guild-mamber">${Translate.Button.Hero.Dismiss[UserLag.language]}</div>` : ""}
-                                                ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 1 && parseInt(guild_data[iii].id_player) === parseInt(ID_PLAYER) && parseInt(Elkaisar.DPlayer.GuildData.rank) !== 6 ? ` <div id="stepdown-guild-mamber">تنحى من المنصب</div>` : ""}
-                                                ${parseInt(guild_data[iii].id_player) === parseInt(ID_PLAYER) ? ` <div id="get-out-guild">خروج</div>` : ""}
+                                                ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 1 && parseInt(guild_data[iii].id_player) === parseInt(id_player:Elkaisar.Config.idPlayer) && parseInt(Elkaisar.DPlayer.GuildData.rank) !== 6 ? ` <div id="stepdown-guild-mamber">تنحى من المنصب</div>` : ""}
+                                                ${parseInt(guild_data[iii].id_player) === parseInt(id_player:Elkaisar.Config.idPlayer) ? ` <div id="get-out-guild">خروج</div>` : ""}
                                                 
                                                 
                                             </div>
@@ -35586,7 +35586,7 @@ var Guild = {
             data: {
                 get_guild_res: true,
                 id_guild: player.guild_data.id_guild,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
             },
             type: 'GET',
@@ -36360,7 +36360,7 @@ $(document).on("keyup", "#GuildEneFriInput", function () {
 
             GET_GUILD_AUTO_COMPLETE: true,
             search_value: search_val,
-            id_player: ID_PLAYER,
+            id_player: Elkaisar.Config.idPlayer,
             id_guild: Elkaisar.DPlayer.Player.id_guild,
             token: TOKEN
 
@@ -36530,7 +36530,7 @@ $(document).on("click", "#submit-guild-invite", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/sendGuildJoinInv`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/sendGuildJoinInv`,
         data: {
             idPlayerToInvite: id_player,
             token: Elkaisar.Config.OuthToken
@@ -36649,7 +36649,7 @@ $(document).on("click", "#send-guild-req button", function () {
     
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/sendGuildRequest`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/sendGuildRequest`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken,
@@ -36691,7 +36691,7 @@ function canselGuildInvetation(id_player, id_guild) {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/rejectGuildInv`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/rejectGuildInv`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken
@@ -36733,7 +36733,7 @@ function canselGuildJoinRequest(id_player, id_guild) {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/cancelGuildRequest`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/cancelGuildRequest`,
         data: {
             idGuild: id_guild,
             server: Elkaisar.Config.idServer,
@@ -36799,7 +36799,7 @@ $(document).on("click", ".accept-guild-inv", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/acceptGuildInv`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/acceptGuildInv`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken
@@ -36914,7 +36914,7 @@ $(document).on("click", ".promote-guild-member div", function () {
     var id_member = parseInt($(this).parents(".drop-down-li").parents(".tr").attr("data-id-member")) || 0;
     var promotion = $(this).attr("data-promrote-to");
 
-    if (parseInt(ID_PLAYER) === parseInt(id_member)) {
+    if (parseInt(id_player:Elkaisar.Config.idPlayer) === parseInt(id_member)) {
 
         alert_box.confirmMessage("لا يمكنك ترقية نفسك  يا حج :D");
         return;
@@ -37439,7 +37439,7 @@ function refreshMsg(){
             url: "api/message.php",
             data:{
                 MSG_NUMBERS: true,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -37471,7 +37471,7 @@ function getReports(offset){
             data: {
                 get_report:true , 
                 offset: offset,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -37545,7 +37545,7 @@ function getSpyReports(offset){
             data: {
                 get_spy_report:true , 
                 offset: offset,
-                id_player :ID_PLAYER,
+                id_player :id_player:Elkaisar.Config.idPlayer,
                 token     :TOKEN
             },
             type: 'GET',
@@ -37654,7 +37654,7 @@ var message = {
             data:{
                 get_msg_income : true,
                 offset         : offset ,
-                id_player      : ID_PLAYER,
+                id_player      : id_player:Elkaisar.Config.idPlayer,
                 token          : TOKEN
             },
             type: 'GET',
@@ -37719,7 +37719,7 @@ var message = {
             data:{
                 get_income_msg_in_detail: true,
                 id_message: id_msg,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -37797,7 +37797,7 @@ var message = {
             data:{
                 get_msg_diff: true,
                 offset: offset || 0,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -37853,7 +37853,7 @@ var message = {
             data:{
                 get_diff_msg_in_detail: true,
                 id_message: id_msg,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                     token:TOKEN
             },
             type: 'GET',
@@ -37933,7 +37933,7 @@ var message = {
             data:{
                 get_msg_outcome: true,
                 offset: offset || 0,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -37989,7 +37989,7 @@ var message = {
             data:{
                 get_out_msg_in_detail: true,
                 id_message: id_msg,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'GET',
@@ -38206,7 +38206,7 @@ $(document).on("click" , "#del_selected" , function (){
         data: {
             delete_msg: true,
             msgs: JSON.stringify(total_msg),
-            id_player:ID_PLAYER,
+            id_player:Elkaisar.Config.idPlayer,
             token:TOKEN
         },
         type: 'POST',
@@ -38254,7 +38254,7 @@ $(document).on("click" , "#delete-all button" , function (){
             data: {
                 DELETE_ALL_UNREAD: true,
                 msgs: JSON.stringify(total_msg),
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             },
             type: 'POST',
@@ -38299,7 +38299,7 @@ function searchByName(segmant , condtion)
         var data_send = {
                 search_by_name: true,
                 name: segmant,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
             };
         
@@ -38310,7 +38310,7 @@ function searchByName(segmant , condtion)
                 name: segmant,
                 id_guild_no: false,
                 id_guild: Elkaisar.DPlayer.Player.id_guild,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
                 
             };
@@ -38407,7 +38407,7 @@ $(document).on("click" , "#send_mail_to" , function (){
             data: {
                 send_mail_to: true,
                 id_to: id_to, 
-                id_from: ID_PLAYER,
+                id_from: id_player:Elkaisar.Config.idPlayer,
                 body:body,
                 subject: subject,
                 token:TOKEN
@@ -38698,7 +38698,7 @@ $(document).on("click" , "#send_mail_to_guild" , function (){
             url: "api/message.php",
             data: {
                 SEND_GUILD_MAIL: true, 
-                id_from: ID_PLAYER,
+                id_from: id_player:Elkaisar.Config.idPlayer,
                 body:body,
                 subject: subject,
                     token:TOKEN
@@ -38796,7 +38796,7 @@ $(document).on("click" , ".show_battel_report" ,function (){
         data: {
             report_detail: true,
             id_report: id_report,
-            id_player:ID_PLAYER,
+            id_player:Elkaisar.Config.idPlayer,
             token:TOKEN
         },
         type: 'GET',
@@ -39320,7 +39320,7 @@ $(document).on("click" , ".show_spy_report" ,function (){
         data: {
             spy_report_detail: true,
             id_report: id_report,
-            id_player:ID_PLAYER,
+            id_player:Elkaisar.Config.idPlayer,
             spy_for: data_obj.spy_for,
             id_victim:id_victim,
                     token:TOKEN
@@ -39472,7 +39472,7 @@ function getReportContent(detail , data_obj , offset)
                                                             ${detail.heros[jjj].h_name ? detail.heros[jjj].h_name : "بطل النظام"}
                                                         </div>
                                                         ${
-                                                        Number(detail.heros[jjj].id_player)  === Number(ID_PLAYER) ?
+                                                        Number(detail.heros[jjj].id_player)  === Number(id_player:Elkaisar.Config.idPlayer) ?
                                                         `<div class="image">
                                                             <img src="${Elkaisar.BaseData.HeroAvatar[detail.heros[jjj].avatar] || "images/icons/hero/eq-bg.png"}" />
                                                             <div class="xp stroke">+${getArabicNumbers(detail["heros"][jjj]["xp"])}</div>
@@ -39529,7 +39529,7 @@ function getReportContent(detail , data_obj , offset)
                                                             ${detail.heros[jjj].h_name ? detail.heros[jjj].h_name : "بطل النظام"}
                                                         </div>
                                                         ${
-                                                            Number(detail.heros[jjj].id_player)  === Number(ID_PLAYER) ?
+                                                            Number(detail.heros[jjj].id_player)  === Number(id_player:Elkaisar.Config.idPlayer) ?
                                                             `<div class="image">
                                                                 <img src="${Elkaisar.BaseData.HeroAvatar[detail.heros[jjj].avatar] || "images/icons/hero/eq-bg.png"}"/>
                                                                 <div class="xp stroke">+${getArabicNumbers(detail["heros"][jjj]["xp"])}</div>
@@ -40916,7 +40916,7 @@ $(document).on("click", "#confirm-player-new-img", function () {
 
                 CHANGE_PLAYER_AVATAR: true,
                 image_index: image_index,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
 
             },
@@ -42159,7 +42159,7 @@ var Market = {
             data: {
                 GET_MY_OFFER_LIST: true,
                 id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
             },
             type: 'GET',
@@ -42239,7 +42239,7 @@ var Market = {
             data: {
                 GET_MY_OFFERS_STATUS: true,
                 id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
             },
             type: 'GET',
@@ -42301,7 +42301,7 @@ var Market = {
             data: {
                 GET_MARKET_LIST: true,
                 resource: dealFor,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
             },
             type: 'GET',
@@ -42714,7 +42714,7 @@ $(document).on('click', "#confirm-deal button", function () {
                 unit_price: Number(unit_price),
                 resource: resource,
                 quantity: quantity,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
 
             },
@@ -42768,7 +42768,7 @@ $(document).on('click', "#confirm-deal button", function () {
                             url: "WS_Market/buyerDealDone",
                             data: {
                                 traders: json_data.buyers,
-                                idPlayer: ID_PLAYER,
+                                idPlayer: id_player:Elkaisar.Config.idPlayer,
                                 token: TOKEN
                             }
                         }));*/
@@ -42805,7 +42805,7 @@ $(document).on('click', "#confirm-deal button", function () {
                 unit_price: Number(unit_price),
                 resource: resource,
                 quantity: quantity,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
 
 
@@ -42855,7 +42855,7 @@ $(document).on('click', "#confirm-deal button", function () {
                             url: "WS_Market/sellerDealDone",
                             data: {
                                 traders: json_data.seller,
-                                idPlayer: ID_PLAYER,
+                                idPlayer: id_player:Elkaisar.Config.idPlayer,
                                 token: TOKEN
                             }
 
@@ -42986,7 +42986,7 @@ $(document).on("click", ".cansel-market-deal", function () {
         data: {
             CANSEL_MARKT_DEAL: true,
             id_deal: id_deal,
-            id_player: ID_PLAYER,
+            id_player: Elkaisar.Config.idPlayer,
             id_city: Elkaisar.CurrentCity.City.id_city,
             token: TOKEN
         },
@@ -45453,7 +45453,7 @@ var Equipment = {
          return $.ajax({
             url: "api/city.php",
             type: 'GET',
-            data: {get_available_equip: true, id_player:ID_PLAYER,   token:TOKEN},
+            data: {get_available_equip: true, id_player:Elkaisar.Config.idPlayer,   token:TOKEN},
             dataType: 'JSON',
             success: function (data, textStatus, jqXHR) {
                 available_Equip = data;
@@ -45672,7 +45672,7 @@ TradeCenter.getPlayerTradeList = function (){
         url: "api/tradeCenter.php",
         data:{
             GET_PLAYER_TRADE_LIST: true,
-            id_player : ID_PLAYER,
+            id_player : id_player:Elkaisar.Config.idPlayer,
             token:TOKEN
         },
         type: 'GET',
@@ -45745,7 +45745,7 @@ TradeCenter.TradeListContent =  function (list , offset){
                                 ${lastSeen(list[iii].time_stamp)}
                             </div>
                             <div class="td_6" style="width: 18%;">
-                                ${ Number(ID_PLAYER) !== Number(list[iii].id_player) ? `<button class="full-btn-3x buy-item-trade-center"
+                                ${ Number(id_player:Elkaisar.Config.idPlayer) !== Number(list[iii].id_player) ? `<button class="full-btn-3x buy-item-trade-center"
                                         data-item="${list[iii].item}"
                                         data-price="${list[iii].price}" 
                                         data-id-item="${list[iii].id_item}" 
@@ -45857,7 +45857,7 @@ $(document).on("click" , ".buy-item-trade-center" , function (){
                 
                 BUY_ITEM: true,
                 id_item: id_item,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 item_table: Matrial.table(listItem.item),
                 amount: amount_to_buy,
                 token:TOKEN
@@ -46010,7 +46010,7 @@ $(document).on("click" , ".sell-matrial" , function (e){
                 SELL_ITEM: true,
                 item:matrial,
                 price: itemPrice,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 mat_table: Matrial.table(matrial),
                 amount: amountToSell,
                 token:TOKEN
@@ -46035,7 +46035,7 @@ $(document).on("click" , ".sell-matrial" , function (e){
                     Matrial.takeFrom("sell_voucher" , amountToSell);
                     TradeCenter.playerList.push({
                        id_item:  jsonData.id_item,
-                       id_player: ID_PLAYER,
+                       id_player: Elkaisar.Config.idPlayer,
                        price: itemPrice,
                        item: matrial,
                        time_stamp: $.now()/1000
@@ -46126,7 +46126,7 @@ $(document).on("click" , ".cancel-buy-item-trade-center" , function (){
             url: "api/tradeCenter.php",
             data:{
                 CANCEL_SELL_ITEM_OFFFER: true,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 id_item: id_item,
                 mat_table: Matrial.table(TradeCenter.getListItemById(id_item).item),
                 token:TOKEN
@@ -46599,7 +46599,7 @@ $(document).on("click", "#PLUNDE_PRIZE", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AWorldUnit/plundePrize`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AWorldUnit/plundePrize`,
         data: {
             xCoord: xCoord,
             yCoord: yCoord,
@@ -47006,7 +47006,7 @@ BattelField.addToWatchList = function (x_coord , y_coord){
                 {
                     url:"WS_BattelWatchList/addPlayer",
                     data:{
-                        id_player:ID_PLAYER,
+                        id_player:Elkaisar.Config.idPlayer,
                         x_coord:x_coord,
                         y_coord:y_coord,
                         token:TOKEN
@@ -47025,7 +47025,7 @@ BattelField.removeFromWatchList = function (x_coord , y_coord){
             {
                 url:"WS_BattelWatchList/removePlayer",
                 data:{
-                    idPlayer: ID_PLAYER,
+                    idPlayer: id_player:Elkaisar.Config.idPlayer,
                     x_coord:x_coord,
                     y_coord:y_coord,
                     token:TOKEN
@@ -47196,7 +47196,7 @@ GodGate.getPlayerGates = function () {
 $(document).on("PlayerReady", "html", function () {
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGodGate/getRankEffect`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGodGate/getRankEffect`,
         data: {
             token: Elkaisar.Config.OuthToken
         },
@@ -47931,7 +47931,7 @@ $(document).on("click", "#OpenForthCellGG", function () {
                 CHANGE_PLAYER_PASSWORD: true,
                 oldPassword: currentPassword,
                 newPassword: newPassword,
-                id_player:ID_PLAYER,
+                id_player:Elkaisar.Config.idPlayer,
                 token:TOKEN
                 
             },
@@ -48095,7 +48095,7 @@ $(document).on("change" , "#game-lang-list .choose-lang", function (){
             data:{
                 CHANGE_PLAYER_LANG: true,
                 token: TOKEN,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 newLang :  lang
             },
             type: 'POST',
@@ -48434,7 +48434,7 @@ $(document).on("click" , "#expand-chat .send" , function (){
                 chat_to: chat_to,
                 chat_msg:msg,
                 p_name: player.name,
-                idPlayer:ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 p_avatar: player.avatar,
                 quoted:true,
                 quote: quoteWrapper.attr("data-quote"),
@@ -49213,7 +49213,7 @@ Elkaisar.ArenaChallange.MaxHeroCountFactor = {
 
 Elkaisar.ArenaChallange.getArenaData = function (callBack) {
     return $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/getArenaData`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/getArenaData`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken
@@ -49240,7 +49240,7 @@ Elkaisar.ArenaChallange.getArenaData = function (callBack) {
 
 Elkaisar.ArenaChallange.getFightList = function () {
     return $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/getFightList`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/getFightList`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken
@@ -50042,7 +50042,7 @@ $(document).on('click', '#saveArenaHero', function () {
         for (var ii in Elkaisar.ArenaChallange[ArenaFor].HeroList)
             idHeros.push(Elkaisar.ArenaChallange[ArenaFor].HeroList[ii]['id_hero']);
         $.ajax({
-            url: `${NODE_URL}/api/AArenaChallange/saveHeroList`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/saveHeroList`,
             data: {
                 server: Elkaisar.Config.idServer,
                 token: Elkaisar.Config.OuthToken,
@@ -50072,7 +50072,7 @@ $(document).on('click', '#saveArenaHero', function () {
 $(document).on('click', '.startFightPlayer', function () {
     var idPlayerToFight = $(this).attr('data-id-player');
     $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/fightSomeOne`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/fightSomeOne`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken,
@@ -50114,7 +50114,7 @@ $(document).on('click', '.startFightTeam', function () {
 
     var idTeamToFight = $(this).attr('data-id-team');
     $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/fightSomeTeam`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/fightSomeTeam`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken,
@@ -50156,7 +50156,7 @@ $(document).on('click', '.startFightGuild', function () {
 
     var idGuildToFight = $(this).attr('data-id-guild');
     $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/fightSomeGuild`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/fightSomeGuild`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken,
@@ -50423,7 +50423,7 @@ Elkaisar.Team.RANK_DATA = {
 Elkaisar.Team.getPlayerTeam = function () {
 
     return $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/ATeam/getPlayerTeam`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/getPlayerTeam`,
         data: {
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer
@@ -50472,7 +50472,7 @@ Elkaisar.Team.showTeamReview = function (idTeam) {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/ATeam/showTeamReview`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/showTeamReview`,
         data: {
             token: Elkaisar.Config.OuthToken,
             idTeam: idTeam
@@ -51004,7 +51004,7 @@ Elkaisar.Team.TeamEnemyPage = function () {
 Elkaisar.Team.getTeamRank = function (offset) {
 
     return $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/ATeam/getTeamRank`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/getTeamRank`,
         data: {
             token: Elkaisar.Config.OuthToken,
             offset: offset
@@ -51318,7 +51318,7 @@ $(document).on("click", "#ConfCreateTeam", function () {
     } else {
         var idCity = Elkaisar.CurrentCity.City.id_city;
         $.ajax({
-            url: `http://${WS_HOST}:${WS_PORT}/api/ATeam/create`,
+            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/create`,
             data: {
                 guildName: $("#guild-name").val(),
                 slogBottom: $(".guild_slogan img:first").attr("data-cur_image"),
@@ -51503,7 +51503,7 @@ $(document).on("click", "#save-t-intro", function () {
     }
 
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/ATeam/modifyTeamWord`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/modifyTeamWord`,
 
         data: {
             newWord: new_intro,
@@ -51571,7 +51571,7 @@ $(document).on("keyup", "#TeamEneFriInput", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/ATeam/searchTeamByName`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/searchTeamByName`,
         data: {
             token: Elkaisar.Config.OuthToken,
             SearchVal: search_val
@@ -51648,7 +51648,7 @@ $(document).on('click', '#submit-team-relation', function () {
         return alert_box.confirmMessage('اختار العلاقة بين الفريقين');
 
     $.ajax({
-        'url': `http://${WS_HOST}:${WS_PORT}/api/ATeam/changeTeamRelation`,
+        'url': `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/changeTeamRelation`,
         'data': {
             'idTeam': idTeam,
             'relation': TeamREl,
@@ -51742,7 +51742,7 @@ $(document).on("click", "#submit-team-invite", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/ATeamInvReq/SendPlayerInv`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/SendPlayerInv`,
         data: {
             token: Elkaisar.Config.OuthToken,
             idPlayer: idPlayer
@@ -51853,7 +51853,7 @@ $(document).on("click", "#SendTeamJoinReq", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/ATeamInvReq/sendTeamJoinRequest`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/sendTeamJoinRequest`,
         data: {
             idTeam: idTeam,
             token: Elkaisar.Config.OuthToken
@@ -51886,7 +51886,7 @@ $(document).on("click", ".rejectTeamInv", function () {
 
     const idTeam = $(this).attr("data-id-team");
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/ATeamInvReq/rejectTeamInv`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/rejectTeamInv`,
         data: {
             idTeam: idTeam,
             token: Elkaisar.Config.OuthToken,
@@ -51918,7 +51918,7 @@ $(document).on("click", ".rejectTeamInv", function () {
 $(document).on("click", ".acceptTeamInv", function () {
     const idTeam = $(this).attr("data-id-team");
     $.ajax({
-        url: `http://${WS_HOST}:${WS_PORT}/api/ATeamInvReq/acceptTeamInv`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/acceptTeamInv`,
         data: {
             idTeam: idTeam,
             token: Elkaisar.Config.OuthToken,
@@ -51957,7 +51957,7 @@ $(document).on('click', "#resignation-t", function (){
     alert_box.confirmDialog("تاكيد الإستقالة من المنصب", function () {
 
         $.ajax({
-            url: `http://${WS_HOST}:${WS_PORT}/api/ATeam/playerTeamResign`,
+            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/playerTeamResign`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 idTeam: Elkaisar.Team.PlayerTeam.Team.id_team
@@ -52001,7 +52001,7 @@ $(document).on("click", "#PlayerTeamLeave", function () {
     alert_box.confirmDialog("تاكيد الخروج من الفريق", function () {
 
         $.ajax({
-            url: `http://${WS_HOST}:${WS_PORT}/api/ATeam/playerTeamLeave`,
+            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/playerTeamLeave`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 idTeam: Elkaisar.Team.PlayerTeam.Team.id_team
@@ -52048,7 +52048,7 @@ $(document).on("click", "#destroy-t", function () {
 
         $.ajax({
 
-            url: `${NODE_URL}/api/ATeam/disbandTeam`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ATeam/disbandTeam`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
@@ -52098,7 +52098,7 @@ $(document).on("click", "#CancelTeamJoinReq", function (){
    
      alert_box.confirmDialog("تأكيد إلغاء طلب الإنضمام", function () {
         $.ajax({
-            url: `http://${WS_HOST}:${WS_PORT}/api/ATeamInvReq/cancelTeamJoinReq`,
+            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/cancelTeamJoinReq`,
             data: {
                 token: Elkaisar.Config.OuthToken
             },
@@ -52140,7 +52140,7 @@ $(document).on("click", ".acceptTeamJoinReq", function (){
     
     alert_box.confirmDialog("تأكيد قبول طلب الإنضمام", function () {
         $.ajax({
-            url: `http://${WS_HOST}:${WS_PORT}/api/ATeamInvReq/acceptTeamJoinReq`,
+            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/acceptTeamJoinReq`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 idPlayer: idPlayer
@@ -52191,7 +52191,7 @@ $(document).on("click", ".cancelTeamInv", function (){
     
     alert_box.confirmDialog("تأكيد رفض طلب الإنضمام", function () {
         $.ajax({
-            url: `http://${WS_HOST}:${WS_PORT}/api/ATeamInvReq/cancelTeamInv`,
+            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/cancelTeamInv`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 idPlayer: idPlayer
@@ -52242,7 +52242,7 @@ $(document).on("click", ".FireGuildMemeber", function (){
    
     var idPlayer = $(this).attr("data-id-player");
     $.ajax({
-        url: `${NODE_URL}/api/ATeam/fireTeamMember`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATeam/fireTeamMember`,
         data:{
             idMember: idPlayer,
             token: Elkaisar.Config.OuthToken

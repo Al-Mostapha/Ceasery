@@ -18,7 +18,7 @@ Elkaisar.ArenaChallange.MaxHeroCountFactor = {
 
 Elkaisar.ArenaChallange.getArenaData = function (callBack) {
     return $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/getArenaData`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/getArenaData`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken
@@ -45,7 +45,7 @@ Elkaisar.ArenaChallange.getArenaData = function (callBack) {
 
 Elkaisar.ArenaChallange.getFightList = function () {
     return $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/getFightList`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/getFightList`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken
@@ -440,7 +440,7 @@ Elkaisar.ArenaChallange.ArenaField = function () {
 
 Elkaisar.ArenaChallange.ArenaRankingList = function (offset, OrderBy = 0) {
     return $.ajax({
-        url: API_URL + '/api/AArenaChallange/getRankList',
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/getRankList'`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken,
@@ -847,7 +847,7 @@ $(document).on('click', '#saveArenaHero', function () {
         for (var ii in Elkaisar.ArenaChallange[ArenaFor].HeroList)
             idHeros.push(Elkaisar.ArenaChallange[ArenaFor].HeroList[ii]['id_hero']);
         $.ajax({
-            url: `${NODE_URL}/api/AArenaChallange/saveHeroList`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/saveHeroList`,
             data: {
                 server: Elkaisar.Config.idServer,
                 token: Elkaisar.Config.OuthToken,
@@ -877,7 +877,7 @@ $(document).on('click', '#saveArenaHero', function () {
 $(document).on('click', '.startFightPlayer', function () {
     var idPlayerToFight = $(this).attr('data-id-player');
     $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/fightSomeOne`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/fightSomeOne`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken,
@@ -919,7 +919,7 @@ $(document).on('click', '.startFightTeam', function () {
 
     var idTeamToFight = $(this).attr('data-id-team');
     $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/fightSomeTeam`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/fightSomeTeam`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken,
@@ -961,7 +961,7 @@ $(document).on('click', '.startFightGuild', function () {
 
     var idGuildToFight = $(this).attr('data-id-guild');
     $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/fightSomeGuild`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/fightSomeGuild`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken,
@@ -1027,7 +1027,7 @@ $(document).on('click', '#buyArenaChallangeAtt .buyBtn', function () {
         ArenaFor = "Arena";
     var amount = $(this).attr('data-amount');
     $.ajax({
-        url: API_URL + '/api/AArenaChallange/buyBattelAttempt',
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/buyBattelAttempt`,
         data: {
             amount: amount,
             server: Elkaisar.Config.idServer,
@@ -1067,7 +1067,7 @@ $(document).on('click', '#SpeedUpArenaAtt', function () {
         ArenaFor = "Arena";
     alert_box.confirmDialog('تأكيد  تسريع انتظار الجولة مقابل 2 ذهبة', function () {
         $.ajax({
-            url: API_URL + '/api/AArenaChallange/speedUpAtte',
+            url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/speedUpAtte`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer,

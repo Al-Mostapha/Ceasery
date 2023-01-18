@@ -20,8 +20,6 @@ if(!defined("DEV_MODE")){
         <script type="text/javascript" src="js<?=JS_VERSION?>/base/rank.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/player.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/province.js"></script>
-        <script type="text/javascript" src="js<?=JS_VERSION?>/city/Castle.js"></script>
-        <script type="text/javascript" src="js<?=JS_VERSION?>/city/CityWall.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/world/city.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/fullscr.js"></script>
         <script type="text/javascript" src="js<?=JS_VERSION?>/alert.js"></script>

@@ -117,7 +117,7 @@ $(document).on("click", ".accept-guild-req", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/acceptGuildReq`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/acceptGuildReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -169,7 +169,7 @@ $(document).on("click", ".cansel-guild-req", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/rejectGuildJoinReq`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/rejectGuildJoinReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -221,7 +221,7 @@ $(document).on("click", ".cansel-inv-action", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/cancelGuildInv`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/cancelGuildInv`,
         data: {
             idPlayerToInvite: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -308,7 +308,7 @@ $(document).on("click", ".show-guild-prev", function () {
 
             GET_GUILD_DETAIL: true,
             id_guild: id_guild,
-            id_player: ID_PLAYER,
+            id_player: Elkaisar.Config.idPlayer,
             token: TOKEN
 
         },
@@ -544,7 +544,7 @@ var Guild = {
             data: {
 
                 GET_UNJOINED_PLAYER_DATA: true,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
 
             },
@@ -852,7 +852,7 @@ var Guild = {
             data: {
                 get_guild_member: true,
                 id_guild: player.guild_data.id_guild,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 offset: offset,
                 token: TOKEN
             },
@@ -896,14 +896,14 @@ var Guild = {
                                                 
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 5 &&
                             parseInt(guild_data[iii].rank) < 6 &&
-                            parseInt(ID_PLAYER) !== parseInt(guild_data[iii].id_player) ?
+                            parseInt(id_player:Elkaisar.Config.idPlayer) !== parseInt(guild_data[iii].id_player) ?
                             `<div id="promote-guild-member">ترقية    &nbsp;&nbsp;&#8618;</div>` : ""}
                                                 
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) > parseInt(guild_data[iii].rank) ? `<div id="trade-guild-position">تبادل المناصب</div>` : ""}
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= Number(Guild.RANK_DATA.LEADER) ? `<div class="mem-prize-percent">نسبة الجوائز</div>` : ""}
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 4 && parseInt(guild_data[iii].rank) === 0 ? ` <div id="fire-guild-mamber">${Translate.Button.Hero.Dismiss[UserLag.language]}</div>` : ""}
-                                                ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 1 && parseInt(guild_data[iii].id_player) === parseInt(ID_PLAYER) && parseInt(Elkaisar.DPlayer.GuildData.rank) !== 6 ? ` <div id="stepdown-guild-mamber">تنحى من المنصب</div>` : ""}
-                                                ${parseInt(guild_data[iii].id_player) === parseInt(ID_PLAYER) ? ` <div id="get-out-guild">خروج</div>` : ""}
+                                                ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 1 && parseInt(guild_data[iii].id_player) === parseInt(id_player:Elkaisar.Config.idPlayer) && parseInt(Elkaisar.DPlayer.GuildData.rank) !== 6 ? ` <div id="stepdown-guild-mamber">تنحى من المنصب</div>` : ""}
+                                                ${parseInt(guild_data[iii].id_player) === parseInt(id_player:Elkaisar.Config.idPlayer) ? ` <div id="get-out-guild">خروج</div>` : ""}
                                                 
                                                 
                                             </div>
@@ -1026,7 +1026,7 @@ var Guild = {
             data: {
                 get_guild_res: true,
                 id_guild: player.guild_data.id_guild,
-                id_player: ID_PLAYER,
+                id_player: Elkaisar.Config.idPlayer,
                 token: TOKEN
             },
             type: 'GET',
@@ -1800,7 +1800,7 @@ $(document).on("keyup", "#GuildEneFriInput", function () {
 
             GET_GUILD_AUTO_COMPLETE: true,
             search_value: search_val,
-            id_player: ID_PLAYER,
+            id_player: Elkaisar.Config.idPlayer,
             id_guild: Elkaisar.DPlayer.Player.id_guild,
             token: TOKEN
 
@@ -1970,7 +1970,7 @@ $(document).on("click", "#submit-guild-invite", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/sendGuildJoinInv`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/sendGuildJoinInv`,
         data: {
             idPlayerToInvite: id_player,
             token: Elkaisar.Config.OuthToken
@@ -2089,7 +2089,7 @@ $(document).on("click", "#send-guild-req button", function () {
     
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/sendGuildRequest`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/sendGuildRequest`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken,
@@ -2131,7 +2131,7 @@ function canselGuildInvetation(id_player, id_guild) {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/rejectGuildInv`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/rejectGuildInv`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken
@@ -2173,7 +2173,7 @@ function canselGuildJoinRequest(id_player, id_guild) {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/cancelGuildRequest`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/cancelGuildRequest`,
         data: {
             idGuild: id_guild,
             server: Elkaisar.Config.idServer,
@@ -2239,7 +2239,7 @@ $(document).on("click", ".accept-guild-inv", function () {
 
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGuildInvReq/acceptGuildInv`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/acceptGuildInv`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken
@@ -2354,7 +2354,7 @@ $(document).on("click", ".promote-guild-member div", function () {
     var id_member = parseInt($(this).parents(".drop-down-li").parents(".tr").attr("data-id-member")) || 0;
     var promotion = $(this).attr("data-promrote-to");
 
-    if (parseInt(ID_PLAYER) === parseInt(id_member)) {
+    if (parseInt(id_player:Elkaisar.Config.idPlayer) === parseInt(id_member)) {
 
         alert_box.confirmMessage("لا يمكنك ترقية نفسك  يا حج :D");
         return;

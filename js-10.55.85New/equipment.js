@@ -186,7 +186,7 @@ var Equipment = {
          return $.ajax({
             url: "api/city.php",
             type: 'GET',
-            data: {get_available_equip: true, id_player:ID_PLAYER,   token:TOKEN},
+            data: {get_available_equip: true, id_player:Elkaisar.Config.idPlayer,   token:TOKEN},
             dataType: 'JSON',
             success: function (data, textStatus, jqXHR) {
                 available_Equip = data;

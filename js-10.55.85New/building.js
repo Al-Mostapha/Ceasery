@@ -4,7 +4,7 @@ $.ajax({
     url: "js" + JS_VERSION + "/json/building.json",
     data: {
         get_matrial: true,
-        id_player: ID_PLAYER,
+        id_player: Elkaisar.Config.idPlayer,
         token: TOKEN
     },
     type: 'POST',

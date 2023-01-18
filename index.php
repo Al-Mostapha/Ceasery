@@ -1,5 +1,6 @@
 <?php
     define('BASE_URL', "http://web.elkaisar.com");
+    define('HOME_URL', "http://localhost:8080");
     require_once './config_index.php';
     require_once './base.php';
     require_once './lib/log.php';
@@ -203,7 +204,7 @@
                             <div class="head-title">
                                 قائمة السيرفرات
                             </div>
-                            <ul>
+                            <ul id="Server-List">
                                 <li>
                                     <span class="server-state"><label></label></span>
                                     <span class="server-name">
@@ -309,7 +310,7 @@
                                                     <span class="status"></span>
                                             </div>
                                             <div class="control-group">
-                                                <input type="password" class="input-medium" " id="signupConfirmPassword" rel="tipsy" original-title="" placeholder="تاكيد كلمة المرور">
+                                                <input type="password" class="input-medium" id="signupConfirmPassword" rel="tipsy" original-title="" placeholder="تاكيد كلمة المرور">
                                                 <span class="status"></span>
                                             </div>
                                             <div id="join-submit">
@@ -325,14 +326,16 @@
                 </div>
             </div>
         </div>
-       
+        <script>
+          var HomeUrl = '<?=HOME_URL?>';
+        </script>
 
 
-        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="js/js.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
-        <script type="text/javascript" src="js/Login.js" ></script>
+        <script type="text/javascript" src="jsHome/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="jsHome/js.js"></script>
+        <script type="text/javascript" src="jsHome/bootstrap.min.js"></script>
+        <script type="text/javascript" src="jsHome/jquery.nicescroll.min.js"></script>
+        <script type="text/javascript" src="jsHome/Login.js" ></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145179238-1"></script>
         <script>

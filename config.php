@@ -60,7 +60,8 @@
     define('BASE_BATH',      dirname(__FILE__) . DIRECTORY_SEPARATOR);
     define('BASE_URL',       "http://localhost/ceaserGame");
     define('API_URL',        "http://localhost/Elkaisar");
-     define("JS_VERSION",    "-10.55.85");
+    define('HOME_URL',        "http://localhost:8080");
+     define("JS_VERSION",    "");
      
   
     

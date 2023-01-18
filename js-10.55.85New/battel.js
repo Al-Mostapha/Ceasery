@@ -257,7 +257,7 @@ function battelStart() {
             return;
         }
         $.ajax({
-            'url': `http://${WS_HOST}:${WS_PORT}/api/ABattel/joinBattel`,
+            'url': `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ABattel/joinBattel`,
             'data': {
                 'idBattel': battel_data['id_battel'],
                 'idHero': Elkaisar['CurrentHero']['Hero']['id_hero'],
@@ -510,7 +510,7 @@ $(document).on("click", "#REFRESH_BATTEL_DATA", function () {
 
         $.ajax({
 
-            url: `http://${WS_HOST}:${WS_PORT}/api/ABattelRuning/refreshBattelData`,
+            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ABattelRuning/refreshBattelData`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 idBattel: idBattel

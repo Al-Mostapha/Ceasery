@@ -137,7 +137,7 @@ GodGate.getPlayerGates = function () {
 $(document).on("PlayerReady", "html", function () {
     $.ajax({
 
-        url: `http://${WS_HOST}:${WS_PORT}/api/AGodGate/getRankEffect`,
+        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGodGate/getRankEffect`,
         data: {
             token: Elkaisar.Config.OuthToken
         },

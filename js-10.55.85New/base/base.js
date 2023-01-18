@@ -1,5 +1,5 @@
 
-const NODE_URL = `http://${WS_HOST}:${WS_PORT}`;
+const Elkaisar.Config.NodeUrl = `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}`;
 
 function isJson(str) {
     try {
@@ -362,7 +362,7 @@ $(document).ready(function () {
                         url: "Chat/publicMsgImage",
                         data: {
                             image: event.target.result,
-                            idPlayer: ID_PLAYER,
+                            idPlayer: Elkaisar.Config.idPlayer,
                             token: TOKEN,
                             p_name: player.name,
                             p_avatar: player.avatar,

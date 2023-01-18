@@ -1,8 +1,8 @@
 var PPPEEELLL      = {};
-var  ID_PLAYER     = "";
+var  Elkaisar.Config.idPlayer     = "";
 var  TOKEN         = "";
-var  WS_PORT       = "";
-var  WS_HOST       = "";
+var  Elkaisar.Config.ApiPort       = "";
+var  Elkaisar.Config.ApiUrl       = "";
 var  ID_FIRST_CITY = "";
 var  GAME_VERION   = "";
 var PLAYER_QUEST   = "";
@@ -34,10 +34,10 @@ $.ajax({
     success: function (data, textStatus, jqXHR) {
         
         var PlayerDD = JSON.parse(data);
-        ID_PLAYER = PlayerDD.Player.id_player;
+        Elkaisar.Config.idPlayer = PlayerDD.Player.id_player;
         TOKEN     = PlayerDD.OuthToken;
-        WS_HOST   = PlayerDD.WsHost;
-        WS_PORT   = PlayerDD.WsPort;
+        Elkaisar.Config.ApiUrl   = PlayerDD.WsHost;
+        Elkaisar.Config.ApiPort   = PlayerDD.WsPort;
         $.getScript(`js${JS_VERSION}/totalFile.js`, function (){
             WS_utile.connect();
         });
