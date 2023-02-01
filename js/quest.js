@@ -607,7 +607,7 @@ Quest.getPlayerQuestState = function ()
 {
     
     return $.ajax({
-        url: `${API_URL}/api/APlayerQuest/getPlayerQuest`,
+        url: `${Elkaisar.Config.NodeUrl}/api/APlayerQuest/getPlayerQuest`,
         data:{
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer
@@ -841,7 +841,7 @@ $(document).on("click", "#accept_quest", function () {
     
     $.ajax({
 
-        url: `${API_URL}/api/APlayerQuest/acceptQuest`,
+        url: `${Elkaisar.Config.NodeUrl}/api/APlayerQuest/acceptQuest`,
         data: {
             idCity: idCity,
             idQuest: idQuest,

@@ -22,7 +22,7 @@ Elkaisar.Team.RANK_DATA = {
 Elkaisar.Team.getPlayerTeam = function () {
 
     return $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/getPlayerTeam`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATeam/getPlayerTeam`,
         data: {
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer
@@ -71,7 +71,7 @@ Elkaisar.Team.showTeamReview = function (idTeam) {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/showTeamReview`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATeam/showTeamReview`,
         data: {
             token: Elkaisar.Config.OuthToken,
             idTeam: idTeam
@@ -603,7 +603,7 @@ Elkaisar.Team.TeamEnemyPage = function () {
 Elkaisar.Team.getTeamRank = function (offset) {
 
     return $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/getTeamRank`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATeam/getTeamRank`,
         data: {
             token: Elkaisar.Config.OuthToken,
             offset: offset
@@ -917,7 +917,7 @@ $(document).on("click", "#ConfCreateTeam", function () {
     } else {
         var idCity = Elkaisar.CurrentCity.City.id_city;
         $.ajax({
-            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/create`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ATeam/create`,
             data: {
                 guildName: $("#guild-name").val(),
                 slogBottom: $(".guild_slogan img:first").attr("data-cur_image"),
@@ -1102,7 +1102,7 @@ $(document).on("click", "#save-t-intro", function () {
     }
 
     $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/modifyTeamWord`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATeam/modifyTeamWord`,
 
         data: {
             newWord: new_intro,
@@ -1170,7 +1170,7 @@ $(document).on("keyup", "#TeamEneFriInput", function () {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/searchTeamByName`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATeam/searchTeamByName`,
         data: {
             token: Elkaisar.Config.OuthToken,
             SearchVal: search_val
@@ -1247,7 +1247,7 @@ $(document).on('click', '#submit-team-relation', function () {
         return alert_box.confirmMessage('اختار العلاقة بين الفريقين');
 
     $.ajax({
-        'url': `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/changeTeamRelation`,
+        'url': `${Elkaisar.Config.NodeUrl}/api/ATeam/changeTeamRelation`,
         'data': {
             'idTeam': idTeam,
             'relation': TeamREl,
@@ -1341,7 +1341,7 @@ $(document).on("click", "#submit-team-invite", function () {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/SendPlayerInv`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATeamInvReq/SendPlayerInv`,
         data: {
             token: Elkaisar.Config.OuthToken,
             idPlayer: idPlayer
@@ -1452,7 +1452,7 @@ $(document).on("click", "#SendTeamJoinReq", function () {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/sendTeamJoinRequest`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATeamInvReq/sendTeamJoinRequest`,
         data: {
             idTeam: idTeam,
             token: Elkaisar.Config.OuthToken
@@ -1485,7 +1485,7 @@ $(document).on("click", ".rejectTeamInv", function () {
 
     const idTeam = $(this).attr("data-id-team");
     $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/rejectTeamInv`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATeamInvReq/rejectTeamInv`,
         data: {
             idTeam: idTeam,
             token: Elkaisar.Config.OuthToken,
@@ -1517,7 +1517,7 @@ $(document).on("click", ".rejectTeamInv", function () {
 $(document).on("click", ".acceptTeamInv", function () {
     const idTeam = $(this).attr("data-id-team");
     $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/acceptTeamInv`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATeamInvReq/acceptTeamInv`,
         data: {
             idTeam: idTeam,
             token: Elkaisar.Config.OuthToken,
@@ -1556,7 +1556,7 @@ $(document).on('click', "#resignation-t", function (){
     alert_box.confirmDialog("تاكيد الإستقالة من المنصب", function () {
 
         $.ajax({
-            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/playerTeamResign`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ATeam/playerTeamResign`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 idTeam: Elkaisar.Team.PlayerTeam.Team.id_team
@@ -1600,7 +1600,7 @@ $(document).on("click", "#PlayerTeamLeave", function () {
     alert_box.confirmDialog("تاكيد الخروج من الفريق", function () {
 
         $.ajax({
-            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/playerTeamLeave`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ATeam/playerTeamLeave`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 idTeam: Elkaisar.Team.PlayerTeam.Team.id_team
@@ -1647,7 +1647,7 @@ $(document).on("click", "#destroy-t", function () {
 
         $.ajax({
 
-            url: `${Elkaisar.Config.NodeUrl}/api/ATeam/disbandTeam`,
+            url: `${NODE_URL}/api/ATeam/disbandTeam`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
@@ -1697,7 +1697,7 @@ $(document).on("click", "#CancelTeamJoinReq", function (){
    
      alert_box.confirmDialog("تأكيد إلغاء طلب الإنضمام", function () {
         $.ajax({
-            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/cancelTeamJoinReq`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ATeamInvReq/cancelTeamJoinReq`,
             data: {
                 token: Elkaisar.Config.OuthToken
             },
@@ -1739,7 +1739,7 @@ $(document).on("click", ".acceptTeamJoinReq", function (){
     
     alert_box.confirmDialog("تأكيد قبول طلب الإنضمام", function () {
         $.ajax({
-            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/acceptTeamJoinReq`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ATeamInvReq/acceptTeamJoinReq`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 idPlayer: idPlayer
@@ -1790,7 +1790,7 @@ $(document).on("click", ".cancelTeamInv", function (){
     
     alert_box.confirmDialog("تأكيد رفض طلب الإنضمام", function () {
         $.ajax({
-            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeamInvReq/cancelTeamInv`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ATeamInvReq/cancelTeamInv`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 idPlayer: idPlayer
@@ -1841,7 +1841,7 @@ $(document).on("click", ".FireGuildMemeber", function (){
    
     var idPlayer = $(this).attr("data-id-player");
     $.ajax({
-        url: `${Elkaisar.Config.NodeUrl}/api/ATeam/fireTeamMember`,
+        url: `${NODE_URL}/api/ATeam/fireTeamMember`,
         data:{
             idMember: idPlayer,
             token: Elkaisar.Config.OuthToken

@@ -188,7 +188,7 @@ var Market = {
             data: {
                 GET_MY_OFFER_LIST: true,
                 id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player: Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 token: TOKEN
             },
             type: 'GET',
@@ -268,7 +268,7 @@ var Market = {
             data: {
                 GET_MY_OFFERS_STATUS: true,
                 id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player: Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 token: TOKEN
             },
             type: 'GET',
@@ -330,7 +330,7 @@ var Market = {
             data: {
                 GET_MARKET_LIST: true,
                 resource: dealFor,
-                id_player: Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 token: TOKEN
             },
             type: 'GET',
@@ -595,7 +595,7 @@ var Market = {
 
         $.ajax({
 
-            url: `${API_URL}/api/ACityMarketTrans/getCityTransportResource`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityMarketTrans/getCityTransportResource`,
             data: {
                 idCity : Elkaisar.CurrentCity.City.id_city,
                 token   : Elkaisar.Config.OuthToken,
@@ -743,7 +743,7 @@ $(document).on('click', "#confirm-deal button", function () {
                 unit_price: Number(unit_price),
                 resource: resource,
                 quantity: quantity,
-                id_player: Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 token: TOKEN
 
             },
@@ -797,7 +797,7 @@ $(document).on('click', "#confirm-deal button", function () {
                             url: "WS_Market/buyerDealDone",
                             data: {
                                 traders: json_data.buyers,
-                                idPlayer: id_player:Elkaisar.Config.idPlayer,
+                                idPlayer: ID_PLAYER,
                                 token: TOKEN
                             }
                         }));*/
@@ -834,7 +834,7 @@ $(document).on('click', "#confirm-deal button", function () {
                 unit_price: Number(unit_price),
                 resource: resource,
                 quantity: quantity,
-                id_player: Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 token: TOKEN
 
 
@@ -884,7 +884,7 @@ $(document).on('click', "#confirm-deal button", function () {
                             url: "WS_Market/sellerDealDone",
                             data: {
                                 traders: json_data.seller,
-                                idPlayer: id_player:Elkaisar.Config.idPlayer,
+                                idPlayer: ID_PLAYER,
                                 token: TOKEN
                             }
 
@@ -1015,7 +1015,7 @@ $(document).on("click", ".cansel-market-deal", function () {
         data: {
             CANSEL_MARKT_DEAL: true,
             id_deal: id_deal,
-            id_player: Elkaisar.Config.idPlayer,
+            id_player: ID_PLAYER,
             id_city: Elkaisar.CurrentCity.City.id_city,
             token: TOKEN
         },
@@ -1238,7 +1238,7 @@ $(document).on("click", "#statrt-transport-res button", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/ACityMarketTrans/transportResource`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityMarketTrans/transportResource`,
         data: {
             food: resource_to_send.food,
             wood: resource_to_send.wood,
@@ -1334,7 +1334,7 @@ $(document).on("click", ".acce-transport-deal", function () {
     alert_box.confirmDialog("تاكيد استعمال 1 عربة تسوق لتسريع  عملية النقل", function () {
 
         $.ajax({
-            url: `${API_URL}/api/ACityMarketTrans/speedUpTransport`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityMarketTrans/speedUpTransport`,
             data: {
                 idTrans  : id_trans,
                 idCity   : Elkaisar.CurrentCity.City.id_city,

@@ -18,7 +18,8 @@ var Trading = {
         $.ajax({
             url: `${Elkaisar.Config.NodeUrl}/api/AExchange/getExchangeItem`,
             data: {
-              token: Elkaisar.Config.OuthToken
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -388,7 +389,7 @@ function buyTradeMatral(index){
         
         $.ajax({
             
-            url: `${API_URL}/api/AExchange/buyExchange`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AExchange/buyExchange`,
             type: 'POST',
             data:{
                 idExchange    : exchange.id_ex,

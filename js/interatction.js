@@ -1240,7 +1240,7 @@ $(document).on("click", "#nav_search button", function () {
                     get_rank_player_searsh: true,
                     searsh_By: searsh_By,
                     search_value: search_value,
-                    id_player:Elkaisar.Config.idPlayer,
+                    id_player: ID_PLAYER,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -1301,7 +1301,7 @@ $(document).on("click", "#nav_search button", function () {
                     get_rank_union_searsh: true,
                     searsh_By: searsh_By,
                     search_value: search_value,
-                    id_player:Elkaisar.Config.idPlayer,
+                    id_player: ID_PLAYER,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -1361,7 +1361,7 @@ $(document).on("click", "#nav_search button", function () {
                     get_rank_hero_searsh: true,
                     searsh_By: searsh_By,
                     search_value: search_value,
-                    id_player:Elkaisar.Config.idPlayer,
+                    id_player: ID_PLAYER,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -1422,7 +1422,7 @@ $(document).on("click", "#nav_search button", function () {
                     get_rank_city_searsh: true,
                     searsh_By: searsh_By,
                     search_value: search_value,
-                    id_player:Elkaisar.Config.idPlayer,
+                    id_player: ID_PLAYER,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -1547,7 +1547,7 @@ window.addEventListener("orientationchange", function () {
 $(document)['on']('click', '#openPlayerItemBox', function () {
     var idItem = $(this)['attr']('data-item-name');
     $['ajax']({
-        'url': API_URL + '/api/AItem/openItemBox',
+        'url': Elkaisar.Config.NodeUrl + '/api/AItem/openItemBox',
         'data': {
             'server': Elkaisar['Config']['idServer'],
             'token': Elkaisar['Config']['OuthToken'],

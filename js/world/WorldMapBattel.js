@@ -135,7 +135,7 @@ Elkaisar.World.Map.OnCityClicked = function (Unit) {
 
     $.ajax({
 
-        url: `${API_URL}/api/AWorld/getCityData`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AWorld/getCityData`,
         data: {
             xCoord: Unit.x,
             yCoord: Unit.y,

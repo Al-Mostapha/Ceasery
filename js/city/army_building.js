@@ -162,7 +162,7 @@ Elkaisar.Army.armyDismes = function (){
         
         $.ajax({
         
-            url: `${API_URL}/api/ACity/fireArmy`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACity/fireArmy`,
             data:{
                 armyType : selected_type,
                 amount   : amount,

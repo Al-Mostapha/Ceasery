@@ -330,7 +330,7 @@ Elkaisar.World.Map.CityFound = false;
 Elkaisar.World.Map.getWorldCity = function () {
     
     return $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AWorld/getWorldCity`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AWorld/getWorldCity`,
         type: 'GET',
         crossDomain: true,
         data:{

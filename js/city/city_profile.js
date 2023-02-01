@@ -396,7 +396,7 @@ var city_profile = {
                 
                 GET_CITY_RESOURCES: true,
                 id_city:Elkaisar.CurrentCity.City.id_city,
-                id_player:Elkaisar.Config.idPlayer,
+                id_player:ID_PLAYER,
                 token:TOKEN
                 
             },
@@ -457,7 +457,7 @@ var city_profile = {
                 
                 GET_CITY_STORAGE:true,
                 id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player:Elkaisar.Config.idPlayer,
+                id_player:ID_PLAYER,
                 token:TOKEN
                 
             },
@@ -515,7 +515,7 @@ var city_profile = {
             url: "api/city.php",
             data:{
                 AFTER_BATTEL_FINISH_REFRESH:true,
-                id_player:Elkaisar.Config.idPlayer,
+                id_player:ID_PLAYER,
                 id_city:Elkaisar.CurrentCity.City.id_city,
                 token:TOKEN
             },
@@ -548,7 +548,7 @@ var city_profile = {
         
         $.ajax({
                 url: "api/player.php",
-                data: {get_city: true, id_player:Elkaisar.Config.idPlayer, token:TOKEN},
+                data: {get_city: true, id_player:ID_PLAYER, token:TOKEN},
                 type: 'POST',
                 beforeSend: function (xhr) {
 

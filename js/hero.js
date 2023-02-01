@@ -178,7 +178,7 @@ var Hero = {
             var idCity = Elkaisar.CurrentCity.City.id_city;
             $.ajax({
                 
-                url: `${API_URL}/api/ACityHero/addFromTheater`,
+                url: `${Elkaisar.Config.NodeUrl}/api/ACityHero/addFromTheater`,
                 data: {
                     idHero  : id_hero_in_theater,
                     token   : Elkaisar.Config.OuthToken,
@@ -251,7 +251,7 @@ var Hero = {
             data: {
                 get_hero_equip: true,
                 id_hero:id_hero,
-                id_player:Elkaisar.Config.idPlayer,
+                id_player:ID_PLAYER,
                 token:TOKEN
             },
             type: 'GET',
@@ -619,7 +619,7 @@ $(document).on("click" , "#confirm-change-hero-name" , function (){
                 UPDATE_HERO_NEW_NAME:true,
                 new_name:hero_name,
                 id_hero:Elkaisar.CurrentHero.Hero.id_hero,
-                id_player:Elkaisar.Config.idPlayer,
+                id_player:ID_PLAYER,
                 token:TOKEN
                 
             },
@@ -953,7 +953,7 @@ $(document).on("click" , "#order-hero button" , function (){
     
     var idCity = Elkaisar.CurrentCity.City.id_city;
     $.ajax({
-        url: `${API_URL}/api/AHero/reOrderHero`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHero/reOrderHero`,
         data:{
             idHero  : id_hero,
             MoveDir :direction,
@@ -1065,7 +1065,7 @@ $(document).on("dblclick" , ".putable-equi" , function (){
     
     
     $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroEquip/putEquipOnHero`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHeroEquip/putEquipOnHero`,
         data: {
             idEquip : id_equip,
             idHero  : id_hero,
@@ -1138,7 +1138,7 @@ $(document).on("dblclick" , ".putable-equi" , function (){
 
 Elkaisar.Hero.getEquipOffHero = function (idEquip) {
     return $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroEquip/putEquipOffHero`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHeroEquip/putEquipOffHero`,
         'data': {
             'idEquip': idEquip,
             token: Elkaisar['Config']['OuthToken'],
@@ -1236,7 +1236,7 @@ $(document).on("click" , ".FIRE_HERO" , function (){
     alert_box.confirmDialog(`تأكيد طرد البطل  ${CHero.Hero.name}</br>  اذا كان البطل يحمل قوات سيتم حذفها مع البطل ولا يمكنك استرجاع البطل مرة اخرى`, function (){
 
         $.ajax({
-            url: `${API_URL}/api/AHero/fireHero`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AHero/fireHero`,
             data:{
                 idHero : CHero.Hero.id_hero,
                 token  : Elkaisar.Config.OuthToken,

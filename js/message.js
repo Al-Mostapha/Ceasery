@@ -4,9 +4,11 @@ var MSG_NUM;
 function refreshMsg(){
     
      $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AMessage/GetMsgNumbers`,
+            url: "api/message.php",
             data:{
-              token: Elkaisar.Config.OuthToken
+                MSG_NUMBERS: true,
+                id_player:ID_PLAYER,
+                token:TOKEN
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -24,9 +26,7 @@ function refreshMsg(){
     
 }
 
-$(document).on("GameReady" , function(){
-  refreshMsg();
-});
+refreshMsg();
 
 function getReports(offset){
     
@@ -35,10 +35,12 @@ function getReports(offset){
     }
     
     return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/ABattelReport/GetBattelReports`,
+            url: "api/battelReport.php",
             data: {
-              offset: offset,
-              token: Elkaisar.Config.OuthToken
+                get_report:true , 
+                offset: offset,
+                id_player:ID_PLAYER,
+                token:TOKEN
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -107,11 +109,11 @@ function getSpyReports(offset){
     return $.ajax({
         
         
-            url: `${Elkaisar.Config.NodeUrl}/api/ABattelReport/GetSpyReports`,
+            url: "api/battelReport.php",
             data: {
                 get_spy_report:true , 
                 offset: offset,
-                id_player :Elkaisar.Config.idPlayer,
+                id_player :ID_PLAYER,
                 token     :TOKEN
             },
             type: 'GET',
@@ -216,10 +218,12 @@ var message = {
                         `;
         $.ajax({
             
-            url: `${Elkaisar.Config.NodeUrl}/api/AMessage/GetMsgIncome`,
+            url: "api/message.php",
             data:{
-              offset         : offset ,
-              token          : Elkaisar.Config.OuthToken
+                get_msg_income : true,
+                offset         : offset ,
+                id_player      : ID_PLAYER,
+                token          : TOKEN
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -279,10 +283,12 @@ var message = {
         
         var msg_data;
         $.ajax({
-            url:  `${Elkaisar.Config.NodeUrl}/api/AMessage/GetMsgIncomeDetail`,
+            url: "api/message.php",
             data:{
-              idMessage: id_msg,
-              token: Elkaisar.Config.OuthToken
+                get_income_msg_in_detail: true,
+                id_message: id_msg,
+                id_player:ID_PLAYER,
+                token:TOKEN
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -354,10 +360,13 @@ var message = {
                                     <div class="td_6 ellipsis">${Translate.Button.General.Action[UserLag.language]}</div>
                                 </div>`;
         $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AMessage/GetMsgDiff`,
+            
+            url: "api/message.php",
             data:{
-              offset: offset || 0,
-              token: Elkaisar.Config.OuthToken
+                get_msg_diff: true,
+                offset: offset || 0,
+                id_player:ID_PLAYER,
+                token:TOKEN
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -386,13 +395,13 @@ var message = {
                             output += `<div class="tr"></div>`;
                         }
                     }
-                    output +=  `
+                     output +=  `
 
                                 </div>
                                 ${message.footer("msg_diff" , offset)}
                             </div>`;
-                    $(".box_content").replaceWith(output);
-              
+                     $(".box_content").replaceWith(output);
+               
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 
@@ -408,13 +417,17 @@ var message = {
     diffMsgShow: function (id_msg , offset_parent){
         var msg_data;
         $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AMessage/GetMsgDiffDetail`,
+            url: "api/message.php",
             data:{
-              idMessage: id_msg,
-              token: Elkaisar.Config.OuthToken
+                get_diff_msg_in_detail: true,
+                id_message: id_msg,
+                id_player:ID_PLAYER,
+                    token:TOKEN
             },
             type: 'GET',
-            beforeSend: function (xhr) { },
+            beforeSend: function (xhr) {
+                
+            },
             success: function (data, textStatus, jqXHR) {
               
                 msg_data = JSON.parse(data);
@@ -484,13 +497,17 @@ var message = {
                                 </div>`;
         $.ajax({
             
-            url: `${Elkaisar.Config.NodeUrl}/api/AMessage/GetMsgOutcome`,
+            url: "api/message.php",
             data:{
-              offset: offset || 0,
-              token: Elkaisar.Config.OuthToken
+                get_msg_outcome: true,
+                offset: offset || 0,
+                id_player:ID_PLAYER,
+                token:TOKEN
             },
             type: 'GET',
-            beforeSend: function (xhr) {},
+            beforeSend: function (xhr) {
+                
+            },
             success: function (data, textStatus, jqXHR) {
                 
                 var json_data = JSON.parse(data);
@@ -536,13 +553,17 @@ var message = {
     outcomeMsgShow: function (id_msg , offset_parent){
         var msg_data;
         $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AMessage/GetMsgOutcomeDetail`,
+            url: "api/message.php",
             data:{
-                idMessage: id_msg,
-                token: Elkaisar.Config.OuthToken
+                get_out_msg_in_detail: true,
+                id_message: id_msg,
+                id_player:ID_PLAYER,
+                token:TOKEN
             },
             type: 'GET',
-            beforeSend: function (xhr) {},
+            beforeSend: function (xhr) {
+                
+            },
             success: function (data, textStatus, jqXHR) {
                 
                 msg_data = JSON.parse(data);
@@ -753,7 +774,7 @@ $(document).on("click" , "#del_selected" , function (){
         data: {
             delete_msg: true,
             msgs: JSON.stringify(total_msg),
-            id_player:Elkaisar.Config.idPlayer,
+            id_player:ID_PLAYER,
             token:TOKEN
         },
         type: 'POST',
@@ -801,7 +822,7 @@ $(document).on("click" , "#delete-all button" , function (){
             data: {
                 DELETE_ALL_UNREAD: true,
                 msgs: JSON.stringify(total_msg),
-                id_player:Elkaisar.Config.idPlayer,
+                id_player:ID_PLAYER,
                 token:TOKEN
             },
             type: 'POST',
@@ -846,7 +867,7 @@ function searchByName(segmant , condtion)
         var data_send = {
                 search_by_name: true,
                 name: segmant,
-                id_player:Elkaisar.Config.idPlayer,
+                id_player:ID_PLAYER,
                 token:TOKEN
             };
         
@@ -857,7 +878,7 @@ function searchByName(segmant , condtion)
                 name: segmant,
                 id_guild_no: false,
                 id_guild: Elkaisar.DPlayer.Player.id_guild,
-                id_player:Elkaisar.Config.idPlayer,
+                id_player:ID_PLAYER,
                 token:TOKEN
                 
             };
@@ -954,7 +975,7 @@ $(document).on("click" , "#send_mail_to" , function (){
             data: {
                 send_mail_to: true,
                 id_to: id_to, 
-                id_from:Elkaisar.Config.idPlayer,
+                id_from: ID_PLAYER,
                 body:body,
                 subject: subject,
                 token:TOKEN
@@ -1245,7 +1266,7 @@ $(document).on("click" , "#send_mail_to_guild" , function (){
             url: "api/message.php",
             data: {
                 SEND_GUILD_MAIL: true, 
-                id_from:Elkaisar.Config.idPlayer,
+                id_from: ID_PLAYER,
                 body:body,
                 subject: subject,
                     token:TOKEN
@@ -1343,7 +1364,7 @@ $(document).on("click" , ".show_battel_report" ,function (){
         data: {
             report_detail: true,
             id_report: id_report,
-            id_player:Elkaisar.Config.idPlayer,
+            id_player:ID_PLAYER,
             token:TOKEN
         },
         type: 'GET',
@@ -1867,7 +1888,7 @@ $(document).on("click" , ".show_spy_report" ,function (){
         data: {
             spy_report_detail: true,
             id_report: id_report,
-            id_player:Elkaisar.Config.idPlayer,
+            id_player:ID_PLAYER,
             spy_for: data_obj.spy_for,
             id_victim:id_victim,
                     token:TOKEN
@@ -2019,7 +2040,7 @@ function getReportContent(detail , data_obj , offset)
                                                             ${detail.heros[jjj].h_name ? detail.heros[jjj].h_name : "بطل النظام"}
                                                         </div>
                                                         ${
-                                                        Number(detail.heros[jjj].id_player)  === Number(Elkaisar.Config.idPlayer) ?
+                                                        Number(detail.heros[jjj].id_player)  === Number(ID_PLAYER) ?
                                                         `<div class="image">
                                                             <img src="${Elkaisar.BaseData.HeroAvatar[detail.heros[jjj].avatar] || "images/icons/hero/eq-bg.png"}" />
                                                             <div class="xp stroke">+${getArabicNumbers(detail["heros"][jjj]["xp"])}</div>
@@ -2076,7 +2097,7 @@ function getReportContent(detail , data_obj , offset)
                                                             ${detail.heros[jjj].h_name ? detail.heros[jjj].h_name : "بطل النظام"}
                                                         </div>
                                                         ${
-                                                            Number(detail.heros[jjj].id_player)  === Number(Elkaisar.Config.idPlayer) ?
+                                                            Number(detail.heros[jjj].id_player)  === Number(ID_PLAYER) ?
                                                             `<div class="image">
                                                                 <img src="${Elkaisar.BaseData.HeroAvatar[detail.heros[jjj].avatar] || "images/icons/hero/eq-bg.png"}"/>
                                                                 <div class="xp stroke">+${getArabicNumbers(detail["heros"][jjj]["xp"])}</div>

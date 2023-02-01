@@ -69,7 +69,7 @@ Elkaisar.Rank.EmptyBox = function () {
 };
 Elkaisar.Rank.PlayerGeneralRank = function (offset) {
     $.ajax({
-        url: `${API_URL}/api/ARankingPlayer/generalRank`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ARankingPlayer/generalRank`,
         data: {
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer,
@@ -194,7 +194,7 @@ Elkaisar.Rank.playerRow = function (offset, PlayerList) {
 Elkaisar.Rank.GuildGeneralRank = function (offset) {
 
     $.ajax({
-        url: `${API_URL}/api/ARankingGuild/generalRank`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ARankingGuild/generalRank`,
         data: {
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer,
@@ -282,7 +282,7 @@ Elkaisar.Rank.GuildRow = function (offset, GuildList) {
 }
 Elkaisar.Rank.HeroGeneralRank = function (offset) {
     $.ajax({
-        url: `${API_URL}/api/ARankingHero/generalRank`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ARankingHero/generalRank`,
         data: {
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer,
@@ -359,7 +359,7 @@ Elkaisar.Rank.HeroRow = function (offset, HeroList) {
 Elkaisar.Rank.CityGeneralRank = function (offset) {
 
     $.ajax({
-        url: `${API_URL}/api/ARankingCity/generalRank`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ARankingCity/generalRank`,
         data: {
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer,

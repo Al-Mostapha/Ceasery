@@ -28,7 +28,7 @@ $(document).on("click" , "#change-player-password" , function (){
                 CHANGE_PLAYER_PASSWORD: true,
                 oldPassword: currentPassword,
                 newPassword: newPassword,
-                id_player:Elkaisar.Config.idPlayer,
+                id_player:ID_PLAYER,
                 token:TOKEN
                 
             },
@@ -192,7 +192,7 @@ $(document).on("change" , "#game-lang-list .choose-lang", function (){
             data:{
                 CHANGE_PLAYER_LANG: true,
                 token: TOKEN,
-                id_player: Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 newLang :  lang
             },
             type: 'POST',

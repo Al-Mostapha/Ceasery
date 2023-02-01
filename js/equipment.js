@@ -5,13 +5,14 @@ Elkaisar.Equip.getPlayerEquip  = function ()
         
         url: `${Elkaisar.Config.NodeUrl}/api/APlayerEquip/getPlayerEquip`,
         data:{
-          token : Elkaisar.Config.OuthToken
+            server: Elkaisar.Config.idServer,
+            token : Elkaisar.Config.OuthToken
         },
         type: 'GET',
         success: function (data, textStatus, jqXHR) {
             
             if(!Elkaisar.LBase.isJson(data))
-              Elkaisar.LBase.Error(data);
+                Elkaisar.LBase.Error(data);
             
             Elkaisar.DPlayer.Equip = JSON.parse(data);
             Elkaisar.Equip.distributeEquip();
@@ -83,11 +84,11 @@ Elkaisar.Equip.getEquipUnit = function(idEquip)
 Elkaisar.Equip.EquipList = {},
 Elkaisar.Equip.getEquipData = function () {
     $.ajax({
-        'url':  `${API_URL}/js${JS_VERSION}/json/equipment/${Elkaisar.DPlayer.Player.lang || "ar"}.json` ,
+        'url': API_URL + '/js' + Elkaisar['Config']['JsVersion'] + '/json/equipment/' + UserLag['language'] + '.json',
         success: function (data, _0x18a598, _0x1ed6f5) {
             Elkaisar['Equip']['EquipList'] = data;
             $.ajax({
-                'url': API_URL + '/api/APlayerEquip/getEquipPower',
+                'url': Elkaisar.Config.NodeUrl + '/api/APlayerEquip/getEquipPower',
                 'data': {
                     token: Elkaisar['Config']['OuthToken'],
                     server: Elkaisar['Config']['idServer']
@@ -245,9 +246,9 @@ var Equipment = {
 
 
 
-$(document).on("GameReady", function () {
-  $.ajax({
-    url: `js${JS_VERSION}/json/equipment/${Elkaisar.DPlayer.Player.lang || "ar"}.json`,
+
+$.ajax({
+    url: "js"+JS_VERSION+"/json/equipment/"+(UserLag.language)+".json",
     success: function (data, textStatus, jqXHR) {
         EQUIP_DATA = data;
         $.ajax({
@@ -293,5 +294,4 @@ $(document).on("GameReady", function () {
         });
         
     }
-});
 });

@@ -307,7 +307,7 @@ $(document).on("click" , "#expand-chat .send" , function (){
                 chat_to: chat_to,
                 chat_msg:msg,
                 p_name: player.name,
-                id_player: Elkaisar.Config.idPlayer,
+                idPlayer:ID_PLAYER,
                 p_avatar: player.avatar,
                 quoted:true,
                 quote: quoteWrapper.attr("data-quote"),

@@ -457,7 +457,7 @@ var WorldUnit = {
 
 
         return  $.ajax({
-            url:  `${API_URL}/api/AWorld/refreshWorldUnitLvl`,
+            url:  `${Elkaisar.Config.NodeUrl}/api/AWorld/refreshWorldUnitLvl`,
             data: {
                 xCoord: x,
                 yCoord: y,
@@ -536,7 +536,7 @@ WorldUnit.WorldUnitRank = function (x, y) {
     var unitType = Number(WorldUnit.getWorldUnit(x, y).ut);
     $.ajax({
 
-        url: `${API_URL}/api/AWorld/getWorldUnitRank`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AWorld/getWorldUnitRank`,
         data: {
             xCoord: x,
             yCoord: y,
@@ -651,7 +651,7 @@ $(document).on("click", "#new-city-confirm button", function () {
         if (canBuildNewCity(xCoord, yCoord)) {
 
             $.ajax({
-                url: `${API_URL}/api/AWorld/BuildNewCity`,
+                url: `${Elkaisar.Config.NodeUrl}/api/AWorld/BuildNewCity`,
                 data: {
                     idCity: idCity,
                     xCoord: xCoord,

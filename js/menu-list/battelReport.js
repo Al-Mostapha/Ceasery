@@ -7,7 +7,7 @@ var Reports = {
         Reports.refresh_content_leaving();
         
         $.ajax({
-            url: `${API_URL}/api/ABattelRunning/getLeavingHero`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ABattelRunning/getLeavingHero`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
@@ -80,7 +80,7 @@ var Reports = {
     change_content_heroBack: function () {
 
         $.ajax({
-            url: `${API_URL}/api/ABattelRunning/getHeroBack`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ABattelRunning/getHeroBack`,
             data: {
                 token  : Elkaisar.Config.OuthToken,
                 server : Elkaisar.Config.idServer
@@ -155,7 +155,7 @@ var Reports = {
     change_content_GarrisonUnits: function () {
         Reports.refresh_content_GarrisonUnits();
         $.ajax({
-            url: `${API_URL}/api/ABattelRunning/getGarrisonHeros`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ABattelRunning/getGarrisonHeros`,
             data: {
                 token  : Elkaisar.Config.OuthToken,
                 server : Elkaisar.Config.idServer
@@ -233,7 +233,7 @@ var Reports = {
         
         Reports.refresh_content_SpyTask();
         $.ajax({
-            url: `${API_URL}/api/ABattelRunning/getSpyRuning`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ABattelRunning/getSpyRuning`,
             data: {
                 token  : Elkaisar.Config.OuthToken,
                 server : Elkaisar.Config.idServer
@@ -335,7 +335,7 @@ $(document).on("click", ".cansel_spy", function () {
         var idCity = Elkaisar.CurrentCity.City.idCity;
         $.ajax({
 
-            url: `${API_URL}/api/ASpy/cancel`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ASpy/cancel`,
             data: {
                 idSpy  : id_spy,
                 idCity : idCity,
@@ -383,7 +383,7 @@ $(document).on("click", ".hero_back_from_garrison", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
         
         $.ajax({
-            url: `${API_URL}/api/ACityPalace/removeHeroFromGarrison`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityPalace/removeHeroFromGarrison`,
             data: {
                 idHero : id_hero,
                 idCity : idCity,

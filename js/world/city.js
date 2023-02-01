@@ -24,7 +24,7 @@ Elkaisar.City.getCityBase = function (idCity)
 
 
     return $.ajax({
-        url: `${API_URL}/api/ACity/refreshCityBase`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACity/refreshCityBase`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,
@@ -59,7 +59,7 @@ Elkaisar.City.getCityBuilding = function (idCity)
         idCity = Elkaisar.CurrentCity.City.id_city;
 
     return $.ajax({
-        url: `${API_URL}/api/ACityBuilding/getCityBuilding`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityBuilding/getCityBuilding`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,
@@ -93,6 +93,7 @@ Elkaisar.City.getCityJop = function (idCity)
         url: `${Elkaisar.Config.NodeUrl}/api/ACityJop/getCityJop`,
         type: 'GET',
         data: {
+            server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken,
             idCity: idCity
         },
@@ -117,7 +118,7 @@ Elkaisar.City.getCityWounded = function (idCity)
     if (!idCity)
         idCity = Elkaisar.CurrentCity.City.id_city;
     return $.ajax({
-        url: `${API_URL}/api/ACityWounded/getCityWounded`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityWounded/getCityWounded`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,
@@ -144,7 +145,7 @@ Elkaisar.City.getCityStorage = function (idCity)
     if (!idCity)
         idCity = Elkaisar.CurrentCity.City.id_city;
     return $.ajax({
-        url: `${API_URL}/api/ACityStorage/getCityStorage`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityStorage/getCityStorage`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,
@@ -172,7 +173,7 @@ Elkaisar.City.getCityBarray = function (idCity)
         idCity = Elkaisar.CurrentCity.City.id_city;
 
     return $.ajax({
-        url: `${API_URL}/api/ACityBarrary/getCityBarray`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityBarrary/getCityBarray`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,
@@ -202,7 +203,7 @@ Elkaisar.City.getCityGarrison = function (idCity)
 
 
     return $.ajax({
-        url: `${API_URL}/api/ACityPalace/getCityGarrison`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityPalace/getCityGarrison`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,
@@ -230,7 +231,7 @@ Elkaisar.City.getCityHeroTheater = function (idCity)
 
 
     return $.ajax({
-        url: `${API_URL}/api/ACityHero/refreshHeroTheater`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityHero/refreshHeroTheater`,
         type: 'POST',
         data: {
             server: Elkaisar.Config.idServer,
@@ -255,7 +256,7 @@ Elkaisar.City.getCityHero = function (idCity)
     if (!idCity)
         idCity = Elkaisar.CurrentCity.City.id_city;
     return $.ajax({
-        url: `${API_URL}/api/ACityHero/getCityHero`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityHero/getCityHero`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,
@@ -300,7 +301,7 @@ Elkaisar.City.getCityHeroArmy = function (idCity)
     if (!idCity)
         idCity = Elkaisar.CurrentCity.City.id_city;
     return $.ajax({
-        url: `${API_URL}/api/ACityHero/getCityHeroArmy`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityHero/getCityHeroArmy`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,
@@ -339,7 +340,7 @@ Elkaisar.City.getCityHeroMedal = function (idCity)
     if (!idCity)
         idCity = Elkaisar.CurrentCity.City.id_city;
     return $.ajax({
-        url: `${API_URL}/api/ACityHero/getCityHeroMedal`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityHero/getCityHeroMedal`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,

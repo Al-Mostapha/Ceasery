@@ -112,7 +112,8 @@ GodGate.getPlayerGates = function () {
 
         url: `${Elkaisar.Config.NodeUrl}/api/AGodGate/getGodGateData`,
         data: {
-          token: Elkaisar.Config.OuthToken
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
         },
         beforeSend: function (xhr) {
 
@@ -136,7 +137,7 @@ GodGate.getPlayerGates = function () {
 $(document).on("PlayerReady", "html", function () {
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGodGate/getRankEffect`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGodGate/getRankEffect`,
         data: {
             token: Elkaisar.Config.OuthToken
         },
@@ -244,7 +245,7 @@ GodGate.askToOpenGate = function (gate) {
 
         $.ajax({
 
-            url: `${API_URL}/api/AGodGate/openGate`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AGodGate/openGate`,
             data: {
                 gateIndex: gate,
                 token: Elkaisar.Config.OuthToken,
@@ -381,7 +382,7 @@ GodGate.changeGateCells = function (gate) {
 
     return $.ajax({
 
-        url: `${API_URL}/api/AGodGate/changeGateUnlockedCells`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGodGate/changeGateUnlockedCells`,
         data: {
             gateIndex: gate,
             token: Elkaisar.Config.OuthToken,
@@ -425,7 +426,7 @@ GodGate.useBoxPoint = function (box, amount) {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGodGate/addGatePoints`,
+        url: `${Elkaisar.Config.NodeUrlr.Config.NodeUrl}/api/AGodGate/addGatePoints`,
         data: {
             Item: box,
             amount: amount,
@@ -491,7 +492,7 @@ GodGate.OpenFourthCell = function (Gate) {
     }
 
     $.ajax({
-        url: `${API_URL}/api/AGodGate/OpenFourthCell`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGodGate/OpenFourthCell`,
         data: {
             GateIndex: Gate,
             token: Elkaisar.Config.OuthToken,
@@ -696,7 +697,7 @@ $(document).on("click", "#godGateBox .content-wrapper ul li .chackable", functio
 
 
     $.ajax({
-        url: `${API_URL}/api/AGodGate/changeGateCellState`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGodGate/changeGateCellState`,
         data: {
             cellIndex: index,
             gateIndex: gate,

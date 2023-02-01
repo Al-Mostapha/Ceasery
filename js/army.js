@@ -860,7 +860,7 @@ var army = {
 
 
         return $.ajax({
-            url: `${API_URL}/api/AHeroArmy/refreshHeroArmy`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AHeroArmy/refreshHeroArmy`,
             data: {
                 idHero: hero.Hero.id_hero,
                 token: Elkaisar.Config.OuthToken,
@@ -1885,7 +1885,7 @@ $(document).on("click", ".build_army", function () {
     } else {
         var idCity = Elkaisar.CurrentCity.City.id_city;
         $.ajax({
-            url: `${API_URL}/api/AArmyBuild/buildArmy`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AArmyBuild/buildArmy`,
             data: {
                 amount: amount,
                 armyType: army_type,
@@ -2000,7 +2000,7 @@ $(document).on("click", '.cancel-army-build', function () {
     alert_box.confirmDialog("تأكيد الغاء دفعة الانتاج الحالية", function () {
         var idCity = Number(Elkaisar.CurrentCity.City.id_city);
         $.ajax({
-            url: `${API_URL}/api/AArmyBatch/cancelBatch`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AArmyBatch/cancelBatch`,
             data: {
                 idBatch: id_work,
                 token: Elkaisar.Config.OuthToken,
@@ -2177,7 +2177,7 @@ $(document).on("click", ".hero_up_lvl", function () {
      * كدة مش هيحصل تطابق فى البطل الى فى الداتا بيز
      */
     $.ajax({
-        url: `${API_URL}/api/AHero/upgradeHeroLvl`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHero/upgradeHeroLvl`,
         data: {
             idHero: id_hero,
             token: Elkaisar.Config.OuthToken,
@@ -2409,7 +2409,7 @@ $(document).on("click", ".save_points", function () {
 
     if (total_points > 0) {
         $.ajax({
-            url: `${API_URL}/api/AHero/setHeroPoints`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AHero/setHeroPoints`,
             data: {
                 pointA: Elkaisar.CurrentHero.Hero.add_p_a,
                 pointB: Elkaisar.CurrentHero.Hero.add_p_b,
@@ -2512,7 +2512,7 @@ $(document).on("click", ".add_console", function () {
     var idCity = Elkaisar.CurrentCity.City.id_city;
 
     $.ajax({
-        url: `${API_URL}/api/AHero/addConsole`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHero/addConsole`,
         data: {
             idHero: idHero,
             token: Elkaisar.Config.OuthToken,
@@ -2583,7 +2583,7 @@ $(document).on("click", ".remove_console", function () {
     var idCity = Elkaisar.CurrentCity.City.id_city;
 
     $.ajax({
-        url: `${API_URL}/api/AHero/removeConsole`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHero/removeConsole`,
         data: {
             idCity: idCity,
             token: Elkaisar.Config.OuthToken,
@@ -2812,7 +2812,7 @@ $(document).on("click", "#learn-hero-point", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AHero/educate`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHero/educate`,
         data: {
             idHero: idHero,
             medalToUse: meddal,

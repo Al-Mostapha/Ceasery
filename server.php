@@ -65,7 +65,7 @@ include_once 'config.php';
                 </div>
                 <div class="mid" style="position: absolute;right: 50%;margin-right: -150px;">
                     <div id="server-name">
-                        <div class="name"><?=$SERVER_LIST[$p_server]["name"]?></div>
+                        <div class="name"></div>
                         <div class="time"></div>
                     </div>
                 </div>

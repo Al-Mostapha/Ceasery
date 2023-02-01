@@ -608,7 +608,7 @@ $(document).on("click", ".edu_study", function () {
     var idCity = Number(Elkaisar.CurrentCity.idCity);
         $.ajax({
 
-            url: `${API_URL}/api/APlayerEdu/upgradeStudyLvl`,
+            url: `${Elkaisar.Config.NodeUrl}/api/APlayerEdu/upgradeStudyLvl`,
             data: {
                 idStudy : study_type,
                 idCity  : idCity,

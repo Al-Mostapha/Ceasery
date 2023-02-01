@@ -457,7 +457,7 @@ var campDB = {
     'getDominaterName'(xCoord, yCoord) {
         var Unit = WorldUnit['getWorldUnit'](xCoord, yCoord);
         $.ajax({
-            'url': API_URL + '/api/AWorldUnit/getWorldUnitDominator',
+            'url': Elkaisar.Config.NodeUrl + '/api/AWorldUnit/getWorldUnitDominator',
             'type': 'GET',
             'data': {
                 'xCoord': xCoord,
@@ -591,7 +591,7 @@ campDB.getQueAttackList    = function (xCoord, yCoord)
         return ;
     return $.ajax({
        
-        url: `${API_URL}/api/AWorld/getGuildAttackQue`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AWorld/getGuildAttackQue`,
         type: 'GET',
         data: {
             token  : Elkaisar.Config.OuthToken,

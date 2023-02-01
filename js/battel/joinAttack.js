@@ -22,7 +22,7 @@ $(document).on("click", "#REQUEST_ORDER", function () {
 
         $.ajax({
 
-            url: `${API_URL}/api/ABattel/applyForRoleInAttQue`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ABattel/applyForRoleInAttQue`,
             data: {
                 xCoord: xCoord,
                 yCoord: yCoord,
@@ -68,7 +68,7 @@ $(document).on("click", "#PLUNDE_PRIZE", function () {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AWorldUnit/plundePrize`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AWorldUnit/plundePrize`,
         data: {
             xCoord: xCoord,
             yCoord: yCoord,

@@ -351,7 +351,7 @@ $(document).on("click" , "#change-city-taxs" , function (){
     var idCity = Elkaisar.CurrentCity.City.id_city;
     $.ajax({
         
-        url: `${API_URL}/api/ACityPalace/updateTaxs`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityPalace/updateTaxs`,
         data:{
             idCity     : idCity,
             newTaxRate : new_val,
@@ -407,7 +407,7 @@ $(document).on("click" , "#change-city-name" , function (){
     var idCity = Elkaisar.CurrentCity.City.id_city;
     $.ajax({
         
-        url: `${API_URL}/api/ACityPalace/updateName`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityPalace/updateName`,
         data:{
             NewName : new_name,
             idCity  : Elkaisar.CurrentCity.City.id_city,
@@ -453,7 +453,7 @@ $(document).on("click" , "#expan-city button" , function (){
         var idCity = Elkaisar.CurrentCity.City.id_city;
     $.ajax({
         
-            url: `${API_URL}/api/ACityPalace/expandCity`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityPalace/expandCity`,
             data:{
                 idCity  : Elkaisar.CurrentCity.City.id_city,
                 token   : Elkaisar.Config.OuthToken,
@@ -536,7 +536,7 @@ $(document).on("click" ,  "#bar_list .abandon" , function (){
         var idCity = Elkaisar.CurrentCity.City.id_city;
         
         $.ajax({
-            url:`${API_URL}/api/ACityPalace/barryAbandon`,
+            url:`${Elkaisar.Config.NodeUrl}/api/ACityPalace/barryAbandon`,
             data:{
                 xCoord : x_coord,
                 yCoord : y_coord,
@@ -725,7 +725,7 @@ $(document).on("click" , "#hero-select-list .add-city-hero-garrison" ,  function
        
        
         $.ajax({
-            url: `${API_URL}/api/ACityPalace/addCityGarrison`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityPalace/addCityGarrison`,
             data:{
                 idHero : id_hero,
                 token  : Elkaisar.Config.OuthToken,
@@ -789,7 +789,7 @@ $(document).on("click" , ".remove-hero-city-garrison" , function (e){
     alert_box.confirmDialog(`تأكيد سحب البطل ${h_name} من حراسة المدينة (${Elkaisar.CurrentCity.City.name})` , function (){
         
         $.ajax({
-            url: `${API_URL}/api/ACityPalace/removeHeroFromGarrison`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityPalace/removeHeroFromGarrison`,
             data:{
                 idHero  : id_hero,
                 idCity  : idCity,
@@ -884,7 +884,7 @@ $(document).on("click" , "#city-garrison-footer button" , function (){
         return ;
    
     $.ajax({
-        url: `${API_URL}/api/ACityPalace/reordCityGarrison`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityPalace/reordCityGarrison`,
         data:{
             idHero    : id_hero,
             Direction : direction,

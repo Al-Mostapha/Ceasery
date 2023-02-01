@@ -96,7 +96,7 @@ Elkaisar.TimedTask.getCityBuildingTasks = function (idCity) {
 
     $.ajax({
 
-        url: `${API_URL}/api/ATimedTask/getCityBuildingTasks`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATimedTask/getCityBuildingTasks`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,
@@ -125,7 +125,7 @@ Elkaisar.TimedTask.getCityStudyTasks = function (idCity) {
 
     $.ajax({
 
-        url: `${API_URL}/api/ATimedTask/getCityStudyTasks`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATimedTask/getCityStudyTasks`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,
@@ -154,7 +154,7 @@ Elkaisar.TimedTask.getCityArmyTasks = function (idCity) {
 
     $.ajax({
 
-        url: `${API_URL}/api/ATimedTask/getCityArmyTasks`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATimedTask/getCityArmyTasks`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,
@@ -183,7 +183,7 @@ Elkaisar.TimedTask.getCityJopTasks = function (idCity) {
 
     $.ajax({
 
-        url: `${API_URL}/api/ATimedTask/getCityJopTasks`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATimedTask/getCityJopTasks`,
         type: 'GET',
         data: {
             server: Elkaisar.Config.idServer,

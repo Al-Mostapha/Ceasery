@@ -12,7 +12,7 @@ Elkaisar.Peer.Peer = new Peer(undefined, {
 
 Elkaisar.Peer.Peer.on("open", function (idPeer) {
     $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ATeam/playerOnline`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ATeam/playerOnline`,
         data: {
             token: Elkaisar.Config.OuthToken,
             idPeer : idPeer

@@ -302,7 +302,7 @@ $(document).on("click", ".for_building .nav_bar .left-nav ul li", function () {
                 data: {
                     GET_CITY_BAR: true,
                     id_city: Elkaisar.CurrentCity.City.id_city,
-                    id_player: Elkaisar.Config.idPlayer,
+                    id_player: ID_PLAYER,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -732,7 +732,7 @@ $(document).on("click", ".upgrade-btn", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/ACityBuilding/upgrade`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityBuilding/upgrade`,
         data: {
             idCity: Elkaisar.CurrentCity.City.id_city,
             buildingPlace: building_place,
@@ -864,7 +864,7 @@ $(document).on("click", "#downgrade-building-lvl", function () {
 
         $.ajax({
 
-            url: `${API_URL}/api/ACityBuilding/downgrade`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityBuilding/downgrade`,
             data: {
                 idCity: Elkaisar.CurrentCity.City.id_city,
                 buildingPlace: building_place,
@@ -935,7 +935,7 @@ $(document).on("click", "#cansel-building-upgrade", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/ACityBuilding/cancelUpgradeing`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityBuilding/cancelUpgradeing`,
         data: {
             idCity: Elkaisar.CurrentCity.City.id_city,
             idWorking: idWorking,

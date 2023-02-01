@@ -113,7 +113,7 @@ Dominant.armyCapital = function () {
 Dominant.cityColonizer = function () {
     $.ajax({
 
-        url: `${API_URL}/api/ADominant/getCityColonizer`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ADominant/getCityColonizer`,
         data: {
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer
@@ -172,7 +172,7 @@ Dominant.cityColonizer = function () {
 Dominant.MyColonizedCity = function () {
     $.ajax({
 
-        url: `${API_URL}/api/ADominant/getCityColonized`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ADominant/getCityColonized`,
         data: {
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer
@@ -247,7 +247,7 @@ $(document).on("click", ".abondonColonizedCity", function () {
 
     var idCity = $(this).attr("data-id-city");
     $.ajax({
-        url: `${API_URL}/api/ADominant/abondonColonizedCity`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ADominant/abondonColonizedCity`,
         data: {
             idCity: idCity,
             token: Elkaisar.Config.OuthToken,
@@ -285,7 +285,7 @@ $(document).on("click", ".fireColonizer", function () {
 
     alert_box.confirmDialog("تاكيد طرد المستعمر مقابل 1 مساعدة حرية", function () {
         $.ajax({
-            url: `${API_URL}/api/ADominant/fireColonizer`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ADominant/fireColonizer`,
             data: {
                 idCity: idCity,
                 token: Elkaisar.Config.OuthToken,

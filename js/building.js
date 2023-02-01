@@ -2,7 +2,9 @@
 
 $.ajax({
     url: "js" + JS_VERSION + "/json/building.json",
-    data: {},
+    data: {
+        token: TOKEN
+    },
     type: 'POST',
     beforeSend: function (xhr) {
 
@@ -2091,7 +2093,7 @@ $(document).on("click", "#confirmChoose button", function () {
     var helper = $(this).attr("helper-type");
     $.ajax({
 
-        url: `${API_URL}/api/ACity/changeCityHelper`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACity/changeCityHelper`,
         data: {
             idCity: Elkaisar.CurrentCity.City.id_city,
             newHelper: helper,
@@ -2170,7 +2172,7 @@ $(document).on("click", ".cure .therapy ", function () {
     alert_box.confirmDialog(`تأكيد مداواة ${amount} ${Elkaisar.BaseData.Army[army_type].ar_title} مقابل ${amount*Elkaisar.BaseData.Army[army_type].coin} عملة سسترسس`, function (){
         
         $.ajax({
-            url: `${API_URL}/api/ACity/cureCityWounded`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACity/cureCityWounded`,
             data: {
                 idCity: idCity,
                 armyType: army_type,
@@ -2244,7 +2246,7 @@ $(document).on("click", ".cure .fire-wounded", function () {
     var idCity = Elkaisar.CurrentCity.City.id_city
     alert_box.confirmDialog(`تأكيد طرد ${amount} ${Elkaisar.BaseData.Army[army_type].ar_title}`, function (){
             $.ajax({
-                url: `${API_URL}/api/ACity/fireCityWounded`,
+                url: `${Elkaisar.Config.NodeUrl}/api/ACity/fireCityWounded`,
                 data: {
                     idCity: idCity,
                     armyType: army_type,
@@ -2360,7 +2362,7 @@ $(document).on("click", ".construct_building", function () {
 
         $.ajax({
 
-            url: `${API_URL}/api/ACityBuilding/constructNewBuilding`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityBuilding/constructNewBuilding`,
             data: {
                 buildingPlace: building_place,
                 buildingType: building_to_build,
@@ -2456,7 +2458,7 @@ $(document).on("click", "#accept-store-new-val button", function () {
     var idCity = Elkaisar.CurrentCity.idCity;
     $.ajax({
 
-        url: `${API_URL}/api/ACityStorage/updatePercentage`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityStorage/updatePercentage`,
         data: {
             foodPerc  : food_val,
             woodPerc  : wood_val,
@@ -2594,7 +2596,7 @@ $(document).on("click", "#go-building-right", function () {
 
 $(document).on("PlayerReady", "html", function () {
     $.ajax({
-        url: `${API_URL}/js${Elkaisar.Config.JsVersion}/json/buildingReqData.json`,
+        url: `${Elkaisar.Config.NodeUrl}/js${Elkaisar.Config.JsVersion}/json/buildingReqData.json`,
         success: function (data, textStatus, jqXHR) {
             Elkaisar.Building.BuildingData = data;
         }

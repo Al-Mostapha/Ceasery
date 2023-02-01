@@ -191,7 +191,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
     var amount = Math.floor($("#input-army-move").val());
     $("#confirmTransArmy").attr("disabled", "disabled");
     $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroArmy/transArmyFromHeroToHero`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHeroArmy/transArmyFromHeroToHero`,
         data: {
             amount: amount,
             idCity: Elkaisar.CurrentCity.City.id_city,
@@ -262,7 +262,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
     var idCity = Elkaisar.CurrentCity.City.id_city;
 
     $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroArmy/transArmyFromHeroToCity`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHeroArmy/transArmyFromHeroToCity`,
         data: {
             amount: amount,
             idHero: idHero,
@@ -336,7 +336,7 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
     $("#confirmTransArmy").attr("disabled", "disabled");
 
     $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroArmy/transArmyFromCityToHero`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHeroArmy/transArmyFromCityToHero`,
         data: {
             idHero: idHero,
             amount: amount,
@@ -483,7 +483,7 @@ $(document).on("click", "#swap_army", function () {
     }
 
     $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroArmy/swapHeroArmy`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHeroArmy/swapHeroArmy`,
         data: {
             idHeroRight: right_hero_id,
             idHeroLeft: left_hero_id,
@@ -554,7 +554,7 @@ $(document).on("click", "#left-down , #right-down", function () {
     var this_ = $(this);
 
     $.ajax({
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AHeroArmy/clearHeroArmy`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AHeroArmy/clearHeroArmy`,
         data: {
             idHero: id_hero,
             token: Elkaisar.Config.OuthToken,

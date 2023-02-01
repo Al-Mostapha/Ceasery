@@ -7,19 +7,15 @@ Elkaisar.Contribute.List = {};
 
 Elkaisar.Contribute.getList = function () {
     $.ajax({
-        'url': `${API_URL}/js${JS_VERSION}/json/contribute.json`,
+        'url': `${API_URL }/js${ Elkaisar['Config']['JsVersion'] }/json/contribute.json`,
         success: function (data, _0x5852fa, _0x1a4a01) {
             Elkaisar['Contribute']['List'] = data;
         }
     });
 };
 
-$(document).on("GameReady", function () {
-  Elkaisar['Contribute']['getList']();
-  console.log("Contribute Ready");
-});
 
-
+Elkaisar['Contribute']['getList']();
 
 Elkaisar.Contribute.ToUpgradeBox = function (idCont) {
     var Cont = Elkaisar['Contribute']['List'][idCont];
@@ -611,7 +607,7 @@ $(document)['on']('click', '#ContributeUpStart', function () {
         return alert_box['failMessage']('عليك اختيار المعدة اولا');
 
     $.ajax({
-        'url': `${API_URL }/api/AContribute/upgradeEquip`,
+        'url': `${Elkaisar.Config.NodeUrl }/api/AContribute/upgradeEquip`,
         'data': {
             'idCont': idCont,
             'idEquip': Cont['ListOfNeed'][0]['SelectedList'][0],
@@ -662,7 +658,7 @@ $(document)['on']('click', '#ContributeStart', function () {
     var Cont = Elkaisar['Contribute']['List'][idCont];
 
     $.ajax({
-        'url': `${API_URL}/api/AContribute/contribute`,
+        'url': `${Elkaisar.Config.NodeUrl}/api/AContribute/contribute`,
         'data': {
             'idCont': idCont,
             'idCity': Elkaisar['CurrentCity']['idCity'],

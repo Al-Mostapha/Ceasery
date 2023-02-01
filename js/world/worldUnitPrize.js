@@ -5,9 +5,10 @@ WorldUnit.prize.prizes = {};
 
 WorldUnit.prize.getAllPrize = function () {
     $.ajax({
-        'url': `${Elkaisar.Config.NodeUrl}/api/AWorld/getWorldUnitPrize`,
+        'url': Elkaisar.Config.NodeUrl + '/api/AWorld/getWorldUnitPrize',
         'data': {
-          token: Elkaisar['Config']['OuthToken'],
+            token: Elkaisar['Config']['OuthToken'],
+            server: Elkaisar['Config']['idServer']
         },
         'type': 'GET',
         success: function (data, _0x45a054, _0x31b37d) {

@@ -56,7 +56,7 @@ Elkaisar.World.Province.getTitle = function (x, y) {
 $(document)['on']('click', '#relocate-city-now', function () {
     var province = $('#move-city-to .select-list')['attr']('data-value');
     return $.ajax({
-        'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useRandomMove',
+        'url': NODE_URL + '/api/AItemUse/useRandomMove',
         'type': 'POST',
         'data': {
             'Item': 'random_move',

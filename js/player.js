@@ -15,7 +15,7 @@ var Player_profile = {
     getPlayerBaseData: function() {
         
        return $.ajax({
-            url: API_URL + "/api/APlayer/refreshPlayerData" ,
+            url: Elkaisar.Config.NodeUrl + "/api/APlayer/refreshPlayerData" ,
             type: 'GET',
             data:{
                 token: Elkaisar.Config.OuthToken,
@@ -42,10 +42,11 @@ var Player_profile = {
     getPlayerStateData: function() {
         
        return $.ajax({
-            url:`${Elkaisar.Config.NodeUrl}/api/APlayer/getPlayerState` ,
+            url: Elkaisar.Config.NodeUrl + "/api/APlayer/getPlayerState" ,
             type: 'GET',
             data:{
-              token: Elkaisar.Config.OuthToken
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },beforeSend: function (xhr) {
                 
             },
@@ -69,10 +70,11 @@ var Player_profile = {
     getPlayerGuildData: function() {
         
        return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/APlayer/getPlayerGuildData` ,
+            url: Elkaisar.Config.NodeUrl + "/api/APlayer/getPlayerGuildData" ,
             type: 'GET',
             data:{
-              token: Elkaisar.Config.OuthToken
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },beforeSend: function (xhr) {
                 
             },
@@ -95,10 +97,11 @@ var Player_profile = {
     getPlayerEdu: function() {
         
        return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/APlayerEdu/getPlayerEduLvl` ,
+            url: Elkaisar.Config.NodeUrl + "/api/APlayerEdu/getPlayerEduLvl" ,
             type: 'GET',
             data:{
-              token: Elkaisar.Config.OuthToken
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },beforeSend: function (xhr) {
                 
             },
@@ -128,9 +131,11 @@ var Player_profile = {
     refreshMatrialBox: function (matrial){
         return $.ajax({
             
-            url: `${Elkaisar.Config.NodeUrl}/api/APlayerItem/getPlayerItems`,
+            url: Elkaisar.Config.NodeUrl + "/api/APlayerItem/getPlayerItems",
             data:{
-              token  : Elkaisar.Config.OuthToken
+                
+                server : Elkaisar.Config.idServer,
+                token  : Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -166,7 +171,7 @@ var Player_profile = {
     refreshPlayerNotif: function (){
         
         return $.ajax({
-            url:`${API_URL}/api/APlayer/getAllNotif`,
+            url:`${Elkaisar.Config.NodeUrl}/api/APlayer/getAllNotif`,
             data:{
                 server : Elkaisar.Config.idServer,
                 token  : Elkaisar.Config.OuthToken

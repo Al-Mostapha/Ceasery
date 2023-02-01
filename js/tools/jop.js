@@ -43,7 +43,7 @@ var Jop = {
         
         $.ajax({
             
-            url: `${API_URL}/api/ACityJop/fireLabor`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityJop/fireLabor`,
             data:{
                 idCity        : idCity,
                 amountToFire  : amount,
@@ -186,7 +186,7 @@ $(document).on("click", "#hire-btn button", function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
         $.ajax({
 
-            url: `${API_URL}/api/ACityJop/hire`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityJop/hire`,
             data: {
                 amountToHire  : num_to_hire,
                 buildingPlace : building_place,
@@ -301,7 +301,7 @@ $(document).on("click" , "#change-city-pro-rate" , function (){
     
     $.ajax({
         
-        url: `${API_URL}/api/ACityPalace/updateProductionRate`,
+        url: `${Elkaisar.Config.NodeUrl}/api/ACityPalace/updateProductionRate`,
         data:{
             foodRate  : foodRate,
             woodRate  : woodRate,

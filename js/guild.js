@@ -4,7 +4,7 @@ function showInVitedMembers() {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuild/getGuildInvReq`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuild/getGuildInvReq`,
         data: {
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer
@@ -117,7 +117,7 @@ $(document).on("click", ".accept-guild-req", function () {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/acceptGuildReq`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuildInvReq/acceptGuildReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -169,7 +169,7 @@ $(document).on("click", ".cansel-guild-req", function () {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/rejectGuildJoinReq`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuildInvReq/rejectGuildJoinReq`,
         data: {
             idPlayerToAccept: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -221,7 +221,7 @@ $(document).on("click", ".cansel-inv-action", function () {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/cancelGuildInv`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuildInvReq/cancelGuildInv`,
         data: {
             idPlayerToInvite: id_player,
             token: Elkaisar.Config.OuthToken,
@@ -540,13 +540,9 @@ var Guild = {
 
         $.ajax({
 
-            url: "api/guild.php",
+            url: `${Elkaisar.Config.NodeUrl}/api/AGuild/getUnJoinedPlayerData`,
             data: {
-
-                GET_UNJOINED_PLAYER_DATA: true,
-                id_player: ID_PLAYER,
-                token: TOKEN
-
+                token: Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -634,7 +630,7 @@ var Guild = {
         } else {
             var idCity = Elkaisar.CurrentCity.City.id_city;
             $.ajax({
-                url: `${API_URL}/api/AGuild/create`,
+                url: `${Elkaisar.Config.NodeUrl}/api/AGuild/create`,
                 data: {
                     guildName: $("#guild-name").val(),
                     slogBottom: $(".guild_slogan img:first").attr("data-cur_image"),
@@ -693,7 +689,8 @@ var Guild = {
         return $.ajax({
             url: `${Elkaisar.Config.NodeUrl}/api/AGuild/getGuildData`,
             data: {
-              token: Elkaisar.Config.OuthToken
+                token: Elkaisar.Config.OuthToken,
+                server: Elkaisar.Config.idServer
             },
             type: 'GET',
             success: function (data, textStatus, jqXHR) {
@@ -1292,7 +1289,7 @@ $(document).on("click", "#guild-donate", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuild/donateRes`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuild/donateRes`,
         data: {
             idCity: idCity,
             food: food,
@@ -1723,7 +1720,7 @@ $(document).on("click", "#save-g-intro", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuild/modifyGuildWord`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuild/modifyGuildWord`,
 
         data: {
             newWord: new_intro,
@@ -1876,7 +1873,7 @@ $(document)['on']('click', '#submit-guild-relation', function () {
         return;
     }
     $.ajax({
-        'url': API_URL + '/api/AGuild/changeGuildRelation',
+        'url': Elkaisar.Config.NodeUrl + '/api/AGuild/changeGuildRelation',
         'data': {
             'idGuild': idGuild,
             'relation': GuildRel,
@@ -1969,7 +1966,7 @@ $(document).on("click", "#submit-guild-invite", function () {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/sendGuildJoinInv`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuildInvReq/sendGuildJoinInv`,
         data: {
             idPlayerToInvite: id_player,
             token: Elkaisar.Config.OuthToken
@@ -2088,7 +2085,7 @@ $(document).on("click", "#send-guild-req button", function () {
     
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/sendGuildRequest`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuildInvReq/sendGuildRequest`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken,
@@ -2130,7 +2127,7 @@ function canselGuildInvetation(id_player, id_guild) {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/rejectGuildInv`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuildInvReq/rejectGuildInv`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken
@@ -2172,7 +2169,7 @@ function canselGuildJoinRequest(id_player, id_guild) {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/cancelGuildRequest`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuildInvReq/cancelGuildRequest`,
         data: {
             idGuild: id_guild,
             server: Elkaisar.Config.idServer,
@@ -2238,7 +2235,7 @@ $(document).on("click", ".accept-guild-inv", function () {
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuildInvReq/acceptGuildInv`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuildInvReq/acceptGuildInv`,
         data: {
             idGuild: id_guild,
             token: Elkaisar.Config.OuthToken
@@ -2284,7 +2281,7 @@ $(document).on("click", "#isolate-guild-member", function () {
 
         $.ajax({
 
-            url: `${API_URL}/api/AGuildMember/removeFromPosition`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AGuildMember/removeFromPosition`,
             data: {
 
                 idMember: id_member,
@@ -2367,7 +2364,7 @@ $(document).on("click", ".promote-guild-member div", function () {
 
         $.ajax({
 
-            url: `${API_URL}/api/AGuildMember/promotMember`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AGuildMember/promotMember`,
             data: {
                 idMember: id_member,
                 offset: 0,
@@ -2460,7 +2457,7 @@ $(document).on("click", "#trade-guild-position", function () {
 
         $.ajax({
 
-            url: `${API_URL}/api/AGuildMember/tradePosition`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AGuildMember/tradePosition`,
             data: {
                 idMember: id_member,
                 offset: 0,
@@ -2524,7 +2521,7 @@ $(document).on("click", ".mem-prize-percent", function () {
             return;
         }
         $.ajax({
-            url: `${API_URL}/api/AGuildMember/modifyPrizeShare`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AGuildMember/modifyPrizeShare`,
             data: {
                 idMember: id_member,
                 offset: 0,
@@ -2591,7 +2588,7 @@ $(document).on("click", "#fire-guild-mamber", function () {
 
             $.ajax({
 
-                url: `${API_URL}/api/AGuildMember/fireMember`,
+                url: `${Elkaisar.Config.NodeUrl}/api/AGuildMember/fireMember`,
                 data: {
                     idMember: id_member,
                     offset: 0,
@@ -2653,7 +2650,7 @@ $(document).on("click", '#get-out-guild , #leave-g', function () {
 
         $.ajax({
 
-            url: `${API_URL}/api/AGuild/quitFromGuild`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AGuild/quitFromGuild`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
@@ -2701,7 +2698,7 @@ $(document).on("click", "#stepdown-guild-mamber , #resignation-g", function () {
 
         $.ajax({
 
-            url: `${API_URL}/api/AGuild/resignFromPosition`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AGuild/resignFromPosition`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
@@ -2747,7 +2744,7 @@ $(document).on("click", "#destroy-g", function () {
 
         $.ajax({
 
-            url: `${API_URL}/api/AGuild/disbandGuild`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AGuild/disbandGuild`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
@@ -2800,7 +2797,7 @@ $(document).on("click", "#upgrade_guild", function () {
 
     $.ajax({
 
-        url: `${API_URL}/api/AGuild/upgradeUsingRes`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AGuild/upgradeUsingRes`,
         data: {
             token: Elkaisar.Config.OuthToken,
             server: Elkaisar.Config.idServer

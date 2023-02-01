@@ -1,5 +1,5 @@
 
-
+const NODE_URL = `${Elkaisar.Config.NodeUrl}`;
 
 function isJson(str) {
     try {
@@ -11,13 +11,11 @@ function isJson(str) {
 }
 
 
-$(document).on("GameReady", function () {
-  $.ajaxSetup({
-      data: {
-          server: Elkaisar.Config.idServer
-      }
-  });
-})
+$.ajaxSetup({
+    data: {
+        server: SERVER_ID
+    }
+});
 
 function isInt(num) {
     return num % 1 === 0;
@@ -364,7 +362,7 @@ $(document).ready(function () {
                         url: "Chat/publicMsgImage",
                         data: {
                             image: event.target.result,
-                            idPlayer:Elkaisar.Config.idPlayer,
+                            idPlayer: ID_PLAYER,
                             token: TOKEN,
                             p_name: player.name,
                             p_avatar: player.avatar,

@@ -283,7 +283,7 @@ $("#luck-wheel-btn").click(function () {
 LuckWheel.playLuck = function () {
 
     return $.ajax({
-        url:`${API_URL}/api/APlayer/playLuckWheel`,
+        url:`${Elkaisar.Config.NodeUrl}/api/APlayer/playLuckWheel`,
         type: 'POST',
         data: {
             token  : Elkaisar.Config.OuthToken,

@@ -824,14 +824,16 @@ Elkaisar.BaseData.Items = {};
 
 
 $(document).on("PlayerReady", "html", function () {
+
+
     $.ajax({
-        url: `${API_URL}/js${JS_VERSION}/json/ItemLang/${Elkaisar.Config.UserLang}.json`,
+        url: `${API_URL}/js${Elkaisar.Config.JsVersion}/json/ItemLang/${Elkaisar.Config.UserLang}.json`,
         success: function (Items, textStatus, jqXHR) {
             $.ajax({
                 url: API_URL + "/js" + Elkaisar.Config.JsVersion + "/json/itemBase.json",
                 success: function (ItemBase, textStatus, jqXHR) {
                     $.ajax({
-                        url: `${API_URL}/api/AItem/getAllItemPrice`,
+                        url: `${Elkaisar.Config.NodeUrl}/api/AItem/getAllItemPrice`,
                         data:{
                           token: Elkaisar.Config.OuthToken,
                           server: Elkaisar.Config.idServer

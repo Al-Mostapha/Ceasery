@@ -276,7 +276,7 @@ var WorldUtil = {
                 get_data_by_coords: true,
                 x_coord: x_coord,
                 y_coord: y_coord,
-                id_player: Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 token: TOKEN
             },
             type: 'GET',
@@ -631,7 +631,7 @@ var reviewBox = {
                     GET_BATTEL_FIELD_DATA: true,
                     x_coord: x_coord,
                     y_coord: y_coord,
-                    id_player: Elkaisar.Config.idPlayer,
+                    id_player: ID_PLAYER,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -708,7 +708,7 @@ var reviewBox = {
             data: {
                 GET_BATTEL_FIELD_DETAIL: true,
                 id_battel: id_battel,
-                id_player: Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 token: TOKEN
             },
             type: 'GET',
@@ -746,7 +746,7 @@ var reviewBox = {
                     GET_BATTEL_FIXED_DATA: true,
                     x_coord: x_coord,
                     y_coord: y_coord,
-                    id_player: Elkaisar.Config.idPlayer,
+                    id_player: ID_PLAYER,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -792,7 +792,7 @@ var reviewBox = {
 
                     GET_BATTEL_FIXED_DATA: true,
                     id_battel: id_battel,
-                    id_player: Elkaisar.Config.idPlayer,
+                    id_player: ID_PLAYER,
                     token: TOKEN
                 },
                 type: 'GET',
@@ -1074,7 +1074,7 @@ $(document).on("mouseover", ".overMap lable", function () {
 
 
     $.ajax({
-        url: `${API_URL}/api/AWorld/refreshWorldUnitLvl`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AWorld/refreshWorldUnitLvl`,
         type: 'GET',
         data: {
             xCoord: x_coord,
@@ -1253,7 +1253,7 @@ $(document).on("click", "#mail-player-from-world", function () {
 function addRemainBarryData(xCoord, yCoord)
 {
     $.ajax({
-        url:   `${API_URL}/api/AWorld/getBarrayConolizer`,
+        url:   `${Elkaisar.Config.NodeUrl}/api/AWorld/getBarrayConolizer`,
         data: {
             xCoord: xCoord,
             yCoord: yCoord,

@@ -3,7 +3,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`motiv_60`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMotivSpeech`,
+            url: `${NODE_URL}/api/AItemUse/useMotivSpeech`,
             type: 'POST',
             data: {
                 Item: "motiv_60",
@@ -27,7 +27,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`motiv_7`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMotivSpeech`,
+            url: `${NODE_URL}/api/AItemUse/useMotivSpeech`,
             type: 'POST',
             data: {
                 Item: "motiv_7",
@@ -51,7 +51,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`prot_pop`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useProtPop`,
+            url: `${NODE_URL}/api/AItemUse/useProtPop`,
             type: 'POST',
             data: {
                 Item: "prot_pop",
@@ -76,7 +76,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`peace`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useCeaseFire`,
+            url: `${NODE_URL}/api/AItemUse/useCeaseFire`,
             type: 'POST',
             data: {
                 Item: "peace",
@@ -98,7 +98,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`a_play`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useTheatrics`,
+            url: `${NODE_URL}/api/AItemUse/useTheatrics`,
             type: 'POST',
             data: {
                 Item: "a_play",
@@ -122,7 +122,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`freedom_help`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useFreedomHelp`,
+            url: `${NODE_URL}/api/AItemUse/useFreedomHelp`,
             type: 'POST',
             data: {
                 Item: "freedom_help",
@@ -150,7 +150,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`medical_moun`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMedicalStatue`,
+            url: `${NODE_URL}/api/AItemUse/useMedicalStatue`,
             type: 'POST',
             data: {
                 Item: "medical_moun",
@@ -173,7 +173,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`mediacl_statue`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMedicalStatue`,
+            url: `${NODE_URL}/api/AItemUse/useMedicalStatue`,
             type: 'POST',
             data: {
                 Item: "mediacl_statue",
@@ -196,7 +196,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`sparta_stab`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useAttackAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useAttackAdvancer`,
             type: 'POST',
             data: {
                 Item: "sparta_stab",
@@ -219,7 +219,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`qulinds_shaft`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useAttackAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useAttackAdvancer`,
             type: 'POST',
             data: {
                 Item: "qulinds_shaft",
@@ -242,7 +242,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`marmlo_helmet`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useDefenceAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useDefenceAdvancer`,
             type: 'POST',
             data: {
                 Item: "marmlo_helmet",
@@ -265,7 +265,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`march_prot`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useDefenceAdvancer`,
+            url: `${NODE_URL}/api/AItemUse/useDefenceAdvancer`,
             type: 'POST',
             data: {
                 Item: "march_prot",
@@ -290,7 +290,7 @@ Elkaisar.Item.useItemFunc = function () {
             return alert_box['randomMove'](function () {
                 var Province = $('#move-city-to .select-list')['attr']('data-value');
                 return $.ajax({
-                    'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useRandomMove',
+                    'url': NODE_URL + '/api/AItemUse/useRandomMove',
                     'type': 'POST',
                     'data': {
                         'Item': 'random_move',
@@ -335,7 +335,7 @@ Elkaisar.Item.useItemFunc = function () {
     Elkaisar.BaseData.Items[`certain_move`][`UseFunc`] = function (amount) {
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useCertainMove`,
+            url: `${NODE_URL}/api/AItemUse/useCertainMove`,
             type: 'POST',
             data: {
                 Item: "certain_move",
@@ -386,7 +386,7 @@ Elkaisar.Item.useItemFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useWheat`,
+            url: `${NODE_URL}/api/AItemUse/useWheat`,
             type: 'POST',
             data: {
                 Item: "wheat_1",
@@ -413,7 +413,7 @@ Elkaisar.Item.useItemFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useWheat`,
+            url: `${NODE_URL}/api/AItemUse/useWheat`,
             type: 'POST',
             data: {
                 Item: "wheat_7",
@@ -440,7 +440,7 @@ Elkaisar.Item.useItemFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useStone`,
+            url: `${NODE_URL}/api/AItemUse/useStone`,
             type: 'POST',
             data: {
                 Item: "stone_1",
@@ -467,7 +467,7 @@ Elkaisar.Item.useItemFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useStone`,
+            url: `${NODE_URL}/api/AItemUse/useStone`,
             type: 'POST',
             data: {
                 Item: "stone_7",
@@ -494,7 +494,7 @@ Elkaisar.Item.useItemFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useWood`,
+            url: `${NODE_URL}/api/AItemUse/useWood`,
             type: 'POST',
             data: {
                 Item: "wood_1",
@@ -521,7 +521,7 @@ Elkaisar.Item.useItemFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useWood`,
+            url: `${NODE_URL}/api/AItemUse/useWood`,
             type: 'POST',
             data: {
                 Item: "wood_7",
@@ -548,7 +548,7 @@ Elkaisar.Item.useItemFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMetal`,
+            url: `${NODE_URL}/api/AItemUse/useMetal`,
             type: 'POST',
             data: {
                 Item: "metal_1",
@@ -575,7 +575,7 @@ Elkaisar.Item.useItemFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useMetal`,
+            url: `${NODE_URL}/api/AItemUse/useMetal`,
             type: 'POST',
             data: {
                 Item: "metal_1",
@@ -602,7 +602,7 @@ Elkaisar.Item.useItemFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useCoin`,
+            url: `${NODE_URL}/api/AItemUse/useCoin`,
             type: 'POST',
             data: {
                 Item: "coin_1",
@@ -629,7 +629,7 @@ Elkaisar.Item.useItemFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useCoin`,
+            url: `${NODE_URL}/api/AItemUse/useCoin`,
             type: 'POST',
             data: {
                 Item: "coin_7",
@@ -657,7 +657,7 @@ Elkaisar.Item.useItemFunc = function () {
         Elkaisar['BaseData']['Items']['gold_5']['UseFunc'] = function (_0x4813fb) {
             var _0x329520 = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_5',
@@ -680,7 +680,7 @@ Elkaisar.Item.useItemFunc = function () {
         Elkaisar['BaseData']['Items']['gold_1']['UseFunc'] = function (_0x4813fb) {
             var _0x329520 = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_1',
@@ -701,7 +701,7 @@ Elkaisar.Item.useItemFunc = function () {
         Elkaisar['BaseData']['Items']['gold_10']['UseFunc'] = function (_0x3fb720) {
             var _0x1f1a2e = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_10',
@@ -722,7 +722,7 @@ Elkaisar.Item.useItemFunc = function () {
         Elkaisar['BaseData']['Items']['gold_25']['UseFunc'] = function (_0x575893) {
             var _0x34c16d = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_25',
@@ -743,7 +743,7 @@ Elkaisar.Item.useItemFunc = function () {
         Elkaisar['BaseData']['Items']['gold_75']['UseFunc'] = function (_0x147f7f) {
             var _0x5a71c2 = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_75',
@@ -764,7 +764,7 @@ Elkaisar.Item.useItemFunc = function () {
         Elkaisar['BaseData']['Items']['gold_100']['UseFunc'] = function (_0x11914b) {
             var _0x291633 = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_100',
@@ -785,7 +785,7 @@ Elkaisar.Item.useItemFunc = function () {
         Elkaisar['BaseData']['Items']['gold_500']['UseFunc'] = function (_0x197e5c) {
             var _0x10da0d = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_500',
@@ -806,7 +806,7 @@ Elkaisar.Item.useItemFunc = function () {
         Elkaisar['BaseData']['Items']['gold_1000']['UseFunc'] = function (_0x560420) {
             var _0x32a8fd = Elkaisar['CurrentCity']['City']['id_city'];
             return $.ajax({
-                'url': Elkaisar.Config.NodeUrl + '/api/AItemUse/useGoldPack',
+                'url': NODE_URL + '/api/AItemUse/useGoldPack',
                 'type': 'POST',
                 'data': {
                     'Item': 'gold_1000',
@@ -827,7 +827,7 @@ Elkaisar.Item.useItemFunc = function () {
 
         Elkaisar.BaseData.Items[`arena_attempt_1`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaAttempt`,
+                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
                 type: 'POST',
                 data: {
                     Item: "arena_attempt_1",
@@ -854,7 +854,7 @@ Elkaisar.Item.useItemFunc = function () {
 
         Elkaisar.BaseData.Items[`arena_attempt_5`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaAttempt`,
+                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
                 type: 'POST',
                 data: {
                     Item: "arena_attempt_5",
@@ -881,7 +881,7 @@ Elkaisar.Item.useItemFunc = function () {
 
         Elkaisar.BaseData.Items[`arena_attempt_10`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaAttempt`,
+                url: `${NODE_URL}/api/AItemUse/useArenaAttempt`,
                 type: 'POST',
                 data: {
                     Item: "arena_attempt_10",
@@ -909,7 +909,7 @@ Elkaisar.Item.useItemFunc = function () {
 
         Elkaisar.BaseData.Items[`arena_exp_1`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaExpPack`,
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
                 type: 'POST',
                 data: {
                     Item: "arena_exp_1",
@@ -937,7 +937,7 @@ Elkaisar.Item.useItemFunc = function () {
 
         Elkaisar.BaseData.Items[`arena_exp_5`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaExpPack`,
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
                 type: 'POST',
                 data: {
                     Item: "arena_exp_5",
@@ -966,7 +966,7 @@ Elkaisar.Item.useItemFunc = function () {
         
         Elkaisar.BaseData.Items[`arena_exp_10`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaExpPack`,
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
                 type: 'POST',
                 data: {
                     Item: "arena_exp_10",
@@ -993,7 +993,7 @@ Elkaisar.Item.useItemFunc = function () {
 
         Elkaisar.BaseData.Items[`arena_exp_25`][`UseFunc`] = function (amount) {
             return $.ajax({
-                url: `${Elkaisar.Config.NodeUrl}/api/AItemUse/useArenaExpPack`,
+                url: `${NODE_URL}/api/AItemUse/useArenaExpPack`,
                 type: 'POST',
                 data: {
                     Item: "arena_exp_25",
@@ -1029,7 +1029,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useGiftBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useGiftBox`,
             type: 'POST',
             data: {
                 Item: "gift_box",
@@ -1055,7 +1055,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useWoodBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useWoodBox`,
             type: 'POST',
             data: {
                 Item: "wood_box",
@@ -1081,7 +1081,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useGoldenBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useGoldenBox`,
             type: 'POST',
             data: {
                 Item: "golden_box",
@@ -1107,7 +1107,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_1",
@@ -1132,7 +1132,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_2",
@@ -1157,7 +1157,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_3",
@@ -1182,7 +1182,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_4",
@@ -1207,7 +1207,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_5",
@@ -1232,7 +1232,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_6",
@@ -1257,7 +1257,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_7",
@@ -1282,7 +1282,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_8",
@@ -1307,7 +1307,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_9",
@@ -1333,7 +1333,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useBeginnerPack`,
+            url: `${NODE_URL}/api/AItemBoxUse/useBeginnerPack`,
             type: 'POST',
             data: {
                 Item: "beginner_back_10",
@@ -1359,7 +1359,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useArmyBox`,
+            url: `${NODE_URL}/api/AItemBoxUse/useArmyBox`,
             type: 'POST',
             data: {
                 Item: "army_box",
@@ -1385,7 +1385,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_3p",
@@ -1414,7 +1414,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_4p",
@@ -1442,7 +1442,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_5p",
@@ -1470,7 +1470,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_6p",
@@ -1498,7 +1498,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_7p",
@@ -1526,7 +1526,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useHeroPacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useHeroPacks`,
             type: 'POST',
             data: {
                 Item: "tagned_8p",
@@ -1554,7 +1554,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_a",
@@ -1579,7 +1579,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_b",
@@ -1604,7 +1604,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_c",
@@ -1629,7 +1629,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "coin_d",
@@ -1654,7 +1654,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_a",
@@ -1679,7 +1679,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_b",
@@ -1704,7 +1704,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_c",
@@ -1729,7 +1729,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "food_d",
@@ -1754,7 +1754,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_a",
@@ -1779,7 +1779,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_b",
@@ -1804,7 +1804,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_c",
@@ -1829,7 +1829,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "wood_d",
@@ -1854,7 +1854,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_a",
@@ -1879,7 +1879,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_b",
@@ -1904,7 +1904,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_c",
@@ -1929,7 +1929,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "stone_d",
@@ -1954,7 +1954,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_a",
@@ -1981,7 +1981,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_b",
@@ -2006,7 +2006,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_c",
@@ -2031,7 +2031,7 @@ Elkaisar.Item.useItemBoxFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemBoxUse/useResourcePacks`,
+            url: `${NODE_URL}/api/AItemBoxUse/useResourcePacks`,
             type: 'POST',
             data: {
                 Item: "metal_d",
@@ -2059,7 +2059,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackMini`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackMini`,
             type: 'POST',
             data: {
                 Item: "army_all_1",
@@ -2085,7 +2085,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackMedium`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackMedium`,
             type: 'POST',
             data: {
                 Item: "army_all_2",
@@ -2111,7 +2111,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackLarge`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackLarge`,
             type: 'POST',
             data: {
                 Item: "army_all_3",
@@ -2137,7 +2137,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackA100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackA100`,
             type: 'POST',
             data: {
                 Item: "army_a_100",
@@ -2162,7 +2162,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackB100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackB100`,
             type: 'POST',
             data: {
                 Item: "army_b_100",
@@ -2188,7 +2188,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackC100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackC100`,
             type: 'POST',
             data: {
                 Item: "army_c_100",
@@ -2214,7 +2214,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackD100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackD100`,
             type: 'POST',
             data: {
                 Item: "army_d_100",
@@ -2240,7 +2240,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackE100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackE100`,
             type: 'POST',
             data: {
                 Item: "army_e_100",
@@ -2266,7 +2266,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackF100`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackF100`,
             type: 'POST',
             data: {
                 Item: "army_f_100",
@@ -2292,7 +2292,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackA1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackA1000`,
             type: 'POST',
             data: {
                 Item: "army_a_1000",
@@ -2317,7 +2317,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackB1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackB1000`,
             type: 'POST',
             data: {
                 Item: "army_b_1000",
@@ -2343,7 +2343,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackC1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackC1000`,
             type: 'POST',
             data: {
                 Item: "army_c_100",
@@ -2369,7 +2369,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackD1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackD1000`,
             type: 'POST',
             data: {
                 Item: "army_d_1000",
@@ -2395,7 +2395,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackE1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackE1000`,
             type: 'POST',
             data: {
                 Item: "army_e_1000",
@@ -2421,7 +2421,7 @@ Elkaisar.Item.useArmyBackFunc = function () {
         var idCity = Elkaisar.CurrentCity.City.id_city;
 
         return $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AItemArmyPack/useArmyPackF1000`,
+            url: `${NODE_URL}/api/AItemArmyPack/useArmyPackF1000`,
             type: 'POST',
             data: {
                 Item: "army_f_1000",

@@ -423,7 +423,7 @@ $(document).on("click", "#confirm-player-new-img", function () {
 
                 CHANGE_PLAYER_AVATAR: true,
                 image_index: image_index,
-                id_player:Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 token: TOKEN
 
             },
@@ -960,7 +960,7 @@ $(document).on("click", "#chat-forbide", function () {
 
         $.ajax({
 
-            url: `${API_URL}/api/APlayer/chatPann`,
+            url: `${Elkaisar.Config.NodeUrl}/api/APlayer/chatPann`,
             type: 'POST',
             data: {
                 token: Elkaisar.Config.OuthToken,

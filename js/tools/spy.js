@@ -41,7 +41,7 @@ SPY = {
             }
             else {
                 $.ajax({
-                    url: `${API_URL}/api/ASpy/start`,
+                    url: `${Elkaisar.Config.NodeUrl}/api/ASpy/start`,
                     data: {
                         xCoord     : x_coord,
                         yCoord     : y_coord,

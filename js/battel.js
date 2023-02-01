@@ -257,7 +257,7 @@ function battelStart() {
             return;
         }
         $.ajax({
-            'url': `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ABattel/joinBattel`,
+            'url': `${Elkaisar.Config.NodeUrl}/api/ABattel/joinBattel`,
             'data': {
                 'idBattel': battel_data['id_battel'],
                 'idHero'  : Elkaisar.CurrentHero.Hero.id_hero,
@@ -414,7 +414,7 @@ Elkaisar.Battel.supportByHero = function (idHero) {
         idHero = Elkaisar.CurrentHero.Hero.id_hero;
 
     return $.ajax({
-        url: `${API_URL}/api/AWorldUnit/supportByHero`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AWorldUnit/supportByHero`,
         type: 'POST',
         data: {
 
@@ -461,7 +461,7 @@ Elkaisar.Battel.TransHero = function (idHero) {
         idHero = Elkaisar.CurrentHero.Hero.id_hero;
 
     return $.ajax({
-        url: `${API_URL}/api/AWorldUnit/transHero`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AWorldUnit/transHero`,
         type: 'POST',
         data: {
 
@@ -514,7 +514,7 @@ $(document).on("click", "#REFRESH_BATTEL_DATA", function () {
 
         $.ajax({
 
-            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/ABattelRuning/refreshBattelData`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ABattelRuning/refreshBattelData`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 idBattel: idBattel
@@ -553,7 +553,7 @@ Battel = {
 
 
         $.ajax({
-            url: `${API_URL}/api/AWorldUnit/supportByHero`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AWorldUnit/supportByHero`,
             data: {
                 xTo: x_coord,
                 yTo: y_coord,

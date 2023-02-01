@@ -218,7 +218,7 @@ BattelField.getBattelForWorldUnit = function (x_coord, y_coord){
   
         return $.ajax({
 
-                    url: `${API_URL}/api/ABattelRunning/getUnitBattel`,
+                    url: `${Elkaisar.Config.NodeUrl}/api/ABattelRunning/getUnitBattel`,
                     data:{
                         xCoord:x_coord,
                         yCoord: y_coord,
@@ -290,7 +290,7 @@ BattelField.addToWatchList = function (x_coord , y_coord){
                 {
                     url:"WS_BattelWatchList/addPlayer",
                     data:{
-                        id_player:Elkaisar.Config.idPlayer,
+                        id_player:ID_PLAYER,
                         x_coord:x_coord,
                         y_coord:y_coord,
                         token:TOKEN
@@ -309,7 +309,7 @@ BattelField.removeFromWatchList = function (x_coord , y_coord){
             {
                 url:"WS_BattelWatchList/removePlayer",
                 data:{
-                    idPlayer: id_player:Elkaisar.Config.idPlayer,
+                    idPlayer: ID_PLAYER,
                     x_coord:x_coord,
                     y_coord:y_coord,
                     token:TOKEN

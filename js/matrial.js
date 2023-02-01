@@ -43,7 +43,7 @@ function useMatrial(user_for, matrial, other)
 
         var idHero = Elkaisar.CurrentHero.Hero.id_hero;
         $.ajax({
-            url: `${API_URL}/api/AHero/addExp`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AHero/addExp`,
             data: {
                 itemToUse: matrial,
                 idHero: idHero,
@@ -82,7 +82,7 @@ function useMatrial(user_for, matrial, other)
         }
         var idHero = Elkaisar.CurrentHero.Hero.id_hero;
         $.ajax({
-            url: `${API_URL}/api/AHero/addPower`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AHero/addPower`,
             data: {
                 itemToUse: matrial,
                 idHero: idHero,
@@ -128,7 +128,7 @@ function useMatrial(user_for, matrial, other)
         }
         var idHero = Elkaisar.CurrentHero.Hero.id_hero;
         $.ajax({
-            url: `${API_URL}/api/AHero/addLoy`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AHero/addLoy`,
             data: {
                 itemToUse: matrial,
                 idHero: idHero,
@@ -179,7 +179,7 @@ function useMatrial(user_for, matrial, other)
 
         var idHero = Elkaisar.CurrentHero.Hero.id_hero;
         $.ajax({
-            url: `${API_URL}/api/AHero/resetHeroPoints`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AHero/resetHeroPoints`,
             data: {
                 idHero: idHero,
                 token: Elkaisar.Config.OuthToken,
@@ -214,13 +214,13 @@ function useMatrial(user_for, matrial, other)
     {
         var url = "";
         if (matrial === "medal_ceasro")
-            url = `${API_URL}/api/AHeroMedal/activateCiceroMedal`;
+            url = `${Elkaisar.Config.NodeUrl}/api/AHeroMedal/activateCiceroMedal`;
         if (matrial === "medal_den")
-            url = `${API_URL}/api/AHeroMedal/activateDentatusMedal`;
+            url = `${Elkaisar.Config.NodeUrl}/api/AHeroMedal/activateDentatusMedal`;
         if (matrial === "medal_leo")
-            url = `${API_URL}/api/AHeroMedal/activateLeonidasMedal`;
+            url = `${Elkaisar.Config.NodeUrl}/api/AHeroMedal/activateLeonidasMedal`;
         if (matrial === "ceaser_eagle")
-            url = `${API_URL}/api/AHeroMedal/activateCaeserMedal`;
+            url = `${Elkaisar.Config.NodeUrl}/api/AHeroMedal/activateCaeserMedal`;
         if (Number(Elkaisar.CurrentHero.Hero.in_city) !== Elkaisar.Hero.HeroState.HERO_IN_CITY) {
             $("#over_lay_alert").remove();
             $("#over_lay").remove();
@@ -274,7 +274,7 @@ $("#useItemButton").removeAttr("disabled");
 
         $.ajax({
 
-            url: `${API_URL}/api/AGuild/upgradeUsingItem`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AGuild/upgradeUsingItem`,
             data: {
                 itemToUse: matrial,
                 token: Elkaisar.Config.OuthToken,
@@ -319,7 +319,7 @@ $("#useItemButton").removeAttr("disabled");
         var idTask = other;
         $.ajax({
 
-            url: `${API_URL}/api/ACityBuilding/speedUp`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityBuilding/speedUp`,
             data: {
                 idCity: idCity,
                 itemToUse: matrial,
@@ -365,7 +365,7 @@ $("#useItemButton").removeAttr("disabled");
         var idTask = other;
         $.ajax({
 
-            url: `${API_URL}/api/ACityJop/speedUpHiring`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityJop/speedUpHiring`,
             data: {
                 idTask: idTask,
                 itemToUse: matrial,
@@ -418,7 +418,7 @@ $("#useItemButton").removeAttr("disabled");
         var idTask = other;
         $.ajax({
 
-            url: `${API_URL}/api/APlayerEdu/speedUpStudyTask`,
+            url: `${Elkaisar.Config.NodeUrl}/api/APlayerEdu/speedUpStudyTask`,
             data: {
                 itemToUse: matrial,
                 idTask: idTask,
@@ -467,7 +467,7 @@ $("#useItemButton").removeAttr("disabled");
 
         $.ajax({
 
-            url: `${API_URL}/api/ACity/resetCityHelper`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACity/resetCityHelper`,
             data: {
                 itemToUse: matrial,
                 idCity: Elkaisar.CurrentCity.City.id_city,
@@ -514,7 +514,7 @@ $("#useItemButton").removeAttr("disabled");
         var idTask = other;
         $.ajax({
 
-            url: `${API_URL}/api/AArmyBatch/speedUpBatches`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AArmyBatch/speedUpBatches`,
             data: {
                 idBatch: idTask,
                 itemToUse: matrial,
@@ -573,7 +573,7 @@ $("#useItemButton").removeAttr("disabled");
         
         $.ajax({
 
-            url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AGuild/changeGuildName`,
+            url: `${Elkaisar.Config.NodeUrl}/api/AGuild/changeGuildName`,
             data: {
                 slog_top,
                 slog_cnt,
@@ -644,7 +644,7 @@ $("#useItemButton").removeAttr("disabled");
 
             $.ajax({
 
-                url: `${API_URL}/api/APlayer/changePlayerName`,
+                url: `${Elkaisar.Config.NodeUrl}/api/APlayer/changePlayerName`,
                 data: {
                     NewName: new_name,
                     token: Elkaisar.Config.OuthToken,
@@ -694,7 +694,7 @@ $("#useItemButton").removeAttr("disabled");
 
         $.ajax({
 
-            url: `${API_URL}/api/ACityHero/refreshHeroTheaterWithLetter`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityHero/refreshHeroTheaterWithLetter`,
             data: {
                 token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer,
@@ -744,7 +744,7 @@ $("#useItemButton").removeAttr("disabled");
                 ACCELERATE_ARRIVING_DEALS: true,
                 id_deal: id_deal,
                 id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player:Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 token: TOKEN
             },
             type: 'POST',
@@ -790,7 +790,7 @@ $("#useItemButton").removeAttr("disabled");
             return;
         }
         $.ajax({
-            url: `${API_URL}/api/ACityBuilding/explodeBuilding`,
+            url: `${Elkaisar.Config.NodeUrl}/api/ACityBuilding/explodeBuilding`,
             data: {
                 BuildingPlace: building_place,
                 idCity: idCity,
@@ -983,7 +983,7 @@ function buyMatrial(matrial, amount)
 
     $.ajax({
 
-        url: `http://${Elkaisar.Config.ApiUrl}:${Elkaisar.Config.ApiPort}/api/AItem/buyItem`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AItem/buyItem`,
         data: {
             item: matrial,
             amount: amount,

@@ -109,7 +109,7 @@ TradeCenter.getPlayerTradeList = function (){
         url: "api/tradeCenter.php",
         data:{
             GET_PLAYER_TRADE_LIST: true,
-            id_player: Elkaisar.Config.idPlayer,
+            id_player : ID_PLAYER,
             token:TOKEN
         },
         type: 'GET',
@@ -182,7 +182,7 @@ TradeCenter.TradeListContent =  function (list , offset){
                                 ${lastSeen(list[iii].time_stamp)}
                             </div>
                             <div class="td_6" style="width: 18%;">
-                                ${ Number(Elkaisar.Config.idPlayer) !== Number(list[iii].id_player) ? `<button class="full-btn-3x buy-item-trade-center"
+                                ${ Number(ID_PLAYER) !== Number(list[iii].id_player) ? `<button class="full-btn-3x buy-item-trade-center"
                                         data-item="${list[iii].item}"
                                         data-price="${list[iii].price}" 
                                         data-id-item="${list[iii].id_item}" 
@@ -294,7 +294,7 @@ $(document).on("click" , ".buy-item-trade-center" , function (){
                 
                 BUY_ITEM: true,
                 id_item: id_item,
-                id_player: Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 item_table: Matrial.table(listItem.item),
                 amount: amount_to_buy,
                 token:TOKEN
@@ -447,7 +447,7 @@ $(document).on("click" , ".sell-matrial" , function (e){
                 SELL_ITEM: true,
                 item:matrial,
                 price: itemPrice,
-                id_player: Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 mat_table: Matrial.table(matrial),
                 amount: amountToSell,
                 token:TOKEN
@@ -472,7 +472,7 @@ $(document).on("click" , ".sell-matrial" , function (e){
                     Matrial.takeFrom("sell_voucher" , amountToSell);
                     TradeCenter.playerList.push({
                        id_item:  jsonData.id_item,
-                       id_player: Elkaisar.Config.idPlayer,
+                       id_player: ID_PLAYER,
                        price: itemPrice,
                        item: matrial,
                        time_stamp: $.now()/1000
@@ -563,7 +563,7 @@ $(document).on("click" , ".cancel-buy-item-trade-center" , function (){
             url: "api/tradeCenter.php",
             data:{
                 CANCEL_SELL_ITEM_OFFFER: true,
-                id_player: Elkaisar.Config.idPlayer,
+                id_player: ID_PLAYER,
                 id_item: id_item,
                 mat_table: Matrial.table(TradeCenter.getListItemById(id_item).item),
                 token:TOKEN

@@ -22,7 +22,7 @@ if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elain
 
 $.ajax({
     
-    url: `${API_URL}/home/HLogIn/playerEnterServer`,
+    url: `${Elkaisar.Config.NodeUrl}/home/HLogIn/playerEnterServer`,
     data:{
         
         server : SERVER_ID
