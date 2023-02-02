@@ -65,7 +65,7 @@ WS_utile.onclose = function (event) {
 
 WS_utile.connect = function () {
 
-    ws = new WebSocket(`ws://${WS_HOST}:${WS_PORT}?idPlayer=${ID_PLAYER}&server=${SERVER_ID}&token=${Elkaisar.Config.OuthToken}`);
+    ws = new WebSocket(`ws://${WS_HOST}:${WS_PORT}?idPlayer=${Elkaisar.DPlayer.Player.idPlayer}&server=${Elkaisar.Config.idServer}&token=${Elkaisar.Config.OuthToken}`);
     ws.onopen = WS_utile.onopen;
     ws.onmessage = WS_utile.onmessage;
     ws.onclose = WS_utile.onclose;

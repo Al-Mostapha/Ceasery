@@ -1,0 +1,69 @@
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+ffset] => 0
+)
+00Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)

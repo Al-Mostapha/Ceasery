@@ -8,7 +8,7 @@ function refreshMsg(){
             data:{
                 MSG_NUMBERS: true,
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -40,7 +40,7 @@ function getReports(offset){
                 get_report:true , 
                 offset: offset,
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthTokensar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -114,7 +114,7 @@ function getSpyReports(offset){
                 get_spy_report:true , 
                 offset: offset,
                 id_player :ID_PLAYER,
-                token     :TOKEN
+                token     :Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -223,7 +223,7 @@ var message = {
                 get_msg_income : true,
                 offset         : offset ,
                 id_player      : ID_PLAYER,
-                token          : TOKEN
+                token          : Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -288,7 +288,7 @@ var message = {
                 get_income_msg_in_detail: true,
                 id_message: id_msg,
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -366,7 +366,7 @@ var message = {
                 get_msg_diff: true,
                 offset: offset || 0,
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -422,7 +422,7 @@ var message = {
                 get_diff_msg_in_detail: true,
                 id_message: id_msg,
                 id_player:ID_PLAYER,
-                    token:TOKEN
+                    token:Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -502,7 +502,7 @@ var message = {
                 get_msg_outcome: true,
                 offset: offset || 0,
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -558,7 +558,7 @@ var message = {
                 get_out_msg_in_detail: true,
                 id_message: id_msg,
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -775,7 +775,7 @@ $(document).on("click" , "#del_selected" , function (){
             delete_msg: true,
             msgs: JSON.stringify(total_msg),
             id_player:ID_PLAYER,
-            token:TOKEN
+            token:Elkaisar.Config.OuthTokensar.Config.OuthToken
         },
         type: 'POST',
         beforeSend: function (xhr) {
@@ -823,7 +823,7 @@ $(document).on("click" , "#delete-all button" , function (){
                 DELETE_ALL_UNREAD: true,
                 msgs: JSON.stringify(total_msg),
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthTokensar.Config.OuthToken
             },
             type: 'POST',
             beforeSend: function (xhr) {
@@ -868,7 +868,7 @@ function searchByName(segmant , condtion)
                 search_by_name: true,
                 name: segmant,
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
             };
         
     }else{
@@ -879,7 +879,7 @@ function searchByName(segmant , condtion)
                 id_guild_no: false,
                 id_guild: Elkaisar.DPlayer.Player.id_guild,
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
                 
             };
         
@@ -978,7 +978,7 @@ $(document).on("click" , "#send_mail_to" , function (){
                 id_from: ID_PLAYER,
                 body:body,
                 subject: subject,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
             },
             type: 'POST',
             beforeSend: function (xhr) {
@@ -1269,7 +1269,7 @@ $(document).on("click" , "#send_mail_to_guild" , function (){
                 id_from: ID_PLAYER,
                 body:body,
                 subject: subject,
-                    token:TOKEN
+                    token:Elkaisar.Config.OuthTokensar.Config.OuthToken
             },
             type: 'POST',
             beforeSend: function (xhr) {
@@ -1365,7 +1365,7 @@ $(document).on("click" , ".show_battel_report" ,function (){
             report_detail: true,
             id_report: id_report,
             id_player:ID_PLAYER,
-            token:TOKEN
+            token:Elkaisar.Config.OuthToken
         },
         type: 'GET',
         beforeSend: function (xhr) {
@@ -1891,7 +1891,7 @@ $(document).on("click" , ".show_spy_report" ,function (){
             id_player:ID_PLAYER,
             spy_for: data_obj.spy_for,
             id_victim:id_victim,
-                    token:TOKEN
+                    token:Elkaisar.Config.OuthToken
         },
         type: 'GET',
         beforeSend: function (xhr) {
@@ -2128,7 +2128,7 @@ function getReportContent(detail , data_obj , offset)
                                 </li>
                                 <li  style=" float: right; width: 120px; margin-right: 10px;">  
                                     <button class="full-btn full-btn-3x full" id="show-battel-animated">
-                                        <a   href="battel.php?report=${detail.encId}&server=${SERVER_ID}" target="_blank">استعراض المعارك</a>
+                                        <a   href="battel.php?report=${detail.encId}&server=${Elkaisar.Config.idServer}" target="_blank">استعراض المعارك</a>
                                     </button>
                                 </li>
 

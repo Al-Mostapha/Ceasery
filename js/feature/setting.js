@@ -29,7 +29,7 @@ $(document).on("click" , "#change-player-password" , function (){
                 oldPassword: currentPassword,
                 newPassword: newPassword,
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
                 
             },
             type: 'POST',
@@ -191,7 +191,7 @@ $(document).on("change" , "#game-lang-list .choose-lang", function (){
             url: "api/language.php",
             data:{
                 CHANGE_PLAYER_LANG: true,
-                token: TOKEN,
+                token: Elkaisar.Config.OuthToken,
                 id_player: ID_PLAYER,
                 newLang :  lang
             },

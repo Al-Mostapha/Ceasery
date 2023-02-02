@@ -252,7 +252,7 @@ var Hero = {
                 get_hero_equip: true,
                 id_hero:id_hero,
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
             },
             type: 'GET',
             success: function (data, textStatus, jqXHR) {
@@ -620,7 +620,7 @@ $(document).on("click" , "#confirm-change-hero-name" , function (){
                 new_name:hero_name,
                 id_hero:Elkaisar.CurrentHero.Hero.id_hero,
                 id_player:ID_PLAYER,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
                 
             },
             type: 'POST',

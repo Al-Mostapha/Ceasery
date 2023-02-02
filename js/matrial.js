@@ -745,7 +745,7 @@ $("#useItemButton").removeAttr("disabled");
                 id_deal: id_deal,
                 id_city: Elkaisar.CurrentCity.City.id_city,
                 id_player: ID_PLAYER,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken
             },
             type: 'POST',
             beforeSend: function (xhr) {

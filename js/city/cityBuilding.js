@@ -303,7 +303,7 @@ $(document).on("click", ".for_building .nav_bar .left-nav ul li", function () {
                     GET_CITY_BAR: true,
                     id_city: Elkaisar.CurrentCity.City.id_city,
                     id_player: ID_PLAYER,
-                    token: TOKEN
+                    token: Elkaisar.Config.OuthToken
                 },
                 type: 'GET',
                 beforeSend: function (xhr) {

@@ -309,7 +309,7 @@ $(document).on("click", ".show-guild-prev", function () {
             GET_GUILD_DETAIL: true,
             id_guild: id_guild,
             id_player: ID_PLAYER,
-            token: TOKEN
+            token: Elkaisar.Config.OuthToken
 
         },
 
@@ -850,7 +850,7 @@ var Guild = {
                 id_guild: player.guild_data.id_guild,
                 id_player: ID_PLAYER,
                 offset: offset,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -1023,7 +1023,7 @@ var Guild = {
                 get_guild_res: true,
                 id_guild: player.guild_data.id_guild,
                 id_player: ID_PLAYER,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -1798,7 +1798,7 @@ $(document).on("keyup", "#GuildEneFriInput", function () {
             search_value: search_val,
             id_player: ID_PLAYER,
             id_guild: Elkaisar.DPlayer.Player.id_guild,
-            token: TOKEN
+            token: Elkaisar.Config.OuthToken
 
         },
         type: 'GET',

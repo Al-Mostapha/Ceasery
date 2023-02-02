@@ -189,7 +189,7 @@ var Market = {
                 GET_MY_OFFER_LIST: true,
                 id_city: Elkaisar.CurrentCity.City.id_city,
                 id_player: ID_PLAYER,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -269,7 +269,7 @@ var Market = {
                 GET_MY_OFFERS_STATUS: true,
                 id_city: Elkaisar.CurrentCity.City.id_city,
                 id_player: ID_PLAYER,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -331,7 +331,7 @@ var Market = {
                 GET_MARKET_LIST: true,
                 resource: dealFor,
                 id_player: ID_PLAYER,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {
@@ -744,7 +744,7 @@ $(document).on('click', "#confirm-deal button", function () {
                 resource: resource,
                 quantity: quantity,
                 id_player: ID_PLAYER,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken
 
             },
             type: 'POST',
@@ -798,7 +798,7 @@ $(document).on('click', "#confirm-deal button", function () {
                             data: {
                                 traders: json_data.buyers,
                                 idPlayer: ID_PLAYER,
-                                token: TOKEN
+                                token: Elkaisar.Config.OuthToken
                             }
                         }));*/
                     }
@@ -835,7 +835,7 @@ $(document).on('click', "#confirm-deal button", function () {
                 resource: resource,
                 quantity: quantity,
                 id_player: ID_PLAYER,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken
 
 
             },
@@ -885,7 +885,7 @@ $(document).on('click', "#confirm-deal button", function () {
                             data: {
                                 traders: json_data.seller,
                                 idPlayer: ID_PLAYER,
-                                token: TOKEN
+                                token: Elkaisar.Config.OuthToken
                             }
 
                         }));*/
@@ -1017,7 +1017,7 @@ $(document).on("click", ".cansel-market-deal", function () {
             id_deal: id_deal,
             id_player: ID_PLAYER,
             id_city: Elkaisar.CurrentCity.City.id_city,
-            token: TOKEN
+            token: Elkaisar.Config.OuthToken
         },
         type: 'POST',
         beforeSend: function (xhr) {

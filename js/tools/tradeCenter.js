@@ -110,7 +110,7 @@ TradeCenter.getPlayerTradeList = function (){
         data:{
             GET_PLAYER_TRADE_LIST: true,
             id_player : ID_PLAYER,
-            token:TOKEN
+            token:Elkaisar.Config.OuthToken
         },
         type: 'GET',
         beforeSend: function (xhr) {
@@ -297,7 +297,7 @@ $(document).on("click" , ".buy-item-trade-center" , function (){
                 id_player: ID_PLAYER,
                 item_table: Matrial.table(listItem.item),
                 amount: amount_to_buy,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
                 
             },
             type: 'POST',
@@ -450,7 +450,7 @@ $(document).on("click" , ".sell-matrial" , function (e){
                 id_player: ID_PLAYER,
                 mat_table: Matrial.table(matrial),
                 amount: amountToSell,
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
             },
             type: 'POST',
             beforeSend: function (xhr) {
@@ -566,7 +566,7 @@ $(document).on("click" , ".cancel-buy-item-trade-center" , function (){
                 id_player: ID_PLAYER,
                 id_item: id_item,
                 mat_table: Matrial.table(TradeCenter.getListItemById(id_item).item),
-                token:TOKEN
+                token:Elkaisar.Config.OuthToken
             },
             type: 'POST',
             beforeSend: function (xhr) {

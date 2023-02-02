@@ -531,14 +531,13 @@ Elkaisar.GE.PlayerEnterServerWeb = function () {
       Elkaisar['Config']['WsHost'] = JsonData['WsHost'];
       Elkaisar['DPlayer']['Player'] = JsonData['Player'];
       Elkaisar['ServerData'] = JsonData.Server;
-      Elkaisar['Config']['OuthToken'] = TOKEN;
+      Elkaisar['Config']['OuthToken'] = Elkaisar.Config.OuthToken;
       Elkaisar['Config']['idServer'] = JsonData['idServer'];
       Elkaisar['Config']['idCities'] = JsonData['idCities'];
       Elkaisar.Config.JsVersion = JsonData['JsVersion'];
       Elkaisar['Config']['PayLink'] = JsonData['PayLink'];
       Elkaisar['Config']['RechCode'] = JsonData['RechCode'];
       Elkaisar.Config.OuthToken = JsonData.OuthToken;
-      TOKEN = JsonData.OuthToken;
       $(document).trigger("GameReady");
       if (Elkaisar['DPlayer']['Player']['panned'] >= $['now']() / 1000) {
         alert('هذا الحساب محظور');
@@ -550,7 +549,7 @@ Elkaisar.GE.PlayerEnterServerWeb = function () {
           'idPlayerV': Elkaisar['DPlayer']['Player']['id_player']
         }
       });
-      $('html')['trigger']('PlayerReady');
+      $('html').trigger('PlayerReady');
 
     },
     error: function (jqXHR, textStatus, errorThrown) {

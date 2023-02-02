@@ -593,7 +593,7 @@ var menu_bar = {
                         get_rank_player: true,
                         offset: offset,
                         id_player: ID_PLAYER,
-                        token: TOKEN
+                        token: Elkaisar.Config.OuthToken
                     },
                     type: 'GET',
                     beforeSend: function (xhr) {
@@ -626,7 +626,7 @@ var menu_bar = {
                         get_rank_union: true,
                         offset: offset,
                         id_player: ID_PLAYER,
-                        token: TOKEN
+                        token: Elkaisar.Config.OuthToken
                     },
                     type: 'GET',
                     beforeSend: function (xhr) {
@@ -704,7 +704,7 @@ var menu_bar = {
                         get_rank_hero: true,
                         offset: offset,
                         id_player: ID_PLAYER,
-                        token: TOKEN
+                        token: Elkaisar.Config.OuthToken
                     },
                     type: 'GET',
                     beforeSend: function (xhr) {
@@ -765,7 +765,7 @@ var menu_bar = {
                         get_rank_city: true,
                         offset: offset,
                         id_player: ID_PLAYER,
-                        token: TOKEN
+                        token: Elkaisar.Config.OuthToken
                     },
                     type: 'GET',
                     beforeSend: function (xhr) {
@@ -1530,7 +1530,7 @@ $(document).on("click", "#nav_search button", function () {
                     searsh_By: searsh_By,
                     search_value: search_value,
                     id_player: ID_PLAYER,
-                    token: TOKEN
+                    token: Elkaisar.Config.OuthToken
                 },
                 type: 'GET',
                 beforeSend: function (xhr) {
@@ -1591,7 +1591,7 @@ $(document).on("click", "#nav_search button", function () {
                     searsh_By: searsh_By,
                     search_value: search_value,
                     id_player: ID_PLAYER,
-                    token: TOKEN
+                    token: Elkaisar.Config.OuthToken
                 },
                 type: 'GET',
                 beforeSend: function (xhr) {
@@ -1651,7 +1651,7 @@ $(document).on("click", "#nav_search button", function () {
                     searsh_By: searsh_By,
                     search_value: search_value,
                     id_player: ID_PLAYER,
-                    token: TOKEN
+                    token: Elkaisar.Config.OuthToken
                 },
                 type: 'GET',
                 beforeSend: function (xhr) {
@@ -1712,7 +1712,7 @@ $(document).on("click", "#nav_search button", function () {
                     searsh_By: searsh_By,
                     search_value: search_value,
                     id_player: ID_PLAYER,
-                    token: TOKEN
+                    token: Elkaisar.Config.OuthToken
                 },
                 type: 'GET',
                 beforeSend: function (xhr) {

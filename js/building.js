@@ -3,7 +3,7 @@
 $.ajax({
     url: "js" + JS_VERSION + "/json/building.json",
     data: {
-        token: TOKEN
+        token: Elkaisar.Config.OuthToken
     },
     type: 'POST',
     beforeSend: function (xhr) {

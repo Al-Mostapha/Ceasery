@@ -13,7 +13,7 @@ function isJson(str) {
 
 $.ajaxSetup({
     data: {
-        server: SERVER_ID
+        server: Elkaisar.Config.idServer
     }
 });
 
@@ -363,7 +363,7 @@ $(document).ready(function () {
                         data: {
                             image: event.target.result,
                             idPlayer: ID_PLAYER,
-                            token: TOKEN,
+                            token: Elkaisar.Config.OuthToken,
                             p_name: player.name,
                             p_avatar: player.avatar,
                             userGroup: USER_GROUP

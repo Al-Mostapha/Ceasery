@@ -558,7 +558,7 @@ Battel = {
                 xTo: x_coord,
                 yTo: y_coord,
                 idHero: Elkaisar.CurrentHero.Hero.id_hero,
-                token: TOKEN,
+                token: Elkaisar.Config.OuthToken,
                 server: Elkaisar.Config.idServer
             },
             type: 'POST',

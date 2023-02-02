@@ -277,7 +277,7 @@ var WorldUtil = {
                 x_coord: x_coord,
                 y_coord: y_coord,
                 id_player: ID_PLAYER,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken
             },
             type: 'GET',
             dataType: 'JSON'
@@ -632,7 +632,7 @@ var reviewBox = {
                     x_coord: x_coord,
                     y_coord: y_coord,
                     id_player: ID_PLAYER,
-                    token: TOKEN
+                    token: Elkaisar.Config.OuthToken
                 },
                 type: 'GET',
                 cache: false,
@@ -709,7 +709,7 @@ var reviewBox = {
                 GET_BATTEL_FIELD_DETAIL: true,
                 id_battel: id_battel,
                 id_player: ID_PLAYER,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken
             },
             type: 'GET',
             cache: false,
@@ -747,7 +747,7 @@ var reviewBox = {
                     x_coord: x_coord,
                     y_coord: y_coord,
                     id_player: ID_PLAYER,
-                    token: TOKEN
+                    token: Elkaisar.Config.OuthToken
                 },
                 type: 'GET',
                 beforeSend: function (xhr) {
@@ -793,7 +793,7 @@ var reviewBox = {
                     GET_BATTEL_FIXED_DATA: true,
                     id_battel: id_battel,
                     id_player: ID_PLAYER,
-                    token: TOKEN
+                    token: Elkaisar.Config.OuthToken
                 },
                 type: 'GET',
                 beforeSend: function (xhr) {

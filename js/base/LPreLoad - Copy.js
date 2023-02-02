@@ -5,7 +5,7 @@ var FIXED_WORLD_UNIT = [];
 var ALL_WORLD_CITY = [];
 var WORLD_ALL_UNIT = [];
 var Elkaisar = {};
-var TOKEN = "";
+var Elkaisar.Config.OuthToken = "";
 var API_URL = "";
 var BASE_ASSET_BATH = "";
 var PLAYER_NOTIF = {};
@@ -581,7 +581,7 @@ $.ajax({
         Elkaisar['Config']['WsHost'] = JsonData['WsHost'];
         Elkaisar['DPlayer']['Player'] = JsonData['Player'];
         Elkaisar['ServerData'] = JsonData.Server;
-        Elkaisar['Config']['OuthToken'] = TOKEN;
+        Elkaisar['Config']['OuthToken'] = Elkaisar.Config.OuthToken;
         Elkaisar['Config']['idServer'] = JsonData['idServer'];
         Elkaisar['Config']['idCities'] = JsonData['idCities'];
         Elkaisar.Config.JsVersion = JsonData['JsVersion'];

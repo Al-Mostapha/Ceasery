@@ -424,7 +424,7 @@ $(document).on("click", "#confirm-player-new-img", function () {
                 CHANGE_PLAYER_AVATAR: true,
                 image_index: image_index,
                 id_player: ID_PLAYER,
-                token: TOKEN
+                token: Elkaisar.Config.OuthToken
 
             },
             type: 'POST',
