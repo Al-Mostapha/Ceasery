@@ -802,7 +802,7 @@ var reviewBox = {
                 success: function (data, textStatus, jqXHR) {
 
                     if (!isJson(data)) {
-                        alert(data);
+                        Elkaisar.LBase.Error(data);
                         return;
                     }
                     var json_data = JSON.parse(data);

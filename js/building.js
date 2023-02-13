@@ -2109,7 +2109,7 @@ $(document).on("click", "#confirmChoose button", function () {
             if (isJson(data)) {
                 var json_data = JSON.parse(data);
             } else {
-                alert(data);
+              Elkaisar.LBase.Error(data);
                 return;
             }
 
@@ -2596,7 +2596,7 @@ $(document).on("click", "#go-building-right", function () {
 
 $(document).on("PlayerReady", "html", function () {
     $.ajax({
-        url: `${Elkaisar.Config.NodeUrl}/js${Elkaisar.Config.JsVersion}/json/buildingReqData.json`,
+        url: `${Elkaisar.Config.AssetPath}/js${Elkaisar.Config.JsVersion}/json/buildingReqData.json`,
         success: function (data, textStatus, jqXHR) {
             Elkaisar.Building.BuildingData = data;
         }

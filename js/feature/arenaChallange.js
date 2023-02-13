@@ -18,7 +18,7 @@ Elkaisar.ArenaChallange.MaxHeroCountFactor = {
 
 Elkaisar.ArenaChallange.getArenaData = function (callBack) {
     return $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/getArenaData`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/getArenaData`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken
@@ -45,7 +45,7 @@ Elkaisar.ArenaChallange.getArenaData = function (callBack) {
 
 Elkaisar.ArenaChallange.getFightList = function () {
     return $.ajax({
-        url: `${NODE_URL}/api/AArenaChallange/getFightList`,
+        url: `${Elkaisar.Config.NodeUrl}/api/AArenaChallange/getFightList`,
         data: {
             server: Elkaisar.Config.idServer,
             token: Elkaisar.Config.OuthToken

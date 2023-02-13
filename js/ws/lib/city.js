@@ -31,7 +31,7 @@ Elkaisar.WsLib.Market.Trans.Arrived = function (){
     if($("#transport-res-inner-nav .nav-title").length)
         Market.transportedResourcesList($("#transport-res-inner-nav .nav-title").attr("data-in-out"));
     
-    PLAYER_NOTIF.msg_diff = Number(PLAYER_NOTIF.msg_diff) + 1;
+    Elkaisar.DPlayer.Notif.msg_diff = Number(Elkaisar.DPlayer.Notif.msg_diff) + 1;
     Fixed.refreshPlayerNotif();
     alert_box.succesMessage("تم وصول الموارد");
 };
@@ -39,7 +39,7 @@ Elkaisar.WsLib.Market.Trans.Arrived = function (){
 
 Elkaisar.WsLib.Market.Buy.TransmitDone = function (){
     $("#market-inner-nav .selected").click();
-    PLAYER_NOTIF.msg_diff = Number(PLAYER_NOTIF.msg_diff) + 1;
+    Elkaisar.DPlayer.Notif.msg_diff = Number(Elkaisar.DPlayer.Notif.msg_diff) + 1;
     Fixed.refreshPlayerNotif();
     alert_box.succesMessage("تم وصول الموارد");
 };

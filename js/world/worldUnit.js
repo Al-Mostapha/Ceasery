@@ -550,7 +550,7 @@ WorldUnit.WorldUnitRank = function (x, y) {
             if (isJson(data)) {
                 var jsonData = JSON.parse(data);
             } else {
-                alert(data);
+                Elkaisar.LBase.Error(data);
             }
             var icon = ["1st", "2nd", "3rd", "4th", "5th"];
 
@@ -690,13 +690,13 @@ $(document).on("click", "#new-city-confirm button", function () {
 
 
                         } else {
-                            alert("error add city");
+                            Elkaisar.LBase.Error("error add city");
                         }
 
 
                     } else {
 
-                        alert(data);
+                        Elkaisar.LBase.Error(data);
 
                     }
 

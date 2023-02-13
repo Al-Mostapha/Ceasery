@@ -86,16 +86,20 @@ function getArabicNumbers(str) {
 function getServerData() {
 
     $.ajax({
-        url: "api/player.php",
-        data: { SERVER_DATA: true },
+        url: `${Elkaisar.Config.NodeUrl}/api/APlayer/getServerData`,
+        data: {
+          token: Elkaisar.Config.OuthToken,
+        },
         type: 'GET',
-        dataType: 'JSON',
         beforeSend: function (xhr) {
 
         },
         success: function (data, textStatus, jqXHR) {
-
-            SERVER_DATA = data;
+          if(!Elkaisar.LBase.isJson(data)){
+            return Elkaisar.LBase.Error(data);
+          }
+          
+          Elkaisar.Config.ServerCount = JSON.parse(data);
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -143,7 +147,6 @@ $(document).on("PlayerReady", "html", function () {
             console.log(errorThrown);
         }
     });
-
 
     getServerData();
     Elkaisar.Equip.getPlayerEquip();
@@ -546,7 +549,7 @@ var menu_bar = {
                                                     <div class="nav_icon flex">
                                                         <div data-move="most-left" src="images/style/left.jpg" class="left move_p_rank pull-L most-left-btn"></div>
                                                         <div data-move="left" src="images/style/left.jpg" class="left move_p_rank  pull-L left-btn"></div>
-                                                        <h1>  <span  id="current_page_num">1</span>/${union ? getArabicNumbers(Math.ceil(SERVER_DATA.guild_num / 10)) : getArabicNumbers(Math.ceil(SERVER_DATA.player_num / 10))}</h1>
+                                                        <h1>  <span  id="current_page_num">1</span>/${union ? getArabicNumbers(Math.ceil(Elkaisar.Config.ServerCount.guild_num / 10)) : getArabicNumbers(Math.ceil(Elkaisar.Config.ServerCount.player_num / 10))}</h1>
                                                         <div data-move="right" src="images/style/right.jpg" class="right move_p_rank pull-R right-btn"></div>
                                                         <div data-move="most-right" src="images/style/right.jpg" class="right move_p_rank pull-R most-right-btn"></div>  
                                                   </div>

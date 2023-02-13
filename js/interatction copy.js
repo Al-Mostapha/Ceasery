@@ -604,7 +604,7 @@ var menu_bar = {
                         if (isJson(data)) {
                             Rank.playerRow(offset, JSON.parse(data));
                         } else {
-                            alert(data);
+                            Elkaisar.LBase.Error(data);
                         }
 
                     },
@@ -648,7 +648,7 @@ var menu_bar = {
                         if (isJson(data)) {
                             var json_data = JSON.parse(data);
                         } else {
-                            alert(data);
+                            Elkaisar.LBase.Error(data);
                         }
 
 

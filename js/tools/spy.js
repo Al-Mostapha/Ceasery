@@ -64,7 +64,7 @@ SPY = {
                         {
                             
                             Elkaisar.City.getCity(idCity).City = JsonObject.City;
-                            PLAYER_NOTIF.spy_task = Number(PLAYER_NOTIF.spy_task) + 1;
+                            Elkaisar.DPlayer.Notif.spy_task = Number(Elkaisar.DPlayer.Notif.spy_task) + 1;
                             Fixed.refreshPlayerNotif();
                             city_profile.refresh_army_view();  
                             alert_box.succesMessage("تم ارسال الجواسيس بنجاح");

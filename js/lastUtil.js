@@ -1023,7 +1023,7 @@ Fixed.refresePlayerStateList = function () {
 
     }
 
-    if (player.chat_panne > Date.now() / 1000) {
+    if (Elkaisar.DPlayer.Player > Date.now() / 1000) {
         var list_i = `<li>
                         <img src="${Elkaisar.BaseData.PlayerStateData.silance.image}"/>
                         <div class="duration stroke">${changeTimeFormat(playerElkaisar.DPlayer.Player.chat_panne - (Date.now() / 1000))}</div>
@@ -1052,13 +1052,13 @@ Fixed.refeshColorArmyHeroTrans = function () {
 };
 
 Fixed.refreshPlayerNotif = function () {
-    var green_msg = Number(PLAYER_NOTIF.msg_diff) + Number(PLAYER_NOTIF.msg_in);
+    var green_msg = Number(Elkaisar.DPlayer.Notif.msg_diff) + Number(Elkaisar.DPlayer.Notif.msg_in);
     $("#green-msg-notif").html(green_msg > 0 ? green_msg : "");
-    var red_msg = Number(PLAYER_NOTIF.msg_report) + Number(PLAYER_NOTIF.spy_report);
+    var red_msg = Number(Elkaisar.DPlayer.Notif.msg_report) + Number(Elkaisar.DPlayer.Notif.spy_report);
     $("#red-msg-notif").html(red_msg > 0 ? red_msg : "");
-    var green_report = Number(PLAYER_NOTIF.hero_in_battel) + Number(PLAYER_NOTIF.hero_back) + Number(PLAYER_NOTIF.spy_task);
+    var green_report = Number(Elkaisar.DPlayer.Notif.hero_in_battel) + Number(Elkaisar.DPlayer.Notif.hero_back) + Number(Elkaisar.DPlayer.Notif.spy_task);
     $("#hero-not-in-city").html(green_report > 0 ? green_report : "");
-    $("#hero-attacking").html(PLAYER_NOTIF.battel_number > 0 ? PLAYER_NOTIF.battel_number : "");
+    $("#hero-attacking").html(Elkaisar.DPlayer.Notif.battel_number > 0 ? Elkaisar.DPlayer.Notif.battel_number : "");
 
     Quest.refrehQuestNotif();
 };

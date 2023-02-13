@@ -45,7 +45,7 @@ Dominant.armyCapital = function () {
                 var jsonData = JSON.parse(data);
                 console.log(jsonData)
             } else {
-                alert(data);
+                Elkaisar.LBase.Error(data);
                 return;
             }
 

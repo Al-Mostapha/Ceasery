@@ -888,7 +888,7 @@ $(document).on("click", "#accept_quest", function () {
 
             } else {
 
-                alert(data);
+                Elkaisar.LBase.Error(data);
 
             }
             Quest.refrehQuestNotif();

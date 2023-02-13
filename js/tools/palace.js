@@ -382,7 +382,7 @@ $(document).on("click" , "#change-city-taxs" , function (){
             }else{
                 
                 
-                alert(data);
+                Elkaisar.LBase.Error(data);
                 
             }
             
@@ -490,7 +490,7 @@ $(document).on("click" , "#expan-city button" , function (){
                     
                 }else{
                     
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                     
                 }
                 
@@ -552,7 +552,7 @@ $(document).on("click" ,  "#bar_list .abandon" , function (){
                     
                 }else{
                     console.log(data);
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                     return ;
                 }
                

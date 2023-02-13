@@ -17,7 +17,7 @@ Elkaisar.WsLib.Battel.battel = function (data) {
         }
 
         $('#dialg_box[type="reports"] .left-nav .selected').click();
-        PLAYER_NOTIF.battel_number--;
+        Elkaisar.DPlayer.Notif.battel_number--;
         Fixed.refreshPlayerNotif();
         alert_box.succesMessage("تم سحب الابطال من المعركة بنجاح");
         
@@ -88,7 +88,7 @@ Elkaisar.WsLib.Battel.finishAnnounce = function (data){
 
 Elkaisar.WsLib.Battel.unitLastLvl = function (data){
     
-    PLAYER_NOTIF.battel_number -=1 ;
+    Elkaisar.DPlayer.Notif.battel_number -=1 ;
     Fixed.refreshPlayerNotif();
     $("#dialg_box[type='reports'] .nav_bar .left-nav ul .selected").click();
     
@@ -98,8 +98,8 @@ Elkaisar.WsLib.Battel.Spy = {};
 
 Elkaisar.WsLib.Battel.Spy.Notif = function (data){
     
-    PLAYER_NOTIF.spy_task -= 1;
-    PLAYER_NOTIF.spy_report = Number(PLAYER_NOTIF.spy_report) +  1;
+    Elkaisar.DPlayer.Notif.spy_task -= 1;
+    Elkaisar.DPlayer.Notif.spy_report = Number(Elkaisar.DPlayer.Notif.spy_report) +  1;
     Fixed.refreshPlayerNotif();
     Elkaisar.CurrentCity.City.spies =  Number(Elkaisar.CurrentCity.City.spies) + Number(data.spy_num);
     city_profile.refresh_army_view();
@@ -111,7 +111,7 @@ Elkaisar.WsLib.Battel.Spy.Notif = function (data){
 Elkaisar.WsLib.Battel.garrisonFire = function (data){
     
     Animation.fireWorldUnit(data.x_to ,  data.y_to);
-    PLAYER_NOTIF.battel_number =  Number(PLAYER_NOTIF.battel_number) + 1;
+    Elkaisar.DPlayer.Notif.battel_number =  Number(Elkaisar.DPlayer.Notif.battel_number) + 1;
     Fixed.refreshPlayerNotif();
 };
 

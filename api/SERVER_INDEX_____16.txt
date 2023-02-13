@@ -67,3 +67,5794 @@ Array
         )
 
 )
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+000Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+00Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+00Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+> elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+00Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0rray
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+> elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [SERVER_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0rray
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [SERVER_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+00Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [SERVER_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+00Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [SERVER_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [SERVER_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [SERVER_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [SERVER_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+00Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [SERVER_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [SERVER_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+lkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [SERVER_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+00Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+00Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [idPlayerV] => 1
+    [GLOBAL_GATE_DATA] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_FORBIDDEN_ITEM] => true
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+Array
+(
+    [server] => 0
+    [GET_TOTAL_COUNT] => true
+)
+0Array
+(
+    [server] => 0
+    [GET_TRADE_LIST] => true
+    [offset] => 0
+)
+Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)
+0Array
+(
+    [1] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الجبابرة
+        )
+
+    [2] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8081
+            [name] => الليث
+        )
+
+    [3] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8082
+            [name] => صلاح الدين
+        )
+
+    [4] => Array
+        (
+            [db_name] => elkaisar
+            [port] => 8083
+            [name] => القمة
+        )
+
+)

@@ -83,6 +83,8 @@ Elkaisar.WsLib.Base.worldCityColonized = function (data){
     {
         
         Unit           = WorldUnit.getWorldUnit(data.City[iii].x, data.City[iii].y);
+        if(!Unit)
+          console.log(data.City[iii]);
         Unit.CityColonizerFlag  = data.City[iii].city_flag;
         Unit.CityColonized      = true;
         Unit.ColonizerIdGuild   = data.City[iii].id_guild;
@@ -127,7 +129,7 @@ Elkaisar['WsLib']['Base']['DailyRest'] = function () {
     alert_box['systemChatMessage']('تمت اعادة التعيين اليومية.');
 };
 Elkaisar.WsLib.Base.PrizeSent = function () {
-    PLAYER_NOTIF.msg_diff = Number(PLAYER_NOTIF.msg_diff) + 1;
+    Elkaisar.DPlayer.Notif.msg_diff = Number(Elkaisar.DPlayer.Notif.msg_diff) + 1;
     Fixed.refreshPlayerNotif();
     alert_box['systemChatMessage']('وصلك جوائز فى صندوقك إفحص البريد');
 };

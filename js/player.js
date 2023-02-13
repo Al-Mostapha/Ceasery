@@ -26,7 +26,7 @@ var Player_profile = {
             success: function (data, textStatus, jqXHR) {
                 
                 if(!Elkaisar.LBase.isJson(data))
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                 
                 var jsonObj = JSON.parse(data);
                 Elkaisar.DPlayer.Player = jsonObj;
@@ -53,7 +53,7 @@ var Player_profile = {
             success: function (data, textStatus, jqXHR) {
                 
                 if(!Elkaisar.LBase.isJson(data))
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                 
                 var jsonObj = JSON.parse(data);
                 Elkaisar.DPlayer.PlayerState = jsonObj;
@@ -81,7 +81,7 @@ var Player_profile = {
             success: function (data, textStatus, jqXHR) {
                 
                 if(!Elkaisar.LBase.isJson(data))
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                 
                 var jsonObj = JSON.parse(data);
                 Elkaisar.DPlayer.GuildData = jsonObj.GuildData;
@@ -108,7 +108,7 @@ var Player_profile = {
             success: function (data, textStatus, jqXHR) {
                 
                 if(!Elkaisar.LBase.isJson(data))
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                 
                 var jsonObj = JSON.parse(data);
                 Elkaisar.DPlayer.PlayerEdu = jsonObj;
@@ -179,7 +179,7 @@ var Player_profile = {
             type: 'GET',
             success: function (data, textStatus, jqXHR) {
                 if(isJson(data)){
-                    PLAYER_NOTIF = JSON.parse(data);
+                    Elkaisar.DPlayer.Notif = JSON.parse(data);
                     Fixed.refreshPlayerNotif();
                 }
             }

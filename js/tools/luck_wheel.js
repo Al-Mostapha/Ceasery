@@ -309,7 +309,7 @@ LuckWheel.spinWheel = function () {
         if(isJson(data)){
             var jsonData =  JSON.parse(data);
         }else{
-            alert(data);
+            Elkaisar.LBase.Error(data);
             return ;
         }
         

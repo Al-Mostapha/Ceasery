@@ -108,7 +108,7 @@ Elkaisar.WsLib.Guild.announceRelation = function (data) {
 
 Elkaisar.WsLib.Guild.msgSent = function (data) {
 
-    PLAYER_NOTIF.msg_in = Number(PLAYER_NOTIF.msg_in) + 1;
+    Elkaisar.DPlayer.Notif.msg_in = Number(Elkaisar.DPlayer.Notif.msg_in) + 1;
     Fixed.refreshPlayerNotif();
 
 };

@@ -2,37 +2,37 @@
 var MY_MARKET_OFFERS_LIST = [];
 var MY_MARKET_TRADING_LIST = [];
 var MARKET_DEAL_LIST;
-var MARKET_TRANSPORTED_RESOURCE = {"in": [], "out": []};
+var MARKET_TRANSPORTED_RESOURCE = { "in": [], "out": [] };
 const DATA_RESOURCES = {
 
-    food: {
-        icon: "images/style/food.png",
-        title: "غذاء"
-    },
-    wood: {
-        icon: "images/style/wood.png",
-        title: "اخشاب"
-    },
-    stone: {
-        icon: "images/style/stone.png",
-        title: "حجارة"
-    },
-    metal: {
-        icon: "images/style/iron.png",
-        title: "حديد"
-    }
+  food: {
+    icon: "images/style/food.png",
+    title: "غذاء"
+  },
+  wood: {
+    icon: "images/style/wood.png",
+    title: "اخشاب"
+  },
+  stone: {
+    icon: "images/style/stone.png",
+    title: "حجارة"
+  },
+  metal: {
+    icon: "images/style/iron.png",
+    title: "حديد"
+  }
 
 };
 
 var Market = {
 
-    dialogBoxContent: function (resource) {
+  dialogBoxContent: function (resource) {
 
-        if (!resource) {
-            resource = "food";
-        }
+    if (!resource) {
+      resource = "food";
+    }
 
-        var box_content = ` <div class="box_content for_building_box for_market">
+    var box_content = ` <div class="box_content for_building_box for_market">
                             <div class="left-content ">
                                 <div class="auction-list">
                                     <div class="th font-2">
@@ -97,20 +97,20 @@ var Market = {
                                 ${this.innerNav_creatOffer(resource)}
                             </div>
                         </div>`;
-        this.dealsList(resource);
-        return box_content;
-    },
+    this.dealsList(resource);
+    return box_content;
+  },
 
-    getMarketMaxTransNum: function () {
+  getMarketMaxTransNum: function () {
 
-        return Elkaisar.City.getCity().BuildingLvl[cityHasType(BUILDING_TYPS.MARKET)] * 100000;
+    return Elkaisar.City.getCity().BuildingLvl[cityHasType(BUILDING_TYPS.MARKET)] * 100000;
 
-    },
+  },
 
-    innerNav_creatOffer: function (offer_for) {
+  innerNav_creatOffer: function (offer_for) {
 
 
-        var content = ` <div id="under-inner-nav" data-for="creat-offer">
+    var content = ` <div id="under-inner-nav" data-for="creat-offer">
                             <div class="u-have">
                                 <div class="resource">
                                     <span class="res">${DATA_RESOURCES[offer_for].title}</span>: <span class="amount">${Math.floor(Elkaisar.CurrentCity.City[offer_for])}</span>
@@ -139,7 +139,7 @@ var Market = {
                             </div>
                             <div class="unite-price">
                                 <label>سعر الوحدة:</label>
-                                <input type="text" fraction="true"  step="0.01" class="only_num input" min="0" max="1000" value="${MARKET_DEAL_LIST ? MARKET_DEAL_LIST.sell_list[0] ? MARKET_DEAL_LIST.sell_list[0].unit_price : 0 : 0}"/>
+                                <input type="text" fraction="true"  step="0.01" class="only_num input" min="0" max="1000" value="${MARKET_DEAL_LIST ? MARKET_DEAL_LIST.sellOffers[0] ? MARKET_DEAL_LIST.sellOffers[0].unit_price : 0 : 0}"/>
                             </div>
 
                             <div id="trans-fees">
@@ -154,13 +154,13 @@ var Market = {
                                 <button class="full-btn full-btn-3x">${Translate.Button.Building.Confirm[UserLag.language]}</button>
                             </div>
                         </div>`;
-        return content;
+    return content;
 
-    },
+  },
 
-    innerNav_myOffers: function () {
+  innerNav_myOffers: function () {
 
-        var content = `<div id="under-inner-nav">
+    var content = `<div id="under-inner-nav">
                             <div class="th">
                                 <div class="td_1 ellipsis">${Translate.Title.TH.Resources[UserLag.language]}</div>
                                 <div class="td_2 ellipsis">${Translate.Title.TH.Quantity[UserLag.language]}</div>
@@ -183,37 +183,35 @@ var Market = {
                             </div>   
                         </div>`;
 
-        $.ajax({
-            url: "api/market.php",
-            data: {
-                GET_MY_OFFER_LIST: true,
-                id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player: ID_PLAYER,
-                token: Elkaisar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
+    $.ajax({
+      url: `${Elkaisar.Config.NodeUrl}/api/ACityMarket/getCityOffers`,
+      data: {
+        idCity: Elkaisar.CurrentCity.City.id_city,
+        token: TOKEN
+      },
+      type: 'GET',
+      beforeSend: function (xhr) {
 
-            },
-            success: function (data, textStatus, jqXHR) {
+      },
+      success: function (data, textStatus, jqXHR) {
 
-                if (isJson(data)) {
+        if (isJson(data)) {
 
-                    var json_data = JSON.parse(data);
-                    MY_MARKET_OFFERS_LIST = json_data;
-                } else {
+          var json_data = JSON.parse(data);
+          MY_MARKET_OFFERS_LIST = json_data;
+        } else {
 
-                    alert(data);
-                    console.log(data);
-                    return;
+          Elkaisar.LBase.Error(data);
+          console.log(data);
+          return;
 
-                }
+        }
 
-                var list = "";
-                var counter = 0;
-                for (var index = 0; index < 10; index++) {
-                    if (json_data[index]) {
-                        list += `<div class="tr" data-id-deal="${json_data[index].id_deal}">
+        var list = "";
+        var counter = 0;
+        for (var index = 0; index < 10; index++) {
+          if (json_data[index]) {
+            list += `<div class="tr" data-id-deal="${json_data[index].id_deal}">
                                 <div class="td_1">${DATA_RESOURCES[json_data[index].resource].title}</div>
                                 <div class="td_2">${json_data[index].amount}</div>
                                 <div class="td_3">${parseFloat(json_data[index].unit_price)}</div>
@@ -223,24 +221,24 @@ var Market = {
                                     <button class="full-btn  full-btn-3x cansel-market-deal">الغاء</button>
                                 </div>
                             </div>`;
-                    } else {
-                        list += `<div class="tr"></div>`;
-                    }
-                }
+          } else {
+            list += `<div class="tr"></div>`;
+          }
+        }
 
-                $("#my-offers-full-list").html(list);
+        $("#my-offers-full-list").html(list);
 
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
 
-            }
-        });
+      }
+    });
 
-        return content;
-    },
-    innerNav_TradingStatus: function () {
+    return content;
+  },
+  innerNav_TradingStatus: function () {
 
-        var content = `<div id="under-inner-nav">
+    var content = `<div id="under-inner-nav">
                             <div class="th">
                                 <div class="td_1 ellipsis">${Translate.Title.TH.Resource[UserLag.language]}</div>
                                 <div class="td_2 ellipsis">${Translate.Title.TH.Quantity[UserLag.language]}</div>
@@ -263,138 +261,134 @@ var Market = {
                             </div>   
                         </div>`;
 
-        $.ajax({
-            url: "api/market.php",
-            data: {
-                GET_MY_OFFERS_STATUS: true,
-                id_city: Elkaisar.CurrentCity.City.id_city,
-                id_player: ID_PLAYER,
-                token: Elkaisar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
+    $.ajax({
+      url: `${Elkaisar.Config.NodeUrl}/api/ACityMarket/getCityOffersTrans`,
+      data: {
+        idCity: Elkaisar.CurrentCity.City.id_city,
+        token: TOKEN
+      },
+      type: 'GET',
+      beforeSend: function (xhr) {
 
-            },
-            success: function (data, textStatus, jqXHR) {
+      },
+      success: function (data, textStatus, jqXHR) {
 
-                if (isJson(data)) {
+        if (isJson(data)) {
 
-                    var json_data = JSON.parse(data);
-                    MY_MARKET_TRADING_LIST = json_data;
+          var json_data = JSON.parse(data);
+          MY_MARKET_TRADING_LIST = json_data;
 
-                } else {
+        } else {
 
-                    alert(data);
-                    console.log(data);
-                    return;
+          Elkaisar.LBase.Error(data);
+          console.log(data);
+          return;
 
-                }
+        }
 
-                var list = "";
-                var counter = 0;
-                for (var index = 0; index < 10; index++) {
-                    if (json_data[index]) {
-                        list += `<div class="tr" data-id-deal="${json_data[index].id_deal}">
+        var list = "";
+        var counter = 0;
+        for (var index = 0; index < 10; index++) {
+          if (json_data[index]) {
+            list += `<div class="tr" data-id-deal="${json_data[index].id_deal}">
                                 <div class="td_1">${DATA_RESOURCES[json_data[index].resource].title}</div>
                                 <div class="td_2">${json_data[index].amount}</div>
                                 <div class="td_3">${parseFloat(json_data[index].unit_price)}</div>
-                                <div class="td_4">${Math.floor(json_data[index].unit_price * json_data[index].amount) }</div>
+                                <div class="td_4">${Math.floor(json_data[index].unit_price * json_data[index].amount)}</div>
                                 <div class="td_5 time_counter rtl" time-end="${json_data[index].time_arrive}">${changeTimeFormat(json_data[index].time_arrive - $.now() / 1000)}</div>
                                 <div class="td_6">
                                     <button class="acce-arrving-dael acce-small-btn"></button>
                                 </div>
                             </div>`;
-                        //                                                <h1 class="time_counter building_counter rtl" time-end="${json_data.time_end}">
+            //                                                <h1 class="time_counter building_counter rtl" time-end="${json_data.time_end}">
 
-                    } else {
-                        list += `<div class="tr"></div>`;
-                    }
-                }
+          } else {
+            list += `<div class="tr"></div>`;
+          }
+        }
 
-                $("#my-comming-offers").html(list);
+        $("#my-comming-offers").html(list);
 
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
 
-            }
-        });
+      }
+    });
 
-        return content;
-    },
+    return content;
+  },
 
-    dealsList: function (dealFor) {
+  dealsList: function (dealFor) {
 
-        $.ajax({
+    $.ajax({
 
-            url: "api/market.php",
-            data: {
-                GET_MARKET_LIST: true,
-                resource: dealFor,
-                id_player: ID_PLAYER,
-                token: Elkaisar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
+      url: `${Elkaisar.Config.NodeUrl}/api/ACityMarket/getOffersList`,
+      data: {
+        offerFor: dealFor,
+        token: TOKEN
+      },
+      type: 'GET',
+      beforeSend: function (xhr) {
 
-            },
-            success: function (data, textStatus, jqXHR) {
+      },
+      success: function (data, textStatus, jqXHR) {
 
-                if (isJson(data)) {
-                    var json_data = JSON.parse(data);
-                    MARKET_DEAL_LIST = json_data;
-                } else {
-                    alert(data);
-                    return;
-                }
+        if (isJson(data)) {
+          var json_data = JSON.parse(data);
+          MARKET_DEAL_LIST = json_data;
+        } else {
+          Elkaisar.LBase.Error(data);
+          return;
+        }
 
-                var buy_list = "";
-                var sell_list = "";
+        var buy_list = "";
+        var sell_list = "";
 
-                for (var iii = 0; iii < 5; iii++) {
-                    if (json_data.buy_list[iii]) {
+        for (var iii = 0; iii < 5; iii++) {
+          if (json_data.buyOffers[iii]) {
 
-                        buy_list += `<div class="tr">
+            buy_list += `<div class="tr">
                                     <div class="td_1">${Translate.Button.MenuList.Buy[UserLag.language]}</div>
-                                    <div class="td_2">${json_data.buy_list[iii].amount - json_data.buy_list[iii].done}</div>
-                                    <div class="td_3">${parseFloat(json_data.buy_list[iii].unit_price)}</div>
+                                    <div class="td_2">${json_data.buyOffers[iii].amount - json_data.buyOffers[iii].done}</div>
+                                    <div class="td_3">${parseFloat(json_data.buyOffers[iii].unit_price)}</div>
                                 </div>`;
 
 
-                    } else {
-                        buy_list += `<div class="tr"></div>`;
-                    }
+          } else {
+            buy_list += `<div class="tr"></div>`;
+          }
 
-                    if (json_data.sell_list[iii]) {
+          if (json_data.sellOffers[iii]) {
 
-                        sell_list += `<div class="tr">
+            sell_list += `<div class="tr">
                                     <div class="td_1">بيع</div>
-                                    <div class="td_2">${json_data.sell_list[iii].amount - json_data.sell_list[iii].done}</div>
-                                    <div class="td_3">${parseFloat(json_data.sell_list[iii].unit_price)}</div>
+                                    <div class="td_2">${json_data.sellOffers[iii].amount - json_data.sellOffers[iii].done}</div>
+                                    <div class="td_3">${parseFloat(json_data.sellOffers[iii].unit_price)}</div>
                                 </div>`;
 
-                    } else {
-                        sell_list += `<div class="tr"></div>`;
-                    }
+          } else {
+            sell_list += `<div class="tr"></div>`;
+          }
 
 
-                }
+        }
 
-                $("#buy-list-deals").html(buy_list);
-                $("#sell-list-deals").html(sell_list);
+        $("#buy-list-deals").html(buy_list);
+        $("#sell-list-deals").html(sell_list);
 
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
 
-            }
+      }
 
-        });
+    });
 
 
-    },
+  },
 
-    transportResources: function () {
+  transportResources: function () {
 
-        var content = `<div class="box_content for_building_box for_market">
+    var content = `<div class="box_content for_building_box for_market">
                             <div class="left-content ">
                                 <div class="rightOfLeft" id="resource-input-list">
                                     <ul>
@@ -527,27 +521,27 @@ var Market = {
                                 </div>
                             </div>
                         </div>`;
-        this.transportedResourcesList("out");
-        return content;
-    },
-    /*
-     *   state  the state of transport
-     *   in or out
-     */
+    this.transportedResourcesList("out");
+    return content;
+  },
+  /*
+   *   state  the state of transport
+   *   in or out
+   */
 
-    TransList: {
-        "in": [],
-        "out": [],
-        "back": []
-    },
-    TransListHt: function (inOrOut) {
-        var List = '';
-        var Trans = {};
-        for (var ii in this.TransList[inOrOut]) {
-            
-            Trans = this.TransList[inOrOut][ii];
+  TransList: {
+    "in": [],
+    "out": [],
+    "back": []
+  },
+  TransListHt: function (inOrOut) {
+    var List = '';
+    var Trans = {};
+    for (var ii in this.TransList[inOrOut]) {
 
-            List += `<li class="unit-trans-table" data-id-trans="${Trans.id_trans}">
+      Trans = this.TransList[inOrOut][ii];
+
+      List += `<li class="unit-trans-table" data-id-trans="${Trans.id_trans}">
                     <div class="row">
                         <div class="td">
                             <img src="images/style/food.png"/>
@@ -585,53 +579,53 @@ var Market = {
                             ${Trans.acce != 0 ? 'disabled="disabled"' : ""}><span>تسريع</span></button>
                     </div>
                 </li>`;
-        }
-        
-        
-        return `<ul>${List}</ul>`;
-
-    },
-    transportedResourcesList: function (in_or_out) {
-
-        $.ajax({
-
-            url: `${Elkaisar.Config.NodeUrl}/api/ACityMarketTrans/getCityTransportResource`,
-            data: {
-                idCity : Elkaisar.CurrentCity.City.id_city,
-                token   : Elkaisar.Config.OuthToken,
-                server  : Elkaisar.Config.idServer
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-
-
-            },
-            success: function (data, textStatus, jqXHR) {
-                if(!Elkaisar.LBase.isJson(data))
-                    return Elkaisar.LBase.Error(data);
-                
-                
-                var JsonData = JSON.parse(data);
-                Market.TransList.in = [];
-                Market.TransList.out = [];
-                for(var iii in JsonData){
-                    if(JsonData[iii].id_city_to == Elkaisar.CurrentCity.City.id_city)
-                        Market.TransList.in.push(JsonData[iii]);
-                    if(JsonData[iii].id_city_from == Elkaisar.CurrentCity.City.id_city)
-                        Market.TransList.out.push(JsonData[iii]);
-                }
-                
-
-                $("#under-inner-nav").html(Market.TransListHt(in_or_out));
-                $("#under-inner-nav").niceScroll(SCROLL_BAR_PROP);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-
-        });
-
     }
+
+
+    return `<ul>${List}</ul>`;
+
+  },
+  transportedResourcesList: function (in_or_out) {
+
+    $.ajax({
+
+      url: `${API_URL}/api/ACityMarketTrans/getCityTransportResource`,
+      data: {
+        idCity: Elkaisar.CurrentCity.City.id_city,
+        token: Elkaisar.Config.OuthToken,
+        server: Elkaisar.Config.idServer
+      },
+      type: 'GET',
+      beforeSend: function (xhr) {
+
+
+      },
+      success: function (data, textStatus, jqXHR) {
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
+
+
+        var JsonData = JSON.parse(data);
+        Market.TransList.in = [];
+        Market.TransList.out = [];
+        for (var iii in JsonData) {
+          if (JsonData[iii].id_city_to == Elkaisar.CurrentCity.City.id_city)
+            Market.TransList.in.push(JsonData[iii]);
+          if (JsonData[iii].id_city_from == Elkaisar.CurrentCity.City.id_city)
+            Market.TransList.out.push(JsonData[iii]);
+        }
+
+
+        $("#under-inner-nav").html(Market.TransListHt(in_or_out));
+        $("#under-inner-nav").niceScroll(SCROLL_BAR_PROP);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
+
+    });
+
+  }
 
 
 
@@ -643,42 +637,42 @@ var Market = {
 /*  When player select a  resource*/
 $(document).on("click", ".resource-list ul li", function () {
 
-    $(".resource-list ul .selected").removeClass("selected");
-    $(this).addClass("selected");
+  $(".resource-list ul .selected").removeClass("selected");
+  $(this).addClass("selected");
 
-    var resource_name = $(this).attr("data-resoure-name");
-    var resource_title = $(this).children('h2').html();
-    Market.dealsList(resource_name);
-    if ($("#under-inner-nav").attr("data-for") === 'creat-offer') {
-        $("#under-inner-nav").replaceWith(Market.innerNav_creatOffer(resource_name));
-    }
+  var resource_name = $(this).attr("data-resoure-name");
+  var resource_title = $(this).children('h2').html();
+  Market.dealsList(resource_name);
+  if ($("#under-inner-nav").attr("data-for") === 'creat-offer') {
+    $("#under-inner-nav").replaceWith(Market.innerNav_creatOffer(resource_name));
+  }
 
 
 });
 
 $(document).on("change", '.sell-or-buy input[name="sell_or_buy"]', function () {
 
-    var resource = $(".resource-list ul .selected").attr("data-resoure-name");
-    var sell_or_buy = $('.sell-or-buy input[name="sell_or_buy"]:checked').val();
-    var unit_price = $("#under-inner-nav .unite-price input").val();
+  var resource = $(".resource-list ul .selected").attr("data-resoure-name");
+  var sell_or_buy = $('.sell-or-buy input[name="sell_or_buy"]:checked').val();
+  var unit_price = $("#under-inner-nav .unite-price input").val();
 
-    if (sell_or_buy === 'sell') {
+  if (sell_or_buy === 'sell') {
 
-        unit_price <= 0 ? MARKET_DEAL_LIST.sell_list[0].unit_price : unit_price;
+    unit_price <= 0 ? MARKET_DEAL_LIST.sellOffers[0].unit_price : unit_price;
 
-        $("#under-inner-nav .quantity input").attr("max", Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]), Elkaisar.CurrentCity.City.coin * 100 / (unit_price * 0.75))), 2e8));
-        $("#under-inner-nav .quantity input").attr("step", Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]), Elkaisar.CurrentCity.City.coin * 100 / (unit_price * 0.75))), 2e8));
+    $("#under-inner-nav .quantity input").attr("max", Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]), Elkaisar.CurrentCity.City.coin * 100 / (unit_price * 0.75))), 2e8));
+    $("#under-inner-nav .quantity input").attr("step", Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]), Elkaisar.CurrentCity.City.coin * 100 / (unit_price * 0.75))), 2e8));
 
 
-    } else if (sell_or_buy === 'buy') {
+  } else if (sell_or_buy === 'buy') {
 
-        unit_price <= 0 ? MARKET_DEAL_LIST.buy_list[0].unit_price : unit_price;
-        $("#under-inner-nav .quantity input").attr("max", Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin / unit_price), 2e8));
-        $("#under-inner-nav .quantity input").attr("step", Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin / unit_price), 2e8));
+    unit_price <= 0 ? MARKET_DEAL_LIST.buyOffers[0].unit_price : unit_price;
+    $("#under-inner-nav .quantity input").attr("max", Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin / unit_price), 2e8));
+    $("#under-inner-nav .quantity input").attr("step", Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin / unit_price), 2e8));
 
-    }
+  }
 
-    $("#under-inner-nav .unite-price input").val(unit_price);
+  $("#under-inner-nav .unite-price input").val(unit_price);
 
 });
 
@@ -686,225 +680,205 @@ $(document).on("change", '.sell-or-buy input[name="sell_or_buy"]', function () {
 /* make adeal*/
 $(document).on('click', "#confirm-deal button", function () {
 
-    var sell_or_buy = $('.sell-or-buy input[name="sell_or_buy"]:checked').val();
-    var quantity = $("#under-inner-nav .quantity input").val();
-    var unit_price = $("#under-inner-nav .unite-price input").val();
-    var resource = $(".resource-list ul .selected").attr("data-resoure-name");
-    var fees = unit_price * quantity * 0.75 / 100;
-    var self = $(this);
+  var sell_or_buy = $('.sell-or-buy input[name="sell_or_buy"]:checked').val();
+  var quantity = $("#under-inner-nav .quantity input").val();
+  var unit_price = $("#under-inner-nav .unite-price input").val();
+  var resource = $(".resource-list ul .selected").attr("data-resoure-name");
+  var fees = unit_price * quantity * 0.75 / 100;
+  var self = $(this);
 
-    if (Number(Elkaisar.City.getCity().BuildingLvl.market) <= MY_MARKET_OFFERS_LIST.length) {
-        alert_box.confirmMessage("مستوى السوق لا يسمح باضافة عروض اخرى يمكنك  الغاء احد عروضك لانشاء  هذا العرض");
-        return;
+  if (Number(Elkaisar.City.getCity().BuildingLvl.market) <= MY_MARKET_OFFERS_LIST.length) {
+    alert_box.confirmMessage("مستوى السوق لا يسمح باضافة عروض اخرى يمكنك  الغاء احد عروضك لانشاء  هذا العرض");
+    return;
+  }
+
+
+  if (Number(quantity) <= 0 || isNaN(quantity)) {
+
+    alert_box.confirmMessage("عليك ادخال الكمية المراد ");
+    return;
+  } else if (Number(unit_price) <= 0 || isNaN(unit_price)) {
+
+    alert_box.confirmMessage("عليك ادخال السعر المطلوب  ");
+    return;
+
+  } else if (!resource) {
+
+    alert_box.confirmMessage("اختر نوع المورد المطلوب");
+    return;
+
+  }
+
+
+
+
+  if (sell_or_buy === "sell") {
+
+
+    if (Number(quantity) > Elkaisar.CurrentCity.City[resource]) {
+
+      alert_box.confirmMessage("لا يمكنك بيع  كمية مواد لا تملكها ");
+      return;
+
+    } else if (Number(Elkaisar.CurrentCity.City.coin) < fees) {
+
+      alert_box.confirmMessage("لا يوجد لديك سسترسس كافى لدفع الرسوم");
+      return;
+
     }
 
+    $.ajax({
 
-    if (Number(quantity) <= 0 || isNaN(quantity)) {
+      url: `${Elkaisar.Config.NodeUrl}/api/ACityMarket/proposeSellOffer`,
+      data: {
+        idCity: Number(Elkaisar.CurrentCity.City.id_city),
+        unitPrice: Number(unit_price),
+        ResType: resource,
+        amount: quantity,
+        token: TOKEN
 
-        alert_box.confirmMessage("عليك ادخال الكمية المراد ");
-        return;
-    } else if (Number(unit_price) <= 0 || isNaN(unit_price)) {
+      },
+      type: 'POST',
+      beforeSend: function (xhr) {
+        Elkaisar.CurrentCity.City[resource] -= quantity;
+        Elkaisar.CurrentCity.City.coin = fees;
+        self.attr("disabled", "disabled");
+        waitCursor();
+      },
+      success: function (data, textStatus, jqXHR) {
+        unwaitCursor();
+        self.removeAttr("disabled");
 
-        alert_box.confirmMessage("عليك ادخال السعر المطلوب  ");
-        return;
-
-    } else if (!resource) {
-
-        alert_box.confirmMessage("اختر نوع المورد المطلوب");
-        return;
-
-    }
+        if (isJson(data)) {
+          var json_data = JSON.parse(data);
+        } else {
+          Elkaisar.LBase.Error(data);
+        }
+        if (json_data.state === "ok") {
 
 
+          MY_MARKET_OFFERS_LIST = json_data.cityOffers;
+          Elkaisar.CurrentCity.City = json_data.cityRes;
+
+          Elkaisar.DPlayer.Notif.msg_diff = Number(Elkaisar.DPlayer.Notif.msg_diff) + Number(json_data.msg_num);
+
+          city_profile.refresh_resource_view();
+          Fixed.refreshPlayerNotif();
+          /*refresh views */
+          $("#under-inner-nav .u-have .resource .amount").html(Math.floor(Elkaisar.CurrentCity.City[resource]));
+          $("#under-inner-nav .u-have .coin .amount").html(Math.floor(Elkaisar.CurrentCity.City.coin));
+          $("#under-inner-nav .quantity input").val(0);
+          $('#trans-fees .amount').html(0);
+          $('#trans-total-price .amount').html(0);
+          $("#dialg_box .box_content  .left-content .resource-list ul .selected").click();
+          alert_box.succesMessage("تمت الصفقة بنجاح");
 
 
-    if (sell_or_buy === "sell") {
+          if ($.isArray(json_data.buyers) && json_data.buyers.length > 0) {
+            /* ws.send(JSON.stringify({
+                 url: "WS_Market/buyerDealDone",
+                 data: {
+                     traders: json_data.buyers,
+                     idPlayer: ID_PLAYER,
+                     token: TOKEN
+                 }
+             }));*/
+          }
 
 
-        if (Number(quantity) > Elkaisar.CurrentCity.City[resource]) {
+        } else {
 
-            alert_box.confirmMessage("لا يمكنك بيع  كمية مواد لا تملكها ");
-            return;
-
-        } else if (Number(Elkaisar.CurrentCity.City.coin) < fees) {
-
-            alert_box.confirmMessage("لا يوجد لديك سسترسس كافى لدفع الرسوم");
-            return;
-
+          Elkaisar.LBase.Error(data);
         }
 
-        $.ajax({
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
 
-            url: "api/market.php",
-            data: {
-
-                PROPOSE_SELL_OFFER: true,
-                id_city: Number(Elkaisar.CurrentCity.City.id_city),
-                unit_price: Number(unit_price),
-                resource: resource,
-                quantity: quantity,
-                id_player: ID_PLAYER,
-                token: Elkaisar.Config.OuthToken
-
-            },
-            type: 'POST',
-            beforeSend: function (xhr) {
-
-                Elkaisar.CurrentCity.City[resource] -= quantity;
-                Elkaisar.CurrentCity.City.coin = fees;
+      }
+    });
 
 
 
-                self.attr("disabled", "disabled");
-                waitCursor();
-            },
-            success: function (data, textStatus, jqXHR) {
-                unwaitCursor();
-                self.removeAttr("disabled");
+  } else if (sell_or_buy === "buy") {
 
-                if (isJson(data)) {
-                    var json_data = JSON.parse(data);
-                } else {
-                    alert(data);
-                }
-                if (json_data.state === "ok") {
+    if (Number(Elkaisar.CurrentCity.City.coin) < Number(fees) + unit_price * quantity) {
+      alert_box.confirmMessage("عذرا  ليس لديك  سسترسس كافى!");
+      return;
+    }
 
+    $.ajax({
 
-                    MY_MARKET_OFFERS_LIST = json_data.deal_list;
-
-                    Elkaisar.CurrentCity.City.food = json_data.city_resource.food;
-                    Elkaisar.CurrentCity.City.wood = json_data.city_resource.wood;
-                    Elkaisar.CurrentCity.City.stone = json_data.city_resource.stone;
-                    Elkaisar.CurrentCity.City.metal = json_data.city_resource.metal;
-                    Elkaisar.CurrentCity.City.coin = json_data.city_resource.coin;
-
-                    PLAYER_NOTIF.msg_diff = Number(PLAYER_NOTIF.msg_diff) + Number(json_data.msg_num);
-
-                    city_profile.refresh_resource_view();
-                    Fixed.refreshPlayerNotif();
-                    /*refresh views */
-                    $("#under-inner-nav .u-have .resource .amount").html(Math.floor(Elkaisar.CurrentCity.City[resource]));
-                    $("#under-inner-nav .u-have .coin .amount").html(Math.floor(Elkaisar.CurrentCity.City.coin));
-                    $("#under-inner-nav .quantity input").val(0);
-                    $('#trans-fees .amount').html(0);
-                    $('#trans-total-price .amount').html(0);
-                    $("#dialg_box .box_content  .left-content .resource-list ul .selected").click();
-                    alert_box.succesMessage("تمت الصفقة بنجاح");
+      url: `${Elkaisar.Config.NodeUrl}/api/ACityMarket/proposeBuyOffer`,
+      data: {
+        idCity: Number(Elkaisar.CurrentCity.City.id_city),
+        unitPrice: Number(unit_price),
+        ResType: resource,
+        amount: quantity,
+        token: TOKEN
 
 
-                    if ($.isArray(json_data.buyers) && json_data.buyers.length > 0) {
-                       /* ws.send(JSON.stringify({
-                            url: "WS_Market/buyerDealDone",
-                            data: {
-                                traders: json_data.buyers,
-                                idPlayer: ID_PLAYER,
-                                token: Elkaisar.Config.OuthToken
-                            }
-                        }));*/
-                    }
+      },
+      type: 'POST',
+      beforeSend: function (xhr) {
 
+        Elkaisar.CurrentCity.City.coin -= Number(fees) + unit_price * quantity;
 
-                } else {
-
-                    alert(data);
-                }
-
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-        });
-
-
-
-    } else if (sell_or_buy === "buy") {
-
-        if (Number(Elkaisar.CurrentCity.City.coin) < Number(fees) + unit_price * quantity) {
-            alert_box.confirmMessage("عذرا  ليس لديك  سسترسس كافى!");
-            return;
+        self.attr("disabled", "disabled");
+        waitCursor();
+      },
+      success: function (data, textStatus, jqXHR) {
+        unwaitCursor();
+        self.removeAttr("disabled");
+        if (isJson(data)) {
+          var json_data = JSON.parse(data);
+        } else {
+          Elkaisar.LBase.Error(data);
+          return;
         }
 
-        $.ajax({
+        if (json_data.state === "ok") {
 
-            url: "api/market.php",
-            data: {
-
-                PROPOSE_BUY_OFFER: true,
-                id_city: Number(Elkaisar.CurrentCity.City.id_city),
-                unit_price: Number(unit_price),
-                resource: resource,
-                quantity: quantity,
-                id_player: ID_PLAYER,
-                token: Elkaisar.Config.OuthToken
-
-
-            },
-            type: 'POST',
-            beforeSend: function (xhr) {
-
-                Elkaisar.CurrentCity.City.coin -= Number(fees) + unit_price * quantity;
-
-                self.attr("disabled", "disabled");
-                waitCursor();
-            },
-            success: function (data, textStatus, jqXHR) {
-                unwaitCursor();
-                self.removeAttr("disabled");
-                if (isJson(data)) {
-                    var json_data = JSON.parse(data);
-                } else {
-                    alert(data);
-                    return;
-                }
-
-                if (json_data.state === "ok") {
-
-                    MY_MARKET_OFFERS_LIST = json_data.deal_list;
-
-                    Elkaisar.CurrentCity.City.food = json_data.city_resource.food;
-                    Elkaisar.CurrentCity.City.wood = json_data.city_resource.wood;
-                    Elkaisar.CurrentCity.City.stone = json_data.city_resource.stone;
-                    Elkaisar.CurrentCity.City.metal = json_data.city_resource.metal;
-                    Elkaisar.CurrentCity.City.coin = json_data.city_resource.coin;
-                    PLAYER_NOTIF.msg_diff = Number(PLAYER_NOTIF.msg_diff) + Number(json_data.msg_num);
-                    city_profile.refresh_resource_view();
-                    Fixed.refreshPlayerNotif();
-                    /*refresh views */
-                    $("#under-inner-nav .u-have .resource .amount").html(Math.floor(Elkaisar.CurrentCity.City[resource]));
-                    $("#under-inner-nav .u-have .coin .amount").html(Math.floor(Elkaisar.CurrentCity.City.coin));
-                    $("#under-inner-nav .quantity input").val(0);
-                    $('#trans-fees .amount').html(0);
-                    $('#trans-total-price .amount').html(0);
-                    $("#dialg_box .box_content  .left-content .resource-list ul .selected").click();
-                    alert_box.succesMessage("تمت الصفقة بنجاح");
+          MY_MARKET_OFFERS_LIST = json_data.cityOffers;
+          Elkaisar.CurrentCity.City = json_data.cityRes;
+          Elkaisar.DPlayer.Notif.msg_diff = Number(Elkaisar.DPlayer.Notifayer.Notif.msg_diff) + Number(json_data.msg_num);
+          city_profile.refresh_resource_view();
+          Fixed.refreshPlayerNotif();
+          /*refresh views */
+          $("#under-inner-nav .u-have .resource .amount").html(Math.floor(Elkaisar.CurrentCity.City[resource]));
+          $("#under-inner-nav .u-have .coin .amount").html(Math.floor(Elkaisar.CurrentCity.City.coin));
+          $("#under-inner-nav .quantity input").val(0);
+          $('#trans-fees .amount').html(0);
+          $('#trans-total-price .amount').html(0);
+          $("#dialg_box .box_content  .left-content .resource-list ul .selected").click();
+          alert_box.succesMessage("تمت الصفقة بنجاح");
 
 
-                    if ($.isArray(json_data.seller) && json_data.seller.length > 0) {
-                      /*  ws.send(JSON.stringify({
-                            url: "WS_Market/sellerDealDone",
-                            data: {
-                                traders: json_data.seller,
-                                idPlayer: ID_PLAYER,
-                                token: Elkaisar.Config.OuthToken
-                            }
+          if ($.isArray(json_data.seller) && json_data.seller.length > 0) {
+            /*  ws.send(JSON.stringify({
+                  url: "WS_Market/sellerDealDone",
+                  data: {
+                      traders: json_data.seller,
+                      idPlayer: ID_PLAYER,
+                      token: TOKEN
+                  }
 
-                        }));*/
-                    }
-
-
-                } else {
-
-                    alert_box.confirmMessage("حدث خطاء  اثناء عمل العرض");
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-
-        });
+              }));*/
+          }
 
 
-    }
+        } else {
+
+          alert_box.confirmMessage("حدث خطاء  اثناء عمل العرض");
+        }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
+
+    });
+
+
+  }
 
 
 });
@@ -912,15 +886,15 @@ $(document).on('click', "#confirm-deal button", function () {
 /*   WHEN  INPUT CHANG*/
 $(document).on("keyup  change", "#under-inner-nav .quantity input", function () {
 
-    var unit_price = Number($("#under-inner-nav .unite-price input").val());
-    if (!unit_price) {
+  var unit_price = Number($("#under-inner-nav .unite-price input").val());
+  if (!unit_price) {
 
-        return;
+    return;
 
-    }
+  }
 
-    $("#trans-fees .amount").html(Math.ceil($(this).val() * unit_price * 0.75 / 100));
-    $("#trans-total-price .amount").html(Math.ceil($(this).val() * unit_price));
+  $("#trans-fees .amount").html(Math.ceil($(this).val() * unit_price * 0.75 / 100));
+  $("#trans-total-price .amount").html(Math.ceil($(this).val() * unit_price));
 
 
 
@@ -928,15 +902,15 @@ $(document).on("keyup  change", "#under-inner-nav .quantity input", function () 
 /*   WHEN  INPUT CHANG*/
 $(document).on("keyup  change", "#under-inner-nav .unite-price  input", function () {
 
-    var quantity = Number($("#under-inner-nav .quantity input").val());
-    if (!quantity) {
+  var quantity = Number($("#under-inner-nav .quantity input").val());
+  if (!quantity) {
 
-        return;
+    return;
 
-    }
+  }
 
-    $("#trans-fees .amount").html(Math.round($(this).val() * quantity * 0.75 / 100));
-    $("#trans-total-price .amount").html(Math.round($(this).val() * quantity));
+  $("#trans-fees .amount").html(Math.round($(this).val() * quantity * 0.75 / 100));
+  $("#trans-total-price .amount").html(Math.round($(this).val() * quantity));
 
 
 
@@ -946,30 +920,30 @@ $(document).on("keyup  change", "#under-inner-nav .unite-price  input", function
 /*    maximum  limit click */
 $(document).on('click', "#maximum-limit-deal", function () {
 
-    var sell_or_buy = $('.sell-or-buy input[name="sell_or_buy"]:checked').val();
-    var resource = $(".resource-list ul .selected").attr("data-resoure-name");
-    var unit_price = $("#under-inner-nav .unite-price input").val();
+  var sell_or_buy = $('.sell-or-buy input[name="sell_or_buy"]:checked').val();
+  var resource = $(".resource-list ul .selected").attr("data-resoure-name");
+  var unit_price = $("#under-inner-nav .unite-price input").val();
 
 
 
-    if (!unit_price) {
+  if (!unit_price) {
 
-        alert_box.confirmMessage("عليك اختيار السعر المطلوب");
-        return;
+    alert_box.confirmMessage("عليك اختيار السعر المطلوب");
+    return;
 
-    }
+  }
 
-    if (sell_or_buy === 'sell') {
+  if (sell_or_buy === 'sell') {
 
-        $("#under-inner-nav .quantity input").val(Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]), Elkaisar.CurrentCity.City.coin * 100 / (unit_price * 0.75))), 2e8));
+    $("#under-inner-nav .quantity input").val(Math.min(Math.ceil(Math.min(Math.floor(Elkaisar.CurrentCity.City[resource]), Elkaisar.CurrentCity.City.coin * 100 / (unit_price * 0.75))), 2e8));
 
-    } else if (sell_or_buy === 'buy') {
+  } else if (sell_or_buy === 'buy') {
 
-        $("#under-inner-nav .quantity input").val(Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin / unit_price), 2e8));
+    $("#under-inner-nav .quantity input").val(Math.min(Math.ceil(Elkaisar.CurrentCity.City.coin / unit_price), 2e8));
 
-    }
+  }
 
-    $("#under-inner-nav .unite-price input").trigger("keyup");
+  $("#under-inner-nav .unite-price input").trigger("keyup");
 });
 
 
@@ -978,24 +952,24 @@ $(document).on('click', "#maximum-limit-deal", function () {
 /*   market inner nav bar   */
 $(document).on("click", "#market-inner-nav .nav-title", function () {
 
-    $(this).parent("#market-inner-nav").children(".selected").removeClass("selected");
-    $(this).addClass("selected");
+  $(this).parent("#market-inner-nav").children(".selected").removeClass("selected");
+  $(this).addClass("selected");
 
-    var nav_for = $(this).attr("data-inner-nav");
+  var nav_for = $(this).attr("data-inner-nav");
 
-    if (nav_for === "market-my-offers") {
+  if (nav_for === "market-my-offers") {
 
-        $("#under-inner-nav").replaceWith(Market.innerNav_myOffers());
+    $("#under-inner-nav").replaceWith(Market.innerNav_myOffers());
 
-    } else if (nav_for === "market-status-offer") {
+  } else if (nav_for === "market-status-offer") {
 
-        $("#under-inner-nav").replaceWith(Market.innerNav_TradingStatus());
+    $("#under-inner-nav").replaceWith(Market.innerNav_TradingStatus());
 
-    } else if (nav_for === "marke-make-offers") {
+  } else if (nav_for === "marke-make-offers") {
 
-        $("#under-inner-nav").replaceWith(Market.innerNav_creatOffer($(".for_market .resource-list ul .selected").attr("data-resoure-name")));
+    $("#under-inner-nav").replaceWith(Market.innerNav_creatOffer($(".for_market .resource-list ul .selected").attr("data-resoure-name")));
 
-    }
+  }
 
 });
 
@@ -1005,66 +979,55 @@ $(document).on("click", "#market-inner-nav .nav-title", function () {
 
 $(document).on("click", ".cansel-market-deal", function () {
 
-    var id_deal = $(this).parents(".tr").attr("data-id-deal");
-    var self_ = $(this).parents(".tr");
+  var id_deal = $(this).parents(".tr").attr("data-id-deal");
+  var self_ = $(this).parents(".tr");
 
 
-    $.ajax({
+  $.ajax({
 
-        url: "api/market.php",
-        data: {
-            CANSEL_MARKT_DEAL: true,
-            id_deal: id_deal,
-            id_player: ID_PLAYER,
-            id_city: Elkaisar.CurrentCity.City.id_city,
-            token: Elkaisar.Config.OuthToken
-        },
-        type: 'POST',
-        beforeSend: function (xhr) {
-            self_.attr("disabled", "disabled");
-            waitCursor();
-        },
-        success: function (data, textStatus, jqXHR) {
-            self_.removeAttr("disabled");
-            unwaitCursor();
-            if (isJson(data)) {
-                var json_data = JSON.parse(data);
-            } else {
-                alert(data);
-                return;
-            }
-            if (json_data.state === "ok") {
-                self_.remove();
-                $('#my-offers-full-list').append('<div class="tr"></div>');
+    url: `${Elkaisar.Config.NodeUrl}/api/ACityMarket/cancelMyOffer`,
+    data: {
+      idOffer: id_deal,
+      idCity: Elkaisar.CurrentCity.City.id_city,
+      token: TOKEN
+    },
+    type: 'POST',
+    beforeSend: function (xhr) {
+      self_.attr("disabled", "disabled");
+      waitCursor();
+    },
+    success: function (data, textStatus, jqXHR) {
+      self_.removeAttr("disabled");
+      unwaitCursor();
+      if (isJson(data)) {
+        var json_data = JSON.parse(data);
+      } else {
+        Elkaisar.LBase.Error(data);
+        return;
+      }
+      if (json_data.state === "ok") {
+        self_.remove();
+        $('#my-offers-full-list').append('<div class="tr"></div>');
 
-                Elkaisar.CurrentCity.City.food = json_data.city_resource.food;
-                Elkaisar.CurrentCity.City.wood = json_data.city_resource.wood;
-                Elkaisar.CurrentCity.City.stone = json_data.city_resource.stone;
-                Elkaisar.CurrentCity.City.metal = json_data.city_resource.metal;
-                Elkaisar.CurrentCity.City.coin = json_data.city_resource.coin;
+        Elkaisar.CurrentCity.City = json_data.cityRes;
+        MY_MARKET_OFFERS_LIST = json_data.cityOffers;
 
-                for (var index in MY_MARKET_OFFERS_LIST) {
-                    if (Number(MY_MARKET_OFFERS_LIST[index].id_deal) === Number(id_deal)) {
-                        MY_MARKET_OFFERS_LIST.splice(index, 1);
-                    }
-                }
+        city_profile.refresh_resource_view();
+        alert_box.succesMessage("تم الغاء العرض بنجاح");
+        $("#dialg_box .box_content  .left-content .resource-list ul .selected").click();
 
-                city_profile.refresh_resource_view();
-                alert_box.succesMessage("تم الغاء العرض بنجاح");
-                $("#dialg_box .box_content  .left-content .resource-list ul .selected").click();
+      } else {
+        alert_box.confirmMessage("لا يمكنك حذف هذا العرض");
+        $("#market-inner-nav .selected").trigger("click");
 
-            } else {
-                alert_box.confirmMessage("لا يمكنك حذف هذا العرض");
-                $("#market-inner-nav .selected").trigger("click");
+      }
 
-            }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
 
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
+    }
 
-        }
-
-    });
+  });
 
 });
 
@@ -1076,14 +1039,13 @@ $(document).on("click", ".cansel-market-deal", function () {
  */
 $(document).on("click", ".acce-arrving-dael", function () {
 
-    var id_deal = Number($(this).parents(".tr").attr("data-id-deal"));
-    var self_ = $(this).parents(".tr");
+  var id_deal = Number($(this).parents(".tr").attr("data-id-deal"));
+  var self_ = $(this).parents(".tr");
 
 
 
-    var matrial = ["shopping_car"];
-    BoxOfMatrialToUse(matrial, "acce-arriving-deal", 1, id_deal);
-
+  var matrial = ["shopping_car"];
+  BoxOfMatrialToUse(matrial, "acce-arriving-deal", 1, id_deal);
 
 
 });
@@ -1099,59 +1061,59 @@ $(document).on("click", ".acce-arrving-dael", function () {
 
 $(document).on("click", "#select-city-trans-dis", function () {
 
-    var list = ``;
-    for (var index in FAVORIT_LIST) {
+  var list = ``;
+  for (var index in FAVORIT_LIST) {
 
-        list += `<li data-index="${index}" data-x-coord="${FAVORIT_LIST[index].x_coord}" data-y-coord="${FAVORIT_LIST[index].y_coord}">
+    list += `<li data-index="${index}" data-x-coord="${FAVORIT_LIST[index].x_coord}" data-y-coord="${FAVORIT_LIST[index].y_coord}">
                     ${FAVORIT_LIST[index].title} [${FAVORIT_LIST[index].x_coord} , ${FAVORIT_LIST[index].y_coord}]
                 </li>`;
 
-    }
+  }
 
-    $("#select_city_trans ol").html(list);
+  $("#select_city_trans ol").html(list);
 
-    $("#select_city_trans").toggle();
+  $("#select_city_trans").toggle();
 
 });
 
 
 $(document).on('click', "#select_city_trans ol li", function () {
 
-    var index = $(this).attr("data-index");
-    var x_coord = $(this).attr("data-x-coord");
-    var y_coord = $(this).attr("data-y-coord");
-    var title = $(this).html();
+  var index = $(this).attr("data-index");
+  var x_coord = $(this).attr("data-x-coord");
+  var y_coord = $(this).attr("data-y-coord");
+  var title = $(this).html();
 
-    $("#select-city-trans-dis .value").html(title);
-    $("#select_city_trans").hide();
-    $("#transport-distin input[data-coord='x']").val(x_coord);
-    $("#transport-distin input[data-coord='y']").val(y_coord);
+  $("#select-city-trans-dis .value").html(title);
+  $("#select_city_trans").hide();
+  $("#transport-distin input[data-coord='x']").val(x_coord);
+  $("#transport-distin input[data-coord='y']").val(y_coord);
 
 });
 
 
 $(document).on('change keyup', "#resource-input-list ul li .only_num", function () {
 
-    var value = Math.floor($(this).val());
-    var resource = $(this).attr("data-resource");
+  var value = Math.floor($(this).val());
+  var resource = $(this).attr("data-resource");
 
-    var total_in = 0;
-    $("#resource-input-list ul li .input-warpper input").each(function () {
-        total_in += Math.floor($(this).val());
-    });
-
-
-
-    var remain = Math.floor(Math.max(Market.getMarketMaxTransNum() - total_in, 0));
-
-    $("#resource-input-list ul li .input-warpper input").each(function () {
-        $(this).attr("max", Math.min(Math.floor(Elkaisar.CurrentCity.City[$(this).attr("data-resource")]), remain));
-        $(this).attr("step", Math.min(Math.floor(Elkaisar.CurrentCity.City[$(this).attr("data-resource")]), remain));
-    });
+  var total_in = 0;
+  $("#resource-input-list ul li .input-warpper input").each(function () {
+    total_in += Math.floor($(this).val());
+  });
 
 
 
-    $(this).parent(".input-warpper").prev(".resource").children("span").html(Math.max(0, (Math.floor(Elkaisar.CurrentCity.City[resource]) - value)));
+  var remain = Math.floor(Math.max(Market.getMarketMaxTransNum() - total_in, 0));
+
+  $("#resource-input-list ul li .input-warpper input").each(function () {
+    $(this).attr("max", Math.min(Math.floor(Elkaisar.CurrentCity.City[$(this).attr("data-resource")]), remain));
+    $(this).attr("step", Math.min(Math.floor(Elkaisar.CurrentCity.City[$(this).attr("data-resource")]), remain));
+  });
+
+
+
+  $(this).parent(".input-warpper").prev(".resource").children("span").html(Math.max(0, (Math.floor(Elkaisar.CurrentCity.City[resource]) - value)));
 
 });
 
@@ -1159,28 +1121,28 @@ $(document).on('change keyup', "#resource-input-list ul li .only_num", function 
 
 $(document).on('change keyup', "#transport-distin  .only_num", function () {
 
-    var x_coord = Number($("#transport-distin .only_num[data-coord=x]").val()) || 0;
-    var y_coord = Number($("#transport-distin .only_num[data-coord=y]").val()) || 0;
+  var x_coord = Number($("#transport-distin .only_num[data-coord=x]").val()) || 0;
+  var y_coord = Number($("#transport-distin .only_num[data-coord=y]").val()) || 0;
 
 
-    if (x_coord + y_coord > 0) {
+  if (x_coord + y_coord > 0) {
 
-        $("#dialg_box .for_market .leftOfLeft .transit-time span")
-                .html(changeTimeFormat(Math.ceil((Math.sqrt(Math.pow((Elkaisar.CurrentCity.City.x - x_coord), 2) + Math.pow((Elkaisar.CurrentCity.City.y - y_coord), 2)))) * 20));
+    $("#dialg_box .for_market .leftOfLeft .transit-time span")
+      .html(changeTimeFormat(Math.ceil((Math.sqrt(Math.pow((Elkaisar.CurrentCity.City.x - x_coord), 2) + Math.pow((Elkaisar.CurrentCity.City.y - y_coord), 2)))) * 20));
 
-    } else {
-        $("#dialg_box .for_market .leftOfLeft .transit-time span")
-                .html(0);
-    }
+  } else {
+    $("#dialg_box .for_market .leftOfLeft .transit-time span")
+      .html(0);
+  }
 });
 
 
 $(document).on("click", "#transport-res-inner-nav .nav-title", function () {
 
-    $("#transport-res-inner-nav .nav-title").removeClass("selected");
-    $(this).addClass("selected");
+  $("#transport-res-inner-nav .nav-title").removeClass("selected");
+  $(this).addClass("selected");
 
-    Market.transportedResourcesList($(this).attr("data-in-out"));
+  Market.transportedResourcesList($(this).attr("data-in-out"));
 
 
 });
@@ -1188,114 +1150,114 @@ $(document).on("click", "#transport-res-inner-nav .nav-title", function () {
 
 $(document).on("click", "#statrt-transport-res button", function () {
 
-    var xCoord = $("#transport-distin input[data-coord='x']").val();
-    var yCoord = $("#transport-distin input[data-coord='y']").val();
+  var xCoord = $("#transport-distin input[data-coord='x']").val();
+  var yCoord = $("#transport-distin input[data-coord='y']").val();
 
-    if (!xCoord || !yCoord)
-        return alert_box.failMessage("هذة الاحداثيات غير صحيحة تأكد من الاحداثيات");
-
-
-
-    var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
-
-    if (!Unit.idCity)
-        return alert_box.failMessage("هذة الاحداثيات ليست إحداثيات مدينة");
-
-    var total_resource = 0;
-    var resource_to_send = {food: 0, wood: 0, stone: 0, metal: 0, coin: 0};
-    $("#resource-input-list ul li .input-warpper input").each(function () {
-        resource_to_send[$(this).attr("data-resource")] = Number($(this).val());
-        total_resource += Number($(this).val());
-    });
+  if (!xCoord || !yCoord)
+    return alert_box.failMessage("هذة الاحداثيات غير صحيحة تأكد من الاحداثيات");
 
 
 
-    if (total_resource <= 0) {
-        alert_box.failMessage("يجب عليك ادخال  الموارد المراد ارسالها");
-        return;
-    } else if (total_resource > Market.getMarketMaxTransNum()) {
-        alert_box.confirmMessage("لا يستطيع الناقلون نقل كمية اكبر من استيعاب السوق لها");
-        return;
+  var Unit = WorldUnit.getWorldUnit(xCoord, yCoord);
+
+  if (!Unit.idCity)
+    return alert_box.failMessage("هذة الاحداثيات ليست إحداثيات مدينة");
+
+  var total_resource = 0;
+  var resource_to_send = { food: 0, wood: 0, stone: 0, metal: 0, coin: 0 };
+  $("#resource-input-list ul li .input-warpper input").each(function () {
+    resource_to_send[$(this).attr("data-resource")] = Number($(this).val());
+    total_resource += Number($(this).val());
+  });
+
+
+
+  if (total_resource <= 0) {
+    alert_box.failMessage("يجب عليك ادخال  الموارد المراد ارسالها");
+    return;
+  } else if (total_resource > Market.getMarketMaxTransNum()) {
+    alert_box.confirmMessage("لا يستطيع الناقلون نقل كمية اكبر من استيعاب السوق لها");
+    return;
+  }
+
+  if (Number(Elkaisar.CurrentCity.City.food) < resource_to_send.food || resource_to_send.food < 0) {
+    alert_box.failMessage("لا يوجد غذاء كافى ");
+    return;
+  } else if (Number(Elkaisar.CurrentCity.City.wood) < resource_to_send.wood || resource_to_send.wood < 0) {
+    alert_box.failMessage("لا يوجد اخشاب كافى ");
+    return;
+  } else if (Number(Elkaisar.CurrentCity.City.stone) < resource_to_send.stone || resource_to_send.stone < 0) {
+    alert_box.failMessage("لا يوجد حجارة كافى ");
+    return;
+  } else if (Number(Elkaisar.CurrentCity.City.metal) < resource_to_send.metal || resource_to_send.metal < 0) {
+    alert_box.failMessage("لا يوجد حديد كافى ");
+    return;
+  } else if (Number(Elkaisar.CurrentCity.City.coin) < resource_to_send.coin || resource_to_send.coin < 0) {
+    alert_box.failMessage("لا يوجد عملات كافى ");
+    return;
+  }
+  var self = $(this);
+
+  $.ajax({
+
+    url: `${API_URL}/api/ACityMarketTrans/transportResource`,
+    data: {
+      food: resource_to_send.food,
+      wood: resource_to_send.wood,
+      stone: resource_to_send.stone,
+      metal: resource_to_send.metal,
+      coin: resource_to_send.coin,
+      idCityFrom: Elkaisar.CurrentCity.City.id_city,
+      idCityTo: Unit.idCity,
+      token: Elkaisar.Config.OuthToken,
+      server: Elkaisar.Config.idServer
+    },
+    type: 'POST',
+    beforeSend: function (xhr) {
+      self.prop("disabled", true);
+      self.attr("disabled", "disabled");
+      waitCursor();
+    },
+    success: function (data, textStatus, jqXHR) {
+
+      self.prop("disabled", false);
+      self.removeAttr("disabled");
+      unwaitCursor();
+      if (!Elkaisar.LBase.isJson(data))
+        return Elkaisar.LBase.Error(data);
+
+
+
+      var JsonData = JSON.parse(data);
+
+      if (JsonData.state == "error_0")
+        return alert_box.failMessage("كمية المواد غير صحيحة");
+      if (JsonData.state == "error_1")
+        return alert_box.confirmMessage("لا يمكنك ارسال بعثات اخرى خارج المدينة جميع النقالين بالخارج");
+      if (JsonData.state == "error_2")
+        return alert_box.confirmMessage("لا يستطيع السوق نقل هذة الكمية");
+      if (JsonData.state == "error_3")
+        return alert_box.confirmMessage("لا توجد موارد كافية فى المدينة");
+
+      Market.transportedResourcesList("out");
+
+      Elkaisar.CurrentCity.City.food = Number(JsonData.cityRes.food);
+      Elkaisar.CurrentCity.City.wood = Number(JsonData.cityRes.wood);
+      Elkaisar.CurrentCity.City.stone = Number(JsonData.cityRes.stone);
+      Elkaisar.CurrentCity.City.metal = Number(JsonData.cityRes.metal);
+      Elkaisar.CurrentCity.City.coin = Number(JsonData.cityRes.coin);
+      city_profile.refresh_resource_view();
+
+      alert_box.succesMessage("تم ارسال النقالين بنجاح");
+
+
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+
+
     }
 
-    if (Number(Elkaisar.CurrentCity.City.food) < resource_to_send.food || resource_to_send.food < 0) {
-        alert_box.failMessage("لا يوجد غذاء كافى ");
-        return;
-    } else if (Number(Elkaisar.CurrentCity.City.wood) < resource_to_send.wood || resource_to_send.wood < 0) {
-        alert_box.failMessage("لا يوجد اخشاب كافى ");
-        return;
-    } else if (Number(Elkaisar.CurrentCity.City.stone) < resource_to_send.stone || resource_to_send.stone < 0) {
-        alert_box.failMessage("لا يوجد حجارة كافى ");
-        return;
-    } else if (Number(Elkaisar.CurrentCity.City.metal) < resource_to_send.metal || resource_to_send.metal < 0) {
-        alert_box.failMessage("لا يوجد حديد كافى ");
-        return;
-    } else if (Number(Elkaisar.CurrentCity.City.coin) < resource_to_send.coin || resource_to_send.coin < 0) {
-        alert_box.failMessage("لا يوجد عملات كافى ");
-        return;
-    }
-    var self = $(this);
-
-    $.ajax({
-
-        url: `${Elkaisar.Config.NodeUrl}/api/ACityMarketTrans/transportResource`,
-        data: {
-            food: resource_to_send.food,
-            wood: resource_to_send.wood,
-            stone: resource_to_send.stone,
-            metal: resource_to_send.metal,
-            coin: resource_to_send.coin,
-            idCityFrom: Elkaisar.CurrentCity.City.id_city,
-            idCityTo: Unit.idCity,
-            token: Elkaisar.Config.OuthToken,
-            server: Elkaisar.Config.idServer
-        },
-        type: 'POST',
-        beforeSend: function (xhr) {
-            self.prop("disabled", true);
-            self.attr("disabled", "disabled");
-            waitCursor();
-        },
-        success: function (data, textStatus, jqXHR) {
-
-            self.prop("disabled", false);
-            self.removeAttr("disabled");
-            unwaitCursor();
-            if (!Elkaisar.LBase.isJson(data))
-                return Elkaisar.LBase.Error(data);
-
-
-
-            var JsonData = JSON.parse(data);
-
-            if (JsonData.state == "error_0")
-                return alert_box.failMessage("كمية المواد غير صحيحة");
-            if (JsonData.state == "error_1")
-                return alert_box.confirmMessage("لا يمكنك ارسال بعثات اخرى خارج المدينة جميع النقالين بالخارج");
-            if (JsonData.state == "error_2")
-                return alert_box.confirmMessage("لا يستطيع السوق نقل هذة الكمية");
-            if (JsonData.state == "error_3")
-                return alert_box.confirmMessage("لا توجد موارد كافية فى المدينة");
-
-            Market.transportedResourcesList("out");
-
-            Elkaisar.CurrentCity.City.food = Number(JsonData.cityRes.food);
-            Elkaisar.CurrentCity.City.wood = Number(JsonData.cityRes.wood);
-            Elkaisar.CurrentCity.City.stone = Number(JsonData.cityRes.stone);
-            Elkaisar.CurrentCity.City.metal = Number(JsonData.cityRes.metal);
-            Elkaisar.CurrentCity.City.coin = Number(JsonData.cityRes.coin);
-            city_profile.refresh_resource_view();
-
-            alert_box.succesMessage("تم ارسال النقالين بنجاح");
-
-
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-
-
-        }
-
-    });
+  });
 
 
 
@@ -1306,69 +1268,69 @@ $(document).on("click", "#statrt-transport-res button", function () {
 
 $(document).on("click", "#auction-buy-btn button", function () {
 
-    $("#under-inner-nav .sell-or-buy .buy input").prop("checked", true);
-    $("#under-inner-nav .unite-price input").val(MARKET_DEAL_LIST.buy_list[0] ? MARKET_DEAL_LIST.buy_list[0].unit_price : 0);
+  $("#under-inner-nav .sell-or-buy .buy input").prop("checked", true);
+  $("#under-inner-nav .unite-price input").val(MARKET_DEAL_LIST.buyOffers[0] ? MARKET_DEAL_LIST.buyOffers[0].unit_price : 0);
 
 });
 
 $(document).on("click", "#auction-sell-btn button", function () {
 
-    $("#under-inner-nav .sell-or-buy .sell input").prop("checked", true);
-    $("#under-inner-nav .unite-price input").val(MARKET_DEAL_LIST.sell_list[0] ? MARKET_DEAL_LIST.sell_list[0].unit_price : 0);
+  $("#under-inner-nav .sell-or-buy .sell input").prop("checked", true);
+  $("#under-inner-nav .unite-price input").val(MARKET_DEAL_LIST.sellOffers[0] ? MARKET_DEAL_LIST.sellOffers[0].unit_price : 0);
 
 });
 
 
 $(document).on("click", ".acce-transport-deal", function () {
 
-    var id_trans = $(this).attr("data-id-trans");
-    var self = $(this);
-    if (!id_trans) {
-        alert_box.failMessage("حدث خطاء");
-    }
-    if (Matrial.getPlayerAmount("shopping_car") < 1) {
-        alert_box.confirmMessage("لا يوجد لديك عربات تسوق للقيام بالعملية");
-        return;
-    }
+  var id_trans = $(this).attr("data-id-trans");
+  var self = $(this);
+  if (!id_trans) {
+    alert_box.failMessage("حدث خطاء");
+  }
+  if (Matrial.getPlayerAmount("shopping_car") < 1) {
+    alert_box.confirmMessage("لا يوجد لديك عربات تسوق للقيام بالعملية");
+    return;
+  }
 
-    alert_box.confirmDialog("تاكيد استعمال 1 عربة تسوق لتسريع  عملية النقل", function () {
+  alert_box.confirmDialog("تاكيد استعمال 1 عربة تسوق لتسريع  عملية النقل", function () {
 
-        $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/ACityMarketTrans/speedUpTransport`,
-            data: {
-                idTrans  : id_trans,
-                idCity   : Elkaisar.CurrentCity.City.id_city,
-                token    : Elkaisar.Config.OuthToken,
-                server   : Elkaisar.Config.idServer
-            },
-            type: 'POST',
-            beforeSend: function (xhr) {
-                self.attr("disabled", "disabled");
-                waitCursor();
-            },
-            success: function (data, textStatus, jqXHR) {
-                unwaitCursor();
-                self.removeAttr("disabled");
-                
-                if(!Elkaisar.LBase.isJson(data))
-                    return Elkaisar.LBase.Error(data);
-                
-                var JsonData = JSON.parse(data);
-                
-                if(JsonData.state == "error_0")
-                    return alert_box.failMessage("لقد تم نقل هذه النقله");
-                if(JsonData.state == "error_1")
-                    return alert_box.failMessage("لقد تم تسريع هذه النقله");
-                if(JsonData.state == "error_2")
-                    return alert_box.failMessage("لا توجد عربات نقل كافية لتسريع هذه الدفعة");
-                
-                $("#transport-res-inner-nav .selected").click();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
+    $.ajax({
+      url: `${API_URL}/api/ACityMarketTrans/speedUpTransport`,
+      data: {
+        idTrans: id_trans,
+        idCity: Elkaisar.CurrentCity.City.id_city,
+        token: Elkaisar.Config.OuthToken,
+        server: Elkaisar.Config.idServer
+      },
+      type: 'POST',
+      beforeSend: function (xhr) {
+        self.attr("disabled", "disabled");
+        waitCursor();
+      },
+      success: function (data, textStatus, jqXHR) {
+        unwaitCursor();
+        self.removeAttr("disabled");
 
-            }
-        });
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
 
+        var JsonData = JSON.parse(data);
+
+        if (JsonData.state == "error_0")
+          return alert_box.failMessage("لقد تم نقل هذه النقله");
+        if (JsonData.state == "error_1")
+          return alert_box.failMessage("لقد تم تسريع هذه النقله");
+        if (JsonData.state == "error_2")
+          return alert_box.failMessage("لا توجد عربات نقل كافية لتسريع هذه الدفعة");
+
+        $("#transport-res-inner-nav .selected").click();
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
     });
+
+  });
 
 });

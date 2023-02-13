@@ -1909,7 +1909,7 @@ $(document).on("click", ".build_army", function () {
                 if (isJson(data)) {
                     var json_data = JSON.parse(data);
                 } else {
-                    alert(data);
+                  Elkaisar.LBase.Error(data);
                     return;
                 }
 
@@ -2016,7 +2016,7 @@ $(document).on("click", '.cancel-army-build', function () {
                     var jsonData = JSON.parse(data);
                 } else {
 
-                    alert(data);
+                  Elkaisar.LBase.Error(data);
 
                 }
 
@@ -2192,7 +2192,7 @@ $(document).on("click", ".hero_up_lvl", function () {
             if (isJson(data)) {
                 var json_data = JSON.parse(data);
             } else {
-                alert(data);
+              Elkaisar.LBase.Error(data);
                 return;
             }
 
@@ -2209,7 +2209,7 @@ $(document).on("click", ".hero_up_lvl", function () {
                 city_profile.refresh_resource_view();
 
             } else {
-                alert(data);
+              Elkaisar.LBase.Error(data);
             }
 
 
@@ -2426,7 +2426,7 @@ $(document).on("click", ".save_points", function () {
                 if (isJson(data)) {
                     var json_data = JSON.parse(data);
                 } else {
-                    alert(data);
+                  Elkaisar.LBase.Error(data);
                     return;
                 }
 
@@ -2444,7 +2444,7 @@ $(document).on("click", ".save_points", function () {
                     Elkaisar.CurrentHero.Hero.add_p_b = 0;
                     Elkaisar.CurrentHero.Hero.add_p_c = 0;
                 } else {
-                    alert("wrong");
+                  Elkaisar.LBase.Error("wrong");
                 }
 
             }, error: function (jqXHR, textStatus, errorThrown) {

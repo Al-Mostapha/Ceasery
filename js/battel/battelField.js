@@ -24,7 +24,7 @@ BattelField.battelField = function (battel , currentBattels){
                .done(function (data){
                    
                     if(!isJson(data)){
-                        alert(data);
+                        Elkaisar.LBase.Error(data);
                         return ;
                     }
                         

@@ -40,7 +40,7 @@ $(document).on("click" , "#change-player-password" , function (){
                 
                 if(!isJson(data)){
                     
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                     return ;
                     
                 }
@@ -49,7 +49,7 @@ $(document).on("click" , "#change-player-password" , function (){
                 
                 if(jsonData.state === "ok"){
                     
-                    alert("تم تغير كلمة المرور بنجاح");
+                    Elkaisar.LBase.Error("تم تغير كلمة المرور بنجاح");
                     location.reload();
                     
                 }else{

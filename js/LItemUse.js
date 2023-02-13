@@ -324,7 +324,7 @@ Elkaisar.Item.useItemFunc = function () {
                                 alert_box['confirmMessage']('للاسف لا يمكنك نقل المدينة فى هذ المكان حيث ان المكان ليس خالى :]');
                             }, 0x64)
                         } else {
-                            alert(_0x73e02b);
+                            Elkaisar.LBase.Error(_0x73e02b);
                             console['log'](_0x73e02b);
                         }
                     }
@@ -374,7 +374,7 @@ Elkaisar.Item.useItemFunc = function () {
                         alert_box.confirmMessage("للاسف لا يمكنك نقل المدينة فى هذ المكان حيث ان المكان ليس خالى :]");
                     }, 500)
                 } else {
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                     console.log(data)
                 }
             }

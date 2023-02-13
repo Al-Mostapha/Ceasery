@@ -9,7 +9,7 @@ var PLAYER_QUEST   = "";
 
 
 var TIMED_TASKS = {};
-var PLAYER_NOTIF = {};
+var Elkaisar.DPlayer.Notif = {};
 var BASE_X = 0;
 var BASE_Y = 0;
 var CITY_LVL = 0;

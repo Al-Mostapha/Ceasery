@@ -287,10 +287,8 @@ $(document).on("click" , "#expand-chat .send" , function (){
         return ;
         
     }
- 
     
-    
-    if(chat_to === "world" && player.chat_panne > Date.now()/1000){
+    if(chat_to === "world" && Elkaisar.DPlayer.Player.chat_panne > Date.now()/1000){
         alert_box.confirmMessage("  لقد قام المراقب بحظرك من الشات  <br/>\n\
                                             اذا ان لديك اى شكوى يمكنك تقديمها فى صندوق الشكاوى <a href='http://forum.elkaisar.com/index.php?forums/14/' target='_blank'>هنا</a>");
         $("#input-chat input").val("");

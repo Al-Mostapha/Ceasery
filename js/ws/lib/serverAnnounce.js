@@ -159,7 +159,7 @@ Elkaisar.WsLib.ServerAnnounce.CityColonized = function (data)
 Elkaisar.WsLib.ServerAnnounce.newMailSent = function (data) {
     var Msg = `<div class="msg-unit ann-red announce">تم وصول رسالة بريد من النظام</div>`;
     Chat['append'](Msg);
-    PLAYER_NOTIF['msg_in']++;
+    Elkaisar.DPlayer.Notif['msg_in']++;
     Fixed['refreshPlayerNotif']();
 }
 

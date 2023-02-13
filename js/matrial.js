@@ -730,7 +730,7 @@ $("#useItemButton").removeAttr("disabled");
     else if (user_for === "acce-arriving-deal") {
 
         if (isNaN(other)) {
-            alert("error here");
+            Elkaisar.LBase.Error("error here");
             console.log(other);
             return;
         }
@@ -769,7 +769,7 @@ $("#useItemButton").removeAttr("disabled");
                     Matrial.takeFrom(matrial, 1);
                 } else {
 
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                 }
 
             },
@@ -947,12 +947,12 @@ function useMatrialBox(matrial_name)
                 });
             });
         } else {
-            alert("Item FunctionNot Found");
-            alert(matrial_name);
-            alert(JSON.stringify(Elkaisar.BaseData.Items[matrial_name]));
+            Elkaisar.LBase.Error("Item FunctionNot Found");
+            Elkaisar.LBase.Error(matrial_name);
+            Elkaisar.LBase.Error(JSON.stringify(Elkaisar.BaseData.Items[matrial_name]));
         }
     else
-        alert("Item Not Found");
+        Elkaisar.LBase.Error("Item Not Found");
 }
 
 
@@ -1016,7 +1016,7 @@ function buyMatrial(matrial, amount)
                 $(".close-alert_container").click();
                 alert_box.succesMessage("تمت عملية الشراء بنجاح");
             } else {
-                alert(data);
+                Elkaisar.LBase.Error(data);
             }
 
         },

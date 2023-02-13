@@ -1,81 +1,79 @@
+
 var MSG_NUM;
 
 
-function refreshMsg(){
-    
-     $.ajax({
-            url: "api/message.php",
-            data:{
-                MSG_NUMBERS: true,
-                id_player:ID_PLAYER,
-                token:Elkaisar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-                
-            },
-            success: function (data, textStatus, jqXHR) {
-                
-                MSG_NUM = JSON.parse(data);
-                
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                
-            }
-        });
-    
+function refreshMsg() {
+
+  $.ajax({
+    url: `${Elkaisar.Config.NodeUrl}/api/AMessage/getMsgNumbers`,
+    data: {
+      token: Elkaisar.Config.OuthToken
+    },
+    type: 'GET',
+    beforeSend: function (xhr) {
+    },
+    success: function (data, textStatus, jqXHR) {
+      MSG_NUM = JSON.parse(data);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+
+    }
+  });
+
 }
 
-refreshMsg();
+$(document).on("GameReady", function (){
+  refreshMsg();
+});
 
-function getReports(offset){
-    
-    if(offset  === undefined){
-        offset = 0;
-    }
-    
-    return $.ajax({
-            url: "api/battelReport.php",
-            data: {
-                get_report:true , 
-                offset: offset,
-                id_player:ID_PLAYER,
-                token:Elkaisar.Config.OuthTokensar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-            
-            },
-            success: function (data, textStatus, jqXHR) {
-                
-                if(isJson(data)){
-                    var reports = JSON.parse(data);
-                }else {
-                    alert(data);
-                }
+function getReports(offset) {
 
-                if(reports){
-                    
-                    var header = "";
-                    for(var iii = 0 ; iii <10 ; iii++){
-                        if(reports[iii]){
-                            header += `<div class="tr  ${parseInt(reports[iii].seen) === 0 ? "not-seen" : ""}" id_report="${reports[iii]["id_report"]}"  id_msg="${reports[iii]["id_report"]}" 
-                                            table="report_player" db_offset="${parseInt(offset)+iii}" data-x-coord="${reports[iii].x}" 
+  if (offset === undefined) {
+    offset = 0;
+  }
+
+  return $.ajax({
+    url: "api/battelReport.php",
+    data: {
+      get_report: true,
+      offset: offset,
+      id_player: ID_PLAYER,
+      token: Elkaisar.Config.OuthTokensar.Config.OuthToken
+    },
+    type: 'GET',
+    beforeSend: function (xhr) {
+
+    },
+    success: function (data, textStatus, jqXHR) {
+
+      if (isJson(data)) {
+        var reports = JSON.parse(data);
+      } else {
+        Elkaisar.LBase.Error(data);
+      }
+
+      if (reports) {
+
+        var header = "";
+        for (var iii = 0; iii < 10; iii++) {
+          if (reports[iii]) {
+            header += `<div class="tr  ${parseInt(reports[iii].seen) === 0 ? "not-seen" : ""}" id_report="${reports[iii]["id_report"]}"  id_msg="${reports[iii]["id_report"]}" 
+                                            table="report_player" db_offset="${parseInt(offset) + iii}" data-x-coord="${reports[iii].x}" 
                                              data-y-coord="${reports[iii].y}" data-time-stamp="${reports[iii].time_stamp}" data-report-for="${reports[iii].type}"
                                             data-seen="${reports[iii].seen}">
                                             <div class="td_1">
                                                 <input name="msg_sel" id="check_${iii}" class="msg-action" type="checkbox" style="display:none">
                                                 <label for="check_${iii}" class="checker"></label>
                                             </div>
-                                            <div class="td_3">${getReportTitle(reports[iii]["t"] , reports[iii]["lvl"] , reports[iii]["x"] , reports[iii]["y"])}</div>
+                                            <div class="td_3">${getReportTitle(reports[iii]["t"], reports[iii]["lvl"], reports[iii]["x"], reports[iii]["y"])}</div>
                                             <div class="td_5">${reports[iii]["time_stamp"]}</div>
                                             <div class="td_6"><div class="full-btn full-btn-3x show_battel_report">${Translate.Button.MenuList.View[UserLag.language]}</div></div>
                                         </div>`;
-                        }else{
-                            header += `<div class="tr"></div>`;
-                        }
-                    }
-                    var output =    `<div class="box_content for_msg for_Br ">
+          } else {
+            header += `<div class="tr"></div>`;
+          }
+        }
+        var output = `<div class="box_content for_msg for_Br ">
                                         <div class="left-content full">
                                             <div class="th">
                                             <div class="td_1 ellipsis">${Translate.Title.TH.Select[UserLag.language]}</div>
@@ -85,60 +83,60 @@ function getReports(offset){
                                         </div>
                                             ${header}
                                         </div>
-                                        ${message.footer("report_player" , offset)}
+                                        ${message.footer("report_player", offset)}
                                     </div>`;
-                    $(".box_content").replaceWith(output);
-                
-                    
-                }
-                
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
+        $(".box_content").replaceWith(output);
 
-            }
-        });
+
+      }
+
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+
+    }
+  });
 }
 
-function getSpyReports(offset){
-    
-    if(offset  === undefined){
-            
-            offset = 0;
-            
-        }
-    return $.ajax({
-        
-        
-            url: "api/battelReport.php",
-            data: {
-                get_spy_report:true , 
-                offset: offset,
-                id_player :ID_PLAYER,
-                token     :Elkaisar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-            
-            },
-            success: function (data, textStatus, jqXHR) {
-                
-                if(isJson(data)){
-                    var reports = JSON.parse(data);
-                }else {
-                    alert(data);
-                }
-                
-                if(reports){
-                    
-                    var header = "";
-                    for(var iii = 0 ; iii <10 ; iii++){
-                        if(reports[iii]){
-                            var seen = "";
-                            if(Number(reports[iii].id_player ) === Number(Elkaisar.DPlayer.Player.id_player)){
-                                seen = Number(reports[iii].seen) === 0 ? "not-seen" : "";
-                            }
-                            header += `<div class="tr  ${seen}" id_report="${reports[iii]["id_report"]}"  id_msg="${reports[iii]["id_report"]}" 
-                                            table="spy_report" db_offset="${parseInt(offset)+iii}" data-x-coord="${reports[iii].x}" 
+function getSpyReports(offset) {
+
+  if (offset === undefined) {
+
+    offset = 0;
+
+  }
+  return $.ajax({
+
+
+    url: "api/battelReport.php",
+    data: {
+      get_spy_report: true,
+      offset: offset,
+      id_player: ID_PLAYER,
+      token: Elkaisar.Config.OuthToken
+    },
+    type: 'GET',
+    beforeSend: function (xhr) {
+
+    },
+    success: function (data, textStatus, jqXHR) {
+
+      if (isJson(data)) {
+        var reports = JSON.parse(data);
+      } else {
+        Elkaisar.LBase.Error(data);
+      }
+
+      if (reports) {
+
+        var header = "";
+        for (var iii = 0; iii < 10; iii++) {
+          if (reports[iii]) {
+            var seen = "";
+            if (Number(reports[iii].id_player) === Number(Elkaisar.DPlayer.Player.id_player)) {
+              seen = Number(reports[iii].seen) === 0 ? "not-seen" : "";
+            }
+            header += `<div class="tr  ${seen}" id_report="${reports[iii]["id_report"]}"  id_msg="${reports[iii]["id_report"]}" 
+                                            table="spy_report" db_offset="${parseInt(offset) + iii}" data-x-coord="${reports[iii].x}" 
                                             data-y-coord="${reports[iii].y}" data-time-stamp="${reports[iii].time_stamp}" 
                                             data-id-player = "${reports[iii].id_player}"
                                             data-report-for="${reports[iii].type}"  data-spy-for="${reports[iii].spy_for}" data-seen="${reports[iii].seen}">
@@ -146,15 +144,15 @@ function getSpyReports(offset){
                                                 <input name="msg_sel" id="check_${iii}" class="msg-action" type="checkbox" style="display:none">
                                                 <label for="check_${iii}" class="checker"></label>
                                             </div>
-                                            <div class="td_3">${getSpyReportTitle(reports[iii]["t"] , reports[iii]["l"] , reports[iii]["x"] , reports[iii]["y"])}</div>
+                                            <div class="td_3">${getSpyReportTitle(reports[iii]["t"], reports[iii]["l"], reports[iii]["x"], reports[iii]["y"])}</div>
                                             <div class="td_5">${reports[iii]["time_stamp"]}</div>
                                             <div class="td_6"><div class="full-btn full-btn-3x show_spy_report" data-id-victim=${Number(reports[iii].victim)}>${Translate.Button.MenuList.View[UserLag.language]}</div></div>
                                         </div>`;
-                        }else{
-                            header += `<div class="tr"></div>`;
-                        }
-                    }
-                    var output =    `<div class="box_content for_msg for_Br  for_SR">
+          } else {
+            header += `<div class="tr"></div>`;
+          }
+        }
+        var output = `<div class="box_content for_msg for_Br  for_SR">
                                         <div class="left-content full">
                                             <div class="th">
                                                 <div class="td_1 ellipsis">${Translate.Title.TH.Select[UserLag.language]}</div>
@@ -164,49 +162,49 @@ function getSpyReports(offset){
                                             </div>
                                             ${header}
                                         </div>
-                                        ${message.footer("spy_report" , offset)}
+                                        ${message.footer("spy_report", offset)}
                                     </div>`;
-                    $(".box_content").replaceWith(output);
-                
-                    
-                }
-                
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
+        $(".box_content").replaceWith(output);
 
-            }
-        });
+
+      }
+
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+
+    }
+  });
 }
 
 var message = {
-    
-    dialogBoxContent_battelReport: function(offset){
-         if(offset  === undefined){
-            
-            offset = 0;
-            
-        }
-        getReports(offset);
-        
-    },
-    dialogBoxContent_spyReport: function(offset){
-         if(offset  === undefined){
-            
-            offset = 0;
-            
-        }
-        getSpyReports(offset);
-        
-    },
-    dialogBoxcontent_msgIncome:function (offset){
-        if(offset  === undefined){
-            
-            offset = 0;
-            
-        }
-        
-        
-        var output =  ` <div class="box_content for_msg">
+
+  dialogBoxContent_battelReport: function (offset) {
+    if (offset === undefined) {
+
+      offset = 0;
+
+    }
+    getReports(offset);
+
+  },
+  dialogBoxContent_spyReport: function (offset) {
+    if (offset === undefined) {
+
+      offset = 0;
+
+    }
+    getSpyReports(offset);
+
+  },
+  dialogBoxcontent_msgIncome: function (offset) {
+    if (offset === undefined) {
+
+      offset = 0;
+
+    }
+
+
+    var output = ` <div class="box_content for_msg">
                             <div class="left-content full">
                                 <div class="th">
                                     <div class="td_1 ellipsis">${Translate.Title.TH.Select[UserLag.language]}</div>
@@ -216,29 +214,29 @@ var message = {
                                     <div class="td_6 ellipsis">${Translate.Button.General.Action[UserLag.language]}</div>
                             </div>
                         `;
-        $.ajax({
-            
-            url: "api/message.php",
-            data:{
-                get_msg_income : true,
-                offset         : offset ,
-                id_player      : ID_PLAYER,
-                token          : Elkaisar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-                
-            },
-            success: function (data, textStatus, jqXHR) {
-                console.log(data)
-                var json_data = JSON.parse(data);
-               
-                   
-                    for (var iii =0 ; iii < 10 ; iii++){
+    $.ajax({
 
-                        if(json_data[iii]){
-                            output += `<div class="tr ${parseInt(json_data[iii].seen) === 0 ? "not-seen" : "seen"} ${parseInt(json_data[iii].from_) === 1 ? "sys-msg" : ""} ${parseInt(json_data[iii].from_) === 2 ? "g-msg" : ""}"
-                                            data-seen="${json_data[iii].seen}" id_msg="${json_data[iii].id_msg}" table="msg_income" db_offset="${parseInt(offset)+iii}">
+      url: "api/message.php",
+      data: {
+        get_msg_income: true,
+        offset: offset,
+        id_player: ID_PLAYER,
+        token: Elkaisar.Config.OuthToken
+      },
+      type: 'GET',
+      beforeSend: function (xhr) {
+
+      },
+      success: function (data, textStatus, jqXHR) {
+        console.log(data)
+        var json_data = JSON.parse(data);
+
+
+        for (var iii = 0; iii < 10; iii++) {
+
+          if (json_data[iii]) {
+            output += `<div class="tr ${parseInt(json_data[iii].seen) === 0 ? "not-seen" : "seen"} ${parseInt(json_data[iii].from_) === 1 ? "sys-msg" : ""} ${parseInt(json_data[iii].from_) === 2 ? "g-msg" : ""}"
+                                            data-seen="${json_data[iii].seen}" id_msg="${json_data[iii].id_msg}" table="msg_income" db_offset="${parseInt(offset) + iii}">
                                         <div class="td_1">
                                             <input name="msg_sel" id="check_${iii}" class="msg-action" type="checkbox" style="display:none">
                                             <label for="check_${iii}" class="checker"></label>
@@ -251,53 +249,53 @@ var message = {
                                             <div class="full-btn full-btn-3x  show_msg_income ">${Translate.Button.MenuList.View[UserLag.language]}</div>
                                         </div>
                                     </div>`;
-                        }else{
-                            output += `<div class="tr"></div>`;
-                        }
-                    }
-                     output +=  `
+          } else {
+            output += `<div class="tr"></div>`;
+          }
+        }
+        output += `
 
                             </div>
-                            ${message.footer("msg_income" , offset)}
+                            ${message.footer("msg_income", offset)}
                         </div>`;
 
-                    $(".box_content").replaceWith(output);
-                
-                
-                
-                
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                
-            }
-            
-        });
-        
-        
-        
-                             
-          
-    },
-    
-    incomeMsgShow: function (id_msg , offset_parent){
-        
-        var msg_data;
-        $.ajax({
-            url: "api/message.php",
-            data:{
-                get_income_msg_in_detail: true,
-                id_message: id_msg,
-                id_player:ID_PLAYER,
-                token:Elkaisar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-                
-            },
-            success: function (data, textStatus, jqXHR) {
-                
-                msg_data = JSON.parse(data);
-                var single_meassage =`  <div class="box_content for_msg" id="msg_income_detail">
+        $(".box_content").replaceWith(output);
+
+
+
+
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
+
+    });
+
+
+
+
+
+  },
+
+  incomeMsgShow: function (id_msg, offset_parent) {
+
+    var msg_data;
+    $.ajax({
+      url: "api/message.php",
+      data: {
+        get_income_msg_in_detail: true,
+        id_message: id_msg,
+        id_player: ID_PLAYER,
+        token: Elkaisar.Config.OuthToken
+      },
+      type: 'GET',
+      beforeSend: function (xhr) {
+
+      },
+      success: function (data, textStatus, jqXHR) {
+
+        msg_data = JSON.parse(data);
+        var single_meassage = `  <div class="box_content for_msg" id="msg_income_detail">
                                             <div class="left-content full">
                                                 <div class="upper">
                                                     <ol>
@@ -335,22 +333,22 @@ var message = {
                                                 </div>  
                                             </div> 
                                         </div>`;
-                $(".box_content").replaceWith(single_meassage);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                
-            }
-        });
-        
-    },
-    dialogBoxcontent_msgDiff:function (offset){
-        if(offset  === undefined){
-            
-            offset = 0;
-            
-        }
-        
-        var output =  ` <div class="box_content for_msg ">
+        $(".box_content").replaceWith(single_meassage);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
+    });
+
+  },
+  dialogBoxcontent_msgDiff: function (offset) {
+    if (offset === undefined) {
+
+      offset = 0;
+
+    }
+
+    var output = ` <div class="box_content for_msg ">
                             <div class="left-content full">
                                 <div class="th">
                                     <div class="td_1 ellipsis">${Translate.Title.TH.Select[UserLag.language]}</div>
@@ -359,29 +357,29 @@ var message = {
                                     <div class="td_5 ellipsis">${Translate.Title.TH.TimeOfreceipt[UserLag.language]}</div>
                                     <div class="td_6 ellipsis">${Translate.Button.General.Action[UserLag.language]}</div>
                                 </div>`;
-        $.ajax({
-            
-            url: "api/message.php",
-            data:{
-                get_msg_diff: true,
-                offset: offset || 0,
-                id_player:ID_PLAYER,
-                token:Elkaisar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-                
-            },
-            success: function (data, textStatus, jqXHR) {
-                
-                var json_data = JSON.parse(data);
-              
-                    for (var iii =0 ; iii < 10 ; iii++){
-                    
-                        if(json_data[iii]){
-                            output += `<div class="tr ${parseInt(json_data[iii].seen) === 0 ? "not-seen" : "seen"}"
+    $.ajax({
+
+      url: "api/message.php",
+      data: {
+        get_msg_diff: true,
+        offset: offset || 0,
+        id_player: ID_PLAYER,
+        token: Elkaisar.Config.OuthToken
+      },
+      type: 'GET',
+      beforeSend: function (xhr) {
+
+      },
+      success: function (data, textStatus, jqXHR) {
+
+        var json_data = JSON.parse(data);
+
+        for (var iii = 0; iii < 10; iii++) {
+
+          if (json_data[iii]) {
+            output += `<div class="tr ${parseInt(json_data[iii].seen) === 0 ? "not-seen" : "seen"}"
                                             data-seen="${json_data[iii].seen}" id_msg="${json_data[iii].id_msg}" data-seen="${json_data[iii].seen}"
-                                            table="msg_diff" db_offset="${parseInt(offset)+iii}">
+                                            table="msg_diff" db_offset="${parseInt(offset) + iii}">
                                         <div class="td_1">
                                             <input name="msg_sel" id="check_${iii}" class="msg-action" type="checkbox" style="display:none">
                                             <label for="check_${iii}" class="checker"></label>
@@ -391,47 +389,47 @@ var message = {
                                         <div class="td_5">${json_data[iii].time_stamp}</div>
                                         <div class="td_6"><div class="full-btn full-btn-3x  show_msg_income ">${Translate.Button.MenuList.View[UserLag.language]}</div></div>
                                     </div>`;
-                        }else{
-                            output += `<div class="tr"></div>`;
-                        }
-                    }
-                     output +=  `
+          } else {
+            output += `<div class="tr"></div>`;
+          }
+        }
+        output += `
 
                                 </div>
-                                ${message.footer("msg_diff" , offset)}
+                                ${message.footer("msg_diff", offset)}
                             </div>`;
-                     $(".box_content").replaceWith(output);
-               
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                
-            }
-            
-        });
-        
-        
-        
-                             
-          
-    },
-    diffMsgShow: function (id_msg , offset_parent){
-        var msg_data;
-        $.ajax({
-            url: "api/message.php",
-            data:{
-                get_diff_msg_in_detail: true,
-                id_message: id_msg,
-                id_player:ID_PLAYER,
-                    token:Elkaisar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-                
-            },
-            success: function (data, textStatus, jqXHR) {
-              
-                msg_data = JSON.parse(data);
-                var single_meassage =`  <div id="msg_diff_detail" class="box_content for_msg">
+        $(".box_content").replaceWith(output);
+
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
+
+    });
+
+
+
+
+
+  },
+  diffMsgShow: function (id_msg, offset_parent) {
+    var msg_data;
+    $.ajax({
+      url: "api/message.php",
+      data: {
+        get_diff_msg_in_detail: true,
+        id_message: id_msg,
+        id_player: ID_PLAYER,
+        token: Elkaisar.Config.OuthToken
+      },
+      type: 'GET',
+      beforeSend: function (xhr) {
+
+      },
+      success: function (data, textStatus, jqXHR) {
+
+        msg_data = JSON.parse(data);
+        var single_meassage = `  <div id="msg_diff_detail" class="box_content for_msg">
                                             <div class="left-content full">
                                                 <div class="upper">
                                                     <ol>
@@ -469,24 +467,24 @@ var message = {
                                                 </div>  
                                             </div> 
                                         </div>`;
-                $(".box_content").replaceWith(single_meassage);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                
-            }
-        });
-        
-        
-        
-    },
-    dialogBoxcontent_msgOutcome:function (offset){
-        
-        if(offset  === undefined){
-            
-            offset = 0;
-            
-        }
-        var output =  ` <div class="box_content for_msg ">
+        $(".box_content").replaceWith(single_meassage);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
+    });
+
+
+
+  },
+  dialogBoxcontent_msgOutcome: function (offset) {
+
+    if (offset === undefined) {
+
+      offset = 0;
+
+    }
+    var output = ` <div class="box_content for_msg ">
                             <div class="left-content full">
                                 <div class="th">
                                     <div class="td_1 ellipsis">${Translate.Title.TH.Select[UserLag.language]}</div>
@@ -495,27 +493,27 @@ var message = {
                                     <div class="td_5 ellipsis">${Translate.Title.TH.TimeOfreceipt[UserLag.language]}</div>
                                     <div class="td_6 ellipsis">${Translate.Button.General.Action[UserLag.language]}</div>
                                 </div>`;
-        $.ajax({
-            
-            url: "api/message.php",
-            data:{
-                get_msg_outcome: true,
-                offset: offset || 0,
-                id_player:ID_PLAYER,
-                token:Elkaisar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-                
-            },
-            success: function (data, textStatus, jqXHR) {
-                
-                var json_data = JSON.parse(data);
-                if(json_data.length >0){
-                    for (var iii =0 ; iii < 10 ; iii++){
-                    
-                        if(json_data[iii]){
-                            output += `<div class="tr" id_msg="${json_data[iii].id_msg}" data-seen="${json_data[iii].seen}" table="msg_out" db_offset="${parseInt(offset)+iii}">
+    $.ajax({
+
+      url: "api/message.php",
+      data: {
+        get_msg_outcome: true,
+        offset: offset || 0,
+        id_player: ID_PLAYER,
+        token: Elkaisar.Config.OuthToken
+      },
+      type: 'GET',
+      beforeSend: function (xhr) {
+
+      },
+      success: function (data, textStatus, jqXHR) {
+
+        var json_data = JSON.parse(data);
+        if (json_data.length > 0) {
+          for (var iii = 0; iii < 10; iii++) {
+
+            if (json_data[iii]) {
+              output += `<div class="tr" id_msg="${json_data[iii].id_msg}" data-seen="${json_data[iii].seen}" table="msg_out" db_offset="${parseInt(offset) + iii}">
                                         <div class="td_1">
                                             <input name="msg_sel" id="check_${iii}" class="msg-action" type="checkbox" style="display:none">
                                             <label for="check_${iii}" class="checker"></label>
@@ -525,49 +523,49 @@ var message = {
                                         <div class="td_5">${json_data[iii].time_stamp}</div>
                                         <div class="td_6"><div class="full-btn full-btn-3x  show_msg_income ">${Translate.Button.MenuList.View[UserLag.language]}</div></div>
                                     </div>`;
-                        }else{
-                            output += `<div class="tr"></div>`;
-                        }
-                    }
-                    output +=  `
+            } else {
+              output += `<div class="tr"></div>`;
+            }
+          }
+          output += `
 
                                </div>
-                               ${message.footer("msg_out" , offset)}
+                               ${message.footer("msg_out", offset)}
                            </div>`;
-                    $(".box_content").replaceWith(output);
-                    }
-                 
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                
-            }
-            
-        });
-        
-        
-        
-                             
-         
-    },
-    
-    outcomeMsgShow: function (id_msg , offset_parent){
-        var msg_data;
-        $.ajax({
-            url: "api/message.php",
-            data:{
-                get_out_msg_in_detail: true,
-                id_message: id_msg,
-                id_player:ID_PLAYER,
-                token:Elkaisar.Config.OuthToken
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
-                
-            },
-            success: function (data, textStatus, jqXHR) {
-                
-                msg_data = JSON.parse(data);
-                var single_meassage =`  <div class="box_content for_msg">
+          $(".box_content").replaceWith(output);
+        }
+
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
+
+    });
+
+
+
+
+
+  },
+
+  outcomeMsgShow: function (id_msg, offset_parent) {
+    var msg_data;
+    $.ajax({
+      url: "api/message.php",
+      data: {
+        get_out_msg_in_detail: true,
+        id_message: id_msg,
+        id_player: ID_PLAYER,
+        token: Elkaisar.Config.OuthToken
+      },
+      type: 'GET',
+      beforeSend: function (xhr) {
+
+      },
+      success: function (data, textStatus, jqXHR) {
+
+        msg_data = JSON.parse(data);
+        var single_meassage = `  <div class="box_content for_msg">
                                             <div class="left-content full">
                                                 <div class="upper">
                                                     <ol>
@@ -605,25 +603,25 @@ var message = {
                                                 </div>  
                                             </div> 
                                         </div>`;
-                
-                $(".box_content").replaceWith(single_meassage);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                
-            }
-        });
-        
-        
-        
-    },
-     /*
-      *  
-      *  
-      */
-    dialogBoxcontent_msgWrite: function (to , subject ){
-        var msg_data;
-        
-        var single_meassage =`  <div class="box_content for_msg">
+
+        $(".box_content").replaceWith(single_meassage);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
+    });
+
+
+
+  },
+  /*
+   *  
+   *  
+   */
+  dialogBoxcontent_msgWrite: function (to, subject) {
+    var msg_data;
+
+    var single_meassage = `  <div class="box_content for_msg">
                                     <div class="left-content full">
                                         <div class="upper">
                                             <ol>
@@ -631,14 +629,14 @@ var message = {
                                                      <span>: المرسل </span><span> ${player.name}</span> 
                                                 </li>
                                                 <li>
-                                                      <span>  : الموضوع  </span><input type="text" class="input" value="${subject|| ''}" style=" width: 76% ;" id="subject_to_mail"/>
+                                                      <span>  : الموضوع  </span><input type="text" class="input" value="${subject || ''}" style=" width: 76% ;" id="subject_to_mail"/>
                                                 </li>
                                                 <li>
                                                     <span> : المستقبل</span>
-                                                    <input type="text" class="input" value="${to? to.name : ''}" style=" width: 59%;" ${to ? (to.id === null ? "" : `id_player="${to.id}"` )  : ""} id="${to ? (to.id === null ? "" : "search_by_name" )  : "search_by_name"}" />
+                                                    <input type="text" class="input" value="${to ? to.name : ''}" style=" width: 59%;" ${to ? (to.id === null ? "" : `id_player="${to.id}"`) : ""} id="${to ? (to.id === null ? "" : "search_by_name") : "search_by_name"}" />
                                                 </li>
                                             </ol>
-                                            ${to ? ""   : ` <div id="search_result" class="search_res">
+                                            ${to ? "" : ` <div id="search_result" class="search_res">
                                                                 <ul>
 
                                                                 </ul>
@@ -660,7 +658,7 @@ var message = {
                                                     </button>
                                                 </li>
                                                 <li  style=" float: right; width: 85px; margin-right: 10px;">  
-                                                    <button class="full-btn full-btn-3x full" id="${to ? (to.id === null ? "send_mail_to_guild" : "send_mail_to" ) : "send_mail_to"}">
+                                                    <button class="full-btn full-btn-3x full" id="${to ? (to.id === null ? "send_mail_to_guild" : "send_mail_to") : "send_mail_to"}">
                                                         ارسال
                                                     </button>
                                                 </li>
@@ -669,11 +667,11 @@ var message = {
                                         </div>  
                                     </div> 
                                 </div>`;
-        return single_meassage;
-    },
-    footer: function (table , offset){
-        
-        var footer =`   <div class="right-content-footer" msg_for="${table}">  
+    return single_meassage;
+  },
+  footer: function (table, offset) {
+
+    var footer = `   <div class="right-content-footer" msg_for="${table}">  
                             <div class="buttons">  
                                 <ul style="overflow: auto; height: 100%;">  
                                     <li>  
@@ -694,386 +692,384 @@ var message = {
                                             ${Translate.Button.MenuList.DeleteAll[UserLag.language]}   
                                         </button> 
                                     </li>
-                                    ${
-                                    table !== undefined ? 
-                                        `<li>
+                                    ${table !== undefined ?
+        `<li>
                                             <div id="move_msg_left" msg_type="${table}"  class="left pull-L move_msg left-btn"> </div>
-                                            <h1 class="pull-L" id="msg-navigator"> <span>${getArabicNumbers(parseInt(offset)/10+1)}</span>/${getArabicNumbers(Math.ceil(MSG_NUM[table]/10) || 0)}</h1>
+                                            <h1 class="pull-L" id="msg-navigator"> <span>${getArabicNumbers(parseInt(offset) / 10 + 1)}</span>/${getArabicNumbers(Math.ceil(MSG_NUM[table] / 10) || 0)}</h1>
                                             <div id="move_msg_right" msg_type="${table}" class="right pull-R move_msg right-btn" ></div>
                                         </li>` : ""
-                                    
-                                    }
+
+      }
                                 </ul>  
                             </div>  
 
                         </div> `;
-        return footer;
-    }
+    return footer;
+  }
 };
 
 
 
 
 
-$(document).on("click" , ".show_msg_income" , function (){
-    
-    var id_msg = $(this).parents(".tr").attr("id_msg");
-    var table = $(this).parents(".tr").attr("table");
-    var seen = $(this).parents(".tr").attr("data-seen");
-    var offset = $(".for_msg  .tr:first").attr("db_offset");
-    if(table === "msg_diff"){
-        message.diffMsgShow(id_msg  , offset);
-        if(Number(seen) === 0){
-            PLAYER_NOTIF.msg_diff -- ;
-        }
-    }else if(table === "msg_income"){
-        message.incomeMsgShow(id_msg , offset);
-        if(Number(seen) === 0){
-            PLAYER_NOTIF.msg_in -- ;
-        }
-    }else if(table === "msg_out"){
-        message.outcomeMsgShow(id_msg , offset);
+$(document).on("click", ".show_msg_income", function () {
+
+  var id_msg = $(this).parents(".tr").attr("id_msg");
+  var table = $(this).parents(".tr").attr("table");
+  var seen = $(this).parents(".tr").attr("data-seen");
+  var offset = $(".for_msg  .tr:first").attr("db_offset");
+  if (table === "msg_diff") {
+    message.diffMsgShow(id_msg, offset);
+    if (Number(seen) === 0) {
+      Elkaisar.DPlayer.Notif.msg_diff--;
     }
-    Fixed.refreshPlayerNotif();
+  } else if (table === "msg_income") {
+    message.incomeMsgShow(id_msg, offset);
+    if (Number(seen) === 0) {
+      Elkaisar.DPlayer.Notif.msg_in--;
+    }
+  } else if (table === "msg_out") {
+    message.outcomeMsgShow(id_msg, offset);
+  }
+  Fixed.refreshPlayerNotif();
 });
 
 
 /*                     SELECT ALL MESSAGEES             */
-$(document).on("click" , "#select_msg_all" , function (){
+$(document).on("click", "#select_msg_all", function () {
 
-    $(".msg-action").prop("checked" , true);
+  $(".msg-action").prop("checked", true);
 
 });
 
-$(document).on("click" , "#del_selected" , function (){
-    
-    var total_msg = {
-        table:null,
-        id_msgs:[]
-    };
-    
-    $(".msg-action").each(function (){
-        
-        if($(this).prop("checked") === true){
-            var id_msg = $(this).parents(".tr").attr("id_msg");
-            var table = $(this).parents(".tr").attr("table");
-            
-            total_msg.id_msgs.push(id_msg);
-            total_msg.table = table;
-        }
-        
-    });
-    
-    if(total_msg.id_msgs.length < 1){
-        return ;
+$(document).on("click", "#del_selected", function () {
+
+  var total_msg = {
+    table: null,
+    id_msgs: []
+  };
+
+  $(".msg-action").each(function () {
+
+    if ($(this).prop("checked") === true) {
+      var id_msg = $(this).parents(".tr").attr("id_msg");
+      var table = $(this).parents(".tr").attr("table");
+
+      total_msg.id_msgs.push(id_msg);
+      total_msg.table = table;
     }
-    
-    $.ajax({
-        
-        url: "api/message.php",
-        data: {
-            delete_msg: true,
-            msgs: JSON.stringify(total_msg),
-            id_player:ID_PLAYER,
-            token:Elkaisar.Config.OuthTokensar.Config.OuthToken
-        },
-        type: 'POST',
-        beforeSend: function (xhr) {
-        },
-        success: function (data, textStatus, jqXHR) {
-            
-            if(parseInt(data) > 0){
-                
-                if(total_msg.table === "msg_income"){
-                    message.dialogBoxcontent_msgIncome();
-                }else if(total_msg.table === "msg_diff"){
-                    message.dialogBoxcontent_msgDiff();
-                }else if(total_msg.table === "msg_out"){
-                    message.dialogBoxcontent_msgOutcome();
-                }else if(total_msg.table === "report_player"){
-                    message.dialogBoxContent_battelReport();
-                }else if(total_msg.table === "report_player"){
-                    message.dialogBoxContent_spyReport();
-                }
-                Player_profile.refreshPlayerNotif();
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert(errorThrown);
+
+  });
+
+  if (total_msg.id_msgs.length < 1) {
+    return;
+  }
+
+  $.ajax({
+
+    url: "api/message.php",
+    data: {
+      delete_msg: true,
+      msgs: JSON.stringify(total_msg),
+      id_player: ID_PLAYER,
+      token: Elkaisar.Config.OuthTokensar.Config.OuthToken
+    },
+    type: 'POST',
+    beforeSend: function (xhr) {
+    },
+    success: function (data, textStatus, jqXHR) {
+
+      if (parseInt(data) > 0) {
+
+        if (total_msg.table === "msg_income") {
+          message.dialogBoxcontent_msgIncome();
+        } else if (total_msg.table === "msg_diff") {
+          message.dialogBoxcontent_msgDiff();
+        } else if (total_msg.table === "msg_out") {
+          message.dialogBoxcontent_msgOutcome();
+        } else if (total_msg.table === "report_player") {
+          message.dialogBoxContent_battelReport();
+        } else if (total_msg.table === "report_player") {
+          message.dialogBoxContent_spyReport();
         }
-        
-    });
-    
-});
-
-
-$(document).on("click" , "#delete-all button" , function (){
-    
-    var total_msg = {
-        table:null,
-        id_msgs:[]
-    };
-    total_msg.table = $(".right-content-footer").attr("msg_for")  
-    
-    alert_box.confirmDialog("تأكيد حذف جميع الرسائل!..", function (){
-        $.ajax({
-
-            url: "api/message.php",
-            data: {
-                DELETE_ALL_UNREAD: true,
-                msgs: JSON.stringify(total_msg),
-                id_player:ID_PLAYER,
-                token:Elkaisar.Config.OuthTokensar.Config.OuthToken
-            },
-            type: 'POST',
-            beforeSend: function (xhr) {
-            },
-            success: function (data, textStatus, jqXHR) {
-
-               
-
-                if(total_msg.table === "msg_income"){
-                    message.dialogBoxcontent_msgIncome();
-                }else if(total_msg.table === "msg_diff"){
-                    message.dialogBoxcontent_msgDiff();
-                }else if(total_msg.table === "msg_out"){
-                    message.dialogBoxcontent_msgOutcome();
-                }else if(total_msg.table === "report_player"){
-                    message.dialogBoxContent_battelReport();
-                }else if(total_msg.table === "report_player"){
-                    message.dialogBoxContent_spyReport();
-                }
-                
-                Player_profile.refreshPlayerNotif();
-
-                
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert(errorThrown);
-            }
-
-        });
-    });
-    
-});
-
-
-function searchByName(segmant , condtion)
-{
-    
-    
-    if(condtion  === undefined){
-        
-        var data_send = {
-                search_by_name: true,
-                name: segmant,
-                id_player:ID_PLAYER,
-                token:Elkaisar.Config.OuthToken
-            };
-        
-    }else{
-        
-        var data_send = {
-                search_by_name: true,
-                name: segmant,
-                id_guild_no: false,
-                id_guild: Elkaisar.DPlayer.Player.id_guild,
-                id_player:ID_PLAYER,
-                token:Elkaisar.Config.OuthToken
-                
-            };
-        
+        Player_profile.refreshPlayerNotif();
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      Elkaisar.LBase.Error(errorThrown);
     }
-    
-    $.ajax({
-        
-            url: "api/player.php",
-            data:data_send,
-            type: 'GET',
-            beforeSend: function (xhr) {
 
-            },
-            success: function (data, textStatus, jqXHR) {
-                
-                var json_data = JSON.parse(data);
-                var total = "";
-                for(var iii =0 ; iii < json_data.length ; iii++){
-                    if(json_data[iii]){
-                        total += ` <li id_player="${json_data[iii].id_player}" data-player-name="${json_data[iii].name}"> 
+  });
+
+});
+
+
+$(document).on("click", "#delete-all button", function () {
+
+  var total_msg = {
+    table: null,
+    id_msgs: []
+  };
+  total_msg.table = $(".right-content-footer").attr("msg_for")
+
+  alert_box.confirmDialog("تأكيد حذف جميع الرسائل!..", function () {
+    $.ajax({
+
+      url: "api/message.php",
+      data: {
+        DELETE_ALL_UNREAD: true,
+        msgs: JSON.stringify(total_msg),
+        id_player: ID_PLAYER,
+        token: Elkaisar.Config.OuthTokensar.Config.OuthToken
+      },
+      type: 'POST',
+      beforeSend: function (xhr) {
+      },
+      success: function (data, textStatus, jqXHR) {
+
+
+
+        if (total_msg.table === "msg_income") {
+          message.dialogBoxcontent_msgIncome();
+        } else if (total_msg.table === "msg_diff") {
+          message.dialogBoxcontent_msgDiff();
+        } else if (total_msg.table === "msg_out") {
+          message.dialogBoxcontent_msgOutcome();
+        } else if (total_msg.table === "report_player") {
+          message.dialogBoxContent_battelReport();
+        } else if (total_msg.table === "report_player") {
+          message.dialogBoxContent_spyReport();
+        }
+
+        Player_profile.refreshPlayerNotif();
+
+
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        Elkaisar.LBase.Error(errorThrown);
+      }
+
+    });
+  });
+
+});
+
+
+function searchByName(segmant, condtion) {
+
+
+  if (condtion === undefined) {
+
+    var data_send = {
+      search_by_name: true,
+      name: segmant,
+      id_player: ID_PLAYER,
+      token: Elkaisar.Config.OuthToken
+    };
+
+  } else {
+
+    var data_send = {
+      search_by_name: true,
+      name: segmant,
+      id_guild_no: false,
+      id_guild: Elkaisar.DPlayer.Player.id_guild,
+      id_player: ID_PLAYER,
+      token: Elkaisar.Config.OuthToken
+
+    };
+
+  }
+
+  $.ajax({
+
+    url: "api/player.php",
+    data: data_send,
+    type: 'GET',
+    beforeSend: function (xhr) {
+
+    },
+    success: function (data, textStatus, jqXHR) {
+
+      var json_data = JSON.parse(data);
+      var total = "";
+      for (var iii = 0; iii < json_data.length; iii++) {
+        if (json_data[iii]) {
+          total += ` <li id_player="${json_data[iii].id_player}" data-player-name="${json_data[iii].name}"> 
                                         <div class="pull-L">
                                             <img src="${Elkaisar.BaseData.HeroAvatar[json_data[iii].avatar]}"/>
                                         </div>
                                         <h1 class="pull-L">${json_data[iii].name}</h1>
                                         <h2 class="pull-L">(${Elkaisar.BaseData.Promotion[json_data[iii].porm].Title})</h2>
                                     </li>`;
-                    }
-                }
-                $("#search_result ").show();
-                $("#search_result ul").html(total);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
+        }
+      }
+      $("#search_result ").show();
+      $("#search_result ul").html(total);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
 
-            }
-        });
-    
+    }
+  });
+
 }
 
 
 
-$(document).on("keyup" , "#search_by_name" , function (){
-   
-    var segmant = $(this).val();
-    
-    if($.trim(segmant) !== ""){
-        
-        searchByName(segmant);
-         
-    }else{
-        $("#search_result ul").empty();
-        $("#search_result ").hide();
-    }
- 
-    
+$(document).on("keyup", "#search_by_name", function () {
+
+  var segmant = $(this).val();
+
+  if ($.trim(segmant) !== "") {
+
+    searchByName(segmant);
+
+  } else {
+    $("#search_result ul").empty();
+    $("#search_result ").hide();
+  }
+
+
 });
 
 
-$(document).on("click" , "#search_result ul li" , function (){
-    
-    var id_player = $(this).attr("id_player");
-    var p_name = $(this).attr("data-player-name");
-    $("#search_by_name").attr("id_player" , id_player); 
-    $("#search_by_name").val(p_name);
-    $("#search_by_name_forGuild").attr("id_player" , id_player); 
-    $("#SearchByNameForTeam").attr("data-id-player" , id_player); 
-    $("#search_by_name_forGuild").val(p_name);
-    $("#search_result").hide();
-    
+$(document).on("click", "#search_result ul li", function () {
+
+  var id_player = $(this).attr("id_player");
+  var p_name = $(this).attr("data-player-name");
+  $("#search_by_name").attr("id_player", id_player);
+  $("#search_by_name").val(p_name);
+  $("#search_by_name_forGuild").attr("id_player", id_player);
+  $("#SearchByNameForTeam").attr("data-id-player", id_player);
+  $("#search_by_name_forGuild").val(p_name);
+  $("#search_result").hide();
+
 });
 
 
-$(document).on("click" , "#send_mail_to" , function (){
-    
-    var id_to = $("#search_by_name").attr("id_player");
-    var subject = $("#subject_to_mail").val();
-    var body = $(".msg_body textarea").val();
-   
-    
-    if(!id_to){
-        alert_box.confirmMessage("لا يوجد لاعب بهذا الاسم الرجاء التاكد من اسم اللاعب");
-        return ;
-    }else if($.trim(subject) === ""){
-       alert_box.confirmMessage("يجب ان تكون الرسالة بعنوان اكتب اسم موضوع الرسالة");
-        return ;
-    }else if($.trim(body) === ""){
-        alert_box.confirmMessage("لا يمكنك ارسال رسالة فارغة");
-        return ;
-    }else{
-        
-        $.ajax({
-           
-            url: "api/message.php",
-            data: {
-                send_mail_to: true,
-                id_to: id_to, 
-                id_from: ID_PLAYER,
-                body:body,
-                subject: subject,
-                token:Elkaisar.Config.OuthToken
-            },
-            type: 'POST',
-            beforeSend: function (xhr) {
-                
-            },
-            success: function (data, textStatus, jqXHR) {
-                
-                if(data === 'done'){
-                    $("#search_by_name").val("");
-                    $("#subject_to_mail").val("");
-                    $(".msg_body textarea").val("");
-                    
-                }else{
-                    alert(data);
-                }
-                
-                
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                
-            }
-            
-        });
-        
-        
-    }
-    
-});
+$(document).on("click", "#send_mail_to", function () {
+
+  var id_to = $("#search_by_name").attr("id_player");
+  var subject = $("#subject_to_mail").val();
+  var body = $(".msg_body textarea").val();
 
 
+  if (!id_to) {
+    alert_box.confirmMessage("لا يوجد لاعب بهذا الاسم الرجاء التاكد من اسم اللاعب");
+    return;
+  } else if ($.trim(subject) === "") {
+    alert_box.confirmMessage("يجب ان تكون الرسالة بعنوان اكتب اسم موضوع الرسالة");
+    return;
+  } else if ($.trim(body) === "") {
+    alert_box.confirmMessage("لا يمكنك ارسال رسالة فارغة");
+    return;
+  } else {
 
-$(document).on("click" , ".move_msg" , function (){
-    
-    var msg_for = $(this).parents(".right-content-footer").attr("msg_for");
-    
-    var offset = 0;
-    if($(this).attr("id") === "move_msg_left"){
-        
-        offset  = $(".for_msg .left-content .tr:first").attr("db_offset") - 10 >=0 ? $(".for_msg .left-content .tr:first").attr("db_offset") - 10  : 0;
-        
-    }else if($(this).attr("id") === "move_msg_right"){
-        
-        offset  = parseInt($(".for_msg .left-content .tr:last").attr("db_offset") )+ 1 || 0 ;
-        
-    }
-        
-    
-   
-    
-    switch (msg_for){
-        
-        case "msg_income": 
-            
-            message.dialogBoxcontent_msgIncome(parseInt(offset));
-            
-            break;
-        case "report_player": 
-            
-            message.dialogBoxContent_battelReport(parseInt(offset));
-            
-            break;
-        case "msg_diff": 
-            
-            message.dialogBoxcontent_msgDiff(parseInt(offset));
-            
-            break;
-        
-        case "msg_out": 
-            
-            message.dialogBoxcontent_msgOutcome(parseInt(offset));
-            
-            break;
-            
-        case "spy_report": 
-            
-            message.dialogBoxContent_spyReport(parseInt(offset));
-            
-            break;
-        
-        
-    }
-    
-    
+    $.ajax({
+
+      url: "api/message.php",
+      data: {
+        send_mail_to: true,
+        id_to: id_to,
+        id_from: ID_PLAYER,
+        body: body,
+        subject: subject,
+        token: Elkaisar.Config.OuthToken
+      },
+      type: 'POST',
+      beforeSend: function (xhr) {
+
+      },
+      success: function (data, textStatus, jqXHR) {
+
+        if (data === 'done') {
+          $("#search_by_name").val("");
+          $("#subject_to_mail").val("");
+          $(".msg_body textarea").val("");
+
+        } else {
+          Elkaisar.LBase.Error(data);
+        }
+
+
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
+
+    });
+
+
+  }
+
 });
 
 
 
+$(document).on("click", ".move_msg", function () {
+
+  var msg_for = $(this).parents(".right-content-footer").attr("msg_for");
+
+  var offset = 0;
+  if ($(this).attr("id") === "move_msg_left") {
+
+    offset = $(".for_msg .left-content .tr:first").attr("db_offset") - 10 >= 0 ? $(".for_msg .left-content .tr:first").attr("db_offset") - 10 : 0;
+
+  } else if ($(this).attr("id") === "move_msg_right") {
+
+    offset = parseInt($(".for_msg .left-content .tr:last").attr("db_offset")) + 1 || 0;
+
+  }
 
 
 
-$(document).on("click" , ".show-player-profile" , function (){
-    
-    var id_player = $(this).attr("data-id-player");
-    showPlayerProfile(id_player);
-    
+
+  switch (msg_for) {
+
+    case "msg_income":
+
+      message.dialogBoxcontent_msgIncome(parseInt(offset));
+
+      break;
+    case "report_player":
+
+      message.dialogBoxContent_battelReport(parseInt(offset));
+
+      break;
+    case "msg_diff":
+
+      message.dialogBoxcontent_msgDiff(parseInt(offset));
+
+      break;
+
+    case "msg_out":
+
+      message.dialogBoxcontent_msgOutcome(parseInt(offset));
+
+      break;
+
+    case "spy_report":
+
+      message.dialogBoxContent_spyReport(parseInt(offset));
+
+      break;
+
+
+  }
+
+
+});
+
+
+
+
+
+
+$(document).on("click", ".show-player-profile", function () {
+
+  var id_player = $(this).attr("data-id-player");
+  showPlayerProfile(id_player);
+
 });
 
 
@@ -1082,21 +1078,20 @@ $(document).on("click" , ".show-player-profile" , function (){
  * @param {type} id_player
  * @returns {undefined}
  */
-function showPlayerProfile(id_player)
-{
-    
-    $.ajax({
-        
-        url: "api/player.php",
-        data:{
-            
-            GET_PLAYER_DETAIL: true,
-            id_player: id_player
-            
-        },
-        type: 'GET',
-        beforeSend: function (xhr) {
-             var player_review = `<div id="over_lay">
+function showPlayerProfile(id_player) {
+
+  $.ajax({
+
+    url: "api/player.php",
+    data: {
+
+      GET_PLAYER_DETAIL: true,
+      id_player: id_player
+
+    },
+    type: 'GET',
+    beforeSend: function (xhr) {
+      var player_review = `<div id="over_lay">
                                     <div id="select_from">
                                         <div class="head_bar">
                                             <img src="images/style/head_bar.png" class="banner">
@@ -1202,207 +1197,207 @@ function showPlayerProfile(id_player)
                                     </div>
                                 </div>`;
 
-            $("body").append(player_review);
-        },
-        success: function (data, textStatus, jqXHR) {
-            
-            var json_data = JSON.parse(data);
-            
-           $("#A-A-P-image").attr("src" , Elkaisar.BaseData.HeroAvatar[json_data.avatar] );
-           $("#A-A-P-guild").html(json_data.guild || "----");
-           $("#A-A-P-promotion").html(Elkaisar.BaseData.Promotion[json_data.porm].Title);
-           $("#A-A-P-rank").html(getArabicNumbers(json_data.rank));
-           $("#A-A-P-name").html(json_data.name);
-           $("#A-A-P-prestige").html(getArabicNumbers(json_data.prestige));
-           $("#A-A-P-honor").html(getArabicNumbers(json_data.honor));
+      $("body").append(player_review);
+    },
+    success: function (data, textStatus, jqXHR) {
 
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            
-        }
-        
-    });
-    
-    
-    
-    
+      var json_data = JSON.parse(data);
+
+      $("#A-A-P-image").attr("src", Elkaisar.BaseData.HeroAvatar[json_data.avatar]);
+      $("#A-A-P-guild").html(json_data.guild || "----");
+      $("#A-A-P-promotion").html(Elkaisar.BaseData.Promotion[json_data.porm].Title);
+      $("#A-A-P-rank").html(getArabicNumbers(json_data.rank));
+      $("#A-A-P-name").html(json_data.name);
+      $("#A-A-P-prestige").html(getArabicNumbers(json_data.prestige));
+      $("#A-A-P-honor").html(getArabicNumbers(json_data.honor));
+
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+
+    }
+
+  });
+
+
+
+
 }
 
 
-$(document).on("click" , "#send-g-msg" , function (){
-    
-    
-        var dialog_box = menu_bar.dialogBox(
-            Translate.Title.MenuList.Mail[UserLag.language],
-            NavBar.Mail,
-            message.dialogBoxcontent_msgWrite(
-                    {name: Translate.Button.Chat.League[UserLag.language], id: null}
-                    ),
-            0);
-     
-        dialogBoxShow(dialog_box , function (){$("#dialg_box").attr("type" , "messages");});
-              
-    
-    
+$(document).on("click", "#send-g-msg", function () {
+
+
+  var dialog_box = menu_bar.dialogBox(
+    Translate.Title.MenuList.Mail[UserLag.language],
+    NavBar.Mail,
+    message.dialogBoxcontent_msgWrite(
+      { name: Translate.Button.Chat.League[UserLag.language], id: null }
+    ),
+    0);
+
+  dialogBoxShow(dialog_box, function () { $("#dialg_box").attr("type", "messages"); });
+
+
+
 });
 
-$(document).on("click" , "#send_mail_to_guild" , function (){
-    
-    
-    var subject = $("#subject_to_mail").val();
-    var body = $(".msg_body textarea").val();
-   
-    
-    if($.trim(subject) === ""){
-       alert_box.confirmMessage("يجب ان تكون الرسالة بعنوان اكتب اسم موضوع الرسالة");
-        return ;
-    }else if($.trim(body) === ""){
-        alert_box.confirmMessage("لا يمكنك ارسال رسالة فارغة");
-        return ;
-    }else{
-        
-        $.ajax({
-           
-            url: "api/message.php",
-            data: {
-                SEND_GUILD_MAIL: true, 
-                id_from: ID_PLAYER,
-                body:body,
-                subject: subject,
-                    token:Elkaisar.Config.OuthTokensar.Config.OuthToken
-            },
-            type: 'POST',
-            beforeSend: function (xhr) {
-                
-            },
-            success: function (data, textStatus, jqXHR) {
-                alert_box.succesMessage("تم ارسال الرسالة بنجاح");
-                $("#search_by_name").val("");
-                $("#subject_to_mail").val("");
-                $(".msg_body textarea").val("");
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                
-            }
-            
-        });
-        
-    }
-    
+$(document).on("click", "#send_mail_to_guild", function () {
+
+
+  var subject = $("#subject_to_mail").val();
+  var body = $(".msg_body textarea").val();
+
+
+  if ($.trim(subject) === "") {
+    alert_box.confirmMessage("يجب ان تكون الرسالة بعنوان اكتب اسم موضوع الرسالة");
+    return;
+  } else if ($.trim(body) === "") {
+    alert_box.confirmMessage("لا يمكنك ارسال رسالة فارغة");
+    return;
+  } else {
+
+    $.ajax({
+
+      url: "api/message.php",
+      data: {
+        SEND_GUILD_MAIL: true,
+        id_from: ID_PLAYER,
+        body: body,
+        subject: subject,
+        token: Elkaisar.Config.OuthTokensar.Config.OuthToken
+      },
+      type: 'POST',
+      beforeSend: function (xhr) {
+
+      },
+      success: function (data, textStatus, jqXHR) {
+        alert_box.succesMessage("تم ارسال الرسالة بنجاح");
+        $("#search_by_name").val("");
+        $("#subject_to_mail").val("");
+        $(".msg_body textarea").val("");
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+
+      }
+
+    });
+
+  }
+
 });
 
 
 /*<button class="full-btn full" id="back_msg_income"  data-parent-offset="${offset_parent}">*/
 
-$(document).on("click" ,"#back_msg" , function (){
-    
-    
-    var back_offset = $(this).attr("data-parent-offset");
-    var msg_for     = $(this).attr("data-msg-for");
-    
-    
-    switch (msg_for){
-        
-        case "msg_income": 
-            
-            message.dialogBoxcontent_msgIncome(parseInt(back_offset));
-            
-            break;
-        case "battel_report": 
-            
-            message.dialogBoxContent_battelReport(parseInt(back_offset));
-            
-            break;
-        case "msg_diff": 
-            
-            message.dialogBoxcontent_msgDiff(parseInt(back_offset));
-            
-            break;
-        
-        case "msg_out": 
-            
-            message.dialogBoxcontent_msgOutcome(parseInt(back_offset));
-            
-            break;
-            
-        case "spy_report": 
-            
-            message.dialogBoxContent_spyReport(parseInt(back_offset));
-            
-            break;
-        
-        
-        
-    }
-    $("#dialg_box  .nicescroll-rails").remove();
+$(document).on("click", "#back_msg", function () {
+
+
+  var back_offset = $(this).attr("data-parent-offset");
+  var msg_for = $(this).attr("data-msg-for");
+
+
+  switch (msg_for) {
+
+    case "msg_income":
+
+      message.dialogBoxcontent_msgIncome(parseInt(back_offset));
+
+      break;
+    case "battel_report":
+
+      message.dialogBoxContent_battelReport(parseInt(back_offset));
+
+      break;
+    case "msg_diff":
+
+      message.dialogBoxcontent_msgDiff(parseInt(back_offset));
+
+      break;
+
+    case "msg_out":
+
+      message.dialogBoxcontent_msgOutcome(parseInt(back_offset));
+
+      break;
+
+    case "spy_report":
+
+      message.dialogBoxContent_spyReport(parseInt(back_offset));
+
+      break;
+
+
+
+  }
+  $("#dialg_box  .nicescroll-rails").remove();
 });
 
-$(document).on("click" , "#get-out-of-msgout" , function (){
-    
-    $(".nav_bar .left-nav li:first").click();
-    
+$(document).on("click", "#get-out-of-msgout", function () {
+
+  $(".nav_bar .left-nav li:first").click();
+
 });
 
-$(document).on("click" , ".show_battel_report" ,function (){
-    
-    var id_report = $(this).parents(".tr").attr("id_report");
-    var parent_offset = $(".for_msg .tr:first").attr("db_offset");
-    var seen     = $(this).parents(".tr").attr("data-seen");
-    
-    var data_obj = {
-        
-        time_stamp: $(this).parents(".tr").attr("data-time-stamp"),
-        x_coord: $(this).parents(".tr").attr("data-x-coord"),
-        y_coord: $(this).parents(".tr").attr("data-y-coord"),
-        id_report:id_report
-        
-    };
-    
-    
-    $.ajax({
-        url: "api/battelReport.php",
-        data: {
-            report_detail: true,
-            id_report: id_report,
-            id_player:ID_PLAYER,
-            token:Elkaisar.Config.OuthToken
-        },
-        type: 'GET',
-        beforeSend: function (xhr) {
-           
-        },
-        success: function (data, textStatus, jqXHR) {
-            if(Number(seen) === 0){
-                PLAYER_NOTIF.msg_report --;
-                Fixed.refreshPlayerNotif();
-                
-            }
-            if(isJson(data)){
-                $(".box_content").replaceWith(getReportContent(JSON.parse(data) , data_obj , parent_offset));
-                $("#battel-detail").niceScroll(SCROLL_BAR_PROP);  
-            }else{
-                alert(data);
-            }
-          
-            
-        }, 
-        error: function (jqXHR, textStatus, errorThrown) {
-            
-        }
-    });
-});
+$(document).on("click", ".show_battel_report", function () {
+
+  var id_report = $(this).parents(".tr").attr("id_report");
+  var parent_offset = $(".for_msg .tr:first").attr("db_offset");
+  var seen = $(this).parents(".tr").attr("data-seen");
+
+  var data_obj = {
+
+    time_stamp: $(this).parents(".tr").attr("data-time-stamp"),
+    x_coord: $(this).parents(".tr").attr("data-x-coord"),
+    y_coord: $(this).parents(".tr").attr("data-y-coord"),
+    id_report: id_report
+
+  };
 
 
+  $.ajax({
+    url: "api/battelReport.php",
+    data: {
+      report_detail: true,
+      id_report: id_report,
+      id_player: ID_PLAYER,
+      token: Elkaisar.Config.OuthToken
+    },
+    type: 'GET',
+    beforeSend: function (xhr) {
 
-message.contentForSpyReport =  function (json_data , data_obj , parent_offset){
-    
-    if(Number(data_obj.seen) === 0){
-        PLAYER_NOTIF.spy_report --;
+    },
+    success: function (data, textStatus, jqXHR) {
+      if (Number(seen) === 0) {
+        Elkaisar.DPlayer.Notif.msg_report--;
         Fixed.refreshPlayerNotif();
+
+      }
+      if (isJson(data)) {
+        $(".box_content").replaceWith(getReportContent(JSON.parse(data), data_obj, parent_offset));
+        $("#battel-detail").niceScroll(SCROLL_BAR_PROP);
+      } else {
+        Elkaisar.LBase.Error(data);
+      }
+
+
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+
     }
-    if(json_data.side  === "victim"){
-        
-        return `<div id="spy-report" class="box_content for_msg" >
+  });
+});
+
+
+
+message.contentForSpyReport = function (json_data, data_obj, parent_offset) {
+
+  if (Number(data_obj.seen) === 0) {
+    Elkaisar.DPlayer.Notif.spy_report--;
+    Fixed.refreshPlayerNotif();
+  }
+  if (json_data.side === "victim") {
+
+    return `<div id="spy-report" class="box_content for_msg" >
                     <div class="left-content full">
                         <div id="city-spy-report" class="spy-report">
                             <div class="paragraph">${json_data.content}</div>
@@ -1424,10 +1419,10 @@ message.contentForSpyReport =  function (json_data , data_obj , parent_offset){
                         </div>  
                     </div> 
                 <div>`;
-    }
-    
-    
-    return `<div id="spy-report" class="box_content for_msg" >
+  }
+
+
+  return `<div id="spy-report" class="box_content for_msg" >
                 <div class="left-content full">
                     
                     <div id="city-spy-report" class="spy-report">
@@ -1772,13 +1767,13 @@ message.contentForSpyReport =  function (json_data , data_obj , parent_offset){
                     </div>  
                 </div> 
             </div>`;
-    
+
 };
 
 
-message.contentForSpyReportBarray =  function (json_data , data_obj , parent_offset){
-    
-    return `<div id="spy-report" class="box_content for_msg" >
+message.contentForSpyReportBarray = function (json_data, data_obj, parent_offset) {
+
+  return `<div id="spy-report" class="box_content for_msg" >
                 <div class="left-content full">
                     
                     <div id="city-spy-report" class="spy-report">
@@ -1794,37 +1789,37 @@ message.contentForSpyReportBarray =  function (json_data , data_obj , parent_off
                                     <li>
                                         <div class="wrapper">
                                             <img src="images/tech/soldier01.jpg"/>
-                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_a*3)}">${json_data.army_a*3}</div>
+                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_a * 3)}">${json_data.army_a * 3}</div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="wrapper">
                                             <img src="images/tech/soldier02.jpg"/>
-                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_b*3)}">${json_data.army_b*3}</div>
+                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_b * 3)}">${json_data.army_b * 3}</div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="wrapper">
                                             <img src="images/tech/soldier03.jpg"/>
-                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_c*3)}">${json_data.army_c*3}</div>
+                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_c * 3)}">${json_data.army_c * 3}</div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="wrapper">
                                             <img src="images/tech/soldier04.jpg"/>
-                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_d*3)}">${json_data.army_d*3}</div>
+                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_d * 3)}">${json_data.army_d * 3}</div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="wrapper">
                                             <img src="images/tech/soldier05.jpg"/>
-                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_e*3)}">${json_data.army_e*3}</div>
+                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_e * 3)}">${json_data.army_e * 3}</div>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="wrapper">
                                             <img src="images/tech/soldier06.jpg"/>
-                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_f*3)}">${json_data.army_f*3}</div>
+                                            <div class="amount stroke ${Fixed.getArmyAmountColor(json_data.army_f * 3)}">${json_data.army_f * 3}</div>
                                         </div>
                                     </li>
                                 </ul>
@@ -1854,73 +1849,73 @@ message.contentForSpyReportBarray =  function (json_data , data_obj , parent_off
                     </div>  
                 </div> 
             </div>`;
-    
+
 };
 
-$(document).on("click" , ".show_spy_report" ,function (){
-    
-    var id_report     = $(this).parents(".tr").attr("id_report");
-    var seen        = $(this).parents(".tr").attr("data-seen");
-    var id_player     = $(this).parents(".tr").attr("data-id-player");
-    var parent_offset = $(".for_msg .tr:first").attr("db_offset");
-    var id_victim     = $(this).attr("data-id-victim");
-    
-    if(Number(seen) === 0){
-        PLAYER_NOTIF.spy_report --;
-        Fixed.refreshPlayerNotif();
-    }
-    
-    var data_obj = {
-        
-        time_stamp: $(this).parents(".tr").attr("data-time-stamp"),
-        x_coord: $(this).parents(".tr").attr("data-x-coord"),
-        y_coord: $(this).parents(".tr").attr("data-y-coord"),
-        spy_for: $(this).parents(".tr").attr("data-spy-for"),
-        id_victim:id_victim,
-        seen:seen,
-        id_player:id_player
-        
-    };
-    
-    
-    $.ajax({
-        url: "api/battelReport.php",
-        data: {
-            spy_report_detail: true,
-            id_report: id_report,
-            id_player:ID_PLAYER,
-            spy_for: data_obj.spy_for,
-            id_victim:id_victim,
-                    token:Elkaisar.Config.OuthToken
-        },
-        type: 'GET',
-        beforeSend: function (xhr) {
-            
-        },
-        success: function (data, textStatus, jqXHR) {
-            if(isJson(data)){
-                if(data_obj.spy_for === "barrary"){
-                    
-                    $(".box_content").replaceWith(message.contentForSpyReportBarray(JSON.parse(data) , data_obj , parent_offset));
-                    $("#spy-report .spy-report .report").niceScroll(SCROLL_BAR_PROP); 
-                    
-                }else if(data_obj.spy_for === "city"){
-                    
-                    $(".box_content").replaceWith(message.contentForSpyReport(JSON.parse(data) , data_obj , parent_offset));
-                    $("#spy-report .spy-report .report").niceScroll(SCROLL_BAR_PROP); 
-                    
-                }
-                 
-            }else{
-                alert(data);
-            }
-          
-            
-        }, 
-        error: function (jqXHR, textStatus, errorThrown) {
-            
+$(document).on("click", ".show_spy_report", function () {
+
+  var id_report = $(this).parents(".tr").attr("id_report");
+  var seen = $(this).parents(".tr").attr("data-seen");
+  var id_player = $(this).parents(".tr").attr("data-id-player");
+  var parent_offset = $(".for_msg .tr:first").attr("db_offset");
+  var id_victim = $(this).attr("data-id-victim");
+
+  if (Number(seen) === 0) {
+    Elkaisar.DPlayer.Notif.spy_report--;
+    Fixed.refreshPlayerNotif();
+  }
+
+  var data_obj = {
+
+    time_stamp: $(this).parents(".tr").attr("data-time-stamp"),
+    x_coord: $(this).parents(".tr").attr("data-x-coord"),
+    y_coord: $(this).parents(".tr").attr("data-y-coord"),
+    spy_for: $(this).parents(".tr").attr("data-spy-for"),
+    id_victim: id_victim,
+    seen: seen,
+    id_player: id_player
+
+  };
+
+
+  $.ajax({
+    url: "api/battelReport.php",
+    data: {
+      spy_report_detail: true,
+      id_report: id_report,
+      id_player: ID_PLAYER,
+      spy_for: data_obj.spy_for,
+      id_victim: id_victim,
+      token: Elkaisar.Config.OuthToken
+    },
+    type: 'GET',
+    beforeSend: function (xhr) {
+
+    },
+    success: function (data, textStatus, jqXHR) {
+      if (isJson(data)) {
+        if (data_obj.spy_for === "barrary") {
+
+          $(".box_content").replaceWith(message.contentForSpyReportBarray(JSON.parse(data), data_obj, parent_offset));
+          $("#spy-report .spy-report .report").niceScroll(SCROLL_BAR_PROP);
+
+        } else if (data_obj.spy_for === "city") {
+
+          $(".box_content").replaceWith(message.contentForSpyReport(JSON.parse(data), data_obj, parent_offset));
+          $("#spy-report .spy-report .report").niceScroll(SCROLL_BAR_PROP);
+
         }
-    });
+
+      } else {
+        Elkaisar.LBase.Error(data);
+      }
+
+
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+
+    }
+  });
 });
 
 
@@ -1931,32 +1926,30 @@ $(document).on("click" , ".show_spy_report" ,function (){
  * @param {int} side_win
  * @returns {Boolean}  true if winner 
  */
-function checkWinner(id_player , heros , side_win)
-{
-    
-    for(var jjj = 0; jjj < heros.length ; jjj++){  
-    
-        if(parseInt(heros[jjj].id_player)=== parseInt(id_player) &&
-                parseInt(heros[jjj].side) === parseInt(side_win)){
+function checkWinner(id_player, heros, side_win) {
 
-                return true;
+  for (var jjj = 0; jjj < heros.length; jjj++) {
 
-            }
-    
+    if (parseInt(heros[jjj].id_player) === parseInt(id_player) &&
+      parseInt(heros[jjj].side) === parseInt(side_win)) {
+
+      return true;
+
     }
-    return false;
-    
-    
+
+  }
+  return false;
+
+
 }
 
 
 //الملك ${detail.general_data.p_name} انشئ ${parseInt(detail.general_data.task) === 0 ? "غزو" : "استيلاء"} الى جبل [ ${getArabicNumbers(data_obj.y_coord)} , ${getArabicNumbers(data_obj.x_coord)} ]
-function getReportContent(detail , data_obj , offset)
-{
-    console.log(detail);
-    console.log(data_obj);
-    
-    var cont = `<div class="box_content for_msg for_Br " id="battel-report-msg">
+function getReportContent(detail, data_obj, offset) {
+  console.log(detail);
+  console.log(data_obj);
+
+  var cont = `<div class="box_content for_msg for_Br " id="battel-report-msg">
                     <div class="left-content full">
                         <div id="battel_r_upper">
                             <div class="header">
@@ -1969,84 +1962,83 @@ function getReportContent(detail , data_obj , offset)
                             </div>
                             <p style="clear: both"></p>
                             <div class="result-icon">
-                                ${checkWinner(Elkaisar.DPlayer.Player.id_player , detail.heros , detail.general_data.side_win) ? "<div class='win'>فوز</div> " : "<div class='def'>هزيمة</div>"}
+                                ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "<div class='win'>فوز</div> " : "<div class='def'>هزيمة</div>"}
                             </div>
                             <div class="battel-desc">
                                 
                             </div>
                             <div class="resource-row">
                                 <ul>
-                                    <li><img ondragstart="return false;" src="images/style/food.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player , detail.heros , detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.food} </span></li>
-                                    <li><img ondragstart="return false;" src="images/style/wood.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player , detail.heros , detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.wood}</span></li>
-                                    <li><img ondragstart="return false;" src="images/style/stone.png"><span>${checkWinner(Elkaisar.DPlayer.Player.id_player , detail.heros , detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.stone} </span></li>
-                                    <li><img ondragstart="return false;" src="images/style/iron.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player , detail.heros , detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.metal} </span></li>
-                                    <li><img ondragstart="return false;" src="images/style/coin.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player , detail.heros , detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.coin} </span></li>
+                                    <li><img ondragstart="return false;" src="images/style/food.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.food} </span></li>
+                                    <li><img ondragstart="return false;" src="images/style/wood.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.wood}</span></li>
+                                    <li><img ondragstart="return false;" src="images/style/stone.png"><span>${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.stone} </span></li>
+                                    <li><img ondragstart="return false;" src="images/style/iron.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.metal} </span></li>
+                                    <li><img ondragstart="return false;" src="images/style/coin.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.coin} </span></li>
                                 </ul>
                             </div>
                             <div class="prize-row flex">
                                 <ul>`;
-                            for(var iii in detail.prize.matrial){
-                                
-                                cont += `<li>
+  for (var iii in detail.prize.matrial) {
+
+    cont += `<li>
                                             <img src="${Matrial.image(detail.prize.matrial[iii].prize)}">
                                             <div class="amount stroke">${detail.prize.matrial[iii].amount}</div>
                                         </li>`;
-                                
-                            }
-                            
 
-                            cont +=`</ul>
-                                    <p>جولات: ${getArabicNumbers(detail.general_data.round_num)}, شرف: ${getArabicNumbers(detail.prize.honor ||0)}</p>
+  }
+
+
+  cont += `</ul>
+                                    <p>جولات: ${getArabicNumbers(detail.general_data.round_num)}, شرف: ${getArabicNumbers(detail.prize.honor || 0)}</p>
                                 </div>
                             </div>`;
-                      
-                        
-                cont += `<div id="battel-detail">
+
+
+  cont += `<div id="battel-detail">
                             <div class="your_side">
                                 <ul>`;
-                            for(var jjj = 0; jjj < detail.heros.length ; jjj++){   
-                                       if(detail.heros[jjj]["side"] === "1"){
-                                            var tr_1 = "";
-                                            var tr_2 = "";
-                                            for( var iii = 1 ; iii <= 3 ; iii++){
-                                                var f_pre = "f_"+iii+"_pre";
-                                                var f_post = "f_"+iii+"_post";
-                                                var f_type = "f_"+iii+"_type";
+  for (var jjj = 0; jjj < detail.heros.length; jjj++) {
+    if (detail.heros[jjj]["side"] === "1") {
+      var tr_1 = "";
+      var tr_2 = "";
+      for (var iii = 1; iii <= 3; iii++) {
+        var f_pre = "f_" + iii + "_pre";
+        var f_post = "f_" + iii + "_post";
+        var f_type = "f_" + iii + "_type";
 
-                                                if(detail["heros"][jjj][f_pre] !== "0"){
-                                                    tr_1 += ` <li>
+        if (detail["heros"][jjj][f_pre] !== "0") {
+          tr_1 += ` <li>
                                                              ${army_icon[detail["heros"][jjj][f_type]]}
                                                             <div class="pre-amount stroke">${getArabicNumbers(detail["heros"][jjj][f_pre])}</div>
                                                             <div class="post-amount">${getArabicNumbers(detail["heros"][jjj][f_post])}</div>
                                                         </li>`;
-                                                }
-                                            }
-                                            for( var kkk = 1 ; kkk <= 3 ; kkk++){
+        }
+      }
+      for (var kkk = 1; kkk <= 3; kkk++) {
 
-                                                var b_pre = "b_"+kkk+"_pre";
-                                                var b_post = "b_"+kkk+"_post";
-                                                var b_type = "b_"+kkk+"_type";
-                                                if(detail["heros"][jjj][b_pre] !== "0"){
-                                                    tr_2 += ` <li>
+        var b_pre = "b_" + kkk + "_pre";
+        var b_post = "b_" + kkk + "_post";
+        var b_type = "b_" + kkk + "_type";
+        if (detail["heros"][jjj][b_pre] !== "0") {
+          tr_2 += ` <li>
                                                              ${army_icon[detail["heros"][jjj][b_type]]}
                                                             <div class="pre-amount stroke">${getArabicNumbers(detail["heros"][jjj][b_pre])}</div>
                                                             <div class="post-amount">${getArabicNumbers(detail["heros"][jjj][b_post])}</div>
                                                         </li>`;
-                                                }
-                                        }
-                                        cont+= `<li>
+        }
+      }
+      cont += `<li>
                                                     <div class="hero">
                                                         <div class="name">
                                                             ${detail.heros[jjj].h_name ? detail.heros[jjj].h_name : "بطل النظام"}
                                                         </div>
-                                                        ${
-                                                        Number(detail.heros[jjj].id_player)  === Number(ID_PLAYER) ?
-                                                        `<div class="image">
+                                                        ${Number(detail.heros[jjj].id_player) === Number(ID_PLAYER) ?
+          `<div class="image">
                                                             <img src="${Elkaisar.BaseData.HeroAvatar[detail.heros[jjj].avatar] || "images/icons/hero/eq-bg.png"}" />
                                                             <div class="xp stroke">+${getArabicNumbers(detail["heros"][jjj]["xp"])}</div>
                                                         </div>`: ""
-            
-                                                        }
+
+        }
                                                     </div>
                                                     <div class="army">
                                                         <ol>
@@ -2055,55 +2047,54 @@ function getReportContent(detail , data_obj , offset)
                                                         </ol>
                                                     </div>
                                                 </li>`;
-                                       }
-                                }
-                    cont +=   `</ul>
+    }
+  }
+  cont += `</ul>
                             </div>
                             <div class="enemy_side">
                                 <ul>`;
-                                    for(var jjj = 0; jjj < detail.heros.length ; jjj++){   
-                                       if(detail.heros[jjj]["side"] === "0"){
-                                            var tr_1 = "";
-                                            var tr_2 = "";
-                                            for( var iii = 1 ; iii <= 3 ; iii++){
-                                                var f_pre = "f_"+iii+"_pre";
-                                                var f_post = "f_"+iii+"_post";
-                                                var f_type = "f_"+iii+"_type";
+  for (var jjj = 0; jjj < detail.heros.length; jjj++) {
+    if (detail.heros[jjj]["side"] === "0") {
+      var tr_1 = "";
+      var tr_2 = "";
+      for (var iii = 1; iii <= 3; iii++) {
+        var f_pre = "f_" + iii + "_pre";
+        var f_post = "f_" + iii + "_post";
+        var f_type = "f_" + iii + "_type";
 
-                                                if(detail["heros"][jjj][f_pre] !== "0"){
-                                                    tr_1 += ` <li>
+        if (detail["heros"][jjj][f_pre] !== "0") {
+          tr_1 += ` <li>
                                                              ${army_icon[detail["heros"][jjj][f_type]]}
                                                             <div class="pre-amount stroke">${getArabicNumbers(detail["heros"][jjj][f_pre])}</div>
                                                             <div class="post-amount">${getArabicNumbers(detail["heros"][jjj][f_post])}</div>
                                                         </li>`;
-                                                }
-                                            }
-                                            for( var kkk = 1 ; kkk <= 3 ; kkk++){
+        }
+      }
+      for (var kkk = 1; kkk <= 3; kkk++) {
 
-                                                var b_pre = "b_"+kkk+"_pre";
-                                                var b_post = "b_"+kkk+"_post";
-                                                var b_type = "b_"+kkk+"_type";
-                                                if(detail["heros"][jjj][b_pre] !== "0"){
-                                                    tr_2 += ` <li>
+        var b_pre = "b_" + kkk + "_pre";
+        var b_post = "b_" + kkk + "_post";
+        var b_type = "b_" + kkk + "_type";
+        if (detail["heros"][jjj][b_pre] !== "0") {
+          tr_2 += ` <li>
                                                             ${army_icon[detail["heros"][jjj][b_type]]}
                                                             <div class="pre-amount stroke">${getArabicNumbers(detail["heros"][jjj][b_pre])}</div>
                                                             <div class="post-amount">${getArabicNumbers(detail["heros"][jjj][b_post])}</div>
                                                         </li>`;
-                                                }
-                                        }
-                                        cont+= `<li>
+        }
+      }
+      cont += `<li>
                                                     <div class="hero">
                                                         <div class="name">
                                                             ${detail.heros[jjj].h_name ? detail.heros[jjj].h_name : "بطل النظام"}
                                                         </div>
-                                                        ${
-                                                            Number(detail.heros[jjj].id_player)  === Number(ID_PLAYER) ?
-                                                            `<div class="image">
+                                                        ${Number(detail.heros[jjj].id_player) === Number(ID_PLAYER) ?
+          `<div class="image">
                                                                 <img src="${Elkaisar.BaseData.HeroAvatar[detail.heros[jjj].avatar] || "images/icons/hero/eq-bg.png"}"/>
                                                                 <div class="xp stroke">+${getArabicNumbers(detail["heros"][jjj]["xp"])}</div>
                                                             </div>`: ""
-            
-                                                        }
+
+        }
                                                     </div>
                                                     <div class="army">
                                                         <ol>
@@ -2112,9 +2103,9 @@ function getReportContent(detail , data_obj , offset)
                                                         </ol>
                                                     </div>
                                                 </li>`;
-                                       }
-                                }
-                   cont +=    ` </ul>
+    }
+  }
+  cont += ` </ul>
                             </div>
                         </div>
                     </div>
@@ -2136,24 +2127,24 @@ function getReportContent(detail , data_obj , offset)
                         </div>  
                     </div>
                 </div>`;
-    return cont;
+  return cont;
 }
 
-$(document).on("click" , "#show-battel-animated" , function (){
-    
-    //alert_box.confirmMessage("هذة الخاصية غير متاحة الان");
-    
+$(document).on("click", "#show-battel-animated", function () {
+
+  //alert_box.confirmMessage("هذة الخاصية غير متاحة الان");
+
 });
 
 /*<button class="full-btn full" id="msg-reply" data-id-player="${msg_data[0].id_from}" data-player-name="${msg_data[0].name}">  رد </button>*/
 
-$(document).on("click" , "#msg-reply" ,function (){
-    
-    var id_player = $(this).attr("data-id-player"); 
-    var player_name = $(this).attr("data-player-name"); 
-    var subject = "رد " + $(this).attr("data-msg-head") ; 
-    
-    $(".for_msg").replaceWith( message.dialogBoxcontent_msgWrite({name: player_name , id: id_player} ,subject) );
-     
- 
+$(document).on("click", "#msg-reply", function () {
+
+  var id_player = $(this).attr("data-id-player");
+  var player_name = $(this).attr("data-player-name");
+  var subject = "رد " + $(this).attr("data-msg-head");
+
+  $(".for_msg").replaceWith(message.dialogBoxcontent_msgWrite({ name: player_name, id: id_player }, subject));
+
+
 });

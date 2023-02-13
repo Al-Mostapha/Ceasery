@@ -15,7 +15,7 @@ WorldUnit.prize.getAllPrize = function () {
             if (isJson(data))
                 WorldUnit['prize']['prizes'] = JSON['parse'](data);
             else
-                alert(data);
+                Elkaisar.LBase.Error(data);
         },
         'error': function (_0x295c85, _0x4fa13c, _0x20447d) {}
     });

@@ -951,7 +951,7 @@ $(document).on("click", "#ConfCreateTeam", function () {
                 else if (JsonObject.state == "error_4")
                     return alert_box.confirmMessage("حدث خطاء ما اثناء إنشاء الفريق");
                 else
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
 
 
             },
@@ -991,7 +991,7 @@ $(document).on("click", "#TeamHeaderNavBar li", function () {
     } else if (NavTo == "TeamUpgradePage") {
 
     } else {
-        alert("sadsad " + NavTo);
+        Elkaisar.LBase.Error("sadsad " + NavTo);
     }
 
 });
@@ -1269,7 +1269,7 @@ $(document).on('click', '#submit-team-relation', function () {
             else if (JsonData['state'] == 'error_2')
                 alert_box['failMessage']('نوع العلاقة غير صالحة')
             else
-                alert(data);
+                Elkaisar.LBase.Error(data);
 
         },
         'error': function (_0xf6addd, _0x324ef9, _0x45d39a) { }
@@ -1668,7 +1668,7 @@ $(document).on("click", "#destroy-t", function () {
                     $(".close_dialog").click();
 
                 } else {
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                 }
 
 

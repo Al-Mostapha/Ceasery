@@ -352,7 +352,7 @@ $(document).on("click", ".cansel_spy", function () {
                 
                 Reports.change_content_SpyTask();
                 alert_box.succesMessage("تم الغاء عملبة التجسس بنجاح");
-                PLAYER_NOTIF.spy_task -= 1;
+                Elkaisar.DPlayer.Notifayer.Notif.spy_task -= 1;
                 Fixed.refreshPlayerNotif();
                 
                 Elkaisar.City.getCity(idCity).City = JsonObject.City;
@@ -411,7 +411,7 @@ $(document).on("click", ".hero_back_from_garrison", function () {
                     city_profile.refresh_hero_view();
 
                 } else {
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                     console.log(data);
                 }
             },

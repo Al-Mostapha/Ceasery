@@ -365,7 +365,7 @@ $(document).on("click", ".for_building .nav_bar .left-nav ul li", function () {
                         var json_data = JSON.parse(data);
                     } else {
 
-                        alert(data);
+                        Elkaisar.LBase.Error(data);
                         console.log(data);
                         return;
 
@@ -425,7 +425,7 @@ $(document).on("click", ".for_building .nav_bar .left-nav ul li", function () {
 
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    alert(textStatus);
+                    Elkaisar.LBase.Error(textStatus);
                 }
 
             });

@@ -65,7 +65,7 @@ var Jop = {
                 
                 if(!isJson(data)){
                     
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                     return ;
                     
                 }

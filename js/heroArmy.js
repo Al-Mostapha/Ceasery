@@ -17,7 +17,7 @@ Elkaisar.HeroArmy.dragArmy = function (e, el) {
     } else if (dragPlace.attr("data-drag-place") == "city") {
         Amount = Elkaisar.CurrentCity.City[armyPlace];
     } else {
-        alert("Unnkown drag place");
+      Elkaisar.LBase.Error("Unnkown drag place");
     }
 
     if (Amount <= 0)
@@ -87,7 +87,7 @@ Elkaisar.HeroArmy.dropArmy = function (e, el_to) {
         Elkaisar.HeroArmy.dropArmyToCity(DragPlace, DropPlace);
 
     } else {
-        alert("cannot Drop From This Place");
+        Elkaisar.LBase.Error("cannot Drop From This Place");
     }
 
 };
@@ -112,7 +112,7 @@ Elkaisar.HeroArmy.dropArmyToHero = function (DragPlace, DropPlace) {
     } else if (DragPlace.attr("data-drag-place") == "city") {
         maxAmount = Elkaisar.CurrentCity.City[`${DragPlace.attr("data-army-place")}`];
     } else {
-        alert("Unknown Drag Place");
+        Elkaisar.LBase.Error("Unknown Drag Place");
     }
 
     max = Math.min(maxAmount, Math.floor(availablePlace / solCap));
@@ -139,7 +139,7 @@ Elkaisar.HeroArmy.dropArmyToCity = function (DragPlace, DropPlace) {
     } else if (DragPlace.attr("data-drag-place") == "city") {
         maxAmount = Elkaisar.CurrentCity.City[`${DragPlace.attr("data-army-place")}`];
     } else {
-        alert("Unknown Drag Place");
+        Elkaisar.LBase.Error("Unknown Drag Place");
     }
     Elkaisar.HeroArmy.StartDialogBox(DragPlace, DropPlace, maxAmount);
 
@@ -212,7 +212,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
             if (isJson(data)) {
                 var json_data = JSON.parse(data);
             } else {
-                alert(data);
+                Elkaisar.LBase.Error(data);
                 return;
             }
 
@@ -238,7 +238,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToHero = function () {
             } else if (json_data.state === "error_6") {
                 alert_box.failMessage("الابطال ليست بمدينة واحدة");
             } else {
-                alert(data);
+                Elkaisar.LBase.Error(data);
             }
 
 
@@ -284,7 +284,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
             if (isJson(data)) {
                 var json_data = JSON.parse(data);
             } else {
-                alert(data);
+                Elkaisar.LBase.Error(data);
                 return;
             }
 
@@ -314,7 +314,7 @@ Elkaisar.HeroArmy.TransArmyFromHeroToCity = function () {
                 alert_box.failMessage("البطل ليس بالمدينة");
             } else {
 
-                alert(data);
+                Elkaisar.LBase.Error(data);
 
             }
 
@@ -358,7 +358,7 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
             if (isJson(data)) {
                 var json_data = JSON.parse(data);
             } else {
-                alert(data);
+                Elkaisar.LBase.Error(data);
                 return;
             }
 
@@ -394,7 +394,7 @@ Elkaisar.HeroArmy.TransArmyFromCityToHero = function () {
 
             } else {
 
-                alert(data);
+                Elkaisar.LBase.Error(data);
 
             }
 
@@ -428,7 +428,7 @@ $(document).on("click", "#confirmTransArmy", function () {
             Elkaisar.HeroArmy.TransArmyFromHeroToCity();
         } else {
 
-            alert("unknown Drop Name")
+            Elkaisar.LBase.Error("unknown Drop Name")
 
         }
 
@@ -439,12 +439,12 @@ $(document).on("click", "#confirmTransArmy", function () {
         if (DropPlace == "hero") {
             Elkaisar.HeroArmy.TransArmyFromCityToHero();
         } else {
-            alert("unknown Drop Name 2")
+            Elkaisar.LBase.Error("unknown Drop Name 2")
         }
 
 
     } else {
-        alert("Droplace Error");
+        Elkaisar.LBase.Error("Droplace Error");
     }
 
 });
@@ -571,7 +571,7 @@ $(document).on("click", "#left-down , #right-down", function () {
             if (isJson(data)) {
                 var json_data = JSON.parse(data);
             } else {
-                alert(data);
+                Elkaisar.LBase.Error(data);
                 return;
             }
 

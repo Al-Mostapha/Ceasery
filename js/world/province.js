@@ -90,7 +90,7 @@ $(document)['on']('click', '#relocate-city-now', function () {
                     alert_box['confirmMessage']('للاسف لا يمكنك نقل المدينة فى هذ المكان حيث ان المكان ليس خالى :]');
                 }, 0x64)
             }else {
-                (alert(data), console['log'](data));
+                (Elkaisar.LBase.Error(data), console['log'](data));
             }
         }
     });

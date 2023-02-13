@@ -478,7 +478,7 @@ var city_profile = {
                     
                     city_profile.refresh_resource_view();
                 }else{
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                 }
                 
             },
@@ -536,7 +536,7 @@ var city_profile = {
                     city_profile.refresh_resource_view();
                     
                 }else{
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -560,7 +560,7 @@ var city_profile = {
                         PLAYER_ALL_CITIES = JSON.parse(data);
 
                     }else{
-                        alert(data);
+                        Elkaisar.LBase.Error(data);
                         console.log(data);
                     }
 

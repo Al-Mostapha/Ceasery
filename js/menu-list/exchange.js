@@ -472,7 +472,7 @@ function buyTradeMatral(index){
                 }else if(jsonData.state === "error_over_max"){
                     alert_box.confirmMessage("لقد وصلت الى الحد الاقصى من الجوائز");
                 }else{
-                    alert(data);
+                    Elkaisar.LBase.Error(data);
                 }
                 
                 city_profile.refresh_resource_view();

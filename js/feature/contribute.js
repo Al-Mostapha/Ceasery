@@ -7,16 +7,17 @@ Elkaisar.Contribute.List = {};
 
 Elkaisar.Contribute.getList = function () {
     $.ajax({
-        'url': `${API_URL }/js${ Elkaisar['Config']['JsVersion'] }/json/contribute.json`,
+        'url': `${Elkaisar.Config.AssetPath}/js${ Elkaisar.Config.JsVersion}/json/contribute.json`,
         success: function (data, _0x5852fa, _0x1a4a01) {
-            Elkaisar['Contribute']['List'] = data;
+            Elkaisar.Contribute.List = data;
         }
     });
 };
 
-
-Elkaisar['Contribute']['getList']();
-
+$(document).on("GameReady", function(){
+    Elkaisar.Contribute.getList();
+    console.log("Contribute Ready")
+});
 Elkaisar.Contribute.ToUpgradeBox = function (idCont) {
     var Cont = Elkaisar['Contribute']['List'][idCont];
     var ListOfNeed = Cont['ListOfNeed'][0];

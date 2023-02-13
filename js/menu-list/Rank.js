@@ -84,7 +84,7 @@ Elkaisar.Rank.PlayerGeneralRank = function (offset) {
             if (isJson(data)) {
                 Elkaisar.Rank.playerRow(offset, JSON.parse(data));
             } else {
-                alert(data);
+                Elkaisar.LBase.Error(data);
             }
 
         },
@@ -189,7 +189,7 @@ Elkaisar.Rank.playerRow = function (offset, PlayerList) {
 
     $("#RankList .RankRows").html(_return);
     $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
-    $("#TotalPageNumber").html(Math.ceil(SERVER_DATA.player_num / 10));
+    $("#TotalPageNumber").html(Math.ceil(Elkaisar.Config.ServerCount.player_num / 10));
 };
 Elkaisar.Rank.GuildGeneralRank = function (offset) {
 
@@ -209,7 +209,7 @@ Elkaisar.Rank.GuildGeneralRank = function (offset) {
             if (isJson(data)) {
                 var json_data = JSON.parse(data);
             } else {
-                alert(data);
+                Elkaisar.LBase.Error(data);
             }
             Elkaisar.Rank.GuildRow(offset, JSON.parse(data))
 
@@ -277,7 +277,7 @@ Elkaisar.Rank.GuildRow = function (offset, GuildList) {
 
     $("#RankList .RankRows").html(_return);
     $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
-    $("#TotalPageNumber").html(Math.ceil(SERVER_DATA.guild_num / 10));
+    $("#TotalPageNumber").html(Math.ceil(Elkaisar.Config.ServerCount.guild_num / 10));
 
 }
 Elkaisar.Rank.HeroGeneralRank = function (offset) {
@@ -353,7 +353,7 @@ Elkaisar.Rank.HeroRow = function (offset, HeroList) {
 
     $("#RankList .RankRows").html(List);
     $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
-    $("#TotalPageNumber").html(Math.ceil(SERVER_DATA.hero_num / 10));
+    $("#TotalPageNumber").html(Math.ceil(Elkaisar.Config.ServerCount.hero_num / 10));
 
 }
 Elkaisar.Rank.CityGeneralRank = function (offset) {
@@ -439,7 +439,7 @@ Elkaisar.Rank.CityRow = function (offset, CityList) {
 
     $("#RankList .RankRows").html(List);
     $("#current_page_num").html(getArabicNumbers(Math.ceil(offset / 10) + 1));
-    $("#TotalPageNumber").html(Math.ceil(SERVER_DATA.city_num / 10));
+    $("#TotalPageNumber").html(Math.ceil(Elkaisar.Config.ServerCount.city_num / 10));
 
 
 }
@@ -452,7 +452,7 @@ $(document).on("click", ".move_p_rank", function () {
 
     var offset = (Math.ceil($("#RankList .tr:last-child").attr("data-rank") / 10)) * 10;
 
-    if (move === "right" && SERVER_DATA[Elkaisar.Rank.RankLastCount[rank_for]] > offset) {
+    if (move === "right" && Elkaisar.Config.ServerCount[Elkaisar.Rank.RankLastCount[rank_for]] > offset) {
 
 
         menu_bar.getContentForRanks(rank_for, offset);
@@ -477,7 +477,7 @@ $(document).on("click", ".move_p_rank", function () {
 
     } else if (move === "most-right") {
 
-        menu_bar.getContentForRanks(rank_for, Math.floor(SERVER_DATA[Elkaisar.Rank.RankLastCount[rank_for]] / 10) * 10);
+        menu_bar.getContentForRanks(rank_for, Math.floor(Elkaisar.Config.ServerCount[Elkaisar.Rank.RankLastCount[rank_for]] / 10) * 10);
 
     }
 
@@ -491,9 +491,8 @@ $(document).on("click", "#goToBtnRankCo  .goBtn", function () {
     const page_number = $("#goToBtnRankCo .input").val() - 1;
     const rank_for = $("#DialBoxFooter").attr("data-rank-for");
     let Offset = page_number * 10;
-    if (page_number * 10 > SERVER_DATA[Elkaisar.Rank.RankLastCount[rank_for]])
-        Offset = Math.floor(SERVER_DATA[Elkaisar.Rank.RankLastCount[rank_for]] / 10) * 10;
-
-
+    if (page_number * 10 > Elkaisar.Config.ServerCount[Elkaisar.Rank.RankLastCount[rank_for]])
+        Offset = Math.floor(Elkaisar.Config.ServerCount[Elkaisar.Rank.RankLastCount[rank_for]] / 10) * 10;
     menu_bar.getContentForRanks(rank_for, Offset);
+    
 });

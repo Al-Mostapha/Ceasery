@@ -181,7 +181,7 @@ Elkaisar.World.Map.OnOtherUnitClicked = function (Unit) {
             var jsonData = JSON.parse(data);
             Unit.l = jsonData.l;
         } else {
-            alert(data);
+            Elkaisar.LBase.Error(data);
             return;
         }
         campDB.equipRow(jsonData.equip);

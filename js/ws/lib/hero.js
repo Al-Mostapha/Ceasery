@@ -32,7 +32,7 @@ Elkaisar.WsLib.Hero.Back = function (data) {
         HeroName = Hero['Hero']['name'];
     if (City && City['City'] && City['City']['name'])
         CityName = City['City']['name'];
-    PLAYER_NOTIF['hero_in_battel'] -= 1;
+    Elkaisar.DPlayer.Notif['hero_in_battel'] -= 1;
     Hero['Hero']['in_city'] = data['inCity'];
     if (Number(data['Task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_SUPPLY'] || data['task'] == Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_HERO_TRANS']) {
         var idCity = Number(Elkaisar['CurrentCity']['City']['id_city']);

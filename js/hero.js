@@ -260,7 +260,7 @@ var Hero = {
                if(isJson(data)){
                    Elkaisar.Hero.getHero(id_hero).Equip = JSON.parse(data);
                }else{
-                   alert(data);
+                Elkaisar.LBase.Error(data);
                    console.log(data);
                    return ;
                }
@@ -1297,7 +1297,7 @@ $(document).on("click" , ".show-hero-detailed-review" , function (e){
             if(isJson(data)){
                 var jsonData = JSON.parse(data);
             }else{
-                alert(data);
+              Elkaisar.LBase.Error(data);
                 return;
             }
             
