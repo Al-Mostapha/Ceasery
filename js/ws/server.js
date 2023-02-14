@@ -16,9 +16,20 @@ WS_utile.onopen = function () {
   Elkaisar.World.Map.getWorldCity().done(function () {
     Elkaisar.Team.getPlayerTeam();
   });
-  Elkaisar.World.Map.getWorldCityColonized();
-  Elkaisar.World.Map.getWorldFiredUnit();
-  Elkaisar.World.MapBattel.getAllBattels();
+  if (Elkaisar.Config.isWorldReady) {
+    Elkaisar.World.Map.getWorldCityColonized();
+    Elkaisar.World.Map.getWorldFiredUnit();
+    Elkaisar.World.MapBattel.getAllBattels();
+    console.log("One ----")
+  } else {
+    $(document).on("WorldReady", function () {
+      Elkaisar.World.Map.getWorldCityColonized();
+      Elkaisar.World.Map.getWorldFiredUnit();
+      Elkaisar.World.MapBattel.getAllBattels();
+      console.log("One ---- 33")
+    });
+    console.log("One ----2")
+  }
 };
 
 WS_utile.onmessage = function (e) {

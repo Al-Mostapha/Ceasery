@@ -192,8 +192,8 @@ $(document).on("click", "#start_battel", function () {
 
 function isMyBarr(_0x22de03, _0x4dcc19) {
   var _0x46bfff, _0x179d13;
-  for (var _0x4d186f in Elkaisar['DPlayer']['City']) {
-    _0x46bfff = Elkaisar['DPlayer']['City'][_0x4d186f];
+  for (var _0x4d186f in Elkaisar.DPlayer['City']) {
+    _0x46bfff = Elkaisar.DPlayer['City'][_0x4d186f];
     for (var _0x215ce1 in _0x46bfff['Barray']) {
       if (_0x46bfff['Barray'][_0x215ce1]['x_coord'] == _0x22de03 && _0x46bfff['Barray'][_0x215ce1]['y_coord'] == _0x4dcc19)
         return !![];
@@ -221,11 +221,11 @@ function battelStart() {
     return;
   }
   var _0x2a0e73 = 0x0,
-    _0x542482 = Number(Elkaisar['CurrentHero']['Hero']['id_city']);
-  for (var _0x2c5cbf in Elkaisar['DPlayer']['Heros']) {
-    if (Number(Elkaisar['DPlayer']['Heros'][_0x2c5cbf]['Hero']['id_city']) !== _0x542482)
+    idCity = Number(Elkaisar.CurrentHero.Hero.id_city);
+  for (var heroIndex in Elkaisar.DPlayer.Heros) {
+    if (Number(Elkaisar.DPlayer.Heros[heroIndex].Hero.id_city) !== idCity)
       continue;
-    Number(Elkaisar['DPlayer']['Heros'][_0x2c5cbf]['Hero']['in_city']) !== Elkaisar['Hero']['HeroState']['HERO_IN_CITY'] && _0x2a0e73++;
+    Number(Elkaisar.DPlayer.Heros[heroIndex].Hero.in_city) !== Elkaisar.Hero.HeroState.HERO_IN_CITY && _0x2a0e73++;
   }
   var _0x24c850 = cityHasType(BUILDING_TYPS['HOSPITAL']);
   if (!_0x24c850) {
@@ -609,7 +609,7 @@ Battel = {
     }
 
     if (Number(Battel['Battel']['task']) === Elkaisar['BaseData']['BattelTasks']['BATTEL_TASK_CHALLANGE']) {
-      if (Battel['Battel']['id_player'] == Elkaisar['DPlayer']['Player']['id_player']) {
+      if (Battel['Battel']['id_player'] == Elkaisar.DPlayer['Player']['id_player']) {
         alert_box['systemChatMessage']('النتيجة ' + (Battel['sideWin'] == Elkaisar['BaseData']['BattelSides']['SideAttack'] ? 'فوز' : 'خسارة'));
         Elkaisar['ArenaChallange']['Arena']['Arena']['lastAttackTime'] = Math['floor'](Date['now']() / 0x3e8);
       }

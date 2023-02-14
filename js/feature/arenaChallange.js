@@ -221,35 +221,35 @@ Elkaisar.ArenaChallange.HeroList = function (idCity) {
     var HeroListHt = '';
     var Count = 0;
 
-    for (var Index in Elkaisar['DPlayer']['Heros']) {
+    for (var Index in Elkaisar.DPlayer.Heros) {
         var HStateImg = 'images/icons/h_s_incity.png';
-        if (Elkaisar['DPlayer']['Heros'][Index]['Hero']['id_city'] != idCity)
+        if (Elkaisar.DPlayer.Heros[Index]['Hero']['id_city'] != idCity)
             continue;
-        if (Number(Elkaisar['DPlayer']['Heros'][Index]['Hero']['in_city']) == Elkaisar['Hero']['HeroState']['HERO_IN_BATTEL'])
+        if (Number(Elkaisar.DPlayer.Heros[Index]['Hero']['in_city']) == Elkaisar['Hero']['HeroState']['HERO_IN_BATTEL'])
             HStateImg = 'images/icons/h_s_attack_2.png';
-        else if (Elkaisar['DPlayer']['Heros'][Index]['Hero']['in_city'] == Elkaisar['Hero']['HeroState']['HERO_IN_GARISON']) {
+        else if (Elkaisar.DPlayer.Heros[Index]['Hero']['in_city'] == Elkaisar['Hero']['HeroState']['HERO_IN_GARISON']) {
             HStateImg = 'images/icons/h_s_support.png';
         }
-        if (Elkaisar['Hero']['isConsole'](Elkaisar['DPlayer']['Heros'][Index]['Hero']['id_hero']))
+        if (Elkaisar['Hero']['isConsole'](Elkaisar.DPlayer.Heros[Index]['Hero']['id_hero']))
             HStateImg = 'images/icons/h_s_console.png';
 
         HeroListHt += `
-                    <li class="tr" data-id-hero="${ Elkaisar['DPlayer']['Heros'][Index]['Hero']['id_hero'] }">
+                    <li class="tr" data-id-hero="${ Elkaisar.DPlayer.Heros[Index]['Hero']['id_hero'] }">
                         <div class="td" style="width: 25%">
                             <div class="wrapper">
-                                <div class="image" style="background-image: url(${ Elkaisar.BaseData.HeroAvatar[Elkaisar['DPlayer']['Heros'][Index]['Hero']['avatar']] })">
+                                <div class="image" style="background-image: url(${ Elkaisar.BaseData.HeroAvatar[Elkaisar.DPlayer.Heros[Index]['Hero']['avatar']] })">
 
                                 </div>
                             </div>
                         </div>
                         <div class="td" style="width: 35%">
-                            <div class="name${ (Elkaisar['DPlayer']['Heros'][Index]['Hero']['ultra_p'] > 0x0 ? ' POT-HERO' : '') }" style="width: 100%">${ Elkaisar['DPlayer']['Heros'][Index]['Hero']['name'] }</div>
+                            <div class="name${ (Elkaisar.DPlayer.Heros[Index]['Hero']['ultra_p'] > 0x0 ? ' POT-HERO' : '') }" style="width: 100%">${ Elkaisar.DPlayer.Heros[Index]['Hero']['name'] }</div>
                         </div>
                         <div class="td flex" style="width: 16%">
-                            <button class="full-btn-3x showCityHero flex" data-id-hero="${ Elkaisar['DPlayer']['Heros'][Index]['Hero']['id_hero'] }"><img src="images/icons/showIcon.png"/></button>
+                            <button class="full-btn-3x showCityHero flex" data-id-hero="${ Elkaisar.DPlayer.Heros[Index]['Hero']['id_hero'] }"><img src="images/icons/showIcon.png"/></button>
                         </div>
                         <div class="td" style="width: 20%">
-                            <div class="lvl">${ Elkaisar['DPlayer']['Heros'][Index]['Hero']['lvl'] }</div>
+                            <div class="lvl">${ Elkaisar.DPlayer.Heros[Index]['Hero']['lvl'] }</div>
                         </div>
                         <div class="td" style="width: 15%">
                             <div class="heroState" style="background-image: url(${ HStateImg })"></div>

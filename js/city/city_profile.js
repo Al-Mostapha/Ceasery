@@ -147,33 +147,35 @@ var city_profile = {
         
         var output = "";
         var idCity = Number(Elkaisar.CurrentCity.City.id_city);
-        for(var idHero in Elkaisar.DPlayer.Heros)
+        for(var heroIndex in Elkaisar.DPlayer.Heros)
         {
-            if(Number(Elkaisar.DPlayer.Heros[idHero].Hero.id_city) !== idCity)
+          if(!Elkaisar.DPlayer.Heros[heroIndex])
+            console.log()
+            if(Number(Elkaisar.DPlayer.Heros[heroIndex].Hero.id_city) !== idCity)
                 continue;
             
             var state = '<img src="images/icons/h_s_incity.png" >';
-            if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.id_hero) === Elkaisar.CurrentCity.City.console){
+            if(parseInt(Elkaisar.DPlayer.Heros[heroIndex].Hero.id_hero) === Elkaisar.CurrentCity.City.console){
 
                 state = '<img src="images/icons/h_s_console.png">';
-            }else if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL){
+            }else if(parseInt(Elkaisar.DPlayer.Heros[heroIndex].Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_BATTEL){
 
                 state = '<img src="images/icons/h_s_attack_2.png" >';
 
-            }else if(parseInt(Elkaisar.DPlayer.Heros[idHero].Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON){
+            }else if(parseInt(Elkaisar.DPlayer.Heros[heroIndex].Hero.in_city) === Elkaisar.Hero.HeroState.HERO_IN_GARISON){
 
                 state = '<img src="images/icons/h_s_support.png">';
 
             }
 
-            output +=   `<li class="hero_profile" id_hero = "${Elkaisar.DPlayer.Heros[idHero].Hero.id_hero}" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[Elkaisar.DPlayer.Heros[idHero].Hero.avatar]})">
+            output +=   `<li class="hero_profile" id_hero = "${Elkaisar.DPlayer.Heros[heroIndex].Hero.id_hero}" style="background-image: url(${Elkaisar.BaseData.HeroAvatar[Elkaisar.DPlayer.Heros[heroIndex].Hero.avatar]})">
 
                             <div class="hero_state">
                                 ${state}
                             </div>
                             <div class="hero_lvl">
                                 <div class="hero_lvl-box" style="float: left ;   font-size: 12px ;  color: white">
-                                    ${Elkaisar.DPlayer.Heros[idHero].Hero.lvl}
+                                    ${Elkaisar.DPlayer.Heros[heroIndex].Hero.lvl}
                                 </div>
                                 <img src="images/icons/hero_army.png" style="float: right ;" class="modify-hero-army">
                             </div>
@@ -544,41 +546,6 @@ var city_profile = {
             }
         });
     },
-    getAllCitiesData: function (){
-        
-        $.ajax({
-                url: "api/player.php",
-                data: {get_city: true, id_player:ID_PLAYER, token:Elkaisar.Config.OuthToken},
-                type: 'POST',
-                beforeSend: function (xhr) {
-
-                },
-                success: function (data, textStatus, jqXHR) {
-
-                    if(isJson(data)){
-
-                        PLAYER_ALL_CITIES = JSON.parse(data);
-
-                    }else{
-                        Elkaisar.LBase.Error(data);
-                        console.log(data);
-                    }
-
-                    for (var iii in PLAYER_ALL_CITIES){
-                        if(Number(PLAYER_ALL_CITIES[iii].id_city ) === Number(Elkaisar.CurrentCity.City.id_city)){
-                            Elkaisar.CurrentCity.City = PLAYER_ALL_CITIES[iii];
-                        }
-                    }
-
-                    city_profile.refresh_resource_view();
-
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                }
-          });
-        
-    }
 };
 
 

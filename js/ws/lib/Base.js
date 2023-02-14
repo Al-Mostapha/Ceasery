@@ -84,7 +84,7 @@ Elkaisar.WsLib.Base.worldCityColonized = function (data){
         
         Unit           = WorldUnit.getWorldUnit(data.City[iii].x, data.City[iii].y);
         if(!Unit)
-          console.log(data.City[iii]);
+          console.log(data.City[iii], Unit);
         Unit.CityColonizerFlag  = data.City[iii].city_flag;
         Unit.CityColonized      = true;
         Unit.ColonizerIdGuild   = data.City[iii].id_guild;

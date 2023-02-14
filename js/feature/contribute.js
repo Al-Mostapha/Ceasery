@@ -121,7 +121,7 @@ Elkaisar.Contribute.PrizeBox = function (idCont) {
             <div class="ReqFixed">
                 <ul>
                     <li class="not-achieved">عدد الجائزة:${Reword['amount']}</li>
-                    <li class="${ListOfNeed['promotion'] <= Elkaisar['DPlayer']['Player']['porm'] ? 'achieved' : 'not-achieved'}">الرتبة: ${Elkaisar['BaseData']['Promotion'][ListOfNeed['promotion']]['Title']}</li>
+                    <li class="${ListOfNeed['promotion'] <= Elkaisar.DPlayer['Player']['porm'] ? 'achieved' : 'not-achieved'}">الرتبة: ${Elkaisar['BaseData']['Promotion'][ListOfNeed['promotion']]['Title']}</li>
                     <li class="rtl">نسبة الحصول: 100%</li>
                 </ul>
             </div>`;
@@ -211,7 +211,7 @@ Elkaisar['Contribute']['ContributeBox'] = function (idCont) {
                             <div class="full-btn-3x">شراء ذهب</div>
                         </div>
                         <div class="buttonWrapper font-2" style="width: 70%">
-                             <img src="images/icons/gold.png" style="width: 18px; vertical-align: middle;"> <label style="line-height: 40px;"> لديك: ${Elkaisar['DPlayer']['Player']['gold']}</label>
+                             <img src="images/icons/gold.png" style="width: 18px; vertical-align: middle;"> <label style="line-height: 40px;"> لديك: ${Elkaisar.DPlayer['Player']['gold']}</label>
                         </div>
                     </div>
                 </div>
@@ -270,19 +270,19 @@ Elkaisar.Contribute.ReqSelectListContent = function (idCont, ReqIndex) {
                             <div class="td_3 ellipsis" style="width: 20%">اختر</div>
                         </div>`;
     var Count = 0x0;
-    for (var UEqui in Elkaisar['DPlayer']['Equip']) {
-        if (Elkaisar['DPlayer']['Equip'][UEqui]['type'] != ReqList['equip'])
+    for (var UEqui in Elkaisar.DPlayer['Equip']) {
+        if (Elkaisar.DPlayer['Equip'][UEqui]['type'] != ReqList['equip'])
             continue;
-        if (Elkaisar['DPlayer']['Equip'][UEqui]['part'] != ReqList['part'])
+        if (Elkaisar.DPlayer['Equip'][UEqui]['part'] != ReqList['part'])
             continue;
-        if (Elkaisar['DPlayer']['Equip'][UEqui]['lvl'] != ReqList['lvl'])
+        if (Elkaisar.DPlayer['Equip'][UEqui]['lvl'] != ReqList['lvl'])
             continue;
         var Btn = `<button class="rightMark" style="background-size: auto 70%; height: 100%; width: 100%; margin: 0px; vertical-align: top"></button>`;
-        if (Elkaisar['DPlayer']['Equip'][UEqui]['id_hero'] > 0x0)
+        if (Elkaisar.DPlayer['Equip'][UEqui]['id_hero'] > 0x0)
             var Btn = `<button class="uiBtnCloseDown downEquipFromHero"
                                     style="background-size: 85%; height: 100%; width: 100%; margin: 0px; vertical-align: top"
-                                    data-id-cont="${idCont}" data-cont-req-index="${ReqIndex}" data-id-equip="${Elkaisar['DPlayer']['Equip'][UEqui]['id_equip']}" 
-                                    data-id-hero="${Elkaisar['DPlayer']['Equip'][UEqui]['id_hero']}"></button>`;
+                                    data-id-cont="${idCont}" data-cont-req-index="${ReqIndex}" data-id-equip="${Elkaisar.DPlayer['Equip'][UEqui]['id_equip']}" 
+                                    data-id-hero="${Elkaisar.DPlayer['Equip'][UEqui]['id_hero']}"></button>`;
         List += `'<li class="tr">
                             <div class="td_1" style="width: 20%">
                                 <div class="wrapper">
@@ -293,12 +293,12 @@ Elkaisar.Contribute.ReqSelectListContent = function (idCont, ReqIndex) {
                             <div class="td_3" style="width: 20%">${Btn}</div>
                             <div class="td_4" style="width: 20%">
                                 <button style="margin:0px; height: 100%; width: 100%; vertical-align: top;"
-                                class="${Cont['ListOfNeed'][ReqIndex]['SelectedList']['indexOf'](Elkaisar['DPlayer']['Equip'][UEqui]['id_equip']) >= 0x0 ? 'uiCheckedBox' : 'uiUnCheckBox'}  full ConSelectReqItem"
-                                 data-id-cont="${idCont}" data-cont-req-index="${ReqIndex}" data-id-equip="${Elkaisar['DPlayer']['Equip'][UEqui]['id_equip']}"></button>
+                                class="${Cont['ListOfNeed'][ReqIndex]['SelectedList']['indexOf'](Elkaisar.DPlayer['Equip'][UEqui]['id_equip']) >= 0x0 ? 'uiCheckedBox' : 'uiUnCheckBox'}  full ConSelectReqItem"
+                                 data-id-cont="${idCont}" data-cont-req-index="${ReqIndex}" data-id-equip="${Elkaisar.DPlayer['Equip'][UEqui]['id_equip']}"></button>
                             </div>
                         </li>`;
         Count++;
-        console['log'](Cont['ListOfNeed'][ReqIndex]['SelectedList']['indexOf'](Elkaisar['DPlayer']['Equip'][UEqui]['id_equip']));
+        console['log'](Cont['ListOfNeed'][ReqIndex]['SelectedList']['indexOf'](Elkaisar.DPlayer['Equip'][UEqui]['id_equip']));
     }
     for (var In = 0x9 - Count; In > 0x0; In--)
         List += '<li class="tr"></li>';

@@ -1063,10 +1063,9 @@ Fixed.refreshPlayerNotif = function () {
     Quest.refrehQuestNotif();
 };
 
-$(document).on("PlayerReady", "html", function () {
-
+$(document).on("CityReady", function () {
     Player_profile.getPlayerStateData().done(function (data) {
         Fixed.refreshPlayerNotif();
+        console.log("CityReady")
     });
-
 });

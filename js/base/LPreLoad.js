@@ -530,28 +530,28 @@ Elkaisar.GE.PlayerEnterServerWeb = function () {
       }
       
       var JsonData = JSON.parse(data);
-      if (JsonData['state'] !== 'ok')
-        console['log'](JsonData);
-      Elkaisar['DPlayer']['Player'] = JsonData['Player'];
-      Elkaisar['Config']['idServer'] = JsonData['idServer'];
-      Elkaisar['Config']['idCities'] = JsonData['idCities'];
-      Elkaisar.Config.JsVersion = JsonData['JsVersion'];
-      Elkaisar['Config']['PayLink'] = JsonData['PayLink'];
-      Elkaisar['Config']['RechCode'] = JsonData['RechCode'];
+      if (JsonData.state !== 'ok')
+        console.log(JsonData);
+      Elkaisar.DPlayer.Player = JsonData.Player;
+      Elkaisar.Config.idServer = JsonData.idServer;
+      Elkaisar.Config.idCities = JsonData.idCities;
+      Elkaisar.Config.JsVersion = JsonData.JsVersion;
+      Elkaisar.Config.PayLink = JsonData.PayLink;
+      Elkaisar.Config.RechCode = JsonData.RechCode;
       Elkaisar.Config.OuthToken = JsonData.OuthToken;
       Elkaisar.Config.ServerCount = JsonData.Server;
       $(document).trigger("GameReady");
-      console.log("sdadsdsdas");
-      if (Elkaisar['DPlayer']['Player']['panned'] >= $['now']() / 1000) {
+      if (Elkaisar.DPlayer.Player.panned >= $.now() / 1000) {
         Elkaisar.LBase.Error('هذا الحساب محظور');
         return;
       }
 
-      $['ajaxSetup']({
+      $.ajaxSetup({
         'data': {
-          'idPlayerV': Elkaisar['DPlayer']['Player']['id_player']
+          'idPlayerV': Elkaisar.DPlayer.Player.id_player
         }
       });
+      Player_profile.refresh_player_data();
       $('html').trigger('PlayerReady');
 
     },
@@ -582,7 +582,7 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
     this.input.mousePointer.motionFactor = 0.5;
     this.input.pointer1.motionFactor = 0.5;
 
-    var cam = this.cameras.main.setBounds(0, 0, floor_width, floor_height);
+    Elkaisar.GE.Cam = this.cameras.main.setBounds(0, 0, floor_width, floor_height);
     this.add.image(0, 0, "city_floor").setOrigin(0, 0);
     this.Scrolling = {};
     var This = this;
@@ -620,8 +620,8 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
       if (!p.isDown)
         return;
       This.Scrolling.isBeingDragged = true;
-      cam.scrollX -= (p.x - p.prevPosition.x) / cam.zoom;
-      cam.scrollY -= (p.y - p.prevPosition.y) / cam.zoom;
+      Elkaisar.GE.Cam.scrollX -= (p.x - p.prevPosition.x) / Elkaisar.GE.Cam.zoom;
+      Elkaisar.GE.Cam.scrollY -= (p.y - p.prevPosition.y) / Elkaisar.GE.Cam.zoom;
     });
 
     this.input.on('gameobjectover', function (Pointer, GameObject, Event) {
@@ -653,17 +653,18 @@ Elkaisar.GE.CCityScene = new Phaser.Class({
     this.input.on('wheel', function (pointer, gameObjects, deltaX, deltaY, deltaZ) {
 
       if (deltaY < 0) {
-        if (cam.zoom >= 2)
-          return cam.zoom = 2;
-        cam.zoom += 0.1;
+        if (Elkaisar.GE.Cam.zoom >= 2)
+          return Elkaisar.GE.Cam.zoom = 2;
+          Elkaisar.GE.Cam.zoom += 0.1;
       } else {
-        if (cam.zoom <= 1)
-          return cam.zoom = 1;
-        cam.zoom -= 0.1;
+        if (Elkaisar.GE.Cam.zoom <= 1)
+          return Elkaisar.GE.Cam.zoom = 1;
+          Elkaisar.GE.Cam.zoom -= 0.1;
       }
-
     });
-    cam.pan(BuildingOnFloor.palace.x, BuildingOnFloor.palace.y, 700);
+    
+    if(BuildingOnFloor.palace)
+      Elkaisar.GE.Cam.pan(BuildingOnFloor.palace.x, BuildingOnFloor.palace.y, 700);
 
 
 

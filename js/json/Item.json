@@ -86,7 +86,7 @@
     "freedom_help": {
         "image": "images/items/item149.jpg",
         "Texture2D": "Texture2D'/Game/images/items/item149.item149'",
-        "use": "none",
+        "use": "once",
         "Key": "freedom_help"
     },
     "medical_moun": {

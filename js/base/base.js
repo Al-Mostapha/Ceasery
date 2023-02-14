@@ -240,6 +240,8 @@ $(document).on("PlayerReady", "html", function () {
 
                     }
                 }
+                $(document).trigger("WorldReady");
+                Elkaisar.Config.isWorldReady = true;
             });
             $("#WorldCity").removeAttr("disabled");
             

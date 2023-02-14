@@ -1009,11 +1009,8 @@ var Guild = {
 
     var guild_data;
     $.ajax({
-      url: "api/guild.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AGuild/getGuildResource`,
       data: {
-        get_guild_res: true,
-        id_guild: player.guild_data.id_guild,
-        id_player: ID_PLAYER,
         token: Elkaisar.Config.OuthToken
       },
       type: 'GET',

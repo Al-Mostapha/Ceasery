@@ -9,9 +9,9 @@ TradeCenter.getTradeList = function (offset) {
   if (!offset)
     offset = 0;
   return $.ajax({
-    url: "api/tradeCenter.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/ATradeCenter/getTradeList`,
     data: {
-      GET_TRADE_LIST: true,
+      token: Elkaisar.Config.OuthToken,
       offset: offset
     },
     type: 'GET',
@@ -48,9 +48,9 @@ TradeCenter.getTradeListTotalCount = function () {
 
 
   return $.ajax({
-    url: "api/tradeCenter.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/ATradeCenter/getTotalCount`,
     data: {
-      GET_TOTAL_COUNT: true
+      token: Elkaisar.Config.OuthToken
     },
     type: 'GET',
     beforeSend: function (xhr) {
@@ -58,7 +58,7 @@ TradeCenter.getTradeListTotalCount = function () {
     },
     success: function (data, textStatus, jqXHR) {
 
-      if (isJson(data)) {
+      if (Elkaisar.LBase.isJson(data)) {
         TradeCenter.totalCount = JSON.parse(data).item_count;
       } else {
         Elkaisar.LBase.Error(data);
@@ -75,9 +75,9 @@ TradeCenter.getTradeListForbidden = function () {
 
 
   return $.ajax({
-    url: "api/tradeCenter.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/ATradeCenter/getForbiddenItem`,
     data: {
-      GET_FORBIDDEN_ITEM: true
+      token: Elkaisar.Config.OuthToken
     },
     type: 'GET',
     beforeSend: function (xhr) {
@@ -130,7 +130,7 @@ TradeCenter.getPlayerTradeList = function () {
 
 
 
-$(document).on("GameReady", function () {
+$(document).on("PlayerReady", function () {
   TradeCenter.getTradeList(0);
   TradeCenter.getTradeListTotalCount();
   TradeCenter.getTradeListForbidden();

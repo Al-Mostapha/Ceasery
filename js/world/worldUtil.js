@@ -838,7 +838,7 @@ $(document).on("click", ".close_RB img", function () {
 
 $(document)['on']('click', '#smallMap-icon img', function () {
     var CityIcons = '';
-    for (var idCity in Elkaisar['DPlayer']['City']) {
+    for (var idCity in Elkaisar.DPlayer['City']) {
         CityIcons += `<lable type="18" style="background-image: url(images/world/map-icon/myCity.png); width:20px; height:20px; left: ${Elkaisar.DPlayer.City[idCity].City.x}px; top: ${Elkaisar.DPlayer.City[idCity].City.y}px"></lable>'`;
     }
     var Map = `'<div id="smallMap">

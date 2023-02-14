@@ -469,6 +469,7 @@ Elkaisar.City.prepareCity = function (idCity)
                         });
 
                         $("#loader-layer").remove();
+                        $(document).trigger("CityReady");
                     }
                 });
 
@@ -494,10 +495,6 @@ Elkaisar.City.prepareCity = function (idCity)
             Elkaisar.City.getCityHeroMedal(idCity);
             Elkaisar.City.refreshBtnList();
         });
-
-
-
-
     });
 
 
@@ -505,17 +502,10 @@ Elkaisar.City.prepareCity = function (idCity)
 }
 
 $(document).on("PlayerReady", "html", function () {
-
-
-    for (var ii in Elkaisar.Config.idCities)
-    {
-        Elkaisar.City.prepareCity(Elkaisar.Config.idCities[ii]);
-    }
-
-
-
-
-
+  for (var ii in Elkaisar.Config.idCities)
+  {
+      Elkaisar.City.prepareCity(Elkaisar.Config.idCities[ii]);
+  }
 });
 
 

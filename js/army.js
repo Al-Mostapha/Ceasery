@@ -1398,20 +1398,20 @@ var army = {
         typeof _0x3318e8 != 'string' && (_0x3318e8 = 'all');
         var _0x31720f = 0x0,
                 _0x2b41e5 = '';
-        for (var _0x487090 in Elkaisar['DPlayer']['Equip'])
-            if ((_0x3318e8 === Elkaisar['DPlayer']['Equip'][_0x487090]['part'] || _0x3318e8 === 'all') && !Elkaisar['DPlayer']['Equip'][_0x487090]['id_hero'])
+        for (var _0x487090 in Elkaisar.DPlayer['Equip'])
+            if ((_0x3318e8 === Elkaisar.DPlayer['Equip'][_0x487090]['part'] || _0x3318e8 === 'all') && !Elkaisar.DPlayer['Equip'][_0x487090]['id_hero'])
                 _0x31720f++;
         for (var _0x4b0a19 = 0x0, _0x26b7cb = 0x0; _0x26b7cb < 0x18; _0x4b0a19++) {
             var _0x22417d = _0x4b0a19 + _0x54ba51;
-            if (Elkaisar['DPlayer']['Equip'][_0x22417d]) {
-                var _0x57ee24 = Elkaisar['DPlayer']['Equip'][_0x22417d]['type'],
-                        _0x50aa77 = Elkaisar['DPlayer']['Equip'][_0x22417d]['part'],
-                        _0x3ff925 = Elkaisar['DPlayer']['Equip'][_0x22417d]['lvl'];
-                if (Elkaisar['DPlayer']['Equip'][_0x22417d]['id_hero'] > 0x0)
+            if (Elkaisar.DPlayer['Equip'][_0x22417d]) {
+                var _0x57ee24 = Elkaisar.DPlayer['Equip'][_0x22417d]['type'],
+                        _0x50aa77 = Elkaisar.DPlayer['Equip'][_0x22417d]['part'],
+                        _0x3ff925 = Elkaisar.DPlayer['Equip'][_0x22417d]['lvl'];
+                if (Elkaisar.DPlayer['Equip'][_0x22417d]['id_hero'] > 0x0)
                     continue;
                 if (_0x50aa77 != _0x3318e8 && _0x3318e8 != 'all')
                     continue;
-                _0x2b41e5 += '<div class=\"unite-eq\">\x0a                                    <button style=\"background-image: url(' + Equipment['getImage'](_0x57ee24, _0x50aa77, _0x3ff925) + ')\" \x0a                                 id_equip =\"' + Elkaisar['DPlayer']['Equip'][_0x22417d]['id_equip'] + '\" equip_part=\"' + _0x50aa77 + '\"\x0a                                         equip_type=\"' + _0x57ee24 + '\" data-list-part=\"' + _0x3318e8 + '\"\x0a                                         data-offset=\"' + (_0x26b7cb + Number(_0x54ba51)) + '\"\x0a                                         class=\"avail_equip putable-equi equip-unit\" data-equi-part=\"' + _0x50aa77 + '\" data-equi-lvl=\"' + _0x3ff925 + '\" data-equi-type=\"' + _0x57ee24 + '\"\x0a                                        ></button>\x0a                             </div> ';
+                _0x2b41e5 += '<div class=\"unite-eq\">\x0a                                    <button style=\"background-image: url(' + Equipment['getImage'](_0x57ee24, _0x50aa77, _0x3ff925) + ')\" \x0a                                 id_equip =\"' + Elkaisar.DPlayer['Equip'][_0x22417d]['id_equip'] + '\" equip_part=\"' + _0x50aa77 + '\"\x0a                                         equip_type=\"' + _0x57ee24 + '\" data-list-part=\"' + _0x3318e8 + '\"\x0a                                         data-offset=\"' + (_0x26b7cb + Number(_0x54ba51)) + '\"\x0a                                         class=\"avail_equip putable-equi equip-unit\" data-equi-part=\"' + _0x50aa77 + '\" data-equi-lvl=\"' + _0x3ff925 + '\" data-equi-type=\"' + _0x57ee24 + '\"\x0a                                        ></button>\x0a                             </div> ';
             } else
                 _0x2b41e5 += ' <div class=\"unite-eq\">\x0a                                    <button disabled=\"disabled\" class=\"avail_equip\" style=\"background-image: url(images/icons/hero/eq-bg.png)\"></button>\x0a                                </div>  ';
             _0x26b7cb++;
@@ -1545,7 +1545,7 @@ var army = {
                                     <button  class="GO_L_1 go-one-page-eq-left"></button>
                                 </div>
                                 <div class="lable">
-                                    1/${ Math['floor'](Elkaisar['DPlayer']['Equip']['filter'](function (Hero) {
+                                    1/${ Math['floor'](Elkaisar.DPlayer['Equip']['filter'](function (Hero) {
                                                 return !Hero['id_hero'];
                                             })['length'] / 24) }
                                 </div>

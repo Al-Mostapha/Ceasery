@@ -84,15 +84,18 @@ Elkaisar.Equip.EquipList = {},
         $.ajax({
           'url': Elkaisar.Config.NodeUrl + '/api/APlayerEquip/getEquipPower',
           'data': {
-            token: Elkaisar['Config']['OuthToken'],
-            server: Elkaisar['Config']['idServer']
+            token: Elkaisar.Config.OuthToken,
+            server: Elkaisar.Config.idServer
           },
           success: function (DataI, _0x23bbdc, _0x2945f2) {
-            if (!Elkaisar['LBase']['isJson'](DataI))
-              return Elkaisar['LBase']['Error'](DataI);
-            var JsonData = JSON['parse'](DataI);
+            if (!Elkaisar.LBase.isJson(DataI))
+              return Elkaisar.LBase.Error(DataI);
+            var JsonData = JSON.parse(DataI);
             for (var ii in JsonData) {
-              Elkaisar['Equip']['EquipList'][`${JsonData[ii]['equip']}_${JsonData[ii]['part']}_${JsonData[ii]['lvl']}`]['Power'] = JsonData[ii];
+              const EquipId = `${JsonData[ii]['equip']}_${JsonData[ii]['part']}_${JsonData[ii]['lvl']}`;
+              if(!Elkaisar.Equip.EquipList[EquipId])
+                console.log(EquipId)
+              Elkaisar.Equip.EquipList[EquipId]['Power'] = JsonData[ii];
             }
           }
         });
@@ -103,10 +106,10 @@ Elkaisar.Equip.EquipList = {},
 Elkaisar.Equip.getPlayerAmount = function (EquipType, Part, Lvl = 1) {
 
   var Count = 0x0;
-  for (var ii in Elkaisar['DPlayer']['Equip']) {
-    if (Elkaisar['DPlayer']['Equip'][ii]['type'] == EquipType
-      && Elkaisar['DPlayer']['Equip'][ii]['part'] == Part
-      && Elkaisar['DPlayer']['Equip'][ii]['lvl'] == Lvl)
+  for (var ii in Elkaisar.DPlayer['Equip']) {
+    if (Elkaisar.DPlayer['Equip'][ii]['type'] == EquipType
+      && Elkaisar.DPlayer['Equip'][ii]['part'] == Part
+      && Elkaisar.DPlayer['Equip'][ii]['lvl'] == Lvl)
       Count++;
   }
   return Count;

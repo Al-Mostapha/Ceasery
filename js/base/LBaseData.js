@@ -3,6 +3,7 @@ Elkaisar.LBase.Error = function (data)
 
     alert(data);
     console.log(data);
+    throw {}
 };
 
 Elkaisar.LBase.isJson = function (str)

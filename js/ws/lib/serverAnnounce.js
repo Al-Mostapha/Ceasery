@@ -175,7 +175,7 @@ Elkaisar.WsLib.ServerAnnounce.ArenachallangeLvlUp = function (data) {
               الى مستوى   (<span class="red">  ${(Number(data['ArenaData']['lvl']) + 0x1)}  </span>)  
                 </div>'`;
     Chat['append'](Msg);
-    if (Elkaisar['DPlayer']['Player']['id_player'] == data['Player']['id_player'])
+    if (Elkaisar.DPlayer['Player']['id_player'] == data['Player']['id_player'])
         Elkaisar.ArenaChallange.getArenaData().done(function () {
             $('#SArenaField')['click']();
         });
