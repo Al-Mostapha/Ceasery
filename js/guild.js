@@ -883,14 +883,14 @@ var Guild = {
                                                 
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 5 &&
               parseInt(guild_data[iii].rank) < 6 &&
-              parseInt(ID_PLAYER) !== parseInt(guild_data[iii].id_player) ?
+              parseInt(Elkaisar.DPlayer.Player.id_player) !== parseInt(guild_data[iii].id_player) ?
               `<div id="promote-guild-member">ترقية    &nbsp;&nbsp;&#8618;</div>` : ""}
                                                 
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) > parseInt(guild_data[iii].rank) ? `<div id="trade-guild-position">تبادل المناصب</div>` : ""}
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= Number(Guild.RANK_DATA.LEADER) ? `<div class="mem-prize-percent">نسبة الجوائز</div>` : ""}
                                                 ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 4 && parseInt(guild_data[iii].rank) === 0 ? ` <div id="fire-guild-mamber">${Translate.Button.Hero.Dismiss[UserLag.language]}</div>` : ""}
-                                                ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 1 && parseInt(guild_data[iii].id_player) === parseInt(ID_PLAYER) && parseInt(Elkaisar.DPlayer.GuildData.rank) !== 6 ? ` <div id="stepdown-guild-mamber">تنحى من المنصب</div>` : ""}
-                                                ${parseInt(guild_data[iii].id_player) === parseInt(ID_PLAYER) ? ` <div id="get-out-guild">خروج</div>` : ""}
+                                                ${parseInt(Elkaisar.DPlayer.GuildData.rank) >= 1 && parseInt(guild_data[iii].id_player) === parseInt(Elkaisar.DPlayer.Player.id_player) && parseInt(Elkaisar.DPlayer.GuildData.rank) !== 6 ? ` <div id="stepdown-guild-mamber">تنحى من المنصب</div>` : ""}
+                                                ${parseInt(guild_data[iii].id_player) === parseInt(Elkaisar.DPlayer.Player.id_player) ? ` <div id="get-out-guild">خروج</div>` : ""}
                                                 
                                                 
                                             </div>
@@ -1029,69 +1029,66 @@ var Guild = {
                             <div class="left-content">
                                 <div class="upper">
                                     <div class="banner-red">تطوير الحلف</div>
-                                    
                                     <div class="guild-banner">
-                                        <div id="guild-lvl">${getArabicNumbers(guild_data.lvl)}</div>
-                                        <img src="images/style/bottom-${Elkaisar.Guild.GuildData.slog_btm}.png">
-                                        <img src="images/style/central-${Elkaisar.Guild.GuildData.slog_cnt}.png" >
-                                        <img src="images/style/top-${Elkaisar.Guild.GuildData.slog_top}.png">
+                                      <div id="guild-lvl">${getArabicNumbers(guild_data.lvl)}</div>
+                                      <img src="images/style/bottom-${Elkaisar.Guild.GuildData.slog_btm}.png">
+                                      <img src="images/style/central-${Elkaisar.Guild.GuildData.slog_cnt}.png" >
+                                      <img src="images/style/top-${Elkaisar.Guild.GuildData.slog_top}.png">
                                     </div>
                                 </div>
                                 <button class="full-btn  full-btn-2x" id="upgrade_guild" ${Guild.isUpgradable(guild_data) ? "" : "disabled"}>
                                     ${Translate.Button.General.Upgrade[UserLag.language]}
                                 </button>
-
                             </div>
                             <div class="right-content">
                                 <div class="left pull-L">
                                     <table border="1">
-                                        <td colspan="6" class="th ellipsis">
-                                            ${guild_data.lvl < 10 ? "المواد المطلوبة لتطوير الحلف" : "لا يمكنك تطوير الحلف بالموارد مرة اخرى"}
+                                      <td colspan="6" class="th ellipsis">
+                                        ${guild_data.lvl < 10 ? "المواد المطلوبة لتطوير الحلف" : "لا يمكنك تطوير الحلف بالموارد مرة اخرى"}
+                                      </td>
+                                      <tr>
+                                          <td>
+                                            <img src="images/style/food.png"/>
+                                          </td>
+                                          <td class="${guild_data.food >= guild_data.lvl * 1250000 ? 'enough' : 'not_enough'}">
+                                            ${guild_data.lvl < 10 ? getArabicNumbers(guild_data.lvl * 1250000) : "----"}
+                                          </td>
+                                          <td>
+                                            <img src="images/style/stone.png"/>
+                                          </td>
+                                          <td class="${guild_data.stone >= guild_data.lvl * 1250000 ? 'enough' : 'not_enough'}">
+                                            ${guild_data.lvl < 10 ? getArabicNumbers(guild_data.lvl * 1250000) : "----"}
+                                          </td>
+                                          <td>
+                                            <img src="images/style/coin.png"/>
+                                          </td>
+                                          <td class="${guild_data.coin >= guild_data.lvl * 1000000 ? 'enough' : 'not_enough'}">
+                                            ${guild_data.lvl < 10 ? getArabicNumbers(guild_data.lvl * 1000000) : "----"}
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <img src="images/style/wood.png"/>
                                         </td>
-                                        <tr>
-                                            <td>
-                                                <img src="images/style/food.png"/>
-                                            </td>
-                                            <td class="${guild_data.food >= guild_data.lvl * 1250000 ? 'enough' : 'not_enough'}">
-                                                ${guild_data.lvl < 10 ? getArabicNumbers(guild_data.lvl * 1250000) : "----"}
-                                            </td>
-                                            <td>
-                                                <img src="images/style/stone.png"/>
-                                            </td>
-                                            <td class="${guild_data.stone >= guild_data.lvl * 1250000 ? 'enough' : 'not_enough'}">
-                                                ${guild_data.lvl < 10 ? getArabicNumbers(guild_data.lvl * 1250000) : "----"}
-                                            </td>
-                                            <td>
-                                                <img src="images/style/coin.png"/>
-                                            </td>
-                                            <td class="${guild_data.coin >= guild_data.lvl * 1000000 ? 'enough' : 'not_enough'}">
-                                                ${guild_data.lvl < 10 ? getArabicNumbers(guild_data.lvl * 1000000) : "----"}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                           <td>
-                                                <img src="images/style/wood.png"/>
-                                            </td>
-                                            <td class="${guild_data.wood >= guild_data.lvl * 1250000 ? 'enough' : 'not_enough'}">
-                                                ${guild_data.lvl < 10 ? getArabicNumbers(guild_data.lvl * 1250000) : "----"}
-                                            </td>
-                                            <td>
-                                                <img src="images/style/iron.png"/>
-                                            </td>
-                                            <td class="${guild_data.metal >= guild_data.lvl * 1250000 ? 'enough' : 'not_enough'}">
-                                                ${guild_data.lvl < 10 ? getArabicNumbers(guild_data.lvl * 1250000) : "----"}
-                                            </td>
-                                            
-                                        </tr>
+                                        <td class="${guild_data.wood >= guild_data.lvl * 1250000 ? 'enough' : 'not_enough'}">
+                                          ${guild_data.lvl < 10 ? getArabicNumbers(guild_data.lvl * 1250000) : "----"}
+                                        </td>
+                                        <td>
+                                          <img src="images/style/iron.png"/>
+                                        </td>
+                                        <td class="${guild_data.metal >= guild_data.lvl * 1250000 ? 'enough' : 'not_enough'}">
+                                          ${guild_data.lvl < 10 ? getArabicNumbers(guild_data.lvl * 1250000) : "----"}
+                                        </td>
+                                      </tr>
                                     </table>
                                     <div class="up_with_mat">
-                                        <button class="full-btn pull-L" id="up_with_mat">
-                                            <img src="images/icons/pluse.png">
-                                            ${Translate.Button.General.Use[UserLag.language]}
-                                        </button>
-                                        <h1 class="pull-R">
-                                           (استعمال احد شعارات الحلف لتطوير الحلف) 
-                                        </h1>
+                                      <button class="full-btn pull-L" id="up_with_mat">
+                                          <img src="images/icons/pluse.png">
+                                          ${Translate.Button.General.Use[UserLag.language]}
+                                      </button>
+                                      <h1 class="pull-R">
+                                        (استعمال احد شعارات الحلف لتطوير الحلف) 
+                                      </h1>
                                     </div>
                                 </div>
                                 <div class="right pull-R ">
@@ -1106,56 +1103,48 @@ var Guild = {
                                         </p>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="right-content-footer" >  
                                 <div class="left pull-L">
-                                   <div class="table" id="guild-res-table">
-
-                                        <div class="td"  style="width: 13.4%;"></div>
-                                        <div  class="td" style="width: 73px;" data-resource="wood" data-count="${guild_data.wood}">
-                                            ${getArabicNumbers(guild_data.wood)}
-                                        </div>
-
-
-                                        <div  class="td" style="width: 73px;" data-resource="stone" data-count="${guild_data.stone}">
-                                            ${getArabicNumbers(guild_data.stone)}
-                                        </div> 
-
-                                        <div  class="td" style="width: 73px;" data-resource="metal" data-count="${guild_data.metal}">
-                                            ${getArabicNumbers(guild_data.metal)}
-                                        </div>
-
-                                        <div  class="td" style="width: 73px;"  data-resource="food" data-count="${guild_data.food}">
-                                            ${getArabicNumbers(guild_data.food)}
-                                        </div>
-
-                                        <div  class="td" style="width: 73px;" >
-                                            ----
-                                        </div> 
-                                        <div  class="td" style="width: 73px; margin-top: 10px;">
-                                            <img src="images/style/coin.png" style="margin-bottom: -26px;"/>
-                                            <div  data-resource="coin" data-count="${guild_data.coin}" >${getArabicNumbers(guild_data.coin)}</div>
-                                        </div> 
-                                         
+                                  <div class="table" id="guild-res-table">
+                                      <div class="td"  style="width: 13.4%;"></div>
+                                      <div  class="td" style="width: 73px;" data-resource="wood" data-count="${guild_data.wood}">
+                                        ${getArabicNumbers(guild_data.wood)}
+                                      </div>
+                                      <div  class="td" style="width: 73px;" data-resource="stone" data-count="${guild_data.stone}">
+                                        ${getArabicNumbers(guild_data.stone)}
+                                      </div> 
+                                      <div  class="td" style="width: 73px;" data-resource="metal" data-count="${guild_data.metal}">
+                                        ${getArabicNumbers(guild_data.metal)}
+                                      </div>
+                                      <div  class="td" style="width: 73px;"  data-resource="food" data-count="${guild_data.food}">
+                                        ${getArabicNumbers(guild_data.food)}
+                                      </div>
+                                      <div  class="td" style="width: 73px;" >
+                                        ----
+                                      </div> 
+                                      <div  class="td" style="width: 73px; margin-top: 10px;">
+                                        <img src="images/style/coin.png" style="margin-bottom: -26px;"/>
+                                        <div  data-resource="coin" data-count="${guild_data.coin}" >${getArabicNumbers(guild_data.coin)}</div>
+                                      </div> 
                                     </div>
-                                     <ol id="input-guild-donate">
-                                         <li>
-                                            <input type="text" value="0" class="only_num input"  min="0" data-resource="wood" max="${Math.floor(Elkaisar.CurrentCity.City.wood)}" min="0" step="${Math.floor(Elkaisar.CurrentCity.City.wood)}"/>
-                                         </li>
-                                         <li>
-                                             <input type="text" value="0" class="only_num input"  min="0" data-resource="stone" max="${Math.floor(Elkaisar.CurrentCity.City.stone)}" step="${Math.floor(Elkaisar.CurrentCity.City.stone)}"/>
-                                         </li>
-                                         <li>
-                                             <input type="text" value="0" class="only_num input"  min="0" data-resource="metal" max="${Math.floor(Elkaisar.CurrentCity.City.metal)}" step="${Math.floor(Elkaisar.CurrentCity.City.metal)}"/>
-                                         </li>
-                                         <li>
-                                             <input type="text" value="0" class="only_num input"  min="0" data-resource="food" max="${Math.floor(Elkaisar.CurrentCity.City.food)}" step="${Math.floor(Elkaisar.CurrentCity.City.food)}"/>
-                                         </li>
-                                         <li>
-                                             <input type="text" value="0" class="only_num input" style="margin-left: 82px;"  min="0"  data-resource="coin" max="${Math.floor(Elkaisar.CurrentCity.City.coin)}" step="${Math.floor(Elkaisar.CurrentCity.City.coin)}"/>
-                                         </li>
-                                     </ol>
+                                    <ol id="input-guild-donate">
+                                        <li>
+                                          <input type="text" value="0" class="only_num input"  min="0" data-resource="wood" max="${Math.floor(Elkaisar.CurrentCity.City.wood)}" min="0" step="${Math.floor(Elkaisar.CurrentCity.City.wood)}"/>
+                                        </li>
+                                        <li>
+                                          <input type="text" value="0" class="only_num input"  min="0" data-resource="stone" max="${Math.floor(Elkaisar.CurrentCity.City.stone)}" step="${Math.floor(Elkaisar.CurrentCity.City.stone)}"/>
+                                        </li>
+                                        <li>
+                                          <input type="text" value="0" class="only_num input"  min="0" data-resource="metal" max="${Math.floor(Elkaisar.CurrentCity.City.metal)}" step="${Math.floor(Elkaisar.CurrentCity.City.metal)}"/>
+                                        </li>
+                                        <li>
+                                          <input type="text" value="0" class="only_num input"  min="0" data-resource="food" max="${Math.floor(Elkaisar.CurrentCity.City.food)}" step="${Math.floor(Elkaisar.CurrentCity.City.food)}"/>
+                                        </li>
+                                        <li>
+                                          <input type="text" value="0" class="only_num input" style="margin-left: 82px;"  min="0"  data-resource="coin" max="${Math.floor(Elkaisar.CurrentCity.City.coin)}" step="${Math.floor(Elkaisar.CurrentCity.City.coin)}"/>
+                                        </li>
+                                    </ol>
                                 </div>
                                 <div class="right pull-R">
                                     <button class="full-btn full-btn-3x" id="guild-donate">
@@ -1779,13 +1768,10 @@ $(document).on("keyup", "#GuildEneFriInput", function () {
 
   $.ajax({
 
-    url: "api/guild.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/AGuild/searchGuildName`,
     data: {
-
-      GET_GUILD_AUTO_COMPLETE: true,
-      search_value: search_val,
-      id_player: ID_PLAYER,
-      id_guild: Elkaisar.DPlayer.Player.id_guild,
+      searchVal: search_val,
+      idGuild: Elkaisar.DPlayer.Player.id_guild,
       token: Elkaisar.Config.OuthToken
 
     },
@@ -1795,13 +1781,9 @@ $(document).on("keyup", "#GuildEneFriInput", function () {
 
     },
     success: function (data, textStatus, jqXHR) {
-
       var json_data = JSON.parse(data);
-
       var list = "";
-
       for (var iii = 0; iii < json_data.length; iii++) {
-
         list += `   <li class="SearchGuildUnitRes" data-id-guild="${json_data[iii].id_guild}" data-g-name = "${json_data[iii].name}"> 
                                 <div class="pull-L image">
                                     <img src="images/style/bottom-${json_data[iii].slog_btm}.png">
@@ -1811,7 +1793,6 @@ $(document).on("keyup", "#GuildEneFriInput", function () {
                                 <h1 class="pull-L">${json_data[iii].name}</h1>
                                 <h2 class="pull-L">(${getArabicNumbers(json_data[iii].lvl)})</h2>
                             </li>`;
-
       }
 
       if (json_data.length) {
@@ -2338,7 +2319,7 @@ $(document).on("click", ".promote-guild-member div", function () {
   var id_member = parseInt($(this).parents(".drop-down-li").parents(".tr").attr("data-id-member")) || 0;
   var promotion = $(this).attr("data-promrote-to");
 
-  if (parseInt(ID_PLAYER) === parseInt(id_member)) {
+  if (parseInt(Elkaisar.DPlayer.Player.id_player) === parseInt(id_member)) {
 
     alert_box.confirmMessage("لا يمكنك ترقية نفسك  يا حج :D");
     return;

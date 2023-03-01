@@ -29,26 +29,19 @@ Dominant.dialogBox = function () {
 Dominant.armyCapital = function () {
     $.ajax({
 
-        url: "api/dominant.php",
+        url: `${Elkaisar.Config.NodeUrl}/api/ADominant/getArmyCapitalDominant`,
         data: {
-
-            GET_ARMY_CAPITAL_DOMINANT: true
-
+          token: Elkaisar.Config.OuthToken
         },
         type: 'GET',
         beforeSend: function (xhr) {
 
         },
         success: function (data, textStatus, jqXHR) {
-
-            if (isJson(data)) {
-                var jsonData = JSON.parse(data);
-                console.log(jsonData)
-            } else {
-                Elkaisar.LBase.Error(data);
-                return;
-            }
-
+            if(!Elkaisar.LBase.isJson(data))
+              return Elkaisar.LBase.Error(data);
+      
+            var jsonData = JSON.parse(data);
             var list = `<div class="th">
                             <div class="td_1 ellipsis" style="width:25%">${Translate.Title.TH.Capital[UserLag.language]}</div>
                             <div class="td_2 ellipsis" style="width:20%">${Translate.Title.TH.Coordinate[UserLag.language]}</div>

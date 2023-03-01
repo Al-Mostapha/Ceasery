@@ -22,7 +22,7 @@ function refreshMsg() {
 
 }
 
-$(document).on("GameReady", function (){
+$(document).on("GameReady", function () {
   refreshMsg();
 });
 
@@ -33,12 +33,10 @@ function getReports(offset) {
   }
 
   return $.ajax({
-    url: "api/battelReport.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/ABattelReport/getBattelReports`,
     data: {
-      get_report: true,
       offset: offset,
-      id_player: ID_PLAYER,
-      token: Elkaisar.Config.OuthTokensar.Config.OuthToken
+      token: Elkaisar.Config.OuthToken
     },
     type: 'GET',
     beforeSend: function (xhr) {
@@ -46,7 +44,7 @@ function getReports(offset) {
     },
     success: function (data, textStatus, jqXHR) {
 
-      if (isJson(data)) {
+      if (Elkaisar.LBase.isJson(data)) {
         var reports = JSON.parse(data);
       } else {
         Elkaisar.LBase.Error(data);
@@ -107,11 +105,9 @@ function getSpyReports(offset) {
   return $.ajax({
 
 
-    url: "api/battelReport.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/ABattelReport/getSpyReports`,
     data: {
-      get_spy_report: true,
       offset: offset,
-      id_player: ID_PLAYER,
       token: Elkaisar.Config.OuthToken
     },
     type: 'GET',
@@ -216,11 +212,9 @@ var message = {
                         `;
     $.ajax({
 
-      url: "api/message.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AMessage/getMsgIncome`,
       data: {
-        get_msg_income: true,
         offset: offset,
-        id_player: ID_PLAYER,
         token: Elkaisar.Config.OuthToken
       },
       type: 'GET',
@@ -228,19 +222,17 @@ var message = {
 
       },
       success: function (data, textStatus, jqXHR) {
-        console.log(data)
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
+
         var json_data = JSON.parse(data);
-
-
         for (var iii = 0; iii < 10; iii++) {
-
           if (json_data[iii]) {
             output += `<div class="tr ${parseInt(json_data[iii].seen) === 0 ? "not-seen" : "seen"} ${parseInt(json_data[iii].from_) === 1 ? "sys-msg" : ""} ${parseInt(json_data[iii].from_) === 2 ? "g-msg" : ""}"
                                             data-seen="${json_data[iii].seen}" id_msg="${json_data[iii].id_msg}" table="msg_income" db_offset="${parseInt(offset) + iii}">
                                         <div class="td_1">
                                             <input name="msg_sel" id="check_${iii}" class="msg-action" type="checkbox" style="display:none">
                                             <label for="check_${iii}" class="checker"></label>
-                                           
                                         </div>
                                         <div class="td_2">${json_data[iii].name}</div>
                                         <div class="td_3">${json_data[iii].head}</div>
@@ -254,21 +246,13 @@ var message = {
           }
         }
         output += `
-
-                            </div>
-                            ${message.footer("msg_income", offset)}
-                        </div>`;
-
+                </div>
+                    ${message.footer("msg_income", offset)}
+                </div>`;
         $(".box_content").replaceWith(output);
-
-
-
-
       },
       error: function (jqXHR, textStatus, errorThrown) {
-
       }
-
     });
 
 
@@ -281,19 +265,17 @@ var message = {
 
     var msg_data;
     $.ajax({
-      url: "api/message.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AMessage/getMsgIncomeDetail`,
       data: {
-        get_income_msg_in_detail: true,
-        id_message: id_msg,
-        id_player: ID_PLAYER,
+        idMessage: id_msg,
         token: Elkaisar.Config.OuthToken
       },
       type: 'GET',
       beforeSend: function (xhr) {
-
       },
       success: function (data, textStatus, jqXHR) {
-
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
         msg_data = JSON.parse(data);
         var single_meassage = `  <div class="box_content for_msg" id="msg_income_detail">
                                             <div class="left-content full">
@@ -359,11 +341,9 @@ var message = {
                                 </div>`;
     $.ajax({
 
-      url: "api/message.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AMessage/getMsgDiff`,
       data: {
-        get_msg_diff: true,
         offset: offset || 0,
-        id_player: ID_PLAYER,
         token: Elkaisar.Config.OuthToken
       },
       type: 'GET',
@@ -372,8 +352,9 @@ var message = {
       },
       success: function (data, textStatus, jqXHR) {
 
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data)
         var json_data = JSON.parse(data);
-
         for (var iii = 0; iii < 10; iii++) {
 
           if (json_data[iii]) {
@@ -415,19 +396,17 @@ var message = {
   diffMsgShow: function (id_msg, offset_parent) {
     var msg_data;
     $.ajax({
-      url: "api/message.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AMessage/getMsgDiffDetail`,
       data: {
-        get_diff_msg_in_detail: true,
-        id_message: id_msg,
-        id_player: ID_PLAYER,
+        idMessage: id_msg,
         token: Elkaisar.Config.OuthToken
       },
       type: 'GET',
       beforeSend: function (xhr) {
-
       },
       success: function (data, textStatus, jqXHR) {
-
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
         msg_data = JSON.parse(data);
         var single_meassage = `  <div id="msg_diff_detail" class="box_content for_msg">
                                             <div class="left-content full">
@@ -495,11 +474,10 @@ var message = {
                                 </div>`;
     $.ajax({
 
-      url: "api/message.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AMessage/getMsgOutcome`,
       data: {
         get_msg_outcome: true,
         offset: offset || 0,
-        id_player: ID_PLAYER,
         token: Elkaisar.Config.OuthToken
       },
       type: 'GET',
@@ -507,7 +485,8 @@ var message = {
 
       },
       success: function (data, textStatus, jqXHR) {
-
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
         var json_data = JSON.parse(data);
         if (json_data.length > 0) {
           for (var iii = 0; iii < 10; iii++) {
@@ -528,34 +507,23 @@ var message = {
             }
           }
           output += `
-
-                               </div>
-                               ${message.footer("msg_out", offset)}
-                           </div>`;
+            </div>
+                ${message.footer("msg_out", offset)}
+            </div>`;
           $(".box_content").replaceWith(output);
         }
-
       },
       error: function (jqXHR, textStatus, errorThrown) {
-
       }
-
     });
-
-
-
-
-
   },
 
   outcomeMsgShow: function (id_msg, offset_parent) {
     var msg_data;
     $.ajax({
-      url: "api/message.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AMessage/getMsgOutcomeDetail`,
       data: {
-        get_out_msg_in_detail: true,
-        id_message: id_msg,
-        id_player: ID_PLAYER,
+        idMessage: id_msg,
         token: Elkaisar.Config.OuthToken
       },
       type: 'GET',
@@ -563,44 +531,43 @@ var message = {
 
       },
       success: function (data, textStatus, jqXHR) {
-
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
         msg_data = JSON.parse(data);
         var single_meassage = `  <div class="box_content for_msg">
                                             <div class="left-content full">
-                                                <div class="upper">
-                                                    <ol>
-                                                        <li>
-                                                             <span>: المرسل </span><span> ${msg_data[0].name}</span> 
-                                                        </li>
-                                                        <li>
-                                                              <span>  : الموضوع  </span><span>${msg_data[0].head}</span>
-                                                        </li>
-                                                        <li>
-                                                             <span> : التاريخ</span><span>${msg_data[0].time_stamp}</span>
-                                                        </li>
-                                                    </ol>
-                                                </div>
-                                                <div class="msg_body">
-                                                    <p class ="selectable">
-                                                        ${extractUrl(msg_data[0].body)}
-                                                    </p>
-                                                </div>
-
+                                              <div class="upper">
+                                                <ol>
+                                                  <li>
+                                                    <span>: المرسل </span><span> ${msg_data[0].name}</span> 
+                                                  </li>
+                                                  <li>
+                                                    <span>  : الموضوع  </span><span>${msg_data[0].head}</span>
+                                                  </li>
+                                                  <li>
+                                                    <span> : التاريخ</span><span>${msg_data[0].time_stamp}</span>
+                                                  </li>
+                                                </ol>
+                                              </div>
+                                              <div class="msg_body">
+                                                <p class ="selectable">
+                                                  ${extractUrl(msg_data[0].body)}
+                                                </p>
+                                              </div>
                                             </div>
                                             <div class="right-content-footer" rank_for="players">  
-                                                <div class="buttons">  
-                                                    <ul>  
-                                                        <li id="back_to_msg" style=" float: right; width: 85px; margin-right: 50px;">  
-                                                            <button class="full-btn full-btn-3x full" id="back_msg"  data-parent-offset="${offset_parent}" data-msg-for="msg_out">
-                                                                عودة
-                                                            </button>
-                                                        </li>
-                                                        <li  style=" float: right; width: 85px; margin-right: 10px;">  
-                                                            <button class="full-btn full-btn-3x full" id="msg-reply" data-id-player="${msg_data[0].id_from}" data-player-name="${msg_data[0].name}" data-msg-head="${msg_data[0].head}">  رد </button>
-                                                        </li>
-
-                                                    </ul>  
-                                                </div>  
+                                              <div class="buttons">  
+                                                <ul>  
+                                                  <li id="back_to_msg" style=" float: right; width: 85px; margin-right: 50px;">  
+                                                    <button class="full-btn full-btn-3x full" id="back_msg"  data-parent-offset="${offset_parent}" data-msg-for="msg_out">
+                                                      عودة
+                                                    </button>
+                                                  </li>
+                                                  <li  style=" float: right; width: 85px; margin-right: 10px;">  
+                                                    <button class="full-btn full-btn-3x full" id="msg-reply" data-id-player="${msg_data[0].id_from}" data-player-name="${msg_data[0].name}" data-msg-head="${msg_data[0].head}">  رد </button>
+                                                  </li>
+                                                </ul>  
+                                              </div>  
                                             </div> 
                                         </div>`;
 
@@ -767,12 +734,10 @@ $(document).on("click", "#del_selected", function () {
 
   $.ajax({
 
-    url: "api/message.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/AMessage/deleteMessages`,
     data: {
-      delete_msg: true,
-      msgs: JSON.stringify(total_msg),
-      id_player: ID_PLAYER,
-      token: Elkaisar.Config.OuthTokensar.Config.OuthToken
+      idMsgs: JSON.stringify(total_msg),
+      token: Elkaisar.Config.OuthToken
     },
     type: 'POST',
     beforeSend: function (xhr) {
@@ -815,12 +780,10 @@ $(document).on("click", "#delete-all button", function () {
   alert_box.confirmDialog("تأكيد حذف جميع الرسائل!..", function () {
     $.ajax({
 
-      url: "api/message.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AMessage/deleteUnreadMessages`,
       data: {
-        DELETE_ALL_UNREAD: true,
-        msgs: JSON.stringify(total_msg),
-        id_player: ID_PLAYER,
-        token: Elkaisar.Config.OuthTokensar.Config.OuthToken
+        idMsgs: JSON.stringify(total_msg),
+        token: Elkaisar.Config.OuthToken
       },
       type: 'POST',
       beforeSend: function (xhr) {
@@ -861,20 +824,18 @@ function searchByName(segmant, condtion) {
   if (condtion === undefined) {
 
     var data_send = {
-      search_by_name: true,
+      searchByName: true,
       name: segmant,
-      id_player: ID_PLAYER,
       token: Elkaisar.Config.OuthToken
     };
 
   } else {
 
     var data_send = {
-      search_by_name: true,
+      searchByName: true,
       name: segmant,
-      id_guild_no: false,
-      id_guild: Elkaisar.DPlayer.Player.id_guild,
-      id_player: ID_PLAYER,
+      idGuildNo: false,
+      idGuild: Elkaisar.DPlayer.Player.id_guild,
       token: Elkaisar.Config.OuthToken
 
     };
@@ -883,13 +844,15 @@ function searchByName(segmant, condtion) {
 
   $.ajax({
 
-    url: "api/player.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/APlayer/searchByName`,
     data: data_send,
     type: 'GET',
     beforeSend: function (xhr) {
 
     },
     success: function (data, textStatus, jqXHR) {
+      if (!Elkaisar.LBase.isJson(data))
+        return Elkaisar.LBase.Error(data);
 
       var json_data = JSON.parse(data);
       var total = "";
@@ -967,39 +930,26 @@ $(document).on("click", "#send_mail_to", function () {
 
     $.ajax({
 
-      url: "api/message.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AMessage/sendMail`,
       data: {
-        send_mail_to: true,
-        id_to: id_to,
-        id_from: ID_PLAYER,
+        idTo: id_to,
         body: body,
         subject: subject,
         token: Elkaisar.Config.OuthToken
       },
       type: 'POST',
       beforeSend: function (xhr) {
-
       },
       success: function (data, textStatus, jqXHR) {
-
-        if (data === 'done') {
-          $("#search_by_name").val("");
-          $("#subject_to_mail").val("");
-          $(".msg_body textarea").val("");
-
-        } else {
-          Elkaisar.LBase.Error(data);
-        }
-
-
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
+        $("#search_by_name").val("");
+        $("#subject_to_mail").val("");
+        $(".msg_body textarea").val("");
       },
       error: function (jqXHR, textStatus, errorThrown) {
-
       }
-
     });
-
-
   }
 
 });
@@ -1082,12 +1032,10 @@ function showPlayerProfile(id_player) {
 
   $.ajax({
 
-    url: "api/player.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/APlayer/getOtherPlayerData`,
     data: {
-
-      GET_PLAYER_DETAIL: true,
-      id_player: id_player
-
+      token: Elkaisar.Config.OuthToken,
+      idOtherPlayer: id_player
     },
     type: 'GET',
     beforeSend: function (xhr) {
@@ -1200,17 +1148,16 @@ function showPlayerProfile(id_player) {
       $("body").append(player_review);
     },
     success: function (data, textStatus, jqXHR) {
-
+      if (!Elkaisar.LBase.isJson(data))
+        return Elkaisar.LBase.Error(data);
       var json_data = JSON.parse(data);
-
-      $("#A-A-P-image").attr("src", Elkaisar.BaseData.HeroAvatar[json_data.avatar]);
-      $("#A-A-P-guild").html(json_data.guild || "----");
-      $("#A-A-P-promotion").html(Elkaisar.BaseData.Promotion[json_data.porm].Title);
-      $("#A-A-P-rank").html(getArabicNumbers(json_data.rank));
-      $("#A-A-P-name").html(json_data.name);
-      $("#A-A-P-prestige").html(getArabicNumbers(json_data.prestige));
-      $("#A-A-P-honor").html(getArabicNumbers(json_data.honor));
-
+      $("#A-A-P-image").attr("src", Elkaisar.BaseData.HeroAvatar[json_data.Player.avatar]);
+      $("#A-A-P-guild").html(json_data.Player.guild || "----");
+      $("#A-A-P-promotion").html(Elkaisar.BaseData.Promotion[json_data.Player.porm].Title);
+      $("#A-A-P-rank").html(getArabicNumbers(json_data.Player.rank));
+      $("#A-A-P-name").html(json_data.Player.name);
+      $("#A-A-P-prestige").html(getArabicNumbers(json_data.Player.prestige));
+      $("#A-A-P-honor").html(getArabicNumbers(json_data.Player.honor));
     },
     error: function (jqXHR, textStatus, errorThrown) {
 
@@ -1258,32 +1205,26 @@ $(document).on("click", "#send_mail_to_guild", function () {
 
     $.ajax({
 
-      url: "api/message.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AMessage/sendGuildMail`,
       data: {
-        SEND_GUILD_MAIL: true,
-        id_from: ID_PLAYER,
         body: body,
         subject: subject,
-        token: Elkaisar.Config.OuthTokensar.Config.OuthToken
+        token: Elkaisar.Config.OuthToken
       },
       type: 'POST',
-      beforeSend: function (xhr) {
-
-      },
+      beforeSend: function (xhr) {},
       success: function (data, textStatus, jqXHR) {
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
         alert_box.succesMessage("تم ارسال الرسالة بنجاح");
         $("#search_by_name").val("");
         $("#subject_to_mail").val("");
         $(".msg_body textarea").val("");
       },
       error: function (jqXHR, textStatus, errorThrown) {
-
       }
-
     });
-
   }
-
 });
 
 
@@ -1355,11 +1296,9 @@ $(document).on("click", ".show_battel_report", function () {
 
 
   $.ajax({
-    url: "api/battelReport.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/ABattelReport/getBattelReportDetail`,
     data: {
-      report_detail: true,
-      id_report: id_report,
-      id_player: ID_PLAYER,
+      idReport: id_report,
       token: Elkaisar.Config.OuthToken
     },
     type: 'GET',
@@ -1370,7 +1309,6 @@ $(document).on("click", ".show_battel_report", function () {
       if (Number(seen) === 0) {
         Elkaisar.DPlayer.Notif.msg_report--;
         Fixed.refreshPlayerNotif();
-
       }
       if (isJson(data)) {
         $(".box_content").replaceWith(getReportContent(JSON.parse(data), data_obj, parent_offset));
@@ -1879,13 +1817,11 @@ $(document).on("click", ".show_spy_report", function () {
 
 
   $.ajax({
-    url: "api/battelReport.php",
+    url: `${Elkaisar.Config.NodeUrl}/ABattelReport/getSpyReportDetail`,
     data: {
-      spy_report_detail: true,
-      id_report: id_report,
-      id_player: ID_PLAYER,
-      spy_for: data_obj.spy_for,
-      id_victim: id_victim,
+      idReport: id_report,
+      spyFor: data_obj.spy_for,
+      idVictim: id_victim,
       token: Elkaisar.Config.OuthToken
     },
     type: 'GET',
@@ -1946,9 +1882,6 @@ function checkWinner(id_player, heros, side_win) {
 
 //الملك ${detail.general_data.p_name} انشئ ${parseInt(detail.general_data.task) === 0 ? "غزو" : "استيلاء"} الى جبل [ ${getArabicNumbers(data_obj.y_coord)} , ${getArabicNumbers(data_obj.x_coord)} ]
 function getReportContent(detail, data_obj, offset) {
-  console.log(detail);
-  console.log(data_obj);
-
   var cont = `<div class="box_content for_msg for_Br " id="battel-report-msg">
                     <div class="left-content full">
                         <div id="battel_r_upper">
@@ -1969,11 +1902,11 @@ function getReportContent(detail, data_obj, offset) {
                             </div>
                             <div class="resource-row">
                                 <ul>
-                                    <li><img ondragstart="return false;" src="images/style/food.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.food} </span></li>
-                                    <li><img ondragstart="return false;" src="images/style/wood.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.wood}</span></li>
-                                    <li><img ondragstart="return false;" src="images/style/stone.png"><span>${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.stone} </span></li>
-                                    <li><img ondragstart="return false;" src="images/style/iron.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.metal} </span></li>
-                                    <li><img ondragstart="return false;" src="images/style/coin.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.resource.coin} </span></li>
+                                    <li><img ondragstart="return false;" src="images/style/food.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.Resource.food} </span></li>
+                                    <li><img ondragstart="return false;" src="images/style/wood.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.Resource.wood}</span></li>
+                                    <li><img ondragstart="return false;" src="images/style/stone.png"><span>${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.Resource.stone} </span></li>
+                                    <li><img ondragstart="return false;" src="images/style/iron.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.Resource.metal} </span></li>
+                                    <li><img ondragstart="return false;" src="images/style/coin.png"><span> ${checkWinner(Elkaisar.DPlayer.Player.id_player, detail.heros, detail.general_data.side_win) ? "+" : "-"}  ${detail.prize.Resource.coin} </span></li>
                                 </ul>
                             </div>
                             <div class="prize-row flex">
@@ -1981,15 +1914,15 @@ function getReportContent(detail, data_obj, offset) {
   for (var iii in detail.prize.matrial) {
 
     cont += `<li>
-                                            <img src="${Matrial.image(detail.prize.matrial[iii].prize)}">
-                                            <div class="amount stroke">${detail.prize.matrial[iii].amount}</div>
+                                            <img src="${Matrial.image(detail.prize.Item[iii].prize)}">
+                                            <div class="amount stroke">${detail.prize.Item[iii].amount}</div>
                                         </li>`;
 
   }
 
 
   cont += `</ul>
-                                    <p>جولات: ${getArabicNumbers(detail.general_data.round_num)}, شرف: ${getArabicNumbers(detail.prize.honor || 0)}</p>
+                                    <p>جولات: ${getArabicNumbers(detail.general_data.round_num)}, شرف: ${getArabicNumbers(detail.prize.Honor || 0)}</p>
                                 </div>
                             </div>`;
 
@@ -2032,7 +1965,7 @@ function getReportContent(detail, data_obj, offset) {
                                                         <div class="name">
                                                             ${detail.heros[jjj].h_name ? detail.heros[jjj].h_name : "بطل النظام"}
                                                         </div>
-                                                        ${Number(detail.heros[jjj].id_player) === Number(ID_PLAYER) ?
+                                                        ${Number(detail.heros[jjj].id_player) === Number(Elkaisar.DPlayer.Player.id_player) ?
           `<div class="image">
                                                             <img src="${Elkaisar.BaseData.HeroAvatar[detail.heros[jjj].avatar] || "images/icons/hero/eq-bg.png"}" />
                                                             <div class="xp stroke">+${getArabicNumbers(detail["heros"][jjj]["xp"])}</div>
@@ -2088,7 +2021,7 @@ function getReportContent(detail, data_obj, offset) {
                                                         <div class="name">
                                                             ${detail.heros[jjj].h_name ? detail.heros[jjj].h_name : "بطل النظام"}
                                                         </div>
-                                                        ${Number(detail.heros[jjj].id_player) === Number(ID_PLAYER) ?
+                                                        ${Number(detail.heros[jjj].id_player) === Number(Elkaisar.DPlayer.Player.id_player) ?
           `<div class="image">
                                                                 <img src="${Elkaisar.BaseData.HeroAvatar[detail.heros[jjj].avatar] || "images/icons/hero/eq-bg.png"}"/>
                                                                 <div class="xp stroke">+${getArabicNumbers(detail["heros"][jjj]["xp"])}</div>

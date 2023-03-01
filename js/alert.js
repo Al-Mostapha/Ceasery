@@ -708,7 +708,6 @@ alert_box.randomMove =  function (){
                         </div>
                         <div class="body-wrapper">
                             <div class="content">
-
                             </div>
                         </div>
                     </div>

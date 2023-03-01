@@ -294,26 +294,6 @@ function login(){
                 if(json_data.state == 'ok')
                 {
                     Player = json_data;
-                    // var form = `<div class="welcome-name">
-                    //                     <label class="yellow-color">${json_data.User.user_name}</label>
-                    //                     <label>مرحبا</label>
-
-                    //                 </div>
-                    //                 <div class="welcome-name">
-                    //                     <label class="yellow-color">  مركز الاعضاء&nbsp;&nbsp;⇚   </label>
-                    //                     <label>للدخول الى  </label>
-
-                    //                 </div>
-                    //                 <div class="welcome-name">
-                    //                     <label class="yellow-color"><a 
-                    //                     href="${HomeUrl}/server.php${getServerToken(json_data.User.last_server)}" target="_blank">${json_data.serverName}</a></label>
-                    //                     <label style="direction: rtl">اخر سيرفر قمت بالدخول علية :</label>
-
-                    //                 </div>
-                    //                 <div onclick="logout()" class="add-account" style="width: 85%">
-                    //                     <h3>تسجيل الخروج</h3>
-                    //                 </div> `;
-                    // $("#login-form").html(form);
                     ShowServerList();
                     for(let OneToken in json_data.Tokens){
                       localStorage.setItem(json_data.Tokens[OneToken] , OneToken);
@@ -403,43 +383,6 @@ function isJson(str) {
     }
     return true;
 }
-
-
-// $(document).on("click" , ".enter-server", function (){
-   
-//     var idPlayer = Number($(this).attr("data-id-player"));
-//     var idServer = Number($(this).attr("data-id-server"));
-    
-//     if(idPlayer > 0){
-        
-//         $.ajax({
-//            url:"api/login.php",
-//            data:{
-//                SET_PLAYER_LAST_SERVER:true,
-//                id_player: idPlayer,
-//                id_server: idServer
-//            },
-//             type: 'POST',
-//             beforeSend: function (xhr) {
-                
-//             },
-//             success: function (data, textStatus, jqXHR) {
-                
-//             },
-//             error: function (jqXHR, textStatus, errorThrown) {
-                
-//             }
-//         });
-        
-//     }else{
-        
-//         alertBox.confirmDialog("عليك تسجيل الدخول اولا ");
-//         return false ;
-        
-//     }
-    
-    
-// });
 
 function getServerToken(serverIndex){
   if(!Player)

@@ -240,37 +240,6 @@ var Hero = {
     Elkaisar.CurrentHero.Hero.in_city = 0;
     Elkaisar.CurrentHero.Hero.attack = 1;
   },
-  // get hero equip
-  getHeroEquip: function (id_hero) {
-
-
-    $.ajax({
-      url: "api/city.php",
-      data: {
-        get_hero_equip: true,
-        id_hero: id_hero,
-        id_player: ID_PLAYER,
-        token: Elkaisar.Config.OuthToken
-      },
-      type: 'GET',
-      success: function (data, textStatus, jqXHR) {
-
-        if (isJson(data)) {
-          Elkaisar.Hero.getHero(id_hero).Equip = JSON.parse(data);
-        } else {
-          Elkaisar.LBase.Error(data);
-          console.log(data);
-          return;
-        }
-
-        var equip_review = Hero.equipBreview();
-        $("#after-ajax-equip-view").html(equip_review);
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.log(errorThrown);
-      }
-    });
-  },
   /*            is hero empty*/
   isEmptyArmy: function () {
 
@@ -313,31 +282,19 @@ var Hero = {
 
     return total;
   },
-  refreshSecondHeroArmy() {
-    return $.ajax({
-      url: "api/city.php",
-      data: {
-        idHero: Elkaisar.NextHero.Hero.id_hero,
-        server: Elkaisar.Config.idServer,
-        token: Elkaisar.Config.OuthToken
-      },
-      type: 'GET',
-      success: function (data, textStatus, jqXHR) {
-        Elkaisar.NextHero.Army = JSON.parse(data);
-      }
-    });
-  },
   refreshCurrentHeroArmy() {
     return $.ajax({
-      url: "api/city.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AHeroArmy/refreshHeroArmy`,
       data: {
         idHero: Elkaisar.CurrentHero.Hero.id_hero,
-        server: Elkaisar.Config.idServer,
         token: Elkaisar.Config.OuthToken
       },
       type: 'GET',
       success: function (data, textStatus, jqXHR) {
-        Elkaisar.CurrentHero.Army = JSON.parse(data);
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
+        const l_HeroArmy = JSON.parse(data);
+        Elkaisar.CurrentHero.Army = l_HeroArmy.HeroArmy;
       }
     });
   },
@@ -606,41 +563,42 @@ $(document).on("click", "#confirm-change-hero-name", function () {
     alert_box.failMessage("لا يمكن ان  يحتوى اسم البطل على 3 حروف");
     return;
   }
-
+  const idHero = Elkaisar.CurrentHero.Hero.id_hero;
   alert_box.confirmDialog("تاكيد تغير اسم البطل ", function () {
 
     $.ajax({
-
-      url: "api/hero.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/AHero/changeHeroName`,
       data: {
-
-        UPDATE_HERO_NEW_NAME: true,
-        new_name: hero_name,
-        id_hero: Elkaisar.CurrentHero.Hero.id_hero,
-        id_player: ID_PLAYER,
+        newName: hero_name,
+        idHero: idHero,
         token: Elkaisar.Config.OuthToken
-
       },
       type: 'POST',
-      beforeSend: function (xhr) {
-
-      },
+      beforeSend: function (xhr) { },
       success: function (data, textStatus, jqXHR) {
 
-        Elkaisar.CurrentHero.Hero.name = hero_name;
-        alert_box.succesMessage("تم تغير اسم البطل بنجاح");
-        $(".middle-content").replaceWith(army.middle_content(Elkaisar.CurrentHero));
-        $("#city-hero-list").html(army.hero_list());
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
+        const l_Hero = JSON.parse(data);
+        if (l_Hero.state == "ok") {
+          const l_CHero = Elkaisar.Hero.getHero(idHero);
+          l_CHero.Hero = l_Hero.Hero;
+          alert_box.succesMessage("تم تغير اسم البطل بنجاح");
+          $(".middle-content").replaceWith(army.middle_content(Elkaisar.CurrentHero));
+          $("#city-hero-list").html(army.hero_list());
+        } else if (l_Hero.state == "error_0") {
+          alert_box.failMessage("هذا البطل ليس ملكاَ لك");
+        } else if (l_Hero.state == "error_1") {
+          alert_box.failMessage("لا يمكن ان يحتوى الأسم على اكثر من 15  حرف");
+        } else if (l_Hero.state == "error_3") {
+          alert_box.failMessage("البطل ليس فى المدينة");
+        }
 
       },
       error: function (jqXHR, textStatus, errorThrown) {
-
       }
-
     });
-
   });
-
 });
 
 
@@ -1276,10 +1234,10 @@ $(document).on("click", ".show-hero-detailed-review", function (e) {
 
 
   $.ajax({
-    url: "api/hero.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/AHero/getHeroReviewDetail`,
     data: {
-      HERO_REVIEW_DETAIL: true,
-      id_hero: id_hero
+      idHero: id_hero,
+      token: Elkaisar.Config.OuthToken
     },
     type: 'GET',
     beforeSend: function (xhr) {
@@ -1295,10 +1253,7 @@ $(document).on("click", ".show-hero-detailed-review", function (e) {
         Elkaisar.LBase.Error(data);
         return;
       }
-
       alert_box.heroReviewDetail(jsonData);
-
-
     },
     error: function (jqXHR, textStatus, errorThrown) {
 
@@ -1380,7 +1335,7 @@ Elkaisar['Hero']['showHeroDetail'] = function (Hero) {
                               <div class="pull-L col-1">الجنود- الفيلق</div>                       
                               <div class="pull-L col-2">
                                 <div class="over-text">${getHeroCap(Hero['Army'])}/${getHeroMaxCap(Hero)}</div>
-                                <div class="colored-bar filak" style="width:${getHeroCap(Hero['Army']) * 0x64 / getHeroMaxCap(Hero) } %"></div>
+                                <div class="colored-bar filak" style="width:${getHeroCap(Hero['Army']) * 0x64 / getHeroMaxCap(Hero)} %"></div>
                               </div>
                               <div class="pull-L col-3">
                               </div>

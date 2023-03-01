@@ -735,12 +735,9 @@ function useMatrial(user_for, matrial, other) {
     var id_deal = Number(other);
     $.ajax({
 
-      url: "api/market.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/ACityMarket/speedUpDealTrans`,
       data: {
-        ACCELERATE_ARRIVING_DEALS: true,
-        id_deal: id_deal,
-        id_city: Elkaisar.CurrentCity.City.id_city,
-        id_player: ID_PLAYER,
+        idDeal: id_deal,
         token: Elkaisar.Config.OuthToken
       },
       type: 'POST',
@@ -752,11 +749,7 @@ function useMatrial(user_for, matrial, other) {
         if (isJson(data)) {
           console.log(data);
           var json_data = JSON.parse(data);
-          Elkaisar.CurrentCity.City.food = json_data.food;
-          Elkaisar.CurrentCity.City.wood = json_data.wood;
-          Elkaisar.CurrentCity.City.stone = json_data.stone;
-          Elkaisar.CurrentCity.City.coin = json_data.coin;
-          Elkaisar.CurrentCity.City.metal = json_data.metal;
+          Elkaisar.CurrentCity.City = json_data.cityRes;
           city_profile.refresh_resource_view();
           $("#my-comming-offers .tr[data-id-deal='" + id_deal + "']").remove();
           $("#my-comming-offers").append('<div class="tr"></div>');

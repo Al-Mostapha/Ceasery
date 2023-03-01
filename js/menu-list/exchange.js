@@ -1,64 +1,64 @@
-var DailyTradeMatrialPlayer={};
+var DailyTradeMatrialPlayer = {};
 var EXCHANGE_ITEM;
-const  RESOURCE_IMAGE = {
-   coin: "images/style/coin.png",
-   food: "images/style/food.png",
-   wood: "images/style/wood.png",
-   stone: "images/style/stone.png",
-   metal: "images/style/iron.png",
-   population: "images/style/population.png",
-   gold:'images/icons/gold.png'
+const RESOURCE_IMAGE = {
+  coin: "images/style/coin.png",
+  food: "images/style/food.png",
+  wood: "images/style/wood.png",
+  stone: "images/style/stone.png",
+  metal: "images/style/iron.png",
+  population: "images/style/population.png",
+  gold: 'images/icons/gold.png'
 };
 
 
 
 var Trading = {
-    
-    getTradeList: function (){
-        $.ajax({
-            url: `${Elkaisar.Config.NodeUrl}/api/AExchange/getExchangeItem`,
-            data: {
-                token: Elkaisar.Config.OuthToken,
-                server: Elkaisar.Config.idServer
-            },
-            type: 'GET',
-            beforeSend: function (xhr) {
 
-            },
-            success: function (data, textStatus, jqXHR) {
-                if(!Elkaisar.LBase.isJson(data))
-                    Elkaisar.LBase.Error(data);
-                EXCHANGE_ITEM = JSON.parse(data);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(errorThrown);
-            }
-        });
-        
-    },
-    
-    content_unit : function (Item){
-      
-         
-            var exchangeItem = Item;
-            var req_list = "";
-            var req    = JSON.parse(Item.req);
-            var reword = JSON.parse(Item.reword);
-            var image = "";
-            
-            
-            for(var iii in req){
-                
-                if(req[iii].type === "resource" || req[iii].type === "gold"){
-                    image = RESOURCE_IMAGE[ req[iii].resource_type] ;
-                  
-                }else if(req[iii].type === "matrial"){
-                    image = Matrial.image(req[iii].matrial) ;
-                }else if(req[iii].type === "equip"){
-                    image = Equipment.getImage(req[iii].Equip, req[iii].Part, req[iii].lvl);
-                }
-                
-                req_list += `<li class="pull-L">
+  getTradeList: function () {
+    $.ajax({
+      url: `${Elkaisar.Config.NodeUrl}/api/AExchange/getExchangeItem`,
+      data: {
+        token: Elkaisar.Config.OuthToken,
+        server: Elkaisar.Config.idServer
+      },
+      type: 'GET',
+      beforeSend: function (xhr) {
+
+      },
+      success: function (data, textStatus, jqXHR) {
+        if (!Elkaisar.LBase.isJson(data))
+          Elkaisar.LBase.Error(data);
+        EXCHANGE_ITEM = JSON.parse(data);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log(errorThrown);
+      }
+    });
+
+  },
+
+  content_unit: function (Item) {
+
+
+    var exchangeItem = Item;
+    var req_list = "";
+    var req = JSON.parse(Item.req);
+    var reword = JSON.parse(Item.reword);
+    var image = "";
+
+
+    for (var iii in req) {
+
+      if (req[iii].type === "resource" || req[iii].type === "gold") {
+        image = RESOURCE_IMAGE[req[iii].resource_type];
+
+      } else if (req[iii].type === "matrial") {
+        image = Matrial.image(req[iii].matrial);
+      } else if (req[iii].type === "equip") {
+        image = Equipment.getImage(req[iii].Equip, req[iii].Part, req[iii].lvl);
+      }
+
+      req_list += `<li class="pull-L">
                                 <div class="pic pull-L">
                                     <div class="req-unit-image" style="background-image: url(${image})">
                                     </div>
@@ -66,27 +66,27 @@ var Trading = {
                                 <div class="num stroke ellipsis pull-R">${req[iii].amount}</div>
                             </li>`;
 
-            }
-            
-            var prize_image = "";
-            var prize_name = "";
-            var player_amount = "--";
-            
-            if(reword.type === "matrial"){
-                
-                prize_image = Matrial.image(reword.matrial);
-                prize_name = Matrial.getMatrialName(reword.matrial);
-                player_amount = Matrial.getPlayerAmount(reword.matrial);
-               
-            } else if(reword.type === "equip"){
-                prize_image = Equipment.getImage(reword.Equip , reword.Part, reword.lvl);
-                prize_name  = Equipment.getName(reword.Equip , reword.Part, reword.lvl);
-                player_amount = Equipment.getPlayerAmount(reword.Equip , reword.Part, reword.lvl);
-            }
+    }
 
-         
+    var prize_image = "";
+    var prize_name = "";
+    var player_amount = "--";
 
-            var list = `<li data-index="${Item.id_ex}" matrial_type="${reword.matrial}" class="tooltip_mat matrial_unit exchange-item">
+    if (reword.type === "matrial") {
+
+      prize_image = Matrial.image(reword.matrial);
+      prize_name = Matrial.getMatrialName(reword.matrial);
+      player_amount = Matrial.getPlayerAmount(reword.matrial);
+
+    } else if (reword.type === "equip") {
+      prize_image = Equipment.getImage(reword.Equip, reword.Part, reword.lvl);
+      prize_name = Equipment.getName(reword.Equip, reword.Part, reword.lvl);
+      player_amount = Equipment.getPlayerAmount(reword.Equip, reword.Part, reword.lvl);
+    }
+
+
+
+    var list = `<li data-index="${Item.id_ex}" matrial_type="${reword.matrial}" class="tooltip_mat matrial_unit exchange-item">
                            <img src=" images/style/Border-up.png" class="border_up"/>
                            <div class="img-inside-box">
                                <div class="player_amount">
@@ -100,28 +100,28 @@ var Trading = {
                                     <ul class="req-list">`;
 
 
-             list +=  req_list +     "</ul>"
-                            +   "</div>"
-                            + "</div>";
-                    
-             var tail = ' <div class="txt-inside-box">'
-                      +                 '<h2>'+ prize_name +'</h2>'
-                      +              '</div>'
-                      +             '<div  class="tooltip_desc"></div>'
-                      +          '</li>';
+    list += req_list + "</ul>"
+      + "</div>"
+      + "</div>";
 
-              return list+tail+"";
-       
-    },
-    
-    dailogBox_allMat:  function (category , offset = 1){
-       
-       
-       category = category || "trade-all";
-       var all_content_unite = Elkaisar.Item.ItemExchangeBox(category, offset);
-        
-            
-            return `<div class="box_content for_mat_trade" data-page-for="exchange">
+    var tail = ' <div class="txt-inside-box">'
+      + '<h2>' + prize_name + '</h2>'
+      + '</div>'
+      + '<div  class="tooltip_desc"></div>'
+      + '</li>';
+
+    return list + tail + "";
+
+  },
+
+  dailogBox_allMat: function (category, offset = 1) {
+
+
+    category = category || "trade-all";
+    var all_content_unite = Elkaisar.Item.ItemExchangeBox(category, offset);
+
+
+    return `<div class="box_content for_mat_trade" data-page-for="exchange">
                         <div class="left-content">
                             <div class="banner-red">
                                 لا توجد فاعلية
@@ -159,81 +159,85 @@ var Trading = {
                             </div>
                         </div>
                     </div>`;
-    },
-    
-    calPageNum: function ( cat){
-     
-        var count = 0;
-        
-        for (var iii in EXCHANGE_ITEM){
-            
-            if(EXCHANGE_ITEM[iii].cat === cat || !cat){
-                count++;
-            }
-            
-        }
-        
-        return Math.ceil(count/9);
+  },
+
+  calPageNum: function (cat) {
+
+    var count = 0;
+
+    for (var iii in EXCHANGE_ITEM) {
+
+      if (EXCHANGE_ITEM[iii].cat === cat || !cat) {
+        count++;
+      }
+
     }
-    
-    
+
+    return Math.ceil(count / 9);
+  }
+
+
 };
 
 
-$(document).on("PlayerReady", "html", function (){
-    
-    Trading.getTradeList();
-    
+$(document).on("PlayerReady", "html", function () {
+
+  Trading.getTradeList();
+
 });
-$('.menu-list[data-show="trade"]').click(function (){
-    Trading.getTradeList();
+$('.menu-list[data-show="trade"]').click(function () {
+  Trading.getTradeList();
 });
 
-$(document).on("click" ,  "#dialg_box .for_mat_trade .matrial_unit" , function (){
-    
-    
-    var matrial_type = $(this).attr("matrial_type");
-    var index = $(this).data("index");
-    
-    for(var iii in EXCHANGE_ITEM)
-        if(Number(EXCHANGE_ITEM[iii].id_ex) === Number(index))
-            var exchange = EXCHANGE_ITEM[iii];
-    
-    var req = JSON.parse(exchange.req);
-    var reword = JSON.parse(exchange.reword);
-    
-    var image = "";
-    var req_list = "";
-    var right_req_list = "";
-    
-   
-    for(var iii in req){
-        
-        if(req[iii].type === "resource"){
-            image = RESOURCE_IMAGE[ req[iii].resource_type ] ;
+$(document).on("click", "#dialg_box .for_mat_trade .matrial_unit", function () {
 
-        }else if(req[iii].type === "matrial"){
-            image = Matrial.image(req[iii].matrial) ;
-        }
-        
-        req_list += `<li class="pull-L">
+
+  var matrial_type = $(this).attr("matrial_type");
+  var index = $(this).data("index");
+
+  for (var iii in EXCHANGE_ITEM)
+    if (Number(EXCHANGE_ITEM[iii].id_ex) === Number(index))
+      var exchange = EXCHANGE_ITEM[iii];
+
+  var req = JSON.parse(exchange.req);
+  var reword = JSON.parse(exchange.reword);
+
+  var image = "";
+  var req_list = "";
+  var right_req_list = "";
+
+
+  for (var iii in req) {
+
+    if (req[iii].type === "resource") {
+      image = RESOURCE_IMAGE[req[iii].resource_type];
+
+    } else if (req[iii].type === "matrial") {
+      image = Matrial.image(req[iii].matrial);
+    } else if (req[iii].type === "equip") {
+      image = Equipment.getImage(req[iii].Equip, req[iii].Part, req[iii].lvl);
+    }
+
+    req_list += `<li class="pull-L">
                         <div class="pic pull-L">
                             <img src="${image}">
                         </div>
                         <div class="num stroke ellipsis pull-R">${req[iii].amount}</div>
                     </li>`;
 
-    }
-    for(var iii in req){
-        
-        if(req[iii].type === "resource"){
-            image = RESOURCE_IMAGE[ req[iii].resource_type ] ;
+  }
+  for (var iii in req) {
 
-        }else if(req[iii].type === "matrial"){
-            image = Matrial.image(req[iii].matrial) ;
-        }
-        
-        right_req_list += `<li>
+    if (req[iii].type === "resource") {
+      image = RESOURCE_IMAGE[req[iii].resource_type];
+
+    } else if (req[iii].type === "matrial") {
+      image = Matrial.image(req[iii].matrial);
+    } else if (req[iii].type === "equip") {
+      image = Equipment.getImage(req[iii].Equip, req[iii].Part, req[iii].lvl);
+    }
+
+    right_req_list += `<li>
                         <div class="image pull-L">
                             <img src="${image}"/>
                         </div>
@@ -242,32 +246,32 @@ $(document).on("click" ,  "#dialg_box .for_mat_trade .matrial_unit" , function (
                         </div>
                     </li>`;
 
-    }   
-    
-    var prize_image = "";
-    var prize_name = "";
-    var player_amount = "--";
-    var desc = "";
-    var long_desc = "";
-    if(reword.type === "matrial"){
-                
-        prize_image = Matrial.image(reword.matrial);
-        prize_name = Matrial.getMatrialName(reword.matrial);
-        player_amount = Matrial.getPlayerAmount(reword.matrial);
-        long_desc = Matrial.getMatrial(reword.matrial).long_desc;
-        desc = Matrial.getMatrial(reword.matrial).desc;
+  }
 
-    } else if(reword.type === "equip"){
-        
-        prize_image   = Equipment.getImage(reword.equip , reword.part, reword.lvl);
-        prize_name    = Equipment.getName(reword.equip , reword.part, reword.lvl);
-        long_desc     = Equipment.getEquipData(reword.equip , reword.part , reword.lvl).long_desc;
-        desc          = Equipment.getEquipData(reword.equip , reword.part, reword.lvl).desc;
-        player_amount = Equipment.getPlayerAmount(reword.equip , reword.part, reword.lvl);
-    }
+  var prize_image = "";
+  var prize_name = "";
+  var player_amount = "--";
+  var desc = "";
+  var long_desc = "";
+  if (reword.type === "matrial") {
 
-    
-    var confirm_box = `<div id="matral-box-use" class="bg-general"> 
+    prize_image = Matrial.image(reword.matrial);
+    prize_name = Matrial.getMatrialName(reword.matrial);
+    player_amount = Matrial.getPlayerAmount(reword.matrial);
+    long_desc = Matrial.getMatrial(reword.matrial).long_desc;
+    desc = Matrial.getMatrial(reword.matrial).desc;
+
+  } else if (reword.type === "equip") {
+
+    prize_image = Equipment.getImage(reword.Equip, reword.Part, reword.lvl);
+    prize_name = Equipment.getName(reword.Equip, reword.Part, reword.lvl);
+    long_desc = Equipment.getEquipData(reword.Equip, reword.Part, reword.lvl).long_desc;
+    desc = Equipment.getEquipData(reword.Equip, reword.Part, reword.lvl).desc;
+    player_amount = Equipment.getPlayerAmount(reword.Equip, reword.Part, reword.lvl);
+  }
+
+
+  var confirm_box = `<div id="matral-box-use" class="bg-general"> 
                             <div id="alert_head">    
                                 <div>        
                                     <img src="images/panner/king_name.png">    
@@ -322,174 +326,172 @@ $(document).on("click" ,  "#dialg_box .for_mat_trade .matrial_unit" , function (
                                 </div>
                             </div>    
                         </div>`;
-    $("body").append(confirm_box);
-    
+  $("body").append(confirm_box);
+
 });
 
 
-function buyTradeMatral(index){
-    
-    for(var iii in EXCHANGE_ITEM)
-        if(Number(EXCHANGE_ITEM[iii].id_ex) === Number(index))
-            var exchange = EXCHANGE_ITEM[iii];
-    
-    var req    = JSON.parse(exchange.req);
-    var reword = JSON.parse(exchange.reword);
-    var amountToTrade = Number($("#amount_to_trade").val()) || 1;
-    if(amountToTrade < 1)
+function buyTradeMatral(index) {
+
+  for (var iii in EXCHANGE_ITEM)
+    if (Number(EXCHANGE_ITEM[iii].id_ex) === Number(index))
+      var exchange = EXCHANGE_ITEM[iii];
+
+  var req = JSON.parse(exchange.req);
+  var reword = JSON.parse(exchange.reword);
+  var amountToTrade = Number($("#amount_to_trade").val()) || 1;
+  if (amountToTrade < 1)
+    return;
+
+  for (var iii in req) {
+
+    if (req[iii].type === "matrial") {
+
+      if (Number(Matrial.getPlayerAmount(req[iii].matrial)) < Number(req[iii].amount) * amountToTrade) {
+
+        alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من المواد");
         return;
-    
-    for(var iii in req){
-        
-        if(req[iii].type === "matrial"){
-            
-             if(Number(Matrial.getPlayerAmount(req[iii].matrial)) < Number(req[iii].amount)*amountToTrade) {
-            
-                alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من المواد");
-                return ;
-            }
-        }else if(req[iii].type === "resource"){
-            
-            if(Number(Elkaisar.CurrentCity.City[req[iii].resource_type])< Number( req[iii].amount)*amountToTrade ) {
-            
-                alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من الموارد");
-                return ;
-            }
-            
-        }else if(req[iii].type === "equip"){
-            
-            if(Equipment.getPlayerAmount(reword.equip , reword.part , reword.lvl) < req[iii].amount*amountToTrade){
-                alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من المعدات");
-                return ;
-            }
-            
-            
+      }
+    } else if (req[iii].type === "resource") {
+
+      if (Number(Elkaisar.CurrentCity.City[req[iii].resource_type]) < Number(req[iii].amount) * amountToTrade) {
+
+        alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من الموارد");
+        return;
+      }
+
+    } else if (req[iii].type === "equip") {
+      if (Equipment.getPlayerAmount(req[iii].Equip, req[iii].Part, req[iii].lvl) < req[iii].amount * amountToTrade) {
+        alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من المعدات");
+        return;
+      }
+
+
+    }
+
+  }
+
+
+
+
+  if (reword.type === "matrial") {
+    if (Number(exchange.max_to_have) < Number(Matrial.getPlayerAmount(reword.matrial)) + amountToTrade) {
+      alert_box.confirmMessage("لقد تجاوزت الحد الاقصى للمواد");
+      return;
+
+    }
+  } else if (reword.type === "equip") {
+    if (Number(exchange.max_to_have) < Number(Equipment.getPlayerAmount(reword.Equip, reword.Part, reword.lvl)) + amountToTrade) {
+
+      alert_box.confirmMessage("لقد تجاوزت الحد الاقصى للمعدات");
+      return;
+
+    }
+  }
+
+
+  $.ajax({
+
+    url: `${Elkaisar.Config.NodeUrl}/api/AExchange/buyExchange`,
+    type: 'POST',
+    data: {
+      idExchange: exchange.id_ex,
+      idCity: Elkaisar.CurrentCity.City.id_city,
+      amountToTrade: amountToTrade,
+      token: Elkaisar.Config.OuthToken,
+      server: Elkaisar.Config.idServer
+    },
+    beforeSend: function (xhr) {
+      waitCursor();
+      $("#alert_box button").attr("disabled", "disabled");
+    },
+    success: function (data, textStatus, jqXHR) {
+      unwaitCursor();
+
+      if (!Elkaisar.LBase.isJson(data))
+        return Elkaisar.LBase.Error(data);
+
+      var jsonData = JSON.parse(data);
+
+      if (jsonData.state === 'ok') {
+
+        exchange.take_times = Number(exchange.take_times) + amountToTrade;
+
+        $(".close-alert_container").click();
+
+        var reword = JSON.parse(exchange.reword);
+        if (reword.type === "matrial") {
+
+          Matrial.givePlayer(reword.matrial, reword.amount * amountToTrade);
+
+        } else if (reword.type === "equip") {
+
+          Elkaisar.Equip.getPlayerEquip().done(function () {
+
+            $("#dialg_box .nav_bar .left-nav .selected").click();
+
+          });
+
         }
-        
+
+
+        for (var iii in req) {
+
+          if (req[iii].type === "matrial") {
+
+            Matrial.takeFrom(req[iii].matrial, req[iii].amount * amountToTrade);
+
+          } else if (req[iii].type === "resource") {
+
+            Elkaisar.CurrentCity.City[req[iii].resource_type] -= req[iii].amount * amountToTrade;
+
+          }
+        }
+
+        alert_box.succesMessage("تم التبادل بنجاح");
+
+
+      } else if (jsonData.state === "error_1") {
+
+        alert_box.confirmMessage("لقد استنفذت الحد اليومى المسموح من التبادل");
+
+      } else if (jsonData.state === "error_2") {
+
+        alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من المواد");
+
+      } else if (jsonData.state === "error_3") {
+
+        alert_box.confirmMessage("تم استنفاذ العدد الاقصى المسموح بالسيرفر");
+
+      } else if (jsonData.state === "error_4") {
+
+        alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من المواد");
+
+      } else if (jsonData.state === "error_5") {
+
+        alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من المعدات");
+
+      } else if (jsonData.state === "error_over_max") {
+        alert_box.confirmMessage("لقد وصلت الى الحد الاقصى من الجوائز");
+      } else {
+        Elkaisar.LBase.Error(data);
+      }
+
+      city_profile.refresh_resource_view();
+      $("#dialg_box .nav_bar .left-nav .selected").click();
+
+
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+
     }
 
-       
-    
-    
-    if(reword.type === "matrial"){
-        if(Number(exchange.max_to_have) < Number(Matrial.getPlayerAmount(reword.matrial)) + amountToTrade ){
-            alert_box.confirmMessage("لقد تجاوزت الحد الاقصى للمواد");
-            return ;
+  });
 
-        } 
-    }else if(reword.type === "equip"){
-        if(Number(exchange.max_to_have) <  Number(Equipment.getPlayerAmount(reword.equip , reword.part, reword.lvl)) + amountToTrade ){
-        
-            alert_box.confirmMessage("لقد تجاوزت الحد الاقصى للمعدات");
-            return ;
-
-        } 
-    }
-    
-        
-        $.ajax({
-            
-            url: `${Elkaisar.Config.NodeUrl}/api/AExchange/buyExchange`,
-            type: 'POST',
-            data:{
-                idExchange    : exchange.id_ex,
-                idCity        : Elkaisar.CurrentCity.City.id_city,
-                amountToTrade : amountToTrade,
-                token         : Elkaisar.Config.OuthToken,
-                server        : Elkaisar.Config.idServer
-            },
-            beforeSend: function (xhr) {
-                waitCursor();
-                $("#alert_box button").attr("disabled" , "disabled");
-            },
-            success: function (data, textStatus, jqXHR) {
-                unwaitCursor();
-                
-                if(!Elkaisar.LBase.isJson(data))
-                    return Elkaisar.LBase.Error(data);
-                
-                var jsonData = JSON.parse(data);
-                
-                if(jsonData.state === 'ok'){
-                    
-                    exchange.take_times = Number(exchange.take_times) + amountToTrade;
-                    
-                    $(".close-alert_container").click();
-
-                    var reword = JSON.parse(exchange.reword);
-
-                    if(reword.type === "matrial"){
-
-                        Matrial.givePlayer(reword.matrial , reword.amount*amountToTrade);
-
-                    }else if(reword.type === "equip"){
-
-                        Elkaisar.Equip.getPlayerEquip().done(function (){
-
-                            $("#dialg_box .nav_bar .left-nav .selected").click();
-
-                        });
-
-                    }
-
-
-                    for(var iii in req){
-
-                        if(req[iii].type === "matrial"){
-
-                            Matrial.takeFrom(req[iii].matrial , req[iii].amount*amountToTrade);
-
-                        }else if(req[iii].type === "resource"){
-
-                            Elkaisar.CurrentCity.City[req[iii].resource_type] -= req[iii].amount*amountToTrade;
-
-                        }
-                    }
-
-                    alert_box.succesMessage("تم التبادل بنجاح");
-                    
-                    
-                }else if(jsonData.state === "error_1"){
-                    
-                    alert_box.confirmMessage("لقد استنفذت الحد اليومى المسموح من التبادل");
-                    
-                }else if(jsonData.state === "error_2"){
-                    
-                    alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من المواد");
-                    
-                }else if(jsonData.state === "error_3"){
-                    
-                    alert_box.confirmMessage("تم استنفاذ العدد الاقصى المسموح بالسيرفر");
-                    
-                }else if(jsonData.state === "error_4"){
-                    
-                    alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من المواد");
-                    
-                }else if(jsonData.state === "error_5"){
-                    
-                    alert_box.confirmMessage("للاسف لا تمتلك عدد كافى من المعدات");
-                    
-                }else if(jsonData.state === "error_over_max"){
-                    alert_box.confirmMessage("لقد وصلت الى الحد الاقصى من الجوائز");
-                }else{
-                    Elkaisar.LBase.Error(data);
-                }
-                
-                city_profile.refresh_resource_view();
-                $("#dialg_box .nav_bar .left-nav .selected").click();
-               
-                
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                
-            }
-            
-        });
-        
 }
 
 //<button class="full-btn full-btn-3x  pull-R enter" id="buyTradeItem" data-trade-index="${index}" onclick="buyTradeMatral('${index}')">${Translate.Button.MenuList.Buy[UserLag.language]}</button>
-$(document).on("click", "#buyTradeItem", function (){
-    var index = $(this).attr("data-trade-index");
-    buyTradeMatral(index);
+$(document).on("click", "#buyTradeItem", function () {
+  var index = $(this).attr("data-trade-index");
+  buyTradeMatral(index);
 });

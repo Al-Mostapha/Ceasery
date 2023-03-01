@@ -290,7 +290,7 @@ BattelField.addToWatchList = function (x_coord , y_coord){
                 {
                     url:"WS_BattelWatchList/addPlayer",
                     data:{
-                        id_player:ID_PLAYER,
+                        id_player:Elkaisar.DPlayer.Player.id_player,
                         x_coord:x_coord,
                         y_coord:y_coord,
                         token:Elkaisar.Config.OuthToken
@@ -309,7 +309,7 @@ BattelField.removeFromWatchList = function (x_coord , y_coord){
             {
                 url:"WS_BattelWatchList/removePlayer",
                 data:{
-                    idPlayer: ID_PLAYER,
+                    id_player:Elkaisar.DPlayer.Player.id_player,
                     x_coord:x_coord,
                     y_coord:y_coord,
                     token:Elkaisar.Config.OuthToken

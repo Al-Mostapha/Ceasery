@@ -863,8 +863,7 @@ var army = {
             url: `${Elkaisar.Config.NodeUrl}/api/AHeroArmy/refreshHeroArmy`,
             data: {
                 idHero: hero.Hero.id_hero,
-                token: Elkaisar.Config.OuthToken,
-                server: Elkaisar.Config.idServer
+                token: Elkaisar.Config.OuthToken
             },
             type: 'GET',
             beforeSend: function (xhr) {

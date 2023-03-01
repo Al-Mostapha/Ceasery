@@ -177,7 +177,7 @@ TradeCenter.TradeListContent = function (list, offset) {
                                 ${lastSeen(list[iii].time_stamp)}
                             </div>
                             <div class="td_6" style="width: 18%;">
-                                ${Number(ID_PLAYER) !== Number(list[iii].id_player) ? `<button class="full-btn-3x buy-item-trade-center"
+                                ${Number(Elkaisar.DPlayer.Player.id_player) !== Number(list[iii].id_player) ? `<button class="full-btn-3x buy-item-trade-center"
                                         data-item="${list[iii].item}"
                                         data-price="${list[iii].price}" 
                                         data-id-item="${list[iii].id_item}" 
@@ -284,16 +284,11 @@ $(document).on("click", ".buy-item-trade-center", function () {
 
     $.ajax({
 
-      url: "api/tradeCenter.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/ATradeCenter/buyItem`,
       data: {
-
-        BUY_ITEM: true,
-        id_item: id_item,
-        id_player: ID_PLAYER,
-        item_table: Matrial.table(listItem.item),
+        idItem: id_item,
         amount: amount_to_buy,
         token: Elkaisar.Config.OuthToken
-
       },
       type: 'POST',
       beforeSend: function (xhr) {
@@ -437,13 +432,10 @@ $(document).on("click", ".sell-matrial", function (e) {
 
     $.ajax({
 
-      url: "api/tradeCenter.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/ATradeCenter/sellItem`,
       data: {
-        SELL_ITEM: true,
         item: matrial,
         price: itemPrice,
-        id_player: ID_PLAYER,
-        mat_table: Matrial.table(matrial),
         amount: amountToSell,
         token: Elkaisar.Config.OuthToken
       },
@@ -466,18 +458,13 @@ $(document).on("click", ".sell-matrial", function (e) {
           Matrial.takeFrom(matrial, amountToSell);
           Matrial.takeFrom("sell_voucher", amountToSell);
           TradeCenter.playerList.push({
-            id_item: jsonData.id_item,
-            id_player: ID_PLAYER,
+            id_item: jsonData.idItem,
             price: itemPrice,
             item: matrial,
             time_stamp: $.now() / 1000
-
           });
           $("#dialg_box .nav_bar .left-nav ul .selected").click();
           alert_box.succesMessage(`تم  اضافة ${amountToSell} ${Matrial.getMatrialName(matrial)}  الى قائمة البيع بنجاح`);
-
-
-
         } else if (jsonData.state === "error_0") {
           alert_box.failMessage("لا يمكنك بيع هذة الكمية");
         } else if (jsonData.state === "error_1") {
@@ -555,58 +542,35 @@ $(document).on("click", ".cancel-buy-item-trade-center", function () {
   alert_box.confirmDialog("ـاكيد الغاء عرض  البيع", function () {
 
     $.ajax({
-      url: "api/tradeCenter.php",
+      url: `${Elkaisar.Config.NodeUrl}/api/ATradeCenter/cancellSellItem`,
       data: {
-        CANCEL_SELL_ITEM_OFFFER: true,
-        id_player: ID_PLAYER,
-        id_item: id_item,
-        mat_table: Matrial.table(TradeCenter.getListItemById(id_item).item),
+        idPlayer: Elkaisar.DPlayer.Player.id_player,
+        idItem: id_item,
         token: Elkaisar.Config.OuthToken
       },
       type: 'POST',
-      beforeSend: function (xhr) {
-
-      },
+      beforeSend: function (xhr) { },
       success: function (data, textStatus, jqXHR) {
-
-        if (isJson(data)) {
-          var jsonData = JSON.parse(data);
-        } else {
-          alert(data);
-          return;
-        }
-
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
+        var jsonData = JSON.parse(data);
         if (jsonData.state === "ok") {
-
           alert_box.succesMessage("تم سحب المادة من قائمة البيع بنجاح");
           Matrial.givePlayer(jsonData.item, jsonData.amount);
           TradeCenter.totalCount--;
-
         } else if (jsonData.state === "error_0") {
-
           alert_box.failMessage(" لا يوجد هذا العرض");
-
         } else if (jsonData.state === "error_1") {
-
           alert_box.failMessage("لست صاحب هذا العرض");
-
         } else if (jsonData.state === "error_2") {
-
           alert_box.failMessage("حدث خطاء حاول مرة اخرى");
-
         }
-
         var firstOffset = $("#trade-list li:first-child").data("offset") || 0;
-
         TradeCenter.getTradeList(firstOffset).done(function () {
-
           $("#city-trade-center").replaceWith(TradeCenter.TradeListContent(TradeCenter.currentList));
-
         });
       },
-      error: function (jqXHR, textStatus, errorThrown) {
-
-      }
+      error: function (jqXHR, textStatus, errorThrown) {}
     });
 
   });

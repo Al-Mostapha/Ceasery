@@ -498,20 +498,6 @@ function checkTimeFinish(time, place, type, lvl, time_end, el)
     }
 }
 
-function test_time() {
-    $.ajax({
-        url: "api/player.php",
-        data: {test_time: true},
-        type: 'POST'
-        , success: function (data, textStatus, jqXHR) {
-            console.log(data);
-            console.log(Date.now());
-        }
-    });
-}
-
-
-
 Max_of = {
 
     city_jop: function (jop, building_place) {

@@ -779,7 +779,7 @@ $(document).on('click', "#confirm-deal button", function () {
                  url: "WS_Market/buyerDealDone",
                  data: {
                      traders: json_data.buyers,
-                     idPlayer: ID_PLAYER,
+                     idPlayer: Elkaisar.DPlayer.Player.id_player,,
                      token: TOKEN
                  }
              }));*/
@@ -858,7 +858,7 @@ $(document).on('click', "#confirm-deal button", function () {
                   url: "WS_Market/sellerDealDone",
                   data: {
                       traders: json_data.seller,
-                      idPlayer: ID_PLAYER,
+                      idPlayer: Elkaisar.DPlayer.Player.id_player,,
                       token: TOKEN
                   }
 

@@ -364,10 +364,10 @@ $(document).ready(function () {
                         url: "Chat/publicMsgImage",
                         data: {
                             image: event.target.result,
-                            idPlayer: ID_PLAYER,
+                            idPlayer: Elkaisar.DPlayer.Player.id_player,
                             token: Elkaisar.Config.OuthToken,
-                            p_name: player.name,
-                            p_avatar: player.avatar,
+                            p_name: Elkaisar.DPlayer.Player.name,
+                            p_avatar: Elkaisar.DPlayer.Player.avatar,
                             userGroup: USER_GROUP
                         }
                     };

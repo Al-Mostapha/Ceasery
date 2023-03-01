@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
-include_once 'config.php';
+  define('HOME_URL',        "http://localhost:8080");
+  define("JS_VERSION",    "");
+  define("DEV_MODE", true);
 ?>
 <html>
     <head>

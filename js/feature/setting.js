@@ -1,6 +1,6 @@
-$(document).on("click" , "#change-player-password" , function (){
-    
-    var msg = ` <div>
+$(document).on("click", "#change-player-password", function () {
+
+  var msg = ` <div>
                     تاكيد تغير كلمة المرور
                 </div>
                 <div id="change-pass-input-group">
@@ -8,74 +8,53 @@ $(document).on("click" , "#change-player-password" , function (){
                     <input class="new-pass"     type="password" placeholder="كلمة المرور الجديدة"/>
                     <input class="new-pass-con" type="password" placeholder="تأكيد كلمة المرور الجديدة"/>
                 </div>`;
-    
-    alert_box.confirmDialog(msg , function (){
-        
-        var currentPassword = $("#change-pass-input-group .current-pass").val();
-        var newPassword     = $("#change-pass-input-group .new-pass").val();
-        var conNewPassword  = $("#change-pass-input-group .new-pass-con").val();
-        
-        if(conNewPassword !== newPassword){
-            alert_box.failMessage("كلمة السر غير متطابقة مع كلمة التاكيد");
-            return ;
+
+  alert_box.confirmDialog(msg, function () {
+
+    var currentPassword = $("#change-pass-input-group .current-pass").val();
+    var newPassword = $("#change-pass-input-group .new-pass").val();
+    var conNewPassword = $("#change-pass-input-group .new-pass-con").val();
+
+    if (conNewPassword !== newPassword) {
+      alert_box.failMessage("كلمة السر غير متطابقة مع كلمة التاكيد");
+      return;
+    }
+
+    $.ajax({
+
+      url: `${Elkaisar.Config.NodeUrl}/api/HSetting/changePlayerPassword`,
+      data: {
+        oldPassword: currentPassword,
+        newPassword: newPassword,
+        token: Elkaisar.Config.OuthToken
+      },
+      type: 'POST',
+      beforeSend: function (xhr) { },
+      success: function (data, textStatus, jqXHR) {
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data);
+        var jsonData = JSON.parse(data);
+        if (jsonData.state === "ok") {
+          Elkaisar.LBase.Error("تم تغير كلمة المرور بنجاح");
+          location.reload();
+        } else {
+          alert_box.failMessage("كلمة المرور غير صحيحة");
         }
-        
-        $.ajax({
-            
-            url: "api/setting.php",
-            data:{
-                
-                CHANGE_PLAYER_PASSWORD: true,
-                oldPassword: currentPassword,
-                newPassword: newPassword,
-                id_player:ID_PLAYER,
-                token:Elkaisar.Config.OuthToken
-                
-            },
-            type: 'POST',
-            beforeSend: function (xhr) {
-                
-            },
-            success: function (data, textStatus, jqXHR) {
-                
-                if(!isJson(data)){
-                    
-                    Elkaisar.LBase.Error(data);
-                    return ;
-                    
-                }
-                
-                var jsonData = JSON.parse(data);
-                
-                if(jsonData.state === "ok"){
-                    
-                    Elkaisar.LBase.Error("تم تغير كلمة المرور بنجاح");
-                    location.reload();
-                    
-                }else{
-                    
-                    alert_box.failMessage("كلمة المرور غير صحيحة");
-                    
-                }
-                
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                
-            }
-            
-        });
-        
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+      }
     });
-    
+  });
+
 });
 
 
 
 
-$(document).on("click" , "#OpenSettingsBox" , function (){
-    
-    
-    var box = ` <div id="over_lay">
+$(document).on("click", "#OpenSettingsBox", function () {
+
+
+  var box = ` <div id="over_lay">
                     <div id="select_from">
                         <div class="head_bar">
                             <img src="images/style/head_bar.png" class="banner">
@@ -170,56 +149,53 @@ $(document).on("click" , "#OpenSettingsBox" , function (){
                         </div>
                     </div>
                 </div>`;
-    
-    $("#over_lay").remove();
-    $("body").append(box);
-    
+
+  $("#over_lay").remove();
+  $("body").append(box);
+
 });
 
 
 
 
-$(document).on("change" , "#game-lang-list .choose-lang", function (){
-    
-    var lang = $(this).val();
-    var oldLang = UserLag.language;
-    UserLag.language = lang;  
-    alert_box.confirmDialog(Translate.Msg.ConfirmChanegeLanguage[lang], function (){
+$(document).on("change", "#game-lang-list .choose-lang", function () {
 
-        $.ajax({
+  var lang = $(this).val();
+  var oldLang = UserLag.language;
+  UserLag.language = lang;
+  alert_box.confirmDialog(Translate.Msg.ConfirmChanegeLanguage[lang], function () {
 
-            url: "api/language.php",
-            data:{
-                CHANGE_PLAYER_LANG: true,
-                token: Elkaisar.Config.OuthToken,
-                id_player: ID_PLAYER,
-                newLang :  lang
-            },
-            type: 'POST',
-            beforeSend: function (xhr) {
-            },
-            success: function (data, textStatus, jqXHR) {
+    $.ajax({
 
-                if(isJson(data)){
-                    location.reload(); 
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
+      url: `${Elkaisar.Config.NodeUrl}/api/HSetting/chanegPlayerLang`,
+      data: {
+        token: Elkaisar.Config.OuthToken,
+        newLang: lang
+      },
+      type: 'POST',
+      beforeSend: function (xhr) {
+      },
+      success: function (data, textStatus, jqXHR) {
+        if (!Elkaisar.LBase.isJson(data))
+          return Elkaisar.LBase.Error(data)
+        location.reload();
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
 
-            }
-        });
-        UserLag.language = oldLang;
-
+      }
     });
-        
-   
-    
-    
-    
+    UserLag.language = oldLang;
+
+  });
+
+
+
+
+
 });
 
 
 
-if(UserLag.isDefault){
-    $("#OpenSettingsBox").click();
+if (UserLag.isDefault) {
+  $("#OpenSettingsBox").click();
 }

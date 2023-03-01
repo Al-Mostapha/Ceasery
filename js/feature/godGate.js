@@ -554,24 +554,16 @@ GodGate.rank = function (gate, offset) {
 
   $.ajax({
 
-    url: "api/godGate.php",
+    url: `${Elkaisar.Config.NodeUrl}/api/AGodGate/getGateRank`,
     data: {
-
-      GET_RANK_GATE: true,
       gate: gate,
       offset: offset
-
     },
     type: 'GET',
-    beforeSend: function (xhr) {
-
-    },
+    beforeSend: function (xhr) { },
     success: function (data, textStatus, jqXHR) {
-      if (!isJson(data)) {
-        Elkaisar.LBase.Error(data);
-        return;
-      }
-
+      if (!Elkaisar.LBase.isJson(data))
+        return Elkaisar.LBase.Error(data);
       var jsonData = JSON.parse(data);
 
       var list = "";
